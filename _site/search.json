@@ -1,31 +1,10 @@
 [
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site"
-  },
-  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Ousmanecisse",
     "section": "",
     "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
-  },
-  {
-    "objectID": "ai-dev-tools.html",
-    "href": "ai-dev-tools.html",
-    "title": "AI Dev Tools by Zoomcamp",
-    "section": "",
-    "text": "This page documents my progress in the AI Dev Tools by Zoomcamp course.\n\n\nStarts this week!\n\n\n\nSet up the environment.\nIntroduction to AI development tools."
-  },
-  {
-    "objectID": "ai-dev-tools.html#week-1-introduction-setup",
-    "href": "ai-dev-tools.html#week-1-introduction-setup",
-    "title": "AI Dev Tools by Zoomcamp",
-    "section": "",
-    "text": "Starts this week!\n\n\n\nSet up the environment.\nIntroduction to AI development tools."
   },
   {
     "objectID": "courses.html",
@@ -39,13 +18,20 @@
     "href": "courses/ai-dev-tools.html",
     "title": "AI Dev Tools by Zoomcamp",
     "section": "",
-    "text": "This page documents my progress in the AI Dev Tools by Zoomcamp course.\n\n\nStarts this week!\n\n\n\nSet up the environment.\nIntroduction to AI development tools.\n\nThis first week of the AI Dev Tools Zoomcamp helped me lay the foundations of AI-assisted coding — i.e. adopting tools and workflows that make code writing faster, cleaner, and more efficient. Here are the main takeaways:\nThe course introduced me to the concept of “Vibe Coding” — leveraging AI assistants, coding-assist tools, project bootstrappers, and even automated agents to accelerate development rather than reinvent the wheel. GitHub +1\nI discovered a concrete landscape of current tools: AI-powered code assistants / IDEs (like GitHub Copilot, Cursor, Claude Code, etc.), as well as project generators (“bootstrappers”) such as Bolt or Lovable, which let you rapidly scaffold a new app. GitHub +1\nThe methodology is hands-on: right away we work on a small project (a Snake game in React + JS), using these AI tools to see their real benefit in a development context. GitHub +1\nA key message from the course: you don’t need prior AI knowledge to begin. If you already know a programming language (Python, JavaScript…), that’s enough to start benefiting from AI assistants. GitHub +1\nWhat struck me: the potential of a modern, AI-integrated dev workflow — combining assistants, agents, automation — to reduce friction, speed up prototyping or production phases, and free mental bandwidth for architecture, business logic, and code quality.\nIn short — Week 1 helped me shift away from the “hand-code everything” paradigm toward a more fluid, developer-AI collaborative approach that feels well-suited for modern software projects."
+    "text": "This page documents my progress in the AI Dev Tools by Zoomcamp course.\n\n\nStarts this week!\n\n\n\nSet up the environment.\nIntroduction to AI development tools."
   },
   {
     "objectID": "courses/ai-dev-tools.html#week-1-introduction-setup",
     "href": "courses/ai-dev-tools.html#week-1-introduction-setup",
     "title": "AI Dev Tools by Zoomcamp",
     "section": "",
-    "text": "Starts this week!\n\n\n\nSet up the environment.\nIntroduction to AI development tools.\n\nThis first week of the AI Dev Tools Zoomcamp helped me lay the foundations of AI-assisted coding — i.e. adopting tools and workflows that make code writing faster, cleaner, and more efficient. Here are the main takeaways:\nThe course introduced me to the concept of “Vibe Coding” — leveraging AI assistants, coding-assist tools, project bootstrappers, and even automated agents to accelerate development rather than reinvent the wheel. GitHub +1\nI discovered a concrete landscape of current tools: AI-powered code assistants / IDEs (like GitHub Copilot, Cursor, Claude Code, etc.), as well as project generators (“bootstrappers”) such as Bolt or Lovable, which let you rapidly scaffold a new app. GitHub +1\nThe methodology is hands-on: right away we work on a small project (a Snake game in React + JS), using these AI tools to see their real benefit in a development context. GitHub +1\nA key message from the course: you don’t need prior AI knowledge to begin. If you already know a programming language (Python, JavaScript…), that’s enough to start benefiting from AI assistants. GitHub +1\nWhat struck me: the potential of a modern, AI-integrated dev workflow — combining assistants, agents, automation — to reduce friction, speed up prototyping or production phases, and free mental bandwidth for architecture, business logic, and code quality.\nIn short — Week 1 helped me shift away from the “hand-code everything” paradigm toward a more fluid, developer-AI collaborative approach that feels well-suited for modern software projects."
+    "text": "Starts this week!\n\n\n\nSet up the environment.\nIntroduction to AI development tools."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
   }
 ]
