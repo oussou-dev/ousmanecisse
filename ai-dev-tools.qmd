@@ -1,0 +1,15 @@
+---
+title: "AI Dev Tools by Zoomcamp"
+---
+
+# Course Overview
+
+This page documents my progress in the [AI Dev Tools by Zoomcamp](https://github.com/DataTalksClub/llm-zoomcamp) course.
+
+## Week 1: Introduction & Setup
+
+*Starts this week!*
+
+### Goals
+- Set up the environment.
+- Introduction to AI development tools.

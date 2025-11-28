@@ -1,0 +1,30 @@
+[
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Ousmanecisse",
+    "section": "",
+    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+  },
+  {
+    "objectID": "ai-dev-tools.html",
+    "href": "ai-dev-tools.html",
+    "title": "AI Dev Tools by Zoomcamp",
+    "section": "",
+    "text": "This page documents my progress in the AI Dev Tools by Zoomcamp course.\n\n\nStarts this week!\n\n\n\nSet up the environment.\nIntroduction to AI development tools."
+  },
+  {
+    "objectID": "ai-dev-tools.html#week-1-introduction-setup",
+    "href": "ai-dev-tools.html#week-1-introduction-setup",
+    "title": "AI Dev Tools by Zoomcamp",
+    "section": "",
+    "text": "Starts this week!\n\n\n\nSet up the environment.\nIntroduction to AI development tools."
+  }
+]
