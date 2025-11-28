@@ -10,9 +10,10 @@ image: https://github.com/DataTalksClub/ai-dev-tools-zoomcamp/blob/main/images/c
 
 This page documents my progress in the [AI Dev Tools by Zoomcamp](https://github.com/DataTalksClub/ai-dev-tools-zoomcamp) course.
 
-## Week 1: Introduction & Setup
+## Week 1: Introduction, Setup & AI Tools Overview
 
-*Starts this week!*
+![week_1](/img/week_1_ai_dev_tools.png)
+
 
 ### Goals
 - Set up the environment.
