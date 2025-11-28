@@ -12,7 +12,7 @@ This page documents my progress in the [AI Dev Tools by Zoomcamp](https://github
 
 ## Week 1: Introduction, Setup & AI Tools Overview
 
-![week_1](/img/week_1_ai_dev_tools.png)
+![](/img/week_1_ai_dev_tools.png)
 
 
 ### Goals
