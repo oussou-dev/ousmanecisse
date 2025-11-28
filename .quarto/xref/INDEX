@@ -7,5 +7,11 @@
   },
   "ai-dev-tools.qmd": {
     "ai-dev-tools.html": "3dd05325"
+  },
+  "courses/ai-dev-tools.qmd": {
+    "ai-dev-tools.html": "3ad9dc64"
+  },
+  "courses.qmd": {
+    "courses.html": "cb0d4ba7"
   }
 }

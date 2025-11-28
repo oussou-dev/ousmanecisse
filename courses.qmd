@@ -1,0 +1,11 @@
+---
+title: "Self-Study Courses"
+listing:
+  contents: courses
+  type: grid
+  sort: "date desc"
+  categories: true
+  fields: [image, date, title, description, reading-time]
+---
+
+Here you can find the various self-study courses I am currently following or have completed.

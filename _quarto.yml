@@ -7,7 +7,7 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - href: ai-dev-tools.qmd
+      - href: courses.qmd
         text: "Self-study courses"
       - about.qmd
 
