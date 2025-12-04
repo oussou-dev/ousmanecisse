@@ -16,8 +16,9 @@ This page documents my progress in the [AI Dev Tools by Zoomcamp](https://github
 
 
 ### Goals
-- Set up the environment.
-- Introduction to AI development tools.
+- Set up the environment
+- Introduction to AI development tools
+- Homework : build a Todo app in Django using AI tools
 
 This first week of the AI Dev Tools Zoomcamp helped me lay the foundations of AI-assisted coding — i.e. adopting tools and workflows that make code writing faster, cleaner, and more efficient. Here are the main takeaways:
 
@@ -33,3 +34,5 @@ A key message from the course: you don’t need prior AI knowledge to begin. If 
 What struck me: the potential of a modern, AI-integrated dev workflow — combining assistants, agents, automation — to reduce friction, speed up prototyping or production phases, and free mental bandwidth for architecture, business logic, and code quality.
 
 In short — Week 1 helped me shift away from the “hand-code everything” paradigm toward a more fluid, developer-AI collaborative approach that feels well-suited for modern software projects.
+
+**Homework:** [Todo app in Django using AI tools](https://github.com/oussou-dev/ai-dev-tools-zoomcamp/tree/main/01_todo_app)
