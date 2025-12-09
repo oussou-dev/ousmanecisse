@@ -50,6 +50,8 @@ In short — Week 1 helped me shift away from the “hand-code everything” par
 
 ## Week 2: End-to-End Project
 
+![](/img/week_2_ai_dev_tools.jpg)
+
 
 ### Goals
 
