@@ -48,7 +48,7 @@ In short — Week 1 helped me shift away from the “hand-code everything” par
 
 
 
-## Week 2: IEnd-to-End Project
+## Week 2: End-to-End Project
 
 
 ### Goals
@@ -143,7 +143,9 @@ This creates a **safety net** — bad code can't accidentally get deployed. We l
 
 #### **Mindset Shift**
 
-Week 1 taught me AI tools exist. Week 2 taught me **how to think like a real engineer** using those tools: designing APIs, writing tests, containerizing, and automating. It's the difference between "I can generate code" and "I can ship production applications."
+Week 1 taught me AI tools exist.   
+Week 2 taught me **how to think like a real engineer** using those tools: designing APIs, writing tests, containerizing, and automating. It's the difference between "I can generate code" and "I can ship production applications."
+
 
 **Homework:** [End-to-End Project - Online Coding Interview Platform](https://github.com/oussou-dev/ai-dev-tools-zoomcamp/tree/main/02_code_itws)
 
