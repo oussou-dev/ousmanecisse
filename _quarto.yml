@@ -2,9 +2,9 @@ project:
   type: website
 
 website:
-  title: "Ousmanecisse"
+  title: "OUSMANE CISSE"
   navbar:
-    left:
+    right:
       - href: index.qmd
         text: Home
       - href: courses.qmd
