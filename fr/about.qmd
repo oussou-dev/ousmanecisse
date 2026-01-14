@@ -1,0 +1,20 @@
+---
+title: "À propos de moi"
+about:
+  template: jolla
+  image: ../img/photo_bg_white.jpeg
+  links:
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/ousmane-ciss%C3%A9/?locale=fr_FR
+    - icon: github
+      text: Github
+      href: https://github.com/oussou-dev
+---
+
+Je suis Consultant Ingénieur IA basé en France avec un profil hybride en finance, audit et développement web.
+
+J'aide les entreprises à transformer leurs besoins métiers en solutions IA scalables : Agents IA, systèmes RAG, automatisation et architectures de données modernes.
+
+Mon expérience dans les services financiers et les projets numériques me permet de livrer des initiatives IA techniquement solides, conformes et alignées avec les contraintes opérationnelles réelles.
+Disponible pour des missions de conseil en IA, applications LLM, automatisation et ingénierie de données.

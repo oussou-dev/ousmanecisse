@@ -1,21 +1,18 @@
 project:
   type: website
 
+profile:
+  default: en
+  group: [en, fr]
+
 website:
   title: "OUSMANE CISSE"
-  navbar:
-    right:
-      - href: index.qmd
-        text: Home
-      - href: courses.qmd
-        text: "Self-study courses"
-      - about.qmd
+  search: true
 
 format:
   html:
-    theme: cosmo
+    theme:
+      light: [cosmo, theme.scss]
+      dark: [cosmo, dark.scss]
     css: styles.css
     toc: true
-
-
-

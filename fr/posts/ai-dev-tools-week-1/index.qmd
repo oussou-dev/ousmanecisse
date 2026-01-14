@@ -1,0 +1,22 @@
+---
+title: "Outils de Dév IA - Semaine 1"
+date: "2024-01-20"
+categories: [IA, Outils, Zoomcamp]
+description: "Aperçu de la première semaine du AI Dev Tools Zoomcamp."
+lang: fr
+---
+
+## Introduction
+
+Cette semaine, nous avons exploré les outils fondamentaux pour le développement assisté par IA.
+Nous avons couvert l'utilisation des LLM pour l'écriture de code, le refactoring, et la documentation.
+
+## Points Clés
+
+- Configuration de l'environnement de développement.
+- Introduction à GitHub Copilot.
+- Utilisation de ChatGPT pour la génération de code.
+
+## Conclusion
+
+Une première semaine passionnante qui pose les bases pour la suite du programme.

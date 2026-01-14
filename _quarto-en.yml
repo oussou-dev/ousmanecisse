@@ -1,0 +1,23 @@
+project:
+  output-dir: _site
+  render: 
+    - "*.qmd"
+    - "posts/"
+    - "!fr/"
+
+lang: en
+
+website:
+  navbar:
+    left:
+      - href: projects.qmd
+        text: Projects
+      - href: blog.qmd
+        text: Blog
+    right:
+      - text: "FR"
+        href: fr/index.html
+      - icon: github
+        href: https://github.com/oussou-dev
+      - icon: linkedin
+        href: https://linkedin.com/in/ousmanecisse

@@ -1,5 +1,20 @@
 ---
-title: "About"
+title: "About Me"
+about:
+  template: jolla
+  image: img/photo_bg_white.jpeg
+  links:
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/ousmane-ciss%C3%A9/?locale=en_US
+    - icon: github
+      text: Github
+      href: https://github.com/oussou-dev
 ---
 
-About this site
+I am an AI Engineer Consultant based in France with a hybrid background in finance, audit and web development.
+
+I help companies turn business needs into scalable AI solutions: AI Agents, RAG systems, automation and modern data architectures. 
+
+My experience in financial services and digital projects allows me to deliver AI initiatives that are technically solid, compliant, and aligned with real operational constraints.
+Available for AI consulting, LLM applications, automation and data engineering missions.

@@ -1,0 +1,22 @@
+---
+title: "Outils de Dév IA - Semaine 2"
+date: "2024-01-27"
+categories: [IA, Outils, Zoomcamp]
+description: "Aperçu de la deuxième semaine du AI Dev Tools Zoomcamp."
+lang: fr
+---
+
+## Introduction
+
+La deuxième semaine s'est concentrée sur des cas d'utilisation plus avancés.
+Nous avons appris à intégrer des API d'IA dans nos applications.
+
+## Points Clés
+
+- Utilisation de l'API OpenAI.
+- Création de scripts simples avec Python.
+- Automatisation des tâches répétitives.
+
+## Conclusion
+
+Nous commençons à voir la puissance de l'intégration de l'IA dans les workflows de développement.

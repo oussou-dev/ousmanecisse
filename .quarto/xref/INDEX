@@ -13,5 +13,50 @@
   },
   "courses.qmd": {
     "courses.html": "cb0d4ba7"
+  },
+  "projects.qmd": {
+    "projects.html": "43c8ad95"
+  },
+  "posts/post-with-code/index.qmd": {
+    "index.html": "e8b7be27"
+  },
+  "posts/welcome/index.qmd": {
+    "index.html": "810443cb"
+  },
+  "blog.qmd": {
+    "blog.html": "0da593c8"
+  },
+  "recap.md": {
+    "recap.html": "afcab598"
+  },
+  "posts/ai-dev-tools-week-1/index.qmd": {
+    "index.html": "3cb6235b"
+  },
+  "posts/ai-dev-tools-week-2/index.qmd": {
+    "index.html": "defeef66"
+  },
+  "posts/ai-dev-tools-week-3/index.qmd": {
+    "index.html": "f0e23866"
+  },
+  "fr/projects.qmd": {
+    "projects.html": "db482821"
+  },
+  "fr/about.qmd": {
+    "about.html": "b2d20e65"
+  },
+  "fr/blog.qmd": {
+    "blog.html": "27ace72c"
+  },
+  "fr/index.qmd": {
+    "index.html": "f78aca1f"
+  },
+  "fr/posts/ai-dev-tools-week-1/index.qmd": {
+    "index.html": "55beacbb"
+  },
+  "fr/posts/ai-dev-tools-week-2/index.qmd": {
+    "index.html": "6e141e18"
+  },
+  "fr/posts/ai-dev-tools-week-3/index.qmd": {
+    "index.html": "474108c4"
   }
 }

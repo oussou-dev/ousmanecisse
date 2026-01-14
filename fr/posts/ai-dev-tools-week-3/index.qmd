@@ -1,0 +1,21 @@
+---
+title: "Outils de Dév IA - Semaine 3"
+date: "2024-02-03"
+categories: [IA, Outils, Zoomcamp]
+description: "Aperçu de la troisième semaine du AI Dev Tools Zoomcamp."
+lang: fr
+---
+
+## Introduction
+
+Cette semaine était dédiée à la création d'agents et à l'utilisation du protocole MCP.
+
+## Points Clés
+
+- Comprendre le Model Context Protocol (MCP).
+- Construire un serveur MCP simple.
+- Connecter des outils personnalisés aux LLMs.
+
+## Conclusion
+
+Le MCP ouvre des possibilités incroyables pour l'interopérabilité entre les outils d'IA.
