@@ -7,6 +7,34 @@
     "text": "A selection of projects I’ve worked on.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAI Dev Tools\n\n\n\nAI\n\n\nVIBE CODING\n\n\nMCP\n\n\nN8N\n\n\nZoomcamp\n\n\n\nProjects and assignments from the AI Dev Tools Zoomcamp.\n\n\n\n\n\n\n\n\n\n\n\n\n\nML Engineer ZoomCamp\n\n\n\nMachine Learning\n\n\nMLOPS\n\n\n\nA comprehensive machine learning engineering course covering deployment, cloud, and MLOps.\n\n\n\n\n\n\n\nNo matching items"
   },
   {
+    "objectID": "posts/ai-dev-tools-week-4/index.html",
+    "href": "posts/ai-dev-tools-week-4/index.html",
+    "title": "AI Dev Tools: Week 4 - Building Coding Agents",
+    "section": "",
+    "text": "Week 4 of the AI Dev Tools Zoomcamp was a transformative production to the world of autonomous coding agents. We moved beyond simple chat interfaces to building agents that can actively manipulate codebases, modify files, and bootstrap entire projects."
+  },
+  {
+    "objectID": "posts/ai-dev-tools-week-4/index.html#the-goal-a-coding-agent-that-bootstraps-projects",
+    "href": "posts/ai-dev-tools-week-4/index.html#the-goal-a-coding-agent-that-bootstraps-projects",
+    "title": "AI Dev Tools: Week 4 - Building Coding Agents",
+    "section": "The Goal: A Coding Agent that Bootstraps Projects",
+    "text": "The Goal: A Coding Agent that Bootstraps Projects\nThe core mission was to build a coding agent capable of scaffolding a Django project from scratch. Instead of manually running django-admin startproject, we built an agent that could: 1. Understand a high-level goal (e.g., “Create a Todo App”). 2. Use Tools to create directories, write files, and execute shell commands. 3. Iteratively refine the code based on feedback."
+  },
+  {
+    "objectID": "posts/ai-dev-tools-week-4/index.html#key-concepts-learned",
+    "href": "posts/ai-dev-tools-week-4/index.html#key-concepts-learned",
+    "title": "AI Dev Tools: Week 4 - Building Coding Agents",
+    "section": "Key Concepts Learned",
+    "text": "Key Concepts Learned\n\n1. Agents as “Project Bootstrappers”\nWe explored the concept of agents not just as code completors, but as architects. By giving an agent access to the file system and command line, it can perform complex multi-step tasks like: * Setting up a virtual environment. * Installing dependencies via pip. * Configuring a Makefile for consistent workflows. * Generating initial templates for base.html and home.html using modern CSS frameworks like Tailwind.\n\n\n2. The Power of Tools\nAn agent is only as powerful as its tools. We defined a set of primitive tools for our agent: * read_file: To understand existing code. * write_file: To create or update logic. * bash: To execute commands (migrations, tests, servers). * ls: To explore the file structure.\n\n\n3. Orchestration Frameworks\nWe didn’t just stick to one way of doing things. We explored multiple frameworks for building these agents: * ToyAIKit: A simplified framework to understand the core loop of Thought -&gt; Action -&gt; Observation. * OpenAI Agents SDK: Leveraging the native function calling capabilities of GPT models. * PydanticAI: A robust, type-safe approach to defining agent behaviors. * Z.ai: Exploring alternative LLM providers and APIs."
+  },
+  {
+    "objectID": "posts/ai-dev-tools-week-4/index.html#the-outcome",
+    "href": "posts/ai-dev-tools-week-4/index.html#the-outcome",
+    "title": "AI Dev Tools: Week 4 - Building Coding Agents",
+    "section": "The Outcome",
+    "text": "The Outcome\nBy the end of the week, I had a functioning agent that could take a simple prompt and spin up a working Django application with: * A clean directory structure. * Basic templates and routing. * Database migrations applied.\nThis week bridged the gap between talking to AI about code and having AI write the code directly into the project. It set the perfect stage for building more complex systems, like the one I built for my weekly project.\nNext Stop: Applying these skills to build a production-grade AI application."
+  },
+  {
     "objectID": "posts/ai-dev-tools-week-2/index.html",
     "href": "posts/ai-dev-tools-week-2/index.html",
     "title": "AI Dev Tools: Week 2 - End-to-End Application Development",
@@ -215,34 +243,6 @@
     "title": "AI Dev Tools: Week 3 - MCP & Agents",
     "section": "Homework",
     "text": "Homework\nI implemented an MCP server that included:\n1. Web Scraper Tool: Uses the Jina Reader API to convert any URL into clean markdown for the AI to process.\n2. Documentation Search Tool: Downloads a repository, indexes markdown files using Minsearch, and provides a search function to retrieve relevant context.\nThis turned my AI assistant into a specialized documentation expert for any library I point it at.\nHomework: MCP Scraper and Search Tool"
-  },
-  {
-    "objectID": "posts/ai-dev-tools-week-4/index.html",
-    "href": "posts/ai-dev-tools-week-4/index.html",
-    "title": "AI Dev Tools: Week 4 - Building Coding Agents",
-    "section": "",
-    "text": "Week 4 of the AI Dev Tools Zoomcamp was a transformative production to the world of autonomous coding agents. We moved beyond simple chat interfaces to building agents that can actively manipulate codebases, modify files, and bootstrap entire projects."
-  },
-  {
-    "objectID": "posts/ai-dev-tools-week-4/index.html#the-goal-a-coding-agent-that-bootstraps-projects",
-    "href": "posts/ai-dev-tools-week-4/index.html#the-goal-a-coding-agent-that-bootstraps-projects",
-    "title": "AI Dev Tools: Week 4 - Building Coding Agents",
-    "section": "The Goal: A Coding Agent that Bootstraps Projects",
-    "text": "The Goal: A Coding Agent that Bootstraps Projects\nThe core mission was to build a coding agent capable of scaffolding a Django project from scratch. Instead of manually running django-admin startproject, we built an agent that could: 1. Understand a high-level goal (e.g., “Create a Todo App”). 2. Use Tools to create directories, write files, and execute shell commands. 3. Iteratively refine the code based on feedback."
-  },
-  {
-    "objectID": "posts/ai-dev-tools-week-4/index.html#key-concepts-learned",
-    "href": "posts/ai-dev-tools-week-4/index.html#key-concepts-learned",
-    "title": "AI Dev Tools: Week 4 - Building Coding Agents",
-    "section": "Key Concepts Learned",
-    "text": "Key Concepts Learned\n\n1. Agents as “Project Bootstrappers”\nWe explored the concept of agents not just as code completors, but as architects. By giving an agent access to the file system and command line, it can perform complex multi-step tasks like: * Setting up a virtual environment. * Installing dependencies via pip. * Configuring a Makefile for consistent workflows. * Generating initial templates for base.html and home.html using modern CSS frameworks like Tailwind.\n\n\n2. The Power of Tools\nAn agent is only as powerful as its tools. We defined a set of primitive tools for our agent: * read_file: To understand existing code. * write_file: To create or update logic. * bash: To execute commands (migrations, tests, servers). * ls: To explore the file structure.\n\n\n3. Orchestration Frameworks\nWe didn’t just stick to one way of doing things. We explored multiple frameworks for building these agents: * ToyAIKit: A simplified framework to understand the core loop of Thought -&gt; Action -&gt; Observation. * OpenAI Agents SDK: Leveraging the native function calling capabilities of GPT models. * PydanticAI: A robust, type-safe approach to defining agent behaviors. * Z.ai: Exploring alternative LLM providers and APIs."
-  },
-  {
-    "objectID": "posts/ai-dev-tools-week-4/index.html#the-outcome",
-    "href": "posts/ai-dev-tools-week-4/index.html#the-outcome",
-    "title": "AI Dev Tools: Week 4 - Building Coding Agents",
-    "section": "The Outcome",
-    "text": "The Outcome\nBy the end of the week, I had a functioning agent that could take a simple prompt and spin up a working Django application with: * A clean directory structure. * Basic templates and routing. * Database migrations applied.\nThis week bridged the gap between talking to AI about code and having AI write the code directly into the project. It set the perfect stage for building more complex systems, like the one I built for my weekly project.\nNext Stop: Applying these skills to build a production-grade AI application."
   },
   {
     "objectID": "posts/ai-news-aggregator/index.html",
