@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>About Me – OUSMANE CISSE</title>
+<title>recap – OUSMANE CISSE</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -33,13 +33,14 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-9a9019b26c7917966914e20dc61bd008.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-753d2645759075f1563ff6dc07598d4d.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-7b7c1b0af074b5ead3678de040393fb5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-6424abc5f198ff0f1d0b181e35ba460d.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-81a09e96d80a59df731ab1828b8ce0d5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-493d5a7b74ba3cb5d4ba61ddfc85ba96.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -72,7 +73,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -90,6 +91,10 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
+    <a class="nav-link" href="./about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="./projects.html"> 
 <span class="menu-text">Projects</span></a>
   </li>  
@@ -99,10 +104,6 @@ ul.task-list li input[type="checkbox"] {
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="./fr/index.html"> 
-<span class="menu-text">FR</span></a>
-  </li>  
   <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/oussou-dev"> <i class="bi bi-github" role="img">
 </i> 
@@ -125,37 +126,184 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#ai-dev-tools-zoomcamp-recap" id="toc-ai-dev-tools-zoomcamp-recap" class="nav-link active" data-scroll-target="#ai-dev-tools-zoomcamp-recap">AI Dev Tools Zoomcamp Recap</a>
+  <ul class="collapse">
+  <li><a href="#week-1" id="toc-week-1" class="nav-link" data-scroll-target="#week-1">Week 1</a></li>
+  <li><a href="#week-2" id="toc-week-2" class="nav-link" data-scroll-target="#week-2">Week 2</a>
+  <ul class="collapse">
+  <li><a href="#frontend-first-approach-with-ai" id="toc-frontend-first-approach-with-ai" class="nav-link" data-scroll-target="#frontend-first-approach-with-ai"><strong>Frontend-First Approach with AI</strong></a></li>
+  <li><a href="#api-first-backend-design-with-openapi" id="toc-api-first-backend-design-with-openapi" class="nav-link" data-scroll-target="#api-first-backend-design-with-openapi"><strong>API-First Backend Design with OpenAPI</strong></a></li>
+  <li><a href="#database-integration-real-world-concerns" id="toc-database-integration-real-world-concerns" class="nav-link" data-scroll-target="#database-integration-real-world-concerns"><strong>Database Integration &amp; Real-World Concerns</strong></a></li>
+  <li><a href="#containerization-local-development" id="toc-containerization-local-development" class="nav-link" data-scroll-target="#containerization-local-development"><strong>Containerization &amp; Local Development</strong></a></li>
+  <li><a href="#deployment-to-the-cloud" id="toc-deployment-to-the-cloud" class="nav-link" data-scroll-target="#deployment-to-the-cloud"><strong>Deployment to the Cloud</strong></a></li>
+  <li><a href="#cicd-pipeline-with-github-actions" id="toc-cicd-pipeline-with-github-actions" class="nav-link" data-scroll-target="#cicd-pipeline-with-github-actions"><strong>CI/CD Pipeline with GitHub Actions</strong></a></li>
+  <li><a href="#key-lessons" id="toc-key-lessons" class="nav-link" data-scroll-target="#key-lessons"><strong>Key Lessons</strong></a></li>
+  <li><a href="#mindset-shift" id="toc-mindset-shift" class="nav-link" data-scroll-target="#mindset-shift"><strong>Mindset Shift</strong></a></li>
+  </ul></li>
+  <li><a href="#week-3" id="toc-week-3" class="nav-link" data-scroll-target="#week-3">Week 3</a>
+  <ul class="collapse">
+  <li><a href="#standardizing-ai-interactions" id="toc-standardizing-ai-interactions" class="nav-link" data-scroll-target="#standardizing-ai-interactions"><strong>Standardizing AI Interactions</strong></a></li>
+  <li><a href="#mcp-primitives-tools-resources-and-prompts" id="toc-mcp-primitives-tools-resources-and-prompts" class="nav-link" data-scroll-target="#mcp-primitives-tools-resources-and-prompts"><strong>MCP Primitives: Tools, Resources, and Prompts</strong></a></li>
+  <li><a href="#developer-experience-with-fastmcp" id="toc-developer-experience-with-fastmcp" class="nav-link" data-scroll-target="#developer-experience-with-fastmcp"><strong>Developer Experience with FastMCP</strong></a></li>
+  <li><a href="#protocol-transports-stdio-vs.-sse" id="toc-protocol-transports-stdio-vs.-sse" class="nav-link" data-scroll-target="#protocol-transports-stdio-vs.-sse"><strong>Protocol Transports: Stdio vs.&nbsp;SSE</strong></a></li>
+  <li><a href="#supercharging-workflows-with-live-docs" id="toc-supercharging-workflows-with-live-docs" class="nav-link" data-scroll-target="#supercharging-workflows-with-live-docs"><strong>Supercharging Workflows with Live Docs</strong></a></li>
+  <li><a href="#key-lessons-1" id="toc-key-lessons-1" class="nav-link" data-scroll-target="#key-lessons-1"><strong>Key Lessons</strong></a></li>
+  <li><a href="#homework" id="toc-homework" class="nav-link" data-scroll-target="#homework"><strong>Homework</strong></a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-<div class="quarto-about-jolla">
-  <img src="img/photo_bg_white.jpeg" class="about-image
-  round " style="height: 15em; width: 15em;">
- <header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">About Me</h1>
-</div>
-<div class="quarto-title-meta">
-  </div>
-</header><main class="content" id="quarto-document-content">
-<p>I am an AI Engineer Consultant based in France with a hybrid background in finance, audit and web development.</p>
-<p>I help companies turn business needs into scalable AI solutions: AI Agents, RAG systems, automation and modern data architectures.</p>
-<p>My experience in financial services and digital projects allows me to deliver AI initiatives that are technically solid, compliant, and aligned with real operational constraints. Available for AI consulting, LLM applications, automation and data engineering missions.</p>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
-</main> 
-  <hr class="about-sep">
-   <div class="about-links">
-  <a href="https://www.linkedin.com/in/ousmane-ciss%C3%A9/?locale=en_US" class="about-link" rel="" target="">
-    <i class="bi bi-linkedin"></i>
-     <span class="about-link-text">LinkedIn</span>
-  </a>
-  <a href="https://github.com/oussou-dev" class="about-link" rel="" target="">
-    <i class="bi bi-github"></i>
-     <span class="about-link-text">Github</span>
-  </a>
-</div>
-</div>
- <!-- /main -->
+
+
+<section id="ai-dev-tools-zoomcamp-recap" class="level1">
+<h1>AI Dev Tools Zoomcamp Recap</h1>
+<section id="week-1" class="level2">
+<h2 class="anchored" data-anchor-id="week-1">Week 1</h2>
+<p>This first week of the AI Dev Tools Zoomcamp helped me lay the foundations of AI-assisted coding — i.e.&nbsp;adopting tools and workflows that make code writing faster, cleaner, and more efficient. Here are the main takeaways:</p>
+<p>The course introduced me to the concept of “Vibe Coding” — leveraging AI assistants, coding-assist tools, project bootstrappers, and even automated agents to accelerate development rather than reinvent the wheel.</p>
+<p>I discovered a concrete landscape of current tools: AI-powered code assistants / IDEs (like GitHub Copilot, Cursor, Claude Code, etc.), as well as project generators (“bootstrappers”) such as Bolt or Lovable, which let you rapidly scaffold a new app.</p>
+<p>The methodology is hands-on: right away we work on a small project (a Snake game in React + JS), using these AI tools to see their real benefit in a development context.</p>
+<p>A key message from the course: you don’t need prior AI knowledge to begin. If you already know a programming language (Python, JavaScript…), that’s enough to start benefiting from AI assistants.</p>
+<p>What struck me: the potential of a modern, AI-integrated dev workflow — combining assistants, agents, automation — to reduce friction, speed up prototyping or production phases, and free mental bandwidth for architecture, business logic, and code quality.</p>
+<p>In short — Week 1 helped me shift away from the “hand-code everything” paradigm toward a more fluid, developer-AI collaborative approach that feels well-suited for modern software projects.</p>
+<p><strong>Homework:</strong> <a href="https://github.com/oussou-dev/ai-dev-tools-zoomcamp/tree/main/01_todo_app">Todo app in Django using AI tools</a></p>
+</section>
+<section id="week-2" class="level2">
+<h2 class="anchored" data-anchor-id="week-2">Week 2</h2>
+<p>This week took my understanding of AI-assisted development to the next level by building a <strong>complete end-to-end application</strong> — from frontend to backend, database, containerization, and cloud deployment. Here’s what I learned:</p>
+<section id="frontend-first-approach-with-ai" class="level3">
+<h3 class="anchored" data-anchor-id="frontend-first-approach-with-ai"><strong>Frontend-First Approach with AI</strong></h3>
+<p>We started by using <strong>Lovable</strong> (or similar AI tools like Bolt, Cursor, or Claude Code) to rapidly scaffold a multiplayer Snake game in React with TypeScript. The key insight: rather than starting with backend logic, we built an interactive frontend first, complete with mockups for authentication, leaderboards, and live gameplay. This frontend-first strategy shifts how you think about API contracts — you build the UI you want, <em>then</em> design the backend to serve it.</p>
+<p>The prompt engineering for frontend was crucial: describing the app’s features (game modes, multiplayer mechanics, testing coverage) helped the AI generate a cohesive, testable codebase. The lesson: <strong>clear requirements lead to better code generation</strong>.</p>
+</section>
+<section id="api-first-backend-design-with-openapi" class="level3">
+<h3 class="anchored" data-anchor-id="api-first-backend-design-with-openapi"><strong>API-First Backend Design with OpenAPI</strong></h3>
+<p>Once the frontend was done, we didn’t write the backend arbitrarily. Instead, we:</p>
+<ol type="1">
+<li><strong>Extracted OpenAPI specifications</strong> from the frontend code — documenting what API endpoints and data structures the frontend actually needs</li>
+<li><strong>Generated a FastAPI backend</strong> directly from those specs</li>
+</ol>
+<p>This “API contract first” approach ensures frontend and backend stay synchronized and prevents wasted effort on unused endpoints. I learned that <strong>OpenAPI is a powerful bridge between AI-generated frontend and backend</strong> — it forces both to speak the same language.</p>
+</section>
+<section id="database-integration-real-world-concerns" class="level3">
+<h3 class="anchored" data-anchor-id="database-integration-real-world-concerns"><strong>Database Integration &amp; Real-World Concerns</strong></h3>
+<p>Initially we mocked the database, then we integrated <strong>SQLAlchemy</strong> with <strong>PostgreSQL and SQLite</strong>. This introduced important real-world considerations:</p>
+<ul>
+<li><strong>Integration testing</strong>: We wrote separate integration tests (not just unit tests) that spin up a SQLite database and verify the full data flow works</li>
+<li><strong>Schema management &amp; migrations</strong>: Real databases require careful handling of data persistence and schema changes</li>
+<li><strong>Testing strategy</strong>: Mock databases for unit tests, real databases for integration tests</li>
+</ul>
+<p>I realized that many junior developers skip this, but it’s critical for production apps.</p>
+</section>
+<section id="containerization-local-development" class="level3">
+<h3 class="anchored" data-anchor-id="containerization-local-development"><strong>Containerization &amp; Local Development</strong></h3>
+<p>We containerized everything using <strong>Docker Compose</strong>, bundling:</p>
+<ul>
+<li>Frontend (served via Nginx)</li>
+<li>Backend (FastAPI)</li>
+<li>Database (PostgreSQL)</li>
+</ul>
+<p>This forced me to think about: - Environment configuration - Service networking and communication - Build processes and dependencies - Running everything locally in a reproducible way</p>
+<p>Running <code>docker-compose up --build</code> felt like magic — suddenly an entire application stack worked locally, exactly as it would in production.</p>
+</section>
+<section id="deployment-to-the-cloud" class="level3">
+<h3 class="anchored" data-anchor-id="deployment-to-the-cloud"><strong>Deployment to the Cloud</strong></h3>
+<p>We deployed to <strong>Render</strong>, combining frontend and backend into a single container. The workflow:</p>
+<ol type="1">
+<li>Build a single Docker image with both services</li>
+<li>Push to a cloud platform (we chose Render for simplicity)</li>
+<li>Let the platform handle scaling, SSL, and management</li>
+</ol>
+<p>This demystified “DevOps” — it’s really just containerizing intelligently and picking a platform that abstracts infrastructure away.</p>
+</section>
+<section id="cicd-pipeline-with-github-actions" class="level3">
+<h3 class="anchored" data-anchor-id="cicd-pipeline-with-github-actions"><strong>CI/CD Pipeline with GitHub Actions</strong></h3>
+<p>The final piece was automating everything:</p>
+<ol type="1">
+<li><strong>Run tests</strong> (frontend + backend) on every push</li>
+<li><strong>Run integration tests</strong> separately</li>
+<li><strong>Deploy automatically</strong> to Render if tests pass</li>
+</ol>
+<p>This creates a <strong>safety net</strong> — bad code can’t accidentally get deployed. We learned that CI/CD pipelines, while seeming complex at first, are just a series of automated checks and deployments.</p>
+</section>
+<section id="key-lessons" class="level3">
+<h3 class="anchored" data-anchor-id="key-lessons"><strong>Key Lessons</strong></h3>
+<ol type="1">
+<li><p><strong>Leverage AI for speed, but maintain structure</strong>: AI can scaffold code fast, but without proper API contracts (OpenAPI), testing (unit + integration), and containerization, it falls apart at scale</p></li>
+<li><p><strong>APIs are the contract</strong>: OpenAPI specs bridge frontend and backend teams/tools — treat them seriously</p></li>
+<li><p><strong>Testing isn’t optional</strong>: Unit tests catch bugs, integration tests catch integration bugs. Both matter</p></li>
+<li><p><strong>Containerization enables reproducibility</strong>: Docker/Compose makes “it works on my machine” a non-issue</p></li>
+<li><p><strong>Automation frees mental energy</strong>: CI/CD means you can focus on features, not manual testing and deployment</p></li>
+<li><p><strong>End-to-end thinking</strong>: You can’t just build a feature in isolation anymore. You need to think: frontend → API → backend → database → tests → deployment</p></li>
+</ol>
+</section>
+<section id="mindset-shift" class="level3">
+<h3 class="anchored" data-anchor-id="mindset-shift"><strong>Mindset Shift</strong></h3>
+<p>Week 1 taught me AI tools exist.<br>
+Week 2 taught me <strong>how to think like a real engineer</strong> using those tools: designing APIs, writing tests, containerizing, and automating. It’s the difference between “I can generate code” and “I can ship production applications.”</p>
+<p><strong>Homework:</strong> <a href="https://github.com/oussou-dev/ai-dev-tools-zoomcamp/tree/main/02_code_itws">End-to-End Project - Online Coding Interview Platform</a></p>
+</section>
+</section>
+<section id="week-3" class="level2">
+<h2 class="anchored" data-anchor-id="week-3">Week 3</h2>
+<p>This week was a deep dive into the <strong>Model Context Protocol (MCP)</strong>, an open standard that enables AI models to interact with external data sources and tools in a standardized way. Here’s what I learned:</p>
+<section id="standardizing-ai-interactions" class="level3">
+<h3 class="anchored" data-anchor-id="standardizing-ai-interactions"><strong>Standardizing AI Interactions</strong></h3>
+<p>MCP solves the problem of “bespoke” integrations for every AI tool. Instead of writing custom code for each AI assistant to access a database or API, we can now build <strong>MCP Servers</strong> that any <strong>MCP Client</strong> (like Cursor, Claude Desktop, or VSCode) can understand. This decoupling of the “brain” (AI model) from the “hands” (tools/data) is a game-changer for developer productivity.</p>
+</section>
+<section id="mcp-primitives-tools-resources-and-prompts" class="level3">
+<h3 class="anchored" data-anchor-id="mcp-primitives-tools-resources-and-prompts"><strong>MCP Primitives: Tools, Resources, and Prompts</strong></h3>
+<p>I learned the three core building blocks of MCP:<br>
+- <strong>Tools</strong>: Executable functions the AI can call (e.g., <code>get_weather</code>, <code>scrape_website</code>).<br>
+- <strong>Resources</strong>: Read-only data sources the AI can inspect (e.g., local files, API docs).<br>
+- <strong>Prompts</strong>: Pre-defined templates that guide how the AI should interact with the user or the tools.</p>
+</section>
+<section id="developer-experience-with-fastmcp" class="level3">
+<h3 class="anchored" data-anchor-id="developer-experience-with-fastmcp"><strong>Developer Experience with FastMCP</strong></h3>
+<p>Using <strong>FastMCP</strong> (by Jon Lowin) made building servers incredibly easy. With just a few lines of Python and a decorator (<code>@mcp.tool</code>), I could transform a standard function into an MCP tool. The library handles the complex JSON-RPC communication under the hood, allowing developers to focus on the logic.</p>
+</section>
+<section id="protocol-transports-stdio-vs.-sse" class="level3">
+<h3 class="anchored" data-anchor-id="protocol-transports-stdio-vs.-sse"><strong>Protocol Transports: Stdio vs.&nbsp;SSE</strong></h3>
+<p>We explored two main ways MCP clients and servers communicate:<br>
+- <strong>Stdio</strong>: The standard way for local integrations (e.g., a CLI tool or a plugin within an IDE).<br>
+- <strong>SSE (Server-Sent Events)</strong>: Enables remote communication over HTTP, which is essential for web-based agents and distributed systems.</p>
+</section>
+<section id="supercharging-workflows-with-live-docs" class="level3">
+<h3 class="anchored" data-anchor-id="supercharging-workflows-with-live-docs"><strong>Supercharging Workflows with Live Docs</strong></h3>
+<p>One of the most powerful use cases we saw was using <strong>Context 7</strong>. By connecting an AI assistant to live documentation (like Airflow or Astro) via MCP, the model can “see” the latest updates and fix code based on real-time info, rather than relying on stale training data.</p>
+</section>
+<section id="key-lessons-1" class="level3">
+<h3 class="anchored" data-anchor-id="key-lessons-1"><strong>Key Lessons</strong></h3>
+<ol type="1">
+<li><strong>MCP is the “USB port” for AI</strong>: It provides a universal interface for AI power.</li>
+<li><strong>Fast prototyping is key</strong>: Tools like <code>mcp-inspector</code> allow you to test your server logic instantly without needing a full AI client.</li>
+<li><strong>Connect to the real world</strong>: Whether it’s scraping a website or indexing a GitHub repo, MCP allows AI to act on real, current data.</li>
+</ol>
+</section>
+<section id="homework" class="level3">
+<h3 class="anchored" data-anchor-id="homework"><strong>Homework</strong></h3>
+<p>I implemented an MCP server that included:<br>
+1. <strong>Web Scraper Tool</strong>: Uses the Jina Reader API to convert any URL into clean markdown for the AI to process.<br>
+2. <strong>Documentation Search Tool</strong>: Downloads a repository, indexes markdown files using <strong>Minsearch</strong>, and provides a search function to retrieve relevant context.</p>
+<p>This turned my AI assistant into a specialized documentation expert for any library I point it at.</p>
+<p><strong>Homework:</strong> <a href="https://github.com/oussou-dev/ai-dev-tools-zoomcamp/tree/main/03_mcp">MCP Scraper and Search Tool</a></p>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -320,6 +468,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   } else {
     toggleColorMode(false);
   }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
   const isCodeAnnotation = (el) => {
     for (const clz of el.classList) {
       if (clz.startsWith('code-annotation-')) {                     
@@ -383,7 +538,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/oussou-dev\.github\.io\/ousmanecisse\/");
+      var filterRegex = new RegExp('/' + window.location.host + '/');
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }

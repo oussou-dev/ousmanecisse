@@ -36,6 +36,10 @@
   --quarto-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
+:root {
+  --quarto-font-monospace: "Dank Mono", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
 pre > code.sourceCode > span {
   color: #003B4F;
 }
@@ -202,4 +206,4 @@ code span.kw {
   content: "</";
 }
 
-/*# sourceMappingURL=35eb38a806ee71ea6d2563be2308c832.css.map */
+/*# sourceMappingURL=e5daa0bcf92816bccca5c72cec678d2a.css.map */
