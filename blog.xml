@@ -10,7 +10,117 @@
 <atom:link href="https://oussou-dev.github.io/ousmanecisse/blog.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.6.42</generator>
-<lastBuildDate>Thu, 11 Dec 2025 23:00:00 GMT</lastBuildDate>
+<lastBuildDate>Mon, 19 Jan 2026 23:00:00 GMT</lastBuildDate>
+<item>
+  <title>Project Showcase: AI News Aggregator</title>
+  <dc:creator>Ousmane Cissé</dc:creator>
+  <link>https://oussou-dev.github.io/ousmanecisse/posts/ai-news-aggregator/</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>For my Week 4 project in the AI Dev Tools Zoomcamp, I built the <strong>AI News Aggregator</strong> — a comprehensive platform designed to cut through the noise of the rapid-fire AI news cycle. It automates the collection, processing, and presentation of high-value AI content from multiple sources.</p>
+<p><a href="https://github.com/oussou-dev/ai-dev-tools-zoomcamp/tree/main/04_ai_news_aggr"><strong>View Project on GitHub</strong></a></p>
+<section id="architecture-tech-stack" class="level2">
+<h2 class="anchored" data-anchor-id="architecture-tech-stack">🏗️ Architecture &amp; Tech Stack</h2>
+<p>This isn’t just a simple script; it’s a containerized, microservices-based application built for production-grade reliability.</p>
+<section id="the-stack" class="level3">
+<h3 class="anchored" data-anchor-id="the-stack">The Stack</h3>
+<ul>
+<li><strong>Backend</strong>: <code>FastAPI</code> (Async REST API)</li>
+<li><strong>Frontend</strong>: <code>Streamlit</code> (Interactive Dashboard)</li>
+<li><strong>Database</strong>: <code>PostgreSQL 17</code> (Persistent Data Store)</li>
+<li><strong>Infrastructure</strong>: <code>Docker Compose</code> (Orchestration)</li>
+</ul>
+</section>
+<section id="the-pipeline" class="level3">
+<h3 class="anchored" data-anchor-id="the-pipeline">The Pipeline</h3>
+<p>The system operates on an intelligent pipeline: 1. <strong>Scraping</strong>: Background workers fetch content from <strong>YouTube</strong> (transcripts), <strong>OpenAI feeds</strong>, and <strong>Anthropic</strong> research papers. 2. <strong>Processing</strong>: Raw content is stored in PostgreSQL. 3. <strong>Intelligence</strong>: AI Agents kick in to: * <strong>Summarize</strong>: Compress hour-long videos into 3-sentence insights. * <strong>Curate</strong>: Rank stories based on a personalized user “Interest Profile”. * <strong>Deliver</strong>: Generate warm, ready-to-send email drafts.</p>
+</section>
+</section>
+<section id="key-features" class="level2">
+<h2 class="anchored" data-anchor-id="key-features">✨ Key Features</h2>
+<section id="multi-source-intelligence" class="level3">
+<h3 class="anchored" data-anchor-id="multi-source-intelligence">📰 Multi-Source Intelligence</h3>
+<p>The aggregator doesn’t just read RSS feeds. It uses: * <strong>YouTube Transcript API</strong>: To “watch” videos and extract key points. * <strong>Docling</strong>: To convert complex research papers into clean markdown for analysis.</p>
+</section>
+<section id="agentic-workflows" class="level3">
+<h3 class="anchored" data-anchor-id="agentic-workflows">🧠 Agentic Workflows</h3>
+<p>I implemented three distinct specialized agents: 1. <strong>Digest Agent</strong>: The “Summarizer” that distills content. 2. <strong>Curator Agent</strong>: The “Personal Assistant” that decides what’s relevant to <em>me</em> (e.g., filtering for “Coding Agents” vs.&nbsp;“GenAI Policy”). 3. <strong>Email Agent</strong>: The “Communicator” that formats the daily briefing.</p>
+</section>
+<section id="the-dashboard" class="level3">
+<h3 class="anchored" data-anchor-id="the-dashboard">🎨 The Dashboard</h3>
+<p>The Streamlit frontend provides a sleek, dark-mode interface where I can: * Trigger the scraping pipeline manually. * View the real-time health status of backend services. * Read beautiful, card-based digests of the latest news.</p>
+</section>
+</section>
+<section id="why-i-built-this" class="level2">
+<h2 class="anchored" data-anchor-id="why-i-built-this">🚀 Why I Built This</h2>
+<p>Keeping up with AI is a full-time job. I wanted to build a tool that uses the very technology I’m learning (Agents, MCP, LLMs) to solve a problem I face every day. This project represents the convergence of modern web development (FastAPI/Docker) with cutting-edge AI engineering.</p>
+<p>Check out the full <a href="https://github.com/oussou-dev/ai-dev-tools-zoomcamp/tree/main/04_ai_news_aggr">Developer Guide</a> to see how “Vibe Coding” helped build this!</p>
+
+
+</section>
+
+ ]]></description>
+  <category>Project</category>
+  <category>AI</category>
+  <category>FastAPI</category>
+  <category>Streamlit</category>
+  <category>Agents</category>
+  <category>Docker</category>
+  <guid>https://oussou-dev.github.io/ousmanecisse/posts/ai-news-aggregator/</guid>
+  <pubDate>Mon, 19 Jan 2026 23:00:00 GMT</pubDate>
+  <media:content url="https://oussou-dev.github.io/ousmanecisse/img/ai_news_aggregator.webp" medium="image" type="image/webp"/>
+</item>
+<item>
+  <title>AI Dev Tools: Week 4 - Building Coding Agents</title>
+  <dc:creator>Ousmane Cissé</dc:creator>
+  <link>https://oussou-dev.github.io/ousmanecisse/posts/ai-dev-tools-week-4/</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Week 4 of the AI Dev Tools Zoomcamp was a transformative production to the world of <strong>autonomous coding agents</strong>. We moved beyond simple chat interfaces to building agents that can actively manipulate codebases, modify files, and bootstrap entire projects.</p>
+<section id="the-goal-a-coding-agent-that-bootstraps-projects" class="level2">
+<h2 class="anchored" data-anchor-id="the-goal-a-coding-agent-that-bootstraps-projects">The Goal: A Coding Agent that Bootstraps Projects</h2>
+<p>The core mission was to build a coding agent capable of scaffolding a <strong>Django</strong> project from scratch. Instead of manually running <code>django-admin startproject</code>, we built an agent that could: 1. Understand a high-level goal (e.g., “Create a Todo App”). 2. Use <strong>Tools</strong> to create directories, write files, and execute shell commands. 3. Iteratively refine the code based on feedback.</p>
+</section>
+<section id="key-concepts-learned" class="level2">
+<h2 class="anchored" data-anchor-id="key-concepts-learned">Key Concepts Learned</h2>
+<section id="agents-as-project-bootstrappers" class="level3">
+<h3 class="anchored" data-anchor-id="agents-as-project-bootstrappers">1. Agents as “Project Bootstrappers”</h3>
+<p>We explored the concept of agents not just as code completors, but as architects. By giving an agent access to the file system and command line, it can perform complex multi-step tasks like: * Setting up a virtual environment. * Installing dependencies via <code>pip</code>. * Configuring a <code>Makefile</code> for consistent workflows. * Generating initial templates for <code>base.html</code> and <code>home.html</code> using modern CSS frameworks like Tailwind.</p>
+</section>
+<section id="the-power-of-tools" class="level3">
+<h3 class="anchored" data-anchor-id="the-power-of-tools">2. The Power of Tools</h3>
+<p>An agent is only as powerful as its tools. We defined a set of primitive tools for our agent: * <code>read_file</code>: To understand existing code. * <code>write_file</code>: To create or update logic. * <code>bash</code>: To execute commands (migrations, tests, servers). * <code>ls</code>: To explore the file structure.</p>
+</section>
+<section id="orchestration-frameworks" class="level3">
+<h3 class="anchored" data-anchor-id="orchestration-frameworks">3. Orchestration Frameworks</h3>
+<p>We didn’t just stick to one way of doing things. We explored multiple frameworks for building these agents: * <strong>ToyAIKit</strong>: A simplified framework to understand the core loop of <em>Thought -&gt; Action -&gt; Observation</em>. * <strong>OpenAI Agents SDK</strong>: Leveraging the native function calling capabilities of GPT models. * <strong>PydanticAI</strong>: A robust, type-safe approach to defining agent behaviors. * <strong>Z.ai</strong>: Exploring alternative LLM providers and APIs.</p>
+</section>
+</section>
+<section id="the-outcome" class="level2">
+<h2 class="anchored" data-anchor-id="the-outcome">The Outcome</h2>
+<p>By the end of the week, I had a functioning agent that could take a simple prompt and spin up a working Django application with: * A clean directory structure. * Basic templates and routing. * Database migrations applied.</p>
+<p>This week bridged the gap between <em>talking</em> to AI about code and <em>having AI write the code</em> directly into the project. It set the perfect stage for building more complex systems, like the one I built for my weekly project.</p>
+<p><strong>Next Stop</strong>: Applying these skills to build a production-grade AI application.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>AI</category>
+  <category>Zoomcamp</category>
+  <category>Agents</category>
+  <category>Django</category>
+  <category>Coding Assistant</category>
+  <guid>https://oussou-dev.github.io/ousmanecisse/posts/ai-dev-tools-week-4/</guid>
+  <pubDate>Wed, 14 Jan 2026 23:00:00 GMT</pubDate>
+  <media:content url="https://oussou-dev.github.io/ousmanecisse/img/week_4_ai_dev_tools.webp" medium="image" type="image/webp"/>
+</item>
 <item>
   <title>AI Dev Tools: Week 3 - MCP &amp; Agents</title>
   <dc:creator>Ousmane Cissé</dc:creator>

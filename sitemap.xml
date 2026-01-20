@@ -2,7 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://oussou-dev.github.io/ousmanecisse/projects.html</loc>
-    <lastmod>2026-01-13T17:50:16.230Z</lastmod>
+    <lastmod>2026-01-20T20:25:27.459Z</lastmod>
+  </url>
+  <url>
+    <loc>https://oussou-dev.github.io/ousmanecisse/posts/ai-dev-tools-week-4/index.html</loc>
+    <lastmod>2026-01-20T20:48:58.892Z</lastmod>
   </url>
   <url>
     <loc>https://oussou-dev.github.io/ousmanecisse/posts/ai-dev-tools-week-2/index.html</loc>
@@ -35,5 +39,9 @@
   <url>
     <loc>https://oussou-dev.github.io/ousmanecisse/posts/ai-dev-tools-week-3/index.html</loc>
     <lastmod>2026-01-13T18:12:34.675Z</lastmod>
+  </url>
+  <url>
+    <loc>https://oussou-dev.github.io/ousmanecisse/posts/ai-news-aggregator/index.html</loc>
+    <lastmod>2026-01-20T20:46:36.052Z</lastmod>
   </url>
 </urlset>
