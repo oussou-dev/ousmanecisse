@@ -12,6 +12,8 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/posts/ai-news-aggregator/index.html",
+      "/posts/ai-dev-tools-week-4/index.html",
       "/posts/ai-dev-tools-week-3/index.html",
       "/posts/ai-dev-tools-week-2/index.html",
       "/posts/ai-dev-tools-week-1/index.html"

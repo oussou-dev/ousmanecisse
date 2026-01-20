@@ -1,13 +1,16 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="../../en" xml:lang="../../en"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.6.42">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Ousmane Cissé">
+<meta name="dcterms.date" content="2026-01-15">
+<meta name="description" content="Mastering the creation of autonomous coding agents using Agents, Tools, and Context.">
 
-<title>Blog – OUSMANE CISSE</title>
+<title>AI Dev Tools: Week 4 - Building Coding Agents – OUSMANE CISSE</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,26 +26,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-9a9019b26c7917966914e20dc61bd008.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-753d2645759075f1563ff6dc07598d4d.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-7b7c1b0af074b5ead3678de040393fb5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-6424abc5f198ff0f1d0b181e35ba460d.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-9a9019b26c7917966914e20dc61bd008.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-753d2645759075f1563ff6dc07598d4d.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-7b7c1b0af074b5ead3678de040393fb5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-6424abc5f198ff0f1d0b181e35ba460d.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,67 +71,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-reading-time','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -140,7 +83,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">OUSMANE CISSE</span>
     </a>
   </div>
@@ -151,17 +94,17 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./projects.html"> 
+    <a class="nav-link" href="../../projects.html"> 
 <span class="menu-text">Projects</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./blog.html" aria-current="page"> 
+    <a class="nav-link" href="../../blog.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./fr/index.html"> 
+    <a class="nav-link" href="../../fr/index.html"> 
 <span class="menu-text">FR</span></a>
   </li>  
   <li class="nav-item compact">
@@ -183,25 +126,62 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#the-goal-a-coding-agent-that-bootstraps-projects" id="toc-the-goal-a-coding-agent-that-bootstraps-projects" class="nav-link active" data-scroll-target="#the-goal-a-coding-agent-that-bootstraps-projects">The Goal: A Coding Agent that Bootstraps Projects</a></li>
+  <li><a href="#key-concepts-learned" id="toc-key-concepts-learned" class="nav-link" data-scroll-target="#key-concepts-learned">Key Concepts Learned</a>
+  <ul class="collapse">
+  <li><a href="#agents-as-project-bootstrappers" id="toc-agents-as-project-bootstrappers" class="nav-link" data-scroll-target="#agents-as-project-bootstrappers">1. Agents as “Project Bootstrappers”</a></li>
+  <li><a href="#the-power-of-tools" id="toc-the-power-of-tools" class="nav-link" data-scroll-target="#the-power-of-tools">2. The Power of Tools</a></li>
+  <li><a href="#orchestration-frameworks" id="toc-orchestration-frameworks" class="nav-link" data-scroll-target="#orchestration-frameworks">3. Orchestration Frameworks</a></li>
+  </ul></li>
+  <li><a href="#the-outcome" id="toc-the-outcome" class="nav-link" data-scroll-target="#the-outcome">The Outcome</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Blog</h1>
+<h1 class="title">AI Dev Tools: Week 4 - Building Coding Agents</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">AI</div>
+    <div class="quarto-category">Zoomcamp</div>
+    <div class="quarto-category">Agents</div>
+    <div class="quarto-category">Django</div>
+    <div class="quarto-category">Coding Assistant</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Mastering the creation of autonomous coding agents using Agents, Tools, and Context.
+  </div>
 </div>
 
 
+<div class="quarto-title-meta">
 
-<div class="quarto-title-meta column-page">
-
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Ousmane Cissé </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">January 15, 2026</p>
+    </div>
+  </div>
   
     
   </div>
@@ -211,211 +191,36 @@ window.Quarto = {
 </header>
 
 
+<p>Week 4 of the AI Dev Tools Zoomcamp was a transformative production to the world of <strong>autonomous coding agents</strong>. We moved beyond simple chat interfaces to building agents that can actively manipulate codebases, modify files, and bootstrap entire projects.</p>
+<section id="the-goal-a-coding-agent-that-bootstraps-projects" class="level2">
+<h2 class="anchored" data-anchor-id="the-goal-a-coding-agent-that-bootstraps-projects">The Goal: A Coding Agent that Bootstraps Projects</h2>
+<p>The core mission was to build a coding agent capable of scaffolding a <strong>Django</strong> project from scratch. Instead of manually running <code>django-admin startproject</code>, we built an agent that could: 1. Understand a high-level goal (e.g., “Create a Todo App”). 2. Use <strong>Tools</strong> to create directories, write files, and execute shell commands. 3. Iteratively refine the code based on feedback.</p>
+</section>
+<section id="key-concepts-learned" class="level2">
+<h2 class="anchored" data-anchor-id="key-concepts-learned">Key Concepts Learned</h2>
+<section id="agents-as-project-bootstrappers" class="level3">
+<h3 class="anchored" data-anchor-id="agents-as-project-bootstrappers">1. Agents as “Project Bootstrappers”</h3>
+<p>We explored the concept of agents not just as code completors, but as architects. By giving an agent access to the file system and command line, it can perform complex multi-step tasks like: * Setting up a virtual environment. * Installing dependencies via <code>pip</code>. * Configuring a <code>Makefile</code> for consistent workflows. * Generating initial templates for <code>base.html</code> and <code>home.html</code> using modern CSS frameworks like Tailwind.</p>
+</section>
+<section id="the-power-of-tools" class="level3">
+<h3 class="anchored" data-anchor-id="the-power-of-tools">2. The Power of Tools</h3>
+<p>An agent is only as powerful as its tools. We defined a set of primitive tools for our agent: * <code>read_file</code>: To understand existing code. * <code>write_file</code>: To create or update logic. * <code>bash</code>: To execute commands (migrations, tests, servers). * <code>ls</code>: To explore the file structure.</p>
+</section>
+<section id="orchestration-frameworks" class="level3">
+<h3 class="anchored" data-anchor-id="orchestration-frameworks">3. Orchestration Frameworks</h3>
+<p>We didn’t just stick to one way of doing things. We explored multiple frameworks for building these agents: * <strong>ToyAIKit</strong>: A simplified framework to understand the core loop of <em>Thought -&gt; Action -&gt; Observation</em>. * <strong>OpenAI Agents SDK</strong>: Leveraging the native function calling capabilities of GPT models. * <strong>PydanticAI</strong>: A robust, type-safe approach to defining agent behaviors. * <strong>Z.ai</strong>: Exploring alternative LLM providers and APIs.</p>
+</section>
+</section>
+<section id="the-outcome" class="level2">
+<h2 class="anchored" data-anchor-id="the-outcome">The Outcome</h2>
+<p>By the end of the week, I had a functioning agent that could take a simple prompt and spin up a working Django application with: * A clean directory structure. * Basic templates and routing. * Database migrations applied.</p>
+<p>This week bridged the gap between <em>talking</em> to AI about code and <em>having AI write the code</em> directly into the project. It set the perfect stage for building more complex systems, like the one I built for my weekly project.</p>
+<p><strong>Next Stop</strong>: Applying these skills to build a production-grade AI application.</p>
 
 
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="UHJvamVjdCUyQ0FJJTJDRmFzdEFQSSUyQ1N0cmVhbWxpdCUyQ0FnZW50cyUyQ0RvY2tlcg==" data-listing-date-sort="1768863600000" data-listing-file-modified-sort="1768941996052" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="360">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/ai-news-aggregator/index.html" class="no-external">Project Showcase: AI News Aggregator</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/ai-news-aggregator/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('UHJvamVjdA=='); return false;">
-Project
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('QUk='); return false;">
-AI
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('RmFzdEFQSQ=='); return false;">
-FastAPI
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('U3RyZWFtbGl0'); return false;">
-Streamlit
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('QWdlbnRz'); return false;">
-Agents
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('RG9ja2Vy'); return false;">
-Docker
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/ai-news-aggregator/index.html" class="no-external">A full-stack, AI-powered news platform that scrapes, summarizes, and serves AI trends using FastAPI, Streamlit, and Multi-Agent Orchestration.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/ai-news-aggregator/index.html" class="no-external">
-<div class="listing-date">
-Jan 20, 2026
-</div>
-<div class="listing-reading-time">
-2 min
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="QUklMkNab29tY2FtcCUyQ0FnZW50cyUyQ0RqYW5nbyUyQ0NvZGluZyUyMEFzc2lzdGFudA==" data-listing-date-sort="1768431600000" data-listing-file-modified-sort="1768942138892" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="391">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/ai-dev-tools-week-4/index.html" class="no-external">AI Dev Tools: Week 4 - Building Coding Agents</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/ai-dev-tools-week-4/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('QUk='); return false;">
-AI
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Wm9vbWNhbXA='); return false;">
-Zoomcamp
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('QWdlbnRz'); return false;">
-Agents
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('RGphbmdv'); return false;">
-Django
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Q29kaW5nJTIwQXNzaXN0YW50'); return false;">
-Coding Assistant
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/ai-dev-tools-week-4/index.html" class="no-external">Mastering the creation of autonomous coding agents using Agents, Tools, and Context.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/ai-dev-tools-week-4/index.html" class="no-external">
-<div class="listing-date">
-Jan 15, 2026
-</div>
-<div class="listing-reading-time">
-2 min
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="QUklMkNab29tY2FtcCUyQ01DUCUyQ0FnZW50cw==" data-listing-date-sort="1765494000000" data-listing-file-modified-sort="1768327954675" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="451">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/ai-dev-tools-week-3/index.html" class="no-external">AI Dev Tools: Week 3 - MCP &amp; Agents</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/ai-dev-tools-week-3/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('QUk='); return false;">
-AI
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Wm9vbWNhbXA='); return false;">
-Zoomcamp
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('TUNQ'); return false;">
-MCP
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('QWdlbnRz'); return false;">
-Agents
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/ai-dev-tools-week-3/index.html" class="no-external">Diving deep into the Model Context Protocol, Agents, and building custom tools.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/ai-dev-tools-week-3/index.html" class="no-external">
-<div class="listing-date">
-Dec 12, 2025
-</div>
-<div class="listing-reading-time">
-3 min
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-categories="QUklMkNab29tY2FtcCUyQ0VuZ2luZWVyaW5nJTJDRG9ja2VyJTJDQ0klMkZDRA==" data-listing-date-sort="1764889200000" data-listing-file-modified-sort="1768327951033" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="651">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/ai-dev-tools-week-2/index.html" class="no-external">AI Dev Tools: Week 2 - End-to-End Application Development</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/ai-dev-tools-week-2/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('QUk='); return false;">
-AI
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Wm9vbWNhbXA='); return false;">
-Zoomcamp
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('RW5naW5lZXJpbmc='); return false;">
-Engineering
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('RG9ja2Vy'); return false;">
-Docker
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Q0klMkZDRA=='); return false;">
-CI/CD
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/ai-dev-tools-week-2/index.html" class="no-external">Building a complete application with AI: Frontend-first, OpenAPI, Docker, and CI/CD.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/ai-dev-tools-week-2/index.html" class="no-external">
-<div class="listing-date">
-Dec 5, 2025
-</div>
-<div class="listing-reading-time">
-4 min
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-categories="QUklMkNab29tY2FtcCUyQ1ZpYmUlMjBDb2Rpbmc=" data-listing-date-sort="1764284400000" data-listing-file-modified-sort="1768327946753" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="244">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/ai-dev-tools-week-1/index.html" class="no-external">AI Dev Tools: Week 1 - Vibe Coding &amp; Foundations</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/ai-dev-tools-week-1/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('QUk='); return false;">
-AI
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Wm9vbWNhbXA='); return false;">
-Zoomcamp
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('VmliZSUyMENvZGluZw=='); return false;">
-Vibe Coding
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/ai-dev-tools-week-1/index.html" class="no-external">Exploring the landscape of AI-assisted development, from coding assistants to project bootstrappers.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/ai-dev-tools-week-1/index.html" class="no-external">
-<div class="listing-date">
-Nov 28, 2025
-</div>
-<div class="listing-reading-time">
-2 min
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
