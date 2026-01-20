@@ -6,12 +6,12 @@ listing:
       description: "Projects and assignments from the AI Dev Tools Zoomcamp."
       categories: [AI, VIBE CODING, MCP, N8N, Zoomcamp]
       path: https://github.com/oussou-dev/ai-dev-tools-zoomcamp 
-      image: "https://raw.githubusercontent.com/DataTalksClub/ai-dev-tools-zoomcamp/main/images/course-cover.png"
+      image: "img/ai-dev-tools-cover.webp"
     - title: "ML Engineer ZoomCamp"
       description: "A comprehensive machine learning engineering course covering deployment, cloud, and MLOps."
       categories: [Machine Learning, MLOPS]
       path: https://github.com/oussou-dev/ML_Engineer_ZoomCamp
-      image: "https://raw.githubusercontent.com/DataTalksClub/machine-learning-zoomcamp/master/images/ml-zoomcamp.png"
+      image: "img/ml-zoomcamp-cover.webp"
     
   sort: "date desc"
   type: grid
