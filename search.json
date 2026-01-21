@@ -4,7 +4,7 @@
     "href": "projects.html",
     "title": "Projects",
     "section": "",
-    "text": "A selection of projects I’ve worked on.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAI Dev Tools\n\n\n\nAI\n\n\nVIBE CODING\n\n\nMCP\n\n\nN8N\n\n\nZoomcamp\n\n\n\nProjects and assignments from the AI Dev Tools Zoomcamp.\n\n\n\n\n\n\n\n\n\n\n\n\n\nML Engineer ZoomCamp\n\n\n\nMachine Learning\n\n\nMLOPS\n\n\n\nA comprehensive machine learning engineering course covering deployment, cloud, and MLOps.\n\n\n\n\n\n\n\nNo matching items"
+    "text": "A selection of projects I’ve worked on.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAI Dev Tools\n\n\n\nAI\n\nVIBE CODING\n\nMCP\n\nN8N\n\nZoomcamp\n\n\n\nProjects and assignments from the AI Dev Tools Zoomcamp.\n\n\n\n\n\n\n\n\n\n\n\n\nML Engineer ZoomCamp\n\n\n\nMachine Learning\n\nMLOPS\n\n\n\nA comprehensive machine learning engineering course covering deployment, cloud, and MLOps.\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/ai-dev-tools-week-4/index.html",
@@ -18,21 +18,21 @@
     "href": "posts/ai-dev-tools-week-4/index.html#the-goal-a-coding-agent-that-bootstraps-projects",
     "title": "AI Dev Tools: Week 4 - Building Coding Agents",
     "section": "The Goal: A Coding Agent that Bootstraps Projects",
-    "text": "The Goal: A Coding Agent that Bootstraps Projects\nThe core mission was to build a coding agent capable of scaffolding a Django project from scratch. Instead of manually running django-admin startproject, we built an agent that could: 1. Understand a high-level goal (e.g., “Create a Todo App”). 2. Use Tools to create directories, write files, and execute shell commands. 3. Iteratively refine the code based on feedback."
+    "text": "The Goal: A Coding Agent that Bootstraps Projects\nThe core mission was to build a coding agent capable of scaffolding a Django project from scratch. Instead of manually running django-admin startproject, we built an agent that could:\n1. Understand a high-level goal (e.g., “Create a Todo App”).\n2. Use Tools to create directories, write files, and execute shell commands.\n3. Iteratively refine the code based on feedback."
   },
   {
     "objectID": "posts/ai-dev-tools-week-4/index.html#key-concepts-learned",
     "href": "posts/ai-dev-tools-week-4/index.html#key-concepts-learned",
     "title": "AI Dev Tools: Week 4 - Building Coding Agents",
     "section": "Key Concepts Learned",
-    "text": "Key Concepts Learned\n\n1. Agents as “Project Bootstrappers”\nWe explored the concept of agents not just as code completors, but as architects. By giving an agent access to the file system and command line, it can perform complex multi-step tasks like: * Setting up a virtual environment. * Installing dependencies via pip. * Configuring a Makefile for consistent workflows. * Generating initial templates for base.html and home.html using modern CSS frameworks like Tailwind.\n\n\n2. The Power of Tools\nAn agent is only as powerful as its tools. We defined a set of primitive tools for our agent: * read_file: To understand existing code. * write_file: To create or update logic. * bash: To execute commands (migrations, tests, servers). * ls: To explore the file structure.\n\n\n3. Orchestration Frameworks\nWe didn’t just stick to one way of doing things. We explored multiple frameworks for building these agents: * ToyAIKit: A simplified framework to understand the core loop of Thought -&gt; Action -&gt; Observation. * OpenAI Agents SDK: Leveraging the native function calling capabilities of GPT models. * PydanticAI: A robust, type-safe approach to defining agent behaviors. * Z.ai: Exploring alternative LLM providers and APIs."
+    "text": "Key Concepts Learned\n\n1. Agents as “Project Bootstrappers”\nWe explored the concept of agents not just as code completors, but as architects. By giving an agent access to the file system and command line, it can perform complex multi-step tasks like:\n* Setting up a virtual environment.\n* Installing dependencies via pip.\n* Configuring a Makefile for consistent workflows.\n* Generating initial templates for base.html and home.html using modern CSS frameworks like Tailwind.\n\n\n2. The Power of Tools\nAn agent is only as powerful as its tools. We defined a set of primitive tools for our agent:\n* read_file: To understand existing code.\n* write_file: To create or update logic.\n* bash: To execute commands (migrations, tests, servers).\n* ls: To explore the file structure.\n\n\n3. Orchestration Frameworks\nWe didn’t just stick to one way of doing things. We explored multiple frameworks for building these agents:\n* ToyAIKit: A simplified framework to understand the core loop of Thought -&gt; Action -&gt; Observation.\n* OpenAI Agents SDK: Leveraging the native function calling capabilities of GPT models.\n* PydanticAI: A robust, type-safe approach to defining agent behaviors.\n* Z.ai: Exploring alternative LLM providers and APIs."
   },
   {
     "objectID": "posts/ai-dev-tools-week-4/index.html#the-outcome",
     "href": "posts/ai-dev-tools-week-4/index.html#the-outcome",
     "title": "AI Dev Tools: Week 4 - Building Coding Agents",
     "section": "The Outcome",
-    "text": "The Outcome\nBy the end of the week, I had a functioning agent that could take a simple prompt and spin up a working Django application with: * A clean directory structure. * Basic templates and routing. * Database migrations applied.\nThis week bridged the gap between talking to AI about code and having AI write the code directly into the project. It set the perfect stage for building more complex systems, like the one I built for my weekly project.\nNext Stop: Applying these skills to build a production-grade AI application."
+    "text": "The Outcome\nBy the end of the week, I had a functioning agent that could take a simple prompt and spin up a working Django application with:\n* A clean directory structure.\n* Basic templates and routing.\n* Database migrations applied.\nThis week bridged the gap between talking to AI about code and having AI write the code directly into the project. It set the perfect stage for building more complex systems, like the one I built for my weekly project.\nNext Stop: Applying these skills to build a production-grade AI application."
   },
   {
     "objectID": "posts/ai-dev-tools-week-2/index.html",
@@ -109,7 +109,7 @@
     "href": "courses.html",
     "title": "Self-Study Courses",
     "section": "",
-    "text": "Here you can find the various self-study courses I am currently following or have completed.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAI Dev Tools by Zoomcamp\n\n\n8 min\n\n\nMy learning notes and progress for the AI Dev Tools course.\n\n\n\nNov 28, 2025\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Here you can find the various self-study courses I am currently following or have completed.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAI Dev Tools by Zoomcamp\n\n8 min\n\nMy learning notes and progress for the AI Dev Tools course.\n\n\n\nNov 28, 2025\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
@@ -123,7 +123,7 @@
     "href": "blog.html",
     "title": "Blog",
     "section": "",
-    "text": "Project Showcase: AI News Aggregator\n\n\n\n\n\n\nProject\n\n\nAI\n\n\nFastAPI\n\n\nStreamlit\n\n\nAgents\n\n\nDocker\n\n\n\nA full-stack, AI-powered news platform that scrapes, summarizes, and serves AI trends using FastAPI, Streamlit, and Multi-Agent Orchestration.\n\n\n\n\n\nJan 20, 2026\n\n\n2 min\n\n\n\n\n\n\n\nAI Dev Tools: Week 4 - Building Coding Agents\n\n\n\n\n\n\nAI\n\n\nZoomcamp\n\n\nAgents\n\n\nDjango\n\n\nCoding Assistant\n\n\n\nMastering the creation of autonomous coding agents using Agents, Tools, and Context.\n\n\n\n\n\nJan 15, 2026\n\n\n2 min\n\n\n\n\n\n\n\nAI Dev Tools: Week 3 - MCP & Agents\n\n\n\n\n\n\nAI\n\n\nZoomcamp\n\n\nMCP\n\n\nAgents\n\n\n\nDiving deep into the Model Context Protocol, Agents, and building custom tools.\n\n\n\n\n\nDec 12, 2025\n\n\n3 min\n\n\n\n\n\n\n\nAI Dev Tools: Week 2 - End-to-End Application Development\n\n\n\n\n\n\nAI\n\n\nZoomcamp\n\n\nEngineering\n\n\nDocker\n\n\nCI/CD\n\n\n\nBuilding a complete application with AI: Frontend-first, OpenAPI, Docker, and CI/CD.\n\n\n\n\n\nDec 5, 2025\n\n\n4 min\n\n\n\n\n\n\n\nAI Dev Tools: Week 1 - Vibe Coding & Foundations\n\n\n\n\n\n\nAI\n\n\nZoomcamp\n\n\nVibe Coding\n\n\n\nExploring the landscape of AI-assisted development, from coding assistants to project bootstrappers.\n\n\n\n\n\nNov 28, 2025\n\n\n2 min\n\n\n\n\n\n\nNo matching items"
+    "text": "Project Showcase: AI News Aggregator\n\n\n\nProject\n\nAI\n\nFastAPI\n\nStreamlit\n\nAgents\n\nDocker\n\n\n\nA full-stack, AI-powered news platform that scrapes, summarizes, and serves AI trends using FastAPI, Streamlit, and Multi-Agent Orchestration.\n\n\n\n\n\nJan 20, 2026\n\n3 min\n\n\n\n\n\n\nAI Dev Tools: Week 4 - Building Coding Agents\n\n\n\nAI\n\nZoomcamp\n\nAgents\n\nDjango\n\nCoding Assistant\n\n\n\nMastering the creation of autonomous coding agents using Agents, Tools, and Context.\n\n\n\n\n\nJan 15, 2026\n\n3 min\n\n\n\n\n\n\nAI Dev Tools: Week 3 - MCP & Agents\n\n\n\nAI\n\nZoomcamp\n\nMCP\n\nAgents\n\n\n\nDiving deep into the Model Context Protocol, Agents, and building custom tools.\n\n\n\n\n\nDec 12, 2025\n\n3 min\n\n\n\n\n\n\nAI Dev Tools: Week 2 - End-to-End Application Development\n\n\n\nAI\n\nZoomcamp\n\nEngineering\n\nDocker\n\nCI/CD\n\n\n\nBuilding a complete application with AI: Frontend-first, OpenAPI, Docker, and CI/CD.\n\n\n\n\n\nDec 5, 2025\n\n4 min\n\n\n\n\n\n\nAI Dev Tools: Week 1 - Vibe Coding & Foundations\n\n\n\nAI\n\nZoomcamp\n\nVibe Coding\n\n\n\nExploring the landscape of AI-assisted development, from coding assistants to project bootstrappers.\n\n\n\n\n\nNov 28, 2025\n\n2 min\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "courses/ai-dev-tools.html",
@@ -256,14 +256,14 @@
     "href": "posts/ai-news-aggregator/index.html#architecture-tech-stack",
     "title": "Project Showcase: AI News Aggregator",
     "section": "🏗️ Architecture & Tech Stack",
-    "text": "🏗️ Architecture & Tech Stack\nThis isn’t just a simple script; it’s a containerized, microservices-based application built for production-grade reliability.\n\nThe Stack\n\nBackend: FastAPI (Async REST API)\nFrontend: Streamlit (Interactive Dashboard)\nDatabase: PostgreSQL 17 (Persistent Data Store)\nInfrastructure: Docker Compose (Orchestration)\n\n\n\nThe Pipeline\nThe system operates on an intelligent pipeline: 1. Scraping: Background workers fetch content from YouTube (transcripts), OpenAI feeds, and Anthropic research papers. 2. Processing: Raw content is stored in PostgreSQL. 3. Intelligence: AI Agents kick in to: * Summarize: Compress hour-long videos into 3-sentence insights. * Curate: Rank stories based on a personalized user “Interest Profile”. * Deliver: Generate warm, ready-to-send email drafts."
+    "text": "🏗️ Architecture & Tech Stack\nThis isn’t just a simple script; it’s a containerized, microservices-based application built for production-grade reliability.\n\nThe Stack\n\nBackend: FastAPI (Async REST API)\n\nFrontend: Streamlit (Interactive Dashboard)\n\nDatabase: PostgreSQL 17 (Persistent Data Store)\n\nInfrastructure: Docker Compose (Orchestration)\n\n\n\nThe Pipeline\nThe system operates on an intelligent pipeline:\n1. Scraping: Background workers fetch content from YouTube (transcripts), OpenAI feeds, and Anthropic research papers.\n2. Processing: Raw content is stored in PostgreSQL.\n3. Intelligence: AI Agents kick in to:\n* Summarize: Compress hour-long videos into 3-sentence insights.\n* Curate: Rank stories based on a personalized user “Interest Profile”.\n* Deliver: Generate warm, ready-to-send email drafts."
   },
   {
     "objectID": "posts/ai-news-aggregator/index.html#key-features",
     "href": "posts/ai-news-aggregator/index.html#key-features",
     "title": "Project Showcase: AI News Aggregator",
     "section": "✨ Key Features",
-    "text": "✨ Key Features\n\n📰 Multi-Source Intelligence\nThe aggregator doesn’t just read RSS feeds. It uses: * YouTube Transcript API: To “watch” videos and extract key points. * Docling: To convert complex research papers into clean markdown for analysis.\n\n\n🧠 Agentic Workflows\nI implemented three distinct specialized agents: 1. Digest Agent: The “Summarizer” that distills content. 2. Curator Agent: The “Personal Assistant” that decides what’s relevant to me (e.g., filtering for “Coding Agents” vs. “GenAI Policy”). 3. Email Agent: The “Communicator” that formats the daily briefing.\n\n\n🎨 The Dashboard\nThe Streamlit frontend provides a sleek, dark-mode interface where I can: * Trigger the scraping pipeline manually. * View the real-time health status of backend services. * Read beautiful, card-based digests of the latest news."
+    "text": "✨ Key Features\n\n📰 Multi-Source Intelligence\nThe aggregator doesn’t just read RSS feeds. It uses:\n* YouTube Transcript API: To “watch” videos and extract key points.\n* Docling: To convert complex research papers into clean markdown for analysis.\n\n\n🧠 Agentic Workflows\nI implemented three distinct specialized agents:\n1. Digest Agent: The “Summarizer” that distills content.\n2. Curator Agent: The “Personal Assistant” that decides what’s relevant to me (e.g., filtering for “Coding Agents” vs. “GenAI Policy”).\n3. Email Agent: The “Communicator” that formats the daily briefing.\n\n\n🎨 The Dashboard\nThe Streamlit frontend provides a sleek, dark-mode interface where I can:\n* Trigger the scraping pipeline manually.\n* View the real-time health status of backend services.\n* Read beautiful, card-based digests of the latest news."
   },
   {
     "objectID": "posts/ai-news-aggregator/index.html#why-i-built-this",
