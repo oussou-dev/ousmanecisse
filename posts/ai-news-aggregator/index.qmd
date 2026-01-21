@@ -16,40 +16,40 @@ For my Week 4 project in the AI Dev Tools Zoomcamp, I built the **AI News Aggreg
 This isn't just a simple script; it's a containerized, microservices-based application built for production-grade reliability.
 
 ### The Stack
-*   **Backend**: `FastAPI` (Async REST API)
-*   **Frontend**: `Streamlit` (Interactive Dashboard)
-*   **Database**: `PostgreSQL 17` (Persistent Data Store)
-*   **Infrastructure**: `Docker Compose` (Orchestration)
+*   **Backend**: `FastAPI` (Async REST API)  
+*   **Frontend**: `Streamlit` (Interactive Dashboard)  
+*   **Database**: `PostgreSQL 17` (Persistent Data Store)  
+*   **Infrastructure**: `Docker Compose` (Orchestration)  
 
 ### The Pipeline
-The system operates on an intelligent pipeline:
-1.  **Scraping**: Background workers fetch content from **YouTube** (transcripts), **OpenAI feeds**, and **Anthropic** research papers.
-2.  **Processing**: Raw content is stored in PostgreSQL.
-3.  **Intelligence**: AI Agents kick in to:
-    *   **Summarize**: Compress hour-long videos into 3-sentence insights.
-    *   **Curate**: Rank stories based on a personalized user "Interest Profile".
-    *   **Deliver**: Generate warm, ready-to-send email drafts.
+The system operates on an intelligent pipeline:  
+1.  **Scraping**: Background workers fetch content from **YouTube** (transcripts), **OpenAI feeds**, and **Anthropic** research papers.  
+2.  **Processing**: Raw content is stored in PostgreSQL.  
+3.  **Intelligence**: AI Agents kick in to:  
+    *   **Summarize**: Compress hour-long videos into 3-sentence insights.  
+    *   **Curate**: Rank stories based on a personalized user "Interest Profile".  
+    *   **Deliver**: Generate warm, ready-to-send email drafts.  
 
 ## ✨ Key Features
 
 ### 📰 Multi-Source Intelligence
-The aggregator doesn't just read RSS feeds. It uses:
-*   **YouTube Transcript API**: To "watch" videos and extract key points.
-*   **Docling**: To convert complex research papers into clean markdown for analysis.
+The aggregator doesn't just read RSS feeds. It uses:  
+*   **YouTube Transcript API**: To "watch" videos and extract key points.  
+*   **Docling**: To convert complex research papers into clean markdown for analysis.  
 
-### 🧠 Agentic Workflows
-I implemented three distinct specialized agents:
-1.  **Digest Agent**: The "Summarizer" that distills content.
-2.  **Curator Agent**: The "Personal Assistant" that decides what's relevant to *me* (e.g., filtering for "Coding Agents" vs. "GenAI Policy").
-3.  **Email Agent**: The "Communicator" that formats the daily briefing.
+### 🧠 Agentic Workflows  
+I implemented three distinct specialized agents:  
+1.  **Digest Agent**: The "Summarizer" that distills content.  
+2.  **Curator Agent**: The "Personal Assistant" that decides what's relevant to *me* (e.g., filtering for "Coding Agents" vs. "GenAI Policy").  
+3.  **Email Agent**: The "Communicator" that formats the daily briefing.  
 
-### 🎨 The Dashboard
-The Streamlit frontend provides a sleek, dark-mode interface where I can:
-*   Trigger the scraping pipeline manually.
-*   View the real-time health status of backend services.
-*   Read beautiful, card-based digests of the latest news.
+### 🎨 The Dashboard  
+The Streamlit frontend provides a sleek, dark-mode interface where I can:  
+*   Trigger the scraping pipeline manually.  
+*   View the real-time health status of backend services.  
+*   Read beautiful, card-based digests of the latest news.  
 
-## 🚀 Why I Built This
+## 🚀 Why I Built This  
 Keeping up with AI is a full-time job. I wanted to build a tool that uses the very technology I'm learning (Agents, MCP, LLMs) to solve a problem I face every day. This project represents the convergence of modern web development (FastAPI/Docker) with cutting-edge AI engineering.
 
 Check out the full [Developer Guide](https://github.com/oussou-dev/ai-dev-tools-zoomcamp/tree/main/04_ai_news_aggr) to see how "Vibe Coding" helped build this!

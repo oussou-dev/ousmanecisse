@@ -11,41 +11,41 @@ Week 4 of the AI Dev Tools Zoomcamp was a transformative production to the world
 
 ## The Goal: A Coding Agent that Bootstraps Projects
 
-The core mission was to build a coding agent capable of scaffolding a **Django** project from scratch. Instead of manually running `django-admin startproject`, we built an agent that could:
-1.  Understand a high-level goal (e.g., "Create a Todo App").
-2.  Use **Tools** to create directories, write files, and execute shell commands.
-3.  Iteratively refine the code based on feedback.
+The core mission was to build a coding agent capable of scaffolding a **Django** project from scratch. Instead of manually running `django-admin startproject`, we built an agent that could:  
+1.  Understand a high-level goal (e.g., "Create a Todo App").  
+2.  Use **Tools** to create directories, write files, and execute shell commands.  
+3.  Iteratively refine the code based on feedback.  
 
-## Key Concepts Learned
+## Key Concepts Learned  
 
-### 1. Agents as "Project Bootstrappers"
-We explored the concept of agents not just as code completors, but as architects. By giving an agent access to the file system and command line, it can perform complex multi-step tasks like:
-*   Setting up a virtual environment.
-*   Installing dependencies via `pip`.
-*   Configuring a `Makefile` for consistent workflows.
-*   Generating initial templates for `base.html` and `home.html` using modern CSS frameworks like Tailwind.
+### 1. Agents as "Project Bootstrappers"  
+We explored the concept of agents not just as code completors, but as architects. By giving an agent access to the file system and command line, it can perform complex multi-step tasks like:  
+*   Setting up a virtual environment.  
+*   Installing dependencies via `pip`.  
+*   Configuring a `Makefile` for consistent workflows.  
+*   Generating initial templates for `base.html` and `home.html` using modern CSS frameworks like Tailwind.  
 
-### 2. The Power of Tools
-An agent is only as powerful as its tools. We defined a set of primitive tools for our agent:
-*   `read_file`: To understand existing code.
-*   `write_file`: To create or update logic.
-*   `bash`: To execute commands (migrations, tests, servers).
-*   `ls`: To explore the file structure.
+### 2. The Power of Tools  
+An agent is only as powerful as its tools. We defined a set of primitive tools for our agent:  
+*   `read_file`: To understand existing code.  
+*   `write_file`: To create or update logic.  
+*   `bash`: To execute commands (migrations, tests, servers).  
+*   `ls`: To explore the file structure.  
 
-### 3. Orchestration Frameworks
-We didn't just stick to one way of doing things. We explored multiple frameworks for building these agents:
-*   **ToyAIKit**: A simplified framework to understand the core loop of *Thought -> Action -> Observation*.
-*   **OpenAI Agents SDK**: Leveraging the native function calling capabilities of GPT models.
-*   **PydanticAI**: A robust, type-safe approach to defining agent behaviors.
-*   **Z.ai**: Exploring alternative LLM providers and APIs.
+### 3. Orchestration Frameworks  
+We didn't just stick to one way of doing things. We explored multiple frameworks for building these agents:  
+*   **ToyAIKit**: A simplified framework to understand the core loop of *Thought -> Action -> Observation*.  
+*   **OpenAI Agents SDK**: Leveraging the native function calling capabilities of GPT models.  
+*   **PydanticAI**: A robust, type-safe approach to defining agent behaviors.  
+*   **Z.ai**: Exploring alternative LLM providers and APIs.  
 
-## The Outcome
+## The Outcome  
 
-By the end of the week, I had a functioning agent that could take a simple prompt and spin up a working Django application with:
-*   A clean directory structure.
-*   Basic templates and routing.
-*   Database migrations applied.
+By the end of the week, I had a functioning agent that could take a simple prompt and spin up a working Django application with:  
+*   A clean directory structure.  
+*   Basic templates and routing.  
+*   Database migrations applied.  
 
-This week bridged the gap between *talking* to AI about code and *having AI write the code* directly into the project. It set the perfect stage for building more complex systems, like the one I built for my weekly project.
+This week bridged the gap between *talking* to AI about code and *having AI write the code* directly into the project. It set the perfect stage for building more complex systems, like the one I built for my weekly project.  
 
 **Next Stop**: Applying these skills to build a production-grade AI application.
