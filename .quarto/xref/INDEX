@@ -73,5 +73,11 @@
   },
   "fr/projets.qmd": {
     "projets.html": "10ad8d56"
+  },
+  "fr/posts/ai-dev-tools-week-4/index.qmd": {
+    "index.html": "1d266581"
+  },
+  "fr/posts/ai-news-aggregator/index.qmd": {
+    "index.html": "37b777fd"
   }
 }

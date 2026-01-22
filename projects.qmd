@@ -3,7 +3,7 @@ title: "Projects"
 listing:
   contents:
     - title: "AI Dev Tools"
-      description: Projects and assignments from the AI Dev Tools Zoomcamp.
+      description: Projects and assignments from the AI Dev Tools (Vibe Coding) Zoomcamp.
       categories: [AI, VIBE CODING, MCP, N8N, Zoomcamp]
       path: https://github.com/oussou-dev/ai-dev-tools-zoomcamp 
       image: "img/ai-dev-tools-cover.webp"
