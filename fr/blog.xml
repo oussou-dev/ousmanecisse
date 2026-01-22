@@ -9,13 +9,14 @@
 <link>https://oussou-dev.github.io/ousmanecisse/fr/blog.html</link>
 <atom:link href="https://oussou-dev.github.io/ousmanecisse/fr/blog.xml" rel="self" type="application/rss+xml"/>
 <description></description>
-<generator>quarto-1.6.42</generator>
-<lastBuildDate>Wed, 21 Jan 2026 23:00:00 GMT</lastBuildDate>
+<generator>quarto-1.8.27</generator>
+<lastBuildDate>Thu, 22 Jan 2026 00:00:00 GMT</lastBuildDate>
 <item>
   <title>AI Hero : Jour 1 - Ingestion et Indexation des Données</title>
   <dc:creator>Ousmane Cissé</dc:creator>
   <link>https://oussou-dev.github.io/ousmanecisse/fr/posts/ai-hero-day-1/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -76,13 +77,159 @@
   <category>RAG</category>
   <category>AI Hero</category>
   <guid>https://oussou-dev.github.io/ousmanecisse/fr/posts/ai-hero-day-1/</guid>
-  <pubDate>Wed, 21 Jan 2026 23:00:00 GMT</pubDate>
+  <pubDate>Thu, 22 Jan 2026 00:00:00 GMT</pubDate>
   <media:content url="https://oussou-dev.github.io/ousmanecisse/fr/img/ai_hero_day_1.png" medium="image" type="image/png"/>
+</item>
+<item>
+  <title>Projet Outils de Dev IA : Agrégateur d’actualités IA</title>
+  <dc:creator>Ousmane Cissé</dc:creator>
+  <link>https://oussou-dev.github.io/ousmanecisse/fr/posts/ai-news-aggregator/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>Pour mon projet de la 4ème semaine du AI Dev Tools Zoomcamp, j’ai construit l’<strong>Agrégateur d’actualités IA</strong> — une plateforme complète conçue pour filtrer le bruit du cycle effréné des actualités sur l’IA. Elle automatise la collecte, le traitement et la présentation de contenus IA à haute valeur ajoutée provenant de multiples sources.</p>
+<p><a href="https://github.com/oussou-dev/ai-dev-tools-zoomcamp/tree/main/04_ai_news_aggr"><strong>Voir le projet sur GitHub</strong></a></p>
+<section id="architecture-stack-technique" class="level2">
+<h2 class="anchored" data-anchor-id="architecture-stack-technique">🏗️ Architecture &amp; Stack Technique</h2>
+<p>Ce n’est pas juste un simple script ; c’est une application conteneurisée, basée sur des microservices, construite pour une fiabilité de niveau production.</p>
+<section id="la-stack" class="level3">
+<h3 class="anchored" data-anchor-id="la-stack">La Stack</h3>
+<ul>
+<li><strong>Backend</strong>: <code>FastAPI</code> (API REST Asynchrone)<br>
+</li>
+<li><strong>Frontend</strong>: <code>Streamlit</code> (Tableau de bord interactif)<br>
+</li>
+<li><strong>Base de données</strong>: <code>PostgreSQL 17</code> (Stockage de données persistant)<br>
+</li>
+<li><strong>Infrastructure</strong>: <code>Docker Compose</code> (Orchestration)</li>
+</ul>
+</section>
+<section id="le-pipeline" class="level3">
+<h3 class="anchored" data-anchor-id="le-pipeline">Le Pipeline</h3>
+<p>Le système fonctionne sur un pipeline intelligent :<br>
+1. <strong>Scraping</strong>: Des workers en arrière-plan récupèrent du contenu depuis <strong>YouTube</strong> (transcriptions), les <strong>flux OpenAI</strong>, et les papiers de recherche <strong>Anthropic</strong>.<br>
+2. <strong>Traitement</strong>: Le contenu brut est stocké dans PostgreSQL.<br>
+3. <strong>Intelligence</strong>: Les Agents IA entrent en jeu pour :<br>
+* <strong>Résumer</strong>: Compresser des vidéos d’une heure en insights de 3 phrases.<br>
+* <strong>Organiser</strong>: Classer les histoires en fonction d’un “Profil d’Intérêt” utilisateur personnalisé.<br>
+* <strong>Livrer</strong>: Générer des brouillons d’email chaleureux et prêts à être envoyés.</p>
+</section>
+</section>
+<section id="fonctionnalités-clés" class="level2">
+<h2 class="anchored" data-anchor-id="fonctionnalités-clés">✨ Fonctionnalités Clés</h2>
+<section id="intelligence-multi-sources" class="level3">
+<h3 class="anchored" data-anchor-id="intelligence-multi-sources">📰 Intelligence Multi-Sources</h3>
+<p>L’agrégateur ne se contente pas de lire des flux RSS. Il utilise :<br>
+* <strong>YouTube Transcript API</strong>: Pour “regarder” les vidéos et extraire les points clés.<br>
+* <strong>Docling</strong>: Pour convertir des papiers de recherche complexes en markdown propre pour l’analyse.</p>
+</section>
+<section id="workflows-agentiques" class="level3">
+<h3 class="anchored" data-anchor-id="workflows-agentiques">🧠 Workflows Agentiques</h3>
+<p>J’ai implémenté trois agents spécialisés distincts :<br>
+1. <strong>Agent Digest</strong>: Le “Résumeur” qui distille le contenu.<br>
+2. <strong>Agent Curateur</strong>: L’“Assistant Personnel” qui décide de ce qui est pertinent pour <em>moi</em> (ex: filtrer pour “Agents de Code” vs “Politique GenAI”).<br>
+3. <strong>Agent Email</strong>: Le “Communicant” qui met en forme le briefing quotidien.</p>
+</section>
+<section id="le-tableau-de-bord" class="level3">
+<h3 class="anchored" data-anchor-id="le-tableau-de-bord">🎨 Le Tableau de Bord</h3>
+<p>Le frontend Streamlit offre une interface élégante en mode sombre où je peux :<br>
+* Déclencher le pipeline de scraping manuellement.<br>
+* Voir l’état de santé en temps réel des services backend.<br>
+* Lire des résumés sous forme de cartes esthétiques des dernières actualités.</p>
+</section>
+</section>
+<section id="pourquoi-jai-construit-ça" class="level2">
+<h2 class="anchored" data-anchor-id="pourquoi-jai-construit-ça">🚀 Pourquoi j’ai construit ça</h2>
+<p>Suivre l’actualité de l’IA est un travail à temps plein. Je voulais construire un outil qui utilise la technologie même que j’apprends (Agents, MCP, LLM) pour résoudre un problème auquel je suis confronté chaque jour. Ce projet représente la convergence du développement web moderne (FastAPI/Docker) avec l’ingénierie IA de pointe.</p>
+<p>Consultez le <a href="https://github.com/oussou-dev/ai-dev-tools-zoomcamp/tree/main/04_ai_news_aggr">Guide du Développeur</a> complet pour voir comment le “Vibe Coding” a aidé à construire cela !</p>
+
+
+</section>
+
+ ]]></description>
+  <category>Projet</category>
+  <category>Agents IA</category>
+  <category>Outils Dev IA</category>
+  <category>Vibe Coding</category>
+  <category>FastAPI</category>
+  <guid>https://oussou-dev.github.io/ousmanecisse/fr/posts/ai-news-aggregator/</guid>
+  <pubDate>Tue, 20 Jan 2026 00:00:00 GMT</pubDate>
+  <media:content url="https://oussou-dev.github.io/ousmanecisse/fr/img/ai_news_aggregator.webp" medium="image" type="image/webp"/>
+</item>
+<item>
+  <title>Outils de Dev IA : Semaine 4 - Construire des Agents de Code</title>
+  <dc:creator>Ousmane Cissé</dc:creator>
+  <link>https://oussou-dev.github.io/ousmanecisse/fr/posts/ai-dev-tools-week-4/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>La semaine 4 du AI Dev Tools Zoomcamp a été une introduction transformatrice au monde des <strong>agents de code autonomes</strong>. Nous sommes passés au-delà des simples interfaces de chat pour construire des agents capables de manipuler activement des bases de code, modifier des fichiers et démarrer des projets entiers.</p>
+<section id="lobjectif-un-agent-de-code-qui-initialise-des-projets" class="level2">
+<h2 class="anchored" data-anchor-id="lobjectif-un-agent-de-code-qui-initialise-des-projets">L’Objectif : Un Agent de Code qui Initialise des Projets</h2>
+<p>La mission principale était de construire un agent de code capable d’échafauder un projet <strong>Django</strong> à partir de zéro. Au lieu d’exécuter manuellement <code>django-admin startproject</code>, nous avons construit un agent qui pouvait :<br>
+1. Comprendre un objectif de haut niveau (ex: “Créer une App Todo”).<br>
+2. Utiliser des <strong>Outils</strong> pour créer des répertoires, écrire des fichiers et exécuter des commandes shell.<br>
+3. Affiner le code de manière itérative basée sur le feedback.</p>
+</section>
+<section id="concepts-clés-appris" class="level2">
+<h2 class="anchored" data-anchor-id="concepts-clés-appris">Concepts Clés Appris</h2>
+<section id="les-agents-comme-initialiseurs-de-projet" class="level3">
+<h3 class="anchored" data-anchor-id="les-agents-comme-initialiseurs-de-projet">1. Les Agents comme “Initialiseurs de Projet”</h3>
+<p>Nous avons exploré le concept d’agents non seulement comme compléteurs de code, mais comme architectes. En donnant à un agent l’accès au système de fichiers et à la ligne de commande, il peut effectuer des tâches complexes en plusieurs étapes comme :<br>
+* Configurer un environnement virtuel.<br>
+* Installer des dépendances via <code>pip</code>.<br>
+* Configurer un <code>Makefile</code> pour des workflows cohérents.<br>
+* Générer des modèles initiaux pour <code>base.html</code> et <code>home.html</code> en utilisant des frameworks CSS modernes comme Tailwind.</p>
+</section>
+<section id="la-puissance-des-outils" class="level3">
+<h3 class="anchored" data-anchor-id="la-puissance-des-outils">2. La Puissance des Outils</h3>
+<p>Un agent n’est puissant que grâce à ses outils. Nous avons défini un ensemble d’outils primitifs pour notre agent :<br>
+* <code>read_file</code>: Pour comprendre le code existant.<br>
+* <code>write_file</code>: Pour créer ou mettre à jour la logique.<br>
+* <code>bash</code>: Pour exécuter des commandes (migrations, tests, serveurs).<br>
+* <code>ls</code>: Pour explorer la structure des fichiers.</p>
+</section>
+<section id="frameworks-dorchestration" class="level3">
+<h3 class="anchored" data-anchor-id="frameworks-dorchestration">3. Frameworks d’Orchestration</h3>
+<p>Nous ne nous sommes pas contentés d’une seule façon de faire. Nous avons exploré plusieurs frameworks pour construire ces agents :<br>
+* <strong>ToyAIKit</strong>: Un framework simplifié pour comprendre la boucle centrale de <em>Pensée -&gt; Action -&gt; Observation</em>.<br>
+* <strong>OpenAI Agents SDK</strong>: Tirer parti des capacités natives d’appel de fonction des modèles GPT.<br>
+* <strong>PydanticAI</strong>: Une approche robuste et typée pour définir les comportements des agents.<br>
+* <strong>Z.ai</strong>: Explorer des fournisseurs de LLM et APIs alternatifs.</p>
+</section>
+</section>
+<section id="le-résultat" class="level2">
+<h2 class="anchored" data-anchor-id="le-résultat">Le Résultat</h2>
+<p>À la fin de la semaine, j’avais un agent fonctionnel qui pouvait prendre un simple prompt et lancer une application Django fonctionnelle avec :<br>
+* Une structure de répertoire propre.<br>
+* Des templates et un routage de base.<br>
+* Des migrations de base de données appliquées.</p>
+<p>Cette semaine a comblé le fossé entre <em>parler</em> à l’IA de code et <em>faire écrire le code par l’IA</em> directement dans le projet. Cela a préparé le terrain idéal pour construire des systèmes plus complexes, comme celui que j’ai construit pour mon projet hebdomadaire.</p>
+<p><strong>Prochaine étape</strong> : Appliquer ces compétences pour construire une application IA de niveau production.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>IA</category>
+  <category>Zoomcamp</category>
+  <category>Agents</category>
+  <category>Outils Dev IA</category>
+  <guid>https://oussou-dev.github.io/ousmanecisse/fr/posts/ai-dev-tools-week-4/</guid>
+  <pubDate>Thu, 15 Jan 2026 00:00:00 GMT</pubDate>
+  <media:content url="https://oussou-dev.github.io/ousmanecisse/fr/img/week_4_ai_dev_tools.webp" medium="image" type="image/webp"/>
 </item>
 <item>
   <title>Outils de Dév IA - Semaine 3</title>
   <link>https://oussou-dev.github.io/ousmanecisse/fr/posts/ai-dev-tools-week-3/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -112,12 +259,13 @@
   <category>Zoomcamp</category>
   <category>AI Dev Tools</category>
   <guid>https://oussou-dev.github.io/ousmanecisse/fr/posts/ai-dev-tools-week-3/</guid>
-  <pubDate>Fri, 02 Feb 2024 23:00:00 GMT</pubDate>
+  <pubDate>Sat, 03 Feb 2024 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Outils de Dév IA - Semaine 2</title>
   <link>https://oussou-dev.github.io/ousmanecisse/fr/posts/ai-dev-tools-week-2/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -147,12 +295,13 @@
   <category>Zoomcamp</category>
   <category>AI Dev Tools</category>
   <guid>https://oussou-dev.github.io/ousmanecisse/fr/posts/ai-dev-tools-week-2/</guid>
-  <pubDate>Fri, 26 Jan 2024 23:00:00 GMT</pubDate>
+  <pubDate>Sat, 27 Jan 2024 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Outils de Dév IA - Semaine 1</title>
   <link>https://oussou-dev.github.io/ousmanecisse/fr/posts/ai-dev-tools-week-1/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -182,7 +331,7 @@
   <category>Zoomcamp</category>
   <category>AI Dev Tools</category>
   <guid>https://oussou-dev.github.io/ousmanecisse/fr/posts/ai-dev-tools-week-1/</guid>
-  <pubDate>Fri, 19 Jan 2024 23:00:00 GMT</pubDate>
+  <pubDate>Sat, 20 Jan 2024 00:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
