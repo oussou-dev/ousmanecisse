@@ -2,6 +2,11 @@
 title: "Projets"
 listing:
   contents:
+    - title: "Applications No-Code & IA"
+      description: "Création d'apps internes avec des outils No-Code (Airtable, Softr, Make/Zapier) et d'IA. De l'analyse des besoins et modélisation BPMN jusqu'au déploiement."
+      categories: [No-Code, IA, Airtable, Softr, Make, BPMN]
+      path: https://github.com/oussou-dev/nocode-ai-enterprise-apps
+      image: "../img/nocode_ai_enterprise_cover.png"
     - title: "Data Engineering Zoomcamp"
       description: "Projet complet sur l'ingénierie des données couvrant Docker, Terraform, Google Cloud Platform, Airflow, Spark et Kafka."
       categories: [Data Engineering, GCP, Terraform, Airflow, Kafka, Spark]
