@@ -238,3 +238,16 @@ blockquote {
     font-style: italic !important;
     border-radius: 2px;
 }
+
+.project-links-manual .btn {
+    border-radius: 20px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-family: $headings-font-family;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+.listing-category {
+    font-size: 0.6rem !important;
+}

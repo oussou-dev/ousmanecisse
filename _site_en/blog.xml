@@ -209,8 +209,7 @@
   <category>AI</category>
   <category>Zoomcamp</category>
   <category>Agents</category>
-  <category>Django</category>
-  <category>Coding Assistant</category>
+  <category>AI Dev Tools</category>
   <guid>https://oussou-dev.github.io/ousmanecisse/posts/ai-dev-tools-week-4/</guid>
   <pubDate>Wed, 14 Jan 2026 23:00:00 GMT</pubDate>
   <media:content url="https://oussou-dev.github.io/ousmanecisse/img/week_4_ai_dev_tools.webp" medium="image" type="image/webp"/>
@@ -274,6 +273,7 @@
   <category>Zoomcamp</category>
   <category>MCP</category>
   <category>Agents</category>
+  <category>AI Dev Tools</category>
   <guid>https://oussou-dev.github.io/ousmanecisse/posts/ai-dev-tools-week-3/</guid>
   <pubDate>Thu, 11 Dec 2025 23:00:00 GMT</pubDate>
   <media:content url="https://oussou-dev.github.io/ousmanecisse/img/week_3_ai_dev_tools.png" medium="image" type="image/png" height="61" width="144"/>
@@ -366,9 +366,8 @@ Week 2 taught me <strong>how to think like a real engineer</strong> using those 
  ]]></description>
   <category>AI</category>
   <category>Zoomcamp</category>
-  <category>Engineering</category>
-  <category>Docker</category>
   <category>CI/CD</category>
+  <category>AI Dev Tools</category>
   <guid>https://oussou-dev.github.io/ousmanecisse/posts/ai-dev-tools-week-2/</guid>
   <pubDate>Thu, 04 Dec 2025 23:00:00 GMT</pubDate>
   <media:content url="https://oussou-dev.github.io/ousmanecisse/img/week_2_ai_dev_tools.jpg" medium="image" type="image/jpeg"/>
@@ -409,6 +408,7 @@ Week 2 taught me <strong>how to think like a real engineer</strong> using those 
   <category>AI</category>
   <category>Zoomcamp</category>
   <category>Vibe Coding</category>
+  <category>AI Dev Tools</category>
   <guid>https://oussou-dev.github.io/ousmanecisse/posts/ai-dev-tools-week-1/</guid>
   <pubDate>Thu, 27 Nov 2025 23:00:00 GMT</pubDate>
   <media:content url="https://oussou-dev.github.io/ousmanecisse/img/week_1_ai_dev_tools.png" medium="image" type="image/png" height="61" width="144"/>

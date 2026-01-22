@@ -226,3 +226,26 @@ blockquote {
     background-color: #212529 !important;
     border: 1px solid $primary;
 }
+
+.project-links-manual .btn {
+    border-radius: 20px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-family: $headings-font-family;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+.project-links-manual .btn-outline-primary {
+    color: $primary;
+    border-color: $primary;
+}
+
+.project-links-manual .btn-outline-primary:hover {
+    background-color: $primary;
+    color: $body-bg;
+}
+
+.listing-category {
+    font-size: 0.6rem !important;
+}
