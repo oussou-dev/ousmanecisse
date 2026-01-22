@@ -3,22 +3,22 @@ title: "Projets"
 listing:
   contents:
     - title: "Data Engineering Zoomcamp"
-      description: "Un cours complet sur l'ingénierie des données couvrant Docker, Terraform, Google Cloud Platform, Airflow, Spark et Kafka."
+      description: "Projet complet sur l'ingénierie des données couvrant Docker, Terraform, Google Cloud Platform, Airflow, Spark et Kafka."
       categories: [Data Engineering, GCP, Terraform, Airflow, Kafka, Spark]
       path: https://github.com/oussou-dev/data-engineering-zoomcamp
       image: "../img/data_engineering_zoomcamp_cover.png"
     - title: "Outils de Dev IA"
-      description: Projets et devoirs du AI Dev Tools Zoomcamp.
+      description: Projets de vide coding du bootcamp AI Dev Tools Zoomcamp.
       categories: [IA, VIBE CODING, MCP, N8N, Zoomcamp]
       path: https://github.com/oussou-dev/ai-dev-tools-zoomcamp 
       image: "../img/ai-dev-tools-cover.webp"
     - title: "Ingénieur ML ZoomCamp"
-      description: Un cours complet d'ingénierie machine learning couvrant le déploiement, le cloud et le MLOps.
+      description: Projets de Macjine learning couvrant le déploiement, le cloud et le MLOps.
       categories: [Machine Learning, MLOPS]
       path: https://github.com/oussou-dev/ML_Engineer_ZoomCamp
       image: "../img/ml-zoomcamp-cover.webp"
     - title: "AI Hero"
-      description: Un cours intensif gratuit de 7 jours par e-mail pour construire et déployer des agents IA.
+      description: Mini projets de création et de déploiement d'Agents IA.
       categories: [Agents IA, LLM, Déploiement]
       path: https://github.com/oussou-dev/ai-hero-bootcamp
       image: "../img/ai_hero_cover.png"
