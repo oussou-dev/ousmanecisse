@@ -6,24 +6,29 @@ listing:
       description: "Projects and assignments from the AI Dev Tools Zoomcamp."
       categories: [AI, VIBE CODING, MCP, N8N, Zoomcamp]
       path: https://github.com/oussou-dev/ai-dev-tools-zoomcamp 
+      github_url: https://github.com/oussou-dev/ai-dev-tools-zoomcamp
+      blog_url: "blog.html#category=Zoomcamp"
       image: "img/ai-dev-tools-cover.webp"
     - title: "ML Engineer ZoomCamp"
       description: "A comprehensive machine learning engineering course covering deployment, cloud, and MLOps."
       categories: [Machine Learning, MLOPS]
       path: https://github.com/oussou-dev/ML_Engineer_ZoomCamp
+      github_url: https://github.com/oussou-dev/ML_Engineer_ZoomCamp
+      blog_url: "blog.html#category=MLOPS"
       image: "img/ml-zoomcamp-cover.webp"
     - title: "AI Hero"
       description: "A free 7-day email crash-course on building and deploying AI agents."
       categories: [AI Agents, LLM, Deployment]
       path: https://github.com/oussou-dev/ai-hero-bootcamp
+      github_url: https://github.com/oussou-dev/ai-hero-bootcamp
+      blog_url: "blog.html#category=AI%20Hero"
       image: "img/ai_hero_cover.png"
     
+  template: ejs/projects.ejs
   sort: "date desc"
-  type: grid
   categories: false
   sort-ui: false
   filter-ui: false
-  fields: [image, title, description, categories]
 page-layout: full
 ---
 

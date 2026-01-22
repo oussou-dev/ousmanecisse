@@ -10,7 +10,66 @@
 <atom:link href="https://oussou-dev.github.io/ousmanecisse/blog.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.6.42</generator>
-<lastBuildDate>Mon, 19 Jan 2026 23:00:00 GMT</lastBuildDate>
+<lastBuildDate>Wed, 21 Jan 2026 23:00:00 GMT</lastBuildDate>
+<item>
+  <title>AI Hero: Day 1 - Ingest and Index Your Data</title>
+  <dc:creator>Ousmane Cissé</dc:creator>
+  <link>https://oussou-dev.github.io/ousmanecisse/posts/ai-hero-day-1/</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>The journey to building a custom AI agent starts with its “brain” — or more accurately, its knowledge base. On Day 1 of the <strong>AI Hero</strong> project, I focused on the first step of the RAG (Retrieval-Augmented Generation) pipeline: <strong>Ingestion</strong>.</p>
+<p>Here is how I built a robust pipeline to fetch, parse, and structure technical documentation from GitHub.</p>
+<section id="building-the-infrastructure-for-knowledge" class="level2">
+<h2 class="anchored" data-anchor-id="building-the-infrastructure-for-knowledge">Building the Infrastructure for Knowledge</h2>
+<p>An AI agent is only as good as the data it can access. Rather than manually copying documentation, we focused on building an automated system that can ingest hundreds of Markdown files directly from a GitHub repository.</p>
+<p>The goal was to transform raw <code>.md</code> and <code>.mdx</code> files into a clean, structured JSON-like format that includes both the content and its associated metadata.</p>
+</section>
+<section id="in-memory-processing-with-python" class="level2">
+<h2 class="anchored" data-anchor-id="in-memory-processing-with-python">In-Memory Processing with Python</h2>
+<p>One of the coolest tricks I learned was handling data entirely in memory. Instead of downloading a ZIP file to the disk, unzipping it, and dealing with temporary files, we used Python’s <code>io.BytesIO</code> and <code>zipfile</code> modules.</p>
+<p>This approach is: - <strong>Faster</strong>: No disk I/O overhead. - <strong>Cleaner</strong>: No need to manage or delete temporary files. - <strong>Scalable</strong>: Perfect for cloud functions or ephemeral environments.</p>
+</section>
+<section id="extracting-meaning-with-metadata-frontmatter" class="level2">
+<h2 class="anchored" data-anchor-id="extracting-meaning-with-metadata-frontmatter">Extracting Meaning with Metadata (Frontmatter)</h2>
+<p>Most technical documentation (like Evidently AI’s docs) uses <strong>YAML Frontmatter</strong> to store critical metadata like titles, tags, and descriptions.</p>
+<p>Using the <code>python-frontmatter</code> library, I wrote a parser that: 1. Iterates through the ZIP archive. 2. Identifies relevant documentation files. 3. Separates the human-readable text from the structured metadata.</p>
+<p>This metadata is crucial for later stages, as it allows the agent to filter information by category or relevance.</p>
+</section>
+<section id="the-modern-tech-stack-uv-and-more" class="level2">
+<h2 class="anchored" data-anchor-id="the-modern-tech-stack-uv-and-more">The Modern Tech Stack: <code>uv</code> and more</h2>
+<p>We stayed away from traditional, slow package managers. Instead, we used: - <strong><code>uv</code></strong>: The extremely fast Python package manager that makes environment setup instantaneous. - <strong><code>requests</code></strong>: To stream the repository data directly from GitHub. - <strong><code>python-frontmatter</code></strong>: For precise metadata extraction. - <strong>Jupyter Notebooks</strong>: For interactive exploration of the ingested data structure.</p>
+</section>
+<section id="key-lessons" class="level2">
+<h2 class="anchored" data-anchor-id="key-lessons">Key Lessons</h2>
+<ol type="1">
+<li><strong>Automate the Source</strong>: Never manually manage the data your agent needs. Build a pipeline.</li>
+<li><strong>Memory is Your Friend</strong>: Processing ZIP files in memory is a professional pattern that saves time and local resources.</li>
+<li><strong>Structure Matters</strong>: Content is king, but metadata is the compass that helps your agent find the right content.</li>
+<li><strong>Tooling Consistency</strong>: Using modern tools like <code>uv</code> ensures that experiments are reproducible and fast.</li>
+</ol>
+</section>
+<section id="mindset-shift" class="level2">
+<h2 class="anchored" data-anchor-id="mindset-shift">Mindset Shift</h2>
+<p>Day 1 shift my perspective from “How do I prompt the model?” to “<strong>How do I prepare the data for the model?</strong>” You can have the best LLM in the world, but if your ingestion pipeline is messy, your agent will be unreliable.</p>
+<p><strong>Next Step</strong>: Day 2 will focus on <strong>Chunking and Embedding</strong> to turn this raw text into mathematical vectors that the AI can “search”.</p>
+<p><strong>Homework</strong>: <a href="https://github.com/oussou-dev/ai-hero-bootcamp">AI Hero Day 1 Implementation</a></p>
+
+
+</section>
+
+ ]]></description>
+  <category>AI Agents</category>
+  <category>LLM</category>
+  <category>Python</category>
+  <category>RAG</category>
+  <category>AI Hero</category>
+  <guid>https://oussou-dev.github.io/ousmanecisse/posts/ai-hero-day-1/</guid>
+  <pubDate>Wed, 21 Jan 2026 23:00:00 GMT</pubDate>
+  <media:content url="https://oussou-dev.github.io/ousmanecisse/img/ai_hero_day_1.png" medium="image" type="image/png" height="77" width="144"/>
+</item>
 <item>
   <title>Project Showcase: AI News Aggregator</title>
   <dc:creator>Ousmane Cissé</dc:creator>
@@ -353,65 +412,6 @@ Week 2 taught me <strong>how to think like a real engineer</strong> using those 
   <guid>https://oussou-dev.github.io/ousmanecisse/posts/ai-dev-tools-week-1/</guid>
   <pubDate>Thu, 27 Nov 2025 23:00:00 GMT</pubDate>
   <media:content url="https://oussou-dev.github.io/ousmanecisse/img/week_1_ai_dev_tools.png" medium="image" type="image/png" height="61" width="144"/>
-</item>
-<item>
-  <title>AI Hero: Day 1 - Ingest and Index Your Data</title>
-  <dc:creator>Ousmane Cissé</dc:creator>
-  <link>https://oussou-dev.github.io/ousmanecisse/posts/ai-hero-day-1/</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>The journey to building a custom AI agent starts with its “brain” — or more accurately, its knowledge base. On Day 1 of the <strong>AI Hero</strong> project, I focused on the first step of the RAG (Retrieval-Augmented Generation) pipeline: <strong>Ingestion</strong>.</p>
-<p>Here is how I built a robust pipeline to fetch, parse, and structure technical documentation from GitHub.</p>
-<section id="building-the-infrastructure-for-knowledge" class="level2">
-<h2 class="anchored" data-anchor-id="building-the-infrastructure-for-knowledge">Building the Infrastructure for Knowledge</h2>
-<p>An AI agent is only as good as the data it can access. Rather than manually copying documentation, we focused on building an automated system that can ingest hundreds of Markdown files directly from a GitHub repository.</p>
-<p>The goal was to transform raw <code>.md</code> and <code>.mdx</code> files into a clean, structured JSON-like format that includes both the content and its associated metadata.</p>
-</section>
-<section id="in-memory-processing-with-python" class="level2">
-<h2 class="anchored" data-anchor-id="in-memory-processing-with-python">In-Memory Processing with Python</h2>
-<p>One of the coolest tricks I learned was handling data entirely in memory. Instead of downloading a ZIP file to the disk, unzipping it, and dealing with temporary files, we used Python’s <code>io.BytesIO</code> and <code>zipfile</code> modules.</p>
-<p>This approach is: - <strong>Faster</strong>: No disk I/O overhead. - <strong>Cleaner</strong>: No need to manage or delete temporary files. - <strong>Scalable</strong>: Perfect for cloud functions or ephemeral environments.</p>
-</section>
-<section id="extracting-meaning-with-metadata-frontmatter" class="level2">
-<h2 class="anchored" data-anchor-id="extracting-meaning-with-metadata-frontmatter">Extracting Meaning with Metadata (Frontmatter)</h2>
-<p>Most technical documentation (like Evidently AI’s docs) uses <strong>YAML Frontmatter</strong> to store critical metadata like titles, tags, and descriptions.</p>
-<p>Using the <code>python-frontmatter</code> library, I wrote a parser that: 1. Iterates through the ZIP archive. 2. Identifies relevant documentation files. 3. Separates the human-readable text from the structured metadata.</p>
-<p>This metadata is crucial for later stages, as it allows the agent to filter information by category or relevance.</p>
-</section>
-<section id="the-modern-tech-stack-uv-and-more" class="level2">
-<h2 class="anchored" data-anchor-id="the-modern-tech-stack-uv-and-more">The Modern Tech Stack: <code>uv</code> and more</h2>
-<p>We stayed away from traditional, slow package managers. Instead, we used: - <strong><code>uv</code></strong>: The extremely fast Python package manager that makes environment setup instantaneous. - <strong><code>requests</code></strong>: To stream the repository data directly from GitHub. - <strong><code>python-frontmatter</code></strong>: For precise metadata extraction. - <strong>Jupyter Notebooks</strong>: For interactive exploration of the ingested data structure.</p>
-</section>
-<section id="key-lessons" class="level2">
-<h2 class="anchored" data-anchor-id="key-lessons">Key Lessons</h2>
-<ol type="1">
-<li><strong>Automate the Source</strong>: Never manually manage the data your agent needs. Build a pipeline.</li>
-<li><strong>Memory is Your Friend</strong>: Processing ZIP files in memory is a professional pattern that saves time and local resources.</li>
-<li><strong>Structure Matters</strong>: Content is king, but metadata is the compass that helps your agent find the right content.</li>
-<li><strong>Tooling Consistency</strong>: Using modern tools like <code>uv</code> ensures that experiments are reproducible and fast.</li>
-</ol>
-</section>
-<section id="mindset-shift" class="level2">
-<h2 class="anchored" data-anchor-id="mindset-shift">Mindset Shift</h2>
-<p>Day 1 shift my perspective from “How do I prompt the model?” to “<strong>How do I prepare the data for the model?</strong>” You can have the best LLM in the world, but if your ingestion pipeline is messy, your agent will be unreliable.</p>
-<p><strong>Next Step</strong>: Day 2 will focus on <strong>Chunking and Embedding</strong> to turn this raw text into mathematical vectors that the AI can “search”.</p>
-<p><strong>Homework</strong>: <a href="https://github.com/oussou-dev/ai-hero-bootcamp">AI Hero Day 1 Implementation</a></p>
-
-
-</section>
-
- ]]></description>
-  <category>AI Agents</category>
-  <category>LLM</category>
-  <category>Python</category>
-  <category>RAG</category>
-  <category>AI Hero</category>
-  <guid>https://oussou-dev.github.io/ousmanecisse/posts/ai-hero-day-1/</guid>
-  <pubDate>Sun, 21 Jan 2024 23:00:00 GMT</pubDate>
-  <media:content url="https://oussou-dev.github.io/ousmanecisse/img/ai_hero_day_1.png" medium="image" type="image/png" height="77" width="144"/>
 </item>
 </channel>
 </rss>

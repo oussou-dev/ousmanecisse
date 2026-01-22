@@ -82,7 +82,7 @@ ul.task-list li input[type="checkbox"] {
     const options = {
       valueNames: ['listing-date','listing-title','listing-reading-time','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description"],
+      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -186,11 +186,11 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    </div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(6)</span></div><div class="category" data-category="QUk=">AI <span class="quarto-category-count">(5)</span></div><div class="category" data-category="QUklMjBBZ2VudHM=">AI Agents <span class="quarto-category-count">(1)</span></div><div class="category" data-category="QUklMjBIZXJv">AI Hero <span class="quarto-category-count">(1)</span></div><div class="category" data-category="QWdlbnRz">Agents <span class="quarto-category-count">(3)</span></div><div class="category" data-category="Q0klMkZDRA==">CI/CD <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Q29kaW5nJTIwQXNzaXN0YW50">Coding Assistant <span class="quarto-category-count">(1)</span></div><div class="category" data-category="RGphbmdv">Django <span class="quarto-category-count">(1)</span></div><div class="category" data-category="RG9ja2Vy">Docker <span class="quarto-category-count">(2)</span></div><div class="category" data-category="RW5naW5lZXJpbmc=">Engineering <span class="quarto-category-count">(1)</span></div><div class="category" data-category="RmFzdEFQSQ==">FastAPI <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TExN">LLM <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TUNQ">MCP <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UHJvamVjdA==">Project <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UHl0aG9u">Python <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UkFH">RAG <span class="quarto-category-count">(1)</span></div><div class="category" data-category="U3RyZWFtbGl0">Streamlit <span class="quarto-category-count">(1)</span></div><div class="category" data-category="VmliZSUyMENvZGluZw==">Vibe Coding <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Wm9vbWNhbXA=">Zoomcamp <span class="quarto-category-count">(4)</span></div></div></div>
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
+<main class="content column-page-left" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -199,7 +199,7 @@ window.Quarto = {
 
 
 
-<div class="quarto-title-meta column-page">
+<div class="quarto-title-meta column-page-left">
 
     
   
@@ -216,8 +216,70 @@ window.Quarto = {
 
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
+<div class="listing-actions-group">
+   <div class="input-group input-group-sm quarto-listing-sort">
+     <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
+     <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
+       <option value="" disabled="" selected="" hidden="">Order By</option>
+       <option value="index" data-direction="asc">Default</option>
+         <option value="listing-title" data-direction="asc">
+          Title
+        </option>
+         <option value="listing-date-sort" data-direction="asc">
+          Date - Oldest
+        </option>
+         <option value="listing-date-sort" data-direction="desc">
+          Date - Newest
+        </option>
+     </select>
+  </div>
+    <div class="input-group input-group-sm quarto-listing-filter">
+      <span class="input-group-text"><i class="bi bi-search"></i></span>
+      <input type="text" class="search form-control" placeholder="Filter">
+    </div>
+</div>
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="UHJvamVjdCUyQ0FJJTJDRmFzdEFQSSUyQ1N0cmVhbWxpdCUyQ0FnZW50cyUyQ0RvY2tlcg==" data-listing-date-sort="1768863600000" data-listing-file-modified-sort="1768990800742" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="410">
+<div class="quarto-post image-right" data-index="0" data-categories="QUklMjBBZ2VudHMlMkNMTE0lMkNQeXRob24lMkNSQUclMkNBSSUyMEhlcm8=" data-listing-date-sort="1769036400000" data-listing-file-modified-sort="1769085490220" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="436">
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/ai-hero-day-1/index.html" class="no-external">AI Hero: Day 1 - Ingest and Index Your Data</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./posts/ai-hero-day-1/index.html" class="no-external"></a>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('QUklMjBBZ2VudHM='); return false;">
+AI Agents
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('TExN'); return false;">
+LLM
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('UHl0aG9u'); return false;">
+Python
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('UkFH'); return false;">
+RAG
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('QUklMjBIZXJv'); return false;">
+AI Hero
+</div>
+</div>
+<div class="listing-description">
+<a href="./posts/ai-hero-day-1/index.html" class="no-external">Building the foundation of an AI agent by automating data retrieval and metadata parsing.</a>
+</div>
+</div>
+<div class="metadata">
+<a href="./posts/ai-hero-day-1/index.html" class="no-external">
+<div class="listing-date">
+Jan 22, 2026
+</div>
+<div class="listing-reading-time">
+3 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="1" data-categories="UHJvamVjdCUyQ0FJJTJDRmFzdEFQSSUyQ1N0cmVhbWxpdCUyQ0FnZW50cyUyQ0RvY2tlcg==" data-listing-date-sort="1768863600000" data-listing-file-modified-sort="1768990800742" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="410">
 <div class="body">
 <h3 class="no-anchor listing-title">
 <a href="./posts/ai-news-aggregator/index.html" class="no-external">Project Showcase: AI News Aggregator</a>
@@ -260,7 +322,7 @@ Jan 20, 2026
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="QUklMkNab29tY2FtcCUyQ0FnZW50cyUyQ0RqYW5nbyUyQ0NvZGluZyUyMEFzc2lzdGFudA==" data-listing-date-sort="1768431600000" data-listing-file-modified-sort="1768991055908" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="449">
+<div class="quarto-post image-right" data-index="2" data-categories="QUklMkNab29tY2FtcCUyQ0FnZW50cyUyQ0RqYW5nbyUyQ0NvZGluZyUyMEFzc2lzdGFudA==" data-listing-date-sort="1768431600000" data-listing-file-modified-sort="1768991055908" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="449">
 <div class="body">
 <h3 class="no-anchor listing-title">
 <a href="./posts/ai-dev-tools-week-4/index.html" class="no-external">AI Dev Tools: Week 4 - Building Coding Agents</a>
@@ -300,7 +362,7 @@ Jan 15, 2026
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="2" data-categories="QUklMkNab29tY2FtcCUyQ01DUCUyQ0FnZW50cw==" data-listing-date-sort="1765494000000" data-listing-file-modified-sort="1768327954675" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="451">
+<div class="quarto-post image-right" data-index="3" data-categories="QUklMkNab29tY2FtcCUyQ01DUCUyQ0FnZW50cw==" data-listing-date-sort="1765494000000" data-listing-file-modified-sort="1768327954675" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="451">
 <div class="body">
 <h3 class="no-anchor listing-title">
 <a href="./posts/ai-dev-tools-week-3/index.html" class="no-external">AI Dev Tools: Week 3 - MCP &amp; Agents</a>
@@ -337,7 +399,7 @@ Dec 12, 2025
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="3" data-categories="QUklMkNab29tY2FtcCUyQ0VuZ2luZWVyaW5nJTJDRG9ja2VyJTJDQ0klMkZDRA==" data-listing-date-sort="1764889200000" data-listing-file-modified-sort="1768327951033" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="651">
+<div class="quarto-post image-right" data-index="4" data-categories="QUklMkNab29tY2FtcCUyQ0VuZ2luZWVyaW5nJTJDRG9ja2VyJTJDQ0klMkZDRA==" data-listing-date-sort="1764889200000" data-listing-file-modified-sort="1768327951033" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="651">
 <div class="body">
 <h3 class="no-anchor listing-title">
 <a href="./posts/ai-dev-tools-week-2/index.html" class="no-external">AI Dev Tools: Week 2 - End-to-End Application Development</a>
@@ -377,7 +439,7 @@ Dec 5, 2025
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="4" data-categories="QUklMkNab29tY2FtcCUyQ1ZpYmUlMjBDb2Rpbmc=" data-listing-date-sort="1764284400000" data-listing-file-modified-sort="1768327946753" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="244">
+<div class="quarto-post image-right" data-index="5" data-categories="QUklMkNab29tY2FtcCUyQ1ZpYmUlMjBDb2Rpbmc=" data-listing-date-sort="1764284400000" data-listing-file-modified-sort="1768327946753" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="244">
 <div class="body">
 <h3 class="no-anchor listing-title">
 <a href="./posts/ai-dev-tools-week-1/index.html" class="no-external">AI Dev Tools: Week 1 - Vibe Coding &amp; Foundations</a>
@@ -407,46 +469,6 @@ Nov 28, 2025
 </div>
 <div class="listing-reading-time">
 2 min
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="5" data-categories="QUklMjBBZ2VudHMlMkNMTE0lMkNQeXRob24lMkNSQUclMkNBSSUyMEhlcm8=" data-listing-date-sort="1705878000000" data-listing-file-modified-sort="1769085239247" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="436">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/ai-hero-day-1/index.html" class="no-external">AI Hero: Day 1 - Ingest and Index Your Data</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/ai-hero-day-1/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('QUklMjBBZ2VudHM='); return false;">
-AI Agents
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('TExN'); return false;">
-LLM
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('UHl0aG9u'); return false;">
-Python
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('UkFH'); return false;">
-RAG
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('QUklMjBIZXJv'); return false;">
-AI Hero
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/ai-hero-day-1/index.html" class="no-external">Building the foundation of an AI agent by automating data retrieval and metadata parsing.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/ai-hero-day-1/index.html" class="no-external">
-<div class="listing-date">
-Jan 22, 2024
-</div>
-<div class="listing-reading-time">
-3 min
 </div>
 </a>
 </div>
