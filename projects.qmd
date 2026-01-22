@@ -6,8 +6,8 @@ listing:
       description: |
         Projects and assignments from the AI Dev Tools Zoomcamp.
         <br><br>
-        <a href="https://github.com/oussou-dev/ai-dev-tools-zoomcamp" class="btn btn-outline-dark btn-sm" target="_blank"><i class="bi bi-github"></i> GitHub</a>
-        <a href="blog.html#category=Zoomcamp" class="btn btn-primary btn-sm" target="_blank"><i class="bi bi-journal-text"></i> Posts</a>
+        [GitHub](https://github.com/oussou-dev/ai-dev-tools-zoomcamp) <br><br>
+        [Posts](blog.html#category=Zoomcamp)
       categories: [AI, VIBE CODING, MCP, N8N, Zoomcamp]
       path: https://github.com/oussou-dev/ai-dev-tools-zoomcamp 
       image: "img/ai-dev-tools-cover.webp"
@@ -15,8 +15,8 @@ listing:
       description: |
         A comprehensive machine learning engineering course covering deployment, cloud, and MLOps.
         <br><br>
-        <a href="https://github.com/oussou-dev/ML_Engineer_ZoomCamp" class="btn btn-outline-dark btn-sm" target="_blank"><i class="bi bi-github"></i> GitHub</a>
-        <a href="blog.html#category=MLOPS" class="btn btn-primary btn-sm" target="_blank"><i class="bi bi-journal-text"></i> Posts</a>
+        [GitHub](https://github.com/oussou-dev/ML_Engineer_ZoomCamp) <br><br>
+        [Posts](blog.html#category=MLOPS)
       categories: [Machine Learning, MLOPS]
       path: https://github.com/oussou-dev/ML_Engineer_ZoomCamp
       image: "img/ml-zoomcamp-cover.webp"
@@ -24,8 +24,8 @@ listing:
       description: |
         A free 7-day email crash-course on building and deploying AI agents.
         <br><br>
-        <a href="https://github.com/oussou-dev/ai-hero-bootcamp" class="btn btn-outline-dark btn-sm" target="_blank"><i class="bi bi-github"></i> GitHub</a>
-        <a href="blog.html#category=AI%20Hero" class="btn btn-primary btn-sm" target="_blank"><i class="bi bi-journal-text"></i> Posts</a>
+        [GitHub](https://github.com/oussou-dev/ai-hero-bootcamp) <br><br>
+        [Posts](blog.html#category=AI%20Hero)
       categories: [AI Agents, LLM, Deployment]
       path: https://github.com/oussou-dev/ai-hero-bootcamp
       image: "img/ai_hero_cover.png"
