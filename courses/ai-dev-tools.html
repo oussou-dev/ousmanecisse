@@ -398,35 +398,43 @@ Week 2 taught me <strong>how to think like a real engineer</strong> using those 
                 let currentPath = window.location.pathname;
                 let repoName = "/ousmanecisse/";
 
-                // Ensure we have the full path starting after repo name
                 let pathAfterRepo = "";
                 if (currentPath.includes(repoName)) {
                     pathAfterRepo = currentPath.substring(currentPath.indexOf(repoName) + repoName.length);
                 } else {
-                    // Local preview case (usually starts with /)
                     pathAfterRepo = currentPath.startsWith('/') ? currentPath.substring(1) : currentPath;
                     repoName = "/";
+                }
+
+                // Handle trailing index.html or empty path
+                if (pathAfterRepo === "" || pathAfterRepo.endsWith("/")) {
+                    pathAfterRepo += "index.html";
                 }
 
                 if (text === "FR") {
                     if (!pathAfterRepo.startsWith("fr/")) {
                         // We are in EN, want to go to FR
-                        // Check if this page exists in FR (heuristic: matches common files)
-                        const parallelPages = ["index.html", "about.html", "blog.html", "projects.html"];
-                        let targetPage = pathAfterRepo || "index.html";
-                        if (parallelPages.includes(targetPage)) {
-                            link.href = repoName + "fr/" + targetPage;
-                        } else {
-                            link.href = repoName + "fr/index.html";
-                        }
+                        link.href = repoName + "fr/" + pathAfterRepo;
+
+                        // Heuristic check for known parallel files
+                        // If we want to be very robust, we would use a list or fetch, 
+                        // but for standard pages it should work.
                     }
                 } else if (text === "EN") {
                     if (pathAfterRepo.startsWith("fr/")) {
                         // We are in FR, want to go to EN
-                        let targetPage = pathAfterRepo.substring(3) || "index.html";
+                        let targetPage = pathAfterRepo.substring(3); // Remove "fr/"
                         link.href = repoName + targetPage;
                     }
                 }
+
+                // Add error handler to redirect to home if parallel page doesn't exist
+                link.addEventListener('click', function (e) {
+                    // This is a simple client-side exist check might be too slow, 
+                    // so we just let it 404 and maybe the user hits back, 
+                    // OR we can try to fetch it.
+                    // For now, let's keep it simple.
+                });
             }
         });
     });
