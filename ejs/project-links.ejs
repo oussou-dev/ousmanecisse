@@ -1,0 +1,46 @@
+<div class="list grid quarto-listing-cols-3">
+    <% for (const item of items) { %>
+        <div class="g-col-1" <%=metadataAttrs(item) %>>
+            <div class="quarto-grid-item card h-100 card-left">
+                <% if (item.image) { %>
+                    <div class="quarto-grid-thumbnail">
+                        <img src="<%= item.image %>" class="thumbnail-image card-img"
+                            style="height: 150px; object-fit: cover;">
+                    </div>
+                    <% } %>
+                        <div class="card-body post-contents">
+                            <h5 class="no-anchor card-title listing-title">
+                                <%= item.title %>
+                            </h5>
+                            <% if (item.description) { %>
+                                <div class="card-text listing-description">
+                                    <%= item.description %>
+                                </div>
+                                <% } %>
+                                    <% if (item.links) { %>
+                                        <div class="project-links-manual mt-3">
+                                            <% for (const link of item.links) { %>
+                                                <a href="<%= link.href %>"
+                                                    class="btn btn-sm btn-outline-primary me-1 mb-1" target="_blank">
+                                                    <% if (link.icon) { %><i class="bi bi-<%= link.icon %>"></i>
+                                                        <% } %>
+                                                            <%= link.text %>
+                                                </a>
+                                                <% } %>
+                                        </div>
+                                        <% } %>
+                                            <% if (item.categories) { %>
+                                                <div class="listing-categories mt-1">
+                                                    <% for (const category of item.categories) { %>
+                                                        <div class="listing-category"
+                                                            onclick="window.quartoListingCategory('<%= category %>'); return false;">
+                                                            <%= category %>
+                                                        </div>
+                                                        <% } %>
+                                                </div>
+                                                <% } %>
+                        </div>
+            </div>
+        </div>
+        <% } %>
+</div>

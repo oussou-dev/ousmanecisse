@@ -3,8 +3,8 @@ title: "Projets"
 listing:
   contents:
     - title: "Outils de Dev IA"
-      description: "Projets et devoirs du AI Dev Tools Zoomcamp.
-      categories: [IA, VIBE CODING, MCP, N8N, Zoomcamp]
+      description: "Projets et devoirs du AI Dev Tools Zoomcamp."
+      categories: [IA, Vibe Coding, MCP, n8n, Zoomcamp]
       path: https://github.com/oussou-dev/ai-dev-tools-zoomcamp 
       image: "https://raw.githubusercontent.com/DataTalksClub/ai-dev-tools-zoomcamp/main/images/course-cover.png"
       links:
@@ -13,24 +13,37 @@ listing:
           href: https://github.com/oussou-dev/ai-dev-tools-zoomcamp
         - icon: quarto
           text: Posts
-          href: https://oussou-dev.github.io/ousmanecisse/blog.html#category=Zoomcamp
+          href: https://oussou-dev.github.io/ousmanecisse/blog.html#category=AI%20Dev%20Tools
     - title: "Ingénieur ML ZoomCamp"
-      description: "Un cours complet d'ingénierie machine learning couvrant le déploiement, le cloud et le MLOps.<br><br>[GitHub](https://github.com/oussou-dev/ML_Engineer_ZoomCamp) | [Posts](https://oussou-dev.github.io/ousmanecisse/blog.html#category=MLOPS)"
-      categories: [Machine Learning, MLOPS]
+      description: "Un cours complet d'ingénierie machine learning couvrant le déploiement, le cloud et le MLOps."
+      categories: [Machine Learning, MLOps]
       path: https://github.com/oussou-dev/ML_Engineer_ZoomCamp
       image: "https://raw.githubusercontent.com/DataTalksClub/machine-learning-zoomcamp/master/images/ml-zoomcamp.png"
+      links:
+        - icon: github
+          text: GitHub
+          href: https://github.com/oussou-dev/ML_Engineer_ZoomCamp
+        - icon: quarto
+          text: Posts
+          href: https://oussou-dev.github.io/ousmanecisse/blog.html#category=MLOPS
     - title: "AI Hero"
-      description: "Un cours intensif gratuit de 7 jours par e-mail pour construire et déployer des agents IA.<br><br>[GitHub](https://github.com/oussou-dev/ai-hero-bootcamp) | [Posts](https://oussou-dev.github.io/ousmanecisse/blog.html#category=AI%20Hero)"
+      description: "Un cours intensif gratuit de 7 jours par e-mail pour construire et déployer des agents IA."
       categories: [Agents IA, LLM, Déploiement]
       path: https://github.com/oussou-dev/ai-hero-bootcamp
-      image: "../img/ai_hero_cover.png" 
+      image: "../img/ai_hero_cover.png"
+      links:
+        - icon: github
+          text: GitHub
+          href: https://github.com/oussou-dev/ai-hero-bootcamp
+        - icon: quarto
+          text: Posts
+          href: https://oussou-dev.github.io/ousmanecisse/blog.html#category=AI%20Hero
     
+  template: ../ejs/project-links.ejs
   sort: "date desc"
-  type: grid
   categories: false
   sort-ui: false
   filter-ui: false
-  fields: [image, title, description, categories]
 page-layout: full
 ---
 
