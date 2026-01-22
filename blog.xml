@@ -9,13 +9,14 @@
 <link>https://oussou-dev.github.io/ousmanecisse/blog.html</link>
 <atom:link href="https://oussou-dev.github.io/ousmanecisse/blog.xml" rel="self" type="application/rss+xml"/>
 <description></description>
-<generator>quarto-1.6.42</generator>
-<lastBuildDate>Wed, 21 Jan 2026 23:00:00 GMT</lastBuildDate>
+<generator>quarto-1.8.27</generator>
+<lastBuildDate>Thu, 22 Jan 2026 00:00:00 GMT</lastBuildDate>
 <item>
   <title>AI Hero: Day 1 - Ingest and Index Your Data</title>
   <dc:creator>Ousmane Cissé</dc:creator>
   <link>https://oussou-dev.github.io/ousmanecisse/posts/ai-hero-day-1/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -30,24 +31,36 @@
 <section id="in-memory-processing-with-python" class="level2">
 <h2 class="anchored" data-anchor-id="in-memory-processing-with-python">In-Memory Processing with Python</h2>
 <p>One of the coolest tricks I learned was handling data entirely in memory. Instead of downloading a ZIP file to the disk, unzipping it, and dealing with temporary files, we used Python’s <code>io.BytesIO</code> and <code>zipfile</code> modules.</p>
-<p>This approach is: - <strong>Faster</strong>: No disk I/O overhead. - <strong>Cleaner</strong>: No need to manage or delete temporary files. - <strong>Scalable</strong>: Perfect for cloud functions or ephemeral environments.</p>
+<p>This approach is:<br>
+- <strong>Faster</strong>: No disk I/O overhead.<br>
+- <strong>Cleaner</strong>: No need to manage or delete temporary files.<br>
+- <strong>Scalable</strong>: Perfect for cloud functions or ephemeral environments.</p>
 </section>
 <section id="extracting-meaning-with-metadata-frontmatter" class="level2">
 <h2 class="anchored" data-anchor-id="extracting-meaning-with-metadata-frontmatter">Extracting Meaning with Metadata (Frontmatter)</h2>
 <p>Most technical documentation (like Evidently AI’s docs) uses <strong>YAML Frontmatter</strong> to store critical metadata like titles, tags, and descriptions.</p>
-<p>Using the <code>python-frontmatter</code> library, I wrote a parser that: 1. Iterates through the ZIP archive. 2. Identifies relevant documentation files. 3. Separates the human-readable text from the structured metadata.</p>
+<p>Using the <code>python-frontmatter</code> library, I wrote a parser that:<br>
+1. Iterates through the ZIP archive.<br>
+2. Identifies relevant documentation files.<br>
+3. Separates the human-readable text from the structured metadata.</p>
 <p>This metadata is crucial for later stages, as it allows the agent to filter information by category or relevance.</p>
 </section>
 <section id="the-modern-tech-stack-uv-and-more" class="level2">
 <h2 class="anchored" data-anchor-id="the-modern-tech-stack-uv-and-more">The Modern Tech Stack: <code>uv</code> and more</h2>
-<p>We stayed away from traditional, slow package managers. Instead, we used: - <strong><code>uv</code></strong>: The extremely fast Python package manager that makes environment setup instantaneous. - <strong><code>requests</code></strong>: To stream the repository data directly from GitHub. - <strong><code>python-frontmatter</code></strong>: For precise metadata extraction. - <strong>Jupyter Notebooks</strong>: For interactive exploration of the ingested data structure.</p>
+<p>We stayed away from traditional, slow package managers. Instead, we used: - <strong><code>uv</code></strong>: The extremely fast Python package manager that makes environment setup instantaneous.<br>
+- <strong><code>requests</code></strong>: To stream the repository data directly from GitHub.<br>
+- <strong><code>python-frontmatter</code></strong>: For precise metadata extraction.<br>
+- <strong>Jupyter Notebooks</strong>: For interactive exploration of the ingested data structure.</p>
 </section>
 <section id="key-lessons" class="level2">
 <h2 class="anchored" data-anchor-id="key-lessons">Key Lessons</h2>
 <ol type="1">
-<li><strong>Automate the Source</strong>: Never manually manage the data your agent needs. Build a pipeline.</li>
-<li><strong>Memory is Your Friend</strong>: Processing ZIP files in memory is a professional pattern that saves time and local resources.</li>
-<li><strong>Structure Matters</strong>: Content is king, but metadata is the compass that helps your agent find the right content.</li>
+<li><strong>Automate the Source</strong>: Never manually manage the data your agent needs. Build a pipeline.<br>
+</li>
+<li><strong>Memory is Your Friend</strong>: Processing ZIP files in memory is a professional pattern that saves time and local resources.<br>
+</li>
+<li><strong>Structure Matters</strong>: Content is king, but metadata is the compass that helps your agent find the right content.<br>
+</li>
 <li><strong>Tooling Consistency</strong>: Using modern tools like <code>uv</code> ensures that experiments are reproducible and fast.</li>
 </ol>
 </section>
@@ -67,7 +80,7 @@
   <category>RAG</category>
   <category>AI Hero</category>
   <guid>https://oussou-dev.github.io/ousmanecisse/posts/ai-hero-day-1/</guid>
-  <pubDate>Wed, 21 Jan 2026 23:00:00 GMT</pubDate>
+  <pubDate>Thu, 22 Jan 2026 00:00:00 GMT</pubDate>
   <media:content url="https://oussou-dev.github.io/ousmanecisse/img/ai_hero_day_1.png" medium="image" type="image/png" height="77" width="144"/>
 </item>
 <item>
@@ -75,6 +88,7 @@
   <dc:creator>Ousmane Cissé</dc:creator>
   <link>https://oussou-dev.github.io/ousmanecisse/posts/ai-news-aggregator/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -146,7 +160,7 @@
   <category>Agents</category>
   <category>Docker</category>
   <guid>https://oussou-dev.github.io/ousmanecisse/posts/ai-news-aggregator/</guid>
-  <pubDate>Mon, 19 Jan 2026 23:00:00 GMT</pubDate>
+  <pubDate>Tue, 20 Jan 2026 00:00:00 GMT</pubDate>
   <media:content url="https://oussou-dev.github.io/ousmanecisse/img/ai_news_aggregator.webp" medium="image" type="image/webp"/>
 </item>
 <item>
@@ -154,6 +168,7 @@
   <dc:creator>Ousmane Cissé</dc:creator>
   <link>https://oussou-dev.github.io/ousmanecisse/posts/ai-dev-tools-week-4/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -211,7 +226,7 @@
   <category>Agents</category>
   <category>AI Dev Tools</category>
   <guid>https://oussou-dev.github.io/ousmanecisse/posts/ai-dev-tools-week-4/</guid>
-  <pubDate>Wed, 14 Jan 2026 23:00:00 GMT</pubDate>
+  <pubDate>Thu, 15 Jan 2026 00:00:00 GMT</pubDate>
   <media:content url="https://oussou-dev.github.io/ousmanecisse/img/week_4_ai_dev_tools.webp" medium="image" type="image/webp"/>
 </item>
 <item>
@@ -219,6 +234,7 @@
   <dc:creator>Ousmane Cissé</dc:creator>
   <link>https://oussou-dev.github.io/ousmanecisse/posts/ai-dev-tools-week-3/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -275,7 +291,7 @@
   <category>Agents</category>
   <category>AI Dev Tools</category>
   <guid>https://oussou-dev.github.io/ousmanecisse/posts/ai-dev-tools-week-3/</guid>
-  <pubDate>Thu, 11 Dec 2025 23:00:00 GMT</pubDate>
+  <pubDate>Fri, 12 Dec 2025 00:00:00 GMT</pubDate>
   <media:content url="https://oussou-dev.github.io/ousmanecisse/img/week_3_ai_dev_tools.png" medium="image" type="image/png" height="61" width="144"/>
 </item>
 <item>
@@ -283,6 +299,7 @@
   <dc:creator>Ousmane Cissé</dc:creator>
   <link>https://oussou-dev.github.io/ousmanecisse/posts/ai-dev-tools-week-2/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -369,7 +386,7 @@ Week 2 taught me <strong>how to think like a real engineer</strong> using those 
   <category>CI/CD</category>
   <category>AI Dev Tools</category>
   <guid>https://oussou-dev.github.io/ousmanecisse/posts/ai-dev-tools-week-2/</guid>
-  <pubDate>Thu, 04 Dec 2025 23:00:00 GMT</pubDate>
+  <pubDate>Fri, 05 Dec 2025 00:00:00 GMT</pubDate>
   <media:content url="https://oussou-dev.github.io/ousmanecisse/img/week_2_ai_dev_tools.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
@@ -377,6 +394,7 @@ Week 2 taught me <strong>how to think like a real engineer</strong> using those 
   <dc:creator>Ousmane Cissé</dc:creator>
   <link>https://oussou-dev.github.io/ousmanecisse/posts/ai-dev-tools-week-1/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -410,7 +428,7 @@ Week 2 taught me <strong>how to think like a real engineer</strong> using those 
   <category>Vibe Coding</category>
   <category>AI Dev Tools</category>
   <guid>https://oussou-dev.github.io/ousmanecisse/posts/ai-dev-tools-week-1/</guid>
-  <pubDate>Thu, 27 Nov 2025 23:00:00 GMT</pubDate>
+  <pubDate>Fri, 28 Nov 2025 00:00:00 GMT</pubDate>
   <media:content url="https://oussou-dev.github.io/ousmanecisse/img/week_1_ai_dev_tools.png" medium="image" type="image/png" height="61" width="144"/>
 </item>
 </channel>
