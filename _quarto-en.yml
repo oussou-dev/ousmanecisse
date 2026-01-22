@@ -5,7 +5,7 @@ project:
     - "posts/"
     - "!fr/"
 
-lang: en
+lang: en-US
 
 website:
   navbar:
@@ -21,3 +21,11 @@ website:
         href: https://github.com/oussou-dev
       - icon: linkedin
         href: https://linkedin.com/in/ousmanecisse
+
+format:
+  html:
+    theme:
+      light: [cosmo, theme.scss]
+      dark: [cosmo, dark.scss]
+    css: styles.css
+    toc: true
