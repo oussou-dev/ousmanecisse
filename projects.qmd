@@ -2,6 +2,11 @@
 title: "Projects"
 listing:
   contents:
+    - title: "No-Code & AI Enterprise Apps"
+      description: "Building internal enterprise apps using No-Code tools (Airtable, Softr, Make/Zapier) and AI. Covers needs analysis, BPMN modeling, and full implementation."
+      categories: [No-Code, AI, Airtable, Softr, Make, BPMN]
+      path: https://github.com/oussou-dev/nocode-ai-enterprise-apps
+      image: "img/nocode_ai_enterprise_cover.png"
     - title: "Data Engineering Zoomcamp"
       description: "A comprehensive course on Data Engineering covering Docker, Terraform, Google Cloud Platform, Airflow, Spark, and Kafka."
       categories: [Data Engineering, GCP, Terraform, Airflow, Kafka, Spark]
