@@ -8,7 +8,7 @@ lang: fr-FR
 website:
   navbar:
     left:
-      - href: fr/projects.qmd
+      - href: fr/projets.qmd
         text: Projets
       - href: fr/blog.qmd
         text: Blog
