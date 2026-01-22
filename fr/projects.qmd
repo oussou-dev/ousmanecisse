@@ -5,30 +5,42 @@ listing:
     - title: "Outils de Dev IA"
       description: |
         Projets et devoirs du AI Dev Tools Zoomcamp.
-        <br><br>
-        <a href="https://github.com/oussou-dev/ai-dev-tools-zoomcamp" class="btn btn-outline-dark btn-sm" target="_blank"><i class="bi bi-github"></i> GitHub</a>
-        <a href="blog.html#category=Zoomcamp" class="btn btn-primary btn-sm" target="_blank"><i class="bi bi-journal-text"></i> Posts</a>
       categories: [IA, VIBE CODING, MCP, N8N, Zoomcamp]
       path: https://github.com/oussou-dev/ai-dev-tools-zoomcamp 
       image: "../img/ai-dev-tools-cover.webp"
+      links:
+        - icon: github
+          text: Github
+          href: https://github.com/oussou-dev/ai-dev-tools-zoomcamp
+        - icon: journal-text
+          text: Posts
+          href: https://oussou-dev.github.io/ousmanecisse/fr/blog.html#category=AI%20Dev%20Tools
     - title: "Ingénieur ML ZoomCamp"
       description: |
         Un cours complet d'ingénierie machine learning couvrant le déploiement, le cloud et le MLOps.
-        <br><br>
-        <a href="https://github.com/oussou-dev/ML_Engineer_ZoomCamp" class="btn btn-outline-dark btn-sm" target="_blank"><i class="bi bi-github"></i> GitHub</a>
-        <a href="blog.html#category=MLOPS" class="btn btn-primary btn-sm" target="_blank"><i class="bi bi-journal-text"></i> Posts</a>
       categories: [Machine Learning, MLOPS]
       path: https://github.com/oussou-dev/ML_Engineer_ZoomCamp
       image: "../img/ml-zoomcamp-cover.webp"
+      links:
+        - icon: github
+          text: Github
+          href: https://github.com/oussou-dev/ML_Engineer_ZoomCamp
+        - icon: journal-text
+          text: Posts
+          href: https://oussou-dev.github.io/ousmanecisse/fr/blog.html#category=MLOPS"
     - title: "AI Hero"
       description: |
         Un cours intensif gratuit de 7 jours par e-mail pour construire et déployer des agents IA.
-        <br><br>
-        <a href="https://github.com/oussou-dev/ai-hero-bootcamp" class="btn btn-outline-dark btn-sm" target="_blank"><i class="bi bi-github"></i> GitHub</a>
-        <a href="blog.html#category=AI%20Hero" class="btn btn-primary btn-sm" target="_blank"><i class="bi bi-journal-text"></i> Posts</a>
       categories: [Agents IA, LLM, Déploiement]
       path: https://github.com/oussou-dev/ai-hero-bootcamp
       image: "../img/ai_hero_cover.png"
+      links:
+        - icon: github
+          text: Github
+          href: https://github.com/oussou-dev/ai-hero-bootcamp
+        - icon: journal-text
+          text: Posts
+          href: https://oussou-dev.github.io/ousmanecisse/fr/blog.html#category=AI%20Hero"
     
   sort: "date desc"
   type: grid
