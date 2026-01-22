@@ -9,13 +9,14 @@
 <link>https://oussou-dev.github.io/ousmanecisse/blog.html</link>
 <atom:link href="https://oussou-dev.github.io/ousmanecisse/blog.xml" rel="self" type="application/rss+xml"/>
 <description></description>
-<generator>quarto-1.6.42</generator>
-<lastBuildDate>Wed, 21 Jan 2026 23:00:00 GMT</lastBuildDate>
+<generator>quarto-1.8.27</generator>
+<lastBuildDate>Thu, 22 Jan 2026 00:00:00 GMT</lastBuildDate>
 <item>
   <title>AI Hero: Day 1 - Ingest and Index Your Data</title>
   <dc:creator>Ousmane Cissé</dc:creator>
   <link>https://oussou-dev.github.io/ousmanecisse/posts/ai-hero-day-1/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -79,7 +80,7 @@
   <category>RAG</category>
   <category>AI Hero</category>
   <guid>https://oussou-dev.github.io/ousmanecisse/posts/ai-hero-day-1/</guid>
-  <pubDate>Wed, 21 Jan 2026 23:00:00 GMT</pubDate>
+  <pubDate>Thu, 22 Jan 2026 00:00:00 GMT</pubDate>
   <media:content url="https://oussou-dev.github.io/ousmanecisse/img/ai_hero_day_1.png" medium="image" type="image/png" height="77" width="144"/>
 </item>
 <item>
@@ -87,6 +88,7 @@
   <dc:creator>Ousmane Cissé</dc:creator>
   <link>https://oussou-dev.github.io/ousmanecisse/posts/ai-news-aggregator/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -157,7 +159,7 @@
   <category>VIBE CODING</category>
   <category>FastAPI</category>
   <guid>https://oussou-dev.github.io/ousmanecisse/posts/ai-news-aggregator/</guid>
-  <pubDate>Mon, 19 Jan 2026 23:00:00 GMT</pubDate>
+  <pubDate>Tue, 20 Jan 2026 00:00:00 GMT</pubDate>
   <media:content url="https://oussou-dev.github.io/ousmanecisse/img/ai_news_aggregator.webp" medium="image" type="image/webp"/>
 </item>
 <item>
@@ -165,6 +167,7 @@
   <dc:creator>Ousmane Cissé</dc:creator>
   <link>https://oussou-dev.github.io/ousmanecisse/posts/ai-dev-tools-week-4/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -222,7 +225,7 @@
   <category>Agents</category>
   <category>AI Dev Tools</category>
   <guid>https://oussou-dev.github.io/ousmanecisse/posts/ai-dev-tools-week-4/</guid>
-  <pubDate>Wed, 14 Jan 2026 23:00:00 GMT</pubDate>
+  <pubDate>Thu, 15 Jan 2026 00:00:00 GMT</pubDate>
   <media:content url="https://oussou-dev.github.io/ousmanecisse/img/week_4_ai_dev_tools.webp" medium="image" type="image/webp"/>
 </item>
 <item>
@@ -230,6 +233,7 @@
   <dc:creator>Ousmane Cissé</dc:creator>
   <link>https://oussou-dev.github.io/ousmanecisse/posts/ai-dev-tools-week-3/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -286,7 +290,7 @@
   <category>Agents</category>
   <category>AI Dev Tools</category>
   <guid>https://oussou-dev.github.io/ousmanecisse/posts/ai-dev-tools-week-3/</guid>
-  <pubDate>Thu, 11 Dec 2025 23:00:00 GMT</pubDate>
+  <pubDate>Fri, 12 Dec 2025 00:00:00 GMT</pubDate>
   <media:content url="https://oussou-dev.github.io/ousmanecisse/img/week_3_ai_dev_tools.png" medium="image" type="image/png" height="61" width="144"/>
 </item>
 <item>
@@ -294,6 +298,7 @@
   <dc:creator>Ousmane Cissé</dc:creator>
   <link>https://oussou-dev.github.io/ousmanecisse/posts/ai-dev-tools-week-2/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -380,7 +385,7 @@ Week 2 taught me <strong>how to think like a real engineer</strong> using those 
   <category>CI/CD</category>
   <category>AI Dev Tools</category>
   <guid>https://oussou-dev.github.io/ousmanecisse/posts/ai-dev-tools-week-2/</guid>
-  <pubDate>Thu, 04 Dec 2025 23:00:00 GMT</pubDate>
+  <pubDate>Fri, 05 Dec 2025 00:00:00 GMT</pubDate>
   <media:content url="https://oussou-dev.github.io/ousmanecisse/img/week_2_ai_dev_tools.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
@@ -388,6 +393,7 @@ Week 2 taught me <strong>how to think like a real engineer</strong> using those 
   <dc:creator>Ousmane Cissé</dc:creator>
   <link>https://oussou-dev.github.io/ousmanecisse/posts/ai-dev-tools-week-1/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -421,7 +427,7 @@ Week 2 taught me <strong>how to think like a real engineer</strong> using those 
   <category>Vibe Coding</category>
   <category>AI Dev Tools</category>
   <guid>https://oussou-dev.github.io/ousmanecisse/posts/ai-dev-tools-week-1/</guid>
-  <pubDate>Thu, 27 Nov 2025 23:00:00 GMT</pubDate>
+  <pubDate>Fri, 28 Nov 2025 00:00:00 GMT</pubDate>
   <media:content url="https://oussou-dev.github.io/ousmanecisse/img/week_1_ai_dev_tools.png" medium="image" type="image/png" height="61" width="144"/>
 </item>
 </channel>

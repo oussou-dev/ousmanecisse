@@ -1,16 +1,13 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr-FR" xml:lang="fr-FR"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.8.27">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Ousmane Cissé">
-<meta name="dcterms.date" content="2025-12-05">
-<meta name="description" content="Building a complete application with AI: Frontend-first, OpenAPI, Docker, and CI/CD.">
 
-<title>AI Dev Tools: Week 2 - End-to-End Application Development – OUSMANE CISSE</title>
+<title>Blog – OUSMANE CISSE</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -26,28 +23,30 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-4d9afe2b8d18ee9fa5d0d57b5ed4214d.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-9de4ba47141a85e0076d50a48ec97bbb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-fb0387139d7df336a858ae67ce89b33c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-9de4ba47141a85e0076d50a48ec97bbb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-listing/list.min.js"></script>
+<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-4d9afe2b8d18ee9fa5d0d57b5ed4214d.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-9de4ba47141a85e0076d50a48ec97bbb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-fb0387139d7df336a858ae67ce89b33c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-9de4ba47141a85e0076d50a48ec97bbb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -62,23 +61,81 @@ ul.task-list li input[type="checkbox"] {
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
+    "search-no-results-text": "Pas de résultats",
+    "search-matching-documents-text": "documents trouvés",
+    "search-copy-link-title": "Copier le lien vers la recherche",
+    "search-hide-matches-text": "Cacher les correspondances additionnelles",
+    "search-more-match-text": "correspondance de plus dans ce document",
+    "search-more-matches-text": "correspondances de plus dans ce document",
+    "search-clear-button-title": "Effacer",
     "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-detached-cancel-button-title": "Annuler",
+    "search-submit-button-title": "Envoyer",
+    "search-label": "Recherche"
   }
 }</script>
+<script>
 
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
 
-<link rel="stylesheet" href="../../styles.css">
-</head>
+    const options = {
+      valueNames: ['listing-date','listing-title','listing-reading-time','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+<link rel="alternate" type="application/rss+xml" title="OUSMANE CISSE" href="blog.xml" data-external="1"></head>
 
 <body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
@@ -249,29 +306,29 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">OUSMANE CISSE</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+            <div id="quarto-search" class="" title="Recherche"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Basculer la navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../projects.html"> 
-<span class="menu-text">Projects</span></a>
+    <a class="nav-link" href="../fr/projets.html"> 
+<span class="menu-text">Projets</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../blog.html"> 
+    <a class="nav-link active" href="../fr/blog.html" aria-current="page"> 
 <span class="menu-text">Blog</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../fr/index.html"> 
-<span class="menu-text">FR</span></a>
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">EN</span></a>
   </li>  
   <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/oussou-dev"> <i class="bi bi-github" role="img">
@@ -286,68 +343,32 @@ ul.task-list li input[type="checkbox"] {
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Basculer le mode sombre"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#frontend-first-approach-with-ai" id="toc-frontend-first-approach-with-ai" class="nav-link active" data-scroll-target="#frontend-first-approach-with-ai">Frontend-First Approach with AI</a></li>
-  <li><a href="#api-first-backend-design-with-openapi" id="toc-api-first-backend-design-with-openapi" class="nav-link" data-scroll-target="#api-first-backend-design-with-openapi">API-First Backend Design with OpenAPI</a></li>
-  <li><a href="#database-integration-real-world-concerns" id="toc-database-integration-real-world-concerns" class="nav-link" data-scroll-target="#database-integration-real-world-concerns">Database Integration &amp; Real-World Concerns</a></li>
-  <li><a href="#containerization-local-development" id="toc-containerization-local-development" class="nav-link" data-scroll-target="#containerization-local-development">Containerization &amp; Local Development</a></li>
-  <li><a href="#deployment-to-the-cloud" id="toc-deployment-to-the-cloud" class="nav-link" data-scroll-target="#deployment-to-the-cloud">Deployment to the Cloud</a></li>
-  <li><a href="#cicd-pipeline-with-github-actions" id="toc-cicd-pipeline-with-github-actions" class="nav-link" data-scroll-target="#cicd-pipeline-with-github-actions">CI/CD Pipeline with GitHub Actions</a></li>
-  <li><a href="#key-lessons" id="toc-key-lessons" class="nav-link" data-scroll-target="#key-lessons">Key Lessons</a></li>
-  <li><a href="#mindset-shift" id="toc-mindset-shift" class="nav-link" data-scroll-target="#mindset-shift">Mindset Shift</a></li>
-  </ul>
-</nav>
-    </div>
+        
+    <h5 class="quarto-listing-category-title">Catégories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">Tous <span class="quarto-category-count">(6)</span></div><div class="category" data-category="QWdlbnRz">Agents <span class="quarto-category-count">(1)</span></div><div class="category" data-category="QWdlbnRzJTIwSUE=">Agents IA <span class="quarto-category-count">(2)</span></div><div class="category" data-category="QUklMjBEZXYlMjBUb29scw==">AI Dev Tools <span class="quarto-category-count">(3)</span></div><div class="category" data-category="QUklMjBIZXJv">AI Hero <span class="quarto-category-count">(1)</span></div><div class="category" data-category="RmFzdEFQSQ==">FastAPI <span class="quarto-category-count">(1)</span></div><div class="category" data-category="SUE=">IA <span class="quarto-category-count">(4)</span></div><div class="category" data-category="TExN">LLM <span class="quarto-category-count">(1)</span></div><div class="category" data-category="T3V0aWxz">Outils <span class="quarto-category-count">(3)</span></div><div class="category" data-category="T3V0aWxzJTIwRGV2JTIwSUE=">Outils Dev IA <span class="quarto-category-count">(2)</span></div><div class="category" data-category="UHJvamV0">Projet <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UkFH">RAG <span class="quarto-category-count">(1)</span></div><div class="category" data-category="VmliZSUyMENvZGluZw==">Vibe Coding <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Wm9vbWNhbXA=">Zoomcamp <span class="quarto-category-count">(4)</span></div></div></div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content column-page-left" id="quarto-document-content">
 
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">AI Dev Tools: Week 2 - End-to-End Application Development</h1>
-  <div class="quarto-categories">
-    <div class="quarto-category">AI</div>
-    <div class="quarto-category">Zoomcamp</div>
-    <div class="quarto-category">CI/CD</div>
-    <div class="quarto-category">AI Dev Tools</div>
-  </div>
-  </div>
-
-<div>
-  <div class="description">
-    Building a complete application with AI: Frontend-first, OpenAPI, Docker, and CI/CD.
-  </div>
+<h1 class="title">Blog</h1>
 </div>
 
 
-<div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Ousmane Cissé </p>
-          </div>
-  </div>
+<div class="quarto-title-meta column-page-left">
+
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">December 5, 2025</p>
-    </div>
-  </div>
   
     
   </div>
@@ -357,83 +378,209 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>This week took my understanding of AI-assisted development to the next level by building a <strong>complete end-to-end application</strong> — from frontend to backend, database, containerization, and cloud deployment. Here’s what I learned:</p>
-<section id="frontend-first-approach-with-ai" class="level2">
-<h2 class="anchored" data-anchor-id="frontend-first-approach-with-ai">Frontend-First Approach with AI</h2>
-<p>We started by using <strong>Lovable</strong> (or similar AI tools like Bolt, Cursor, or Claude Code) to rapidly scaffold a multiplayer Snake game in React with TypeScript. The key insight: rather than starting with backend logic, we built an interactive frontend first, complete with mockups for authentication, leaderboards, and live gameplay. This frontend-first strategy shifts how you think about API contracts — you build the UI you want, <em>then</em> design the backend to serve it.</p>
-<p>The prompt engineering for frontend was crucial: describing the app’s features (game modes, multiplayer mechanics, testing coverage) helped the AI generate a cohesive, testable codebase. The lesson: <strong>clear requirements lead to better code generation</strong>.</p>
-</section>
-<section id="api-first-backend-design-with-openapi" class="level2">
-<h2 class="anchored" data-anchor-id="api-first-backend-design-with-openapi">API-First Backend Design with OpenAPI</h2>
-<p>Once the frontend was done, we didn’t write the backend arbitrarily. Instead, we:</p>
-<ol type="1">
-<li><strong>Extracted OpenAPI specifications</strong> from the frontend code — documenting what API endpoints and data structures the frontend actually needs</li>
-<li><strong>Generated a FastAPI backend</strong> directly from those specs</li>
-</ol>
-<p>This “API contract first” approach ensures frontend and backend stay synchronized and prevents wasted effort on unused endpoints. I learned that <strong>OpenAPI is a powerful bridge between AI-generated frontend and backend</strong> — it forces both to speak the same language.</p>
-</section>
-<section id="database-integration-real-world-concerns" class="level2">
-<h2 class="anchored" data-anchor-id="database-integration-real-world-concerns">Database Integration &amp; Real-World Concerns</h2>
-<p>Initially we mocked the database, then we integrated <strong>SQLAlchemy</strong> with <strong>PostgreSQL and SQLite</strong>. This introduced important real-world considerations:</p>
-<ul>
-<li><strong>Integration testing</strong>: We wrote separate integration tests (not just unit tests) that spin up a SQLite database and verify the full data flow works</li>
-<li><strong>Schema management &amp; migrations</strong>: Real databases require careful handling of data persistence and schema changes</li>
-<li><strong>Testing strategy</strong>: Mock databases for unit tests, real databases for integration tests</li>
-</ul>
-<p>I realized that many junior developers skip this, but it’s critical for production apps.</p>
-</section>
-<section id="containerization-local-development" class="level2">
-<h2 class="anchored" data-anchor-id="containerization-local-development">Containerization &amp; Local Development</h2>
-<p>We containerized everything using <strong>Docker Compose</strong>, bundling:</p>
-<ul>
-<li>Frontend (served via Nginx)</li>
-<li>Backend (FastAPI)</li>
-<li>Database (PostgreSQL)</li>
-</ul>
-<p>This forced me to think about: - Environment configuration - Service networking and communication - Build processes and dependencies - Running everything locally in a reproducible way</p>
-<p>Running <code>docker-compose up --build</code> felt like magic — suddenly an entire application stack worked locally, exactly as it would in production.</p>
-</section>
-<section id="deployment-to-the-cloud" class="level2">
-<h2 class="anchored" data-anchor-id="deployment-to-the-cloud">Deployment to the Cloud</h2>
-<p>We deployed to <strong>Render</strong>, combining frontend and backend into a single container. The workflow:</p>
-<ol type="1">
-<li>Build a single Docker image with both services</li>
-<li>Push to a cloud platform (we chose Render for simplicity)</li>
-<li>Let the platform handle scaling, SSL, and management</li>
-</ol>
-<p>This demystified “DevOps” — it’s really just containerizing intelligently and picking a platform that abstracts infrastructure away.</p>
-</section>
-<section id="cicd-pipeline-with-github-actions" class="level2">
-<h2 class="anchored" data-anchor-id="cicd-pipeline-with-github-actions">CI/CD Pipeline with GitHub Actions</h2>
-<p>The final piece was automating everything:</p>
-<ol type="1">
-<li><strong>Run tests</strong> (frontend + backend) on every push</li>
-<li><strong>Run integration tests</strong> separately</li>
-<li><strong>Deploy automatically</strong> to Render if tests pass</li>
-</ol>
-<p>This creates a <strong>safety net</strong> — bad code can’t accidentally get deployed. We learned that CI/CD pipelines, while seeming complex at first, are just a series of automated checks and deployments.</p>
-</section>
-<section id="key-lessons" class="level2">
-<h2 class="anchored" data-anchor-id="key-lessons">Key Lessons</h2>
-<ol type="1">
-<li><p><strong>Leverage AI for speed, but maintain structure</strong>: AI can scaffold code fast, but without proper API contracts (OpenAPI), testing (unit + integration), and containerization, it falls apart at scale</p></li>
-<li><p><strong>APIs are the contract</strong>: OpenAPI specs bridge frontend and backend teams/tools — treat them seriously</p></li>
-<li><p><strong>Testing isn’t optional</strong>: Unit tests catch bugs, integration tests catch integration bugs. Both matter</p></li>
-<li><p><strong>Containerization enables reproducibility</strong>: Docker/Compose makes “it works on my machine” a non-issue</p></li>
-<li><p><strong>Automation frees mental energy</strong>: CI/CD means you can focus on features, not manual testing and deployment</p></li>
-<li><p><strong>End-to-end thinking</strong>: You can’t just build a feature in isolation anymore. You need to think: frontend → API → backend → database → tests → deployment</p></li>
-</ol>
-</section>
-<section id="mindset-shift" class="level2">
-<h2 class="anchored" data-anchor-id="mindset-shift">Mindset Shift</h2>
-<p>Week 1 taught me AI tools exist.<br>
-Week 2 taught me <strong>how to think like a real engineer</strong> using those tools: designing APIs, writing tests, containerizing, and automating. It’s the difference between “I can generate code” and “I can ship production applications.”</p>
-<p><strong>Homework:</strong> <a href="https://github.com/oussou-dev/ai-dev-tools-zoomcamp/tree/main/02_code_itws">End-to-End Project - Online Coding Interview Platform</a></p>
 
 
-</section>
 
-</main> <!-- /main -->
+
+<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
+<div class="listing-actions-group">
+   <div class="input-group input-group-sm quarto-listing-sort">
+    <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
+    <select id="listing-listing-sort" class="form-select" aria-label="Trier par" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
+      <option value="" disabled="" selected="" hidden="">Trier par</option>
+      <option value="index" data-direction="asc">Ordre par défaut</option>
+      <option value="listing-title" data-direction="asc">
+        Titre
+      </option>
+      <option value="listing-date-sort" data-direction="asc">
+        Date - Le plus ancien
+      </option>
+      <option value="listing-date-sort" data-direction="desc">
+        Date - Le plus récent
+      </option>
+    </select>
+  </div>
+</div>
+<div class="list quarto-listing-default">
+<div class="quarto-post image-right" data-index="0" data-categories="QWdlbnRzJTIwSUElMkNMTE0lMkNSQUclMkNBSSUyMEhlcm8=" data-listing-date-sort="1769040000000" data-listing-file-modified-sort="1769113333612" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="563">
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../fr/posts/ai-hero-day-1/index.html" class="no-external">AI Hero : Jour 1 - Ingestion et Indexation des Données</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('QWdlbnRzJTIwSUE='); return false;">Agents IA</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('TExN'); return false;">LLM</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('UkFH'); return false;">RAG</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('QUklMjBIZXJv'); return false;">AI Hero</div>
+
+</div>
+<div class="delink listing-description"><a href="../fr/posts/ai-hero-day-1/index.html" class="no-external">
+<p>Construire les fondations d’un agent IA en automatisant la récupération des données et le parsing des métadonnées.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="../fr/posts/ai-hero-day-1/index.html" class="no-external">
+<div class="listing-date">
+22 janv. 2026
+</div>
+<div class="listing-reading-time">3 min.</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="1" data-categories="UHJvamV0JTJDQWdlbnRzJTIwSUElMkNPdXRpbHMlMjBEZXYlMjBJQSUyQ1ZpYmUlMjBDb2RpbmclMkNGYXN0QVBJ" data-listing-date-sort="1768867200000" data-listing-file-modified-sort="1769113333612" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="485">
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../fr/posts/ai-news-aggregator/index.html" class="no-external">Projet Outils de Dev IA : Agrégateur d’actualités IA</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('UHJvamV0'); return false;">Projet</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('QWdlbnRzJTIwSUE='); return false;">Agents IA</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('T3V0aWxzJTIwRGV2JTIwSUE='); return false;">Outils Dev IA</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('VmliZSUyMENvZGluZw=='); return false;">Vibe Coding</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('RmFzdEFQSQ=='); return false;">FastAPI</div>
+
+</div>
+<div class="delink listing-description"><a href="../fr/posts/ai-news-aggregator/index.html" class="no-external">
+<p>Une plateforme d’actualités alimentée par l’IA, full-stack, qui scrape, résume et diffuse les tendances IA en utilisant FastAPI, Streamlit et l’orchestration multi-agents.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="../fr/posts/ai-news-aggregator/index.html" class="no-external">
+<div class="listing-date">
+20 janv. 2026
+</div>
+<div class="listing-reading-time">3 min.</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="2" data-categories="SUElMkNab29tY2FtcCUyQ0FnZW50cyUyQ091dGlscyUyMERldiUyMElB" data-listing-date-sort="1768435200000" data-listing-file-modified-sort="1769113333612" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="518">
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../fr/posts/ai-dev-tools-week-4/index.html" class="no-external">Outils de Dev IA : Semaine 4 - Construire des Agents de Code</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('SUE='); return false;">IA</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Wm9vbWNhbXA='); return false;">Zoomcamp</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('QWdlbnRz'); return false;">Agents</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('T3V0aWxzJTIwRGV2JTIwSUE='); return false;">Outils Dev IA</div>
+
+</div>
+<div class="delink listing-description"><a href="../fr/posts/ai-dev-tools-week-4/index.html" class="no-external">
+<p>Maîtriser la création d’agents de code autonomes en utilisant des Agents, des Outils et du Contexte.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="../fr/posts/ai-dev-tools-week-4/index.html" class="no-external">
+<div class="listing-date">
+15 janv. 2026
+</div>
+<div class="listing-reading-time">3 min.</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="3" data-categories="SUElMkNPdXRpbHMlMkNab29tY2FtcCUyQ0FJJTIwRGV2JTIwVG9vbHM=" data-listing-date-sort="1706918400000" data-listing-file-modified-sort="1769113333612" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="45">
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../fr/posts/ai-dev-tools-week-3/index.html" class="no-external">Outils de Dév IA - Semaine 3</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('SUE='); return false;">IA</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('T3V0aWxz'); return false;">Outils</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Wm9vbWNhbXA='); return false;">Zoomcamp</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('QUklMjBEZXYlMjBUb29scw=='); return false;">AI Dev Tools</div>
+
+</div>
+<div class="delink listing-description"><a href="../fr/posts/ai-dev-tools-week-3/index.html" class="no-external">
+<p>Aperçu de la troisième semaine du AI Dev Tools Zoomcamp.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="../fr/posts/ai-dev-tools-week-3/index.html" class="no-external">
+<div class="listing-date">
+3 févr. 2024
+</div>
+<div class="listing-reading-time">1 min.</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="4" data-categories="SUElMkNPdXRpbHMlMkNab29tY2FtcCUyQ0FJJTIwRGV2JTIwVG9vbHM=" data-listing-date-sort="1706313600000" data-listing-file-modified-sort="1769113333612" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="52">
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../fr/posts/ai-dev-tools-week-2/index.html" class="no-external">Outils de Dév IA - Semaine 2</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('SUE='); return false;">IA</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('T3V0aWxz'); return false;">Outils</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Wm9vbWNhbXA='); return false;">Zoomcamp</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('QUklMjBEZXYlMjBUb29scw=='); return false;">AI Dev Tools</div>
+
+</div>
+<div class="delink listing-description"><a href="../fr/posts/ai-dev-tools-week-2/index.html" class="no-external">
+<p>Aperçu de la deuxième semaine du AI Dev Tools Zoomcamp.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="../fr/posts/ai-dev-tools-week-2/index.html" class="no-external">
+<div class="listing-date">
+27 janv. 2024
+</div>
+<div class="listing-reading-time">1 min.</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="5" data-categories="SUElMkNPdXRpbHMlMkNab29tY2FtcCUyQ0FJJTIwRGV2JTIwVG9vbHM=" data-listing-date-sort="1705708800000" data-listing-file-modified-sort="1769113333612" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="60">
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../fr/posts/ai-dev-tools-week-1/index.html" class="no-external">Outils de Dév IA - Semaine 1</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('SUE='); return false;">IA</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('T3V0aWxz'); return false;">Outils</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Wm9vbWNhbXA='); return false;">Zoomcamp</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('QUklMjBEZXYlMjBUb29scw=='); return false;">AI Dev Tools</div>
+
+</div>
+<div class="delink listing-description"><a href="../fr/posts/ai-dev-tools-week-1/index.html" class="no-external">
+<p>Aperçu de la première semaine du AI Dev Tools Zoomcamp.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="../fr/posts/ai-dev-tools-week-1/index.html" class="no-external">
+<div class="listing-date">
+20 janv. 2024
+</div>
+<div class="listing-reading-time">1 min.</div>
+</a>
+</div>
+</div>
+</div>
+<div class="listing-no-matching d-none">Aucun article correspondant</div>
+</div></main> <!-- /main -->
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         const langLinks = document.querySelectorAll('.navbar-nav .nav-link');
@@ -531,12 +678,12 @@ Week 2 taught me <strong>how to think like a real engineer</strong> using those 
       // flash "checked"
       button.classList.add('code-copy-button-checked');
       var currentTitle = button.getAttribute("title");
-      button.setAttribute("title", "Copied!");
+      button.setAttribute("title", "Copié");
       let tooltip;
       if (window.bootstrap) {
         button.setAttribute("data-bs-toggle", "tooltip");
         button.setAttribute("data-bs-placement", "left");
-        button.setAttribute("data-bs-title", "Copied!");
+        button.setAttribute("data-bs-title", "Copié");
         tooltip = new bootstrap.Tooltip(button, 
           { trigger: "manual", 
             customClass: "code-copy-button-tooltip",

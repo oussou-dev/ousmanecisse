@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.8.27">
@@ -7,10 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Ousmane Cissé">
-<meta name="dcterms.date" content="2025-12-05">
-<meta name="description" content="Building a complete application with AI: Frontend-first, OpenAPI, Docker, and CI/CD.">
+<meta name="description" content="Construire les fondations d’un agent IA en automatisant la récupération des données et le parsing des métadonnées.">
 
-<title>AI Dev Tools: Week 2 - End-to-End Application Development – OUSMANE CISSE</title>
+<title>AI Hero : Jour 1 - Ingestion et Indexation des Données – OUSMANE CISSE</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -26,28 +25,28 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-4d9afe2b8d18ee9fa5d0d57b5ed4214d.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-9de4ba47141a85e0076d50a48ec97bbb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-fb0387139d7df336a858ae67ce89b33c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-9de4ba47141a85e0076d50a48ec97bbb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-4d9afe2b8d18ee9fa5d0d57b5ed4214d.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-9de4ba47141a85e0076d50a48ec97bbb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-fb0387139d7df336a858ae67ce89b33c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../site_libs/bootstrap/bootstrap-9de4ba47141a85e0076d50a48ec97bbb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -62,22 +61,22 @@ ul.task-list li input[type="checkbox"] {
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
+    "search-no-results-text": "Pas de résultats",
+    "search-matching-documents-text": "documents trouvés",
+    "search-copy-link-title": "Copier le lien vers la recherche",
+    "search-hide-matches-text": "Cacher les correspondances additionnelles",
+    "search-more-match-text": "correspondance de plus dans ce document",
+    "search-more-matches-text": "correspondances de plus dans ce document",
+    "search-clear-button-title": "Effacer",
     "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-detached-cancel-button-title": "Annuler",
+    "search-submit-button-title": "Envoyer",
+    "search-label": "Recherche"
   }
 }</script>
 
 
-<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../../../styles.css">
 </head>
 
 <body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -249,29 +248,29 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">OUSMANE CISSE</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+            <div id="quarto-search" class="" title="Recherche"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Basculer la navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../projects.html"> 
-<span class="menu-text">Projects</span></a>
+    <a class="nav-link" href="../../../fr/projets.html"> 
+<span class="menu-text">Projets</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../blog.html"> 
+    <a class="nav-link" href="../../../fr/blog.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../fr/index.html"> 
-<span class="menu-text">FR</span></a>
+    <a class="nav-link" href="../../../index.html"> 
+<span class="menu-text">EN</span></a>
   </li>  
   <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/oussou-dev"> <i class="bi bi-github" role="img">
@@ -286,7 +285,7 @@ ul.task-list li input[type="checkbox"] {
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Basculer le mode sombre"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -297,17 +296,15 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
+    <h2 id="toc-title">Sur cette page</h2>
    
   <ul>
-  <li><a href="#frontend-first-approach-with-ai" id="toc-frontend-first-approach-with-ai" class="nav-link active" data-scroll-target="#frontend-first-approach-with-ai">Frontend-First Approach with AI</a></li>
-  <li><a href="#api-first-backend-design-with-openapi" id="toc-api-first-backend-design-with-openapi" class="nav-link" data-scroll-target="#api-first-backend-design-with-openapi">API-First Backend Design with OpenAPI</a></li>
-  <li><a href="#database-integration-real-world-concerns" id="toc-database-integration-real-world-concerns" class="nav-link" data-scroll-target="#database-integration-real-world-concerns">Database Integration &amp; Real-World Concerns</a></li>
-  <li><a href="#containerization-local-development" id="toc-containerization-local-development" class="nav-link" data-scroll-target="#containerization-local-development">Containerization &amp; Local Development</a></li>
-  <li><a href="#deployment-to-the-cloud" id="toc-deployment-to-the-cloud" class="nav-link" data-scroll-target="#deployment-to-the-cloud">Deployment to the Cloud</a></li>
-  <li><a href="#cicd-pipeline-with-github-actions" id="toc-cicd-pipeline-with-github-actions" class="nav-link" data-scroll-target="#cicd-pipeline-with-github-actions">CI/CD Pipeline with GitHub Actions</a></li>
-  <li><a href="#key-lessons" id="toc-key-lessons" class="nav-link" data-scroll-target="#key-lessons">Key Lessons</a></li>
-  <li><a href="#mindset-shift" id="toc-mindset-shift" class="nav-link" data-scroll-target="#mindset-shift">Mindset Shift</a></li>
+  <li><a href="#construire-linfrastructure-de-la-connaissance" id="toc-construire-linfrastructure-de-la-connaissance" class="nav-link active" data-scroll-target="#construire-linfrastructure-de-la-connaissance">Construire l’Infrastructure de la Connaissance</a></li>
+  <li><a href="#traitement-en-mémoire-avec-python" id="toc-traitement-en-mémoire-avec-python" class="nav-link" data-scroll-target="#traitement-en-mémoire-avec-python">Traitement en Mémoire avec Python</a></li>
+  <li><a href="#extraire-du-sens-avec-les-métadonnées-frontmatter" id="toc-extraire-du-sens-avec-les-métadonnées-frontmatter" class="nav-link" data-scroll-target="#extraire-du-sens-avec-les-métadonnées-frontmatter">Extraire du Sens avec les Métadonnées (Frontmatter)</a></li>
+  <li><a href="#la-stack-tech-moderne-uv-et-plus-encore" id="toc-la-stack-tech-moderne-uv-et-plus-encore" class="nav-link" data-scroll-target="#la-stack-tech-moderne-uv-et-plus-encore">La Stack Tech Moderne : <code>uv</code> et plus encore</a></li>
+  <li><a href="#leçons-clés" id="toc-leçons-clés" class="nav-link" data-scroll-target="#leçons-clés">Leçons Clés</a></li>
+  <li><a href="#changement-détat-desprit" id="toc-changement-détat-desprit" class="nav-link" data-scroll-target="#changement-détat-desprit">Changement d’État d’Esprit</a></li>
   </ul>
 </nav>
     </div>
@@ -317,18 +314,18 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">AI Dev Tools: Week 2 - End-to-End Application Development</h1>
+<h1 class="title">AI Hero : Jour 1 - Ingestion et Indexation des Données</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">AI</div>
-    <div class="quarto-category">Zoomcamp</div>
-    <div class="quarto-category">CI/CD</div>
-    <div class="quarto-category">AI Dev Tools</div>
+    <div class="quarto-category">Agents IA</div>
+    <div class="quarto-category">LLM</div>
+    <div class="quarto-category">RAG</div>
+    <div class="quarto-category">AI Hero</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    Building a complete application with AI: Frontend-first, OpenAPI, Docker, and CI/CD.
+    Construire les fondations d’un agent IA en automatisant la récupération des données et le parsing des métadonnées.
   </div>
 </div>
 
@@ -336,16 +333,16 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-title-meta">
 
     <div>
-    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-heading">Auteur·rice</div>
     <div class="quarto-title-meta-contents">
              <p>Ousmane Cissé </p>
           </div>
   </div>
     
     <div>
-    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-heading">Date de publication</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">December 5, 2025</p>
+      <p class="date">22 janvier 2026</p>
     </div>
   </div>
   
@@ -357,78 +354,52 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>This week took my understanding of AI-assisted development to the next level by building a <strong>complete end-to-end application</strong> — from frontend to backend, database, containerization, and cloud deployment. Here’s what I learned:</p>
-<section id="frontend-first-approach-with-ai" class="level2">
-<h2 class="anchored" data-anchor-id="frontend-first-approach-with-ai">Frontend-First Approach with AI</h2>
-<p>We started by using <strong>Lovable</strong> (or similar AI tools like Bolt, Cursor, or Claude Code) to rapidly scaffold a multiplayer Snake game in React with TypeScript. The key insight: rather than starting with backend logic, we built an interactive frontend first, complete with mockups for authentication, leaderboards, and live gameplay. This frontend-first strategy shifts how you think about API contracts — you build the UI you want, <em>then</em> design the backend to serve it.</p>
-<p>The prompt engineering for frontend was crucial: describing the app’s features (game modes, multiplayer mechanics, testing coverage) helped the AI generate a cohesive, testable codebase. The lesson: <strong>clear requirements lead to better code generation</strong>.</p>
+<p>Le voyage vers la création d’un agent IA personnalisé commence par son « cerveau » — ou plus précisément, sa base de connaissances. Lors du <strong>Jour 1</strong> du projet <strong>AI Hero</strong>, je me suis concentré sur la première étape du pipeline RAG (Retrieval-Augmented Generation) : <strong>l’Ingestion</strong>.</p>
+<p>Voici comment j’ai construit un pipeline robuste pour récupérer, analyser et structurer la documentation technique depuis GitHub.</p>
+<section id="construire-linfrastructure-de-la-connaissance" class="level2">
+<h2 class="anchored" data-anchor-id="construire-linfrastructure-de-la-connaissance">Construire l’Infrastructure de la Connaissance</h2>
+<p>Un agent IA n’est efficace que par la qualité des données auxquelles il a accès. Plutôt que de copier manuellement la documentation, nous nous sommes concentrés sur la création d’un système automatisé capable d’ingérer des centaines de fichiers Markdown directement depuis un dépôt GitHub.</p>
+<p>L’objectif était de transformer des fichiers bruts <code>.md</code> et <code>.mdx</code> en un format structuré (type JSON) incluant à la fois le contenu et ses métadonnées associées.</p>
 </section>
-<section id="api-first-backend-design-with-openapi" class="level2">
-<h2 class="anchored" data-anchor-id="api-first-backend-design-with-openapi">API-First Backend Design with OpenAPI</h2>
-<p>Once the frontend was done, we didn’t write the backend arbitrarily. Instead, we:</p>
+<section id="traitement-en-mémoire-avec-python" class="level2">
+<h2 class="anchored" data-anchor-id="traitement-en-mémoire-avec-python">Traitement en Mémoire avec Python</h2>
+<p>L’une des astuces les plus intéressantes que j’ai apprises est de manipuler les données entièrement en mémoire. Au lieu de télécharger un fichier ZIP sur le disque, de le décompresser et de gérer des fichiers temporaires, nous avons utilisé les modules <code>io.BytesIO</code> et <code>zipfile</code> de Python.</p>
+<p>Cette approche est : - <strong>Plus rapide</strong> : Pas de latence liée aux entrées/sorties du disque.<br>
+- <strong>Plus propre</strong> : Pas besoin de gérer ou de supprimer des fichiers temporaires.<br>
+- <strong>Scalable</strong> : Parfait pour des fonctions cloud ou des environnements éphémères.</p>
+</section>
+<section id="extraire-du-sens-avec-les-métadonnées-frontmatter" class="level2">
+<h2 class="anchored" data-anchor-id="extraire-du-sens-avec-les-métadonnées-frontmatter">Extraire du Sens avec les Métadonnées (Frontmatter)</h2>
+<p>La plupart des documentations techniques utilisent du <strong>YAML Frontmatter</strong> pour stocker des métadonnées critiques comme les titres, les tags et les descriptions.</p>
+<p>En utilisant la bibliothèque <code>python-frontmatter</code>, j’ai écrit un parseur qui : 1. Parcourt l’archive ZIP.<br>
+2. Identifie les fichiers de documentation pertinents.<br>
+3. Sépare le texte lisible par l’homme des métadonnées structurées.</p>
+<p>Ces métadonnées sont cruciales pour les étapes ultérieures, car elles permettent à l’agent de filtrer les informations par catégorie ou par pertinence.</p>
+</section>
+<section id="la-stack-tech-moderne-uv-et-plus-encore" class="level2">
+<h2 class="anchored" data-anchor-id="la-stack-tech-moderne-uv-et-plus-encore">La Stack Tech Moderne : <code>uv</code> et plus encore</h2>
+<p>Nous avons laissé de côté les gestionnaires de paquets traditionnels et lents. À la place, nous avons utilisé : - <strong><code>uv</code></strong> : Le gestionnaire de paquets Python extrêmement rapide qui rend la configuration de l’environnement instantanée.<br>
+- <strong><code>requests</code></strong> : Pour streamer les données du dépôt directement depuis GitHub.<br>
+- <strong><code>python-frontmatter</code></strong> : Pour une extraction précise des métadonnées.<br>
+- <strong>Jupyter Notebooks</strong> : Pour l’exploration interactive de la structure des données ingérées.</p>
+</section>
+<section id="leçons-clés" class="level2">
+<h2 class="anchored" data-anchor-id="leçons-clés">Leçons Clés</h2>
 <ol type="1">
-<li><strong>Extracted OpenAPI specifications</strong> from the frontend code — documenting what API endpoints and data structures the frontend actually needs</li>
-<li><strong>Generated a FastAPI backend</strong> directly from those specs</li>
-</ol>
-<p>This “API contract first” approach ensures frontend and backend stay synchronized and prevents wasted effort on unused endpoints. I learned that <strong>OpenAPI is a powerful bridge between AI-generated frontend and backend</strong> — it forces both to speak the same language.</p>
-</section>
-<section id="database-integration-real-world-concerns" class="level2">
-<h2 class="anchored" data-anchor-id="database-integration-real-world-concerns">Database Integration &amp; Real-World Concerns</h2>
-<p>Initially we mocked the database, then we integrated <strong>SQLAlchemy</strong> with <strong>PostgreSQL and SQLite</strong>. This introduced important real-world considerations:</p>
-<ul>
-<li><strong>Integration testing</strong>: We wrote separate integration tests (not just unit tests) that spin up a SQLite database and verify the full data flow works</li>
-<li><strong>Schema management &amp; migrations</strong>: Real databases require careful handling of data persistence and schema changes</li>
-<li><strong>Testing strategy</strong>: Mock databases for unit tests, real databases for integration tests</li>
-</ul>
-<p>I realized that many junior developers skip this, but it’s critical for production apps.</p>
-</section>
-<section id="containerization-local-development" class="level2">
-<h2 class="anchored" data-anchor-id="containerization-local-development">Containerization &amp; Local Development</h2>
-<p>We containerized everything using <strong>Docker Compose</strong>, bundling:</p>
-<ul>
-<li>Frontend (served via Nginx)</li>
-<li>Backend (FastAPI)</li>
-<li>Database (PostgreSQL)</li>
-</ul>
-<p>This forced me to think about: - Environment configuration - Service networking and communication - Build processes and dependencies - Running everything locally in a reproducible way</p>
-<p>Running <code>docker-compose up --build</code> felt like magic — suddenly an entire application stack worked locally, exactly as it would in production.</p>
-</section>
-<section id="deployment-to-the-cloud" class="level2">
-<h2 class="anchored" data-anchor-id="deployment-to-the-cloud">Deployment to the Cloud</h2>
-<p>We deployed to <strong>Render</strong>, combining frontend and backend into a single container. The workflow:</p>
-<ol type="1">
-<li>Build a single Docker image with both services</li>
-<li>Push to a cloud platform (we chose Render for simplicity)</li>
-<li>Let the platform handle scaling, SSL, and management</li>
-</ol>
-<p>This demystified “DevOps” — it’s really just containerizing intelligently and picking a platform that abstracts infrastructure away.</p>
-</section>
-<section id="cicd-pipeline-with-github-actions" class="level2">
-<h2 class="anchored" data-anchor-id="cicd-pipeline-with-github-actions">CI/CD Pipeline with GitHub Actions</h2>
-<p>The final piece was automating everything:</p>
-<ol type="1">
-<li><strong>Run tests</strong> (frontend + backend) on every push</li>
-<li><strong>Run integration tests</strong> separately</li>
-<li><strong>Deploy automatically</strong> to Render if tests pass</li>
-</ol>
-<p>This creates a <strong>safety net</strong> — bad code can’t accidentally get deployed. We learned that CI/CD pipelines, while seeming complex at first, are just a series of automated checks and deployments.</p>
-</section>
-<section id="key-lessons" class="level2">
-<h2 class="anchored" data-anchor-id="key-lessons">Key Lessons</h2>
-<ol type="1">
-<li><p><strong>Leverage AI for speed, but maintain structure</strong>: AI can scaffold code fast, but without proper API contracts (OpenAPI), testing (unit + integration), and containerization, it falls apart at scale</p></li>
-<li><p><strong>APIs are the contract</strong>: OpenAPI specs bridge frontend and backend teams/tools — treat them seriously</p></li>
-<li><p><strong>Testing isn’t optional</strong>: Unit tests catch bugs, integration tests catch integration bugs. Both matter</p></li>
-<li><p><strong>Containerization enables reproducibility</strong>: Docker/Compose makes “it works on my machine” a non-issue</p></li>
-<li><p><strong>Automation frees mental energy</strong>: CI/CD means you can focus on features, not manual testing and deployment</p></li>
-<li><p><strong>End-to-end thinking</strong>: You can’t just build a feature in isolation anymore. You need to think: frontend → API → backend → database → tests → deployment</p></li>
+<li><strong>Automatisez la Source</strong> : Ne gérez jamais manuellement les données dont votre agent a besoin. Construisez un pipeline.<br>
+</li>
+<li><strong>La Mémoire est votre Allie</strong> : Traiter les fichiers ZIP en mémoire est un pattern professionnel qui gagne du temps et préserve les ressources locales.<br>
+</li>
+<li><strong>La Structure Compte</strong> : Le contenu est roi, mais les métadonnées sont la boussole qui aide votre agent à trouver le bon contenu.<br>
+</li>
+<li><strong>Cohérence des Outils</strong> : L’utilisation d’outils modernes comme <code>uv</code> garantit que les expérimentations sont reproductibles et rapides.</li>
 </ol>
 </section>
-<section id="mindset-shift" class="level2">
-<h2 class="anchored" data-anchor-id="mindset-shift">Mindset Shift</h2>
-<p>Week 1 taught me AI tools exist.<br>
-Week 2 taught me <strong>how to think like a real engineer</strong> using those tools: designing APIs, writing tests, containerizing, and automating. It’s the difference between “I can generate code” and “I can ship production applications.”</p>
-<p><strong>Homework:</strong> <a href="https://github.com/oussou-dev/ai-dev-tools-zoomcamp/tree/main/02_code_itws">End-to-End Project - Online Coding Interview Platform</a></p>
+<section id="changement-détat-desprit" class="level2">
+<h2 class="anchored" data-anchor-id="changement-détat-desprit">Changement d’État d’Esprit</h2>
+<p>Le Jour 1 a déplacé ma perspective de « Comment prompter le modèle ? » vers « <strong>Comment préparer les données pour le modèle ?</strong> ». Vous pouvez avoir le meilleur LLM du monde, mais si votre pipeline d’ingestion est désordonné, votre agent ne sera pas fiable.</p>
+<p><strong>Prochaine étape</strong> : Le Jour 2 se concentrera sur le <strong>Chunking et l’Embedding</strong> pour transformer ce texte brut en vecteurs mathématiques que l’IA peut « rechercher ».</p>
+<p><strong>Devoirs</strong> : <a href="https://github.com/oussou-dev/ai-hero-bootcamp">Implémentation AI Hero Jour 1</a></p>
 
 
 </section>
@@ -531,12 +502,12 @@ Week 2 taught me <strong>how to think like a real engineer</strong> using those 
       // flash "checked"
       button.classList.add('code-copy-button-checked');
       var currentTitle = button.getAttribute("title");
-      button.setAttribute("title", "Copied!");
+      button.setAttribute("title", "Copié");
       let tooltip;
       if (window.bootstrap) {
         button.setAttribute("data-bs-toggle", "tooltip");
         button.setAttribute("data-bs-placement", "left");
-        button.setAttribute("data-bs-title", "Copied!");
+        button.setAttribute("data-bs-title", "Copié");
         tooltip = new bootstrap.Tooltip(button, 
           { trigger: "manual", 
             customClass: "code-copy-button-tooltip",
