@@ -3,10 +3,17 @@ title: "Projets"
 listing:
   contents:
     - title: "Outils de Dev IA"
-      description: "Projets et devoirs du AI Dev Tools Zoomcamp.<br><br>[GitHub](https://github.com/oussou-dev/ai-dev-tools-zoomcamp) | [Posts](https://oussou-dev.github.io/ousmanecisse/blog.html#category=Zoomcamp)"
+      description: "Projets et devoirs du AI Dev Tools Zoomcamp.
       categories: [IA, VIBE CODING, MCP, N8N, Zoomcamp]
       path: https://github.com/oussou-dev/ai-dev-tools-zoomcamp 
       image: "https://raw.githubusercontent.com/DataTalksClub/ai-dev-tools-zoomcamp/main/images/course-cover.png"
+      links:
+        - icon: github
+          text: GitHub
+          href: https://github.com/oussou-dev/ai-dev-tools-zoomcamp
+        - icon: quarto
+          text: Posts
+          href: https://oussou-dev.github.io/ousmanecisse/blog.html#category=Zoomcamp
     - title: "Ingénieur ML ZoomCamp"
       description: "Un cours complet d'ingénierie machine learning couvrant le déploiement, le cloud et le MLOps.<br><br>[GitHub](https://github.com/oussou-dev/ML_Engineer_ZoomCamp) | [Posts](https://oussou-dev.github.io/ousmanecisse/blog.html#category=MLOPS)"
       categories: [Machine Learning, MLOPS]

@@ -3,20 +3,41 @@ title: "Projects"
 listing:
   contents:
     - title: "AI Dev Tools"
-      description: "Projects and assignments from the AI Dev Tools Zoomcamp.<br><br>[GitHub](https://github.com/oussou-dev/ai-dev-tools-zoomcamp) | [Posts](blog.html#category=Zoomcamp)"
+      description: "Projects and assignments from the AI Dev Tools Zoomcamp."
       categories: [AI, VIBE CODING, MCP, N8N, Zoomcamp]
-      path: https://github.com/oussou-dev/ai-dev-tools-zoomcamp 
+      # path: https://github.com/oussou-dev/ai-dev-tools-zoomcamp 
       image: "img/ai-dev-tools-cover.webp"
+      links:
+        - icon: github
+          text: GitHub
+          href: https://github.com/oussou-dev/ai-dev-tools-zoomcamp
+        - icon: quarto
+          text: Posts
+          href: https://oussou-dev.github.io/ousmanecisse/blog.html#category=Zoomcamp
     - title: "ML Engineer ZoomCamp"
-      description: "A comprehensive machine learning engineering course covering deployment, cloud, and MLOps.<br><br>[GitHub](https://github.com/oussou-dev/ML_Engineer_ZoomCamp) | [Posts](blog.html#category=MLOPS)"
+      description: "A comprehensive machine learning engineering course covering deployment, cloud, and MLOps."
       categories: [Machine Learning, MLOPS]
-      path: https://github.com/oussou-dev/ML_Engineer_ZoomCamp
+      # path: https://github.com/oussou-dev/ML_Engineer_ZoomCamp
       image: "img/ml-zoomcamp-cover.webp"
+      links:
+        - icon: github
+          text: GitHub
+          href: https://github.com/oussou-dev/ML_Engineer_ZoomCamp
+        - icon: quarto
+          text: Posts
+          href: https://oussou-dev.github.io/ousmanecisse/blog.html#category=MLOPS"
     - title: "AI Hero"
       description: "A free 7-day email crash-course on building and deploying AI agents.<br><br>[GitHub](https://github.com/oussou-dev/ai-hero-bootcamp) | [Posts](https://oussou-dev.github.io/ousmanecisse/blog.html#category=AI%20Hero)"
       categories: [AI Agents, LLM, Deployment]
       # path: https://github.com/oussou-dev/ai-hero-bootcamp
       image: "img/ai_hero_cover.png"
+      links:
+        - icon: github
+          text: GitHub
+          href: https://github.com/oussou-dev/ai-hero-bootcamp
+        - icon: quarto
+          text: Posts
+          href: https://oussou-dev.github.io/ousmanecisse/blog.html#category=AI%20Hero
     
   sort: "date desc"
   type: grid
