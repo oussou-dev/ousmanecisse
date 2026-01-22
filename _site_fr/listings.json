@@ -1,0 +1,14 @@
+[
+  {
+    "listing": "/fr/projects.html",
+    "items": []
+  },
+  {
+    "listing": "/fr/blog.html",
+    "items": [
+      "/fr/posts/ai-dev-tools-week-3/index.html",
+      "/fr/posts/ai-dev-tools-week-2/index.html",
+      "/fr/posts/ai-dev-tools-week-1/index.html"
+    ]
+  }
+]

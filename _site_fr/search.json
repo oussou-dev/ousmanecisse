@@ -1,0 +1,114 @@
+[
+  {
+    "objectID": "fr/index.html",
+    "href": "fr/index.html",
+    "title": "Ousmane Cissé",
+    "section": "",
+    "text": "Je suis Consultant Ingénieur IA basé en France avec un profil hybride en finance, audit et développement web.\nJ’aide les entreprises à transformer leurs besoins métiers en solutions IA scalables : Agents IA, systèmes RAG, automatisation et architectures de données modernes.\nMon expérience dans les services financiers et les projets numériques me permet de livrer des initiatives IA techniquement solides, conformes et alignées avec les contraintes opérationnelles réelles. Disponible pour des missions de conseil en IA, applications LLM, automatisation et ingénierie de données."
+  },
+  {
+    "objectID": "fr/posts/ai-dev-tools-week-3/index.html",
+    "href": "fr/posts/ai-dev-tools-week-3/index.html",
+    "title": "Outils de Dév IA - Semaine 3",
+    "section": "",
+    "text": "Cette semaine était dédiée à la création d’agents et à l’utilisation du protocole MCP."
+  },
+  {
+    "objectID": "fr/posts/ai-dev-tools-week-3/index.html#introduction",
+    "href": "fr/posts/ai-dev-tools-week-3/index.html#introduction",
+    "title": "Outils de Dév IA - Semaine 3",
+    "section": "",
+    "text": "Cette semaine était dédiée à la création d’agents et à l’utilisation du protocole MCP."
+  },
+  {
+    "objectID": "fr/posts/ai-dev-tools-week-3/index.html#points-clés",
+    "href": "fr/posts/ai-dev-tools-week-3/index.html#points-clés",
+    "title": "Outils de Dév IA - Semaine 3",
+    "section": "Points Clés",
+    "text": "Points Clés\n\nComprendre le Model Context Protocol (MCP).\nConstruire un serveur MCP simple.\nConnecter des outils personnalisés aux LLMs."
+  },
+  {
+    "objectID": "fr/posts/ai-dev-tools-week-3/index.html#conclusion",
+    "href": "fr/posts/ai-dev-tools-week-3/index.html#conclusion",
+    "title": "Outils de Dév IA - Semaine 3",
+    "section": "Conclusion",
+    "text": "Conclusion\nLe MCP ouvre des possibilités incroyables pour l’interopérabilité entre les outils d’IA."
+  },
+  {
+    "objectID": "fr/posts/ai-dev-tools-week-1/index.html",
+    "href": "fr/posts/ai-dev-tools-week-1/index.html",
+    "title": "Outils de Dév IA - Semaine 1",
+    "section": "",
+    "text": "Cette semaine, nous avons exploré les outils fondamentaux pour le développement assisté par IA. Nous avons couvert l’utilisation des LLM pour l’écriture de code, le refactoring, et la documentation."
+  },
+  {
+    "objectID": "fr/posts/ai-dev-tools-week-1/index.html#introduction",
+    "href": "fr/posts/ai-dev-tools-week-1/index.html#introduction",
+    "title": "Outils de Dév IA - Semaine 1",
+    "section": "",
+    "text": "Cette semaine, nous avons exploré les outils fondamentaux pour le développement assisté par IA. Nous avons couvert l’utilisation des LLM pour l’écriture de code, le refactoring, et la documentation."
+  },
+  {
+    "objectID": "fr/posts/ai-dev-tools-week-1/index.html#points-clés",
+    "href": "fr/posts/ai-dev-tools-week-1/index.html#points-clés",
+    "title": "Outils de Dév IA - Semaine 1",
+    "section": "Points Clés",
+    "text": "Points Clés\n\nConfiguration de l’environnement de développement.\nIntroduction à GitHub Copilot.\nUtilisation de ChatGPT pour la génération de code."
+  },
+  {
+    "objectID": "fr/posts/ai-dev-tools-week-1/index.html#conclusion",
+    "href": "fr/posts/ai-dev-tools-week-1/index.html#conclusion",
+    "title": "Outils de Dév IA - Semaine 1",
+    "section": "Conclusion",
+    "text": "Conclusion\nUne première semaine passionnante qui pose les bases pour la suite du programme."
+  },
+  {
+    "objectID": "fr/projects.html",
+    "href": "fr/projects.html",
+    "title": "Projets",
+    "section": "",
+    "text": "Une sélection de projets sur lesquels j’ai travaillé.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOutils de Dev IA\n\n\n\nIA\n\n\nVIBE CODING\n\n\nMCP\n\n\nN8N\n\n\nZoomcamp\n\n\n\nProjets et devoirs du AI Dev Tools Zoomcamp.\n\n\n\n\n\n\n\n\n\n\n\n\n\nIngénieur ML ZoomCamp\n\n\n\nMachine Learning\n\n\nMLOPS\n\n\n\nUn cours complet d’ingénierie machine learning couvrant le déploiement, le cloud et le MLOps.\n\n\n\n\n\n\n\nAucun article correspondant"
+  },
+  {
+    "objectID": "fr/about.html",
+    "href": "fr/about.html",
+    "title": "À propos de moi",
+    "section": "",
+    "text": "Je suis Consultant Ingénieur IA basé en France avec un profil hybride en finance, audit et développement web.\nJ’aide les entreprises à transformer leurs besoins métiers en solutions IA scalables : Agents IA, systèmes RAG, automatisation et architectures de données modernes.\nMon expérience dans les services financiers et les projets numériques me permet de livrer des initiatives IA techniquement solides, conformes et alignées avec les contraintes opérationnelles réelles. Disponible pour des missions de conseil en IA, applications LLM, automatisation et ingénierie de données."
+  },
+  {
+    "objectID": "fr/posts/ai-dev-tools-week-2/index.html",
+    "href": "fr/posts/ai-dev-tools-week-2/index.html",
+    "title": "Outils de Dév IA - Semaine 2",
+    "section": "",
+    "text": "La deuxième semaine s’est concentrée sur des cas d’utilisation plus avancés. Nous avons appris à intégrer des API d’IA dans nos applications."
+  },
+  {
+    "objectID": "fr/posts/ai-dev-tools-week-2/index.html#introduction",
+    "href": "fr/posts/ai-dev-tools-week-2/index.html#introduction",
+    "title": "Outils de Dév IA - Semaine 2",
+    "section": "",
+    "text": "La deuxième semaine s’est concentrée sur des cas d’utilisation plus avancés. Nous avons appris à intégrer des API d’IA dans nos applications."
+  },
+  {
+    "objectID": "fr/posts/ai-dev-tools-week-2/index.html#points-clés",
+    "href": "fr/posts/ai-dev-tools-week-2/index.html#points-clés",
+    "title": "Outils de Dév IA - Semaine 2",
+    "section": "Points Clés",
+    "text": "Points Clés\n\nUtilisation de l’API OpenAI.\nCréation de scripts simples avec Python.\nAutomatisation des tâches répétitives."
+  },
+  {
+    "objectID": "fr/posts/ai-dev-tools-week-2/index.html#conclusion",
+    "href": "fr/posts/ai-dev-tools-week-2/index.html#conclusion",
+    "title": "Outils de Dév IA - Semaine 2",
+    "section": "Conclusion",
+    "text": "Conclusion\nNous commençons à voir la puissance de l’intégration de l’IA dans les workflows de développement."
+  },
+  {
+    "objectID": "fr/blog.html",
+    "href": "fr/blog.html",
+    "title": "Blog",
+    "section": "",
+    "text": "Outils de Dév IA - Semaine 3\n\n\n\n\n\n\nIA\n\n\nOutils\n\n\nZoomcamp\n\n\n\nAperçu de la troisième semaine du AI Dev Tools Zoomcamp.\n\n\n\n\n\n3 févr. 2024\n\n\n1 min.\n\n\n\n\n\n\n\nOutils de Dév IA - Semaine 2\n\n\n\n\n\n\nIA\n\n\nOutils\n\n\nZoomcamp\n\n\n\nAperçu de la deuxième semaine du AI Dev Tools Zoomcamp.\n\n\n\n\n\n27 janv. 2024\n\n\n1 min.\n\n\n\n\n\n\n\nOutils de Dév IA - Semaine 1\n\n\n\n\n\n\nIA\n\n\nOutils\n\n\nZoomcamp\n\n\n\nAperçu de la première semaine du AI Dev Tools Zoomcamp.\n\n\n\n\n\n20 janv. 2024\n\n\n1 min.\n\n\n\n\n\n\nAucun article correspondant"
+  }
+]

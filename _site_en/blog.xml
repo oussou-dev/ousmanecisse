@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss  xmlns:atom="http://www.w3.org/2005/Atom" 
+      xmlns:media="http://search.yahoo.com/mrss/" 
+      xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+      xmlns:dc="http://purl.org/dc/elements/1.1/" 
+      version="2.0">
+<channel>
+<title>OUSMANE CISSE</title>
+<link>https://oussou-dev.github.io/ousmanecisse/blog.html</link>
+<atom:link href="https://oussou-dev.github.io/ousmanecisse/blog.xml" rel="self" type="application/rss+xml"/>
+<description></description>
+<generator>quarto-1.6.42</generator>
+<lastBuildDate>Mon, 19 Jan 2026 23:00:00 GMT</lastBuildDate>
+<item>
+  <title>Project Showcase: AI News Aggregator</title>
+  <dc:creator>Ousmane Cissé</dc:creator>
+  <link>https://oussou-dev.github.io/ousmanecisse/posts/ai-news-aggregator/</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>For my Week 4 project in the AI Dev Tools Zoomcamp, I built the <strong>AI News Aggregator</strong> — a comprehensive platform designed to cut through the noise of the rapid-fire AI news cycle. It automates the collection, processing, and presentation of high-value AI content from multiple sources.</p>
+<p><a href="https://github.com/oussou-dev/ai-dev-tools-zoomcamp/tree/main/04_ai_news_aggr"><strong>View Project on GitHub</strong></a></p>
+<section id="architecture-tech-stack" class="level2">
+<h2 class="anchored" data-anchor-id="architecture-tech-stack">🏗️ Architecture &amp; Tech Stack</h2>
+<p>This isn’t just a simple script; it’s a containerized, microservices-based application built for production-grade reliability.</p>
+<section id="the-stack" class="level3">
+<h3 class="anchored" data-anchor-id="the-stack">The Stack</h3>
+<ul>
+<li><strong>Backend</strong>: <code>FastAPI</code> (Async REST API)<br>
+</li>
+<li><strong>Frontend</strong>: <code>Streamlit</code> (Interactive Dashboard)<br>
+</li>
+<li><strong>Database</strong>: <code>PostgreSQL 17</code> (Persistent Data Store)<br>
+</li>
+<li><strong>Infrastructure</strong>: <code>Docker Compose</code> (Orchestration)</li>
+</ul>
+</section>
+<section id="the-pipeline" class="level3">
+<h3 class="anchored" data-anchor-id="the-pipeline">The Pipeline</h3>
+<p>The system operates on an intelligent pipeline:<br>
+1. <strong>Scraping</strong>: Background workers fetch content from <strong>YouTube</strong> (transcripts), <strong>OpenAI feeds</strong>, and <strong>Anthropic</strong> research papers.<br>
+2. <strong>Processing</strong>: Raw content is stored in PostgreSQL.<br>
+3. <strong>Intelligence</strong>: AI Agents kick in to:<br>
+* <strong>Summarize</strong>: Compress hour-long videos into 3-sentence insights.<br>
+* <strong>Curate</strong>: Rank stories based on a personalized user “Interest Profile”.<br>
+* <strong>Deliver</strong>: Generate warm, ready-to-send email drafts.</p>
+</section>
+</section>
+<section id="key-features" class="level2">
+<h2 class="anchored" data-anchor-id="key-features">✨ Key Features</h2>
+<section id="multi-source-intelligence" class="level3">
+<h3 class="anchored" data-anchor-id="multi-source-intelligence">📰 Multi-Source Intelligence</h3>
+<p>The aggregator doesn’t just read RSS feeds. It uses:<br>
+* <strong>YouTube Transcript API</strong>: To “watch” videos and extract key points.<br>
+* <strong>Docling</strong>: To convert complex research papers into clean markdown for analysis.</p>
+</section>
+<section id="agentic-workflows" class="level3">
+<h3 class="anchored" data-anchor-id="agentic-workflows">🧠 Agentic Workflows</h3>
+<p>I implemented three distinct specialized agents:<br>
+1. <strong>Digest Agent</strong>: The “Summarizer” that distills content.<br>
+2. <strong>Curator Agent</strong>: The “Personal Assistant” that decides what’s relevant to <em>me</em> (e.g., filtering for “Coding Agents” vs.&nbsp;“GenAI Policy”).<br>
+3. <strong>Email Agent</strong>: The “Communicator” that formats the daily briefing.</p>
+</section>
+<section id="the-dashboard" class="level3">
+<h3 class="anchored" data-anchor-id="the-dashboard">🎨 The Dashboard</h3>
+<p>The Streamlit frontend provides a sleek, dark-mode interface where I can:<br>
+* Trigger the scraping pipeline manually.<br>
+* View the real-time health status of backend services.<br>
+* Read beautiful, card-based digests of the latest news.</p>
+</section>
+</section>
+<section id="why-i-built-this" class="level2">
+<h2 class="anchored" data-anchor-id="why-i-built-this">🚀 Why I Built This</h2>
+<p>Keeping up with AI is a full-time job. I wanted to build a tool that uses the very technology I’m learning (Agents, MCP, LLMs) to solve a problem I face every day. This project represents the convergence of modern web development (FastAPI/Docker) with cutting-edge AI engineering.</p>
+<p>Check out the full <a href="https://github.com/oussou-dev/ai-dev-tools-zoomcamp/tree/main/04_ai_news_aggr">Developer Guide</a> to see how “Vibe Coding” helped build this!</p>
+
+
+</section>
+
+ ]]></description>
+  <category>Project</category>
+  <category>AI</category>
+  <category>FastAPI</category>
+  <category>Streamlit</category>
+  <category>Agents</category>
+  <category>Docker</category>
+  <guid>https://oussou-dev.github.io/ousmanecisse/posts/ai-news-aggregator/</guid>
+  <pubDate>Mon, 19 Jan 2026 23:00:00 GMT</pubDate>
+  <media:content url="https://oussou-dev.github.io/ousmanecisse/img/ai_news_aggregator.webp" medium="image" type="image/webp"/>
+</item>
+<item>
+  <title>AI Dev Tools: Week 4 - Building Coding Agents</title>
+  <dc:creator>Ousmane Cissé</dc:creator>
+  <link>https://oussou-dev.github.io/ousmanecisse/posts/ai-dev-tools-week-4/</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Week 4 of the AI Dev Tools Zoomcamp was a transformative production to the world of <strong>autonomous coding agents</strong>. We moved beyond simple chat interfaces to building agents that can actively manipulate codebases, modify files, and bootstrap entire projects.</p>
+<section id="the-goal-a-coding-agent-that-bootstraps-projects" class="level2">
+<h2 class="anchored" data-anchor-id="the-goal-a-coding-agent-that-bootstraps-projects">The Goal: A Coding Agent that Bootstraps Projects</h2>
+<p>The core mission was to build a coding agent capable of scaffolding a <strong>Django</strong> project from scratch. Instead of manually running <code>django-admin startproject</code>, we built an agent that could:<br>
+1. Understand a high-level goal (e.g., “Create a Todo App”).<br>
+2. Use <strong>Tools</strong> to create directories, write files, and execute shell commands.<br>
+3. Iteratively refine the code based on feedback.</p>
+</section>
+<section id="key-concepts-learned" class="level2">
+<h2 class="anchored" data-anchor-id="key-concepts-learned">Key Concepts Learned</h2>
+<section id="agents-as-project-bootstrappers" class="level3">
+<h3 class="anchored" data-anchor-id="agents-as-project-bootstrappers">1. Agents as “Project Bootstrappers”</h3>
+<p>We explored the concept of agents not just as code completors, but as architects. By giving an agent access to the file system and command line, it can perform complex multi-step tasks like:<br>
+* Setting up a virtual environment.<br>
+* Installing dependencies via <code>pip</code>.<br>
+* Configuring a <code>Makefile</code> for consistent workflows.<br>
+* Generating initial templates for <code>base.html</code> and <code>home.html</code> using modern CSS frameworks like Tailwind.</p>
+</section>
+<section id="the-power-of-tools" class="level3">
+<h3 class="anchored" data-anchor-id="the-power-of-tools">2. The Power of Tools</h3>
+<p>An agent is only as powerful as its tools. We defined a set of primitive tools for our agent:<br>
+* <code>read_file</code>: To understand existing code.<br>
+* <code>write_file</code>: To create or update logic.<br>
+* <code>bash</code>: To execute commands (migrations, tests, servers).<br>
+* <code>ls</code>: To explore the file structure.</p>
+</section>
+<section id="orchestration-frameworks" class="level3">
+<h3 class="anchored" data-anchor-id="orchestration-frameworks">3. Orchestration Frameworks</h3>
+<p>We didn’t just stick to one way of doing things. We explored multiple frameworks for building these agents:<br>
+* <strong>ToyAIKit</strong>: A simplified framework to understand the core loop of <em>Thought -&gt; Action -&gt; Observation</em>.<br>
+* <strong>OpenAI Agents SDK</strong>: Leveraging the native function calling capabilities of GPT models.<br>
+* <strong>PydanticAI</strong>: A robust, type-safe approach to defining agent behaviors.<br>
+* <strong>Z.ai</strong>: Exploring alternative LLM providers and APIs.</p>
+</section>
+</section>
+<section id="the-outcome" class="level2">
+<h2 class="anchored" data-anchor-id="the-outcome">The Outcome</h2>
+<p>By the end of the week, I had a functioning agent that could take a simple prompt and spin up a working Django application with:<br>
+* A clean directory structure.<br>
+* Basic templates and routing.<br>
+* Database migrations applied.</p>
+<p>This week bridged the gap between <em>talking</em> to AI about code and <em>having AI write the code</em> directly into the project. It set the perfect stage for building more complex systems, like the one I built for my weekly project.</p>
+<p><strong>Next Stop</strong>: Applying these skills to build a production-grade AI application.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>AI</category>
+  <category>Zoomcamp</category>
+  <category>Agents</category>
+  <category>Django</category>
+  <category>Coding Assistant</category>
+  <guid>https://oussou-dev.github.io/ousmanecisse/posts/ai-dev-tools-week-4/</guid>
+  <pubDate>Wed, 14 Jan 2026 23:00:00 GMT</pubDate>
+  <media:content url="https://oussou-dev.github.io/ousmanecisse/img/week_4_ai_dev_tools.webp" medium="image" type="image/webp"/>
+</item>
+<item>
+  <title>AI Dev Tools: Week 3 - MCP &amp; Agents</title>
+  <dc:creator>Ousmane Cissé</dc:creator>
+  <link>https://oussou-dev.github.io/ousmanecisse/posts/ai-dev-tools-week-3/</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>This week was a deep dive into the <strong>Model Context Protocol (MCP)</strong>, an open standard that enables AI models to interact with external data sources and tools in a standardized way. Here’s what I learned:</p>
+<section id="standardizing-ai-interactions" class="level2">
+<h2 class="anchored" data-anchor-id="standardizing-ai-interactions">Standardizing AI Interactions</h2>
+<p>MCP solves the problem of “bespoke” integrations for every AI tool. Instead of writing custom code for each AI assistant to access a database or API, we can now build <strong>MCP Servers</strong> that any <strong>MCP Client</strong> (like Cursor, Claude Desktop, or VSCode) can understand. This decoupling of the “brain” (AI model) from the “hands” (tools/data) is a game-changer for developer productivity.</p>
+</section>
+<section id="mcp-primitives-tools-resources-and-prompts" class="level2">
+<h2 class="anchored" data-anchor-id="mcp-primitives-tools-resources-and-prompts">MCP Primitives: Tools, Resources, and Prompts</h2>
+<p>I learned the three core building blocks of MCP:<br>
+- <strong>Tools</strong>: Executable functions the AI can call (e.g., <code>get_weather</code>, <code>scrape_website</code>).<br>
+- <strong>Resources</strong>: Read-only data sources the AI can inspect (e.g., local files, API docs).<br>
+- <strong>Prompts</strong>: Pre-defined templates that guide how the AI should interact with the user or the tools.</p>
+</section>
+<section id="developer-experience-with-fastmcp" class="level2">
+<h2 class="anchored" data-anchor-id="developer-experience-with-fastmcp">Developer Experience with FastMCP</h2>
+<p>Using <strong>FastMCP</strong> (by Jon Lowin) made building servers incredibly easy. With just a few lines of Python and a decorator (<code>@mcp.tool</code>), I could transform a standard function into an MCP tool. The library handles the complex JSON-RPC communication under the hood, allowing developers to focus on the logic.</p>
+</section>
+<section id="protocol-transports-stdio-vs.-sse" class="level2">
+<h2 class="anchored" data-anchor-id="protocol-transports-stdio-vs.-sse">Protocol Transports: Stdio vs.&nbsp;SSE</h2>
+<p>We explored two main ways MCP clients and servers communicate:<br>
+- <strong>Stdio</strong>: The standard way for local integrations (e.g., a CLI tool or a plugin within an IDE).<br>
+- <strong>SSE (Server-Sent Events)</strong>: Enables remote communication over HTTP, which is essential for web-based agents and distributed systems.</p>
+</section>
+<section id="supercharging-workflows-with-live-docs" class="level2">
+<h2 class="anchored" data-anchor-id="supercharging-workflows-with-live-docs">Supercharging Workflows with Live Docs</h2>
+<p>One of the most powerful use cases we saw was using <strong>Context 7</strong>. By connecting an AI assistant to live documentation (like Airflow or Astro) via MCP, the model can “see” the latest updates and fix code based on real-time info, rather than relying on stale training data.</p>
+</section>
+<section id="key-lessons" class="level2">
+<h2 class="anchored" data-anchor-id="key-lessons">Key Lessons</h2>
+<ol type="1">
+<li><strong>MCP is the “USB port” for AI</strong>: It provides a universal interface for AI power.</li>
+<li><strong>Fast prototyping is key</strong>: Tools like <code>mcp-inspector</code> allow you to test your server logic instantly without needing a full AI client.</li>
+<li><strong>Connect to the real world</strong>: Whether it’s scraping a website or indexing a GitHub repo, MCP allows AI to act on real, current data.</li>
+</ol>
+</section>
+<section id="homework" class="level2">
+<h2 class="anchored" data-anchor-id="homework">Homework</h2>
+<p>I implemented an MCP server that included:<br>
+1. <strong>Web Scraper Tool</strong>: Uses the Jina Reader API to convert any URL into clean markdown for the AI to process.<br>
+2. <strong>Documentation Search Tool</strong>: Downloads a repository, indexes markdown files using <strong>Minsearch</strong>, and provides a search function to retrieve relevant context.</p>
+<p>This turned my AI assistant into a specialized documentation expert for any library I point it at.</p>
+<p><strong>Homework:</strong> <a href="https://github.com/oussou-dev/ai-dev-tools-zoomcamp/tree/main/03_mcp">MCP Scraper and Search Tool</a></p>
+
+
+</section>
+
+ ]]></description>
+  <category>AI</category>
+  <category>Zoomcamp</category>
+  <category>MCP</category>
+  <category>Agents</category>
+  <guid>https://oussou-dev.github.io/ousmanecisse/posts/ai-dev-tools-week-3/</guid>
+  <pubDate>Thu, 11 Dec 2025 23:00:00 GMT</pubDate>
+  <media:content url="https://oussou-dev.github.io/ousmanecisse/img/week_3_ai_dev_tools.png" medium="image" type="image/png" height="61" width="144"/>
+</item>
+<item>
+  <title>AI Dev Tools: Week 2 - End-to-End Application Development</title>
+  <dc:creator>Ousmane Cissé</dc:creator>
+  <link>https://oussou-dev.github.io/ousmanecisse/posts/ai-dev-tools-week-2/</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>This week took my understanding of AI-assisted development to the next level by building a <strong>complete end-to-end application</strong> — from frontend to backend, database, containerization, and cloud deployment. Here’s what I learned:</p>
+<section id="frontend-first-approach-with-ai" class="level2">
+<h2 class="anchored" data-anchor-id="frontend-first-approach-with-ai">Frontend-First Approach with AI</h2>
+<p>We started by using <strong>Lovable</strong> (or similar AI tools like Bolt, Cursor, or Claude Code) to rapidly scaffold a multiplayer Snake game in React with TypeScript. The key insight: rather than starting with backend logic, we built an interactive frontend first, complete with mockups for authentication, leaderboards, and live gameplay. This frontend-first strategy shifts how you think about API contracts — you build the UI you want, <em>then</em> design the backend to serve it.</p>
+<p>The prompt engineering for frontend was crucial: describing the app’s features (game modes, multiplayer mechanics, testing coverage) helped the AI generate a cohesive, testable codebase. The lesson: <strong>clear requirements lead to better code generation</strong>.</p>
+</section>
+<section id="api-first-backend-design-with-openapi" class="level2">
+<h2 class="anchored" data-anchor-id="api-first-backend-design-with-openapi">API-First Backend Design with OpenAPI</h2>
+<p>Once the frontend was done, we didn’t write the backend arbitrarily. Instead, we:</p>
+<ol type="1">
+<li><strong>Extracted OpenAPI specifications</strong> from the frontend code — documenting what API endpoints and data structures the frontend actually needs</li>
+<li><strong>Generated a FastAPI backend</strong> directly from those specs</li>
+</ol>
+<p>This “API contract first” approach ensures frontend and backend stay synchronized and prevents wasted effort on unused endpoints. I learned that <strong>OpenAPI is a powerful bridge between AI-generated frontend and backend</strong> — it forces both to speak the same language.</p>
+</section>
+<section id="database-integration-real-world-concerns" class="level2">
+<h2 class="anchored" data-anchor-id="database-integration-real-world-concerns">Database Integration &amp; Real-World Concerns</h2>
+<p>Initially we mocked the database, then we integrated <strong>SQLAlchemy</strong> with <strong>PostgreSQL and SQLite</strong>. This introduced important real-world considerations:</p>
+<ul>
+<li><strong>Integration testing</strong>: We wrote separate integration tests (not just unit tests) that spin up a SQLite database and verify the full data flow works</li>
+<li><strong>Schema management &amp; migrations</strong>: Real databases require careful handling of data persistence and schema changes</li>
+<li><strong>Testing strategy</strong>: Mock databases for unit tests, real databases for integration tests</li>
+</ul>
+<p>I realized that many junior developers skip this, but it’s critical for production apps.</p>
+</section>
+<section id="containerization-local-development" class="level2">
+<h2 class="anchored" data-anchor-id="containerization-local-development">Containerization &amp; Local Development</h2>
+<p>We containerized everything using <strong>Docker Compose</strong>, bundling:</p>
+<ul>
+<li>Frontend (served via Nginx)</li>
+<li>Backend (FastAPI)</li>
+<li>Database (PostgreSQL)</li>
+</ul>
+<p>This forced me to think about: - Environment configuration - Service networking and communication - Build processes and dependencies - Running everything locally in a reproducible way</p>
+<p>Running <code>docker-compose up --build</code> felt like magic — suddenly an entire application stack worked locally, exactly as it would in production.</p>
+</section>
+<section id="deployment-to-the-cloud" class="level2">
+<h2 class="anchored" data-anchor-id="deployment-to-the-cloud">Deployment to the Cloud</h2>
+<p>We deployed to <strong>Render</strong>, combining frontend and backend into a single container. The workflow:</p>
+<ol type="1">
+<li>Build a single Docker image with both services</li>
+<li>Push to a cloud platform (we chose Render for simplicity)</li>
+<li>Let the platform handle scaling, SSL, and management</li>
+</ol>
+<p>This demystified “DevOps” — it’s really just containerizing intelligently and picking a platform that abstracts infrastructure away.</p>
+</section>
+<section id="cicd-pipeline-with-github-actions" class="level2">
+<h2 class="anchored" data-anchor-id="cicd-pipeline-with-github-actions">CI/CD Pipeline with GitHub Actions</h2>
+<p>The final piece was automating everything:</p>
+<ol type="1">
+<li><strong>Run tests</strong> (frontend + backend) on every push</li>
+<li><strong>Run integration tests</strong> separately</li>
+<li><strong>Deploy automatically</strong> to Render if tests pass</li>
+</ol>
+<p>This creates a <strong>safety net</strong> — bad code can’t accidentally get deployed. We learned that CI/CD pipelines, while seeming complex at first, are just a series of automated checks and deployments.</p>
+</section>
+<section id="key-lessons" class="level2">
+<h2 class="anchored" data-anchor-id="key-lessons">Key Lessons</h2>
+<ol type="1">
+<li><p><strong>Leverage AI for speed, but maintain structure</strong>: AI can scaffold code fast, but without proper API contracts (OpenAPI), testing (unit + integration), and containerization, it falls apart at scale</p></li>
+<li><p><strong>APIs are the contract</strong>: OpenAPI specs bridge frontend and backend teams/tools — treat them seriously</p></li>
+<li><p><strong>Testing isn’t optional</strong>: Unit tests catch bugs, integration tests catch integration bugs. Both matter</p></li>
+<li><p><strong>Containerization enables reproducibility</strong>: Docker/Compose makes “it works on my machine” a non-issue</p></li>
+<li><p><strong>Automation frees mental energy</strong>: CI/CD means you can focus on features, not manual testing and deployment</p></li>
+<li><p><strong>End-to-end thinking</strong>: You can’t just build a feature in isolation anymore. You need to think: frontend → API → backend → database → tests → deployment</p></li>
+</ol>
+</section>
+<section id="mindset-shift" class="level2">
+<h2 class="anchored" data-anchor-id="mindset-shift">Mindset Shift</h2>
+<p>Week 1 taught me AI tools exist.<br>
+Week 2 taught me <strong>how to think like a real engineer</strong> using those tools: designing APIs, writing tests, containerizing, and automating. It’s the difference between “I can generate code” and “I can ship production applications.”</p>
+<p><strong>Homework:</strong> <a href="https://github.com/oussou-dev/ai-dev-tools-zoomcamp/tree/main/02_code_itws">End-to-End Project - Online Coding Interview Platform</a></p>
+
+
+</section>
+
+ ]]></description>
+  <category>AI</category>
+  <category>Zoomcamp</category>
+  <category>Engineering</category>
+  <category>Docker</category>
+  <category>CI/CD</category>
+  <guid>https://oussou-dev.github.io/ousmanecisse/posts/ai-dev-tools-week-2/</guid>
+  <pubDate>Thu, 04 Dec 2025 23:00:00 GMT</pubDate>
+  <media:content url="https://oussou-dev.github.io/ousmanecisse/img/week_2_ai_dev_tools.jpg" medium="image" type="image/jpeg"/>
+</item>
+<item>
+  <title>AI Dev Tools: Week 1 - Vibe Coding &amp; Foundations</title>
+  <dc:creator>Ousmane Cissé</dc:creator>
+  <link>https://oussou-dev.github.io/ousmanecisse/posts/ai-dev-tools-week-1/</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>This first week of the AI Dev Tools Zoomcamp helped me lay the foundations of AI-assisted coding — i.e.&nbsp;adopting tools and workflows that make code writing faster, cleaner, and more efficient. Here are the main takeaways:</p>
+<section id="vibe-coding" class="level2">
+<h2 class="anchored" data-anchor-id="vibe-coding">Vibe Coding</h2>
+<p>The course introduced me to the concept of “Vibe Coding” — leveraging AI assistants, coding-assist tools, project bootstrappers, and even automated agents to accelerate development rather than reinvent the wheel.</p>
+</section>
+<section id="the-tool-landscape" class="level2">
+<h2 class="anchored" data-anchor-id="the-tool-landscape">The Tool Landscape</h2>
+<p>I discovered a concrete landscape of current tools: * <strong>AI-powered code assistants / IDEs</strong>: GitHub Copilot, Cursor, Claude Code. * <strong>Project generators (“bootstrappers”)</strong>: Bolt or Lovable, which let you rapidly scaffold a new app.</p>
+</section>
+<section id="hands-on-snake-game" class="level2">
+<h2 class="anchored" data-anchor-id="hands-on-snake-game">Hands-on: Snake Game</h2>
+<p>The methodology is hands-on: right away we work on a small project (a Snake game in React + JS), using these AI tools to see their real benefit in a development context.</p>
+</section>
+<section id="key-learnings" class="level2">
+<h2 class="anchored" data-anchor-id="key-learnings">Key Learnings</h2>
+<p>A key message from the course: you don’t need prior AI knowledge to begin. If you already know a programming language (Python, JavaScript…), that’s enough to start benefiting from AI assistants.</p>
+<p>What struck me: the potential of a modern, AI-integrated dev workflow — combining assistants, agents, automation — to reduce friction, speed up prototyping or production phases, and free mental bandwidth for architecture, business logic, and code quality.</p>
+<p>In short — Week 1 helped me shift away from the “hand-code everything” paradigm toward a more fluid, developer-AI collaborative approach that feels well-suited for modern software projects.</p>
+<p><strong>Homework:</strong> <a href="https://github.com/oussou-dev/ai-dev-tools-zoomcamp/tree/main/01_todo_app">Todo app in Django using AI tools</a></p>
+
+
+</section>
+
+ ]]></description>
+  <category>AI</category>
+  <category>Zoomcamp</category>
+  <category>Vibe Coding</category>
+  <guid>https://oussou-dev.github.io/ousmanecisse/posts/ai-dev-tools-week-1/</guid>
+  <pubDate>Thu, 27 Nov 2025 23:00:00 GMT</pubDate>
+  <media:content url="https://oussou-dev.github.io/ousmanecisse/img/week_1_ai_dev_tools.png" medium="image" type="image/png" height="61" width="144"/>
+</item>
+</channel>
+</rss>

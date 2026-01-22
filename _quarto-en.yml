@@ -28,4 +28,5 @@ format:
       light: [cosmo, theme.scss]
       dark: [cosmo, dark.scss]
     css: styles.css
+    include-after-body: scripts/lang-switch.html
     toc: true

@@ -14,7 +14,7 @@ website:
         text: Blog
     right:
       - text: "EN"
-        href: ../index.html
+        href: index.html
       - icon: github
         href: https://github.com/oussou-dev
       - icon: linkedin
@@ -26,4 +26,5 @@ format:
       light: [cosmo, theme.scss]
       dark: [cosmo, dark.scss]
     css: styles.css
+    include-after-body: scripts/lang-switch.html
     toc: true
