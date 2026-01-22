@@ -13,7 +13,7 @@ listing:
       path: https://github.com/oussou-dev/ai-dev-tools-zoomcamp 
       image: "../img/ai-dev-tools-cover.webp"
     - title: "Ingénieur ML ZoomCamp"
-      description: Projets de Macjine learning couvrant le déploiement, le cloud et le MLOps.
+      description: Projets de Machine Learning couvrant le déploiement, le cloud et le MLOps.
       categories: [Machine Learning, MLOPS]
       path: https://github.com/oussou-dev/ML_Engineer_ZoomCamp
       image: "../img/ml-zoomcamp-cover.webp"
@@ -32,4 +32,4 @@ listing:
 page-layout: full
 ---
 
-Une sélection de projets sur lesquels j'ai travaillé.
+Une sélection de projets réalisés et en cours.
