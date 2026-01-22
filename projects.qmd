@@ -2,31 +2,36 @@
 title: "Projects"
 listing:
   contents:
-    - title: "No-Code & AI Enterprise Apps"
-      description: "Building internal enterprise apps using No-Code tools (Airtable, Softr, Make/Zapier) and AI. Covers needs analysis, BPMN modeling, and full implementation."
-      categories: [No-Code, AI, Airtable, Softr, Make, BPMN]
-      path: https://github.com/oussou-dev/nocode-ai-enterprise-apps
-      image: "img/nocode_ai_enterprise_cover.png"
-    - title: "Data Engineering Zoomcamp"
-      description: "A comprehensive course on Data Engineering covering Docker, Terraform, Google Cloud Platform, Airflow, Spark, and Kafka."
-      categories: [Data Engineering, GCP, Terraform, Airflow, Kafka, Spark]
-      path: https://github.com/oussou-dev/data-engineering-zoomcamp
-      image: "img/data_engineering_zoomcamp_cover.png"
-    - title: "AI Dev Tools"
-      description: Projects and assignments from the AI Dev Tools Zoomcamp.
-      categories: [AI, VIBE CODING, MCP, N8N, Zoomcamp]
-      path: https://github.com/oussou-dev/ai-dev-tools-zoomcamp 
-      image: "img/ai-dev-tools-cover.webp"
-    - title: "ML Engineer ZoomCamp"
-      description: A comprehensive machine learning engineering course covering deployment, cloud, and MLOps.
-      categories: [Machine Learning, MLOPS]
-      path: https://github.com/oussou-dev/ML_Engineer_ZoomCamp
-      image: "img/ml-zoomcamp-cover.webp"
-    - title: "AI Hero"
-      description: A free 7-day email crash-course on building and deploying AI agents.
-      categories: [AI Agents, LLM, Deployment]
-      path: https://github.com/oussou-dev/ai-hero-bootcamp
-      image: "img/ai_hero_cover.png"
+   - title: "AI Hero"
+     description: "A free 7-day email crash-course on building and deploying AI agents."
+     categories: [AI Agents, LLM, Deployment]
+     path: https://github.com/oussou-dev/ai-hero-bootcamp
+     image: "img/ai_hero_cover.png"
+   - title: "Data Engineering Zoomcamp"
+     description: "A comprehensive course on Data Engineering covering Docker, Terraform, Google Cloud Platform, Airflow, Spark, and Kafka."
+     categories: [Data Engineering, GCP, Terraform, Airflow, Kafka, Spark]
+     path: https://github.com/oussou-dev/data-engineering-zoomcamp
+     image: "img/data_engineering_zoomcamp_cover.png"
+   - title: "AI Dev Tools"
+     description: Projects and assignments from the AI Dev Tools Zoomcamp.
+     categories: [AI, VIBE CODING, MCP, N8N, Zoomcamp]
+     path: https://github.com/oussou-dev/ai-dev-tools-zoomcamp 
+     image: "img/ai-dev-tools-cover.webp"
+   - title: "No-Code & AI Enterprise Apps"
+     description: "Building internal enterprise apps using No-Code tools (Airtable, Softr, Make/Zapier) and AI. Covers needs analysis, BPMN modeling, and full implementation."
+     categories: [No-Code, AI, Airtable, Softr, Make, BPMN]
+     path: https://github.com/oussou-dev/nocode-ai-enterprise-apps
+     image: "img/nocode_ai_enterprise_cover.png"
+   - title: "LangChain & Vector Databases"
+     description: "Build Production-Grade LLM Applications with LangChain & Deep Lake. Covers Gen AI, Prompt Engineering, RAG, and Agents."
+     categories: [LLM, LangChain, Vector DB, RAG, Deep Lake]
+     path: https://github.com/oussou-dev/LLMs_langchain_vectorDBs
+     image: "img/langchain_vector_db.webp"
+   - title: "ML Engineer ZoomCamp"
+     description: A comprehensive machine learning engineering course covering deployment, cloud, and MLOps.
+     categories: [Machine Learning, MLOPS]
+     path: https://github.com/oussou-dev/ML_Engineer_ZoomCamp
+     image: "img/ml-zoomcamp-cover.webp"
     
   sort: "date desc"
   type: grid
