@@ -239,6 +239,48 @@ ul.task-list li input[type="checkbox"] {
 </section>
 
 </main> <!-- /main -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const langLinks = document.querySelectorAll('.navbar-nav .nav-link');
+        langLinks.forEach(link => {
+            const text = link.innerText.trim();
+            if (text === "FR" || text === "EN") {
+                let currentPath = window.location.pathname;
+                let repoName = "/ousmanecisse/";
+
+                // Ensure we have the full path starting after repo name
+                let pathAfterRepo = "";
+                if (currentPath.includes(repoName)) {
+                    pathAfterRepo = currentPath.substring(currentPath.indexOf(repoName) + repoName.length);
+                } else {
+                    // Local preview case (usually starts with /)
+                    pathAfterRepo = currentPath.startsWith('/') ? currentPath.substring(1) : currentPath;
+                    repoName = "/";
+                }
+
+                if (text === "FR") {
+                    if (!pathAfterRepo.startsWith("fr/")) {
+                        // We are in EN, want to go to FR
+                        // Check if this page exists in FR (heuristic: matches common files)
+                        const parallelPages = ["index.html", "about.html", "blog.html", "projects.html"];
+                        let targetPage = pathAfterRepo || "index.html";
+                        if (parallelPages.includes(targetPage)) {
+                            link.href = repoName + "fr/" + targetPage;
+                        } else {
+                            link.href = repoName + "fr/index.html";
+                        }
+                    }
+                } else if (text === "EN") {
+                    if (pathAfterRepo.startsWith("fr/")) {
+                        // We are in FR, want to go to EN
+                        let targetPage = pathAfterRepo.substring(3) || "index.html";
+                        link.href = repoName + targetPage;
+                    }
+                }
+            }
+        });
+    });
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
