@@ -4,7 +4,7 @@
     "href": "projects.html",
     "title": "Projects",
     "section": "",
-    "text": "A selection of projects I’ve worked on.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAI Dev Tools\n\n\n\nAI\n\n\nVIBE CODING\n\n\nMCP\n\n\nN8N\n\n\nZoomcamp\n\n\n\nProjects and assignments from the AI Dev Tools Zoomcamp.  GitHub  Posts\n\n\n\n\n\n\n\n\n\n\n\n\n\nML Engineer ZoomCamp\n\n\n\nMachine Learning\n\n\nMLOPS\n\n\n\nA comprehensive machine learning engineering course covering deployment, cloud, and MLOps.  GitHub…\n\n\n\n\n\n\n\n\n\n\n\n\n\nAI Hero\n\n\n\nAI Agents\n\n\nLLM\n\n\nDeployment\n\n\n\nA free 7-day email crash-course on building and deploying AI agents.  GitHub…\n\n\n\n\n\n\n\nNo matching items"
+    "text": "A selection of projects I’ve worked on.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAI Dev Tools\n\n\n\nAI\n\n\nVIBE CODING\n\n\nMCP\n\n\nN8N\n\n\nZoomcamp\n\n\n\nProjects and assignments from the AI Dev Tools Zoomcamp.\n\n\n\n\n\n\n\n\n\n\n\n\n\nML Engineer ZoomCamp\n\n\n\nMachine Learning\n\n\nMLOPS\n\n\n\nA comprehensive machine learning engineering course covering deployment, cloud, and MLOps.\n\n\n\n\n\n\n\n\n\n\n\n\n\nAI Hero\n\n\n\nAI Agents\n\n\nLLM\n\n\nDeployment\n\n\n\nA free 7-day email crash-course on building and deploying AI agents.\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/ai-hero-day-1/index.html",
@@ -25,28 +25,28 @@
     "href": "posts/ai-hero-day-1/index.html#in-memory-processing-with-python",
     "title": "AI Hero: Day 1 - Ingest and Index Your Data",
     "section": "In-Memory Processing with Python",
-    "text": "In-Memory Processing with Python\nOne of the coolest tricks I learned was handling data entirely in memory. Instead of downloading a ZIP file to the disk, unzipping it, and dealing with temporary files, we used Python’s io.BytesIO and zipfile modules.\nThis approach is: - Faster: No disk I/O overhead. - Cleaner: No need to manage or delete temporary files. - Scalable: Perfect for cloud functions or ephemeral environments."
+    "text": "In-Memory Processing with Python\nOne of the coolest tricks I learned was handling data entirely in memory. Instead of downloading a ZIP file to the disk, unzipping it, and dealing with temporary files, we used Python’s io.BytesIO and zipfile modules.\nThis approach is:\n- Faster: No disk I/O overhead.\n- Cleaner: No need to manage or delete temporary files.\n- Scalable: Perfect for cloud functions or ephemeral environments."
   },
   {
     "objectID": "posts/ai-hero-day-1/index.html#extracting-meaning-with-metadata-frontmatter",
     "href": "posts/ai-hero-day-1/index.html#extracting-meaning-with-metadata-frontmatter",
     "title": "AI Hero: Day 1 - Ingest and Index Your Data",
     "section": "Extracting Meaning with Metadata (Frontmatter)",
-    "text": "Extracting Meaning with Metadata (Frontmatter)\nMost technical documentation (like Evidently AI’s docs) uses YAML Frontmatter to store critical metadata like titles, tags, and descriptions.\nUsing the python-frontmatter library, I wrote a parser that: 1. Iterates through the ZIP archive. 2. Identifies relevant documentation files. 3. Separates the human-readable text from the structured metadata.\nThis metadata is crucial for later stages, as it allows the agent to filter information by category or relevance."
+    "text": "Extracting Meaning with Metadata (Frontmatter)\nMost technical documentation (like Evidently AI’s docs) uses YAML Frontmatter to store critical metadata like titles, tags, and descriptions.\nUsing the python-frontmatter library, I wrote a parser that:\n1. Iterates through the ZIP archive.\n2. Identifies relevant documentation files.\n3. Separates the human-readable text from the structured metadata.\nThis metadata is crucial for later stages, as it allows the agent to filter information by category or relevance."
   },
   {
     "objectID": "posts/ai-hero-day-1/index.html#the-modern-tech-stack-uv-and-more",
     "href": "posts/ai-hero-day-1/index.html#the-modern-tech-stack-uv-and-more",
     "title": "AI Hero: Day 1 - Ingest and Index Your Data",
     "section": "The Modern Tech Stack: uv and more",
-    "text": "The Modern Tech Stack: uv and more\nWe stayed away from traditional, slow package managers. Instead, we used: - uv: The extremely fast Python package manager that makes environment setup instantaneous. - requests: To stream the repository data directly from GitHub. - python-frontmatter: For precise metadata extraction. - Jupyter Notebooks: For interactive exploration of the ingested data structure."
+    "text": "The Modern Tech Stack: uv and more\nWe stayed away from traditional, slow package managers. Instead, we used: - uv: The extremely fast Python package manager that makes environment setup instantaneous.\n- requests: To stream the repository data directly from GitHub.\n- python-frontmatter: For precise metadata extraction.\n- Jupyter Notebooks: For interactive exploration of the ingested data structure."
   },
   {
     "objectID": "posts/ai-hero-day-1/index.html#key-lessons",
     "href": "posts/ai-hero-day-1/index.html#key-lessons",
     "title": "AI Hero: Day 1 - Ingest and Index Your Data",
     "section": "Key Lessons",
-    "text": "Key Lessons\n\nAutomate the Source: Never manually manage the data your agent needs. Build a pipeline.\nMemory is Your Friend: Processing ZIP files in memory is a professional pattern that saves time and local resources.\nStructure Matters: Content is king, but metadata is the compass that helps your agent find the right content.\nTooling Consistency: Using modern tools like uv ensures that experiments are reproducible and fast."
+    "text": "Key Lessons\n\nAutomate the Source: Never manually manage the data your agent needs. Build a pipeline.\n\nMemory is Your Friend: Processing ZIP files in memory is a professional pattern that saves time and local resources.\n\nStructure Matters: Content is king, but metadata is the compass that helps your agent find the right content.\n\nTooling Consistency: Using modern tools like uv ensures that experiments are reproducible and fast."
   },
   {
     "objectID": "posts/ai-hero-day-1/index.html#mindset-shift",

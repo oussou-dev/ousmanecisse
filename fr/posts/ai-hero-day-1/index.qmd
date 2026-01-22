@@ -23,35 +23,35 @@ L'objectif était de transformer des fichiers bruts `.md` et `.mdx` en un format
 L'une des astuces les plus intéressantes que j'ai apprises est de manipuler les données entièrement en mémoire. Au lieu de télécharger un fichier ZIP sur le disque, de le décompresser et de gérer des fichiers temporaires, nous avons utilisé les modules `io.BytesIO` et `zipfile` de Python.
 
 Cette approche est :
-- **Plus rapide** : Pas de latence liée aux entrées/sorties du disque.
-- **Plus propre** : Pas besoin de gérer ou de supprimer des fichiers temporaires.
-- **Scalable** : Parfait pour des fonctions cloud ou des environnements éphémères.
+- **Plus rapide** : Pas de latence liée aux entrées/sorties du disque.  
+- **Plus propre** : Pas besoin de gérer ou de supprimer des fichiers temporaires.  
+- **Scalable** : Parfait pour des fonctions cloud ou des environnements éphémères.  
 
 ## Extraire du Sens avec les Métadonnées (Frontmatter)
 
 La plupart des documentations techniques utilisent du **YAML Frontmatter** pour stocker des métadonnées critiques comme les titres, les tags et les descriptions.
 
 En utilisant la bibliothèque `python-frontmatter`, j'ai écrit un parseur qui :
-1. Parcourt l'archive ZIP.
-2. Identifie les fichiers de documentation pertinents.
-3. Sépare le texte lisible par l'homme des métadonnées structurées.
+1. Parcourt l'archive ZIP.  
+2. Identifie les fichiers de documentation pertinents.  
+3. Sépare le texte lisible par l'homme des métadonnées structurées.  
 
 Ces métadonnées sont cruciales pour les étapes ultérieures, car elles permettent à l'agent de filtrer les informations par catégorie ou par pertinence.
 
 ## La Stack Tech Moderne : `uv` et plus encore
 
 Nous avons laissé de côté les gestionnaires de paquets traditionnels et lents. À la place, nous avons utilisé :
-- **`uv`** : Le gestionnaire de paquets Python extrêmement rapide qui rend la configuration de l'environnement instantanée.
-- **`requests`** : Pour streamer les données du dépôt directement depuis GitHub.
-- **`python-frontmatter`** : Pour une extraction précise des métadonnées.
-- **Jupyter Notebooks** : Pour l'exploration interactive de la structure des données ingérées.
+- **`uv`** : Le gestionnaire de paquets Python extrêmement rapide qui rend la configuration de l'environnement instantanée.  
+- **`requests`** : Pour streamer les données du dépôt directement depuis GitHub.  
+- **`python-frontmatter`** : Pour une extraction précise des métadonnées.  
+- **Jupyter Notebooks** : Pour l'exploration interactive de la structure des données ingérées.  
 
 ## Leçons Clés
 
-1. **Automatisez la Source** : Ne gérez jamais manuellement les données dont votre agent a besoin. Construisez un pipeline.
-2. **La Mémoire est votre Allie** : Traiter les fichiers ZIP en mémoire est un pattern professionnel qui gagne du temps et préserve les ressources locales.
-3. **La Structure Compte** : Le contenu est roi, mais les métadonnées sont la boussole qui aide votre agent à trouver le bon contenu.
-4. **Cohérence des Outils** : L'utilisation d'outils modernes comme `uv` garantit que les expérimentations sont reproductibles et rapides.
+1. **Automatisez la Source** : Ne gérez jamais manuellement les données dont votre agent a besoin. Construisez un pipeline.  
+2. **La Mémoire est votre Allie** : Traiter les fichiers ZIP en mémoire est un pattern professionnel qui gagne du temps et préserve les ressources locales.  
+3. **La Structure Compte** : Le contenu est roi, mais les métadonnées sont la boussole qui aide votre agent à trouver le bon contenu.  
+4. **Cohérence des Outils** : L'utilisation d'outils modernes comme `uv` garantit que les expérimentations sont reproductibles et rapides.  
 
 ## Changement d'État d'Esprit
 
