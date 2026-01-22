@@ -3,7 +3,7 @@ title: "AI Dev Tools: Week 2 - End-to-End Application Development"
 description: "Building a complete application with AI: Frontend-first, OpenAPI, Docker, and CI/CD."
 author: "Ousmane Cissé"
 date: "2025-12-05"
-categories: [AI, Zoomcamp, Engineering, Docker, CI/CD]
+categories: [AI, Zoomcamp, CI/CD, AI Dev Tools]
 image: "../../img/week_2_ai_dev_tools.jpg"
 ---
 

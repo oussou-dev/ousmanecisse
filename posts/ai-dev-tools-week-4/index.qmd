@@ -3,7 +3,7 @@ title: "AI Dev Tools: Week 4 - Building Coding Agents"
 description: "Mastering the creation of autonomous coding agents using Agents, Tools, and Context."
 author: "Ousmane Cissé"
 date: "2026-01-15"
-categories: [AI, Zoomcamp, Agents, Django, Coding Assistant]
+categories: [AI, Zoomcamp, Agents, AI Dev Tools]
 image: "../../img/week_4_ai_dev_tools.webp"
 ---
 

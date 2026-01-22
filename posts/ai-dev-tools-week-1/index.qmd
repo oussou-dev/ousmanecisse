@@ -3,7 +3,7 @@ title: "AI Dev Tools: Week 1 - Vibe Coding & Foundations"
 description: "Exploring the landscape of AI-assisted development, from coding assistants to project bootstrappers."
 author: "Ousmane Cissé"
 date: "2025-11-28"
-categories: [AI, Zoomcamp, Vibe Coding]
+categories: [AI, Zoomcamp, Vibe Coding, AI Dev Tools]
 image: "../../img/week_1_ai_dev_tools.png"
 ---
 

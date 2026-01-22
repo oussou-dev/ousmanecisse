@@ -3,32 +3,27 @@ title: "Projets"
 listing:
   contents:
     - title: "Outils de Dev IA"
-      description: "Projets et devoirs du AI Dev Tools Zoomcamp."
+      description: "Projets et devoirs du AI Dev Tools Zoomcamp.<br><br>[GitHub](https://github.com/oussou-dev/ai-dev-tools-zoomcamp) | [Posts](https://oussou-dev.github.io/ousmanecisse/blog.html#category=Zoomcamp)"
       categories: [IA, VIBE CODING, MCP, N8N, Zoomcamp]
       path: https://github.com/oussou-dev/ai-dev-tools-zoomcamp 
-      github_url: https://github.com/oussou-dev/ai-dev-tools-zoomcamp
-      blog_url: "blog.html#category=Zoomcamp"
       image: "https://raw.githubusercontent.com/DataTalksClub/ai-dev-tools-zoomcamp/main/images/course-cover.png"
     - title: "Ingénieur ML ZoomCamp"
-      description: "Un cours complet d'ingénierie machine learning couvrant le déploiement, le cloud et le MLOps."
+      description: "Un cours complet d'ingénierie machine learning couvrant le déploiement, le cloud et le MLOps.<br><br>[GitHub](https://github.com/oussou-dev/ML_Engineer_ZoomCamp) | [Posts](https://oussou-dev.github.io/ousmanecisse/blog.html#category=MLOPS)"
       categories: [Machine Learning, MLOPS]
       path: https://github.com/oussou-dev/ML_Engineer_ZoomCamp
-      github_url: https://github.com/oussou-dev/ML_Engineer_ZoomCamp
-      blog_url: "blog.html#category=MLOPS"
       image: "https://raw.githubusercontent.com/DataTalksClub/machine-learning-zoomcamp/master/images/ml-zoomcamp.png"
     - title: "AI Hero"
-      description: "Un cours intensif gratuit de 7 jours par e-mail pour construire et déployer des agents IA."
+      description: "Un cours intensif gratuit de 7 jours par e-mail pour construire et déployer des agents IA.<br><br>[GitHub](https://github.com/oussou-dev/ai-hero-bootcamp) | [Posts](https://oussou-dev.github.io/ousmanecisse/blog.html#category=AI%20Hero)"
       categories: [Agents IA, LLM, Déploiement]
       path: https://github.com/oussou-dev/ai-hero-bootcamp
-      github_url: https://github.com/oussou-dev/ai-hero-bootcamp
-      blog_url: "blog.html#category=AI%20Hero"
-      image: "../img/ai_hero_cover.png"
+      image: "../img/ai_hero_cover.png" 
     
-  template: ../ejs/projects.ejs
   sort: "date desc"
+  type: grid
   categories: false
   sort-ui: false
   filter-ui: false
+  fields: [image, title, description, categories]
 page-layout: full
 ---
 
