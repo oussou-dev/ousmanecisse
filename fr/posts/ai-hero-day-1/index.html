@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.6.42">
@@ -7,10 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Ousmane Cissé">
-<meta name="dcterms.date" content="2026-01-22">
-<meta name="description" content="Building the foundation of an AI agent by automating data retrieval and metadata parsing.">
+<meta name="description" content="Construire les fondations d’un agent IA en automatisant la récupération des données et le parsing des métadonnées.">
 
-<title>AI Hero: Day 1 - Ingest and Index Your Data – OUSMANE CISSE</title>
+<title>AI Hero : Jour 1 - Ingestion et Indexation des Données – OUSMANE CISSE</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -26,24 +25,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-72b3ebe486d4bfe12c3d8c7234ebb10f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-3baf2d55a5ec8d4083aaffc8eb8a190a.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-72b3ebe486d4bfe12c3d8c7234ebb10f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-3baf2d55a5ec8d4083aaffc8eb8a190a.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -58,22 +57,22 @@ ul.task-list li input[type="checkbox"] {
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
+    "search-no-results-text": "Pas de résultats",
+    "search-matching-documents-text": "documents trouvés",
+    "search-copy-link-title": "Copier le lien vers la recherche",
+    "search-hide-matches-text": "Cacher les correspondances additionnelles",
+    "search-more-match-text": "correspondance de plus dans ce document",
+    "search-more-matches-text": "correspondances de plus dans ce document",
+    "search-clear-button-title": "Effacer",
     "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-detached-cancel-button-title": "Annuler",
+    "search-submit-button-title": "Envoyer",
+    "search-label": "Recherche"
   }
 }</script>
 
 
-<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../../../styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -83,29 +82,29 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">OUSMANE CISSE</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+            <div id="quarto-search" class="" title="Recherche"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Basculer la navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../projects.html"> 
-<span class="menu-text">Projects</span></a>
+    <a class="nav-link" href="../../../fr/projects.html"> 
+<span class="menu-text">Projets</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../blog.html"> 
+    <a class="nav-link" href="../../../fr/blog.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../fr/index.html"> 
-<span class="menu-text">FR</span></a>
+    <a class="nav-link" href="../../../index.html"> 
+<span class="menu-text">EN</span></a>
   </li>  
   <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/oussou-dev"> <i class="bi bi-github" role="img">
@@ -120,7 +119,7 @@ ul.task-list li input[type="checkbox"] {
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Basculer le mode sombre"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -131,15 +130,15 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
+    <h2 id="toc-title">Sur cette page</h2>
    
   <ul>
-  <li><a href="#building-the-infrastructure-for-knowledge" id="toc-building-the-infrastructure-for-knowledge" class="nav-link active" data-scroll-target="#building-the-infrastructure-for-knowledge">Building the Infrastructure for Knowledge</a></li>
-  <li><a href="#in-memory-processing-with-python" id="toc-in-memory-processing-with-python" class="nav-link" data-scroll-target="#in-memory-processing-with-python">In-Memory Processing with Python</a></li>
-  <li><a href="#extracting-meaning-with-metadata-frontmatter" id="toc-extracting-meaning-with-metadata-frontmatter" class="nav-link" data-scroll-target="#extracting-meaning-with-metadata-frontmatter">Extracting Meaning with Metadata (Frontmatter)</a></li>
-  <li><a href="#the-modern-tech-stack-uv-and-more" id="toc-the-modern-tech-stack-uv-and-more" class="nav-link" data-scroll-target="#the-modern-tech-stack-uv-and-more">The Modern Tech Stack: <code>uv</code> and more</a></li>
-  <li><a href="#key-lessons" id="toc-key-lessons" class="nav-link" data-scroll-target="#key-lessons">Key Lessons</a></li>
-  <li><a href="#mindset-shift" id="toc-mindset-shift" class="nav-link" data-scroll-target="#mindset-shift">Mindset Shift</a></li>
+  <li><a href="#construire-linfrastructure-de-la-connaissance" id="toc-construire-linfrastructure-de-la-connaissance" class="nav-link active" data-scroll-target="#construire-linfrastructure-de-la-connaissance">Construire l’Infrastructure de la Connaissance</a></li>
+  <li><a href="#traitement-en-mémoire-avec-python" id="toc-traitement-en-mémoire-avec-python" class="nav-link" data-scroll-target="#traitement-en-mémoire-avec-python">Traitement en Mémoire avec Python</a></li>
+  <li><a href="#extraire-du-sens-avec-les-métadonnées-frontmatter" id="toc-extraire-du-sens-avec-les-métadonnées-frontmatter" class="nav-link" data-scroll-target="#extraire-du-sens-avec-les-métadonnées-frontmatter">Extraire du Sens avec les Métadonnées (Frontmatter)</a></li>
+  <li><a href="#la-stack-tech-moderne-uv-et-plus-encore" id="toc-la-stack-tech-moderne-uv-et-plus-encore" class="nav-link" data-scroll-target="#la-stack-tech-moderne-uv-et-plus-encore">La Stack Tech Moderne : <code>uv</code> et plus encore</a></li>
+  <li><a href="#leçons-clés" id="toc-leçons-clés" class="nav-link" data-scroll-target="#leçons-clés">Leçons Clés</a></li>
+  <li><a href="#changement-détat-desprit" id="toc-changement-détat-desprit" class="nav-link" data-scroll-target="#changement-détat-desprit">Changement d’État d’Esprit</a></li>
   </ul>
 </nav>
     </div>
@@ -148,11 +147,10 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">AI Hero: Day 1 - Ingest and Index Your Data</h1>
+<h1 class="title">AI Hero : Jour 1 - Ingestion et Indexation des Données</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">AI Agents</div>
+    <div class="quarto-category">Agents IA</div>
     <div class="quarto-category">LLM</div>
-    <div class="quarto-category">Python</div>
     <div class="quarto-category">RAG</div>
     <div class="quarto-category">AI Hero</div>
   </div>
@@ -160,7 +158,7 @@ ul.task-list li input[type="checkbox"] {
 
 <div>
   <div class="description">
-    Building the foundation of an AI agent by automating data retrieval and metadata parsing.
+    Construire les fondations d’un agent IA en automatisant la récupération des données et le parsing des métadonnées.
   </div>
 </div>
 
@@ -168,16 +166,16 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-title-meta">
 
     <div>
-    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-heading">Auteur·rice</div>
     <div class="quarto-title-meta-contents">
              <p>Ousmane Cissé </p>
           </div>
   </div>
     
     <div>
-    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-heading">Date de publication</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 22, 2026</p>
+      <p class="date">22 janvier 2026</p>
     </div>
   </div>
   
@@ -189,54 +187,42 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>The journey to building a custom AI agent starts with its “brain” — or more accurately, its knowledge base. On Day 1 of the <strong>AI Hero</strong> project, I focused on the first step of the RAG (Retrieval-Augmented Generation) pipeline: <strong>Ingestion</strong>.</p>
-<p>Here is how I built a robust pipeline to fetch, parse, and structure technical documentation from GitHub.</p>
-<section id="building-the-infrastructure-for-knowledge" class="level2">
-<h2 class="anchored" data-anchor-id="building-the-infrastructure-for-knowledge">Building the Infrastructure for Knowledge</h2>
-<p>An AI agent is only as good as the data it can access. Rather than manually copying documentation, we focused on building an automated system that can ingest hundreds of Markdown files directly from a GitHub repository.</p>
-<p>The goal was to transform raw <code>.md</code> and <code>.mdx</code> files into a clean, structured JSON-like format that includes both the content and its associated metadata.</p>
+<p>Le voyage vers la création d’un agent IA personnalisé commence par son « cerveau » — ou plus précisément, sa base de connaissances. Lors du <strong>Jour 1</strong> du projet <strong>AI Hero</strong>, je me suis concentré sur la première étape du pipeline RAG (Retrieval-Augmented Generation) : <strong>l’Ingestion</strong>.</p>
+<p>Voici comment j’ai construit un pipeline robuste pour récupérer, analyser et structurer la documentation technique depuis GitHub.</p>
+<section id="construire-linfrastructure-de-la-connaissance" class="level2">
+<h2 class="anchored" data-anchor-id="construire-linfrastructure-de-la-connaissance">Construire l’Infrastructure de la Connaissance</h2>
+<p>Un agent IA n’est efficace que par la qualité des données auxquelles il a accès. Plutôt que de copier manuellement la documentation, nous nous sommes concentrés sur la création d’un système automatisé capable d’ingérer des centaines de fichiers Markdown directement depuis un dépôt GitHub.</p>
+<p>L’objectif était de transformer des fichiers bruts <code>.md</code> et <code>.mdx</code> en un format structuré (type JSON) incluant à la fois le contenu et ses métadonnées associées.</p>
 </section>
-<section id="in-memory-processing-with-python" class="level2">
-<h2 class="anchored" data-anchor-id="in-memory-processing-with-python">In-Memory Processing with Python</h2>
-<p>One of the coolest tricks I learned was handling data entirely in memory. Instead of downloading a ZIP file to the disk, unzipping it, and dealing with temporary files, we used Python’s <code>io.BytesIO</code> and <code>zipfile</code> modules.</p>
-<p>This approach is:<br>
-- <strong>Faster</strong>: No disk I/O overhead.<br>
-- <strong>Cleaner</strong>: No need to manage or delete temporary files.<br>
-- <strong>Scalable</strong>: Perfect for cloud functions or ephemeral environments.</p>
+<section id="traitement-en-mémoire-avec-python" class="level2">
+<h2 class="anchored" data-anchor-id="traitement-en-mémoire-avec-python">Traitement en Mémoire avec Python</h2>
+<p>L’une des astuces les plus intéressantes que j’ai apprises est de manipuler les données entièrement en mémoire. Au lieu de télécharger un fichier ZIP sur le disque, de le décompresser et de gérer des fichiers temporaires, nous avons utilisé les modules <code>io.BytesIO</code> et <code>zipfile</code> de Python.</p>
+<p>Cette approche est : - <strong>Plus rapide</strong> : Pas de latence liée aux entrées/sorties du disque. - <strong>Plus propre</strong> : Pas besoin de gérer ou de supprimer des fichiers temporaires. - <strong>Scalable</strong> : Parfait pour des fonctions cloud ou des environnements éphémères.</p>
 </section>
-<section id="extracting-meaning-with-metadata-frontmatter" class="level2">
-<h2 class="anchored" data-anchor-id="extracting-meaning-with-metadata-frontmatter">Extracting Meaning with Metadata (Frontmatter)</h2>
-<p>Most technical documentation (like Evidently AI’s docs) uses <strong>YAML Frontmatter</strong> to store critical metadata like titles, tags, and descriptions.</p>
-<p>Using the <code>python-frontmatter</code> library, I wrote a parser that:<br>
-1. Iterates through the ZIP archive.<br>
-2. Identifies relevant documentation files.<br>
-3. Separates the human-readable text from the structured metadata.</p>
-<p>This metadata is crucial for later stages, as it allows the agent to filter information by category or relevance.</p>
+<section id="extraire-du-sens-avec-les-métadonnées-frontmatter" class="level2">
+<h2 class="anchored" data-anchor-id="extraire-du-sens-avec-les-métadonnées-frontmatter">Extraire du Sens avec les Métadonnées (Frontmatter)</h2>
+<p>La plupart des documentations techniques utilisent du <strong>YAML Frontmatter</strong> pour stocker des métadonnées critiques comme les titres, les tags et les descriptions.</p>
+<p>En utilisant la bibliothèque <code>python-frontmatter</code>, j’ai écrit un parseur qui : 1. Parcourt l’archive ZIP. 2. Identifie les fichiers de documentation pertinents. 3. Sépare le texte lisible par l’homme des métadonnées structurées.</p>
+<p>Ces métadonnées sont cruciales pour les étapes ultérieures, car elles permettent à l’agent de filtrer les informations par catégorie ou par pertinence.</p>
 </section>
-<section id="the-modern-tech-stack-uv-and-more" class="level2">
-<h2 class="anchored" data-anchor-id="the-modern-tech-stack-uv-and-more">The Modern Tech Stack: <code>uv</code> and more</h2>
-<p>We stayed away from traditional, slow package managers. Instead, we used: - <strong><code>uv</code></strong>: The extremely fast Python package manager that makes environment setup instantaneous.<br>
-- <strong><code>requests</code></strong>: To stream the repository data directly from GitHub.<br>
-- <strong><code>python-frontmatter</code></strong>: For precise metadata extraction.<br>
-- <strong>Jupyter Notebooks</strong>: For interactive exploration of the ingested data structure.</p>
+<section id="la-stack-tech-moderne-uv-et-plus-encore" class="level2">
+<h2 class="anchored" data-anchor-id="la-stack-tech-moderne-uv-et-plus-encore">La Stack Tech Moderne : <code>uv</code> et plus encore</h2>
+<p>Nous avons laissé de côté les gestionnaires de paquets traditionnels et lents. À la place, nous avons utilisé : - <strong><code>uv</code></strong> : Le gestionnaire de paquets Python extrêmement rapide qui rend la configuration de l’environnement instantanée. - <strong><code>requests</code></strong> : Pour streamer les données du dépôt directement depuis GitHub. - <strong><code>python-frontmatter</code></strong> : Pour une extraction précise des métadonnées. - <strong>Jupyter Notebooks</strong> : Pour l’exploration interactive de la structure des données ingérées.</p>
 </section>
-<section id="key-lessons" class="level2">
-<h2 class="anchored" data-anchor-id="key-lessons">Key Lessons</h2>
+<section id="leçons-clés" class="level2">
+<h2 class="anchored" data-anchor-id="leçons-clés">Leçons Clés</h2>
 <ol type="1">
-<li><strong>Automate the Source</strong>: Never manually manage the data your agent needs. Build a pipeline.<br>
-</li>
-<li><strong>Memory is Your Friend</strong>: Processing ZIP files in memory is a professional pattern that saves time and local resources.<br>
-</li>
-<li><strong>Structure Matters</strong>: Content is king, but metadata is the compass that helps your agent find the right content.<br>
-</li>
-<li><strong>Tooling Consistency</strong>: Using modern tools like <code>uv</code> ensures that experiments are reproducible and fast.</li>
+<li><strong>Automatisez la Source</strong> : Ne gérez jamais manuellement les données dont votre agent a besoin. Construisez un pipeline.</li>
+<li><strong>La Mémoire est votre Allie</strong> : Traiter les fichiers ZIP en mémoire est un pattern professionnel qui gagne du temps et préserve les ressources locales.</li>
+<li><strong>La Structure Compte</strong> : Le contenu est roi, mais les métadonnées sont la boussole qui aide votre agent à trouver le bon contenu.</li>
+<li><strong>Cohérence des Outils</strong> : L’utilisation d’outils modernes comme <code>uv</code> garantit que les expérimentations sont reproductibles et rapides.</li>
 </ol>
 </section>
-<section id="mindset-shift" class="level2">
-<h2 class="anchored" data-anchor-id="mindset-shift">Mindset Shift</h2>
-<p>Day 1 shift my perspective from “How do I prompt the model?” to “<strong>How do I prepare the data for the model?</strong>” You can have the best LLM in the world, but if your ingestion pipeline is messy, your agent will be unreliable.</p>
-<p><strong>Next Step</strong>: Day 2 will focus on <strong>Chunking and Embedding</strong> to turn this raw text into mathematical vectors that the AI can “search”.</p>
-<p><strong>Homework</strong>: <a href="https://github.com/oussou-dev/ai-hero-bootcamp">AI Hero Day 1 Implementation</a></p>
+<section id="changement-détat-desprit" class="level2">
+<h2 class="anchored" data-anchor-id="changement-détat-desprit">Changement d’État d’Esprit</h2>
+<p>Le Jour 1 a déplacé ma perspective de « Comment prompter le modèle ? » vers « <strong>Comment préparer les données pour le modèle ?</strong> ». Vous pouvez avoir le meilleur LLM du monde, mais si votre pipeline d’ingestion est désordonné, votre agent ne sera pas fiable.</p>
+<p><strong>Prochaine étape</strong> : Le Jour 2 se concentrera sur le <strong>Chunking et l’Embedding</strong> pour transformer ce texte brut en vecteurs mathématiques que l’IA peut « rechercher ».</p>
+<p><strong>Devoirs</strong> : <a href="https://github.com/oussou-dev/ai-hero-bootcamp">Implémentation AI Hero Jour 1</a></p>
 
 
 </section>
@@ -479,12 +465,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // flash "checked"
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
+    button.setAttribute("title", "Copié");
     let tooltip;
     if (window.bootstrap) {
       button.setAttribute("data-bs-toggle", "tooltip");
       button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
+      button.setAttribute("data-bs-title", "Copié");
       tooltip = new bootstrap.Tooltip(button, 
         { trigger: "manual", 
           customClass: "code-copy-button-tooltip",
