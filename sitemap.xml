@@ -1,35 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://oussou-dev.github.io/ousmanecisse/fr/projets.html</loc>
-    <lastmod>2026-01-22T19:37:17.603Z</lastmod>
+    <loc>https://oussou-dev.github.io/ousmanecisse/projects.html</loc>
+    <lastmod>2026-01-22T19:38:50.121Z</lastmod>
   </url>
   <url>
-    <loc>https://oussou-dev.github.io/ousmanecisse/fr/blog.html</loc>
-    <lastmod>2026-01-22T19:37:17.603Z</lastmod>
+    <loc>https://oussou-dev.github.io/ousmanecisse/posts/ai-hero-day-1/index.html</loc>
+    <lastmod>2026-01-22T15:11:44.984Z</lastmod>
   </url>
   <url>
-    <loc>https://oussou-dev.github.io/ousmanecisse/fr/posts/ai-dev-tools-week-1/index.html</loc>
-    <lastmod>2026-01-22T19:37:17.603Z</lastmod>
+    <loc>https://oussou-dev.github.io/ousmanecisse/posts/ai-dev-tools-week-3/index.html</loc>
+    <lastmod>2026-01-22T13:37:14.243Z</lastmod>
   </url>
   <url>
-    <loc>https://oussou-dev.github.io/ousmanecisse/fr/posts/ai-dev-tools-week-3/index.html</loc>
-    <lastmod>2026-01-22T19:37:17.603Z</lastmod>
+    <loc>https://oussou-dev.github.io/ousmanecisse/posts/ai-dev-tools-week-1/index.html</loc>
+    <lastmod>2026-01-22T13:36:21.007Z</lastmod>
   </url>
   <url>
-    <loc>https://oussou-dev.github.io/ousmanecisse/fr/index.html</loc>
-    <lastmod>2026-01-22T19:37:17.603Z</lastmod>
+    <loc>https://oussou-dev.github.io/ousmanecisse/courses/ai-dev-tools.html</loc>
+    <lastmod>2026-01-05T21:16:07.298Z</lastmod>
   </url>
   <url>
-    <loc>https://oussou-dev.github.io/ousmanecisse/fr/posts/ai-hero-day-1/index.html</loc>
-    <lastmod>2026-01-22T19:37:17.603Z</lastmod>
+    <loc>https://oussou-dev.github.io/ousmanecisse/blog.html</loc>
+    <lastmod>2026-01-22T12:48:35.143Z</lastmod>
   </url>
   <url>
-    <loc>https://oussou-dev.github.io/ousmanecisse/fr/posts/ai-dev-tools-week-2/index.html</loc>
-    <lastmod>2026-01-22T19:37:17.603Z</lastmod>
+    <loc>https://oussou-dev.github.io/ousmanecisse/about.html</loc>
+    <lastmod>2026-01-13T17:35:19.582Z</lastmod>
   </url>
   <url>
-    <loc>https://oussou-dev.github.io/ousmanecisse/fr/about.html</loc>
-    <lastmod>2026-01-22T19:37:17.603Z</lastmod>
+    <loc>https://oussou-dev.github.io/ousmanecisse/courses.html</loc>
+    <lastmod>2025-11-28T12:11:47.878Z</lastmod>
+  </url>
+  <url>
+    <loc>https://oussou-dev.github.io/ousmanecisse/index.html</loc>
+    <lastmod>2026-01-13T18:31:20.691Z</lastmod>
+  </url>
+  <url>
+    <loc>https://oussou-dev.github.io/ousmanecisse/posts/ai-dev-tools-week-2/index.html</loc>
+    <lastmod>2026-01-22T13:36:59.873Z</lastmod>
+  </url>
+  <url>
+    <loc>https://oussou-dev.github.io/ousmanecisse/posts/ai-dev-tools-week-4/index.html</loc>
+    <lastmod>2026-01-22T13:37:46.469Z</lastmod>
+  </url>
+  <url>
+    <loc>https://oussou-dev.github.io/ousmanecisse/posts/ai-news-aggregator/index.html</loc>
+    <lastmod>2026-01-21T10:20:00.742Z</lastmod>
   </url>
 </urlset>
