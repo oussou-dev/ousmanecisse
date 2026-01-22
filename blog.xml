@@ -9,13 +9,83 @@
 <link>https://oussou-dev.github.io/ousmanecisse/blog.html</link>
 <atom:link href="https://oussou-dev.github.io/ousmanecisse/blog.xml" rel="self" type="application/rss+xml"/>
 <description></description>
-<generator>quarto-1.6.42</generator>
-<lastBuildDate>Wed, 21 Jan 2026 23:00:00 GMT</lastBuildDate>
+<generator>quarto-1.8.27</generator>
+<lastBuildDate>Thu, 22 Jan 2026 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>AI Hero : Jour 1 - Ingestion et Indexation des Données</title>
+  <dc:creator>Ousmane Cissé</dc:creator>
+  <link>https://oussou-dev.github.io/ousmanecisse/fr/posts/ai-hero-day-1/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>Le voyage vers la création d’un agent IA personnalisé commence par son « cerveau » — ou plus précisément, sa base de connaissances. Lors du <strong>Jour 1</strong> du projet <strong>AI Hero</strong>, je me suis concentré sur la première étape du pipeline RAG (Retrieval-Augmented Generation) : <strong>l’Ingestion</strong>.</p>
+<p>Voici comment j’ai construit un pipeline robuste pour récupérer, analyser et structurer la documentation technique depuis GitHub.</p>
+<section id="construire-linfrastructure-de-la-connaissance" class="level2">
+<h2 class="anchored" data-anchor-id="construire-linfrastructure-de-la-connaissance">Construire l’Infrastructure de la Connaissance</h2>
+<p>Un agent IA n’est efficace que par la qualité des données auxquelles il a accès. Plutôt que de copier manuellement la documentation, nous nous sommes concentrés sur la création d’un système automatisé capable d’ingérer des centaines de fichiers Markdown directement depuis un dépôt GitHub.</p>
+<p>L’objectif était de transformer des fichiers bruts <code>.md</code> et <code>.mdx</code> en un format structuré (type JSON) incluant à la fois le contenu et ses métadonnées associées.</p>
+</section>
+<section id="traitement-en-mémoire-avec-python" class="level2">
+<h2 class="anchored" data-anchor-id="traitement-en-mémoire-avec-python">Traitement en Mémoire avec Python</h2>
+<p>L’une des astuces les plus intéressantes que j’ai apprises est de manipuler les données entièrement en mémoire. Au lieu de télécharger un fichier ZIP sur le disque, de le décompresser et de gérer des fichiers temporaires, nous avons utilisé les modules <code>io.BytesIO</code> et <code>zipfile</code> de Python.</p>
+<p>Cette approche est : - <strong>Plus rapide</strong> : Pas de latence liée aux entrées/sorties du disque.<br>
+- <strong>Plus propre</strong> : Pas besoin de gérer ou de supprimer des fichiers temporaires.<br>
+- <strong>Scalable</strong> : Parfait pour des fonctions cloud ou des environnements éphémères.</p>
+</section>
+<section id="extraire-du-sens-avec-les-métadonnées-frontmatter" class="level2">
+<h2 class="anchored" data-anchor-id="extraire-du-sens-avec-les-métadonnées-frontmatter">Extraire du Sens avec les Métadonnées (Frontmatter)</h2>
+<p>La plupart des documentations techniques utilisent du <strong>YAML Frontmatter</strong> pour stocker des métadonnées critiques comme les titres, les tags et les descriptions.</p>
+<p>En utilisant la bibliothèque <code>python-frontmatter</code>, j’ai écrit un parseur qui : 1. Parcourt l’archive ZIP.<br>
+2. Identifie les fichiers de documentation pertinents.<br>
+3. Sépare le texte lisible par l’homme des métadonnées structurées.</p>
+<p>Ces métadonnées sont cruciales pour les étapes ultérieures, car elles permettent à l’agent de filtrer les informations par catégorie ou par pertinence.</p>
+</section>
+<section id="la-stack-tech-moderne-uv-et-plus-encore" class="level2">
+<h2 class="anchored" data-anchor-id="la-stack-tech-moderne-uv-et-plus-encore">La Stack Tech Moderne : <code>uv</code> et plus encore</h2>
+<p>Nous avons laissé de côté les gestionnaires de paquets traditionnels et lents. À la place, nous avons utilisé : - <strong><code>uv</code></strong> : Le gestionnaire de paquets Python extrêmement rapide qui rend la configuration de l’environnement instantanée.<br>
+- <strong><code>requests</code></strong> : Pour streamer les données du dépôt directement depuis GitHub.<br>
+- <strong><code>python-frontmatter</code></strong> : Pour une extraction précise des métadonnées.<br>
+- <strong>Jupyter Notebooks</strong> : Pour l’exploration interactive de la structure des données ingérées.</p>
+</section>
+<section id="leçons-clés" class="level2">
+<h2 class="anchored" data-anchor-id="leçons-clés">Leçons Clés</h2>
+<ol type="1">
+<li><strong>Automatisez la Source</strong> : Ne gérez jamais manuellement les données dont votre agent a besoin. Construisez un pipeline.<br>
+</li>
+<li><strong>La Mémoire est votre Allie</strong> : Traiter les fichiers ZIP en mémoire est un pattern professionnel qui gagne du temps et préserve les ressources locales.<br>
+</li>
+<li><strong>La Structure Compte</strong> : Le contenu est roi, mais les métadonnées sont la boussole qui aide votre agent à trouver le bon contenu.<br>
+</li>
+<li><strong>Cohérence des Outils</strong> : L’utilisation d’outils modernes comme <code>uv</code> garantit que les expérimentations sont reproductibles et rapides.</li>
+</ol>
+</section>
+<section id="changement-détat-desprit" class="level2">
+<h2 class="anchored" data-anchor-id="changement-détat-desprit">Changement d’État d’Esprit</h2>
+<p>Le Jour 1 a déplacé ma perspective de « Comment prompter le modèle ? » vers « <strong>Comment préparer les données pour le modèle ?</strong> ». Vous pouvez avoir le meilleur LLM du monde, mais si votre pipeline d’ingestion est désordonné, votre agent ne sera pas fiable.</p>
+<p><strong>Prochaine étape</strong> : Le Jour 2 se concentrera sur le <strong>Chunking et l’Embedding</strong> pour transformer ce texte brut en vecteurs mathématiques que l’IA peut « rechercher ».</p>
+<p><strong>Devoirs</strong> : <a href="https://github.com/oussou-dev/ai-hero-bootcamp">Implémentation AI Hero Jour 1</a></p>
+
+
+</section>
+
+ ]]></description>
+  <category>Agents IA</category>
+  <category>LLM</category>
+  <category>RAG</category>
+  <category>AI Hero</category>
+  <guid>https://oussou-dev.github.io/ousmanecisse/fr/posts/ai-hero-day-1/</guid>
+  <pubDate>Thu, 22 Jan 2026 00:00:00 GMT</pubDate>
+  <media:content url="https://oussou-dev.github.io/ousmanecisse/fr/img/ai_hero_day_1.png" medium="image" type="image/png"/>
+</item>
 <item>
   <title>AI Hero: Day 1 - Ingest and Index Your Data</title>
   <dc:creator>Ousmane Cissé</dc:creator>
   <link>https://oussou-dev.github.io/ousmanecisse/posts/ai-hero-day-1/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -79,7 +149,7 @@
   <category>RAG</category>
   <category>AI Hero</category>
   <guid>https://oussou-dev.github.io/ousmanecisse/posts/ai-hero-day-1/</guid>
-  <pubDate>Wed, 21 Jan 2026 23:00:00 GMT</pubDate>
+  <pubDate>Thu, 22 Jan 2026 00:00:00 GMT</pubDate>
   <media:content url="https://oussou-dev.github.io/ousmanecisse/img/ai_hero_day_1.png" medium="image" type="image/png" height="77" width="144"/>
 </item>
 <item>
@@ -87,6 +157,7 @@
   <dc:creator>Ousmane Cissé</dc:creator>
   <link>https://oussou-dev.github.io/ousmanecisse/posts/ai-news-aggregator/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -158,7 +229,7 @@
   <category>Agents</category>
   <category>Docker</category>
   <guid>https://oussou-dev.github.io/ousmanecisse/posts/ai-news-aggregator/</guid>
-  <pubDate>Mon, 19 Jan 2026 23:00:00 GMT</pubDate>
+  <pubDate>Tue, 20 Jan 2026 00:00:00 GMT</pubDate>
   <media:content url="https://oussou-dev.github.io/ousmanecisse/img/ai_news_aggregator.webp" medium="image" type="image/webp"/>
 </item>
 <item>
@@ -166,6 +237,7 @@
   <dc:creator>Ousmane Cissé</dc:creator>
   <link>https://oussou-dev.github.io/ousmanecisse/posts/ai-dev-tools-week-4/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -223,7 +295,7 @@
   <category>Agents</category>
   <category>AI Dev Tools</category>
   <guid>https://oussou-dev.github.io/ousmanecisse/posts/ai-dev-tools-week-4/</guid>
-  <pubDate>Wed, 14 Jan 2026 23:00:00 GMT</pubDate>
+  <pubDate>Thu, 15 Jan 2026 00:00:00 GMT</pubDate>
   <media:content url="https://oussou-dev.github.io/ousmanecisse/img/week_4_ai_dev_tools.webp" medium="image" type="image/webp"/>
 </item>
 <item>
@@ -231,6 +303,7 @@
   <dc:creator>Ousmane Cissé</dc:creator>
   <link>https://oussou-dev.github.io/ousmanecisse/posts/ai-dev-tools-week-3/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -287,7 +360,7 @@
   <category>Agents</category>
   <category>AI Dev Tools</category>
   <guid>https://oussou-dev.github.io/ousmanecisse/posts/ai-dev-tools-week-3/</guid>
-  <pubDate>Thu, 11 Dec 2025 23:00:00 GMT</pubDate>
+  <pubDate>Fri, 12 Dec 2025 00:00:00 GMT</pubDate>
   <media:content url="https://oussou-dev.github.io/ousmanecisse/img/week_3_ai_dev_tools.png" medium="image" type="image/png" height="61" width="144"/>
 </item>
 <item>
@@ -295,6 +368,7 @@
   <dc:creator>Ousmane Cissé</dc:creator>
   <link>https://oussou-dev.github.io/ousmanecisse/posts/ai-dev-tools-week-2/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -381,7 +455,7 @@ Week 2 taught me <strong>how to think like a real engineer</strong> using those 
   <category>CI/CD</category>
   <category>AI Dev Tools</category>
   <guid>https://oussou-dev.github.io/ousmanecisse/posts/ai-dev-tools-week-2/</guid>
-  <pubDate>Thu, 04 Dec 2025 23:00:00 GMT</pubDate>
+  <pubDate>Fri, 05 Dec 2025 00:00:00 GMT</pubDate>
   <media:content url="https://oussou-dev.github.io/ousmanecisse/img/week_2_ai_dev_tools.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
@@ -389,6 +463,7 @@ Week 2 taught me <strong>how to think like a real engineer</strong> using those 
   <dc:creator>Ousmane Cissé</dc:creator>
   <link>https://oussou-dev.github.io/ousmanecisse/posts/ai-dev-tools-week-1/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -422,8 +497,116 @@ Week 2 taught me <strong>how to think like a real engineer</strong> using those 
   <category>Vibe Coding</category>
   <category>AI Dev Tools</category>
   <guid>https://oussou-dev.github.io/ousmanecisse/posts/ai-dev-tools-week-1/</guid>
-  <pubDate>Thu, 27 Nov 2025 23:00:00 GMT</pubDate>
+  <pubDate>Fri, 28 Nov 2025 00:00:00 GMT</pubDate>
   <media:content url="https://oussou-dev.github.io/ousmanecisse/img/week_1_ai_dev_tools.png" medium="image" type="image/png" height="61" width="144"/>
+</item>
+<item>
+  <title>Outils de Dév IA - Semaine 3</title>
+  <link>https://oussou-dev.github.io/ousmanecisse/fr/posts/ai-dev-tools-week-3/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>Cette semaine était dédiée à la création d’agents et à l’utilisation du protocole MCP.</p>
+</section>
+<section id="points-clés" class="level2">
+<h2 class="anchored" data-anchor-id="points-clés">Points Clés</h2>
+<ul>
+<li>Comprendre le Model Context Protocol (MCP).</li>
+<li>Construire un serveur MCP simple.</li>
+<li>Connecter des outils personnalisés aux LLMs.</li>
+</ul>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>Le MCP ouvre des possibilités incroyables pour l’interopérabilité entre les outils d’IA.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>IA</category>
+  <category>Outils</category>
+  <category>Zoomcamp</category>
+  <category>AI Dev Tools</category>
+  <guid>https://oussou-dev.github.io/ousmanecisse/fr/posts/ai-dev-tools-week-3/</guid>
+  <pubDate>Sat, 03 Feb 2024 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Outils de Dév IA - Semaine 2</title>
+  <link>https://oussou-dev.github.io/ousmanecisse/fr/posts/ai-dev-tools-week-2/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>La deuxième semaine s’est concentrée sur des cas d’utilisation plus avancés. Nous avons appris à intégrer des API d’IA dans nos applications.</p>
+</section>
+<section id="points-clés" class="level2">
+<h2 class="anchored" data-anchor-id="points-clés">Points Clés</h2>
+<ul>
+<li>Utilisation de l’API OpenAI.</li>
+<li>Création de scripts simples avec Python.</li>
+<li>Automatisation des tâches répétitives.</li>
+</ul>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>Nous commençons à voir la puissance de l’intégration de l’IA dans les workflows de développement.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>IA</category>
+  <category>Outils</category>
+  <category>Zoomcamp</category>
+  <category>AI Dev Tools</category>
+  <guid>https://oussou-dev.github.io/ousmanecisse/fr/posts/ai-dev-tools-week-2/</guid>
+  <pubDate>Sat, 27 Jan 2024 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Outils de Dév IA - Semaine 1</title>
+  <link>https://oussou-dev.github.io/ousmanecisse/fr/posts/ai-dev-tools-week-1/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>Cette semaine, nous avons exploré les outils fondamentaux pour le développement assisté par IA. Nous avons couvert l’utilisation des LLM pour l’écriture de code, le refactoring, et la documentation.</p>
+</section>
+<section id="points-clés" class="level2">
+<h2 class="anchored" data-anchor-id="points-clés">Points Clés</h2>
+<ul>
+<li>Configuration de l’environnement de développement.</li>
+<li>Introduction à GitHub Copilot.</li>
+<li>Utilisation de ChatGPT pour la génération de code.</li>
+</ul>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>Une première semaine passionnante qui pose les bases pour la suite du programme.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>IA</category>
+  <category>Outils</category>
+  <category>Zoomcamp</category>
+  <category>AI Dev Tools</category>
+  <guid>https://oussou-dev.github.io/ousmanecisse/fr/posts/ai-dev-tools-week-1/</guid>
+  <pubDate>Sat, 20 Jan 2024 00:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
