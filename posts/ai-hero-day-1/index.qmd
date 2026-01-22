@@ -1,0 +1,61 @@
+---
+title: "AI Hero: Day 1 - Ingest and Index Your Data"
+description: "Building the foundation of an AI agent by automating data retrieval and metadata parsing."
+author: "Ousmane Cissé"
+date: "2026-01-22"
+categories: [AI Agents, LLM, Python, RAG, AI Hero]
+image: "../../img/ai_hero_day_1.png"
+---
+
+The journey to building a custom AI agent starts with its "brain" — or more accurately, its knowledge base. On Day 1 of the **AI Hero** project, I focused on the first step of the RAG (Retrieval-Augmented Generation) pipeline: **Ingestion**.
+
+Here is how I built a robust pipeline to fetch, parse, and structure technical documentation from GitHub.
+
+## Building the Infrastructure for Knowledge
+
+An AI agent is only as good as the data it can access. Rather than manually copying documentation, we focused on building an automated system that can ingest hundreds of Markdown files directly from a GitHub repository.
+
+The goal was to transform raw `.md` and `.mdx` files into a clean, structured JSON-like format that includes both the content and its associated metadata.
+
+## In-Memory Processing with Python
+
+One of the coolest tricks I learned was handling data entirely in memory. Instead of downloading a ZIP file to the disk, unzipping it, and dealing with temporary files, we used Python's `io.BytesIO` and `zipfile` modules.
+
+This approach is:
+- **Faster**: No disk I/O overhead.
+- **Cleaner**: No need to manage or delete temporary files.
+- **Scalable**: Perfect for cloud functions or ephemeral environments.
+
+## Extracting Meaning with Metadata (Frontmatter)
+
+Most technical documentation (like Evidently AI's docs) uses **YAML Frontmatter** to store critical metadata like titles, tags, and descriptions.
+
+Using the `python-frontmatter` library, I wrote a parser that:
+1. Iterates through the ZIP archive.
+2. Identifies relevant documentation files.
+3. Separates the human-readable text from the structured metadata.
+
+This metadata is crucial for later stages, as it allows the agent to filter information by category or relevance.
+
+## The Modern Tech Stack: `uv` and more
+
+We stayed away from traditional, slow package managers. Instead, we used:
+- **`uv`**: The extremely fast Python package manager that makes environment setup instantaneous.
+- **`requests`**: To stream the repository data directly from GitHub.
+- **`python-frontmatter`**: For precise metadata extraction.
+- **Jupyter Notebooks**: For interactive exploration of the ingested data structure.
+
+## Key Lessons
+
+1. **Automate the Source**: Never manually manage the data your agent needs. Build a pipeline.
+2. **Memory is Your Friend**: Processing ZIP files in memory is a professional pattern that saves time and local resources.
+3. **Structure Matters**: Content is king, but metadata is the compass that helps your agent find the right content.
+4. **Tooling Consistency**: Using modern tools like `uv` ensures that experiments are reproducible and fast.
+
+## Mindset Shift
+
+Day 1 shift my perspective from "How do I prompt the model?" to "**How do I prepare the data for the model?**" You can have the best LLM in the world, but if your ingestion pipeline is messy, your agent will be unreliable.
+
+**Next Step**: Day 2 will focus on **Chunking and Embedding** to turn this raw text into mathematical vectors that the AI can "search".
+
+**Homework**: [AI Hero Day 1 Implementation](https://github.com/oussou-dev/ai-hero-bootcamp)
