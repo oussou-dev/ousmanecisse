@@ -3,44 +3,20 @@ title: "Projects"
 listing:
   contents:
     - title: "AI Dev Tools"
-      description: |
-        Projects and assignments from the AI Dev Tools Zoomcamp.
+      description: Projects and assignments from the AI Dev Tools Zoomcamp.
       categories: [AI, VIBE CODING, MCP, N8N, Zoomcamp]
       path: https://github.com/oussou-dev/ai-dev-tools-zoomcamp 
       image: "img/ai-dev-tools-cover.webp"
-      links:
-        - icon: github
-          text: Github
-          href: https://github.com/oussou-dev/ai-dev-tools-zoomcamp
-        - icon: journal-text
-          text: Posts
-          href: https://oussou-dev.github.io/ousmanecisse/blog.html#category=AI%20Dev%20Tools
     - title: "ML Engineer ZoomCamp"
-      description: |
-        A comprehensive machine learning engineering course covering deployment, cloud, and MLOps.
+      description: A comprehensive machine learning engineering course covering deployment, cloud, and MLOps.
       categories: [Machine Learning, MLOPS]
       path: https://github.com/oussou-dev/ML_Engineer_ZoomCamp
       image: "img/ml-zoomcamp-cover.webp"
-      links:
-        - icon: github
-          text: Github
-          href: https://github.com/oussou-dev/ML_Engineer_ZoomCamp
-        - icon: journal-text
-          text: Posts
-          href: https://oussou-dev.github.io/ousmanecisse/blog.html#category=MLOPS"
     - title: "AI Hero"
-      description: |
-        A free 7-day email crash-course on building and deploying AI agents.
+      description: A free 7-day email crash-course on building and deploying AI agents.
       categories: [AI Agents, LLM, Deployment]
       path: https://github.com/oussou-dev/ai-hero-bootcamp
       image: "img/ai_hero_cover.png"
-      links:
-        - icon: github
-          text: Github
-          href: https://github.com/oussou-dev/ai-hero-bootcamp
-        - icon: journal-text
-          text: Posts
-          href: https://oussou-dev.github.io/ousmanecisse/blog.html#category=AI%20Hero"
     
   sort: "date desc"
   type: grid
