@@ -1,10 +1,7 @@
 {
   "listingMap": {
-    "blog.qmd": [
+    "fr/blog.qmd": [
       "posts"
-    ],
-    "courses.qmd": [
-      "courses"
     ]
   }
 }
