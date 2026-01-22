@@ -2,6 +2,11 @@
 title: "Projets"
 listing:
   contents:
+    - title: "Outils de Dev IA"
+      description: Projets de vibe coding du bootcamp AI Dev Tools Zoomcamp.
+      categories: [IA, VIBE CODING, MCP, N8N, Zoomcamp]
+      path: https://github.com/oussou-dev/ai-dev-tools-zoomcamp 
+      image: "../img/ai-dev-tools-cover.webp"
     - title: "AI Hero"
       description: Création et déploiement d'Agents IA, 7-day challenge.
       categories: [Agents IA, LLM, Déploiement]
@@ -12,11 +17,6 @@ listing:
       categories: [Data Engineering, GCP, Terraform, Airflow, Kafka, Spark]
       path: https://github.com/oussou-dev/data-engineering-zoomcamp
       image: "../img/data_engineering_zoomcamp_cover.png"
-    - title: "Outils de Dev IA"
-      description: Projets de vide coding du bootcamp AI Dev Tools Zoomcamp.
-      categories: [IA, VIBE CODING, MCP, N8N, Zoomcamp]
-      path: https://github.com/oussou-dev/ai-dev-tools-zoomcamp 
-      image: "../img/ai-dev-tools-cover.webp"
     - title: "Applications No-Code & IA"
       description: "Création d'apps internes avec des outils No-Code (Airtable, Softr, Make/Zapier) et d'IA. De l'analyse des besoins et modélisation BPMN jusqu'au déploiement."
       categories: [No-Code, IA, Airtable, Softr, Make, BPMN]
@@ -33,7 +33,7 @@ listing:
       path: https://github.com/oussou-dev/ML_Engineer_ZoomCamp
       image: "../img/ml-zoomcamp-cover.webp"
     
-  sort: "date desc"
+  sort: false
   type: grid
   categories: false
   sort-ui: false

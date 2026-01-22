@@ -6,7 +6,7 @@ listing:
   type: default
   categories: true
   sort-ui: true
-  filter-ui: true
+  filter-ui: false
   fields: [date, title, reading-time, description, categories]
   feed: true
 page-layout: full
