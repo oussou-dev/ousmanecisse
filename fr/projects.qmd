@@ -12,6 +12,11 @@ listing:
       categories: [Machine Learning, MLOPS]
       path: https://github.com/oussou-dev/ML_Engineer_ZoomCamp
       image: "https://raw.githubusercontent.com/DataTalksClub/machine-learning-zoomcamp/master/images/ml-zoomcamp.png"
+    - title: "AI Hero"
+      description: "Un cours intensif gratuit de 7 jours par e-mail pour construire et déployer des agents IA."
+      categories: [Agents IA, LLM, Déploiement]
+      path: https://github.com/oussou-dev/ai-hero-bootcamp
+      image: "../img/ai_hero_cover.png"
     
   sort: "date desc"
   type: grid

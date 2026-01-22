@@ -12,6 +12,11 @@ listing:
       categories: [Machine Learning, MLOPS]
       path: https://github.com/oussou-dev/ML_Engineer_ZoomCamp
       image: "img/ml-zoomcamp-cover.webp"
+    - title: "AI Hero"
+      description: "A free 7-day email crash-course on building and deploying AI agents."
+      categories: [AI Agents, LLM, Deployment]
+      path: https://github.com/oussou-dev/ai-hero-bootcamp
+      image: "img/ai_hero_cover.png"
     
   sort: "date desc"
   type: grid

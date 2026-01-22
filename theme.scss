@@ -24,6 +24,10 @@ $border-color: $navbar-bg;
 
 /*-- scss:rules --*/
 
+:root {
+    --secondary-color: #6A395B;
+}
+
 div.quarto-about-jolla main {
     border-top: solid 3px $navbar-bg;
     border-bottom: solid 3px $navbar-bg;
