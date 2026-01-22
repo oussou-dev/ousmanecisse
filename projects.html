@@ -80,9 +80,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-title','listing-description','listing-categories','listing-image','listing-links',{ data: ['index'] },{ data: ['categories'] }],
+      valueNames: ['listing-image','listing-title','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-title","listing-description","listing-categories","listing-image","listing-links"],
+      searchColumns: ["listing-title","listing-description","listing-categories","listing-image"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -216,193 +216,95 @@ window.Quarto = {
 
 
 
-<div class="quarto-listing quarto-listing-container-custom" id="listing-listing">
+<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
 <div class="list grid quarto-listing-cols-3">
-<pre><code>    &lt;div class="g-col-1" data-index='0' data-categories='QUklMkNWaWJlJTIwQ29kaW5nJTJDTUNQJTJDbjhuJTJDWm9vbWNhbXA='&gt;
-        &lt;div class="quarto-grid-item card h-100 card-left"&gt;
-            
-                &lt;div class="quarto-grid-thumbnail"&gt;
-                    &lt;img src="img/ai-dev-tools-cover.webp" class="thumbnail-image card-img"
-                        style="height: 150px; object-fit: cover;"&gt;
-                &lt;/div&gt;
-                
-                    &lt;div class="card-body post-contents"&gt;
-                        &lt;h5 class="no-anchor card-title listing-title"&gt;
-                            AI Dev Tools
-                        &lt;/h5&gt;
-                        
-                            &lt;div class="card-text listing-description"&gt;
-                                Projects and assignments from the AI Dev Tools Zoomcamp.
-                            &lt;/div&gt;
-                            
-                                
-                                    &lt;div class="project-links-manual mt-3"&gt;
-                                        
-                                            &lt;a href="https://github.com/oussou-dev/ai-dev-tools-zoomcamp"
-                                                class="btn btn-sm btn-outline-primary me-1 mb-1" target="_blank"&gt;
-                                                &lt;i class="bi bi-github"&gt;&lt;/i&gt;
-                                                    
-                                                        GitHub
-                                            &lt;/a&gt;
-                                            
-                                            &lt;a href="https://oussou-dev.github.io/ousmanecisse/blog.html#category=AI%20Dev%20Tools"
-                                                class="btn btn-sm btn-outline-primary me-1 mb-1" target="_blank"&gt;
-                                                &lt;i class="bi bi-quarto"&gt;&lt;/i&gt;
-                                                    
-                                                        Posts
-                                            &lt;/a&gt;
-                                            
-                                    &lt;/div&gt;
-                                    
-                                        
-                                            &lt;div class="listing-categories mt-1"&gt;
-                                                
-                                                    &lt;div class="listing-category"
-                                                        onclick="window.quartoListingCategory('AI'); return false;"&gt;
-                                                        AI
-                                                    &lt;/div&gt;
-                                                    
-                                                    &lt;div class="listing-category"
-                                                        onclick="window.quartoListingCategory('Vibe Coding'); return false;"&gt;
-                                                        Vibe Coding
-                                                    &lt;/div&gt;
-                                                    
-                                                    &lt;div class="listing-category"
-                                                        onclick="window.quartoListingCategory('MCP'); return false;"&gt;
-                                                        MCP
-                                                    &lt;/div&gt;
-                                                    
-                                                    &lt;div class="listing-category"
-                                                        onclick="window.quartoListingCategory('n8n'); return false;"&gt;
-                                                        n8n
-                                                    &lt;/div&gt;
-                                                    
-                                                    &lt;div class="listing-category"
-                                                        onclick="window.quartoListingCategory('Zoomcamp'); return false;"&gt;
-                                                        Zoomcamp
-                                                    &lt;/div&gt;
-                                                    
-                                            &lt;/div&gt;
-                                            
-                    &lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-    
-    &lt;div class="g-col-1" data-index='1' data-categories='TWFjaGluZSUyMExlYXJuaW5nJTJDTUxPcHM='&gt;
-        &lt;div class="quarto-grid-item card h-100 card-left"&gt;
-            
-                &lt;div class="quarto-grid-thumbnail"&gt;
-                    &lt;img src="img/ml-zoomcamp-cover.webp" class="thumbnail-image card-img"
-                        style="height: 150px; object-fit: cover;"&gt;
-                &lt;/div&gt;
-                
-                    &lt;div class="card-body post-contents"&gt;
-                        &lt;h5 class="no-anchor card-title listing-title"&gt;
-                            ML Engineer ZoomCamp
-                        &lt;/h5&gt;
-                        
-                            &lt;div class="card-text listing-description"&gt;
-                                A comprehensive machine learning engineering course covering deployment, cloud, and MLOps.
-                            &lt;/div&gt;
-                            
-                                
-                                    &lt;div class="project-links-manual mt-3"&gt;
-                                        
-                                            &lt;a href="https://github.com/oussou-dev/ML_Engineer_ZoomCamp"
-                                                class="btn btn-sm btn-outline-primary me-1 mb-1" target="_blank"&gt;
-                                                &lt;i class="bi bi-github"&gt;&lt;/i&gt;
-                                                    
-                                                        GitHub
-                                            &lt;/a&gt;
-                                            
-                                            &lt;a href="https://oussou-dev.github.io/ousmanecisse/blog.html#category=MLOPS"
-                                                class="btn btn-sm btn-outline-primary me-1 mb-1" target="_blank"&gt;
-                                                &lt;i class="bi bi-quarto"&gt;&lt;/i&gt;
-                                                    
-                                                        Posts
-                                            &lt;/a&gt;
-                                            
-                                    &lt;/div&gt;
-                                    
-                                        
-                                            &lt;div class="listing-categories mt-1"&gt;
-                                                
-                                                    &lt;div class="listing-category"
-                                                        onclick="window.quartoListingCategory('Machine Learning'); return false;"&gt;
-                                                        Machine Learning
-                                                    &lt;/div&gt;
-                                                    
-                                                    &lt;div class="listing-category"
-                                                        onclick="window.quartoListingCategory('MLOps'); return false;"&gt;
-                                                        MLOps
-                                                    &lt;/div&gt;
-                                                    
-                                            &lt;/div&gt;
-                                            
-                    &lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-    
-    &lt;div class="g-col-1" data-index='2' data-categories='QUklMjBBZ2VudHMlMkNMTE0lMkNEZXBsb3ltZW50'&gt;
-        &lt;div class="quarto-grid-item card h-100 card-left"&gt;
-            
-                &lt;div class="quarto-grid-thumbnail"&gt;
-                    &lt;img src="img/ai_hero_cover.png" class="thumbnail-image card-img"
-                        style="height: 150px; object-fit: cover;"&gt;
-                &lt;/div&gt;
-                
-                    &lt;div class="card-body post-contents"&gt;
-                        &lt;h5 class="no-anchor card-title listing-title"&gt;
-                            AI Hero
-                        &lt;/h5&gt;
-                        
-                            &lt;div class="card-text listing-description"&gt;
-                                A free 7-day email crash-course on building and deploying AI agents.
-                            &lt;/div&gt;
-                            
-                                
-                                    &lt;div class="project-links-manual mt-3"&gt;
-                                        
-                                            &lt;a href="https://github.com/oussou-dev/ai-hero-bootcamp"
-                                                class="btn btn-sm btn-outline-primary me-1 mb-1" target="_blank"&gt;
-                                                &lt;i class="bi bi-github"&gt;&lt;/i&gt;
-                                                    
-                                                        GitHub
-                                            &lt;/a&gt;
-                                            
-                                            &lt;a href="https://oussou-dev.github.io/ousmanecisse/blog.html#category=AI%20Hero"
-                                                class="btn btn-sm btn-outline-primary me-1 mb-1" target="_blank"&gt;
-                                                &lt;i class="bi bi-quarto"&gt;&lt;/i&gt;
-                                                    
-                                                        Posts
-                                            &lt;/a&gt;
-                                            
-                                    &lt;/div&gt;
-                                    
-                                        
-                                            &lt;div class="listing-categories mt-1"&gt;
-                                                
-                                                    &lt;div class="listing-category"
-                                                        onclick="window.quartoListingCategory('AI Agents'); return false;"&gt;
-                                                        AI Agents
-                                                    &lt;/div&gt;
-                                                    
-                                                    &lt;div class="listing-category"
-                                                        onclick="window.quartoListingCategory('LLM'); return false;"&gt;
-                                                        LLM
-                                                    &lt;/div&gt;
-                                                    
-                                                    &lt;div class="listing-category"
-                                                        onclick="window.quartoListingCategory('Deployment'); return false;"&gt;
-                                                        Deployment
-                                                    &lt;/div&gt;
-                                                    
-                                            &lt;/div&gt;
-                                            
-                    &lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-    </code></pre>
+<div class="g-col-1" data-index="0" data-categories="QUklMkNWSUJFJTIwQ09ESU5HJTJDTUNQJTJDTjhOJTJDWm9vbWNhbXA=">
+<a href="https://github.com/oussou-dev/ai-dev-tools-zoomcamp" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="img/ai-dev-tools-cover.webp" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+AI Dev Tools
+</h5>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('QUk='); return false;">
+AI
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('VklCRSUyMENPRElORw=='); return false;">
+VIBE CODING
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('TUNQ'); return false;">
+MCP
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('TjhO'); return false;">
+N8N
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Wm9vbWNhbXA='); return false;">
+Zoomcamp
+</div>
+</div>
+<div class="card-text listing-description">
+Projects and assignments from the AI Dev Tools Zoomcamp. <br><br> &lt;a href=“https://github.com/oussou-dev/ai-dev-tools-zoomcamp” class=“btn btn-outline-dark btn-sm”…
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="1" data-categories="TWFjaGluZSUyMExlYXJuaW5nJTJDTUxPUFM=">
+<a href="https://github.com/oussou-dev/ML_Engineer_ZoomCamp" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="img/ml-zoomcamp-cover.webp" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+ML Engineer ZoomCamp
+</h5>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('TWFjaGluZSUyMExlYXJuaW5n'); return false;">
+Machine Learning
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('TUxPUFM='); return false;">
+MLOPS
+</div>
+</div>
+<div class="card-text listing-description">
+A comprehensive machine learning engineering course covering deployment, cloud, and MLOps. <br><br> &lt;a href=“https://github.com/oussou-dev/ML_Engineer_ZoomCamp” class=“btn…
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="2" data-categories="QUklMjBBZ2VudHMlMkNMTE0lMkNEZXBsb3ltZW50">
+<a href="https://github.com/oussou-dev/ai-hero-bootcamp" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="img/ai_hero_cover.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+AI Hero
+</h5>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('QUklMjBBZ2VudHM='); return false;">
+AI Agents
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('TExN'); return false;">
+LLM
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('RGVwbG95bWVudA=='); return false;">
+Deployment
+</div>
+</div>
+<div class="card-text listing-description">
+A free 7-day email crash-course on building and deploying AI agents. <br><br> &lt;a href=“https://github.com/oussou-dev/ai-hero-bootcamp” class=“btn btn-outline-dark btn-sm”…
+</div>
+</div>
+</div>
+</a>
+</div>
 </div>
 <div class="listing-no-matching d-none">
 No matching items
