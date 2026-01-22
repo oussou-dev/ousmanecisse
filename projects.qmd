@@ -2,6 +2,11 @@
 title: "Projects"
 listing:
   contents:
+    - title: "Data Engineering Zoomcamp"
+      description: "A comprehensive course on Data Engineering covering Docker, Terraform, Google Cloud Platform, Airflow, Spark, and Kafka."
+      categories: [Data Engineering, GCP, Terraform, Airflow, Kafka, Spark]
+      path: https://github.com/oussou-dev/data-engineering-zoomcamp
+      image: "img/data_engineering_zoomcamp_cover.png"
     - title: "AI Dev Tools"
       description: Projects and assignments from the AI Dev Tools Zoomcamp.
       categories: [AI, VIBE CODING, MCP, N8N, Zoomcamp]
