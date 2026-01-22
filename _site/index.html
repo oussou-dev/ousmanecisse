@@ -183,17 +183,26 @@ Available for AI consulting, LLM applications, automation and data engineering m
                 if (text === "FR") {
                     if (!pathAfterRepo.startsWith("fr/")) {
                         // We are in EN, want to go to FR
-                        link.href = repoName + "fr/" + pathAfterRepo;
+                        let targetStub = pathAfterRepo;
 
-                        // Heuristic check for known parallel files
-                        // If we want to be very robust, we would use a list or fetch, 
-                        // but for standard pages it should work.
+                        // Handle specific page renames (EN -> FR)
+                        if (targetStub === "projects.html") {
+                            targetStub = "projets.html";
+                        }
+
+                        link.href = repoName + "fr/" + targetStub;
                     }
                 } else if (text === "EN") {
                     if (pathAfterRepo.startsWith("fr/")) {
                         // We are in FR, want to go to EN
-                        let targetPage = pathAfterRepo.substring(3); // Remove "fr/"
-                        link.href = repoName + targetPage;
+                        let targetStub = pathAfterRepo.substring(3); // Remove "fr/"
+
+                        // Handle specific page renames (FR -> EN)
+                        if (targetStub === "projets.html") {
+                            targetStub = "projects.html";
+                        }
+
+                        link.href = repoName + targetStub;
                     }
                 }
 
