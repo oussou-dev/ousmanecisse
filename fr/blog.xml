@@ -9,14 +9,13 @@
 <link>https://oussou-dev.github.io/ousmanecisse/fr/blog.html</link>
 <atom:link href="https://oussou-dev.github.io/ousmanecisse/fr/blog.xml" rel="self" type="application/rss+xml"/>
 <description></description>
-<generator>quarto-1.8.27</generator>
-<lastBuildDate>Thu, 22 Jan 2026 00:00:00 GMT</lastBuildDate>
+<generator>quarto-1.6.42</generator>
+<lastBuildDate>Wed, 21 Jan 2026 23:00:00 GMT</lastBuildDate>
 <item>
   <title>AI Hero : Jour 1 - Ingestion et Indexation des Données</title>
   <dc:creator>Ousmane Cissé</dc:creator>
   <link>https://oussou-dev.github.io/ousmanecisse/fr/posts/ai-hero-day-1/</link>
   <description><![CDATA[ 
-
 
 
 
@@ -77,14 +76,13 @@
   <category>RAG</category>
   <category>AI Hero</category>
   <guid>https://oussou-dev.github.io/ousmanecisse/fr/posts/ai-hero-day-1/</guid>
-  <pubDate>Thu, 22 Jan 2026 00:00:00 GMT</pubDate>
+  <pubDate>Wed, 21 Jan 2026 23:00:00 GMT</pubDate>
   <media:content url="https://oussou-dev.github.io/ousmanecisse/fr/img/ai_hero_day_1.png" medium="image" type="image/png"/>
 </item>
 <item>
   <title>Outils de Dév IA - Semaine 3</title>
   <link>https://oussou-dev.github.io/ousmanecisse/fr/posts/ai-dev-tools-week-3/</link>
   <description><![CDATA[ 
-
 
 
 
@@ -114,13 +112,12 @@
   <category>Zoomcamp</category>
   <category>AI Dev Tools</category>
   <guid>https://oussou-dev.github.io/ousmanecisse/fr/posts/ai-dev-tools-week-3/</guid>
-  <pubDate>Sat, 03 Feb 2024 00:00:00 GMT</pubDate>
+  <pubDate>Fri, 02 Feb 2024 23:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Outils de Dév IA - Semaine 2</title>
   <link>https://oussou-dev.github.io/ousmanecisse/fr/posts/ai-dev-tools-week-2/</link>
   <description><![CDATA[ 
-
 
 
 
@@ -150,13 +147,12 @@
   <category>Zoomcamp</category>
   <category>AI Dev Tools</category>
   <guid>https://oussou-dev.github.io/ousmanecisse/fr/posts/ai-dev-tools-week-2/</guid>
-  <pubDate>Sat, 27 Jan 2024 00:00:00 GMT</pubDate>
+  <pubDate>Fri, 26 Jan 2024 23:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Outils de Dév IA - Semaine 1</title>
   <link>https://oussou-dev.github.io/ousmanecisse/fr/posts/ai-dev-tools-week-1/</link>
   <description><![CDATA[ 
-
 
 
 
@@ -186,7 +182,7 @@
   <category>Zoomcamp</category>
   <category>AI Dev Tools</category>
   <guid>https://oussou-dev.github.io/ousmanecisse/fr/posts/ai-dev-tools-week-1/</guid>
-  <pubDate>Sat, 20 Jan 2024 00:00:00 GMT</pubDate>
+  <pubDate>Fri, 19 Jan 2024 23:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
