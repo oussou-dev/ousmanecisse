@@ -1,0 +1,55 @@
+---
+title: "Projet Outils de Dev IA : Agrégateur d'actualités IA"
+description: "Une plateforme d'actualités alimentée par l'IA, full-stack, qui scrape, résume et diffuse les tendances IA en utilisant FastAPI, Streamlit et l'orchestration multi-agents."
+author: "Ousmane Cissé"
+date: "2026-01-20"
+categories: [Projet, Agents IA, Outils Dev IA, Vibe Coding, FastAPI]
+image: "../../img/ai_news_aggregator.webp"
+---
+
+Pour mon projet de la 4ème semaine du AI Dev Tools Zoomcamp, j'ai construit l'**Agrégateur d'actualités IA** — une plateforme complète conçue pour filtrer le bruit du cycle effréné des actualités sur l'IA. Elle automatise la collecte, le traitement et la présentation de contenus IA à haute valeur ajoutée provenant de multiples sources.
+
+[**Voir le projet sur GitHub**](https://github.com/oussou-dev/ai-dev-tools-zoomcamp/tree/main/04_ai_news_aggr)
+
+## 🏗️ Architecture & Stack Technique
+
+Ce n'est pas juste un simple script ; c'est une application conteneurisée, basée sur des microservices, construite pour une fiabilité de niveau production.
+
+### La Stack
+*   **Backend**: `FastAPI` (API REST Asynchrone)  
+*   **Frontend**: `Streamlit` (Tableau de bord interactif)  
+*   **Base de données**: `PostgreSQL 17` (Stockage de données persistant)  
+*   **Infrastructure**: `Docker Compose` (Orchestration)  
+
+### Le Pipeline
+Le système fonctionne sur un pipeline intelligent :  
+1.  **Scraping**: Des workers en arrière-plan récupèrent du contenu depuis **YouTube** (transcriptions), les **flux OpenAI**, et les papiers de recherche **Anthropic**.  
+2.  **Traitement**: Le contenu brut est stocké dans PostgreSQL.  
+3.  **Intelligence**: Les Agents IA entrent en jeu pour :  
+    *   **Résumer**: Compresser des vidéos d'une heure en insights de 3 phrases.  
+    *   **Organiser**: Classer les histoires en fonction d'un "Profil d'Intérêt" utilisateur personnalisé.  
+    *   **Livrer**: Générer des brouillons d'email chaleureux et prêts à être envoyés.  
+
+## ✨ Fonctionnalités Clés
+
+### 📰 Intelligence Multi-Sources
+L'agrégateur ne se contente pas de lire des flux RSS. Il utilise :  
+*   **YouTube Transcript API**: Pour "regarder" les vidéos et extraire les points clés.  
+*   **Docling**: Pour convertir des papiers de recherche complexes en markdown propre pour l'analyse.  
+
+### 🧠 Workflows Agentiques  
+J'ai implémenté trois agents spécialisés distincts :  
+1.  **Agent Digest**: Le "Résumeur" qui distille le contenu.  
+2.  **Agent Curateur**: L'"Assistant Personnel" qui décide de ce qui est pertinent pour *moi* (ex: filtrer pour "Agents de Code" vs "Politique GenAI").  
+3.  **Agent Email**: Le "Communicant" qui met en forme le briefing quotidien.  
+
+### 🎨 Le Tableau de Bord  
+Le frontend Streamlit offre une interface élégante en mode sombre où je peux :  
+*   Déclencher le pipeline de scraping manuellement.  
+*   Voir l'état de santé en temps réel des services backend.  
+*   Lire des résumés sous forme de cartes esthétiques des dernières actualités.  
+
+## 🚀 Pourquoi j'ai construit ça  
+Suivre l'actualité de l'IA est un travail à temps plein. Je voulais construire un outil qui utilise la technologie même que j'apprends (Agents, MCP, LLM) pour résoudre un problème auquel je suis confronté chaque jour. Ce projet représente la convergence du développement web moderne (FastAPI/Docker) avec l'ingénierie IA de pointe.
+
+Consultez le [Guide du Développeur](https://github.com/oussou-dev/ai-dev-tools-zoomcamp/tree/main/04_ai_news_aggr) complet pour voir comment le "Vibe Coding" a aidé à construire cela !

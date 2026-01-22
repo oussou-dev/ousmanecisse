@@ -1,9 +1,9 @@
 ---
-title: "Project Showcase: AI News Aggregator"
+title: "AI DEV TOOLS Project: AI News Aggregator"
 description: "A full-stack, AI-powered news platform that scrapes, summarizes, and serves AI trends using FastAPI, Streamlit, and Multi-Agent Orchestration."
 author: "Ousmane Cissé"
 date: "2026-01-20"
-categories: [Project, AI, FastAPI, Streamlit, Agents, Docker]
+categories: [Project, AI Agents, AI Dev Tools, VIBE CODINGFastAPI]
 image: "../../img/ai_news_aggregator.webp"
 ---
 

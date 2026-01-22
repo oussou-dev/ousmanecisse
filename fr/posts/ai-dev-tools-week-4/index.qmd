@@ -1,0 +1,51 @@
+---
+title: "Outils de Dev IA : Semaine 4 - Construire des Agents de Code"
+description: "Maîtriser la création d'agents de code autonomes en utilisant des Agents, des Outils et du Contexte."
+author: "Ousmane Cissé"
+date: "2026-01-15"
+categories: [IA, Zoomcamp, Agents, Outils Dev IA]
+image: "../../img/week_4_ai_dev_tools.webp"
+---
+
+La semaine 4 du AI Dev Tools Zoomcamp a été une introduction transformatrice au monde des **agents de code autonomes**. Nous sommes passés au-delà des simples interfaces de chat pour construire des agents capables de manipuler activement des bases de code, modifier des fichiers et démarrer des projets entiers.
+
+## L'Objectif : Un Agent de Code qui Initialise des Projets
+
+La mission principale était de construire un agent de code capable d'échafauder un projet **Django** à partir de zéro. Au lieu d'exécuter manuellement `django-admin startproject`, nous avons construit un agent qui pouvait :  
+1.  Comprendre un objectif de haut niveau (ex: "Créer une App Todo").  
+2.  Utiliser des **Outils** pour créer des répertoires, écrire des fichiers et exécuter des commandes shell.  
+3.  Affiner le code de manière itérative basée sur le feedback.  
+
+## Concepts Clés Appris  
+
+### 1. Les Agents comme "Initialiseurs de Projet"  
+Nous avons exploré le concept d'agents non seulement comme compléteurs de code, mais comme architectes. En donnant à un agent l'accès au système de fichiers et à la ligne de commande, il peut effectuer des tâches complexes en plusieurs étapes comme :  
+*   Configurer un environnement virtuel.  
+*   Installer des dépendances via `pip`.  
+*   Configurer un `Makefile` pour des workflows cohérents.  
+*   Générer des modèles initiaux pour `base.html` et `home.html` en utilisant des frameworks CSS modernes comme Tailwind.  
+
+### 2. La Puissance des Outils  
+Un agent n'est puissant que grâce à ses outils. Nous avons défini un ensemble d'outils primitifs pour notre agent :  
+*   `read_file`: Pour comprendre le code existant.  
+*   `write_file`: Pour créer ou mettre à jour la logique.  
+*   `bash`: Pour exécuter des commandes (migrations, tests, serveurs).  
+*   `ls`: Pour explorer la structure des fichiers.  
+
+### 3. Frameworks d'Orchestration  
+Nous ne nous sommes pas contentés d'une seule façon de faire. Nous avons exploré plusieurs frameworks pour construire ces agents :  
+*   **ToyAIKit**: Un framework simplifié pour comprendre la boucle centrale de *Pensée -> Action -> Observation*.  
+*   **OpenAI Agents SDK**: Tirer parti des capacités natives d'appel de fonction des modèles GPT.  
+*   **PydanticAI**: Une approche robuste et typée pour définir les comportements des agents.  
+*   **Z.ai**: Explorer des fournisseurs de LLM et APIs alternatifs.  
+
+## Le Résultat  
+
+À la fin de la semaine, j'avais un agent fonctionnel qui pouvait prendre un simple prompt et lancer une application Django fonctionnelle avec :  
+*   Une structure de répertoire propre.  
+*   Des templates et un routage de base.  
+*   Des migrations de base de données appliquées.  
+
+Cette semaine a comblé le fossé entre *parler* à l'IA de code et *faire écrire le code par l'IA* directement dans le projet. Cela a préparé le terrain idéal pour construire des systèmes plus complexes, comme celui que j'ai construit pour mon projet hebdomadaire.  
+
+**Prochaine étape** : Appliquer ces compétences pour construire une application IA de niveau production.
