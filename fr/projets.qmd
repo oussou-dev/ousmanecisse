@@ -3,7 +3,7 @@ title: "Projets"
 listing:
   contents:
     - title: "AI Hero"
-      description: Mini projets de création et de déploiement d'Agents IA.
+      description: Création et déploiement d'Agents IA, 7-day challenge.
       categories: [Agents IA, LLM, Déploiement]
       path: https://github.com/oussou-dev/ai-hero-bootcamp
       image: "../img/ai_hero_cover.png"

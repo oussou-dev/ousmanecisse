@@ -3,7 +3,7 @@ title: "Projects"
 listing:
   contents:
    - title: "AI Hero"
-     description: "A free 7-day email crash-course on building and deploying AI agents."
+     description: "Building and deploying AI agents projects 7-day challenge."
      categories: [AI Agents, LLM, Deployment]
      path: https://github.com/oussou-dev/ai-hero-bootcamp
      image: "img/ai_hero_cover.png"
