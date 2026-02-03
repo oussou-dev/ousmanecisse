@@ -324,6 +324,10 @@ window.Quarto = {
     <a class="nav-link" href="./blog.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./en-to-fr.html"> 
+<span class="menu-text">EN –&gt; FR</span></a>
+  </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
@@ -439,69 +443,7 @@ AI Hero
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="2" data-categories="RGF0YSUyMEVuZ2luZWVyaW5nJTJDR0NQJTJDVGVycmFmb3JtJTJDQWlyZmxvdyUyQ0thZmthJTJDU3Bhcms=">
-<a href="https://github.com/oussou-dev/data-engineering-zoomcamp" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="img/data_engineering_zoomcamp_cover.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Data Engineering Zoomcamp
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('RGF0YSUyMEVuZ2luZWVyaW5n'); return false;">Data Engineering</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('R0NQ'); return false;">GCP</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('VGVycmFmb3Jt'); return false;">Terraform</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('QWlyZmxvdw=='); return false;">Airflow</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('S2Fma2E='); return false;">Kafka</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('U3Bhcms='); return false;">Spark</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>A comprehensive course on Data Engineering covering Docker, Terraform, Google Cloud Platform, Airflow, Spark, and Kafka.</p>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="3" data-categories="Tm8tQ29kZSUyQ0FJJTJDQWlydGFibGUlMkNTb2Z0ciUyQ01ha2UlMkNCUE1O">
-<a href="https://github.com/oussou-dev/nocode-ai-enterprise-apps" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="img/nocode_ai_enterprise_cover.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-No-Code &amp; AI Enterprise Apps
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('Tm8tQ29kZQ=='); return false;">No-Code</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('QUk='); return false;">AI</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('QWlydGFibGU='); return false;">Airtable</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('U29mdHI='); return false;">Softr</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('TWFrZQ=='); return false;">Make</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('QlBNTg=='); return false;">BPMN</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Building internal enterprise apps using No-Code tools (Airtable, Softr, Make/Zapier) and AI. Covers needs analysis, BPMN modeling, and full implementation.</p>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="4" data-categories="TExNJTJDTGFuZ0NoYWluJTJDVmVjdG9yJTIwREIlMkNSQUclMkNEZWVwJTIwTGFrZQ==">
+<div class="g-col-1" data-index="2" data-categories="TExNJTJDTGFuZ0NoYWluJTJDVmVjdG9yJTIwREIlMkNSQUclMkNEZWVwJTIwTGFrZQ==">
 <a href="https://github.com/oussou-dev/LLMs_langchain_vectorDBs" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -530,7 +472,7 @@ LangChain &amp; Vector Databases
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="5" data-categories="TWFjaGluZSUyMExlYXJuaW5nJTJDTUxPUFM=">
+<div class="g-col-1" data-index="3" data-categories="TWFjaGluZSUyMExlYXJuaW5nJTJDTUxPUFM=">
 <a href="https://github.com/oussou-dev/ML_Engineer_ZoomCamp" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -565,12 +507,16 @@ ML Engineer ZoomCamp
                 let currentPath = window.location.pathname;
                 let repoName = "/ousmanecisse/";
 
-                let pathAfterRepo = "";
+                let pathAfterRepo = currentPath;
                 if (currentPath.includes(repoName)) {
                     pathAfterRepo = currentPath.substring(currentPath.indexOf(repoName) + repoName.length);
                 } else {
+                    // Local preview often has no repo name
                     pathAfterRepo = currentPath.startsWith('/') ? currentPath.substring(1) : currentPath;
-                    repoName = "/";
+                    // If we are definitely local, repoName should be root
+                    if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
+                        repoName = "/";
+                    }
                 }
 
                 // Handle trailing index.html or empty path
@@ -584,7 +530,7 @@ ML Engineer ZoomCamp
                         let targetStub = pathAfterRepo;
 
                         // Handle specific page renames (EN -> FR)
-                        if (targetStub === "projects.html") {
+                        if (targetStub === "projects.html" || targetStub === "projects") {
                             targetStub = "projets.html";
                         }
 
@@ -596,7 +542,7 @@ ML Engineer ZoomCamp
                         let targetStub = pathAfterRepo.substring(3); // Remove "fr/"
 
                         // Handle specific page renames (FR -> EN)
-                        if (targetStub === "projets.html") {
+                        if (targetStub === "projets.html" || targetStub === "projets") {
                             targetStub = "projects.html";
                         }
 

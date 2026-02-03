@@ -267,6 +267,10 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link" href="../../blog.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../en-to-fr.html"> 
+<span class="menu-text">EN –&gt; FR</span></a>
+  </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
@@ -431,12 +435,16 @@ ul.task-list li input[type="checkbox"] {
                 let currentPath = window.location.pathname;
                 let repoName = "/ousmanecisse/";
 
-                let pathAfterRepo = "";
+                let pathAfterRepo = currentPath;
                 if (currentPath.includes(repoName)) {
                     pathAfterRepo = currentPath.substring(currentPath.indexOf(repoName) + repoName.length);
                 } else {
+                    // Local preview often has no repo name
                     pathAfterRepo = currentPath.startsWith('/') ? currentPath.substring(1) : currentPath;
-                    repoName = "/";
+                    // If we are definitely local, repoName should be root
+                    if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
+                        repoName = "/";
+                    }
                 }
 
                 // Handle trailing index.html or empty path
@@ -450,7 +458,7 @@ ul.task-list li input[type="checkbox"] {
                         let targetStub = pathAfterRepo;
 
                         // Handle specific page renames (EN -> FR)
-                        if (targetStub === "projects.html") {
+                        if (targetStub === "projects.html" || targetStub === "projects") {
                             targetStub = "projets.html";
                         }
 
@@ -462,7 +470,7 @@ ul.task-list li input[type="checkbox"] {
                         let targetStub = pathAfterRepo.substring(3); // Remove "fr/"
 
                         // Handle specific page renames (FR -> EN)
-                        if (targetStub === "projets.html") {
+                        if (targetStub === "projets.html" || targetStub === "projets") {
                             targetStub = "projects.html";
                         }
 

@@ -324,6 +324,10 @@ window.Quarto = {
     <a class="nav-link" href="./blog.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./en-to-fr.html"> 
+<span class="menu-text">EN –&gt; FR</span></a>
+  </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
@@ -385,7 +389,7 @@ window.Quarto = {
 
 <div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
 <div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="QUklMkNab29tY2FtcA==" data-listing-date-sort="1764288000000" data-listing-file-modified-sort="1769114770909" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1579">
+<div class="g-col-1" data-index="0" data-categories="QUklMkNab29tY2FtcA==" data-listing-date-sort="1764288000000" data-listing-file-modified-sort="1770125436276" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1579">
 <a href="./courses/ai-dev-tools.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -419,12 +423,16 @@ Nov 28, 2025
                 let currentPath = window.location.pathname;
                 let repoName = "/ousmanecisse/";
 
-                let pathAfterRepo = "";
+                let pathAfterRepo = currentPath;
                 if (currentPath.includes(repoName)) {
                     pathAfterRepo = currentPath.substring(currentPath.indexOf(repoName) + repoName.length);
                 } else {
+                    // Local preview often has no repo name
                     pathAfterRepo = currentPath.startsWith('/') ? currentPath.substring(1) : currentPath;
-                    repoName = "/";
+                    // If we are definitely local, repoName should be root
+                    if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
+                        repoName = "/";
+                    }
                 }
 
                 // Handle trailing index.html or empty path
@@ -438,7 +446,7 @@ Nov 28, 2025
                         let targetStub = pathAfterRepo;
 
                         // Handle specific page renames (EN -> FR)
-                        if (targetStub === "projects.html") {
+                        if (targetStub === "projects.html" || targetStub === "projects") {
                             targetStub = "projets.html";
                         }
 
@@ -450,7 +458,7 @@ Nov 28, 2025
                         let targetStub = pathAfterRepo.substring(3); // Remove "fr/"
 
                         // Handle specific page renames (FR -> EN)
-                        if (targetStub === "projets.html") {
+                        if (targetStub === "projets.html" || targetStub === "projets") {
                             targetStub = "projects.html";
                         }
 
