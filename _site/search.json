@@ -1,222 +1,5 @@
 [
   {
-    "objectID": "fr/index.html",
-    "href": "fr/index.html",
-    "title": "Ousmane Cissé",
-    "section": "",
-    "text": "Je suis Consultant Ingénieur IA basé en France avec un profil hybride en finance, audit et développement web.\nJ’aide les entreprises à transformer leurs besoins métiers en solutions IA scalables : Agents IA, systèmes RAG, automatisation et architectures de données modernes.\nMon expérience dans les services financiers et les projets numériques me permet de livrer des initiatives IA techniquement solides, conformes et alignées avec les contraintes opérationnelles réelles. Disponible pour des missions de conseil en IA, applications LLM, automatisation et ingénierie de données."
-  },
-  {
-    "objectID": "fr/posts/ai-dev-tools-week-3/index.html",
-    "href": "fr/posts/ai-dev-tools-week-3/index.html",
-    "title": "Outils de Dév IA - Semaine 3",
-    "section": "",
-    "text": "Cette semaine était dédiée à la création d’agents et à l’utilisation du protocole MCP."
-  },
-  {
-    "objectID": "fr/posts/ai-dev-tools-week-3/index.html#introduction",
-    "href": "fr/posts/ai-dev-tools-week-3/index.html#introduction",
-    "title": "Outils de Dév IA - Semaine 3",
-    "section": "",
-    "text": "Cette semaine était dédiée à la création d’agents et à l’utilisation du protocole MCP."
-  },
-  {
-    "objectID": "fr/posts/ai-dev-tools-week-3/index.html#points-clés",
-    "href": "fr/posts/ai-dev-tools-week-3/index.html#points-clés",
-    "title": "Outils de Dév IA - Semaine 3",
-    "section": "Points Clés",
-    "text": "Points Clés\n\nComprendre le Model Context Protocol (MCP).\nConstruire un serveur MCP simple.\nConnecter des outils personnalisés aux LLMs."
-  },
-  {
-    "objectID": "fr/posts/ai-dev-tools-week-3/index.html#conclusion",
-    "href": "fr/posts/ai-dev-tools-week-3/index.html#conclusion",
-    "title": "Outils de Dév IA - Semaine 3",
-    "section": "Conclusion",
-    "text": "Conclusion\nLe MCP ouvre des possibilités incroyables pour l’interopérabilité entre les outils d’IA."
-  },
-  {
-    "objectID": "fr/posts/ai-dev-tools-week-2/index.html",
-    "href": "fr/posts/ai-dev-tools-week-2/index.html",
-    "title": "Outils de Dév IA - Semaine 2",
-    "section": "",
-    "text": "La deuxième semaine s’est concentrée sur des cas d’utilisation plus avancés. Nous avons appris à intégrer des API d’IA dans nos applications."
-  },
-  {
-    "objectID": "fr/posts/ai-dev-tools-week-2/index.html#introduction",
-    "href": "fr/posts/ai-dev-tools-week-2/index.html#introduction",
-    "title": "Outils de Dév IA - Semaine 2",
-    "section": "",
-    "text": "La deuxième semaine s’est concentrée sur des cas d’utilisation plus avancés. Nous avons appris à intégrer des API d’IA dans nos applications."
-  },
-  {
-    "objectID": "fr/posts/ai-dev-tools-week-2/index.html#points-clés",
-    "href": "fr/posts/ai-dev-tools-week-2/index.html#points-clés",
-    "title": "Outils de Dév IA - Semaine 2",
-    "section": "Points Clés",
-    "text": "Points Clés\n\nUtilisation de l’API OpenAI.\nCréation de scripts simples avec Python.\nAutomatisation des tâches répétitives."
-  },
-  {
-    "objectID": "fr/posts/ai-dev-tools-week-2/index.html#conclusion",
-    "href": "fr/posts/ai-dev-tools-week-2/index.html#conclusion",
-    "title": "Outils de Dév IA - Semaine 2",
-    "section": "Conclusion",
-    "text": "Conclusion\nNous commençons à voir la puissance de l’intégration de l’IA dans les workflows de développement."
-  },
-  {
-    "objectID": "fr/posts/ai-news-aggregator/index.html",
-    "href": "fr/posts/ai-news-aggregator/index.html",
-    "title": "Projet Outils de Dev IA : Agrégateur d’actualités IA",
-    "section": "",
-    "text": "Pour mon projet de la 4ème semaine du AI Dev Tools Zoomcamp, j’ai construit l’Agrégateur d’actualités IA — une plateforme complète conçue pour filtrer le bruit du cycle effréné des actualités sur l’IA. Elle automatise la collecte, le traitement et la présentation de contenus IA à haute valeur ajoutée provenant de multiples sources.\nVoir le projet sur GitHub"
-  },
-  {
-    "objectID": "fr/posts/ai-news-aggregator/index.html#architecture-stack-technique",
-    "href": "fr/posts/ai-news-aggregator/index.html#architecture-stack-technique",
-    "title": "Projet Outils de Dev IA : Agrégateur d’actualités IA",
-    "section": "🏗️ Architecture & Stack Technique",
-    "text": "🏗️ Architecture & Stack Technique\nCe n’est pas juste un simple script ; c’est une application conteneurisée, basée sur des microservices, construite pour une fiabilité de niveau production.\n\nLa Stack\n\nBackend: FastAPI (API REST Asynchrone)\n\nFrontend: Streamlit (Tableau de bord interactif)\n\nBase de données: PostgreSQL 17 (Stockage de données persistant)\n\nInfrastructure: Docker Compose (Orchestration)\n\n\n\nLe Pipeline\nLe système fonctionne sur un pipeline intelligent :\n1. Scraping: Des workers en arrière-plan récupèrent du contenu depuis YouTube (transcriptions), les flux OpenAI, et les papiers de recherche Anthropic.\n2. Traitement: Le contenu brut est stocké dans PostgreSQL.\n3. Intelligence: Les Agents IA entrent en jeu pour :\n* Résumer: Compresser des vidéos d’une heure en insights de 3 phrases.\n* Organiser: Classer les histoires en fonction d’un “Profil d’Intérêt” utilisateur personnalisé.\n* Livrer: Générer des brouillons d’email chaleureux et prêts à être envoyés."
-  },
-  {
-    "objectID": "fr/posts/ai-news-aggregator/index.html#fonctionnalités-clés",
-    "href": "fr/posts/ai-news-aggregator/index.html#fonctionnalités-clés",
-    "title": "Projet Outils de Dev IA : Agrégateur d’actualités IA",
-    "section": "✨ Fonctionnalités Clés",
-    "text": "✨ Fonctionnalités Clés\n\n📰 Intelligence Multi-Sources\nL’agrégateur ne se contente pas de lire des flux RSS. Il utilise :\n* YouTube Transcript API: Pour “regarder” les vidéos et extraire les points clés.\n* Docling: Pour convertir des papiers de recherche complexes en markdown propre pour l’analyse.\n\n\n🧠 Workflows Agentiques\nJ’ai implémenté trois agents spécialisés distincts :\n1. Agent Digest: Le “Résumeur” qui distille le contenu.\n2. Agent Curateur: L’“Assistant Personnel” qui décide de ce qui est pertinent pour moi (ex: filtrer pour “Agents de Code” vs “Politique GenAI”).\n3. Agent Email: Le “Communicant” qui met en forme le briefing quotidien.\n\n\n🎨 Le Tableau de Bord\nLe frontend Streamlit offre une interface élégante en mode sombre où je peux :\n* Déclencher le pipeline de scraping manuellement.\n* Voir l’état de santé en temps réel des services backend.\n* Lire des résumés sous forme de cartes esthétiques des dernières actualités."
-  },
-  {
-    "objectID": "fr/posts/ai-news-aggregator/index.html#pourquoi-jai-construit-ça",
-    "href": "fr/posts/ai-news-aggregator/index.html#pourquoi-jai-construit-ça",
-    "title": "Projet Outils de Dev IA : Agrégateur d’actualités IA",
-    "section": "🚀 Pourquoi j’ai construit ça",
-    "text": "🚀 Pourquoi j’ai construit ça\nSuivre l’actualité de l’IA est un travail à temps plein. Je voulais construire un outil qui utilise la technologie même que j’apprends (Agents, MCP, LLM) pour résoudre un problème auquel je suis confronté chaque jour. Ce projet représente la convergence du développement web moderne (FastAPI/Docker) avec l’ingénierie IA de pointe.\nConsultez le Guide du Développeur complet pour voir comment le “Vibe Coding” a aidé à construire cela !"
-  },
-  {
-    "objectID": "fr/about.html",
-    "href": "fr/about.html",
-    "title": "À propos de moi",
-    "section": "",
-    "text": "Je suis Consultant Ingénieur IA basé en France avec un profil hybride en finance, audit et développement web.\nJ’aide les entreprises à transformer leurs besoins métiers en solutions IA scalables : Agents IA, systèmes RAG, automatisation et architectures de données modernes.\nMon expérience dans les services financiers et les projets numériques me permet de livrer des initiatives IA techniquement solides, conformes et alignées avec les contraintes opérationnelles réelles. Disponible pour des missions de conseil en IA, applications LLM, automatisation et ingénierie de données."
-  },
-  {
-    "objectID": "fr/projets.html",
-    "href": "fr/projets.html",
-    "title": "Projets",
-    "section": "",
-    "text": "Une sélection de projets réalisés et en cours.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOutils de Dev IA\n\n\n\nIA\n\n\nVIBE CODING\n\n\nMCP\n\n\nN8N\n\n\nZoomcamp\n\n\n\nProjets de vibe coding du bootcamp AI Dev Tools Zoomcamp.\n\n\n\n\n\n\n\n\n\n\n\n\n\nAI Hero\n\n\n\nAgents IA\n\n\nLLM\n\n\nDéploiement\n\n\n\nCréation et déploiement d’Agents IA, 7-day challenge.\n\n\n\n\n\n\n\n\n\n\n\n\n\nData Engineering Zoomcamp\n\n\n\nData Engineering\n\n\nGCP\n\n\nTerraform\n\n\nAirflow\n\n\nKafka\n\n\nSpark\n\n\n\nProjet complet sur l’ingénierie des données couvrant Docker, Terraform, Google Cloud Platform, Airflow, Spark et Kafka.\n\n\n\n\n\n\n\n\n\n\n\n\n\nApplications No-Code & IA\n\n\n\nNo-Code\n\n\nIA\n\n\nAirtable\n\n\nSoftr\n\n\nMake\n\n\nBPMN\n\n\n\nCréation d’apps internes avec des outils No-Code (Airtable, Softr, Make/Zapier) et d’IA. De l’analyse des besoins et modélisation BPMN jusqu’au déploiement.\n\n\n\n\n\n\n\n\n\n\n\n\n\nLangChain & Vector Databases\n\n\n\nLLM\n\n\nLangChain\n\n\nBase Vectorielle\n\n\nRAG\n\n\nDeep Lake\n\n\n\nApprenez à construire des applications LLM de production avec LangChain et Deep Lake. Couvre l’IA générative, le Prompt Engineering, le RAG et les Agents.\n\n\n\n\n\n\n\n\n\n\n\n\n\nIngénieur ML ZoomCamp\n\n\n\nMachine Learning\n\n\nMLOPS\n\n\n\nProjets de Machine Learning couvrant le déploiement, le cloud et le MLOps.\n\n\n\n\n\n\n\nAucun article correspondant"
-  },
-  {
-    "objectID": "fr/posts/ai-dev-tools-week-4/index.html",
-    "href": "fr/posts/ai-dev-tools-week-4/index.html",
-    "title": "Outils de Dev IA : Semaine 4 - Construire des Agents de Code",
-    "section": "",
-    "text": "La semaine 4 du AI Dev Tools Zoomcamp a été une introduction transformatrice au monde des agents de code autonomes. Nous sommes passés au-delà des simples interfaces de chat pour construire des agents capables de manipuler activement des bases de code, modifier des fichiers et démarrer des projets entiers."
-  },
-  {
-    "objectID": "fr/posts/ai-dev-tools-week-4/index.html#lobjectif-un-agent-de-code-qui-initialise-des-projets",
-    "href": "fr/posts/ai-dev-tools-week-4/index.html#lobjectif-un-agent-de-code-qui-initialise-des-projets",
-    "title": "Outils de Dev IA : Semaine 4 - Construire des Agents de Code",
-    "section": "L’Objectif : Un Agent de Code qui Initialise des Projets",
-    "text": "L’Objectif : Un Agent de Code qui Initialise des Projets\nLa mission principale était de construire un agent de code capable d’échafauder un projet Django à partir de zéro. Au lieu d’exécuter manuellement django-admin startproject, nous avons construit un agent qui pouvait :\n1. Comprendre un objectif de haut niveau (ex: “Créer une App Todo”).\n2. Utiliser des Outils pour créer des répertoires, écrire des fichiers et exécuter des commandes shell.\n3. Affiner le code de manière itérative basée sur le feedback."
-  },
-  {
-    "objectID": "fr/posts/ai-dev-tools-week-4/index.html#concepts-clés-appris",
-    "href": "fr/posts/ai-dev-tools-week-4/index.html#concepts-clés-appris",
-    "title": "Outils de Dev IA : Semaine 4 - Construire des Agents de Code",
-    "section": "Concepts Clés Appris",
-    "text": "Concepts Clés Appris\n\n1. Les Agents comme “Initialiseurs de Projet”\nNous avons exploré le concept d’agents non seulement comme compléteurs de code, mais comme architectes. En donnant à un agent l’accès au système de fichiers et à la ligne de commande, il peut effectuer des tâches complexes en plusieurs étapes comme :\n* Configurer un environnement virtuel.\n* Installer des dépendances via pip.\n* Configurer un Makefile pour des workflows cohérents.\n* Générer des modèles initiaux pour base.html et home.html en utilisant des frameworks CSS modernes comme Tailwind.\n\n\n2. La Puissance des Outils\nUn agent n’est puissant que grâce à ses outils. Nous avons défini un ensemble d’outils primitifs pour notre agent :\n* read_file: Pour comprendre le code existant.\n* write_file: Pour créer ou mettre à jour la logique.\n* bash: Pour exécuter des commandes (migrations, tests, serveurs).\n* ls: Pour explorer la structure des fichiers.\n\n\n3. Frameworks d’Orchestration\nNous ne nous sommes pas contentés d’une seule façon de faire. Nous avons exploré plusieurs frameworks pour construire ces agents :\n* ToyAIKit: Un framework simplifié pour comprendre la boucle centrale de Pensée -&gt; Action -&gt; Observation.\n* OpenAI Agents SDK: Tirer parti des capacités natives d’appel de fonction des modèles GPT.\n* PydanticAI: Une approche robuste et typée pour définir les comportements des agents.\n* Z.ai: Explorer des fournisseurs de LLM et APIs alternatifs."
-  },
-  {
-    "objectID": "fr/posts/ai-dev-tools-week-4/index.html#le-résultat",
-    "href": "fr/posts/ai-dev-tools-week-4/index.html#le-résultat",
-    "title": "Outils de Dev IA : Semaine 4 - Construire des Agents de Code",
-    "section": "Le Résultat",
-    "text": "Le Résultat\nÀ la fin de la semaine, j’avais un agent fonctionnel qui pouvait prendre un simple prompt et lancer une application Django fonctionnelle avec :\n* Une structure de répertoire propre.\n* Des templates et un routage de base.\n* Des migrations de base de données appliquées.\nCette semaine a comblé le fossé entre parler à l’IA de code et faire écrire le code par l’IA directement dans le projet. Cela a préparé le terrain idéal pour construire des systèmes plus complexes, comme celui que j’ai construit pour mon projet hebdomadaire.\nProchaine étape : Appliquer ces compétences pour construire une application IA de niveau production."
-  },
-  {
-    "objectID": "fr/posts/ai-dev-tools-week-1/index.html",
-    "href": "fr/posts/ai-dev-tools-week-1/index.html",
-    "title": "Outils de Dév IA - Semaine 1",
-    "section": "",
-    "text": "Cette semaine, nous avons exploré les outils fondamentaux pour le développement assisté par IA. Nous avons couvert l’utilisation des LLM pour l’écriture de code, le refactoring, et la documentation."
-  },
-  {
-    "objectID": "fr/posts/ai-dev-tools-week-1/index.html#introduction",
-    "href": "fr/posts/ai-dev-tools-week-1/index.html#introduction",
-    "title": "Outils de Dév IA - Semaine 1",
-    "section": "",
-    "text": "Cette semaine, nous avons exploré les outils fondamentaux pour le développement assisté par IA. Nous avons couvert l’utilisation des LLM pour l’écriture de code, le refactoring, et la documentation."
-  },
-  {
-    "objectID": "fr/posts/ai-dev-tools-week-1/index.html#points-clés",
-    "href": "fr/posts/ai-dev-tools-week-1/index.html#points-clés",
-    "title": "Outils de Dév IA - Semaine 1",
-    "section": "Points Clés",
-    "text": "Points Clés\n\nConfiguration de l’environnement de développement.\nIntroduction à GitHub Copilot.\nUtilisation de ChatGPT pour la génération de code."
-  },
-  {
-    "objectID": "fr/posts/ai-dev-tools-week-1/index.html#conclusion",
-    "href": "fr/posts/ai-dev-tools-week-1/index.html#conclusion",
-    "title": "Outils de Dév IA - Semaine 1",
-    "section": "Conclusion",
-    "text": "Conclusion\nUne première semaine passionnante qui pose les bases pour la suite du programme."
-  },
-  {
-    "objectID": "fr/posts/ai-hero-day-1/index.html",
-    "href": "fr/posts/ai-hero-day-1/index.html",
-    "title": "AI Hero : Jour 1 - Ingestion et Indexation des Données",
-    "section": "",
-    "text": "Le voyage vers la création d’un agent IA personnalisé commence par son « cerveau » — ou plus précisément, sa base de connaissances. Lors du Jour 1 du projet AI Hero, je me suis concentré sur la première étape du pipeline RAG (Retrieval-Augmented Generation) : l’Ingestion.\nVoici comment j’ai construit un pipeline robuste pour récupérer, analyser et structurer la documentation technique depuis GitHub."
-  },
-  {
-    "objectID": "fr/posts/ai-hero-day-1/index.html#construire-linfrastructure-de-la-connaissance",
-    "href": "fr/posts/ai-hero-day-1/index.html#construire-linfrastructure-de-la-connaissance",
-    "title": "AI Hero : Jour 1 - Ingestion et Indexation des Données",
-    "section": "Construire l’Infrastructure de la Connaissance",
-    "text": "Construire l’Infrastructure de la Connaissance\nUn agent IA n’est efficace que par la qualité des données auxquelles il a accès. Plutôt que de copier manuellement la documentation, nous nous sommes concentrés sur la création d’un système automatisé capable d’ingérer des centaines de fichiers Markdown directement depuis un dépôt GitHub.\nL’objectif était de transformer des fichiers bruts .md et .mdx en un format structuré (type JSON) incluant à la fois le contenu et ses métadonnées associées."
-  },
-  {
-    "objectID": "fr/posts/ai-hero-day-1/index.html#traitement-en-mémoire-avec-python",
-    "href": "fr/posts/ai-hero-day-1/index.html#traitement-en-mémoire-avec-python",
-    "title": "AI Hero : Jour 1 - Ingestion et Indexation des Données",
-    "section": "Traitement en Mémoire avec Python",
-    "text": "Traitement en Mémoire avec Python\nL’une des astuces les plus intéressantes que j’ai apprises est de manipuler les données entièrement en mémoire. Au lieu de télécharger un fichier ZIP sur le disque, de le décompresser et de gérer des fichiers temporaires, nous avons utilisé les modules io.BytesIO et zipfile de Python.\nCette approche est : - Plus rapide : Pas de latence liée aux entrées/sorties du disque.\n- Plus propre : Pas besoin de gérer ou de supprimer des fichiers temporaires.\n- Scalable : Parfait pour des fonctions cloud ou des environnements éphémères."
-  },
-  {
-    "objectID": "fr/posts/ai-hero-day-1/index.html#extraire-du-sens-avec-les-métadonnées-frontmatter",
-    "href": "fr/posts/ai-hero-day-1/index.html#extraire-du-sens-avec-les-métadonnées-frontmatter",
-    "title": "AI Hero : Jour 1 - Ingestion et Indexation des Données",
-    "section": "Extraire du Sens avec les Métadonnées (Frontmatter)",
-    "text": "Extraire du Sens avec les Métadonnées (Frontmatter)\nLa plupart des documentations techniques utilisent du YAML Frontmatter pour stocker des métadonnées critiques comme les titres, les tags et les descriptions.\nEn utilisant la bibliothèque python-frontmatter, j’ai écrit un parseur qui : 1. Parcourt l’archive ZIP.\n2. Identifie les fichiers de documentation pertinents.\n3. Sépare le texte lisible par l’homme des métadonnées structurées.\nCes métadonnées sont cruciales pour les étapes ultérieures, car elles permettent à l’agent de filtrer les informations par catégorie ou par pertinence."
-  },
-  {
-    "objectID": "fr/posts/ai-hero-day-1/index.html#la-stack-tech-moderne-uv-et-plus-encore",
-    "href": "fr/posts/ai-hero-day-1/index.html#la-stack-tech-moderne-uv-et-plus-encore",
-    "title": "AI Hero : Jour 1 - Ingestion et Indexation des Données",
-    "section": "La Stack Tech Moderne : uv et plus encore",
-    "text": "La Stack Tech Moderne : uv et plus encore\nNous avons laissé de côté les gestionnaires de paquets traditionnels et lents. À la place, nous avons utilisé : - uv : Le gestionnaire de paquets Python extrêmement rapide qui rend la configuration de l’environnement instantanée.\n- requests : Pour streamer les données du dépôt directement depuis GitHub.\n- python-frontmatter : Pour une extraction précise des métadonnées.\n- Jupyter Notebooks : Pour l’exploration interactive de la structure des données ingérées."
-  },
-  {
-    "objectID": "fr/posts/ai-hero-day-1/index.html#leçons-clés",
-    "href": "fr/posts/ai-hero-day-1/index.html#leçons-clés",
-    "title": "AI Hero : Jour 1 - Ingestion et Indexation des Données",
-    "section": "Leçons Clés",
-    "text": "Leçons Clés\n\nAutomatisez la Source : Ne gérez jamais manuellement les données dont votre agent a besoin. Construisez un pipeline.\n\nLa Mémoire est votre Allie : Traiter les fichiers ZIP en mémoire est un pattern professionnel qui gagne du temps et préserve les ressources locales.\n\nLa Structure Compte : Le contenu est roi, mais les métadonnées sont la boussole qui aide votre agent à trouver le bon contenu.\n\nCohérence des Outils : L’utilisation d’outils modernes comme uv garantit que les expérimentations sont reproductibles et rapides."
-  },
-  {
-    "objectID": "fr/posts/ai-hero-day-1/index.html#changement-détat-desprit",
-    "href": "fr/posts/ai-hero-day-1/index.html#changement-détat-desprit",
-    "title": "AI Hero : Jour 1 - Ingestion et Indexation des Données",
-    "section": "Changement d’État d’Esprit",
-    "text": "Changement d’État d’Esprit\nLe Jour 1 a déplacé ma perspective de « Comment prompter le modèle ? » vers « Comment préparer les données pour le modèle ? ». Vous pouvez avoir le meilleur LLM du monde, mais si votre pipeline d’ingestion est désordonné, votre agent ne sera pas fiable.\nProchaine étape : Le Jour 2 se concentrera sur le Chunking et l’Embedding pour transformer ce texte brut en vecteurs mathématiques que l’IA peut « rechercher ».\nDevoirs : Implémentation AI Hero Jour 1"
-  },
-  {
-    "objectID": "fr/blog.html",
-    "href": "fr/blog.html",
-    "title": "Blog",
-    "section": "",
-    "text": "Trier par\n       Ordre par défaut\n         \n          Titre\n        \n         \n          Date - Le plus ancien\n        \n         \n          Date - Le plus récent\n        \n     \n  \n\n\n\n\n\nAI Hero : Jour 1 - Ingestion et Indexation des Données\n\n\n\n\n\n\nAgents IA\n\n\nLLM\n\n\nRAG\n\n\nAI Hero\n\n\n\nConstruire les fondations d’un agent IA en automatisant la récupération des données et le parsing des métadonnées.\n\n\n\n\n\n22 janv. 2026\n\n\n3 min.\n\n\n\n\n\n\n\nProjet Outils de Dev IA : Agrégateur d’actualités IA\n\n\n\n\n\n\nProjet\n\n\nAgents IA\n\n\nOutils Dev IA\n\n\nVibe Coding\n\n\nFastAPI\n\n\n\nUne plateforme d’actualités alimentée par l’IA, full-stack, qui scrape, résume et diffuse les tendances IA en utilisant FastAPI, Streamlit et l’orchestration multi-agents.\n\n\n\n\n\n20 janv. 2026\n\n\n3 min.\n\n\n\n\n\n\n\nOutils de Dev IA : Semaine 4 - Construire des Agents de Code\n\n\n\n\n\n\nIA\n\n\nZoomcamp\n\n\nAgents\n\n\nOutils Dev IA\n\n\n\nMaîtriser la création d’agents de code autonomes en utilisant des Agents, des Outils et du Contexte.\n\n\n\n\n\n15 janv. 2026\n\n\n3 min.\n\n\n\n\n\n\n\nOutils de Dév IA - Semaine 3\n\n\n\n\n\n\nIA\n\n\nOutils\n\n\nZoomcamp\n\n\nAI Dev Tools\n\n\n\nAperçu de la troisième semaine du AI Dev Tools Zoomcamp.\n\n\n\n\n\n3 févr. 2024\n\n\n1 min.\n\n\n\n\n\n\n\nOutils de Dév IA - Semaine 2\n\n\n\n\n\n\nIA\n\n\nOutils\n\n\nZoomcamp\n\n\nAI Dev Tools\n\n\n\nAperçu de la deuxième semaine du AI Dev Tools Zoomcamp.\n\n\n\n\n\n27 janv. 2024\n\n\n1 min.\n\n\n\n\n\n\n\nOutils de Dév IA - Semaine 1\n\n\n\n\n\n\nIA\n\n\nOutils\n\n\nZoomcamp\n\n\nAI Dev Tools\n\n\n\nAperçu de la première semaine du AI Dev Tools Zoomcamp.\n\n\n\n\n\n20 janv. 2024\n\n\n1 min.\n\n\n\n\n\n\nAucun article correspondant"
-  },
-  {
     "objectID": "projects.html",
     "href": "projects.html",
     "title": "Projects",
@@ -364,27 +147,6 @@
     "text": "Key Learnings\nA key message from the course: you don’t need prior AI knowledge to begin. If you already know a programming language (Python, JavaScript…), that’s enough to start benefiting from AI assistants.\nWhat struck me: the potential of a modern, AI-integrated dev workflow — combining assistants, agents, automation — to reduce friction, speed up prototyping or production phases, and free mental bandwidth for architecture, business logic, and code quality.\nIn short — Week 1 helped me shift away from the “hand-code everything” paradigm toward a more fluid, developer-AI collaborative approach that feels well-suited for modern software projects.\nHomework: Todo app in Django using AI tools"
   },
   {
-    "objectID": "courses.html",
-    "href": "courses.html",
-    "title": "Self-Study Courses",
-    "section": "",
-    "text": "Here you can find the various self-study courses I am currently following or have completed.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAI Dev Tools by Zoomcamp\n\n\n8 min\n\n\nMy learning notes and progress for the AI Dev Tools course.\n\n\n\nNov 28, 2025\n\n\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About Me",
-    "section": "",
-    "text": "I am an AI Engineer Consultant based in France with a hybrid background in finance, audit and web development.\nI help companies turn business needs into scalable AI solutions: AI Agents, RAG systems, automation and modern data architectures.\nMy experience in financial services and digital projects allows me to deliver AI initiatives that are technically solid, compliant, and aligned with real operational constraints. Available for AI consulting, LLM applications, automation and data engineering missions."
-  },
-  {
-    "objectID": "blog.html",
-    "href": "blog.html",
-    "title": "Blog",
-    "section": "",
-    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n     \n  \n\n\n\n\n\nAI Hero: Day 1 - Ingest and Index Your Data\n\n\n\n\n\n\nAI Agents\n\n\nLLM\n\n\nPython\n\n\nRAG\n\n\nAI Hero\n\n\n\nBuilding the foundation of an AI agent by automating data retrieval and metadata parsing.\n\n\n\n\n\nJan 22, 2026\n\n\n3 min\n\n\n\n\n\n\n\nAI DEV TOOLS Project: AI News Aggregator\n\n\n\n\n\n\nProject\n\n\nAI Agents\n\n\nAI Dev Tools\n\n\nVIBE CODING\n\n\nFastAPI\n\n\n\nA full-stack, AI-powered news platform that scrapes, summarizes, and serves AI trends using FastAPI, Streamlit, and Multi-Agent Orchestration.\n\n\n\n\n\nJan 20, 2026\n\n\n3 min\n\n\n\n\n\n\n\nAI Dev Tools: Week 4 - Building Coding Agents\n\n\n\n\n\n\nAI\n\n\nZoomcamp\n\n\nAgents\n\n\nAI Dev Tools\n\n\n\nMastering the creation of autonomous coding agents using Agents, Tools, and Context.\n\n\n\n\n\nJan 15, 2026\n\n\n3 min\n\n\n\n\n\n\n\nAI Dev Tools: Week 3 - MCP & Agents\n\n\n\n\n\n\nAI\n\n\nZoomcamp\n\n\nMCP\n\n\nAgents\n\n\nAI Dev Tools\n\n\n\nDiving deep into the Model Context Protocol, Agents, and building custom tools.\n\n\n\n\n\nDec 12, 2025\n\n\n3 min\n\n\n\n\n\n\n\nAI Dev Tools: Week 2 - End-to-End Application Development\n\n\n\n\n\n\nAI\n\n\nZoomcamp\n\n\nCI/CD\n\n\nAI Dev Tools\n\n\n\nBuilding a complete application with AI: Frontend-first, OpenAPI, Docker, and CI/CD.\n\n\n\n\n\nDec 5, 2025\n\n\n4 min\n\n\n\n\n\n\n\nAI Dev Tools: Week 1 - Vibe Coding & Foundations\n\n\n\n\n\n\nAI\n\n\nZoomcamp\n\n\nVibe Coding\n\n\nAI Dev Tools\n\n\n\nExploring the landscape of AI-assisted development, from coding assistants to project bootstrappers.\n\n\n\n\n\nNov 28, 2025\n\n\n2 min\n\n\n\n\n\n\nNo matching items"
-  },
-  {
     "objectID": "courses/ai-dev-tools.html",
     "href": "courses/ai-dev-tools.html",
     "title": "AI Dev Tools by Zoomcamp",
@@ -411,6 +173,34 @@
     "title": "AI Dev Tools by Zoomcamp",
     "section": "",
     "text": "Understand the Model Context Protocol (MCP) and its primitives\nExplore the MCP ecosystem (clients, servers, and tools)\nCompare communication modes: stdio vs HTTP/SSE\nUse mcp-inspector and fastmcp for development\nBuild and integrate custom MCP tools (Scraper, Search)\nLeverage MCP servers for live documentation and workflow automation\n\n\n\n\nThis week was a deep dive into the Model Context Protocol (MCP), an open standard that enables AI models to interact with external data sources and tools in a standardized way. Here’s what I learned:\n\n\nMCP solves the problem of “bespoke” integrations for every AI tool. Instead of writing custom code for each AI assistant to access a database or API, we can now build MCP Servers that any MCP Client (like Cursor, Claude Desktop, or VSCode) can understand. This decoupling of the “brain” (AI model) from the “hands” (tools/data) is a game-changer for developer productivity.\n\n\n\nI learned the three core building blocks of MCP:\n- Tools: Executable functions the AI can call (e.g., get_weather, scrape_website).\n- Resources: Read-only data sources the AI can inspect (e.g., local files, API docs).\n- Prompts: Pre-defined templates that guide how the AI should interact with the user or the tools.\n\n\n\nUsing FastMCP (by Jon Lowin) made building servers incredibly easy. With just a few lines of Python and a decorator (@mcp.tool), I could transform a standard function into an MCP tool. The library handles the complex JSON-RPC communication under the hood, allowing developers to focus on the logic.\n\n\n\nWe explored two main ways MCP clients and servers communicate:\n- Stdio: The standard way for local integrations (e.g., a CLI tool or a plugin within an IDE).\n- SSE (Server-Sent Events): Enables remote communication over HTTP, which is essential for web-based agents and distributed systems.\n\n\n\nOne of the most powerful use cases we saw was using Context 7. By connecting an AI assistant to live documentation (like Airflow or Astro) via MCP, the model can “see” the latest updates and fix code based on real-time info, rather than relying on stale training data.\n\n\n\n\nMCP is the “USB port” for AI: It provides a universal interface for AI power.\nFast prototyping is key: Tools like mcp-inspector allow you to test your server logic instantly without needing a full AI client.\nConnect to the real world: Whether it’s scraping a website or indexing a GitHub repo, MCP allows AI to act on real, current data.\n\n\n\n\n\nI implemented an MCP server that included:\n1. Web Scraper Tool: Uses the Jina Reader API to convert any URL into clean markdown for the AI to process.\n2. Documentation Search Tool: Downloads a repository, indexes markdown files using Minsearch, and provides a search function to retrieve relevant context.\nThis turned my AI assistant into a specialized documentation expert for any library I point it at.\nHomework: MCP Scraper and Search Tool"
+  },
+  {
+    "objectID": "blog.html",
+    "href": "blog.html",
+    "title": "Blog",
+    "section": "",
+    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n     \n  \n\n\n\n\n\nAI Hero: Day 1 - Ingest and Index Your Data\n\n\n\n\n\n\nAI Agents\n\n\nLLM\n\n\nPython\n\n\nRAG\n\n\nAI Hero\n\n\n\nBuilding the foundation of an AI agent by automating data retrieval and metadata parsing.\n\n\n\n\n\nJan 22, 2026\n\n\n3 min\n\n\n\n\n\n\n\nAI DEV TOOLS Project: AI News Aggregator\n\n\n\n\n\n\nProject\n\n\nAI Agents\n\n\nAI Dev Tools\n\n\nVIBE CODING\n\n\nFastAPI\n\n\n\nA full-stack, AI-powered news platform that scrapes, summarizes, and serves AI trends using FastAPI, Streamlit, and Multi-Agent Orchestration.\n\n\n\n\n\nJan 20, 2026\n\n\n3 min\n\n\n\n\n\n\n\nAI Dev Tools: Week 4 - Building Coding Agents\n\n\n\n\n\n\nAI\n\n\nZoomcamp\n\n\nAgents\n\n\nAI Dev Tools\n\n\n\nMastering the creation of autonomous coding agents using Agents, Tools, and Context.\n\n\n\n\n\nJan 15, 2026\n\n\n3 min\n\n\n\n\n\n\n\nAI Dev Tools: Week 3 - MCP & Agents\n\n\n\n\n\n\nAI\n\n\nZoomcamp\n\n\nMCP\n\n\nAgents\n\n\nAI Dev Tools\n\n\n\nDiving deep into the Model Context Protocol, Agents, and building custom tools.\n\n\n\n\n\nDec 12, 2025\n\n\n3 min\n\n\n\n\n\n\n\nAI Dev Tools: Week 2 - End-to-End Application Development\n\n\n\n\n\n\nAI\n\n\nZoomcamp\n\n\nCI/CD\n\n\nAI Dev Tools\n\n\n\nBuilding a complete application with AI: Frontend-first, OpenAPI, Docker, and CI/CD.\n\n\n\n\n\nDec 5, 2025\n\n\n4 min\n\n\n\n\n\n\n\nAI Dev Tools: Week 1 - Vibe Coding & Foundations\n\n\n\n\n\n\nAI\n\n\nZoomcamp\n\n\nVibe Coding\n\n\nAI Dev Tools\n\n\n\nExploring the landscape of AI-assisted development, from coding assistants to project bootstrappers.\n\n\n\n\n\nNov 28, 2025\n\n\n2 min\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About Me",
+    "section": "",
+    "text": "I am an AI Engineer Consultant based in France with a hybrid background in finance, audit and web development.\nI help companies turn business needs into scalable AI solutions: AI Agents, RAG systems, automation and modern data architectures.\nMy experience in financial services and digital projects allows me to deliver AI initiatives that are technically solid, compliant, and aligned with real operational constraints. Available for AI consulting, LLM applications, automation and data engineering missions."
+  },
+  {
+    "objectID": "courses.html",
+    "href": "courses.html",
+    "title": "Self-Study Courses",
+    "section": "",
+    "text": "Here you can find the various self-study courses I am currently following or have completed.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAI Dev Tools by Zoomcamp\n\n\n8 min\n\n\nMy learning notes and progress for the AI Dev Tools course.\n\n\n\nNov 28, 2025\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Ousmane Cissé",
+    "section": "",
+    "text": "I am an AI Engineer Consultant based in France with a hybrid background in finance, audit and web development.\nI help companies turn business needs into scalable AI solutions: AI Agents, RAG systems, automation and modern data architectures.\nMy experience in financial services and digital projects allows me to deliver AI initiatives that are technically solid, compliant, and aligned with real operational constraints.\nAvailable for AI consulting, LLM applications, automation and data engineering missions."
   },
   {
     "objectID": "posts/ai-dev-tools-week-2/index.html",
@@ -530,12 +320,5 @@
     "title": "AI DEV TOOLS Project: AI News Aggregator",
     "section": "🚀 Why I Built This",
     "text": "🚀 Why I Built This\nKeeping up with AI is a full-time job. I wanted to build a tool that uses the very technology I’m learning (Agents, MCP, LLMs) to solve a problem I face every day. This project represents the convergence of modern web development (FastAPI/Docker) with cutting-edge AI engineering.\nCheck out the full Developer Guide to see how “Vibe Coding” helped build this!"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Ousmane Cissé",
-    "section": "",
-    "text": "I am an AI Engineer Consultant based in France with a hybrid background in finance, audit and web development.\nI help companies turn business needs into scalable AI solutions: AI Agents, RAG systems, automation and modern data architectures.\nMy experience in financial services and digital projects allows me to deliver AI initiatives that are technically solid, compliant, and aligned with real operational constraints.\nAvailable for AI consulting, LLM applications, automation and data engineering missions."
   }
 ]

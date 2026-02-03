@@ -1,28 +1,7 @@
 [
   {
-    "listing": "/fr/projets.html",
-    "items": []
-  },
-  {
-    "listing": "/fr/blog.html",
-    "items": [
-      "/fr/posts/ai-hero-day-1/index.html",
-      "/fr/posts/ai-news-aggregator/index.html",
-      "/fr/posts/ai-dev-tools-week-4/index.html",
-      "/fr/posts/ai-dev-tools-week-3/index.html",
-      "/fr/posts/ai-dev-tools-week-2/index.html",
-      "/fr/posts/ai-dev-tools-week-1/index.html"
-    ]
-  },
-  {
     "listing": "/projects.html",
     "items": []
-  },
-  {
-    "listing": "/courses.html",
-    "items": [
-      "/courses/ai-dev-tools.html"
-    ]
   },
   {
     "listing": "/blog.html",
@@ -33,6 +12,12 @@
       "/posts/ai-dev-tools-week-3/index.html",
       "/posts/ai-dev-tools-week-2/index.html",
       "/posts/ai-dev-tools-week-1/index.html"
+    ]
+  },
+  {
+    "listing": "/courses.html",
+    "items": [
+      "/courses/ai-dev-tools.html"
     ]
   }
 ]
