@@ -1,83 +1,68 @@
 {
-  "index.qmd": {
-    "index.html": "f0d88c91"
-  },
   "about.qmd": {
-    "about.html": "60d47284"
-  },
-  "ai-dev-tools.qmd": {
-    "ai-dev-tools.html": "3dd05325"
-  },
-  "courses/ai-dev-tools.qmd": {
-    "ai-dev-tools.html": "3ad9dc64"
-  },
-  "courses.qmd": {
-    "courses.html": "cb0d4ba7"
-  },
-  "projects.qmd": {
-    "projects.html": "43c8ad95"
-  },
-  "posts/post-with-code/index.qmd": {
-    "index.html": "e8b7be27"
-  },
-  "posts/welcome/index.qmd": {
-    "index.html": "810443cb"
+    "about.html": "e4caaa96"
   },
   "blog.qmd": {
-    "blog.html": "0da593c8"
+    "blog.html": "a29984c1"
   },
-  "recap.md": {
-    "recap.html": "afcab598"
+  "courses.qmd": {
+    "courses.html": "82bad92c"
+  },
+  "courses/ai-dev-tools.qmd": {
+    "ai-dev-tools.html": "8ac65db8"
+  },
+  "index.qmd": {
+    "index.html": "ed7a9f10"
   },
   "posts/ai-dev-tools-week-1/index.qmd": {
-    "index.html": "3cb6235b"
+    "index.html": "d3bbf347"
   },
   "posts/ai-dev-tools-week-2/index.qmd": {
-    "index.html": "defeef66"
+    "index.html": "e02dce68"
   },
   "posts/ai-dev-tools-week-3/index.qmd": {
-    "index.html": "f0e23866"
-  },
-  "fr/projects.qmd": {
-    "projects.html": "db482821"
-  },
-  "fr/about.qmd": {
-    "about.html": "b2d20e65"
-  },
-  "fr/blog.qmd": {
-    "blog.html": "27ace72c"
-  },
-  "fr/index.qmd": {
-    "index.html": "f78aca1f"
-  },
-  "fr/posts/ai-dev-tools-week-1/index.qmd": {
-    "index.html": "55beacbb"
-  },
-  "fr/posts/ai-dev-tools-week-2/index.qmd": {
-    "index.html": "6e141e18"
-  },
-  "fr/posts/ai-dev-tools-week-3/index.qmd": {
-    "index.html": "474108c4"
+    "index.html": "b8510975"
   },
   "posts/ai-dev-tools-week-4/index.qmd": {
-    "index.html": "d7951015"
-  },
-  "posts/ai-news-aggregator/index.qmd": {
-    "index.html": "a030e1ff"
-  },
-  "fr/posts/ai-hero-day-1/index.qmd": {
-    "index.html": "6a32dbbc"
+    "index.html": "eb519958"
   },
   "posts/ai-hero-day-1/index.qmd": {
-    "index.html": "1c76cd88"
+    "index.html": "75f75e14"
+  },
+  "posts/ai-news-aggregator/index.qmd": {
+    "index.html": "c2eaedd1"
+  },
+  "projects.qmd": {
+    "projects.html": "7c4741f1"
   },
   "fr/projets.qmd": {
-    "projets.html": "10ad8d56"
+    "projets.html": "b8093538"
+  },
+  "fr/about.qmd": {
+    "about.html": "ae20388d"
   },
   "fr/posts/ai-dev-tools-week-4/index.qmd": {
-    "index.html": "1d266581"
+    "index.html": "cb4a6496"
   },
   "fr/posts/ai-news-aggregator/index.qmd": {
-    "index.html": "37b777fd"
+    "index.html": "4b1bcbe2"
+  },
+  "fr/posts/ai-dev-tools-week-1/index.qmd": {
+    "index.html": "20bf4928"
+  },
+  "fr/posts/ai-dev-tools-week-2/index.qmd": {
+    "index.html": "82a8799c"
+  },
+  "fr/posts/ai-hero-day-1/index.qmd": {
+    "index.html": "da328a46"
+  },
+  "fr/posts/ai-dev-tools-week-3/index.qmd": {
+    "index.html": "d34b2a63"
+  },
+  "fr/blog.qmd": {
+    "blog.html": "c1ce9a3e"
+  },
+  "fr/index.qmd": {
+    "index.html": "7fe36dad"
   }
 }
