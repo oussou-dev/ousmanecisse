@@ -3,7 +3,7 @@ project:
   render: 
     - "*.qmd"
     - "posts/"
-    - "!fr/"
+    - "fr/translations/"
 
 lang: en-US
 
@@ -14,6 +14,8 @@ website:
         text: Projects
       - href: blog.qmd
         text: Blog
+      - href: en-to-fr.qmd
+        text: "EN --> FR"
     right:
       - text: "FR"
         href: fr/index.html

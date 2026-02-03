@@ -1,0 +1,16 @@
+---
+title: "EN --> FR"
+description: "Traductions d'articles techniques de l'anglais vers le français."
+listing:
+  contents: translations
+  sort: "date desc"
+  type: default
+  categories: true
+  sort-ui: true
+  filter-ui: true
+  fields: [date, title, description, categories]
+page-layout: full
+title-block-banner: false
+---
+
+Bienvenue dans cette section dédiée à la traduction d'articles de l'anglais vers le français. Vous trouverez ici des versions françaises d'articles techniques et de réflexions initialement publiés en anglais.

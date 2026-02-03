@@ -1,0 +1,17 @@
+---
+title: "EN --> FR"
+description: "Translations of technical articles from English to French."
+listing:
+  contents: fr/translations
+  sort: "date desc"
+  type: default
+  categories: true
+  sort-ui: true
+  filter-ui: true
+  fields: [date, title, description, categories]
+page-layout: full
+title-block-banner: false
+---
+
+Welcome to this section dedicated to translating articles from English to French.   
+Here you will find French versions of technical articles and reflections originally published in English.
