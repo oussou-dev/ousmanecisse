@@ -4,6 +4,13 @@
     "items": []
   },
   {
+    "listing": "/fr/en-to-fr.html",
+    "items": [
+      "/fr/translations/reflection-pattern/index.html",
+      "/fr/translations/what-is-an-agent/index.html"
+    ]
+  },
+  {
     "listing": "/fr/blog.html",
     "items": [
       "/fr/posts/ai-hero-day-1/index.html",

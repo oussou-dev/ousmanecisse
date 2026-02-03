@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr-FR" xml:lang="fr-FR"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.8.27">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="Une introduction claire aux agents IA : LLM, planification, mémoire et outils.">
 
-<title>Ousmane Cissé – OUSMANE CISSE</title>
+<title>Qu’est-ce qu’un agent ? – OUSMANE CISSE</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,27 +24,28 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-4d9afe2b8d18ee9fa5d0d57b5ed4214d.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-9de4ba47141a85e0076d50a48ec97bbb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-fb0387139d7df336a858ae67ce89b33c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-9de4ba47141a85e0076d50a48ec97bbb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-4d9afe2b8d18ee9fa5d0d57b5ed4214d.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-9de4ba47141a85e0076d50a48ec97bbb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-fb0387139d7df336a858ae67ce89b33c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../site_libs/bootstrap/bootstrap-9de4ba47141a85e0076d50a48ec97bbb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -58,25 +60,25 @@ ul.task-list li input[type="checkbox"] {
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
+    "search-no-results-text": "Pas de résultats",
+    "search-matching-documents-text": "documents trouvés",
+    "search-copy-link-title": "Copier le lien vers la recherche",
+    "search-hide-matches-text": "Cacher les correspondances additionnelles",
+    "search-more-match-text": "correspondance de plus dans ce document",
+    "search-more-matches-text": "correspondances de plus dans ce document",
+    "search-clear-button-title": "Effacer",
     "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-detached-cancel-button-title": "Annuler",
+    "search-submit-button-title": "Envoyer",
+    "search-label": "Recherche"
   }
 }</script>
 
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../../styles.css">
 </head>
 
-<body class="nav-fixed fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -245,33 +247,33 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">OUSMANE CISSE</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+            <div id="quarto-search" class="" title="Recherche"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Basculer la navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./projects.html"> 
-<span class="menu-text">Projects</span></a>
+    <a class="nav-link" href="../../../fr/projets.html"> 
+<span class="menu-text">Projets</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./blog.html"> 
+    <a class="nav-link" href="../../../fr/blog.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./en-to-fr.html"> 
+    <a class="nav-link" href="../../../fr/en-to-fr.html"> 
 <span class="menu-text">EN –&gt; FR</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./fr/index.html"> 
-<span class="menu-text">FR</span></a>
+    <a class="nav-link" href="../../../index.html"> 
+<span class="menu-text">EN</span></a>
   </li>  
   <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/oussou-dev"> <i class="bi bi-github" role="img">
@@ -286,7 +288,7 @@ ul.task-list li input[type="checkbox"] {
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Basculer le mode sombre"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -295,40 +297,167 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Sur cette page</h2>
+   
+  <ul>
+  <li><a href="#le-cerveau-de-lagent-le-modèle-de-langage" id="toc-le-cerveau-de-lagent-le-modèle-de-langage" class="nav-link active" data-scroll-target="#le-cerveau-de-lagent-le-modèle-de-langage">Le “cerveau” de l’Agent : le modèle de langage</a></li>
+  <li><a href="#les-composants-de-lagent" id="toc-les-composants-de-lagent" class="nav-link" data-scroll-target="#les-composants-de-lagent">Les composants de l’Agent</a>
+  <ul class="collapse">
+  <li><a href="#donner-des-capacités-de-planification" id="toc-donner-des-capacités-de-planification" class="nav-link" data-scroll-target="#donner-des-capacités-de-planification">Donner des capacités de planification</a></li>
+  <li><a href="#doter-lagent-dune-mémoire" id="toc-doter-lagent-dune-mémoire" class="nav-link" data-scroll-target="#doter-lagent-dune-mémoire">Doter l’Agent d’une mémoire</a></li>
+  <li><a href="#les-outils-ouvrir-lagent-sur-le-monde" id="toc-les-outils-ouvrir-lagent-sur-le-monde" class="nav-link" data-scroll-target="#les-outils-ouvrir-lagent-sur-le-monde">Les outils : ouvrir l’agent sur le monde</a></li>
+  </ul></li>
+  <li><a href="#récapitulatif-un-agent-cest-quoi-alors" id="toc-récapitulatif-un-agent-cest-quoi-alors" class="nav-link" data-scroll-target="#récapitulatif-un-agent-cest-quoi-alors">Récapitulatif : un agent, c’est quoi alors ?</a></li>
+  <li><a href="#ressources" id="toc-ressources" class="nav-link" data-scroll-target="#ressources">Ressources</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-<div class="quarto-about-jolla">
-  <img src="img/photo_bg_white.jpeg" class="about-image
-  round " style="height: 15em; width: 15em;">
- <header id="title-block-header" class="quarto-title-block default">
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Ousmane Cissé</h1>
-<p class="subtitle lead">AI Engineer Consultant</p>
-</div>
-<div class="quarto-title-meta">
+<h1 class="title">Qu’est-ce qu’un agent ?</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">IA</div>
+    <div class="quarto-category">Agents</div>
+    <div class="quarto-category">LLM</div>
+    <div class="quarto-category">Translation</div>
   </div>
-</header><main class="content" id="quarto-document-content">
+  </div>
 
-<p>I am an AI Engineer Consultant based in France with a hybrid background in finance, audit and web development.</p>
-<p>I help companies turn business needs into scalable AI solutions: AI Agents, RAG systems, automation and modern data architectures.</p>
-<p>My experience in financial services and digital projects allows me to deliver AI initiatives that are technically solid, compliant, and aligned with real operational constraints.<br>
-Available for AI consulting, LLM applications, automation and data engineering missions.</p>
-
-
-</main> 
-  <hr class="about-sep">
-   <div class="about-links">
-  <a href="https://www.linkedin.com/in/ousmane-ciss%C3%A9/?locale=en_US" class="about-link" rel="" target="">
-    <i class="bi bi-linkedin"></i>
-     <span class="about-link-text">LinkedIn</span>
-  </a>
-  <a href="https://github.com/oussou-dev?tab=repositories" class="about-link" rel="" target="">
-    <i class="bi bi-github"></i>
-     <span class="about-link-text">Github</span>
-  </a>
+<div>
+  <div class="description">
+    Une introduction claire aux agents IA : LLM, planification, mémoire et outils.
+  </div>
 </div>
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Date de publication</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">3 février 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>On entend parler <strong>d’agents</strong> partout en ce moment : sur X, dans les newsletters IA, dans les frameworks à la mode… mais quand on gratte un peu, la question de base reste souvent floue : qu’est-ce qu’un agent au juste ?</p>
+<p>Dans cette série d’articles, l’idée est de repartir des fondamentaux et de construire une compréhension claire des agents, autant du côté conceptuel que du côté pratique. Ce premier billet pose les bases : un agent, ce n’est pas de la magie, mais un ensemble de briques bien identifiées qui s’appuient sur un modèle de langage.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../../img/whats_agent.png" class="img-fluid figure-img"></p>
+<figcaption>qu’est-ce qu’un agent</figcaption>
+</figure>
 </div>
- <!-- /main -->
+<section id="le-cerveau-de-lagent-le-modèle-de-langage" class="level2">
+<h2 class="anchored" data-anchor-id="le-cerveau-de-lagent-le-modèle-de-langage">Le “cerveau” de l’Agent : le modèle de langage</h2>
+<p>Au cœur de tout agent moderne, on trouve un grand modèle de langage (LLM). C’est lui qui génère du texte, raisonne, suit des instructions, et sert de <strong>cerveau</strong> au système.</p>
+<p>Sans ce modèle :<br>
+- L’agent ne sait ni comprendre les requêtes, ni formuler de réponses.<br>
+- Il ne peut pas planifier, interpréter des résultats, ni s’adapter à son environnement.<br>
+- Toutes les couches “d’intelligence” autour de lui deviennent inutiles.</p>
+<p>On peut voir le LLM comme un cerveau dans un bocal : très puissant, capable d’enchaîner les pensées, mais isolé. Pour qu’il devienne un agent, il faut lui donner des moyens d’agir et de se souvenir.</p>
+</section>
+<section id="les-composants-de-lagent" class="level2">
+<h2 class="anchored" data-anchor-id="les-composants-de-lagent">Les composants de l’Agent</h2>
+<section id="donner-des-capacités-de-planification" class="level3">
+<h3 class="anchored" data-anchor-id="donner-des-capacités-de-planification">Donner des capacités de planification</h3>
+<p>Un agent n’est pas seulement là pour répondre à une question, il doit être capable de décomposer et d’organiser des tâches plus complexes.</p>
+<p>Par planification, on entend : - Découper un objectif global en sous-tâches. - Choisir un ordre d’exécution pertinent. - S’auto-évaluer en cours de route (réfléchir à ses erreurs, ajuster sa stratégie).</p>
+<p>Plusieurs techniques de prompting renforcent cette capacité de raisonnement :<br>
+- <strong><a href="https://arxiv.org/abs/2201.11903"><strong>Chaîne de pensées (Chain of Thought</strong>)</a></strong> : l’agent explicite ses étapes de réflexion au lieu de donner directement une réponse.<br>
+- <strong><a href="https://arxiv.org/abs/2203.11171"><strong>CoT-SC</strong></a></strong> : l’agent essaie plusieurs chemins, puis sélectionne le plus fréquent, permet d’améliore la précision et la fiabilité de la réponse.<br>
+- <strong><a href="https://arxiv.org/abs/2305.10601"><strong>Arbre de pensées (Tree of Thought</strong>)</a></strong> : l’agent explore plusieurs pistes en parallèle, évalue différentes branches et choisit la meilleure.<br>
+- <strong><a href="https://arxiv.org/abs/2210.03629"><strong>ReAct</strong></a></strong> : permet d’interagir avec des outils externes pour récupérer des informations supplémentaires qui conduisent à des réponses plus fiables et factuelles.</p>
+<p>Même si ces méthodes restent basées sur du texte, elles ajoutent une forme de structure au raisonnement, indispensable pour sortir du simple “chatbot” et tendre vers un agent qui sait gérer des objectifs plus ambitieux.</p>
+<p><img src="../../../img/prompting_techniques.gif" class="img-fluid"></p>
+<p>ReAct est la plus importante technique de planification et nous la couvrirons en détail dans la leçon 3 dédiée au <strong>Planning Pattern</strong>.</p>
+</section>
+<section id="doter-lagent-dune-mémoire" class="level3">
+<h3 class="anchored" data-anchor-id="doter-lagent-dune-mémoire">Doter l’Agent d’une mémoire</h3>
+<p>Pour agir de manière cohérente dans le temps, un agent a besoin de <strong>mémoire</strong>. Sans mémoire, chaque message serait traité comme si le passé n’existait pas.</p>
+<p>On distingue généralement deux types de mémoire.</p>
+<section id="mémoire-à-court-terme" class="level4">
+<h4 class="anchored" data-anchor-id="mémoire-à-court-terme">Mémoire à court terme</h4>
+<p>C’est tout ce qui tient dans le contexte immédiat du modèle : l’historique de la conversation, les instructions récentes, les derniers résultats d’outils.<br>
+Concrètement : - Elle est limitée par la fenêtre de contexte du LLM. - Elle permet de maintenir le fil d’un échange ou d’une tâche en cours. - Elle disparaît lorsque le contexte est tronqué ou réinitialisé.</p>
+<p>C’est l’équivalent de notre mémoire de travail : ce que l’on garde en tête quelques minutes pour finir une action.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../../img/short_term_memory.jpg" class="img-fluid figure-img"></p>
+<figcaption>Image from Donato Riccio’s amazing Medium article: https://towardsdatascience.com/extending-context-length-in-large-language-models-74e59201b51f</figcaption>
+</figure>
+</div>
+</section>
+<section id="mémoire-à-long-terme" class="level4">
+<h4 class="anchored" data-anchor-id="mémoire-à-long-terme">Mémoire à long terme</h4>
+<p>La mémoire à long terme sert à conserver des informations au-delà de la simple fenêtre de contexte, parfois pendant des jours, des semaines ou plus.</p>
+<p>Elle est souvent implémentée via :<br>
+- Des bases vectorielles (Qdrant, Weaviate, Pinecone, etc.).<br>
+- Des index de documents ou de connaissances métiers.<br>
+- Des systèmes de “notes” que l’agent peut retrouver par similarité sémantique.</p>
+<p>Grâce à cette mémoire persistante, l’agent peut par exemple :<br>
+- Se rappeler des préférences d’un utilisateur.<br>
+- Réutiliser des connaissances acquises lors de précédents échanges.<br>
+- Accéder à des informations qui ne figurent pas dans les poids du modèle.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../../img/long_term_memory.png" class="img-fluid figure-img"></p>
+<figcaption>Image from Pinecone’s blog: https://www.pinecone.io/learn/vector-database/</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="les-outils-ouvrir-lagent-sur-le-monde" class="level3">
+<h3 class="anchored" data-anchor-id="les-outils-ouvrir-lagent-sur-le-monde">Les outils : ouvrir l’agent sur le monde</h3>
+<p>Même avec un bon modèle, du raisonnement et de la mémoire, un agent reste limité tant qu’il ne peut pas interagir avec son environnement. C’est là qu’interviennent les <strong>outils</strong>.</p>
+<p>Un outil est, en pratique, une action que l’agent peut déclencher :<br>
+- Interroger une API (météo, bourse, résultats sportifs, etc.).<br>
+- Consulter une base de données ou un moteur de recherche.<br>
+- Créer, modifier ou supprimer des éléments dans un système externe (fichier, ticket, événement calendrier, ligne dans une base SQL, etc.).</p>
+<p>Ces outils permettent à l’agent de :<br>
+- Compléter ce que le modèle ne sait pas (informations trop récentes, trop spécifiques ou volumineuses).<br>
+- Avoir un impact réel sur le monde numérique : automatisation de workflows, intégration dans des pipelines de données, assistants métier, etc.</p>
+<p>L’agent doit donc non seulement savoir <em>quand</em> appeler un outil, mais aussi <em>comment</em> interpréter sa réponse et l’intégrer dans son raisonnement.</p>
+</section>
+</section>
+<section id="récapitulatif-un-agent-cest-quoi-alors" class="level2">
+<h2 class="anchored" data-anchor-id="récapitulatif-un-agent-cest-quoi-alors">Récapitulatif : un agent, c’est quoi alors ?</h2>
+<p>Si on met tout ensemble, un agent moderne repose sur quatre grandes briques :</p>
+<ul>
+<li>Un <strong>LLM</strong> comme cerveau, pour comprendre et générer du langage.<br>
+</li>
+<li>Des <strong>capacités de planification</strong> pour organiser des tâches complexes et ajuster sa stratégie.<br>
+</li>
+<li>Une <strong>mémoire</strong> à court et long terme pour garder du contexte et du vécu.<br>
+</li>
+<li>Des <strong>outils</strong> pour interagir avec le monde extérieur, lire et modifier des données, appeler des services.</li>
+</ul>
+<p>La combinaison de ces éléments donne naissance à des systèmes qui ne se contentent plus de répondre à des questions, mais qui poursuivent des objectifs, apprennent de l’historique et agissent sur leur environnement.</p>
+</section>
+<section id="ressources" class="level2">
+<h2 class="anchored" data-anchor-id="ressources">Ressources</h2>
+<ul>
+<li>Article original : <a href="https://theneuralmaze.substack.com/p/what-is-an-agent">What is an agent?</a></li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         const langLinks = document.querySelectorAll('.navbar-nav .nav-link');
@@ -403,6 +532,13 @@ Available for AI consulting, LLM applications, automation and data engineering m
       window.document.body.appendChild(a);
     }
     setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
         if (clz.startsWith('code-annotation-')) {                     
@@ -419,12 +555,12 @@ Available for AI consulting, LLM applications, automation and data engineering m
       // flash "checked"
       button.classList.add('code-copy-button-checked');
       var currentTitle = button.getAttribute("title");
-      button.setAttribute("title", "Copied!");
+      button.setAttribute("title", "Copié");
       let tooltip;
       if (window.bootstrap) {
         button.setAttribute("data-bs-toggle", "tooltip");
         button.setAttribute("data-bs-placement", "left");
-        button.setAttribute("data-bs-title", "Copied!");
+        button.setAttribute("data-bs-title", "Copié");
         tooltip = new bootstrap.Tooltip(button, 
           { trigger: "manual", 
             customClass: "code-copy-button-tooltip",
