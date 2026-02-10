@@ -1,203 +1,111 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://oussou-dev.github.io/ousmanecisse/robotics.html</loc>
-    <lastmod>2026-02-10T08:50:31.855Z</lastmod>
-  </url>
-  <url>
-    <loc>https://oussou-dev.github.io/ousmanecisse/projects/ml-zoomcamp/index.html</loc>
-    <lastmod>2026-02-10T17:53:52.427Z</lastmod>
-  </url>
-  <url>
-    <loc>https://oussou-dev.github.io/ousmanecisse/projects/data-engineering/index.html</loc>
-    <lastmod>2026-02-10T17:53:38.364Z</lastmod>
-  </url>
-  <url>
-    <loc>https://oussou-dev.github.io/ousmanecisse/projects/ai-dev-tools/index.html</loc>
-    <lastmod>2026-02-10T17:53:26.937Z</lastmod>
-  </url>
-  <url>
-    <loc>https://oussou-dev.github.io/ousmanecisse/posts/tool-using-agent/index.html</loc>
-    <lastmod>2026-02-10T17:57:54.728Z</lastmod>
-  </url>
-  <url>
-    <loc>https://oussou-dev.github.io/ousmanecisse/posts/react-pattern/index.html</loc>
-    <lastmod>2026-02-10T17:58:35.954Z</lastmod>
-  </url>
-  <url>
-    <loc>https://oussou-dev.github.io/ousmanecisse/posts/multi-agent-collaboration/index.html</loc>
-    <lastmod>2026-02-10T17:58:48.828Z</lastmod>
-  </url>
-  <url>
-    <loc>https://oussou-dev.github.io/ousmanecisse/posts/ai-news-aggregator/index.html</loc>
-    <lastmod>2026-02-10T08:59:45.638Z</lastmod>
-  </url>
-  <url>
-    <loc>https://oussou-dev.github.io/ousmanecisse/posts/ai-dev-tools-week-4/index.html</loc>
-    <lastmod>2026-02-10T17:56:59.929Z</lastmod>
-  </url>
-  <url>
-    <loc>https://oussou-dev.github.io/ousmanecisse/posts/ai-dev-tools-week-2/index.html</loc>
-    <lastmod>2026-02-10T17:56:47.435Z</lastmod>
-  </url>
-  <url>
-    <loc>https://oussou-dev.github.io/ousmanecisse/index.html</loc>
-    <lastmod>2026-01-13T18:31:20.691Z</lastmod>
+    <loc>https://oussou-dev.github.io/ousmanecisse/fr/translations/what-is-an-agent/index.html</loc>
+    <lastmod>2026-02-10T19:53:46.112Z</lastmod>
   </url>
   <url>
     <loc>https://oussou-dev.github.io/ousmanecisse/fr/translations/tool-use-pattern/index.html</loc>
-    <lastmod>2026-02-10T17:58:09.123Z</lastmod>
+    <lastmod>2026-02-10T19:53:46.112Z</lastmod>
   </url>
   <url>
     <loc>https://oussou-dev.github.io/ousmanecisse/fr/translations/planning-pattern/index.html</loc>
-    <lastmod>2026-02-10T17:58:41.697Z</lastmod>
+    <lastmod>2026-02-10T19:53:46.112Z</lastmod>
   </url>
   <url>
-    <loc>https://oussou-dev.github.io/ousmanecisse/fr/robotique.html</loc>
-    <lastmod>2026-02-10T08:50:35.418Z</lastmod>
-  </url>
-  <url>
-    <loc>https://oussou-dev.github.io/ousmanecisse/fr/projects/nocode-ai/index.html</loc>
-    <lastmod>2026-02-10T17:54:51.828Z</lastmod>
-  </url>
-  <url>
-    <loc>https://oussou-dev.github.io/ousmanecisse/fr/projects/langchain-vectordb/index.html</loc>
-    <lastmod>2026-02-10T17:54:31.990Z</lastmod>
-  </url>
-  <url>
-    <loc>https://oussou-dev.github.io/ousmanecisse/fr/projects/ai-hero/index.html</loc>
-    <lastmod>2026-02-10T17:54:16.435Z</lastmod>
-  </url>
-  <url>
-    <loc>https://oussou-dev.github.io/ousmanecisse/fr/posts/poetry-vs-uv/index.html</loc>
-    <lastmod>2026-02-10T08:59:52.575Z</lastmod>
-  </url>
-  <url>
-    <loc>https://oussou-dev.github.io/ousmanecisse/fr/posts/ai-hero-day-1/index.html</loc>
-    <lastmod>2026-02-10T08:59:43.616Z</lastmod>
-  </url>
-  <url>
-    <loc>https://oussou-dev.github.io/ousmanecisse/fr/posts/ai-dev-tools-week-3/index.html</loc>
-    <lastmod>2026-02-10T18:25:08.292Z</lastmod>
-  </url>
-  <url>
-    <loc>https://oussou-dev.github.io/ousmanecisse/fr/posts/ai-dev-tools-week-1/index.html</loc>
-    <lastmod>2026-02-10T18:24:41.692Z</lastmod>
-  </url>
-  <url>
-    <loc>https://oussou-dev.github.io/ousmanecisse/fr/en-to-fr.html</loc>
-    <lastmod>2026-02-03T16:15:45.312Z</lastmod>
+    <loc>https://oussou-dev.github.io/ousmanecisse/fr/books/mistral/index.html</loc>
+    <lastmod>2026-02-10T19:53:46.107Z</lastmod>
   </url>
   <url>
     <loc>https://oussou-dev.github.io/ousmanecisse/fr/about.html</loc>
-    <lastmod>2026-01-13T20:02:20.271Z</lastmod>
-  </url>
-  <url>
-    <loc>https://oussou-dev.github.io/ousmanecisse/courses/ai-dev-tools.html</loc>
-    <lastmod>2026-01-05T21:16:07.298Z</lastmod>
-  </url>
-  <url>
-    <loc>https://oussou-dev.github.io/ousmanecisse/blog.html</loc>
-    <lastmod>2026-02-10T09:42:45.282Z</lastmod>
-  </url>
-  <url>
-    <loc>https://oussou-dev.github.io/ousmanecisse/about.html</loc>
-    <lastmod>2026-01-13T17:35:19.582Z</lastmod>
-  </url>
-  <url>
-    <loc>https://oussou-dev.github.io/ousmanecisse/courses.html</loc>
-    <lastmod>2025-11-28T12:11:47.878Z</lastmod>
-  </url>
-  <url>
-    <loc>https://oussou-dev.github.io/ousmanecisse/en-to-fr.html</loc>
-    <lastmod>2026-02-03T16:15:35.691Z</lastmod>
+    <lastmod>2026-02-10T19:53:46.107Z</lastmod>
   </url>
   <url>
     <loc>https://oussou-dev.github.io/ousmanecisse/fr/blog.html</loc>
-    <lastmod>2026-02-10T09:42:47.799Z</lastmod>
-  </url>
-  <url>
-    <loc>https://oussou-dev.github.io/ousmanecisse/fr/index.html</loc>
-    <lastmod>2026-01-13T20:02:17.137Z</lastmod>
+    <lastmod>2026-02-10T19:53:46.107Z</lastmod>
   </url>
   <url>
     <loc>https://oussou-dev.github.io/ousmanecisse/fr/posts/ai-dev-tools-week-2/index.html</loc>
-    <lastmod>2026-02-10T18:24:57.998Z</lastmod>
+    <lastmod>2026-02-10T19:53:46.107Z</lastmod>
   </url>
   <url>
     <loc>https://oussou-dev.github.io/ousmanecisse/fr/posts/ai-dev-tools-week-4/index.html</loc>
-    <lastmod>2026-02-10T18:25:18.239Z</lastmod>
+    <lastmod>2026-02-10T19:53:46.108Z</lastmod>
   </url>
   <url>
-    <loc>https://oussou-dev.github.io/ousmanecisse/fr/posts/ai-news-aggregator/index.html</loc>
-    <lastmod>2026-02-10T08:59:48.259Z</lastmod>
+    <loc>https://oussou-dev.github.io/ousmanecisse/fr/posts/ai-hero-day-1/index.html</loc>
+    <lastmod>2026-02-10T19:53:46.108Z</lastmod>
+  </url>
+  <url>
+    <loc>https://oussou-dev.github.io/ousmanecisse/fr/livres.html</loc>
+    <lastmod>2026-02-10T19:53:46.107Z</lastmod>
+  </url>
+  <url>
+    <loc>https://oussou-dev.github.io/ousmanecisse/fr/robotique.html</loc>
+    <lastmod>2026-02-10T19:53:46.111Z</lastmod>
   </url>
   <url>
     <loc>https://oussou-dev.github.io/ousmanecisse/fr/projects/ai-dev-tools/index.html</loc>
-    <lastmod>2026-02-10T17:54:10.254Z</lastmod>
+    <lastmod>2026-02-10T19:53:46.108Z</lastmod>
   </url>
   <url>
-    <loc>https://oussou-dev.github.io/ousmanecisse/fr/projects/data-engineering/index.html</loc>
-    <lastmod>2026-02-10T17:54:22.338Z</lastmod>
+    <loc>https://oussou-dev.github.io/ousmanecisse/fr/projects/ai-hero/index.html</loc>
+    <lastmod>2026-02-10T19:53:46.108Z</lastmod>
   </url>
   <url>
     <loc>https://oussou-dev.github.io/ousmanecisse/fr/projects/ml-zoomcamp/index.html</loc>
-    <lastmod>2026-02-10T17:54:41.121Z</lastmod>
+    <lastmod>2026-02-10T19:53:46.108Z</lastmod>
+  </url>
+  <url>
+    <loc>https://oussou-dev.github.io/ousmanecisse/fr/projects/langchain-vectordb/index.html</loc>
+    <lastmod>2026-02-10T19:53:46.108Z</lastmod>
+  </url>
+  <url>
+    <loc>https://oussou-dev.github.io/ousmanecisse/fr/projects/nocode-ai/index.html</loc>
+    <lastmod>2026-02-10T19:53:46.108Z</lastmod>
+  </url>
+  <url>
+    <loc>https://oussou-dev.github.io/ousmanecisse/fr/projects/data-engineering/index.html</loc>
+    <lastmod>2026-02-10T19:53:46.108Z</lastmod>
+  </url>
+  <url>
+    <loc>https://oussou-dev.github.io/ousmanecisse/fr/index.html</loc>
+    <lastmod>2026-02-10T19:53:46.107Z</lastmod>
+  </url>
+  <url>
+    <loc>https://oussou-dev.github.io/ousmanecisse/fr/posts/ai-dev-tools-week-3/index.html</loc>
+    <lastmod>2026-02-10T19:53:46.108Z</lastmod>
+  </url>
+  <url>
+    <loc>https://oussou-dev.github.io/ousmanecisse/fr/posts/ai-news-aggregator/index.html</loc>
+    <lastmod>2026-02-10T19:53:46.108Z</lastmod>
+  </url>
+  <url>
+    <loc>https://oussou-dev.github.io/ousmanecisse/fr/posts/ai-dev-tools-week-1/index.html</loc>
+    <lastmod>2026-02-10T19:53:46.107Z</lastmod>
+  </url>
+  <url>
+    <loc>https://oussou-dev.github.io/ousmanecisse/fr/posts/poetry-vs-uv/index.html</loc>
+    <lastmod>2026-02-10T19:53:46.108Z</lastmod>
+  </url>
+  <url>
+    <loc>https://oussou-dev.github.io/ousmanecisse/fr/en-to-fr.html</loc>
+    <lastmod>2026-02-10T19:53:46.107Z</lastmod>
   </url>
   <url>
     <loc>https://oussou-dev.github.io/ousmanecisse/fr/projets.html</loc>
-    <lastmod>2026-02-10T18:07:42.313Z</lastmod>
+    <lastmod>2026-02-10T19:53:46.108Z</lastmod>
+  </url>
+  <url>
+    <loc>https://oussou-dev.github.io/ousmanecisse/fr/books/llm-handbook/index.html</loc>
+    <lastmod>2026-02-10T19:53:46.107Z</lastmod>
   </url>
   <url>
     <loc>https://oussou-dev.github.io/ousmanecisse/fr/translations/multiagent-pattern/index.html</loc>
-    <lastmod>2026-02-10T17:58:55.911Z</lastmod>
+    <lastmod>2026-02-10T19:53:46.111Z</lastmod>
   </url>
   <url>
     <loc>https://oussou-dev.github.io/ousmanecisse/fr/translations/reflection-pattern/index.html</loc>
-    <lastmod>2026-02-10T17:57:31.499Z</lastmod>
-  </url>
-  <url>
-    <loc>https://oussou-dev.github.io/ousmanecisse/fr/translations/what-is-an-agent/index.html</loc>
-    <lastmod>2026-02-10T15:26:00.065Z</lastmod>
-  </url>
-  <url>
-    <loc>https://oussou-dev.github.io/ousmanecisse/posts/ai-dev-tools-week-1/index.html</loc>
-    <lastmod>2026-02-10T17:56:39.922Z</lastmod>
-  </url>
-  <url>
-    <loc>https://oussou-dev.github.io/ousmanecisse/posts/ai-dev-tools-week-3/index.html</loc>
-    <lastmod>2026-02-10T17:56:53.292Z</lastmod>
-  </url>
-  <url>
-    <loc>https://oussou-dev.github.io/ousmanecisse/posts/ai-hero-day-1/index.html</loc>
-    <lastmod>2026-02-10T15:55:07.136Z</lastmod>
-  </url>
-  <url>
-    <loc>https://oussou-dev.github.io/ousmanecisse/posts/memory-based-agent/index.html</loc>
-    <lastmod>2026-02-10T15:29:05.249Z</lastmod>
-  </url>
-  <url>
-    <loc>https://oussou-dev.github.io/ousmanecisse/posts/poetry-vs-uv/index.html</loc>
-    <lastmod>2026-02-10T08:59:49.813Z</lastmod>
-  </url>
-  <url>
-    <loc>https://oussou-dev.github.io/ousmanecisse/posts/reflection-agent/index.html</loc>
-    <lastmod>2026-02-10T17:57:25.078Z</lastmod>
-  </url>
-  <url>
-    <loc>https://oussou-dev.github.io/ousmanecisse/projects.html</loc>
-    <lastmod>2026-02-10T18:07:36.506Z</lastmod>
-  </url>
-  <url>
-    <loc>https://oussou-dev.github.io/ousmanecisse/projects/ai-hero/index.html</loc>
-    <lastmod>2026-02-10T17:53:32.905Z</lastmod>
-  </url>
-  <url>
-    <loc>https://oussou-dev.github.io/ousmanecisse/projects/langchain-vectordb/index.html</loc>
-    <lastmod>2026-02-10T17:53:45.943Z</lastmod>
-  </url>
-  <url>
-    <loc>https://oussou-dev.github.io/ousmanecisse/projects/nocode-ai/index.html</loc>
-    <lastmod>2026-02-10T17:53:59.491Z</lastmod>
+    <lastmod>2026-02-10T19:53:46.112Z</lastmod>
   </url>
 </urlset>

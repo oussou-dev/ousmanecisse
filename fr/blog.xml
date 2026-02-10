@@ -9,12 +9,13 @@
 <link>https://oussou-dev.github.io/ousmanecisse/fr/blog.html</link>
 <atom:link href="https://oussou-dev.github.io/ousmanecisse/fr/blog.xml" rel="self" type="application/rss+xml"/>
 <description></description>
-<generator>quarto-1.6.42</generator>
-<lastBuildDate>Mon, 09 Feb 2026 23:00:00 GMT</lastBuildDate>
+<generator>quarto-1.8.27</generator>
+<lastBuildDate>Tue, 10 Feb 2026 00:00:00 GMT</lastBuildDate>
 <item>
   <title>Poetry vs UV : quel gestionnaire pour vos projets Python ?</title>
   <link>https://oussou-dev.github.io/ousmanecisse/fr/posts/poetry-vs-uv/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -123,7 +124,7 @@
 <h2 class="anchored" data-anchor-id="comparaison-de-commandes-concrètes">Comparaison de commandes concrètes</h2>
 <section id="initialisation-dun-projet" class="level3">
 <h3 class="anchored" data-anchor-id="initialisation-dun-projet">Initialisation d’un projet</h3>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Poetry : créer un nouveau projet</span></span>
 <span id="cb1-2"><span class="ex" style="color: null;
@@ -136,9 +137,9 @@ font-style: inherit;">cd</span> my-project</span>
 background-color: null;
 font-style: inherit;">poetry</span> install  <span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;"># crée l'env virtuel et installe les dépendances</span></span></code></pre></div>
+font-style: inherit;"># crée l'env virtuel et installe les dépendances</span></span></code></pre></div></div>
 <p>Poetry génère une arborescence type (src/, tests/, pyproject.toml) et installe les dépendances déclarées.</p>
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># UV : initialiser un projet</span></span>
 <span id="cb2-2"><span class="ex" style="color: null;
@@ -151,12 +152,12 @@ font-style: inherit;">cd</span> my-project</span>
 background-color: null;
 font-style: inherit;">uv</span> sync  <span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;"># crée l'env virtuel et synchronise les dépendances</span></span></code></pre></div>
+font-style: inherit;"># crée l'env virtuel et synchronise les dépendances</span></span></code></pre></div></div>
 <p><code>uv init</code> crée un <code>pyproject.toml</code> minimal, puis <code>uv sync</code> crée l’environnement et installe les dépendances en se basant sur le lockfile.</p>
 </section>
 <section id="ajouter-des-dépendances" class="level3">
 <h3 class="anchored" data-anchor-id="ajouter-des-dépendances">Ajouter des dépendances</h3>
-<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Poetry : ajouter une dépendance de base</span></span>
 <span id="cb3-2"><span class="ex" style="color: null;
@@ -170,9 +171,9 @@ font-style: inherit;"># Poetry : ajouter plusieurs dépendances avec contraintes
 background-color: null;
 font-style: inherit;">poetry</span> add requests pendulum@^2.0.5  <span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;"># ajoute requests et pendulum&gt;=2.0.5,&lt;3.0.0</span></span></code></pre></div>
+font-style: inherit;"># ajoute requests et pendulum&gt;=2.0.5,&lt;3.0.0</span></span></code></pre></div></div>
 <p><code>poetry add</code> met à jour <code>pyproject.toml</code> et <code>poetry.lock</code> en une seule commande.</p>
-<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># UV : ajouter une dépendance</span></span>
 <span id="cb4-2"><span class="ex" style="color: null;
@@ -186,12 +187,12 @@ font-style: inherit;"># UV : importer depuis un requirements.txt existant</span>
 background-color: null;
 font-style: inherit;">uv</span> add <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">-r</span> requirements.txt</span></code></pre></div>
+font-style: inherit;">-r</span> requirements.txt</span></code></pre></div></div>
 <p><code>uv add</code> met à jour <code>pyproject.toml</code> et le lockfile, et gère la résolution/installation via son moteur rapide.</p>
 </section>
 <section id="dépendances-de-développement-groupes" class="level3">
 <h3 class="anchored" data-anchor-id="dépendances-de-développement-groupes">Dépendances de développement / groupes</h3>
-<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Poetry : dépendance de développement</span></span>
 <span id="cb5-2"><span class="ex" style="color: null;
@@ -209,9 +210,9 @@ font-style: inherit;">poetry</span> add <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">--optional</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">'cupy'</span></span></code></pre></div>
+font-style: inherit;">'cupy'</span></span></code></pre></div></div>
 <p>Les groupes et dépendances optionnelles permettent de séparer dev/prod et extras.</p>
-<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># UV : groupe de développement</span></span>
 <span id="cb6-2"><span class="ex" style="color: null;
@@ -227,12 +228,12 @@ font-style: inherit;"># UV : groupe optionnel</span></span>
 background-color: null;
 font-style: inherit;">uv</span> add <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">--optional</span> gpu-support cupy</span></code></pre></div>
+font-style: inherit;">--optional</span> gpu-support cupy</span></code></pre></div></div>
 <p>UV expose explicitement <code>--dev</code> et <code>--optional</code> pour gérer les groupes, là aussi synchronisés dans le lockfile.</p>
 </section>
 <section id="gestion-des-environnements-virtuels" class="level3">
 <h3 class="anchored" data-anchor-id="gestion-des-environnements-virtuels">Gestion des environnements virtuels</h3>
-<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Poetry : créer ou recréer l'env</span></span>
 <span id="cb7-2"><span class="ex" style="color: null;
@@ -251,9 +252,9 @@ background-color: null;
 font-style: inherit;"># Exécuter une commande dans l'env</span></span>
 <span id="cb7-6"><span class="ex" style="color: null;
 background-color: null;
-font-style: inherit;">poetry</span> run pytest</span></code></pre></div>
+font-style: inherit;">poetry</span> run pytest</span></code></pre></div></div>
 <p>Poetry se repose sur des interprètes Python déjà présents sur la machine.</p>
-<div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># UV : création d'un venv explicite (facultatif, souvent auto)</span></span>
 <span id="cb8-2"><span class="ex" style="color: null;
@@ -272,12 +273,12 @@ font-style: inherit;"># venv avec pip pré‑installé</span></span>
 background-color: null;
 font-style: inherit;">uv</span> venv <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">--seed</span></span></code></pre></div>
+font-style: inherit;">--seed</span></span></code></pre></div></div>
 <p>UV peut créer l’environnement automatiquement lors de <code>uv add</code> ou <code>uv run</code>, et peut y injecter <code>pip</code> si nécessaire.</p>
 </section>
 <section id="gestion-de-python-luimême-uv-uniquement" class="level3">
 <h3 class="anchored" data-anchor-id="gestion-de-python-luimême-uv-uniquement">Gestion de Python lui‑même (UV uniquement)</h3>
-<div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Installer une version précise de Python</span></span>
 <span id="cb9-2"><span class="ex" style="color: null;
@@ -296,7 +297,7 @@ background-color: null;
 font-style: inherit;"># Pinner une version pour le projet courant</span></span>
 <span id="cb9-8"><span class="ex" style="color: null;
 background-color: null;
-font-style: inherit;">uv</span> python pin 3.11</span></code></pre></div>
+font-style: inherit;">uv</span> python pin 3.11</span></code></pre></div></div>
 <p>Ces commandes donnent à UV un rôle de gestionnaire de versions de Python en plus du rôle de gestionnaire de dépendances.</p>
 </section>
 </section>
@@ -419,13 +420,14 @@ font-style: inherit;">uv</span> python pin 3.11</span></code></pre></div>
   <category>packaging</category>
   <category>tooling</category>
   <guid>https://oussou-dev.github.io/ousmanecisse/fr/posts/poetry-vs-uv/</guid>
-  <pubDate>Mon, 09 Feb 2026 23:00:00 GMT</pubDate>
+  <pubDate>Tue, 10 Feb 2026 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>AI Hero : Jour 1 - Ingestion et Indexation des Données</title>
   <dc:creator>Ousmane Cissé</dc:creator>
   <link>https://oussou-dev.github.io/ousmanecisse/fr/posts/ai-hero-day-1/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -487,7 +489,7 @@ font-style: inherit;">uv</span> python pin 3.11</span></code></pre></div>
   <category>RAG</category>
   <category>AI Hero</category>
   <guid>https://oussou-dev.github.io/ousmanecisse/fr/posts/ai-hero-day-1/</guid>
-  <pubDate>Wed, 21 Jan 2026 23:00:00 GMT</pubDate>
+  <pubDate>Thu, 22 Jan 2026 00:00:00 GMT</pubDate>
   <media:content url="https://oussou-dev.github.io/ousmanecisse/fr/img/ai_hero_day_1.png" medium="image" type="image/png"/>
 </item>
 <item>
@@ -495,6 +497,7 @@ font-style: inherit;">uv</span> python pin 3.11</span></code></pre></div>
   <dc:creator>Ousmane Cissé</dc:creator>
   <link>https://oussou-dev.github.io/ousmanecisse/fr/posts/ai-news-aggregator/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -566,7 +569,7 @@ font-style: inherit;">uv</span> python pin 3.11</span></code></pre></div>
   <category>Vibe Coding</category>
   <category>FastAPI</category>
   <guid>https://oussou-dev.github.io/ousmanecisse/fr/posts/ai-news-aggregator/</guid>
-  <pubDate>Mon, 19 Jan 2026 23:00:00 GMT</pubDate>
+  <pubDate>Tue, 20 Jan 2026 00:00:00 GMT</pubDate>
   <media:content url="https://oussou-dev.github.io/ousmanecisse/fr/img/ai_news_aggregator.webp" medium="image" type="image/webp"/>
 </item>
 <item>
@@ -574,6 +577,7 @@ font-style: inherit;">uv</span> python pin 3.11</span></code></pre></div>
   <dc:creator>Ousmane Cissé</dc:creator>
   <link>https://oussou-dev.github.io/ousmanecisse/fr/posts/ai-dev-tools-week-4/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -646,13 +650,14 @@ font-style: inherit;">uv</span> python pin 3.11</span></code></pre></div>
   <category>Agents</category>
   <category>Outils Dev IA</category>
   <guid>https://oussou-dev.github.io/ousmanecisse/fr/posts/ai-dev-tools-week-4/</guid>
-  <pubDate>Wed, 14 Jan 2026 23:00:00 GMT</pubDate>
+  <pubDate>Thu, 15 Jan 2026 00:00:00 GMT</pubDate>
   <media:content url="https://oussou-dev.github.io/ousmanecisse/fr/img/week_4_ai_dev_tools.webp" medium="image" type="image/webp"/>
 </item>
 <item>
   <title>Outils de Dév IA - Semaine 3</title>
   <link>https://oussou-dev.github.io/ousmanecisse/fr/posts/ai-dev-tools-week-3/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -700,12 +705,13 @@ font-style: inherit;">uv</span> python pin 3.11</span></code></pre></div>
   <category>Zoomcamp</category>
   <category>AI Dev Tools</category>
   <guid>https://oussou-dev.github.io/ousmanecisse/fr/posts/ai-dev-tools-week-3/</guid>
-  <pubDate>Fri, 02 Feb 2024 23:00:00 GMT</pubDate>
+  <pubDate>Sat, 03 Feb 2024 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Outils de Dév IA - Semaine 2</title>
   <link>https://oussou-dev.github.io/ousmanecisse/fr/posts/ai-dev-tools-week-2/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -753,12 +759,13 @@ font-style: inherit;">uv</span> python pin 3.11</span></code></pre></div>
   <category>Zoomcamp</category>
   <category>AI Dev Tools</category>
   <guid>https://oussou-dev.github.io/ousmanecisse/fr/posts/ai-dev-tools-week-2/</guid>
-  <pubDate>Fri, 26 Jan 2024 23:00:00 GMT</pubDate>
+  <pubDate>Sat, 27 Jan 2024 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Outils de Dév IA - Semaine 1</title>
   <link>https://oussou-dev.github.io/ousmanecisse/fr/posts/ai-dev-tools-week-1/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -803,7 +810,7 @@ font-style: inherit;">uv</span> python pin 3.11</span></code></pre></div>
   <category>Zoomcamp</category>
   <category>AI Dev Tools</category>
   <guid>https://oussou-dev.github.io/ousmanecisse/fr/posts/ai-dev-tools-week-1/</guid>
-  <pubDate>Fri, 19 Jan 2024 23:00:00 GMT</pubDate>
+  <pubDate>Sat, 20 Jan 2024 00:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
