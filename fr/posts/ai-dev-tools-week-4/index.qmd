@@ -5,6 +5,7 @@ author: "Ousmane Cissé"
 date: "2026-01-15"
 categories: [IA, Zoomcamp, Agents, Outils Dev IA]
 image: "../../img/week_4_ai_dev_tools.webp"
+translation-url: "posts/ai-dev-tools-week-4/index.html"
 ---
 
 La semaine 4 du AI Dev Tools Zoomcamp a été une introduction transformatrice au monde des **agents de code autonomes**. Nous sommes passés au-delà des simples interfaces de chat pour construire des agents capables de manipuler activement des bases de code, modifier des fichiers et démarrer des projets entiers.

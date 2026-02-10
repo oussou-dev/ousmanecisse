@@ -1,10 +1,29 @@
 {
   "listingMap": {
+    "blog.qmd": [
+      "posts/**/index.qmd",
+      "/posts",
+      "posts"
+    ],
+    "courses.qmd": [
+      "courses"
+    ],
+    "en-to-fr.qmd": [
+      "fr/translations"
+    ],
     "fr/blog.qmd": [
+      "posts/**/index.qmd",
+      "/fr/posts",
       "posts"
     ],
     "fr/en-to-fr.qmd": [
       "translations"
+    ],
+    "fr/robotique.qmd": [
+      "posts"
+    ],
+    "robotics.qmd": [
+      "posts"
     ]
   }
 }

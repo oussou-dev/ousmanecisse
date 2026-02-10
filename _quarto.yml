@@ -17,3 +17,7 @@ format:
       dark: [cosmo, dark.scss]
     css: styles.css
     toc: true
+    include-after-body: scripts/lang-switch.html
+
+filters:
+  - filters/metadata_to_meta.lua

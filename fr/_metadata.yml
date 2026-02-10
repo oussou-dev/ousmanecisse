@@ -1,9 +1,4 @@
-project:
-  output-dir: _site
-  render: 
-    - "fr/"
-
-lang: fr-FR
+lang: fr
 
 website:
   navbar:
@@ -23,12 +18,3 @@ website:
         href: https://github.com/oussou-dev
       - icon: linkedin
         href: https://linkedin.com/in/ousmanecisse
-
-format:
-  html:
-    theme:
-      light: [cosmo, theme.scss]
-      dark: [cosmo, dark.scss]
-    css: styles.css
-    include-after-body: scripts/lang-switch.html
-    toc: true

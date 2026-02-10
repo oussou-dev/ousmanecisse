@@ -1,12 +1,15 @@
 ---
 title: "Blog"
+translation-url: "fr/blog.html"
 listing:
-  contents: posts
+  contents: "posts"
   sort: "date desc"
   type: default
   categories: true
   sort-ui: true
   filter-ui: false
+  include:
+    lang: en
   fields: [date, title, reading-time, description, categories]
   feed: true
 page-layout: full

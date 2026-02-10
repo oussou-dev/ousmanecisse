@@ -3,7 +3,6 @@ project:
   render: 
     - "*.qmd"
     - "posts/"
-    - "fr/translations/"
 
 lang: en-US
 
@@ -14,6 +13,8 @@ website:
         text: Projects
       - href: blog.qmd
         text: Blog
+      - href: robotics.qmd
+        text: "Robotics & AI"
       - href: en-to-fr.qmd
         text: "EN --> FR"
     right:

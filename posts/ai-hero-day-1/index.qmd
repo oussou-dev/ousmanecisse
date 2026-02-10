@@ -5,6 +5,8 @@ author: "Ousmane Cissé"
 date: "2026-01-22"
 categories: [AI Agents, LLM, Python, RAG, AI Hero]
 image: "../../img/ai_hero_day_1.png"
+lang: en
+translation-url: "fr/posts/ai-hero-day-1/index.html"
 ---
 
 The journey to building a custom AI agent starts with its "brain" — or more accurately, its knowledge base. On Day 1 of the **AI Hero** project, I focused on the first step of the RAG (Retrieval-Augmented Generation) pipeline: **Ingestion**.

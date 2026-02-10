@@ -1,0 +1,209 @@
+---
+title: "Poetry vs UV: which tool for your Python projects?"
+date: "2026-02-10"
+categories: [python, packaging, tooling]
+description: "A comparison between Poetry and UV, two modern Python dependency managers."
+lang: en
+translation-url: "fr/posts/poetry-vs-uv/index.html"
+---
+
+## Introduction
+
+Poetry and UV are two modern dependency and virtual environment managers in the Python ecosystem that aim to replace the traditional `pip + venv` stack and tools like Pipenv or conda. Both provide a **project‑centric** experience built around `pyproject.toml`, but they embody different design goals and trade‑offs.
+
+## Origins, release dates, and implementation languages
+
+### Poetry
+
+- First public releases appeared around 2018–2019, with version 1.0 stabilizing around 2019–2020.  
+- Designed to provide a unified tool for dependency management, packaging, and publishing in Python.  
+- Implemented in **Python**, with build logic extracted into `poetry-core`.
+
+### UV
+
+- Developed by Astral (the team behind Ruff) in the mid‑2020s.  
+- Intended as an extremely fast project and package manager covering Python installations, dependencies, and environments.  
+- Implemented in **Rust**, which enables very fast dependency resolution and installation.
+
+## Usage scope and design goals
+
+### Poetry
+
+- Manage the full lifecycle of a Python package: project creation, dependency management, building, and publishing to PyPI.  
+- Aim for a Bundler/npm/cargo‑like experience centered on `pyproject.toml` and a `poetry.lock` file.  
+- Favor clarity and reproducibility over raw speed.
+
+### UV
+
+- Act as a replacement for `pip`, `venv`, `virtualenv`, `pip-tools`, `pipx`, and some conda use cases, with a single binary.  
+- Provide a universal lockfile, virtual environments, a `pip`‑compatible interface, and Python version management.  
+- Target workflows from simple scripts to large multi‑project, multi‑Python workspaces.
+
+## Key features
+
+### Poetry
+
+- **Dependencies and lockfile**  
+  - Dependencies declared in `pyproject.toml` and pinned in `poetry.lock` for reproducible builds.  
+  - Support for dependency groups (dev, test, docs, etc.) and PEP 735 groups.
+
+- **Virtual environments**  
+  - Automatically creates a per‑project virtual environment, either as a `.venv` in the project or in a global location.  
+  - Commands like `poetry run` and `poetry env use` to run commands and select Python interpreters.
+
+- **Packaging and publishing**  
+  - Builds source and wheel distributions and publishes them to PyPI via `poetry publish`.  
+  - Integrates with `poetry-core` to align with modern packaging recommendations.
+
+### UV
+
+- **Python management**  
+  - `uv python install`, `uv python list`, `uv python pin` to install, list, and pin Python versions.  
+  - Can replace tools like pyenv in many workflows.
+
+- **Dependencies and environments**  
+  - `uv add`, `uv lock`, `uv sync`, `uv run` provide a full project workflow.  
+  - `pip`‑compatible commands (`uv pip install`, `uv pip freeze`, `uv pip check`) ease migration from `pip`.
+
+- **Performance and global cache**  
+  - Parallel downloads, a global deduplicated cache, and hardlinks / Copy‑on‑Write.  
+  - Partial wheel metadata downloads to speed up dependency resolution.
+
+## Concrete command comparison
+
+### Project initialization
+
+```bash
+# Poetry: create a new project
+poetry new my-project
+cd my-project
+poetry install  # creates the venv and installs dependencies
+```
+Poetry scaffolds a standard layout (src/, tests/, pyproject.toml) and installs the declared dependencies.
+
+```bash
+# UV: initialize a project
+uv init my-project
+cd my-project
+uv sync  # creates the venv and syncs dependencies
+```
+`uv init` creates a minimal `pyproject.toml`, and `uv sync` creates the environment and installs dependencies from the lockfile.
+
+### Adding dependencies
+
+```bash
+# Poetry: add a basic dependency
+poetry add requests
+
+# Poetry: add multiple dependencies with version constraints
+poetry add requests pendulum@^2.0.5  # installs pendulum>=2.0.5,<3.0.0
+```
+`poetry add` updates both `pyproject.toml` and `poetry.lock` in one step.
+
+```bash
+# UV: add a dependency
+uv add requests
+
+# UV: import dependencies from an existing requirements.txt
+uv add -r requirements.txt
+```
+`uv add` updates `pyproject.toml` and the UV lockfile while resolving and installing dependencies using its fast resolver.
+
+### Dev dependencies and groups
+
+```bash
+# Poetry: development dependency
+poetry add --group dev pytest
+
+# Poetry: optional dependency
+poetry add --optional 'cupy'
+```
+Dependency groups and optional dependencies help you separate dev/prod and extras.
+
+```bash
+# UV: dev dependency
+uv add --dev pytest
+
+# UV: optional group
+uv add --optional gpu-support cupy
+```
+UV exposes `--dev` and `--optional` flags to manage groups, also reflected in the lockfile.
+
+### Virtual environment management
+
+```bash
+# Poetry: create or recreate the environment
+poetry install        # creates if needed
+poetry env use 3.11   # switch to an already-installed Python 3.11
+
+# Run a command inside the env
+poetry run pytest
+```
+Poetry relies on Python interpreters that are already available on the system.
+
+```bash
+# UV: explicit venv creation (often optional)
+uv venv
+uv run pytest  # run pytest in the env
+
+# venv with pip pre-installed
+uv venv --seed
+```
+UV can create the environment automatically on `uv add` or `uv run`, and can seed `pip` into it if required.
+
+### Managing Python itself (UV only)
+
+```bash
+# Install a specific Python version
+uv python install 3.11
+
+# List managed versions
+uv python list
+
+# Pin a version for the current project
+uv python pin 3.11
+```
+These commands make UV a Python version manager in addition to a dependency manager.
+
+## Advantages over venv, conda, pipenv…
+
+### Poetry advantages
+
+- Over `pip + venv`: integrated lockfile, dependency groups, unified packaging commands.  
+- Over Pipenv: standard `pyproject.toml` format and closer alignment with current packaging recommendations.  
+- Over conda: lighter, PyPI‑centric workflow ideal for publishing to PyPI.
+
+### UV advantages
+
+- Over `pip + venv`: single binary for environments, dependencies, lockfiles, and often Python itself.  
+- Over conda: fast multi‑Python management without pulling in the full conda ecosystem.  
+- Over Poetry: significantly faster dependency resolution and installation.
+
+### Poetry drawbacks
+
+- Slower resolution and installation on larger projects.  
+- Depends on an existing Python runtime.
+
+### UV drawbacks
+
+- Younger ecosystem with less long‑term production feedback and fewer community resources.  
+- Often requires a mindset shift for teams used to `pip + venv`.
+
+## Summary table
+
+| Criterion                           | Poetry                                             | UV                                                       |
+|-------------------------------------|----------------------------------------------------|----------------------------------------------------------|
+| Implementation language             | Python                                      | Rust                                      |
+| Initial public releases             | ~2018–2019                                 | Mid‑2020s                                |
+| Config files                        | `pyproject.toml` + `poetry.lock`     | `pyproject.toml` + UV lockfile           |
+| Environment management              | Per‑project venv auto‑created        | Per‑project venv + global cache           |
+| Python version management           | Uses existing Python                        | Installs/pins Python versions           |
+| Intended replacements               | pip, venv, pipenv, build tools       | pip, venv, virtualenv, pip-tools, pipx, partly conda |
+| Primary focus                       | Structured workflow, packaging & publishing | Performance, unification, multi‑Python |
+| Install performance                 | Adequate but not optimized                 | Very fast                                |
+| Maturity / adoption                 | Widely adopted in production         | Rapidly growing, younger ecosystem      |
+
+## Practical recommendations
+
+- **Poetry**: a strong choice when your primary goal is clean packaging for PyPI, with a structured workflow and a team familiar with `pyproject.toml`.  
+- **UV**: a compelling option when speed, many environments, and managing Python itself are key (CI/CD, data workloads, ML).

@@ -5,6 +5,7 @@ author: "Ousmane Cissé"
 date: "2026-01-20"
 categories: [Projet, Agents IA, Outils Dev IA, Vibe Coding, FastAPI]
 image: "../../img/ai_news_aggregator.webp"
+translation-url: "posts/ai-news-aggregator/index.html"
 ---
 
 Pour mon projet de la 4ème semaine du AI Dev Tools Zoomcamp, j'ai construit l'**Agrégateur d'actualités IA** — une plateforme complète conçue pour filtrer le bruit du cycle effréné des actualités sur l'IA. Elle automatise la collecte, le traitement et la présentation de contenus IA à haute valeur ajoutée provenant de multiples sources.

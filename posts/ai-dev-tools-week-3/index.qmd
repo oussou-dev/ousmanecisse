@@ -5,6 +5,8 @@ author: "Ousmane Cissé"
 date: "2025-12-12"
 categories: [AI, Zoomcamp, MCP, Agents, AI Dev Tools]
 image: "../../img/week_3_ai_dev_tools.png"
+lang: en
+translation-url: "fr/posts/ai-dev-tools-week-3/index.html"
 ---
 
 This week was a deep dive into the **Model Context Protocol (MCP)**, an open standard that enables AI models to interact with external data sources and tools in a standardized way. Here's what I learned:

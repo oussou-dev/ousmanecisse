@@ -1,5 +1,6 @@
 ---
 title: "Projects"
+translation-url: "fr/projets.html"
 listing:
   contents:
     - title: "AI Dev Tools"

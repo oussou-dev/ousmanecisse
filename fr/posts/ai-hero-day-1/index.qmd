@@ -6,6 +6,7 @@ date: "2026-01-22"
 categories: [Agents IA, LLM, RAG, AI Hero]
 image: "../../img/ai_hero_day_1.png"
 lang: fr
+translation-url: "posts/ai-hero-day-1/index.html"
 ---
 
 Le voyage vers la création d'un agent IA personnalisé commence par son « cerveau » — ou plus précisément, sa base de connaissances. Lors du **Jour 1** du projet **AI Hero**, je me suis concentré sur la première étape du pipeline RAG (Retrieval-Augmented Generation) : **l'Ingestion**.

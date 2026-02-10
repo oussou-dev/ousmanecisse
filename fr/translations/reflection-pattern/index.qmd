@@ -10,7 +10,7 @@ Après avoir vu [qu'est-ce qu'un agent](/fr/translations/what-is-an-agent/), pas
 
 Pourquoi ? Pour bien comprendre ce qui se passe sous le capot. On commence par le **pattern de réflexion**, le plus simple, mais qui apporte des gains de qualité surprenants.
 
-![Illustration du pattern de réflexion](../../../img/reflection_loop.png)
+![Illustration du pattern de réflexion](../../../img/reflection_pattern.png)
 
 ## Le pattern de réflexion en bref
 

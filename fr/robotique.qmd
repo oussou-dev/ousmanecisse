@@ -1,0 +1,8 @@
+---
+title: "Robotique et IA"
+translation-url: "robotics.html"
+page-layout: full
+title-block-banner: false
+---
+
+Bientôt disponible...

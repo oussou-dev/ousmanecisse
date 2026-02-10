@@ -5,6 +5,8 @@ author: "Ousmane Cissé"
 date: "2025-11-28"
 categories: [AI, Zoomcamp, Vibe Coding, AI Dev Tools]
 image: "../../img/week_1_ai_dev_tools.png"
+lang: en
+translation-url: "fr/posts/ai-dev-tools-week-1/index.html"
 ---
 
 This first week of the AI Dev Tools Zoomcamp helped me lay the foundations of AI-assisted coding — i.e. adopting tools and workflows that make code writing faster, cleaner, and more efficient. Here are the main takeaways:

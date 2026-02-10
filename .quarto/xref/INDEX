@@ -76,5 +76,17 @@
   },
   "projects.qmd": {
     "projects.html": "218be878"
+  },
+  "fr/posts/poetry-vs-uv/index.qmd": {
+    "index.html": "0d371af1"
+  },
+  "posts/poetry-vs-uv/index.qmd": {
+    "index.html": "3783cbf1"
+  },
+  "fr/robotique.qmd": {
+    "robotique.html": "7cd07b40"
+  },
+  "robotics.qmd": {
+    "robotics.html": "7a5194dd"
   }
 }

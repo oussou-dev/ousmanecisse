@@ -1,0 +1,8 @@
+---
+title: "Robotics & AI"
+translation-url: "fr/robotique.html"
+page-layout: full
+title-block-banner: false
+---
+
+Coming soon...

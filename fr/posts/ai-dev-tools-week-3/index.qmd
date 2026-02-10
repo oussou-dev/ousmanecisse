@@ -4,6 +4,7 @@ date: "2024-02-03"
 categories: [IA, Outils, Zoomcamp, AI Dev Tools]
 description: "Aperçu de la troisième semaine du AI Dev Tools Zoomcamp."
 lang: fr
+translation-url: "posts/ai-dev-tools-week-3/index.html"
 ---
 
 ## Introduction
