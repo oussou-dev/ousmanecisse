@@ -6,11 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Ousmane Cissé">
-<meta name="dcterms.date" content="2025-12-12">
-<meta name="description" content="Diving deep into the Model Context Protocol, Agents, and building custom tools.">
+<meta name="dcterms.date" content="2026-02-10">
+<meta name="description" content="A comparison between Poetry and UV, two modern Python dependency managers.">
 
-<title>AI Dev Tools: Week 3 - MCP &amp; Agents – OUSMANE CISSE</title>
+<title>Poetry vs UV: which tool for your Python projects? – OUSMANE CISSE</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -142,13 +175,39 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#standardizing-ai-interactions" id="toc-standardizing-ai-interactions" class="nav-link active" data-scroll-target="#standardizing-ai-interactions">Standardizing AI Interactions</a></li>
-  <li><a href="#mcp-primitives-tools-resources-and-prompts" id="toc-mcp-primitives-tools-resources-and-prompts" class="nav-link" data-scroll-target="#mcp-primitives-tools-resources-and-prompts">MCP Primitives: Tools, Resources, and Prompts</a></li>
-  <li><a href="#developer-experience-with-fastmcp" id="toc-developer-experience-with-fastmcp" class="nav-link" data-scroll-target="#developer-experience-with-fastmcp">Developer Experience with FastMCP</a></li>
-  <li><a href="#protocol-transports-stdio-vs.-sse" id="toc-protocol-transports-stdio-vs.-sse" class="nav-link" data-scroll-target="#protocol-transports-stdio-vs.-sse">Protocol Transports: Stdio vs.&nbsp;SSE</a></li>
-  <li><a href="#supercharging-workflows-with-live-docs" id="toc-supercharging-workflows-with-live-docs" class="nav-link" data-scroll-target="#supercharging-workflows-with-live-docs">Supercharging Workflows with Live Docs</a></li>
-  <li><a href="#key-lessons" id="toc-key-lessons" class="nav-link" data-scroll-target="#key-lessons">Key Lessons</a></li>
-  <li><a href="#homework" id="toc-homework" class="nav-link" data-scroll-target="#homework">Homework</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#origins-release-dates-and-implementation-languages" id="toc-origins-release-dates-and-implementation-languages" class="nav-link" data-scroll-target="#origins-release-dates-and-implementation-languages">Origins, release dates, and implementation languages</a>
+  <ul class="collapse">
+  <li><a href="#poetry" id="toc-poetry" class="nav-link" data-scroll-target="#poetry">Poetry</a></li>
+  <li><a href="#uv" id="toc-uv" class="nav-link" data-scroll-target="#uv">UV</a></li>
+  </ul></li>
+  <li><a href="#usage-scope-and-design-goals" id="toc-usage-scope-and-design-goals" class="nav-link" data-scroll-target="#usage-scope-and-design-goals">Usage scope and design goals</a>
+  <ul class="collapse">
+  <li><a href="#poetry-1" id="toc-poetry-1" class="nav-link" data-scroll-target="#poetry-1">Poetry</a></li>
+  <li><a href="#uv-1" id="toc-uv-1" class="nav-link" data-scroll-target="#uv-1">UV</a></li>
+  </ul></li>
+  <li><a href="#key-features" id="toc-key-features" class="nav-link" data-scroll-target="#key-features">Key features</a>
+  <ul class="collapse">
+  <li><a href="#poetry-2" id="toc-poetry-2" class="nav-link" data-scroll-target="#poetry-2">Poetry</a></li>
+  <li><a href="#uv-2" id="toc-uv-2" class="nav-link" data-scroll-target="#uv-2">UV</a></li>
+  </ul></li>
+  <li><a href="#concrete-command-comparison" id="toc-concrete-command-comparison" class="nav-link" data-scroll-target="#concrete-command-comparison">Concrete command comparison</a>
+  <ul class="collapse">
+  <li><a href="#project-initialization" id="toc-project-initialization" class="nav-link" data-scroll-target="#project-initialization">Project initialization</a></li>
+  <li><a href="#adding-dependencies" id="toc-adding-dependencies" class="nav-link" data-scroll-target="#adding-dependencies">Adding dependencies</a></li>
+  <li><a href="#dev-dependencies-and-groups" id="toc-dev-dependencies-and-groups" class="nav-link" data-scroll-target="#dev-dependencies-and-groups">Dev dependencies and groups</a></li>
+  <li><a href="#virtual-environment-management" id="toc-virtual-environment-management" class="nav-link" data-scroll-target="#virtual-environment-management">Virtual environment management</a></li>
+  <li><a href="#managing-python-itself-uv-only" id="toc-managing-python-itself-uv-only" class="nav-link" data-scroll-target="#managing-python-itself-uv-only">Managing Python itself (UV only)</a></li>
+  </ul></li>
+  <li><a href="#advantages-over-venv-conda-pipenv" id="toc-advantages-over-venv-conda-pipenv" class="nav-link" data-scroll-target="#advantages-over-venv-conda-pipenv">Advantages over venv, conda, pipenv…</a>
+  <ul class="collapse">
+  <li><a href="#poetry-advantages" id="toc-poetry-advantages" class="nav-link" data-scroll-target="#poetry-advantages">Poetry advantages</a></li>
+  <li><a href="#uv-advantages" id="toc-uv-advantages" class="nav-link" data-scroll-target="#uv-advantages">UV advantages</a></li>
+  <li><a href="#poetry-drawbacks" id="toc-poetry-drawbacks" class="nav-link" data-scroll-target="#poetry-drawbacks">Poetry drawbacks</a></li>
+  <li><a href="#uv-drawbacks" id="toc-uv-drawbacks" class="nav-link" data-scroll-target="#uv-drawbacks">UV drawbacks</a></li>
+  </ul></li>
+  <li><a href="#summary-table" id="toc-summary-table" class="nav-link" data-scroll-target="#summary-table">Summary table</a></li>
+  <li><a href="#practical-recommendations" id="toc-practical-recommendations" class="nav-link" data-scroll-target="#practical-recommendations">Practical recommendations</a></li>
   </ul>
 </nav>
     </div>
@@ -157,36 +216,28 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">AI Dev Tools: Week 3 - MCP &amp; Agents</h1>
+<h1 class="title">Poetry vs UV: which tool for your Python projects?</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">AI</div>
-    <div class="quarto-category">Zoomcamp</div>
-    <div class="quarto-category">MCP</div>
-    <div class="quarto-category">Agents</div>
-    <div class="quarto-category">AI Dev Tools</div>
+    <div class="quarto-category">python</div>
+    <div class="quarto-category">packaging</div>
+    <div class="quarto-category">tooling</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    Diving deep into the Model Context Protocol, Agents, and building custom tools.
+    A comparison between Poetry and UV, two modern Python dependency managers.
   </div>
 </div>
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Ousmane Cissé </p>
-          </div>
-  </div>
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">December 12, 2025</p>
+      <p class="date">February 10, 2026</p>
     </div>
   </div>
   
@@ -198,48 +249,291 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<meta name="translation-url" content="fr/posts/ai-dev-tools-week-3/index.html">
-<p>This week was a deep dive into the <strong>Model Context Protocol (MCP)</strong>, an open standard that enables AI models to interact with external data sources and tools in a standardized way. Here’s what I learned:</p>
-<section id="standardizing-ai-interactions" class="level2">
-<h2 class="anchored" data-anchor-id="standardizing-ai-interactions">Standardizing AI Interactions</h2>
-<p>MCP solves the problem of “bespoke” integrations for every AI tool. Instead of writing custom code for each AI assistant to access a database or API, we can now build <strong>MCP Servers</strong> that any <strong>MCP Client</strong> (like Cursor, Claude Desktop, or VSCode) can understand. This decoupling of the “brain” (AI model) from the “hands” (tools/data) is a game-changer for developer productivity.</p>
+<meta name="translation-url" content="fr/posts/poetry-vs-uv/index.html">
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>Poetry and UV are two modern dependency and virtual environment managers in the Python ecosystem that aim to replace the traditional <code>pip + venv</code> stack and tools like Pipenv or conda. Both provide a <strong>project‑centric</strong> experience built around <code>pyproject.toml</code>, but they embody different design goals and trade‑offs.</p>
 </section>
-<section id="mcp-primitives-tools-resources-and-prompts" class="level2">
-<h2 class="anchored" data-anchor-id="mcp-primitives-tools-resources-and-prompts">MCP Primitives: Tools, Resources, and Prompts</h2>
-<p>I learned the three core building blocks of MCP:<br>
-- <strong>Tools</strong>: Executable functions the AI can call (e.g., <code>get_weather</code>, <code>scrape_website</code>).<br>
-- <strong>Resources</strong>: Read-only data sources the AI can inspect (e.g., local files, API docs).<br>
-- <strong>Prompts</strong>: Pre-defined templates that guide how the AI should interact with the user or the tools.</p>
+<section id="origins-release-dates-and-implementation-languages" class="level2">
+<h2 class="anchored" data-anchor-id="origins-release-dates-and-implementation-languages">Origins, release dates, and implementation languages</h2>
+<section id="poetry" class="level3">
+<h3 class="anchored" data-anchor-id="poetry">Poetry</h3>
+<ul>
+<li>First public releases appeared around 2018–2019, with version 1.0 stabilizing around 2019–2020.<br>
+</li>
+<li>Designed to provide a unified tool for dependency management, packaging, and publishing in Python.<br>
+</li>
+<li>Implemented in <strong>Python</strong>, with build logic extracted into <code>poetry-core</code>.</li>
+</ul>
 </section>
-<section id="developer-experience-with-fastmcp" class="level2">
-<h2 class="anchored" data-anchor-id="developer-experience-with-fastmcp">Developer Experience with FastMCP</h2>
-<p>Using <strong>FastMCP</strong> (by Jon Lowin) made building servers incredibly easy. With just a few lines of Python and a decorator (<code>@mcp.tool</code>), I could transform a standard function into an MCP tool. The library handles the complex JSON-RPC communication under the hood, allowing developers to focus on the logic.</p>
+<section id="uv" class="level3">
+<h3 class="anchored" data-anchor-id="uv">UV</h3>
+<ul>
+<li>Developed by Astral (the team behind Ruff) in the mid‑2020s.<br>
+</li>
+<li>Intended as an extremely fast project and package manager covering Python installations, dependencies, and environments.<br>
+</li>
+<li>Implemented in <strong>Rust</strong>, which enables very fast dependency resolution and installation.</li>
+</ul>
 </section>
-<section id="protocol-transports-stdio-vs.-sse" class="level2">
-<h2 class="anchored" data-anchor-id="protocol-transports-stdio-vs.-sse">Protocol Transports: Stdio vs.&nbsp;SSE</h2>
-<p>We explored two main ways MCP clients and servers communicate:<br>
-- <strong>Stdio</strong>: The standard way for local integrations (e.g., a CLI tool or a plugin within an IDE).<br>
-- <strong>SSE (Server-Sent Events)</strong>: Enables remote communication over HTTP, which is essential for web-based agents and distributed systems.</p>
 </section>
-<section id="supercharging-workflows-with-live-docs" class="level2">
-<h2 class="anchored" data-anchor-id="supercharging-workflows-with-live-docs">Supercharging Workflows with Live Docs</h2>
-<p>One of the most powerful use cases we saw was using <strong>Context 7</strong>. By connecting an AI assistant to live documentation (like Airflow or Astro) via MCP, the model can “see” the latest updates and fix code based on real-time info, rather than relying on stale training data.</p>
+<section id="usage-scope-and-design-goals" class="level2">
+<h2 class="anchored" data-anchor-id="usage-scope-and-design-goals">Usage scope and design goals</h2>
+<section id="poetry-1" class="level3">
+<h3 class="anchored" data-anchor-id="poetry-1">Poetry</h3>
+<ul>
+<li>Manage the full lifecycle of a Python package: project creation, dependency management, building, and publishing to PyPI.<br>
+</li>
+<li>Aim for a Bundler/npm/cargo‑like experience centered on <code>pyproject.toml</code> and a <code>poetry.lock</code> file.<br>
+</li>
+<li>Favor clarity and reproducibility over raw speed.</li>
+</ul>
 </section>
-<section id="key-lessons" class="level2">
-<h2 class="anchored" data-anchor-id="key-lessons">Key Lessons</h2>
-<ol type="1">
-<li><strong>MCP is the “USB port” for AI</strong>: It provides a universal interface for AI power.</li>
-<li><strong>Fast prototyping is key</strong>: Tools like <code>mcp-inspector</code> allow you to test your server logic instantly without needing a full AI client.</li>
-<li><strong>Connect to the real world</strong>: Whether it’s scraping a website or indexing a GitHub repo, MCP allows AI to act on real, current data.</li>
-</ol>
+<section id="uv-1" class="level3">
+<h3 class="anchored" data-anchor-id="uv-1">UV</h3>
+<ul>
+<li>Act as a replacement for <code>pip</code>, <code>venv</code>, <code>virtualenv</code>, <code>pip-tools</code>, <code>pipx</code>, and some conda use cases, with a single binary.<br>
+</li>
+<li>Provide a universal lockfile, virtual environments, a <code>pip</code>‑compatible interface, and Python version management.<br>
+</li>
+<li>Target workflows from simple scripts to large multi‑project, multi‑Python workspaces.</li>
+</ul>
 </section>
-<section id="homework" class="level2">
-<h2 class="anchored" data-anchor-id="homework">Homework</h2>
-<p>I implemented an MCP server that included:<br>
-1. <strong>Web Scraper Tool</strong>: Uses the Jina Reader API to convert any URL into clean markdown for the AI to process.<br>
-2. <strong>Documentation Search Tool</strong>: Downloads a repository, indexes markdown files using <strong>Minsearch</strong>, and provides a search function to retrieve relevant context.</p>
-<p>This turned my AI assistant into a specialized documentation expert for any library I point it at.</p>
-<p><strong>Homework:</strong> <a href="https://github.com/oussou-dev/ai-dev-tools-zoomcamp/tree/main/03_mcp">MCP Scraper and Search Tool</a></p>
+</section>
+<section id="key-features" class="level2">
+<h2 class="anchored" data-anchor-id="key-features">Key features</h2>
+<section id="poetry-2" class="level3">
+<h3 class="anchored" data-anchor-id="poetry-2">Poetry</h3>
+<ul>
+<li><strong>Dependencies and lockfile</strong>
+<ul>
+<li>Dependencies declared in <code>pyproject.toml</code> and pinned in <code>poetry.lock</code> for reproducible builds.<br>
+</li>
+<li>Support for dependency groups (dev, test, docs, etc.) and PEP&nbsp;735 groups.</li>
+</ul></li>
+<li><strong>Virtual environments</strong>
+<ul>
+<li>Automatically creates a per‑project virtual environment, either as a <code>.venv</code> in the project or in a global location.<br>
+</li>
+<li>Commands like <code>poetry run</code> and <code>poetry env use</code> to run commands and select Python interpreters.</li>
+</ul></li>
+<li><strong>Packaging and publishing</strong>
+<ul>
+<li>Builds source and wheel distributions and publishes them to PyPI via <code>poetry publish</code>.<br>
+</li>
+<li>Integrates with <code>poetry-core</code> to align with modern packaging recommendations.</li>
+</ul></li>
+</ul>
+</section>
+<section id="uv-2" class="level3">
+<h3 class="anchored" data-anchor-id="uv-2">UV</h3>
+<ul>
+<li><strong>Python management</strong>
+<ul>
+<li><code>uv python install</code>, <code>uv python list</code>, <code>uv python pin</code> to install, list, and pin Python versions.<br>
+</li>
+<li>Can replace tools like pyenv in many workflows.</li>
+</ul></li>
+<li><strong>Dependencies and environments</strong>
+<ul>
+<li><code>uv add</code>, <code>uv lock</code>, <code>uv sync</code>, <code>uv run</code> provide a full project workflow.<br>
+</li>
+<li><code>pip</code>‑compatible commands (<code>uv pip install</code>, <code>uv pip freeze</code>, <code>uv pip check</code>) ease migration from <code>pip</code>.</li>
+</ul></li>
+<li><strong>Performance and global cache</strong>
+<ul>
+<li>Parallel downloads, a global deduplicated cache, and hardlinks / Copy‑on‑Write.<br>
+</li>
+<li>Partial wheel metadata downloads to speed up dependency resolution.</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="concrete-command-comparison" class="level2">
+<h2 class="anchored" data-anchor-id="concrete-command-comparison">Concrete command comparison</h2>
+<section id="project-initialization" class="level3">
+<h3 class="anchored" data-anchor-id="project-initialization">Project initialization</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Poetry: create a new project</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">poetry</span> new my-project</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> my-project</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">poetry</span> install  <span class="co"># creates the venv and installs dependencies</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Poetry scaffolds a standard layout (src/, tests/, pyproject.toml) and installs the declared dependencies.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># UV: initialize a project</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> init my-project</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> my-project</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> sync  <span class="co"># creates the venv and syncs dependencies</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>uv init</code> creates a minimal <code>pyproject.toml</code>, and <code>uv sync</code> creates the environment and installs dependencies from the lockfile.</p>
+</section>
+<section id="adding-dependencies" class="level3">
+<h3 class="anchored" data-anchor-id="adding-dependencies">Adding dependencies</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Poetry: add a basic dependency</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">poetry</span> add requests</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Poetry: add multiple dependencies with version constraints</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ex">poetry</span> add requests pendulum@^2.0.5  <span class="co"># installs pendulum&gt;=2.0.5,&lt;3.0.0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>poetry add</code> updates both <code>pyproject.toml</code> and <code>poetry.lock</code> in one step.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># UV: add a dependency</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> add requests</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># UV: import dependencies from an existing requirements.txt</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> add <span class="at">-r</span> requirements.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>uv add</code> updates <code>pyproject.toml</code> and the UV lockfile while resolving and installing dependencies using its fast resolver.</p>
+</section>
+<section id="dev-dependencies-and-groups" class="level3">
+<h3 class="anchored" data-anchor-id="dev-dependencies-and-groups">Dev dependencies and groups</h3>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Poetry: development dependency</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">poetry</span> add <span class="at">--group</span> dev pytest</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Poetry: optional dependency</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="ex">poetry</span> add <span class="at">--optional</span> <span class="st">'cupy'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Dependency groups and optional dependencies help you separate dev/prod and extras.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># UV: dev dependency</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> add <span class="at">--dev</span> pytest</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># UV: optional group</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> add <span class="at">--optional</span> gpu-support cupy</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>UV exposes <code>--dev</code> and <code>--optional</code> flags to manage groups, also reflected in the lockfile.</p>
+</section>
+<section id="virtual-environment-management" class="level3">
+<h3 class="anchored" data-anchor-id="virtual-environment-management">Virtual environment management</h3>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Poetry: create or recreate the environment</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">poetry</span> install        <span class="co"># creates if needed</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="ex">poetry</span> env use 3.11   <span class="co"># switch to an already-installed Python 3.11</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Run a command inside the env</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="ex">poetry</span> run pytest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Poetry relies on Python interpreters that are already available on the system.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># UV: explicit venv creation (often optional)</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> venv</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run pytest  <span class="co"># run pytest in the env</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># venv with pip pre-installed</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> venv <span class="at">--seed</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>UV can create the environment automatically on <code>uv add</code> or <code>uv run</code>, and can seed <code>pip</code> into it if required.</p>
+</section>
+<section id="managing-python-itself-uv-only" class="level3">
+<h3 class="anchored" data-anchor-id="managing-python-itself-uv-only">Managing Python itself (UV only)</h3>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install a specific Python version</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> python install 3.11</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># List managed versions</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> python list</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Pin a version for the current project</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> python pin 3.11</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>These commands make UV a Python version manager in addition to a dependency manager.</p>
+</section>
+</section>
+<section id="advantages-over-venv-conda-pipenv" class="level2">
+<h2 class="anchored" data-anchor-id="advantages-over-venv-conda-pipenv">Advantages over venv, conda, pipenv…</h2>
+<section id="poetry-advantages" class="level3">
+<h3 class="anchored" data-anchor-id="poetry-advantages">Poetry advantages</h3>
+<ul>
+<li>Over <code>pip + venv</code>: integrated lockfile, dependency groups, unified packaging commands.<br>
+</li>
+<li>Over Pipenv: standard <code>pyproject.toml</code> format and closer alignment with current packaging recommendations.<br>
+</li>
+<li>Over conda: lighter, PyPI‑centric workflow ideal for publishing to PyPI.</li>
+</ul>
+</section>
+<section id="uv-advantages" class="level3">
+<h3 class="anchored" data-anchor-id="uv-advantages">UV advantages</h3>
+<ul>
+<li>Over <code>pip + venv</code>: single binary for environments, dependencies, lockfiles, and often Python itself.<br>
+</li>
+<li>Over conda: fast multi‑Python management without pulling in the full conda ecosystem.<br>
+</li>
+<li>Over Poetry: significantly faster dependency resolution and installation.</li>
+</ul>
+</section>
+<section id="poetry-drawbacks" class="level3">
+<h3 class="anchored" data-anchor-id="poetry-drawbacks">Poetry drawbacks</h3>
+<ul>
+<li>Slower resolution and installation on larger projects.<br>
+</li>
+<li>Depends on an existing Python runtime.</li>
+</ul>
+</section>
+<section id="uv-drawbacks" class="level3">
+<h3 class="anchored" data-anchor-id="uv-drawbacks">UV drawbacks</h3>
+<ul>
+<li>Younger ecosystem with less long‑term production feedback and fewer community resources.<br>
+</li>
+<li>Often requires a mindset shift for teams used to <code>pip + venv</code>.</li>
+</ul>
+</section>
+</section>
+<section id="summary-table" class="level2">
+<h2 class="anchored" data-anchor-id="summary-table">Summary table</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 35%">
+<col style="width: 39%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Criterion</th>
+<th>Poetry</th>
+<th>UV</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Implementation language</td>
+<td>Python</td>
+<td>Rust</td>
+</tr>
+<tr class="even">
+<td>Initial public releases</td>
+<td>~2018–2019</td>
+<td>Mid‑2020s</td>
+</tr>
+<tr class="odd">
+<td>Config files</td>
+<td><code>pyproject.toml</code> + <code>poetry.lock</code></td>
+<td><code>pyproject.toml</code> + UV lockfile</td>
+</tr>
+<tr class="even">
+<td>Environment management</td>
+<td>Per‑project venv auto‑created</td>
+<td>Per‑project venv + global cache</td>
+</tr>
+<tr class="odd">
+<td>Python version management</td>
+<td>Uses existing Python</td>
+<td>Installs/pins Python versions</td>
+</tr>
+<tr class="even">
+<td>Intended replacements</td>
+<td>pip, venv, pipenv, build tools</td>
+<td>pip, venv, virtualenv, pip-tools, pipx, partly conda</td>
+</tr>
+<tr class="odd">
+<td>Primary focus</td>
+<td>Structured workflow, packaging &amp; publishing</td>
+<td>Performance, unification, multi‑Python</td>
+</tr>
+<tr class="even">
+<td>Install performance</td>
+<td>Adequate but not optimized</td>
+<td>Very fast</td>
+</tr>
+<tr class="odd">
+<td>Maturity / adoption</td>
+<td>Widely adopted in production</td>
+<td>Rapidly growing, younger ecosystem</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="practical-recommendations" class="level2">
+<h2 class="anchored" data-anchor-id="practical-recommendations">Practical recommendations</h2>
+<ul>
+<li><strong>Poetry</strong>: a strong choice when your primary goal is clean packaging for PyPI, with a structured workflow and a team familiar with <code>pyproject.toml</code>.<br>
+</li>
+<li><strong>UV</strong>: a compelling option when speed, many environments, and managing Python itself are key (CI/CD, data workloads, ML).</li>
+</ul>
 
 
 </section>

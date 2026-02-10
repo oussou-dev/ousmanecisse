@@ -1,16 +1,13 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.6.42">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Ousmane Cissé">
-<meta name="dcterms.date" content="2025-12-12">
-<meta name="description" content="Diving deep into the Model Context Protocol, Agents, and building custom tools.">
 
-<title>AI Dev Tools: Week 3 - MCP &amp; Agents – OUSMANE CISSE</title>
+<title>Robotique et IA – OUSMANE CISSE</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -26,24 +23,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-72b3ebe486d4bfe12c3d8c7234ebb10f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-3baf2d55a5ec8d4083aaffc8eb8a190a.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-72b3ebe486d4bfe12c3d8c7234ebb10f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-3baf2d55a5ec8d4083aaffc8eb8a190a.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -58,22 +55,22 @@ ul.task-list li input[type="checkbox"] {
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
+    "search-no-results-text": "Pas de résultats",
+    "search-matching-documents-text": "documents trouvés",
+    "search-copy-link-title": "Copier le lien vers la recherche",
+    "search-hide-matches-text": "Cacher les correspondances additionnelles",
+    "search-more-match-text": "correspondance de plus dans ce document",
+    "search-more-matches-text": "correspondances de plus dans ce document",
+    "search-clear-button-title": "Effacer",
     "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-detached-cancel-button-title": "Annuler",
+    "search-submit-button-title": "Envoyer",
+    "search-label": "Recherche"
   }
 }</script>
 
 
-<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -83,36 +80,36 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">OUSMANE CISSE</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+            <div id="quarto-search" class="" title="Recherche"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Basculer la navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../projects.html"> 
+    <a class="nav-link" href="../projects.html"> 
 <span class="menu-text">Projects</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../blog.html"> 
+    <a class="nav-link" href="../blog.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../robotics.html"> 
+    <a class="nav-link" href="../robotics.html"> 
 <span class="menu-text">Robotics &amp; AI</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../en-to-fr.html"> 
+    <a class="nav-link" href="../en-to-fr.html"> 
 <span class="menu-text">EN –&gt; FR</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../fr/index.html"> 
+    <a class="nav-link" href="../fr/index.html"> 
 <span class="menu-text">FR</span></a>
   </li>  
   <li class="nav-item compact">
@@ -128,67 +125,31 @@ ul.task-list li input[type="checkbox"] {
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Basculer le mode sombre"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#standardizing-ai-interactions" id="toc-standardizing-ai-interactions" class="nav-link active" data-scroll-target="#standardizing-ai-interactions">Standardizing AI Interactions</a></li>
-  <li><a href="#mcp-primitives-tools-resources-and-prompts" id="toc-mcp-primitives-tools-resources-and-prompts" class="nav-link" data-scroll-target="#mcp-primitives-tools-resources-and-prompts">MCP Primitives: Tools, Resources, and Prompts</a></li>
-  <li><a href="#developer-experience-with-fastmcp" id="toc-developer-experience-with-fastmcp" class="nav-link" data-scroll-target="#developer-experience-with-fastmcp">Developer Experience with FastMCP</a></li>
-  <li><a href="#protocol-transports-stdio-vs.-sse" id="toc-protocol-transports-stdio-vs.-sse" class="nav-link" data-scroll-target="#protocol-transports-stdio-vs.-sse">Protocol Transports: Stdio vs.&nbsp;SSE</a></li>
-  <li><a href="#supercharging-workflows-with-live-docs" id="toc-supercharging-workflows-with-live-docs" class="nav-link" data-scroll-target="#supercharging-workflows-with-live-docs">Supercharging Workflows with Live Docs</a></li>
-  <li><a href="#key-lessons" id="toc-key-lessons" class="nav-link" data-scroll-target="#key-lessons">Key Lessons</a></li>
-  <li><a href="#homework" id="toc-homework" class="nav-link" data-scroll-target="#homework">Homework</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content column-page" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">AI Dev Tools: Week 3 - MCP &amp; Agents</h1>
-  <div class="quarto-categories">
-    <div class="quarto-category">AI</div>
-    <div class="quarto-category">Zoomcamp</div>
-    <div class="quarto-category">MCP</div>
-    <div class="quarto-category">Agents</div>
-    <div class="quarto-category">AI Dev Tools</div>
-  </div>
-  </div>
-
-<div>
-  <div class="description">
-    Diving deep into the Model Context Protocol, Agents, and building custom tools.
-  </div>
+<h1 class="title">Robotique et IA</h1>
 </div>
 
 
-<div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Ousmane Cissé </p>
-          </div>
-  </div>
+<div class="quarto-title-meta column-page">
+
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">December 12, 2025</p>
-    </div>
-  </div>
   
     
   </div>
@@ -198,51 +159,10 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<meta name="translation-url" content="fr/posts/ai-dev-tools-week-3/index.html">
-<p>This week was a deep dive into the <strong>Model Context Protocol (MCP)</strong>, an open standard that enables AI models to interact with external data sources and tools in a standardized way. Here’s what I learned:</p>
-<section id="standardizing-ai-interactions" class="level2">
-<h2 class="anchored" data-anchor-id="standardizing-ai-interactions">Standardizing AI Interactions</h2>
-<p>MCP solves the problem of “bespoke” integrations for every AI tool. Instead of writing custom code for each AI assistant to access a database or API, we can now build <strong>MCP Servers</strong> that any <strong>MCP Client</strong> (like Cursor, Claude Desktop, or VSCode) can understand. This decoupling of the “brain” (AI model) from the “hands” (tools/data) is a game-changer for developer productivity.</p>
-</section>
-<section id="mcp-primitives-tools-resources-and-prompts" class="level2">
-<h2 class="anchored" data-anchor-id="mcp-primitives-tools-resources-and-prompts">MCP Primitives: Tools, Resources, and Prompts</h2>
-<p>I learned the three core building blocks of MCP:<br>
-- <strong>Tools</strong>: Executable functions the AI can call (e.g., <code>get_weather</code>, <code>scrape_website</code>).<br>
-- <strong>Resources</strong>: Read-only data sources the AI can inspect (e.g., local files, API docs).<br>
-- <strong>Prompts</strong>: Pre-defined templates that guide how the AI should interact with the user or the tools.</p>
-</section>
-<section id="developer-experience-with-fastmcp" class="level2">
-<h2 class="anchored" data-anchor-id="developer-experience-with-fastmcp">Developer Experience with FastMCP</h2>
-<p>Using <strong>FastMCP</strong> (by Jon Lowin) made building servers incredibly easy. With just a few lines of Python and a decorator (<code>@mcp.tool</code>), I could transform a standard function into an MCP tool. The library handles the complex JSON-RPC communication under the hood, allowing developers to focus on the logic.</p>
-</section>
-<section id="protocol-transports-stdio-vs.-sse" class="level2">
-<h2 class="anchored" data-anchor-id="protocol-transports-stdio-vs.-sse">Protocol Transports: Stdio vs.&nbsp;SSE</h2>
-<p>We explored two main ways MCP clients and servers communicate:<br>
-- <strong>Stdio</strong>: The standard way for local integrations (e.g., a CLI tool or a plugin within an IDE).<br>
-- <strong>SSE (Server-Sent Events)</strong>: Enables remote communication over HTTP, which is essential for web-based agents and distributed systems.</p>
-</section>
-<section id="supercharging-workflows-with-live-docs" class="level2">
-<h2 class="anchored" data-anchor-id="supercharging-workflows-with-live-docs">Supercharging Workflows with Live Docs</h2>
-<p>One of the most powerful use cases we saw was using <strong>Context 7</strong>. By connecting an AI assistant to live documentation (like Airflow or Astro) via MCP, the model can “see” the latest updates and fix code based on real-time info, rather than relying on stale training data.</p>
-</section>
-<section id="key-lessons" class="level2">
-<h2 class="anchored" data-anchor-id="key-lessons">Key Lessons</h2>
-<ol type="1">
-<li><strong>MCP is the “USB port” for AI</strong>: It provides a universal interface for AI power.</li>
-<li><strong>Fast prototyping is key</strong>: Tools like <code>mcp-inspector</code> allow you to test your server logic instantly without needing a full AI client.</li>
-<li><strong>Connect to the real world</strong>: Whether it’s scraping a website or indexing a GitHub repo, MCP allows AI to act on real, current data.</li>
-</ol>
-</section>
-<section id="homework" class="level2">
-<h2 class="anchored" data-anchor-id="homework">Homework</h2>
-<p>I implemented an MCP server that included:<br>
-1. <strong>Web Scraper Tool</strong>: Uses the Jina Reader API to convert any URL into clean markdown for the AI to process.<br>
-2. <strong>Documentation Search Tool</strong>: Downloads a repository, indexes markdown files using <strong>Minsearch</strong>, and provides a search function to retrieve relevant context.</p>
-<p>This turned my AI assistant into a specialized documentation expert for any library I point it at.</p>
-<p><strong>Homework:</strong> <a href="https://github.com/oussou-dev/ai-dev-tools-zoomcamp/tree/main/03_mcp">MCP Scraper and Search Tool</a></p>
+<meta name="translation-url" content="robotics.html">
+<p>Bientôt disponible…</p>
 
 
-</section>
 
 </main> <!-- /main -->
 <script>
@@ -498,12 +418,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // flash "checked"
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
+    button.setAttribute("title", "Copié");
     let tooltip;
     if (window.bootstrap) {
       button.setAttribute("data-bs-toggle", "tooltip");
       button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
+      button.setAttribute("data-bs-title", "Copié");
       tooltip = new bootstrap.Tooltip(button, 
         { trigger: "manual", 
           customClass: "code-copy-button-tooltip",

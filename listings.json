@@ -1,10 +1,31 @@
 [
   {
-    "listing": "/fr/projets.html",
-    "items": []
+    "listing": "/fr/en-to-fr.html",
+    "items": [
+      "/fr/translations/reflection-pattern/index.html",
+      "/fr/translations/what-is-an-agent/index.html"
+    ]
   },
   {
-    "listing": "/fr/en-to-fr.html",
+    "listing": "/blog.html",
+    "items": [
+      "/posts/poetry-vs-uv/index.html",
+      "/posts/ai-hero-day-1/index.html",
+      "/posts/ai-news-aggregator/index.html",
+      "/posts/ai-dev-tools-week-4/index.html",
+      "/posts/ai-dev-tools-week-3/index.html",
+      "/posts/ai-dev-tools-week-2/index.html",
+      "/posts/ai-dev-tools-week-1/index.html"
+    ]
+  },
+  {
+    "listing": "/courses.html",
+    "items": [
+      "/courses/ai-dev-tools.html"
+    ]
+  },
+  {
+    "listing": "/en-to-fr.html",
     "items": [
       "/fr/translations/reflection-pattern/index.html",
       "/fr/translations/what-is-an-agent/index.html"
@@ -13,6 +34,7 @@
   {
     "listing": "/fr/blog.html",
     "items": [
+      "/fr/posts/poetry-vs-uv/index.html",
       "/fr/posts/ai-hero-day-1/index.html",
       "/fr/posts/ai-news-aggregator/index.html",
       "/fr/posts/ai-dev-tools-week-4/index.html",
@@ -20,5 +42,13 @@
       "/fr/posts/ai-dev-tools-week-2/index.html",
       "/fr/posts/ai-dev-tools-week-1/index.html"
     ]
+  },
+  {
+    "listing": "/fr/projets.html",
+    "items": []
+  },
+  {
+    "listing": "/projects.html",
+    "items": []
   }
 ]

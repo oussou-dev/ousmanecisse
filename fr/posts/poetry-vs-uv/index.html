@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Aperçu de la première semaine du AI Dev Tools Zoomcamp.">
+<meta name="description" content="Une comparaison entre Poetry et UV, deux gestionnaires de dépendances Python modernes.">
 
-<title>Outils de Dév IA - Semaine 1 – OUSMANE CISSE</title>
+<title>Poetry vs UV : quel gestionnaire pour vos projets Python ? – OUSMANE CISSE</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -141,8 +175,38 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#points-clés" id="toc-points-clés" class="nav-link" data-scroll-target="#points-clés">Points Clés</a></li>
-  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  <li><a href="#origine-date-de-création-et-langage-dimplémentation" id="toc-origine-date-de-création-et-langage-dimplémentation" class="nav-link" data-scroll-target="#origine-date-de-création-et-langage-dimplémentation">Origine, date de création et langage d’implémentation</a>
+  <ul class="collapse">
+  <li><a href="#poetry" id="toc-poetry" class="nav-link" data-scroll-target="#poetry">Poetry</a></li>
+  <li><a href="#uv" id="toc-uv" class="nav-link" data-scroll-target="#uv">UV</a></li>
+  </ul></li>
+  <li><a href="#cadre-dutilisation-et-objectifs" id="toc-cadre-dutilisation-et-objectifs" class="nav-link" data-scroll-target="#cadre-dutilisation-et-objectifs">Cadre d’utilisation et objectifs</a>
+  <ul class="collapse">
+  <li><a href="#poetry-1" id="toc-poetry-1" class="nav-link" data-scroll-target="#poetry-1">Poetry</a></li>
+  <li><a href="#uv-1" id="toc-uv-1" class="nav-link" data-scroll-target="#uv-1">UV</a></li>
+  </ul></li>
+  <li><a href="#fonctionnalités-clés" id="toc-fonctionnalités-clés" class="nav-link" data-scroll-target="#fonctionnalités-clés">Fonctionnalités clés</a>
+  <ul class="collapse">
+  <li><a href="#poetry-2" id="toc-poetry-2" class="nav-link" data-scroll-target="#poetry-2">Poetry</a></li>
+  <li><a href="#uv-2" id="toc-uv-2" class="nav-link" data-scroll-target="#uv-2">UV</a></li>
+  </ul></li>
+  <li><a href="#comparaison-de-commandes-concrètes" id="toc-comparaison-de-commandes-concrètes" class="nav-link" data-scroll-target="#comparaison-de-commandes-concrètes">Comparaison de commandes concrètes</a>
+  <ul class="collapse">
+  <li><a href="#initialisation-dun-projet" id="toc-initialisation-dun-projet" class="nav-link" data-scroll-target="#initialisation-dun-projet">Initialisation d’un projet</a></li>
+  <li><a href="#ajouter-des-dépendances" id="toc-ajouter-des-dépendances" class="nav-link" data-scroll-target="#ajouter-des-dépendances">Ajouter des dépendances</a></li>
+  <li><a href="#dépendances-de-développement-groupes" id="toc-dépendances-de-développement-groupes" class="nav-link" data-scroll-target="#dépendances-de-développement-groupes">Dépendances de développement / groupes</a></li>
+  <li><a href="#gestion-des-environnements-virtuels" id="toc-gestion-des-environnements-virtuels" class="nav-link" data-scroll-target="#gestion-des-environnements-virtuels">Gestion des environnements virtuels</a></li>
+  <li><a href="#gestion-de-python-luimême-uv-uniquement" id="toc-gestion-de-python-luimême-uv-uniquement" class="nav-link" data-scroll-target="#gestion-de-python-luimême-uv-uniquement">Gestion de Python lui‑même (UV uniquement)</a></li>
+  </ul></li>
+  <li><a href="#avantages-et-inconvénients-par-rapport-à-venv-conda-pipenv" id="toc-avantages-et-inconvénients-par-rapport-à-venv-conda-pipenv" class="nav-link" data-scroll-target="#avantages-et-inconvénients-par-rapport-à-venv-conda-pipenv">Avantages et inconvénients par rapport à venv, conda, pipenv…</a>
+  <ul class="collapse">
+  <li><a href="#avantages-de-poetry" id="toc-avantages-de-poetry" class="nav-link" data-scroll-target="#avantages-de-poetry">Avantages de Poetry</a></li>
+  <li><a href="#avantages-de-uv" id="toc-avantages-de-uv" class="nav-link" data-scroll-target="#avantages-de-uv">Avantages de UV</a></li>
+  <li><a href="#limites-de-poetry" id="toc-limites-de-poetry" class="nav-link" data-scroll-target="#limites-de-poetry">Limites de Poetry</a></li>
+  <li><a href="#limites-de-uv" id="toc-limites-de-uv" class="nav-link" data-scroll-target="#limites-de-uv">Limites de UV</a></li>
+  </ul></li>
+  <li><a href="#tableau-récapitulatif" id="toc-tableau-récapitulatif" class="nav-link" data-scroll-target="#tableau-récapitulatif">Tableau récapitulatif</a></li>
+  <li><a href="#recommandations-dusage" id="toc-recommandations-dusage" class="nav-link" data-scroll-target="#recommandations-dusage">Recommandations d’usage</a></li>
   </ul>
 </nav>
     </div>
@@ -151,18 +215,17 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Outils de Dév IA - Semaine 1</h1>
+<h1 class="title">Poetry vs UV : quel gestionnaire pour vos projets Python ?</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">IA</div>
-    <div class="quarto-category">Outils</div>
-    <div class="quarto-category">Zoomcamp</div>
-    <div class="quarto-category">AI Dev Tools</div>
+    <div class="quarto-category">python</div>
+    <div class="quarto-category">packaging</div>
+    <div class="quarto-category">tooling</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    Aperçu de la première semaine du AI Dev Tools Zoomcamp.
+    Une comparaison entre Poetry et UV, deux gestionnaires de dépendances Python modernes.
   </div>
 </div>
 
@@ -173,7 +236,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Date de publication</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">20 janvier 2024</p>
+      <p class="date">10 février 2026</p>
     </div>
   </div>
   
@@ -185,22 +248,291 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<meta name="translation-url" content="posts/ai-dev-tools-week-1/index.html">
+<meta name="translation-url" content="posts/poetry-vs-uv/index.html">
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>Cette semaine, nous avons exploré les outils fondamentaux pour le développement assisté par IA. Nous avons couvert l’utilisation des LLM pour l’écriture de code, le refactoring, et la documentation.</p>
+<p>Poetry et UV sont deux gestionnaires modernes de dépendances et d’environnements virtuels pour l’écosystème Python, qui visent à remplacer le duo historique <code>pip + venv</code> ainsi que des outils comme Pipenv ou conda. Ils proposent tous deux une approche <strong>projet‑centrée</strong> basée sur <code>pyproject.toml</code>, mais avec des philosophies et des compromis différents.</p>
 </section>
-<section id="points-clés" class="level2">
-<h2 class="anchored" data-anchor-id="points-clés">Points Clés</h2>
+<section id="origine-date-de-création-et-langage-dimplémentation" class="level2">
+<h2 class="anchored" data-anchor-id="origine-date-de-création-et-langage-dimplémentation">Origine, date de création et langage d’implémentation</h2>
+<section id="poetry" class="level3">
+<h3 class="anchored" data-anchor-id="poetry">Poetry</h3>
 <ul>
-<li>Configuration de l’environnement de développement.</li>
-<li>Introduction à GitHub Copilot.</li>
-<li>Utilisation de ChatGPT pour la génération de code.</li>
+<li>Créé à la fin des années 2010, avec une version 1.0 stabilisée autour de 2019–2020.<br>
+</li>
+<li>Né pour offrir un outil unifié qui gère dépendances, packaging et publication des projets Python.<br>
+</li>
+<li>Implémenté en <strong>Python</strong>, avec une partie des fonctionnalités de build dans <code>poetry-core</code>.</li>
 </ul>
 </section>
-<section id="conclusion" class="level2">
-<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
-<p>Une première semaine passionnante qui pose les bases pour la suite du programme.</p>
+<section id="uv" class="level3">
+<h3 class="anchored" data-anchor-id="uv">UV</h3>
+<ul>
+<li>Développé par Astral (l’équipe derrière Ruff) au milieu des années 2020.<br>
+</li>
+<li>Pensé comme un gestionnaire de projets et de paquets extrêmement rapide, couvrant Python, les dépendances et les environnements.<br>
+</li>
+<li>Implémenté en <strong>Rust</strong>, ce qui permet des temps de résolution et d’installation très courts.</li>
+</ul>
+</section>
+</section>
+<section id="cadre-dutilisation-et-objectifs" class="level2">
+<h2 class="anchored" data-anchor-id="cadre-dutilisation-et-objectifs">Cadre d’utilisation et objectifs</h2>
+<section id="poetry-1" class="level3">
+<h3 class="anchored" data-anchor-id="poetry-1">Poetry</h3>
+<ul>
+<li>Gérer le cycle de vie complet d’un package : création de projet, ajout de dépendances, build et publication sur PyPI.<br>
+</li>
+<li>Proposer une expérience comparable à Bundler, npm ou cargo, avec une configuration centralisée dans <code>pyproject.toml</code> et un lockfile <code>poetry.lock</code>.<br>
+</li>
+<li>Viser la clarté et la reproductibilité plutôt que la performance brute.</li>
+</ul>
+</section>
+<section id="uv-1" class="level3">
+<h3 class="anchored" data-anchor-id="uv-1">UV</h3>
+<ul>
+<li>Remplacer <code>pip</code>, <code>venv</code>, <code>virtualenv</code>, <code>pip-tools</code>, <code>pipx</code> et une partie des usages de conda, avec un seul binaire.<br>
+</li>
+<li>Fournir un lockfile universel, des environnements virtuels, une interface compatible <code>pip</code> et la gestion des versions de Python.<br>
+</li>
+<li>Cibler des workflows allant du simple script à des workspaces multi‑projets multi‑versions de Python.</li>
+</ul>
+</section>
+</section>
+<section id="fonctionnalités-clés" class="level2">
+<h2 class="anchored" data-anchor-id="fonctionnalités-clés">Fonctionnalités clés</h2>
+<section id="poetry-2" class="level3">
+<h3 class="anchored" data-anchor-id="poetry-2">Poetry</h3>
+<ul>
+<li><strong>Dépendances et lockfile</strong> :
+<ul>
+<li>Déclaration dans <code>pyproject.toml</code> et gel dans <code>poetry.lock</code> pour la reproductibilité.<br>
+</li>
+<li>Groupes de dépendances (dev, test, docs, etc.) et support des groupes PEP&nbsp;735.</li>
+</ul></li>
+<li><strong>Environnements virtuels</strong> :
+<ul>
+<li>Création automatique d’un venv par projet, en <code>.venv</code> local ou en emplacement global.<br>
+</li>
+<li>Commandes comme <code>poetry run</code> et <code>poetry env use</code> pour exécuter dans l’environnement et choisir l’interpréteur.</li>
+</ul></li>
+<li><strong>Packaging et publication</strong> :
+<ul>
+<li>Build des distributions source/wheel et publication via <code>poetry publish</code>.<br>
+</li>
+<li>Intégration forte avec <code>poetry-core</code> pour suivre les recommandations modernes du packaging Python.</li>
+</ul></li>
+</ul>
+</section>
+<section id="uv-2" class="level3">
+<h3 class="anchored" data-anchor-id="uv-2">UV</h3>
+<ul>
+<li><strong>Gestion de Python</strong> :
+<ul>
+<li><code>uv python install</code>, <code>uv python list</code>, <code>uv python pin</code> pour installer, lister et pinner des versions de Python.<br>
+</li>
+<li>Remplace des outils comme pyenv dans beaucoup de cas.</li>
+</ul></li>
+<li><strong>Dépendances et environnements</strong> :
+<ul>
+<li><code>uv add</code>, <code>uv lock</code>, <code>uv sync</code>, <code>uv run</code> pour un workflow complet projet‑centré.<br>
+</li>
+<li>Interface <code>pip</code>‑compatible via <code>uv pip install</code>, <code>uv pip freeze</code>, <code>uv pip check</code>.</li>
+</ul></li>
+<li><strong>Performance et cache global</strong> :
+<ul>
+<li>Téléchargements parallèles, cache global dédupliqué, hardlinks / Copy‑on‑Write.<br>
+</li>
+<li>Lecture partielle des wheels pour accélérer la résolution des dépendances.</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="comparaison-de-commandes-concrètes" class="level2">
+<h2 class="anchored" data-anchor-id="comparaison-de-commandes-concrètes">Comparaison de commandes concrètes</h2>
+<section id="initialisation-dun-projet" class="level3">
+<h3 class="anchored" data-anchor-id="initialisation-dun-projet">Initialisation d’un projet</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Poetry : créer un nouveau projet</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">poetry</span> new my-project</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> my-project</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">poetry</span> install  <span class="co"># crée l'env virtuel et installe les dépendances</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Poetry génère une arborescence type (src/, tests/, pyproject.toml) et installe les dépendances déclarées.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># UV : initialiser un projet</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> init my-project</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> my-project</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> sync  <span class="co"># crée l'env virtuel et synchronise les dépendances</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>uv init</code> crée un <code>pyproject.toml</code> minimal, puis <code>uv sync</code> crée l’environnement et installe les dépendances en se basant sur le lockfile.</p>
+</section>
+<section id="ajouter-des-dépendances" class="level3">
+<h3 class="anchored" data-anchor-id="ajouter-des-dépendances">Ajouter des dépendances</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Poetry : ajouter une dépendance de base</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">poetry</span> add requests</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Poetry : ajouter plusieurs dépendances avec contraintes</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ex">poetry</span> add requests pendulum@^2.0.5  <span class="co"># ajoute requests et pendulum&gt;=2.0.5,&lt;3.0.0</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>poetry add</code> met à jour <code>pyproject.toml</code> et <code>poetry.lock</code> en une seule commande.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># UV : ajouter une dépendance</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> add requests</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># UV : importer depuis un requirements.txt existant</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> add <span class="at">-r</span> requirements.txt</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>uv add</code> met à jour <code>pyproject.toml</code> et le lockfile, et gère la résolution/installation via son moteur rapide.</p>
+</section>
+<section id="dépendances-de-développement-groupes" class="level3">
+<h3 class="anchored" data-anchor-id="dépendances-de-développement-groupes">Dépendances de développement / groupes</h3>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Poetry : dépendance de développement</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">poetry</span> add <span class="at">--group</span> dev pytest</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Poetry : dépendance optionnelle</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="ex">poetry</span> add <span class="at">--optional</span> <span class="st">'cupy'</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Les groupes et dépendances optionnelles permettent de séparer dev/prod et extras.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># UV : groupe de développement</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> add <span class="at">--dev</span> pytest</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># UV : groupe optionnel</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> add <span class="at">--optional</span> gpu-support cupy</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>UV expose explicitement <code>--dev</code> et <code>--optional</code> pour gérer les groupes, là aussi synchronisés dans le lockfile.</p>
+</section>
+<section id="gestion-des-environnements-virtuels" class="level3">
+<h3 class="anchored" data-anchor-id="gestion-des-environnements-virtuels">Gestion des environnements virtuels</h3>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Poetry : créer ou recréer l'env</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">poetry</span> install        <span class="co"># crée si nécessaire</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="ex">poetry</span> env use 3.11   <span class="co"># bascule sur un Python 3.11 déjà installé</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Exécuter une commande dans l'env</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="ex">poetry</span> run pytest</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Poetry se repose sur des interprètes Python déjà présents sur la machine.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># UV : création d'un venv explicite (facultatif, souvent auto)</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> venv</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run pytest  <span class="co"># exécute pytest dans l'env</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># venv avec pip pré‑installé</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> venv <span class="at">--seed</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>UV peut créer l’environnement automatiquement lors de <code>uv add</code> ou <code>uv run</code>, et peut y injecter <code>pip</code> si nécessaire.</p>
+</section>
+<section id="gestion-de-python-luimême-uv-uniquement" class="level3">
+<h3 class="anchored" data-anchor-id="gestion-de-python-luimême-uv-uniquement">Gestion de Python lui‑même (UV uniquement)</h3>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Installer une version précise de Python</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> python install 3.11</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Lister les versions gérées</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> python list</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Pinner une version pour le projet courant</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> python pin 3.11</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Ces commandes donnent à UV un rôle de gestionnaire de versions de Python en plus du rôle de gestionnaire de dépendances.</p>
+</section>
+</section>
+<section id="avantages-et-inconvénients-par-rapport-à-venv-conda-pipenv" class="level2">
+<h2 class="anchored" data-anchor-id="avantages-et-inconvénients-par-rapport-à-venv-conda-pipenv">Avantages et inconvénients par rapport à venv, conda, pipenv…</h2>
+<section id="avantages-de-poetry" class="level3">
+<h3 class="anchored" data-anchor-id="avantages-de-poetry">Avantages de Poetry</h3>
+<ul>
+<li>Sur <code>pip + venv</code> : lockfile intégré, gestion des groupes, commandes unifiées pour le packaging.<br>
+</li>
+<li>Sur Pipenv : format standard <code>pyproject.toml</code>, meilleure intégration avec les recommandations de la Python Packaging Authority.<br>
+</li>
+<li>Sur conda : plus léger, centré sur PyPI, workflow naturel pour publier sur PyPI.</li>
+</ul>
+</section>
+<section id="avantages-de-uv" class="level3">
+<h3 class="anchored" data-anchor-id="avantages-de-uv">Avantages de UV</h3>
+<ul>
+<li>Sur <code>pip + venv</code> : un seul binaire pour gérer envs, dépendances, lockfile et souvent Python lui‑même.<br>
+</li>
+<li>Sur conda : gestion rapide de multiples versions de Python sans tirer tout l’écosystème conda.<br>
+</li>
+<li>Sur Poetry : performances très supérieures sur la résolution et l’installation des dépendances.</li>
+</ul>
+</section>
+<section id="limites-de-poetry" class="level3">
+<h3 class="anchored" data-anchor-id="limites-de-poetry">Limites de Poetry</h3>
+<ul>
+<li>Résolution/installation plus lentes sur de gros projets.<br>
+</li>
+<li>Dépend d’un runtime Python déjà installé.</li>
+</ul>
+</section>
+<section id="limites-de-uv" class="level3">
+<h3 class="anchored" data-anchor-id="limites-de-uv">Limites de UV</h3>
+<ul>
+<li>Écosystème plus jeune, moins de recul en production et moins de ressources communautaires.<br>
+</li>
+<li>Demande parfois de revoir les habitudes autour de <code>pip + venv</code>.</li>
+</ul>
+</section>
+</section>
+<section id="tableau-récapitulatif" class="level2">
+<h2 class="anchored" data-anchor-id="tableau-récapitulatif">Tableau récapitulatif</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 24%">
+<col style="width: 35%">
+<col style="width: 39%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Critère</th>
+<th>Poetry</th>
+<th>UV</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Langage d’implémentation</td>
+<td>Python</td>
+<td>Rust</td>
+</tr>
+<tr class="even">
+<td>Années d’apparition</td>
+<td>~2018–2019</td>
+<td>Milieu des années 2020</td>
+</tr>
+<tr class="odd">
+<td>Fichier de configuration</td>
+<td><code>pyproject.toml</code> + <code>poetry.lock</code></td>
+<td><code>pyproject.toml</code> + lockfile UV</td>
+</tr>
+<tr class="even">
+<td>Gestion d’environnements</td>
+<td>venv par projet, auto‑créé</td>
+<td>venv par projet + cache global</td>
+</tr>
+<tr class="odd">
+<td>Gestion de Python</td>
+<td>Utilise Python existant</td>
+<td>Installation/pinning de Python</td>
+</tr>
+<tr class="even">
+<td>Remplacements ciblés</td>
+<td>pip, venv, pipenv, outils de build</td>
+<td>pip, venv, virtualenv, pip-tools, pipx, partiellement conda</td>
+</tr>
+<tr class="odd">
+<td>Focus principal</td>
+<td>Workflow structuré, packaging &amp; publication</td>
+<td>Performance, unification, multi‑Python</td>
+</tr>
+<tr class="even">
+<td>Performance d’installation</td>
+<td>Correcte mais non optimale</td>
+<td>Très rapide</td>
+</tr>
+<tr class="odd">
+<td>Maturité / adoption</td>
+<td>Très adoptée en production</td>
+<td>Adoption en forte croissance, outil plus jeune</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="recommandations-dusage" class="level2">
+<h2 class="anchored" data-anchor-id="recommandations-dusage">Recommandations d’usage</h2>
+<ul>
+<li><strong>Poetry</strong> : idéal si ton objectif principal est un packaging propre pour PyPI, avec un workflow structuré et une équipe déjà à l’aise avec <code>pyproject.toml</code>.<br>
+</li>
+<li><strong>UV</strong> : pertinent si la vitesse, la gestion de multiples environnements et la capacité à gérer Python lui‑même sont critiques (CI/CD, data, ML).</li>
+</ul>
 
 
 </section>
