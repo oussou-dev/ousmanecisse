@@ -1,0 +1,20 @@
+---
+title: "BOOK REVIEW"
+translation-url: "fr/livres.html"
+lang: en
+listing:
+  contents: 
+    - "books/*/index.qmd"
+  id: listing-books
+  sort: "title asc"
+  type: grid
+  categories: false
+  sort-ui: false
+  filter-ui: false
+  fields: [image, title, description]
+  include:
+    lang: en
+page-layout: full
+---
+
+A collection of books I have read and reviewed. Click on a book to see chapter summaries and technical implementations.

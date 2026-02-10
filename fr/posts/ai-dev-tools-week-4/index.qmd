@@ -1,5 +1,6 @@
 ---
 title: "Outils de Dev IA : Semaine 4 - Construire des Agents de Code"
+translation-url: "posts/ai-dev-tools-week-4/index.html"
 description: "Maîtriser la création d'agents de code autonomes en utilisant des Agents, des Outils et du Contexte."
 author: "Ousmane Cissé"
 date: "2026-01-15"

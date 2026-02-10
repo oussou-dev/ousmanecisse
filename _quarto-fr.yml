@@ -12,6 +12,8 @@ website:
         text: Projets
       - href: fr/blog.qmd
         text: Blog
+      - href: fr/livres.qmd
+        text: REVUE DE LIVRES
       - href: fr/robotique.qmd
         text: "Robotique & IA"
       - href: fr/en-to-fr.qmd

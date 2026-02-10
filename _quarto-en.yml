@@ -13,6 +13,8 @@ website:
         text: Projects
       - href: blog.qmd
         text: Blog
+      - href: books.qmd
+        text: BOOK REVIEW
       - href: robotics.qmd
         text: "Robotics & AI"
       - href: en-to-fr.qmd

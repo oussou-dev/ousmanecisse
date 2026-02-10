@@ -372,3 +372,37 @@
     color: #475569 !important;
   }
 }
+
+/* Book Cover Styles - Final Corrected Selectors */
+#listing-listing-books .quarto-grid-item.card {
+  height: 100% !important;
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+#listing-listing-books .card-img-top {
+  height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+  margin-bottom: 1rem !important;
+}
+
+#listing-listing-books .thumbnail-image,
+#listing-listing-books .card-img-top img {
+  /* This kills the inline height: 150px; injected by Quarto */
+  height: 420px !important;
+  width: auto !important;
+  max-width: 100% !important;
+
+  /* Show everything */
+  object-fit: contain !important;
+  display: block;
+  margin: 0 auto;
+  border-radius: 4px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+#listing-listing-books .card-body {
+  padding-top: 0.5rem !important;
+}

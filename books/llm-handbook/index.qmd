@@ -1,0 +1,17 @@
+---
+title: "LLM Engineer's Handbook"
+translation-url: "fr/books/llm-handbook/index.html"
+description: "A comprehensive guide to building production-ready LLM applications. (In Progress)"
+image: "/img/books/llm_eng_handbook.png"
+lang: en
+---
+
+# LLM Engineer's Handbook
+
+This project documents my reading and implementation of the **LLM Engineer's Handbook**.
+
+**Status: 🚧 In Progress**
+
+### 📝 Chapter Summaries
+
+Summaries will be added as I progress through the book.

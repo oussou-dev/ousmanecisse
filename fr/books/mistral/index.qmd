@@ -1,0 +1,17 @@
+---
+title: "Mistral AI"
+translation-url: "books/mistral/index.html"
+description: "Exploration des modèles Mistral AI et des stratégies d'implémentation. (En cours)"
+image: "/img/books/learn_mistral.jpg"
+lang: fr
+---
+
+# Mistral AI
+
+Cette section regroupe mes notes et explorations techniques sur les modèles Mistral AI.
+
+**Statut : 🚧 En cours**
+
+### 📝 Résumés et Notes
+
+Contenu à venir.

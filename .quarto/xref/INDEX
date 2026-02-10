@@ -148,5 +148,23 @@
   },
   "index.qmd": {
     "index.html": "790c31d3"
+  },
+  "books.qmd": {
+    "books.html": "40dc159b"
+  },
+  "books/llm-handbook/index.qmd": {
+    "index.html": "80a459fc"
+  },
+  "books/mistral/index.qmd": {
+    "index.html": "efc7633d"
+  },
+  "fr/books/llm-handbook/index.qmd": {
+    "index.html": "52fdffba"
+  },
+  "fr/books/mistral/index.qmd": {
+    "index.html": "1a3623e5"
+  },
+  "fr/livres.qmd": {
+    "livres.html": "97ba79c7"
   }
 }
