@@ -1,46 +1,19 @@
 ---
 title: "Projects"
 translation-url: "fr/projets.html"
+lang: en
 listing:
-  contents:
-    - title: "AI Dev Tools"
-      description: Projects and assignments from the AI Dev Tools (Vibe Coding) Zoomcamp.
-      categories: [AI, VIBE CODING, MCP, N8N, Zoomcamp]
-      path: https://github.com/oussou-dev/ai-dev-tools-zoomcamp 
-      image: "img/ai-dev-tools-cover.webp"
-    - title: "AI Hero"
-      description: "Building and deploying AI agents projects 7-day challenge."
-      categories: [AI Agents, LLM, Deployment]
-      path: https://github.com/oussou-dev/ai-hero-bootcamp
-      image: "img/ai_hero_cover.png"
-    - title: "Data Engineering Zoomcamp"
-      description: "A comprehensive course on Data Engineering covering Docker, Terraform, Google Cloud Platform, Airflow, Spark, and Kafka."
-      categories: [Data Engineering, GCP, Terraform, Airflow, Kafka, Spark]
-      path: https://github.com/oussou-dev/data-engineering-zoomcamp
-      image: "img/data_engineering_zoomcamp_cover.png"
-    - title: "No-Code & AI Enterprise Apps"
-      description: "Building internal enterprise apps using No-Code tools (Airtable, Softr, Make/Zapier) and AI. Covers needs analysis, BPMN modeling, and full implementation."
-      categories: [No-Code, AI, Airtable, Softr, Make, BPMN]
-      path: https://github.com/oussou-dev/nocode-ai-enterprise-apps
-      image: "img/nocode_ai_enterprise_cover.png"
-    - title: "LangChain & Vector Databases"
-      description: "Build Production-Grade LLM Applications with LangChain & Deep Lake. Covers Gen AI, Prompt Engineering, RAG, and Agents."
-      categories: [LLM, LangChain, Vector DB, RAG, Deep Lake]
-      path: https://github.com/oussou-dev/LLMs_langchain_vectorDBs
-      image: "img/langchain_vector_db.webp"
-    - title: "ML Engineer ZoomCamp"
-      description: A comprehensive machine learning engineering course covering deployment, cloud, and MLOps.
-      categories: [Machine Learning, MLOPS]
-      path: https://github.com/oussou-dev/ML_Engineer_ZoomCamp
-      image: "img/ml-zoomcamp-cover.webp"
-    
-  sort: false
+  contents: 
+    - "projects/*/index.qmd"
+  sort: "title asc"
   type: grid
   categories: false
   sort-ui: false
   filter-ui: false
-  fields: [image, title, description, categories]
+  fields: [image, title, description]
+  include:
+    lang: en
 page-layout: full
 ---
 
-A selection of projects I've worked on.
+A selection of projects I've worked on. Click on a project to see details and related resources.

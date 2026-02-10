@@ -1,0 +1,84 @@
+---
+title: "Reflection Agent: Self-Improving AI Through Iterative Critique"
+translation-url: "fr/translations/reflection-pattern/index.html"
+date: "2026-02-10"
+categories: [AI, Agents, LLM, Design Patterns]
+image: "../../img/reflection_pattern.png"
+description: "Learn the Reflection Pattern: an agent that evaluates and improves its own output through iterative self-critique loops."
+author: "Ousmane Cissé"
+lang: en
+series-name: "Agentic Design Patterns"
+series-next-url: "/posts/tool-using-agent/"
+series-next-title: "Tool Using Agent"
+---
+
+The **Reflection Pattern** is the simplest yet surprisingly effective agentic design pattern. It allows an AI agent to evaluate its own output and iteratively improve it — like having an infinite pair-review loop built into the system.
+
+## What is the Reflection Pattern?
+
+The core idea is straightforward: instead of accepting the first output from an LLM, we create a feedback loop:
+
+1. **Generate**: The LLM produces an initial response
+2. **Reflect**: A critic (often the same LLM with a different prompt) evaluates the output
+3. **Refine**: The LLM incorporates the critique and produces a better version
+4. **Repeat**: The cycle continues until a stopping condition is met
+
+### When to stop?
+
+- After a **fixed number of iterations** (e.g., 3 rounds)
+- When the critic signals **satisfaction** (e.g., outputs "LGTM" or "Final")
+- When **diminishing returns** are detected
+
+## Why It Works
+
+The magic lies in **role separation**: the generator focuses on producing content, while the critic focuses on finding flaws. This separation of concerns mirrors real-world software engineering practices like code review.
+
+```python
+class ReflectionAgent:
+    def __init__(self, model="llama3-70b"):
+        self.generator_prompt = "You are a Python programmer. Write clean, production-quality code."
+        self.critic_prompt = "You are a senior engineer like Andrej Karpathy. Review this code critically."
+    
+    def run(self, task, max_iterations=3):
+        output = self.generate(task)
+        for i in range(max_iterations):
+            critique = self.reflect(output)
+            if self.is_satisfied(critique):
+                break
+            output = self.refine(output, critique)
+        return output
+```
+
+## Practical Example: Merge Sort
+
+Ask an LLM to implement Merge Sort. First attempt: functional but basic. After 3 reflection cycles:
+
+- ✅ Type hints added (PEP 484)
+- ✅ Comprehensive docstrings
+- ✅ Error handling for edge cases
+- ✅ Full unittest suite
+- ✅ Class-based architecture
+
+The improvement from V1 to V3 is **dramatic** — and it all happens automatically.
+
+## Application Projects
+
+*Projects demonstrating the Reflection Pattern in action will be added here as they are developed.*
+
+**Potential projects:**
+
+- **Code Quality Improver**: An agent that takes rough code and iteratively polishes it
+- **Essay Refiner**: Multi-round writing improvement for blog posts or reports
+- **Data Analysis Validator**: Self-checking data analysis pipelines
+
+## Key Takeaways
+
+1. **Simple but powerful**: Just adding a critique loop significantly improves output quality
+2. **Role separation matters**: Different prompts for generation vs. critique
+3. **Iterative improvement**: Each round builds on the previous, like human revision
+4. **Best for**: Code generation, writing, analysis — any task where first drafts are imperfect
+
+## Resources
+
+- [Reflection Pattern — The Neural Maze](https://theneuralmaze.substack.com/p/reflection-pattern-agents-that-think)
+- [Andrew Ng's Agentic Design Patterns](https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-2-reflection/)

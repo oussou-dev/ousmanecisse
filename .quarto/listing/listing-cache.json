@@ -1,8 +1,15 @@
 {
   "listingMap": {
+    "projects.qmd": [
+      "projects/ai-dev-tools/index.qmd",
+      "projects/ai-hero/index.qmd",
+      "projects/data-engineering/index.qmd",
+      "projects/langchain-vectordb/index.qmd",
+      "projects/ml-zoomcamp/index.qmd",
+      "projects/nocode-ai/index.qmd",
+      "projects/*/index.qmd"
+    ],
     "blog.qmd": [
-      "posts/**/index.qmd",
-      "/posts",
       "posts"
     ],
     "courses.qmd": [
@@ -12,18 +19,19 @@
       "fr/translations"
     ],
     "fr/blog.qmd": [
-      "posts/**/index.qmd",
-      "/fr/posts",
       "posts"
     ],
     "fr/en-to-fr.qmd": [
       "translations"
     ],
-    "fr/robotique.qmd": [
-      "posts"
-    ],
-    "robotics.qmd": [
-      "posts"
+    "fr/projets.qmd": [
+      "projects/ai-dev-tools/index.qmd",
+      "projects/ai-hero/index.qmd",
+      "projects/data-engineering/index.qmd",
+      "projects/langchain-vectordb/index.qmd",
+      "projects/ml-zoomcamp/index.qmd",
+      "projects/nocode-ai/index.qmd",
+      "projects/*/index.qmd"
     ]
   }
 }

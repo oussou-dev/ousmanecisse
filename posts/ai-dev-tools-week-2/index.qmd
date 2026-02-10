@@ -1,12 +1,17 @@
 ---
 title: "AI Dev Tools: Week 2 - End-to-End Application Development"
+translation-url: "fr/posts/ai-dev-tools-week-2/index.html"
 description: "Building a complete application with AI: Frontend-first, OpenAPI, Docker, and CI/CD."
 author: "Ousmane Cissé"
 date: "2025-12-05"
 categories: [AI, Zoomcamp, CI/CD, AI Dev Tools]
 image: "../../img/week_2_ai_dev_tools.jpg"
 lang: en
-translation-url: "fr/posts/ai-dev-tools-week-2/index.html"
+series-name: "AI Dev Tools"
+series-prev-url: "/posts/ai-dev-tools-week-1/"
+series-prev-title: "AI Dev Tools: Week 1"
+series-next-url: "/posts/ai-dev-tools-week-3/"
+series-next-title: "AI Dev Tools: Week 3"
 ---
 
 This week took my understanding of AI-assisted development to the next level by building a **complete end-to-end application** — from frontend to backend, database, containerization, and cloud deployment. Here's what I learned:

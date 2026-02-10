@@ -1,0 +1,111 @@
+---
+title: "Tool Using Agent: Extending AI Beyond Text Generation"
+translation-url: "fr/translations/tool-use-pattern/index.html"
+date: "2026-02-10"
+categories: [AI, Agents, LLM, Design Patterns, Tools]
+image: "../../img/reflection_pattern.png"
+description: "The Tool Use Pattern: how AI agents leverage external tools, APIs, and services to interact with the real world."
+author: "Ousmane Cissé"
+lang: en
+series-name: "Agentic Design Patterns"
+series-prev-url: "/posts/reflection-agent/"
+series-prev-title: "Reflection Agent"
+series-next-url: "/posts/react-pattern/"
+series-next-title: "ReAct Pattern"
+---
+
+After exploring the [Reflection Pattern](/posts/reflection-agent/), we move to one of the most transformative patterns: **Tool Use**. This is what turns an LLM from a "brain in a jar" into an agent that can *act* on the world.
+
+## What is the Tool Use Pattern?
+
+The **Tool Use Pattern** allows an agent to invoke external functions, APIs, or services during its reasoning process. Instead of being limited to generating text, the agent can:
+
+- **Search** the web or query databases
+- **Execute** code and verify results
+- **Read/write** files and interact with the filesystem
+- **Call APIs** (weather, finance, calendar, etc.)
+- **Run** shell commands
+
+## How It Works: Function Calling
+
+Modern LLMs support **function calling** natively:
+
+1. **Tool Definition**: Describe available tools with name, description, and parameter schema
+2. **LLM Decision**: The model decides *when* and *which* tool to use
+3. **Execution**: The tool runs server-side with the LLM-chosen parameters
+4. **Integration**: Results are fed back to the LLM for final response generation
+
+```python
+tools = [
+    {
+        "type": "function",
+        "function": {
+            "name": "search_web",
+            "description": "Search the web for current information",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "query": {"type": "string", "description": "Search query"}
+                },
+                "required": ["query"]
+            }
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "execute_python",
+            "description": "Execute Python code and return the output",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "code": {"type": "string", "description": "Python code to execute"}
+                },
+                "required": ["code"]
+            }
+        }
+    }
+]
+```
+
+## The Power of Tools
+
+### Without tools
+The LLM can only **generate text** based on training data. It may hallucinate facts, can't access current data, and has no impact on external systems.
+
+### With tools
+The LLM becomes an **agent** that can:
+- Access **real-time information** (breaking news, live prices)
+- **Verify** its own claims by searching or computing
+- **Create** tangible outputs (files, database entries, API calls)
+- **Automate** complex workflows
+
+## Tool Design Best Practices
+
+1. **Clear descriptions**: The LLM chooses tools based on their description — make them precise
+2. **Minimal parameters**: Fewer parameters = fewer chances for the LLM to make errors
+3. **Error handling**: Always return meaningful error messages the LLM can interpret
+4. **Sandboxing**: Limit what tools can do to prevent unintended side effects
+
+## Application Projects
+
+*Projects demonstrating the Tool Use Pattern in action will be added here as they are developed.*
+
+**Potential projects:**
+
+- **Research Assistant**: An agent that searches multiple sources and synthesizes findings
+- **Code Executor Agent**: Write, test, and debug code autonomously
+- **Data Pipeline Agent**: Fetch, transform, and store data from various APIs
+
+## Key Takeaways
+
+1. **Tools are the bridge** between reasoning and action
+2. **Function calling** is the standard mechanism for tool use
+3. **Tool design** matters as much as prompt engineering
+4. **Security** is critical — always sandbox tool execution
+
+## Resources
+
+- [OpenAI Function Calling Docs](https://platform.openai.com/docs/guides/function-calling)
+- [Anthropic Tool Use](https://docs.anthropic.com/en/docs/build-with-claude/tool-use)
+- Previous: [Reflection Agent](/posts/reflection-agent/)

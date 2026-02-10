@@ -1,0 +1,18 @@
+---
+title: "AI Hero"
+translation-url: "projects/ai-hero/index.html"
+description: "Création et déploiement d'Agents IA, challenge de 7 jours."
+image: "/img/ai_hero_cover.png"
+formatted: html
+lang: fr
+---
+
+# Détails du Projet
+
+Un challenge de 7 jours pour construire et déployer des agents AI.
+
+### 🔗 [Dépôt GitHub](https://github.com/oussou-dev/ai-hero-bootcamp){target="_blank"}
+
+### 📝 Rapports quotidiens
+
+- **[Day 1 — Ingest and Index Your Data](/posts/ai-hero-day-1/index.html)** *(Article en anglais)*

@@ -1,0 +1,88 @@
+---
+title: "Le Planning Pattern (ReAct) : quand les agents planifient et agissent"
+translation-url: "posts/react-pattern/index.html"
+date: "2026-02-10"
+categories: [IA, Agents, LLM, Patterns, ReAct]
+image: "../../../img/reflection_pattern.png"
+description: "Le pattern ReAct : un agent qui raisonne, planifie et agit de manière itérative pour résoudre des tâches complexes."
+lang: fr
+series-name: "Agent Design Patterns"
+series-prev-url: "/fr/translations/tool-use-pattern/"
+series-prev-title: "Le pattern d'utilisation d'outils"
+series-next-url: "/fr/translations/multiagent-pattern/"
+series-next-title: "Le pattern Multi-Agent"
+---
+
+Après le [Tool Use Pattern](/fr/translations/tool-use-pattern/), nous abordons le **Planning Pattern**, et plus spécifiquement le framework **ReAct** (Reasoning + Acting). C'est ici que les agents deviennent véritablement autonomes.
+
+## Le ReAct Pattern en bref
+
+**ReAct** combine raisonnement et action dans une boucle itérative :
+
+1. **Thought (Pensée)** : L'agent réfléchit à la situation actuelle et décide quoi faire
+2. **Action** : L'agent exécute une action (appeler un outil, rechercher, calculer)
+3. **Observation** : L'agent observe le résultat de son action
+4. **Répétition** : Le cycle recommence jusqu'à ce que la tâche soit accomplie
+
+C'est fondamentalement différent des approches "one-shot" où on pose une question et on obtient une réponse directe.
+
+## La boucle ReAct en pratique
+
+```
+Pensée : J'ai besoin de trouver la population de Paris pour répondre.
+Action  : search_web("population Paris 2024")
+Observation : Paris compte environ 2,1 millions d'habitants intra-muros.
+Pensée : J'ai l'information, je peux maintenant répondre à l'utilisateur.
+Action  : respond("Paris compte environ 2,1 millions d'habitants.")
+```
+
+## Pourquoi ReAct est si puissant ?
+
+### Résolution de problèmes complexes
+Contrairement à un simple prompt, ReAct permet de décomposer un problème en étapes :
+- Identifier les sous-problèmes
+- Résoudre chacun avec les bons outils
+- Synthétiser les résultats
+
+### Traçabilité
+Chaque étape du raisonnement est visible. On peut comprendre *pourquoi* l'agent a fait tel ou tel choix — essentiel pour le debugging et la confiance.
+
+### Auto-correction
+Si une action échoue ou donne un résultat inattendu, l'agent peut :
+- Reconnaître l'erreur dans sa phase de réflexion
+- Essayer une approche alternative
+- Demander des clarifications
+
+## Implémentation
+
+```python
+class ReActAgent:
+    def __init__(self, llm, tools):
+        self.llm = llm
+        self.tools = tools
+
+    def run(self, task):
+        history = []
+        while True:
+            # Phase de RÉFLEXION
+            thought = self.llm.think(task, history)
+
+            # Phase d'ACTION
+            action, params = self.llm.choose_action(thought, self.tools)
+
+            if action == "finish":
+                return thought
+
+            # Phase d'OBSERVATION
+            result = self.tools[action].execute(params)
+            history.append((thought, action, result))
+```
+
+## Applications pratiques
+
+*Cette section sera complétée avec des projets d'application concrets liés au Planning Pattern (ReAct).*
+
+## Ressources
+
+- Paper original : [ReAct: Synergizing Reasoning and Acting in Language Models](https://arxiv.org/abs/2210.03629)
+- Article précédent : [Tool Use Pattern](/fr/translations/tool-use-pattern/)

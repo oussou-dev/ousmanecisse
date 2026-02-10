@@ -1,12 +1,17 @@
 ---
 title: "AI Dev Tools: Week 3 - MCP & Agents"
+translation-url: "fr/posts/ai-dev-tools-week-3/index.html"
 description: "Diving deep into the Model Context Protocol, Agents, and building custom tools."
 author: "Ousmane Cissé"
 date: "2025-12-12"
 categories: [AI, Zoomcamp, MCP, Agents, AI Dev Tools]
 image: "../../img/week_3_ai_dev_tools.png"
 lang: en
-translation-url: "fr/posts/ai-dev-tools-week-3/index.html"
+series-name: "AI Dev Tools"
+series-prev-url: "/posts/ai-dev-tools-week-2/"
+series-prev-title: "AI Dev Tools: Week 2"
+series-next-url: "/posts/ai-dev-tools-week-4/"
+series-next-title: "AI Dev Tools: Week 4"
 ---
 
 This week was a deep dive into the **Model Context Protocol (MCP)**, an open standard that enables AI models to interact with external data sources and tools in a standardized way. Here's what I learned:

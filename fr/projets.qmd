@@ -1,46 +1,19 @@
 ---
 title: "Projets"
 translation-url: "projects.html"
+lang: fr
 listing:
-  contents:
-    - title: "Outils de Dev IA"
-      description: Projets de vibe coding du bootcamp AI Dev Tools Zoomcamp.
-      categories: [IA, VIBE CODING, MCP, N8N, Zoomcamp]
-      path: https://github.com/oussou-dev/ai-dev-tools-zoomcamp 
-      image: "../img/ai-dev-tools-cover.webp"
-    - title: "AI Hero"
-      description: Création et déploiement d'Agents IA, 7-day challenge.
-      categories: [Agents IA, LLM, Déploiement]
-      path: https://github.com/oussou-dev/ai-hero-bootcamp
-      image: "../img/ai_hero_cover.png"
-    - title: "Data Engineering Zoomcamp"
-      description: "Projet complet sur l'ingénierie des données couvrant Docker, Terraform, Google Cloud Platform, Airflow, Spark et Kafka."
-      categories: [Data Engineering, GCP, Terraform, Airflow, Kafka, Spark]
-      path: https://github.com/oussou-dev/data-engineering-zoomcamp
-      image: "../img/data_engineering_zoomcamp_cover.png"
-    - title: "Applications No-Code & IA"
-      description: "Création d'apps internes avec des outils No-Code (Airtable, Softr, Make/Zapier) et d'IA. De l'analyse des besoins et modélisation BPMN jusqu'au déploiement."
-      categories: [No-Code, IA, Airtable, Softr, Make, BPMN]
-      path: https://github.com/oussou-dev/nocode-ai-enterprise-apps
-      image: "../img/nocode_ai_enterprise_cover.png"
-    - title: "LangChain & Vector Databases"
-      description: "Apprenez à construire des applications LLM de production avec LangChain et Deep Lake. Couvre l'IA générative, le Prompt Engineering, le RAG et les Agents."
-      categories: [LLM, LangChain, Base Vectorielle, RAG, Deep Lake]
-      path: https://github.com/oussou-dev/LLMs_langchain_vectorDBs
-      image: "../img/langchain_vector_db.webp"
-    - title: "Ingénieur ML ZoomCamp"
-      description: Projets de Machine Learning couvrant le déploiement, le cloud et le MLOps.
-      categories: [Machine Learning, MLOPS]
-      path: https://github.com/oussou-dev/ML_Engineer_ZoomCamp
-      image: "../img/ml-zoomcamp-cover.webp"
-    
-  sort: false
+  contents: 
+    - "projects/*/index.qmd"
+  sort: "title asc"
   type: grid
   categories: false
   sort-ui: false
   filter-ui: false
-  fields: [image, title, description, categories]
+  fields: [image, title, description]
+  include:
+    lang: fr
 page-layout: full
 ---
 
-Une sélection de projets réalisés et en cours.
+Une sélection de projets réalisés et en cours. Cliquez sur un projet pour voir les détails et ressources liées.

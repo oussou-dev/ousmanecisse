@@ -1,6 +1,7 @@
 ---
 title: "AI Hero: Day 1 - Ingest and Index Your Data"
 description: "Building the foundation of an AI agent by automating data retrieval and metadata parsing."
+series-name: "AI Hero"
 author: "Ousmane Cissé"
 date: "2026-01-22"
 categories: [AI Agents, LLM, Python, RAG, AI Hero]

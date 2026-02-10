@@ -1,0 +1,23 @@
+---
+title: "AI Dev Tools"
+translation-url: "fr/projects/ai-dev-tools/index.html"
+description: "Projects and assignments from the AI Dev Tools (Vibe Coding) Zoomcamp."
+image: "/img/ai-dev-tools-cover.webp"
+lang: en
+format: html
+---
+
+# Project Details
+
+This project covers the full **AI Dev Tools Zoomcamp** curriculum.
+
+### 🔗 [GitHub Repository](https://github.com/oussou-dev/ai-dev-tools-zoomcamp){target="_blank"}
+
+### 📝 Related Weekly Reports
+
+Below is the complete series of articles documenting my progress:
+
+- **[Week 1 — Vibe Coding & Foundations](/posts/ai-dev-tools-week-1/index.html)**
+- **[Week 2 — End-to-End Application Development](/posts/ai-dev-tools-week-2/index.html)**
+- **[Week 3 — MCP & Agents](/posts/ai-dev-tools-week-3/index.html)**
+- **[Week 4 — Building Coding Agents](/posts/ai-dev-tools-week-4/index.html)**

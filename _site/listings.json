@@ -1,25 +1,46 @@
 [
   {
     "listing": "/projects.html",
-    "items": []
-  },
-  {
-    "listing": "/fr/en-to-fr.html",
     "items": [
-      "/fr/translations/reflection-pattern/index.html",
-      "/fr/translations/what-is-an-agent/index.html"
+      "/projects/ai-dev-tools/index.html",
+      "/projects/ai-hero/index.html",
+      "/projects/data-engineering/index.html",
+      "/projects/langchain-vectordb/index.html",
+      "/projects/ml-zoomcamp/index.html",
+      "/projects/nocode-ai/index.html"
     ]
   },
   {
-    "listing": "/blog.html",
+    "listing": "/fr/projets.html",
     "items": [
-      "/posts/poetry-vs-uv/index.html",
-      "/posts/ai-hero-day-1/index.html",
-      "/posts/ai-news-aggregator/index.html",
-      "/posts/ai-dev-tools-week-4/index.html",
-      "/posts/ai-dev-tools-week-3/index.html",
-      "/posts/ai-dev-tools-week-2/index.html",
-      "/posts/ai-dev-tools-week-1/index.html"
+      "/fr/projects/ai-hero/index.html",
+      "/fr/projects/nocode-ai/index.html",
+      "/fr/projects/data-engineering/index.html",
+      "/fr/projects/ml-zoomcamp/index.html",
+      "/fr/projects/langchain-vectordb/index.html",
+      "/fr/projects/ai-dev-tools/index.html"
+    ]
+  },
+  {
+    "listing": "/fr/blog.html",
+    "items": [
+      "/fr/posts/poetry-vs-uv/index.html",
+      "/fr/posts/ai-hero-day-1/index.html",
+      "/fr/posts/ai-news-aggregator/index.html",
+      "/fr/posts/ai-dev-tools-week-4/index.html",
+      "/fr/posts/ai-dev-tools-week-3/index.html",
+      "/fr/posts/ai-dev-tools-week-2/index.html",
+      "/fr/posts/ai-dev-tools-week-1/index.html"
+    ]
+  },
+  {
+    "listing": "/en-to-fr.html",
+    "items": [
+      "/fr/translations/multiagent-pattern/index.html",
+      "/fr/translations/planning-pattern/index.html",
+      "/fr/translations/tool-use-pattern/index.html",
+      "/fr/translations/reflection-pattern/index.html",
+      "/fr/translations/what-is-an-agent/index.html"
     ]
   },
   {
@@ -29,29 +50,16 @@
     ]
   },
   {
-    "listing": "/en-to-fr.html",
+    "listing": "/blog.html",
     "items": [
-      "/fr/translations/reflection-pattern/index.html",
-      "/fr/translations/what-is-an-agent/index.html"
-    ]
-  },
-  {
-    "listing": "/fr/blog.html",
-    "items": [
-      "/fr/posts/poetry-vs-uv/index.html",
-      "/fr/posts/ai-hero-day-1/index.html",
-      "/fr/posts/ai-dev-tools-week-3/index.html",
-      "/fr/posts/ai-dev-tools-week-2/index.html",
-      "/fr/posts/ai-dev-tools-week-1/index.html"
-    ]
-  },
-  {
-    "listing": "/fr/projets.html",
-    "items": []
-  },
-  {
-    "listing": "/robotics.html",
-    "items": [
+      "/posts/memory-based-agent/index.html",
+      "/posts/multi-agent-collaboration/index.html",
+      "/posts/poetry-vs-uv/index.html",
+      "/posts/react-pattern/index.html",
+      "/posts/reflection-agent/index.html",
+      "/posts/tool-using-agent/index.html",
+      "/posts/ai-hero-day-1/index.html",
+      "/posts/ai-news-aggregator/index.html",
       "/posts/ai-dev-tools-week-4/index.html",
       "/posts/ai-dev-tools-week-3/index.html",
       "/posts/ai-dev-tools-week-2/index.html",
@@ -59,12 +67,13 @@
     ]
   },
   {
-    "listing": "/fr/robotique.html",
+    "listing": "/fr/en-to-fr.html",
     "items": [
-      "/fr/posts/ai-dev-tools-week-4/index.html",
-      "/fr/posts/ai-dev-tools-week-3/index.html",
-      "/fr/posts/ai-dev-tools-week-2/index.html",
-      "/fr/posts/ai-dev-tools-week-1/index.html"
+      "/fr/translations/multiagent-pattern/index.html",
+      "/fr/translations/planning-pattern/index.html",
+      "/fr/translations/tool-use-pattern/index.html",
+      "/fr/translations/reflection-pattern/index.html",
+      "/fr/translations/what-is-an-agent/index.html"
     ]
   }
 ]

@@ -1,0 +1,147 @@
+---
+title: "Multi Agent Collaboration: When AI Agents Work as a Team"
+translation-url: "fr/translations/multiagent-pattern/index.html"
+date: "2026-02-10"
+categories: [AI, Agents, LLM, Design Patterns, Multi-Agent]
+image: "../../img/reflection_pattern.png"
+description: "The Multi-Agent Pattern: specialized AI agents collaborating to solve complex problems that no single agent could handle alone."
+author: "Ousmane Cissé"
+lang: en
+series-name: "Agentic Design Patterns"
+series-prev-url: "/posts/react-pattern/"
+series-prev-title: "ReAct Pattern"
+series-next-url: "/posts/memory-based-agent/"
+series-next-title: "Memory-Based Agent"
+---
+
+After mastering single-agent patterns ([Reflection](/posts/reflection-agent/), [Tool Use](/posts/tool-using-agent/), [ReAct](/posts/react-pattern/)), we enter the world of **Multi-Agent Collaboration** — where multiple specialized agents work together as a team.
+
+## What is the Multi-Agent Pattern?
+
+Instead of one monolithic agent trying to do everything, this pattern uses **multiple specialized agents** that collaborate:
+
+- An **orchestrator** (coordinator) that distributes tasks and manages workflow
+- **Specialist agents** that each focus on a specific domain or skill
+- A **communication protocol** for agents to share information and results
+
+## Why Multiple Agents?
+
+### 1. Specialization
+Each agent can have:
+- Its own **system prompt** optimized for its task
+- Its own **tool set** relevant to its domain
+- Its own **model** (fast/cheap for triage, powerful for complex tasks)
+
+### 2. Parallelism
+Multiple agents can work **simultaneously** on different sub-tasks, dramatically reducing total time.
+
+### 3. Quality through diversity
+Different "perspectives" (prompts) on the same problem lead to better outcomes — similar to pair programming or team code reviews.
+
+### 4. Robustness
+If one agent fails, others can compensate or flag the issue to the orchestrator.
+
+## Multi-Agent Architectures
+
+### Sequential Pipeline
+Agents execute one after another, each enriching the previous output:
+
+```
+Agent 1 (Draft) → Agent 2 (Critique) → Agent 3 (Final Polish)
+```
+
+### Centralized Orchestrator
+A coordinator agent distributes work and collects results:
+
+```
+         Orchestrator
+        /     |       \
+  Research  Analysis  Writing
+   Agent     Agent    Agent
+```
+
+### Debate / Adversarial
+Two or more agents debate a question to reach a better answer:
+
+```
+Agent A (Pro) ←→ Agent B (Con) → Judge Agent → Final Answer
+```
+
+### Hierarchical
+Managers delegate to sub-teams, which delegate to individual agents:
+
+```
+Project Manager
+├── Frontend Lead
+│   ├── UI Agent
+│   └── UX Agent
+└── Backend Lead
+    ├── API Agent
+    └── DB Agent
+```
+
+## Example: Virtual Development Team
+
+```python
+from crewai import Agent, Task, Crew
+
+# Define specialized agents
+pm_agent = Agent(
+    role="Product Manager",
+    goal="Break down requirements into clear tasks",
+    backstory="Experienced PM who writes precise user stories"
+)
+
+dev_agent = Agent(
+    role="Software Developer",  
+    goal="Write clean, tested code",
+    backstory="Senior developer who follows best practices"
+)
+
+qa_agent = Agent(
+    role="QA Engineer",
+    goal="Find bugs and ensure quality",
+    backstory="Meticulous tester who catches edge cases"
+)
+
+# Create the crew
+team = Crew(
+    agents=[pm_agent, dev_agent, qa_agent],
+    tasks=[...],
+    process="sequential"
+)
+
+result = team.kickoff()
+```
+
+## Popular Frameworks
+
+| Framework | Highlights |
+|-----------|-----------|
+| **CrewAI** | Role-based agents, sequential/hierarchical processes |
+| **AutoGen** (Microsoft) | Multi-agent conversations, human-in-the-loop |
+| **LangGraph** | Graph-based orchestration, state management |
+| **OpenAI Swarm** | Lightweight, handoff-based coordination |
+
+## Application Projects
+
+*Projects demonstrating the Multi-Agent Pattern in action will be added here as they are developed.*
+
+**Potential projects:**
+
+- **AI Development Team**: PM + Dev + QA agents building software together
+- **Content Pipeline**: Research + Write + Edit + Publish agents
+- **Data Science Crew**: Analyst + Engineer + Visualizer agents
+
+## Key Takeaways
+
+1. **Specialization beats generalization** for complex tasks
+2. **Communication protocols** are critical — agents must "speak the same language"
+3. **Choose the right architecture** for your use case (sequential, orchestrated, debate)
+4. **Start simple** — often 2-3 agents is enough, don't over-engineer
+
+## Resources
+
+- [CrewAI Documentation](https://docs.crewai.com/)
+- [AutoGen Documentation](https://microsoft.github.io/autogen/)
+- Previous: [ReAct Pattern](/posts/react-pattern/)

@@ -1,0 +1,22 @@
+---
+title: "LangChain & Vector Databases"
+translation-url: "fr/projects/langchain-vectordb/index.html"
+description: "Build Production-Grade LLM Applications with LangChain & Deep Lake. Covers Gen AI, Prompt Engineering, RAG, and Agents."
+image: "/img/langchain_vector_db.webp"
+lang: en
+format: html
+---
+
+# Project Details
+
+Learning to build production-grade LLM applications.
+
+### 🔗 [GitHub Repository](https://github.com/oussou-dev/LLMs_langchain_vectorDBs){target="_blank"}
+
+### 📝 Related Series - Agentic Design Patterns
+
+- **[Reflection Agent](/posts/reflection-agent/index.html)**
+- **[Tool Using Agent](/posts/tool-using-agent/index.html)**
+- **[ReAct Pattern](/posts/react-pattern/index.html)**
+- **[Multi Agent Collaboration](/posts/multi-agent-collaboration/index.html)**
+- **[Memory-Based Agent](/posts/memory-based-agent/index.html)**

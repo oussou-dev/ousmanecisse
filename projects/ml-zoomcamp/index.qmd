@@ -1,0 +1,9 @@
+---
+title: "ML Engineer ZoomCamp"
+translation-url: "fr/projects/ml-zoomcamp/index.html"
+description: "A comprehensive machine learning engineering course covering deployment, cloud, and MLOps."
+image: "/img/ml-zoomcamp-cover.webp"
+lang: en
+---
+
+### 🔗 [GitHub Repository](https://github.com/oussou-dev/ML_Engineer_ZoomCamp){target="_blank"}

@@ -1,0 +1,21 @@
+---
+title: "Outils de Dev IA"
+translation-url: "projects/ai-dev-tools/index.html"
+description: "Projets et exercices du bootcamp AI Dev Tools (Vibe Coding) Zoomcamp."
+image: "/img/ai-dev-tools-cover.webp"
+formatted: html
+lang: fr
+---
+
+# Détails du Projet
+
+Ce dépôt rassemble mon travail sur le AI Dev Tools Zoomcamp.
+
+### 🔗 [Dépôt GitHub](https://github.com/oussou-dev/ai-dev-tools-zoomcamp){target="_blank"}
+
+### 📝 Rapports hebdomadaires
+
+- **[Semaine 1 — Outils de Dév IA : Vibe Coding](/fr/posts/ai-dev-tools-week-1/index.html)**
+- **[Semaine 2 — Développement d'Applications End-to-End](/fr/posts/ai-dev-tools-week-2/index.html)**
+- **[Semaine 3 — MCP & Agents](/fr/posts/ai-dev-tools-week-3/index.html)**
+- **[Semaine 4 — Construire des Agents de Code](/fr/posts/ai-dev-tools-week-4/index.html)**

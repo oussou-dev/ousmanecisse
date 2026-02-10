@@ -1,0 +1,9 @@
+---
+title: "Applications No-Code & IA"
+translation-url: "projects/nocode-ai/index.html"
+description: "Création d'apps d'entreprise internes avec des outils No-Code (Airtable, Softr, Make/Zapier) et l'IA. De l'analyse des besoins au déploiement."
+image: "/img/nocode_ai_enterprise_cover.png"
+lang: fr
+---
+
+### 🔗 [Dépôt GitHub](https://github.com/oussou-dev/nocode-ai-enterprise-apps){target="_blank"}

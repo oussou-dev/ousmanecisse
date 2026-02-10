@@ -4,6 +4,10 @@ date: "2026-02-03"
 categories: [IA, Agents, LLM, Translation]
 image: "../../../img/whats_agent.png"
 description: "Une introduction claire aux agents IA : LLM, planification, mémoire et outils."
+lang: fr
+series-name: "Agent Design Patterns"
+series-next-url: "/fr/translations/reflection-pattern/"
+series-next-title: "Le pattern de réflexion"
 ---
 
 On entend parler **d'agents** partout en ce moment : sur X, dans les newsletters IA, dans les frameworks à la mode… mais quand on gratte un peu, la question de base reste souvent floue : qu'est-ce qu'un agent au juste ?

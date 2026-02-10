@@ -1,0 +1,9 @@
+---
+title: "Data Engineering Zoomcamp"
+translation-url: "projects/data-engineering/index.html"
+description: "Cours complet sur l'ingénierie des données couvrant Docker, Terraform, Google Cloud Platform, Airflow, Spark et Kafka."
+image: "/img/data_engineering_zoomcamp_cover.png"
+lang: fr
+---
+
+### 🔗 [Dépôt GitHub](https://github.com/oussou-dev/data-engineering-zoomcamp){target="_blank"}

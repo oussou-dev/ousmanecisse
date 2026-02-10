@@ -1,0 +1,78 @@
+---
+title: "Le pattern d'utilisation d'outils : quand les agents agissent sur le monde"
+translation-url: "posts/tool-using-agent/index.html"
+date: "2026-02-10"
+categories: [IA, Agents, LLM, Patterns]
+image: "../../../img/reflection_pattern.png"
+description: "Découvrez le Tool Use Pattern : comment les agents utilisent des outils pour interagir avec le monde réel."
+lang: fr
+series-name: "Agent Design Patterns"
+series-prev-url: "/fr/translations/reflection-pattern/"
+series-prev-title: "Le pattern de réflexion"
+series-next-url: "/fr/translations/planning-pattern/"
+series-next-title: "Le Planning Pattern (ReAct)"
+---
+
+Après avoir découvert le [pattern de réflexion](/fr/translations/reflection-pattern/), nous passons à un pattern encore plus puissant : le **Tool Use Pattern**. C'est ce qui permet à un agent de passer de "je peux raisonner" à "je peux agir".
+
+## Le Tool Use Pattern en bref
+
+Le **Tool Use Pattern** (ou pattern d'utilisation d'outils) permet à un agent d'exécuter des actions concrètes en appelant des fonctions ou des APIs externes. Au lieu de se limiter à générer du texte, l'agent peut :
+
+- **Rechercher** sur le web ou dans des bases de données
+- **Calculer** des résultats mathématiques complexes
+- **Créer ou modifier** des fichiers, des tickets, des entrées en base
+- **Interagir** avec des services externes (météo, bourse, calendrier, etc.)
+
+## Comment ça fonctionne ?
+
+Le mécanisme repose sur le **function calling** (appel de fonction) :
+
+1. **Description des outils** : On décrit au LLM les outils disponibles (nom, paramètres, description)
+2. **Choix du LLM** : Face à une requête, le modèle décide *s'il* doit utiliser un outil et *lequel*
+3. **Exécution** : L'outil est exécuté côté serveur avec les paramètres choisis par le LLM
+4. **Intégration** : Le résultat est renvoyé au LLM qui l'intègre dans sa réponse
+
+```python
+# Exemple simplifié
+tools = [
+    {
+        "name": "search_web",
+        "description": "Recherche sur le web",
+        "parameters": {"query": "string"}
+    },
+    {
+        "name": "get_weather",
+        "description": "Obtenir la météo d'une ville",
+        "parameters": {"city": "string"}
+    }
+]
+```
+
+## Cas d'usage concrets
+
+### Recherche d'informations
+L'agent peut interroger un moteur de recherche pour obtenir des données récentes, au-delà de sa date de coupure d'entraînement.
+
+### Exécution de code
+Un outil `execute_python` permet à l'agent de tester et vérifier du code, plutôt que de le générer "à l'aveugle".
+
+### Gestion de fichiers
+Lire, créer, modifier des fichiers locaux — la base de tout agent de développement.
+
+## Pourquoi c'est un game-changer ?
+
+Sans outils, un LLM est un **cerveau dans un bocal** : brillant mais impuissant. Avec des outils :
+
+- Il accède à des **données en temps réel**
+- Il peut **agir** sur le monde (pas seulement en parler)
+- Il devient **réellement utile** dans des workflows professionnels
+
+## Applications pratiques
+
+*Cette section sera complétée avec des projets d'application concrets liés au Tool Use Pattern.*
+
+## Ressources
+
+- Article original : [Tool Use Pattern](https://theneuralmaze.substack.com/)
+- Article précédent : [Le pattern de réflexion](/fr/translations/reflection-pattern/)

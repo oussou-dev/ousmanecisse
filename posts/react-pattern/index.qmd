@@ -1,0 +1,124 @@
+---
+title: "ReAct Pattern: Reasoning and Acting in Harmony"
+translation-url: "fr/translations/planning-pattern/index.html"
+date: "2026-02-10"
+categories: [AI, Agents, LLM, Design Patterns, ReAct]
+image: "../../img/reflection_pattern.png"
+description: "The ReAct Pattern: an agent that interleaves reasoning and action to solve complex, multi-step tasks autonomously."
+author: "Ousmane Cissé"
+lang: en
+series-name: "Agentic Design Patterns"
+series-prev-url: "/posts/tool-using-agent/"
+series-prev-title: "Tool Using Agent"
+series-next-url: "/posts/multi-agent-collaboration/"
+series-next-title: "Multi Agent Collaboration"
+---
+
+Building on the [Tool Use Pattern](/posts/tool-using-agent/), we now explore **ReAct** (Reasoning + Acting) — arguably the most important agentic design pattern. This is where agents become truly autonomous problem-solvers.
+
+## What is the ReAct Pattern?
+
+**ReAct** interleaves *thinking* and *doing* in a continuous loop:
+
+1. **Thought**: The agent reasons about the current state and decides what to do next
+2. **Action**: The agent executes a chosen tool or function
+3. **Observation**: The agent processes the result of its action
+4. **Loop**: Steps repeat until the task is complete
+
+This is fundamentally different from one-shot prompting. The agent *plans*, *acts*, *observes*, and *adapts* — just like a human problem-solver.
+
+## The ReAct Loop in Action
+
+```
+Question: What is the GDP per capita of the country that won the 2024 Euro football championship?
+
+Thought 1: I need to find which country won Euro 2024.
+Action 1:  search("Euro 2024 winner")
+Observation 1: Spain won Euro 2024, defeating England 2-1 in the final.
+
+Thought 2: Now I need Spain's GDP per capita.
+Action 2:  search("Spain GDP per capita 2024")
+Observation 2: Spain's GDP per capita in 2024 was approximately $32,000 USD.
+
+Thought 3: I have all the information needed. Let me formulate my answer.
+Action 3:  finish("Spain won Euro 2024. Spain's GDP per capita is ~$32,000 USD.")
+```
+
+## Why ReAct is Powerful
+
+### Multi-step reasoning
+Complex questions that require multiple lookups, calculations, or transformations are handled naturally through the loop.
+
+### Grounded responses
+Every claim can be backed by a tool call — the agent doesn't just *assert* facts, it *verifies* them.
+
+### Transparent decision-making
+The "Thought" steps create a clear trace of the agent's reasoning. Debugging becomes straightforward.
+
+### Error recovery
+If an action fails, the agent can re-think and try a different approach.
+
+## Implementation
+
+```python
+class ReActAgent:
+    def __init__(self, llm, tools):
+        self.llm = llm
+        self.tools = {tool.name: tool for tool in tools}
+        self.system_prompt = """You are a helpful assistant. 
+        For each step, output:
+        Thought: <your reasoning>
+        Action: <tool_name>(parameters)
+        
+        When done, use: Action: finish(answer)"""
+
+    def run(self, question, max_steps=10):
+        history = [f"Question: {question}"]
+        
+        for step in range(max_steps):
+            response = self.llm.generate(self.system_prompt, history)
+            thought, action = self.parse(response)
+            history.append(f"Thought {step+1}: {thought}")
+            
+            if action.name == "finish":
+                return action.args
+            
+            observation = self.tools[action.name].execute(action.args)
+            history.append(f"Action {step+1}: {action}")
+            history.append(f"Observation {step+1}: {observation}")
+        
+        return "Max steps reached without a final answer."
+```
+
+## ReAct vs. Chain-of-Thought
+
+| Feature | Chain-of-Thought | ReAct |
+|---------|-----------------|-------|
+| Reasoning | ✅ Yes | ✅ Yes |
+| Tool use | ❌ No | ✅ Yes |
+| Grounding | ❌ No | ✅ Yes (via observations) |
+| Multi-step | Limited | ✅ Full loop |
+| Error recovery | ❌ No | ✅ Yes |
+
+## Application Projects
+
+*Projects demonstrating the ReAct Pattern in action will be added here as they are developed.*
+
+**Potential projects:**
+
+- **Question Answering Agent**: Multi-step research with web search and calculation
+- **Debugging Agent**: Iteratively diagnose and fix code issues  
+- **Data Investigation Agent**: Explore datasets with SQL queries and analysis
+
+## Key Takeaways
+
+1. **ReAct = Reasoning + Acting**: The interleaving is key
+2. **The loop is the pattern**: Think → Act → Observe → Repeat
+3. **Transparency**: Every step is traceable and debuggable
+4. **Foundation pattern**: Most modern agent frameworks implement ReAct under the hood
+
+## Resources
+
+- [ReAct Paper (Yao et al., 2022)](https://arxiv.org/abs/2210.03629)
+- [LangChain ReAct Agent](https://python.langchain.com/docs/modules/agents/agent_types/react)
+- Previous: [Tool Using Agent](/posts/tool-using-agent/)

@@ -98,6 +98,10 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link" href="./robotics.html"> 
+<span class="menu-text">Robotics &amp; AI</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="./en-to-fr.html"> 
 <span class="menu-text">EN –&gt; FR</span></a>
   </li>  
@@ -164,88 +168,118 @@ Available for AI consulting, LLM applications, automation and data engineering m
  <!-- /main -->
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        const langLinks = document.querySelectorAll('.navbar-nav .nav-link');
+        const path = window.location.pathname;
+        const repoName = path.startsWith("/ousmanecisse/") ? "/ousmanecisse/" : "/";
+        const isFr = path.includes("/fr/");
 
-        // Define repo name dynamically
-        const repoName = window.location.pathname.startsWith("/ousmanecisse/") ? "/ousmanecisse/" : "/";
+        // ===================================================================
+        // NAVBAR LINK MAPPINGS
+        // Define the full navbar structure for each language.
+        // This is the single source of truth for the JS-based navbar update.
+        // ===================================================================
+        const navConfig = {
+            en: {
+                left: [
+                    { text: "Projects", href: "projects.html" },
+                    { text: "Blog", href: "blog.html" },
+                    { text: "Robotics & AI", href: "robotics.html" },
+                    { text: "EN --> FR", href: "en-to-fr.html" }
+                ],
+                langSwitch: { text: "FR", href: "fr/index.html" }
+            },
+            fr: {
+                left: [
+                    { text: "Projets", href: "fr/projets.html" },
+                    { text: "Blog", href: "fr/blog.html" },
+                    { text: "Robotique & IA", href: "fr/robotique.html" },
+                    { text: "EN --> FR", href: "fr/en-to-fr.html" }
+                ],
+                langSwitch: { text: "EN", href: "index.html" }
+            }
+        };
 
-        langLinks.forEach(link => {
+        const currentLang = isFr ? "fr" : "en";
+        const config = navConfig[currentLang];
+
+        // ===================================================================
+        // 1. UPDATE LEFT NAVBAR LINKS (Projects, Blog, Robotics, EN-->FR)
+        // ===================================================================
+        const leftNavLinks = document.querySelectorAll('.navbar-nav.me-auto .nav-link');
+
+        leftNavLinks.forEach((link, index) => {
+            if (index < config.left.length) {
+                const item = config.left[index];
+                // Update text (inside <span class="menu-text">)
+                const menuText = link.querySelector('.menu-text');
+                if (menuText) {
+                    menuText.textContent = item.text;
+                } else {
+                    link.textContent = item.text;
+                }
+                // Update href
+                link.setAttribute('href', repoName + item.href);
+            }
+        });
+
+        // ===================================================================
+        // 2. UPDATE LANGUAGE SWITCH BUTTON (FR / EN) + TRANSLATION URL
+        // ===================================================================
+        const rightNavLinks = document.querySelectorAll('.navbar-nav.ms-auto .nav-link');
+
+        // Get translation URL from meta tag (injected by Lua filter)
+        let translationUrl = null;
+        const metaTag = document.querySelector('meta[name="translation-url"]');
+        if (metaTag) {
+            translationUrl = metaTag.getAttribute('content');
+        }
+
+        rightNavLinks.forEach(link => {
             const text = link.innerText.trim().toUpperCase();
             if (text === "FR" || text === "EN") {
+                // Fix the label
+                const menuText = link.querySelector('.menu-text');
+                if (menuText) {
+                    menuText.textContent = config.langSwitch.text;
+                } else {
+                    link.textContent = config.langSwitch.text;
+                }
 
-                link.addEventListener('click', function (e) {
-                    e.preventDefault();
+                // Fix the href: 
+                // 1. Try translation-url meta tag first
+                if (translationUrl) {
+                    let finalUrl = translationUrl;
+                    if (!finalUrl.startsWith("/") && !finalUrl.startsWith("http")) {
+                        finalUrl = repoName + finalUrl;
+                    }
+                    link.setAttribute('href', finalUrl);
+                }
+                // 2. SMART PATH MAPPING (fallback)
+                else {
+                    let targetUrl = config.langSwitch.href; // Default fallback (home)
 
-                    const currentPath = window.location.pathname;
-                    let pathAfterRepo = "";
-
-                    if (currentPath.includes(repoName)) {
-                        pathAfterRepo = currentPath.substring(currentPath.indexOf(repoName) + repoName.length);
+                    if (isFr) {
+                        // We are in FR, want to go to EN
+                        // Pattern: /fr/some-page.html -> /some-page.html
+                        // Pattern: /fr/projects/foo/index.html -> /projects/foo/index.html
+                        targetUrl = path.replace("/fr/", "/");
                     } else {
-                        pathAfterRepo = currentPath.startsWith('/') ? currentPath.substring(1) : currentPath;
-                    }
-
-                    // Normalize path ending - ensure it ends with .html
-                    if (pathAfterRepo === "" || pathAfterRepo === "index.html") {
-                        pathAfterRepo = "index.html";
-                    } else if (pathAfterRepo.endsWith("/")) {
-                        pathAfterRepo += "index.html";
-                    } else if (!pathAfterRepo.endsWith(".html")) {
-                        pathAfterRepo += ".html";
-                    }
-
-                    let targetRelativePath = "";
-                    const isCurrentlyFR = pathAfterRepo.startsWith("fr/");
-
-                    if (text === "FR") {
-                        // Switch to French
-                        if (isCurrentlyFR) {
-                            // Already in FR
-                            targetRelativePath = pathAfterRepo;
-                        } else {
-                            // EN to FR
-                            let stub = pathAfterRepo;
-                            // Handle special page names
-                            if (stub === "projects.html") stub = "projets.html";
-                            else if (stub === "blog.html") stub = "blog.html";
-                            targetRelativePath = "fr/" + stub;
-                        }
-                    } else if (text === "EN") {
-                        // Switch to English
-                        if (!isCurrentlyFR) {
-                            // Already in EN
-                            targetRelativePath = pathAfterRepo;
-                        } else {
-                            // FR to EN
-                            let stub = pathAfterRepo.substring(3); // Remove "fr/"
-                            // Handle special page names
-                            if (stub === "projets.html") stub = "projects.html";
-                            else if (stub === "blog.html") stub = "blog.html";
-                            targetRelativePath = stub;
-                        }
-                    }
-
-                    const finalTarget = repoName + targetRelativePath;
-
-                    // Don't do anything if we're already on the target page
-                    if (finalTarget === currentPath) return;
-
-                    // Check if target page exists
-                    fetch(finalTarget, { method: 'HEAD' })
-                        .then(response => {
-                            if (response.ok) {
-                                // Page exists, redirect to it
-                                window.location.href = finalTarget;
+                        // We are in EN, want to go to FR
+                        // Pattern: /projects/foo/index.html -> /fr/projects/foo/index.html
+                        // Skip if already in fr (redundant check but safe)
+                        if (!path.includes("/fr/")) {
+                            // We need to be careful with the repoName
+                            if (repoName !== "/" && path.startsWith(repoName)) {
+                                targetUrl = path.replace(repoName, repoName + "fr/");
                             } else {
-                                // Page doesn't exist, redirect to home page in target language
-                                window.location.href = (text === "FR") ? repoName + "fr/index.html" : repoName + "index.html";
+                                targetUrl = "/fr" + path;
                             }
-                        })
-                        .catch(() => {
-                            // Network error, try to go to the page anyway
-                            window.location.href = (text === "FR") ? repoName + "fr/index.html" : repoName + "index.html";
-                        });
-                });
+                        }
+                    }
+
+                    // Clean up double slashes
+                    targetUrl = targetUrl.replace("//", "/");
+                    link.setAttribute('href', targetUrl);
+                }
             }
         });
     });

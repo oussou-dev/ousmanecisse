@@ -1,0 +1,22 @@
+---
+title: "LangChain & Bases Vectorielles"
+translation-url: "projects/langchain-vectordb/index.html"
+description: "Construire des apps LLM de production avec LangChain & Deep Lake. Couvre Gen AI, Prompt Engineering, RAG et Agents."
+image: "/img/langchain_vector_db.webp"
+formatted: html
+lang: fr
+---
+
+# Détails du Projet
+
+Apprendre à construire des applications LLM prêtes pour la production.
+
+### 🔗 [Dépôt GitHub](https://github.com/oussou-dev/LLMs_langchain_vectorDBs){target="_blank"}
+
+### 📝 Série d'articles — Patterns d'Agents
+
+- **[Qu'est-ce qu'un agent?](/fr/translations/what-is-an-agent/index.html)**
+- **[Le Pattern de Réflexion](/fr/translations/reflection-pattern/index.html)**
+- **[Le Pattern d'Utilisation d'Outils](/fr/translations/tool-use-pattern/index.html)**
+- **[Le Pattern de Planification (ReAct)](/fr/translations/planning-pattern/index.html)**
+- **[Le Pattern Multi-Agent](/fr/translations/multiagent-pattern/index.html)**

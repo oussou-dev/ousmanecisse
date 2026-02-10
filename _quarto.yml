@@ -21,3 +21,4 @@ format:
 
 filters:
   - filters/metadata_to_meta.lua
+  - filters/series_nav.lua

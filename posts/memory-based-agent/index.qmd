@@ -1,0 +1,164 @@
+---
+title: "Memory-Based Agent: AI That Remembers and Learns"
+date: "2026-02-10"
+categories: [AI, Agents, LLM, Design Patterns, Memory, RAG]
+image: "../../img/reflection_pattern.png"
+description: "The Memory Pattern: how AI agents use short-term and long-term memory to maintain context and learn from past interactions."
+author: "Ousmane Cissé"
+lang: en
+series-name: "Agentic Design Patterns"
+series-prev-url: "/posts/multi-agent-collaboration/"
+series-prev-title: "Multi Agent Collaboration"
+---
+
+The final pattern in this series tackles one of the most critical challenges in AI: **memory**. Without memory, every interaction starts from scratch. With memory, agents can maintain context, learn from experience, and personalize their responses.
+
+## What is the Memory Pattern?
+
+The **Memory Pattern** equips agents with the ability to store and retrieve information across interactions. This comes in two fundamental forms:
+
+### Short-Term Memory (Working Memory)
+Everything within the current context window:
+- Conversation history
+- Recent tool results
+- Current task state
+
+**Limitations:**
+- Bounded by the LLM's context window (4K–200K tokens)
+- Disappears when the session ends
+- Gets truncated when too long
+
+### Long-Term Memory (Persistent Memory)
+Information stored *outside* the LLM's context, retrievable on demand:
+- Vector databases (Qdrant, Pinecone, Weaviate, Chroma)
+- Knowledge graphs
+- Structured databases
+- File systems
+
+## Why Memory Matters
+
+| Without Memory | With Memory |
+|---------------|-------------|
+| Forgets user preferences | Remembers and adapts |
+| Repeats mistakes | Learns from past errors |
+| No personalization | Tailored responses |
+| Limited to context window | Unlimited knowledge access |
+| Every session starts fresh | Continuous improvement |
+
+## Architecture of a Memory-Based Agent
+
+```python
+class MemoryAgent:
+    def __init__(self, llm, vector_store):
+        self.llm = llm
+        self.short_term = []  # conversation history
+        self.long_term = vector_store  # persistent storage
+    
+    def remember(self, text, metadata=None):
+        """Store information in long-term memory"""
+        embedding = self.llm.embed(text)
+        self.long_term.upsert(text, embedding, metadata)
+    
+    def recall(self, query, top_k=5):
+        """Retrieve relevant memories"""
+        embedding = self.llm.embed(query)
+        return self.long_term.search(embedding, top_k)
+    
+    def respond(self, user_input):
+        # 1. Search long-term memory for relevant context
+        memories = self.recall(user_input)
+        
+        # 2. Build context from short-term + long-term memory
+        context = self.build_context(self.short_term, memories)
+        
+        # 3. Generate response
+        response = self.llm.generate(context + user_input)
+        
+        # 4. Update short-term memory
+        self.short_term.append({"user": user_input, "assistant": response})
+        
+        # 5. Optionally store important info in long-term memory
+        if self.is_worth_remembering(user_input, response):
+            self.remember(f"User said: {user_input}\nI responded: {response}")
+        
+        return response
+```
+
+## Types of Memory
+
+### Episodic Memory
+Specific past interactions and experiences:
+- "Last time the user asked about Python, they preferred async examples"
+- "The user's project uses FastAPI and PostgreSQL"
+
+### Semantic Memory
+General knowledge and facts:
+- Documentation, tutorials, best practices
+- Domain-specific knowledge bases
+
+### Procedural Memory
+Learned skills and workflows:
+- "When debugging, first check logs, then reproduce the issue"
+- Successful problem-solving patterns from past sessions
+
+## RAG: The Foundation of Long-Term Memory
+
+**Retrieval-Augmented Generation (RAG)** is the most common implementation of long-term memory:
+
+1. **Index**: Convert documents/knowledge into embeddings
+2. **Retrieve**: Find the most relevant chunks for a given query
+3. **Augment**: Inject retrieved context into the LLM prompt
+4. **Generate**: Produce a grounded response
+
+```python
+# Simple RAG pipeline
+def rag_query(question, vector_store, llm):
+    # Retrieve relevant documents
+    docs = vector_store.similarity_search(question, k=5)
+    
+    # Build augmented prompt
+    context = "\n".join([doc.content for doc in docs])
+    prompt = f"""Based on the following context, answer the question.
+    
+    Context: {context}
+    
+    Question: {question}"""
+    
+    return llm.generate(prompt)
+```
+
+## Application Projects
+
+*Projects demonstrating the Memory Pattern in action will be added here as they are developed.*
+
+**Potential projects:**
+
+- **Personal Knowledge Assistant**: An agent with RAG over your personal notes and documents
+- **Learning Companion**: An agent that tracks your progress and adapts its teaching
+- **Customer Support Agent**: Remembers past issues and user preferences
+
+## Key Takeaways
+
+1. **Two types of memory** serve different purposes: short-term for the current session, long-term for persistence
+2. **RAG is the go-to** implementation for long-term memory
+3. **Memory makes agents personal** — they can adapt to individual users
+4. **Deciding what to remember** is as important as the storage mechanism itself
+5. **Memory completes the picture** — combined with reflection, tools, planning, and collaboration, you have a fully capable agent
+
+## Series Recap
+
+This series covered the five foundational agentic design patterns:
+
+1. [**Reflection**](/posts/reflection-agent/) — Self-improvement through critique
+2. [**Tool Use**](/posts/tool-using-agent/) — Acting on the world
+3. [**ReAct**](/posts/react-pattern/) — Reasoning and acting in harmony
+4. [**Multi-Agent**](/posts/multi-agent-collaboration/) — Collaboration and specialization
+5. **Memory** — Learning and remembering (this post)
+
+Together, these patterns form the building blocks for creating powerful, autonomous AI systems.
+
+## Resources
+
+- [Pinecone: What is a Vector Database?](https://www.pinecone.io/learn/vector-database/)
+- [LangChain Memory](https://python.langchain.com/docs/modules/memory/)
+- Previous: [Multi Agent Collaboration](/posts/multi-agent-collaboration/)

@@ -1,12 +1,15 @@
 ---
 title: "AI Dev Tools: Week 4 - Building Coding Agents"
+translation-url: "fr/posts/ai-dev-tools-week-4/index.html"
 description: "Mastering the creation of autonomous coding agents using Agents, Tools, and Context."
 author: "Ousmane Cissé"
 date: "2026-01-15"
 categories: [AI, Zoomcamp, Agents, AI Dev Tools]
 image: "../../img/week_4_ai_dev_tools.webp"
 lang: en
-translation-url: "fr/posts/ai-dev-tools-week-4/index.html"
+series-name: "AI Dev Tools"
+series-prev-url: "/posts/ai-dev-tools-week-3/"
+series-prev-title: "AI Dev Tools: Week 3"
 ---
 
 Week 4 of the AI Dev Tools Zoomcamp was a transformative production to the world of **autonomous coding agents**. We moved beyond simple chat interfaces to building agents that can actively manipulate codebases, modify files, and bootstrap entire projects.
