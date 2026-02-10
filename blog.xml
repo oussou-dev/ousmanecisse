@@ -12,6 +12,641 @@
 <generator>quarto-1.6.42</generator>
 <lastBuildDate>Mon, 09 Feb 2026 23:00:00 GMT</lastBuildDate>
 <item>
+  <title>Memory-Based Agent: AI That Remembers and Learns</title>
+  <dc:creator>Ousmane Cissé</dc:creator>
+  <link>https://oussou-dev.github.io/ousmanecisse/posts/memory-based-agent/</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>The final pattern in this series tackles one of the most critical challenges in AI: <strong>memory</strong>. Without memory, every interaction starts from scratch. With memory, agents can maintain context, learn from experience, and personalize their responses.</p>
+<section id="what-is-the-memory-pattern" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-the-memory-pattern">What is the Memory Pattern?</h2>
+<p>The <strong>Memory Pattern</strong> equips agents with the ability to store and retrieve information across interactions. This comes in two fundamental forms:</p>
+<section id="short-term-memory-working-memory" class="level3">
+<h3 class="anchored" data-anchor-id="short-term-memory-working-memory">Short-Term Memory (Working Memory)</h3>
+<p>Everything within the current context window: - Conversation history - Recent tool results - Current task state</p>
+<p><strong>Limitations:</strong> - Bounded by the LLM’s context window (4K–200K tokens) - Disappears when the session ends - Gets truncated when too long</p>
+</section>
+<section id="long-term-memory-persistent-memory" class="level3">
+<h3 class="anchored" data-anchor-id="long-term-memory-persistent-memory">Long-Term Memory (Persistent Memory)</h3>
+<p>Information stored <em>outside</em> the LLM’s context, retrievable on demand: - Vector databases (Qdrant, Pinecone, Weaviate, Chroma) - Knowledge graphs - Structured databases - File systems</p>
+</section>
+</section>
+<section id="why-memory-matters" class="level2">
+<h2 class="anchored" data-anchor-id="why-memory-matters">Why Memory Matters</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Without Memory</th>
+<th>With Memory</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Forgets user preferences</td>
+<td>Remembers and adapts</td>
+</tr>
+<tr class="even">
+<td>Repeats mistakes</td>
+<td>Learns from past errors</td>
+</tr>
+<tr class="odd">
+<td>No personalization</td>
+<td>Tailored responses</td>
+</tr>
+<tr class="even">
+<td>Limited to context window</td>
+<td>Unlimited knowledge access</td>
+</tr>
+<tr class="odd">
+<td>Every session starts fresh</td>
+<td>Continuous improvement</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="architecture-of-a-memory-based-agent" class="level2">
+<h2 class="anchored" data-anchor-id="architecture-of-a-memory-based-agent">Architecture of a Memory-Based Agent</h2>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">class</span> MemoryAgent:</span>
+<span id="cb1-2">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">__init__</span>(<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>, llm, vector_store):</span>
+<span id="cb1-3">        <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>.llm <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> llm</span>
+<span id="cb1-4">        <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>.short_term <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> []  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># conversation history</span></span>
+<span id="cb1-5">        <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>.long_term <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> vector_store  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># persistent storage</span></span>
+<span id="cb1-6">    </span>
+<span id="cb1-7">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> remember(<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>, text, metadata<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>):</span>
+<span id="cb1-8">        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">"""Store information in long-term memory"""</span></span>
+<span id="cb1-9">        embedding <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>.llm.embed(text)</span>
+<span id="cb1-10">        <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>.long_term.upsert(text, embedding, metadata)</span>
+<span id="cb1-11">    </span>
+<span id="cb1-12">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> recall(<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>, query, top_k<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>):</span>
+<span id="cb1-13">        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">"""Retrieve relevant memories"""</span></span>
+<span id="cb1-14">        embedding <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>.llm.embed(query)</span>
+<span id="cb1-15">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>.long_term.search(embedding, top_k)</span>
+<span id="cb1-16">    </span>
+<span id="cb1-17">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> respond(<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>, user_input):</span>
+<span id="cb1-18">        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 1. Search long-term memory for relevant context</span></span>
+<span id="cb1-19">        memories <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>.recall(user_input)</span>
+<span id="cb1-20">        </span>
+<span id="cb1-21">        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 2. Build context from short-term + long-term memory</span></span>
+<span id="cb1-22">        context <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>.build_context(<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>.short_term, memories)</span>
+<span id="cb1-23">        </span>
+<span id="cb1-24">        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 3. Generate response</span></span>
+<span id="cb1-25">        response <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>.llm.generate(context <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> user_input)</span>
+<span id="cb1-26">        </span>
+<span id="cb1-27">        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 4. Update short-term memory</span></span>
+<span id="cb1-28">        <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>.short_term.append({<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"user"</span>: user_input, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"assistant"</span>: response})</span>
+<span id="cb1-29">        </span>
+<span id="cb1-30">        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 5. Optionally store important info in long-term memory</span></span>
+<span id="cb1-31">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>.is_worth_remembering(user_input, response):</span>
+<span id="cb1-32">            <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>.remember(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"User said: </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>user_input<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\n</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">I responded: </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>response<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)</span>
+<span id="cb1-33">        </span>
+<span id="cb1-34">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> response</span></code></pre></div>
+</section>
+<section id="types-of-memory" class="level2">
+<h2 class="anchored" data-anchor-id="types-of-memory">Types of Memory</h2>
+<section id="episodic-memory" class="level3">
+<h3 class="anchored" data-anchor-id="episodic-memory">Episodic Memory</h3>
+<p>Specific past interactions and experiences: - “Last time the user asked about Python, they preferred async examples” - “The user’s project uses FastAPI and PostgreSQL”</p>
+</section>
+<section id="semantic-memory" class="level3">
+<h3 class="anchored" data-anchor-id="semantic-memory">Semantic Memory</h3>
+<p>General knowledge and facts: - Documentation, tutorials, best practices - Domain-specific knowledge bases</p>
+</section>
+<section id="procedural-memory" class="level3">
+<h3 class="anchored" data-anchor-id="procedural-memory">Procedural Memory</h3>
+<p>Learned skills and workflows: - “When debugging, first check logs, then reproduce the issue” - Successful problem-solving patterns from past sessions</p>
+</section>
+</section>
+<section id="rag-the-foundation-of-long-term-memory" class="level2">
+<h2 class="anchored" data-anchor-id="rag-the-foundation-of-long-term-memory">RAG: The Foundation of Long-Term Memory</h2>
+<p><strong>Retrieval-Augmented Generation (RAG)</strong> is the most common implementation of long-term memory:</p>
+<ol type="1">
+<li><strong>Index</strong>: Convert documents/knowledge into embeddings</li>
+<li><strong>Retrieve</strong>: Find the most relevant chunks for a given query</li>
+<li><strong>Augment</strong>: Inject retrieved context into the LLM prompt</li>
+<li><strong>Generate</strong>: Produce a grounded response</li>
+</ol>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Simple RAG pipeline</span></span>
+<span id="cb2-2"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> rag_query(question, vector_store, llm):</span>
+<span id="cb2-3">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Retrieve relevant documents</span></span>
+<span id="cb2-4">    docs <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> vector_store.similarity_search(question, k<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>)</span>
+<span id="cb2-5">    </span>
+<span id="cb2-6">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Build augmented prompt</span></span>
+<span id="cb2-7">    context <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\n</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>.join([doc.content <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> doc <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> docs])</span>
+<span id="cb2-8">    prompt <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"""Based on the following context, answer the question.</span></span>
+<span id="cb2-9"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    </span></span>
+<span id="cb2-10"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    Context: </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>context<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span></span>
+<span id="cb2-11"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    </span></span>
+<span id="cb2-12"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    Question: </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>question<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"""</span></span>
+<span id="cb2-13">    </span>
+<span id="cb2-14">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> llm.generate(prompt)</span></code></pre></div>
+</section>
+<section id="application-projects" class="level2">
+<h2 class="anchored" data-anchor-id="application-projects">Application Projects</h2>
+<p><em>Projects demonstrating the Memory Pattern in action will be added here as they are developed.</em></p>
+<p><strong>Potential projects:</strong></p>
+<ul>
+<li><strong>Personal Knowledge Assistant</strong>: An agent with RAG over your personal notes and documents</li>
+<li><strong>Learning Companion</strong>: An agent that tracks your progress and adapts its teaching</li>
+<li><strong>Customer Support Agent</strong>: Remembers past issues and user preferences</li>
+</ul>
+</section>
+<section id="key-takeaways" class="level2">
+<h2 class="anchored" data-anchor-id="key-takeaways">Key Takeaways</h2>
+<ol type="1">
+<li><strong>Two types of memory</strong> serve different purposes: short-term for the current session, long-term for persistence</li>
+<li><strong>RAG is the go-to</strong> implementation for long-term memory</li>
+<li><strong>Memory makes agents personal</strong> — they can adapt to individual users</li>
+<li><strong>Deciding what to remember</strong> is as important as the storage mechanism itself</li>
+<li><strong>Memory completes the picture</strong> — combined with reflection, tools, planning, and collaboration, you have a fully capable agent</li>
+</ol>
+</section>
+<section id="series-recap" class="level2">
+<h2 class="anchored" data-anchor-id="series-recap">Series Recap</h2>
+<p>This series covered the five foundational agentic design patterns:</p>
+<ol type="1">
+<li><a href="../../posts/reflection-agent/"><strong>Reflection</strong></a> — Self-improvement through critique</li>
+<li><a href="../../posts/tool-using-agent/"><strong>Tool Use</strong></a> — Acting on the world</li>
+<li><a href="../../posts/react-pattern/"><strong>ReAct</strong></a> — Reasoning and acting in harmony</li>
+<li><a href="../../posts/multi-agent-collaboration/"><strong>Multi-Agent</strong></a> — Collaboration and specialization</li>
+<li><strong>Memory</strong> — Learning and remembering (this post)</li>
+</ol>
+<p>Together, these patterns form the building blocks for creating powerful, autonomous AI systems.</p>
+</section>
+<section id="resources" class="level2">
+<h2 class="anchored" data-anchor-id="resources">Resources</h2>
+<ul>
+<li><a href="https://www.pinecone.io/learn/vector-database/">Pinecone: What is a Vector Database?</a></li>
+<li><a href="https://python.langchain.com/docs/modules/memory/">LangChain Memory</a></li>
+<li>Previous: <a href="../../posts/multi-agent-collaboration/">Multi Agent Collaboration</a></li>
+</ul>
+
+
+<div class="series-nav">
+  <div class="series-nav-header">
+    <span class="series-nav-badge">Series</span>
+    <span class="series-nav-name">Agentic Design Patterns</span>
+  </div>
+  <div class="series-nav-links">
+    <a href="../../posts/multi-agent-collaboration/" class="series-nav-link series-nav-prev">
+      <span class="series-nav-label">← Previous post</span>
+      <span class="series-nav-title">Multi Agent Collaboration</span>
+    </a>
+    <div class="series-nav-spacer"></div>
+  </div>
+</div>
+
+</section>
+
+ ]]></description>
+  <category>AI</category>
+  <category>Agents</category>
+  <category>LLM</category>
+  <category>Design Patterns</category>
+  <category>Memory</category>
+  <category>RAG</category>
+  <guid>https://oussou-dev.github.io/ousmanecisse/posts/memory-based-agent/</guid>
+  <pubDate>Mon, 09 Feb 2026 23:00:00 GMT</pubDate>
+  <media:content url="https://oussou-dev.github.io/ousmanecisse/img/reflection_pattern.png" medium="image" type="image/png" height="144" width="144"/>
+</item>
+<item>
+  <title>Multi Agent Collaboration: When AI Agents Work as a Team</title>
+  <dc:creator>Ousmane Cissé</dc:creator>
+  <link>https://oussou-dev.github.io/ousmanecisse/posts/multi-agent-collaboration/</link>
+  <description><![CDATA[ 
+
+
+
+
+<meta name="translation-url" content="fr/translations/multiagent-pattern/index.html">
+<p>After mastering single-agent patterns (<a href="../../posts/reflection-agent/">Reflection</a>, <a href="../../posts/tool-using-agent/">Tool Use</a>, <a href="../../posts/react-pattern/">ReAct</a>), we enter the world of <strong>Multi-Agent Collaboration</strong> — where multiple specialized agents work together as a team.</p>
+<section id="what-is-the-multi-agent-pattern" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-the-multi-agent-pattern">What is the Multi-Agent Pattern?</h2>
+<p>Instead of one monolithic agent trying to do everything, this pattern uses <strong>multiple specialized agents</strong> that collaborate:</p>
+<ul>
+<li>An <strong>orchestrator</strong> (coordinator) that distributes tasks and manages workflow</li>
+<li><strong>Specialist agents</strong> that each focus on a specific domain or skill</li>
+<li>A <strong>communication protocol</strong> for agents to share information and results</li>
+</ul>
+</section>
+<section id="why-multiple-agents" class="level2">
+<h2 class="anchored" data-anchor-id="why-multiple-agents">Why Multiple Agents?</h2>
+<section id="specialization" class="level3">
+<h3 class="anchored" data-anchor-id="specialization">1. Specialization</h3>
+<p>Each agent can have: - Its own <strong>system prompt</strong> optimized for its task - Its own <strong>tool set</strong> relevant to its domain - Its own <strong>model</strong> (fast/cheap for triage, powerful for complex tasks)</p>
+</section>
+<section id="parallelism" class="level3">
+<h3 class="anchored" data-anchor-id="parallelism">2. Parallelism</h3>
+<p>Multiple agents can work <strong>simultaneously</strong> on different sub-tasks, dramatically reducing total time.</p>
+</section>
+<section id="quality-through-diversity" class="level3">
+<h3 class="anchored" data-anchor-id="quality-through-diversity">3. Quality through diversity</h3>
+<p>Different “perspectives” (prompts) on the same problem lead to better outcomes — similar to pair programming or team code reviews.</p>
+</section>
+<section id="robustness" class="level3">
+<h3 class="anchored" data-anchor-id="robustness">4. Robustness</h3>
+<p>If one agent fails, others can compensate or flag the issue to the orchestrator.</p>
+</section>
+</section>
+<section id="multi-agent-architectures" class="level2">
+<h2 class="anchored" data-anchor-id="multi-agent-architectures">Multi-Agent Architectures</h2>
+<section id="sequential-pipeline" class="level3">
+<h3 class="anchored" data-anchor-id="sequential-pipeline">Sequential Pipeline</h3>
+<p>Agents execute one after another, each enriching the previous output:</p>
+<pre><code>Agent 1 (Draft) → Agent 2 (Critique) → Agent 3 (Final Polish)</code></pre>
+</section>
+<section id="centralized-orchestrator" class="level3">
+<h3 class="anchored" data-anchor-id="centralized-orchestrator">Centralized Orchestrator</h3>
+<p>A coordinator agent distributes work and collects results:</p>
+<pre><code>         Orchestrator
+        /     |       \
+  Research  Analysis  Writing
+   Agent     Agent    Agent</code></pre>
+</section>
+<section id="debate-adversarial" class="level3">
+<h3 class="anchored" data-anchor-id="debate-adversarial">Debate / Adversarial</h3>
+<p>Two or more agents debate a question to reach a better answer:</p>
+<pre><code>Agent A (Pro) ←→ Agent B (Con) → Judge Agent → Final Answer</code></pre>
+</section>
+<section id="hierarchical" class="level3">
+<h3 class="anchored" data-anchor-id="hierarchical">Hierarchical</h3>
+<p>Managers delegate to sub-teams, which delegate to individual agents:</p>
+<pre><code>Project Manager
+├── Frontend Lead
+│   ├── UI Agent
+│   └── UX Agent
+└── Backend Lead
+    ├── API Agent
+    └── DB Agent</code></pre>
+</section>
+</section>
+<section id="example-virtual-development-team" class="level2">
+<h2 class="anchored" data-anchor-id="example-virtual-development-team">Example: Virtual Development Team</h2>
+<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> crewai <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> Agent, Task, Crew</span>
+<span id="cb5-2"></span>
+<span id="cb5-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Define specialized agents</span></span>
+<span id="cb5-4">pm_agent <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> Agent(</span>
+<span id="cb5-5">    role<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Product Manager"</span>,</span>
+<span id="cb5-6">    goal<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Break down requirements into clear tasks"</span>,</span>
+<span id="cb5-7">    backstory<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Experienced PM who writes precise user stories"</span></span>
+<span id="cb5-8">)</span>
+<span id="cb5-9"></span>
+<span id="cb5-10">dev_agent <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> Agent(</span>
+<span id="cb5-11">    role<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Software Developer"</span>,  </span>
+<span id="cb5-12">    goal<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Write clean, tested code"</span>,</span>
+<span id="cb5-13">    backstory<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Senior developer who follows best practices"</span></span>
+<span id="cb5-14">)</span>
+<span id="cb5-15"></span>
+<span id="cb5-16">qa_agent <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> Agent(</span>
+<span id="cb5-17">    role<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"QA Engineer"</span>,</span>
+<span id="cb5-18">    goal<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Find bugs and ensure quality"</span>,</span>
+<span id="cb5-19">    backstory<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Meticulous tester who catches edge cases"</span></span>
+<span id="cb5-20">)</span>
+<span id="cb5-21"></span>
+<span id="cb5-22"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Create the crew</span></span>
+<span id="cb5-23">team <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> Crew(</span>
+<span id="cb5-24">    agents<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>[pm_agent, dev_agent, qa_agent],</span>
+<span id="cb5-25">    tasks<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>[...],</span>
+<span id="cb5-26">    process<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"sequential"</span></span>
+<span id="cb5-27">)</span>
+<span id="cb5-28"></span>
+<span id="cb5-29">result <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> team.kickoff()</span></code></pre></div>
+</section>
+<section id="popular-frameworks" class="level2">
+<h2 class="anchored" data-anchor-id="popular-frameworks">Popular Frameworks</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Framework</th>
+<th>Highlights</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>CrewAI</strong></td>
+<td>Role-based agents, sequential/hierarchical processes</td>
+</tr>
+<tr class="even">
+<td><strong>AutoGen</strong> (Microsoft)</td>
+<td>Multi-agent conversations, human-in-the-loop</td>
+</tr>
+<tr class="odd">
+<td><strong>LangGraph</strong></td>
+<td>Graph-based orchestration, state management</td>
+</tr>
+<tr class="even">
+<td><strong>OpenAI Swarm</strong></td>
+<td>Lightweight, handoff-based coordination</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="application-projects" class="level2">
+<h2 class="anchored" data-anchor-id="application-projects">Application Projects</h2>
+<p><em>Projects demonstrating the Multi-Agent Pattern in action will be added here as they are developed.</em></p>
+<p><strong>Potential projects:</strong></p>
+<ul>
+<li><strong>AI Development Team</strong>: PM + Dev + QA agents building software together</li>
+<li><strong>Content Pipeline</strong>: Research + Write + Edit + Publish agents</li>
+<li><strong>Data Science Crew</strong>: Analyst + Engineer + Visualizer agents</li>
+</ul>
+</section>
+<section id="key-takeaways" class="level2">
+<h2 class="anchored" data-anchor-id="key-takeaways">Key Takeaways</h2>
+<ol type="1">
+<li><strong>Specialization beats generalization</strong> for complex tasks</li>
+<li><strong>Communication protocols</strong> are critical — agents must “speak the same language”</li>
+<li><strong>Choose the right architecture</strong> for your use case (sequential, orchestrated, debate)</li>
+<li><strong>Start simple</strong> — often 2-3 agents is enough, don’t over-engineer</li>
+</ol>
+</section>
+<section id="resources" class="level2">
+<h2 class="anchored" data-anchor-id="resources">Resources</h2>
+<ul>
+<li><a href="https://docs.crewai.com/">CrewAI Documentation</a></li>
+<li><a href="https://microsoft.github.io/autogen/">AutoGen Documentation</a></li>
+<li>Previous: <a href="../../posts/react-pattern/">ReAct Pattern</a></li>
+</ul>
+
+
+<div class="series-nav">
+  <div class="series-nav-header">
+    <span class="series-nav-badge">Series</span>
+    <span class="series-nav-name">Agentic Design Patterns</span>
+  </div>
+  <div class="series-nav-links">
+    <a href="../../posts/react-pattern/" class="series-nav-link series-nav-prev">
+      <span class="series-nav-label">← Previous post</span>
+      <span class="series-nav-title">ReAct Pattern</span>
+    </a>
+    <a href="../../posts/memory-based-agent/" class="series-nav-link series-nav-next">
+      <span class="series-nav-label">Next post →</span>
+      <span class="series-nav-title">Memory-Based Agent</span>
+    </a>
+  </div>
+</div>
+
+</section>
+
+ ]]></description>
+  <category>AI</category>
+  <category>Agents</category>
+  <category>LLM</category>
+  <category>Design Patterns</category>
+  <category>Multi-Agent</category>
+  <guid>https://oussou-dev.github.io/ousmanecisse/posts/multi-agent-collaboration/</guid>
+  <pubDate>Mon, 09 Feb 2026 23:00:00 GMT</pubDate>
+  <media:content url="https://oussou-dev.github.io/ousmanecisse/img/reflection_pattern.png" medium="image" type="image/png" height="144" width="144"/>
+</item>
+<item>
   <title>Poetry vs UV: which tool for your Python projects?</title>
   <link>https://oussou-dev.github.io/ousmanecisse/posts/poetry-vs-uv/</link>
   <description><![CDATA[ 
@@ -422,6 +1057,728 @@ font-style: inherit;">uv</span> python pin 3.11</span></code></pre></div>
   <pubDate>Mon, 09 Feb 2026 23:00:00 GMT</pubDate>
 </item>
 <item>
+  <title>ReAct Pattern: Reasoning and Acting in Harmony</title>
+  <dc:creator>Ousmane Cissé</dc:creator>
+  <link>https://oussou-dev.github.io/ousmanecisse/posts/react-pattern/</link>
+  <description><![CDATA[ 
+
+
+
+
+<meta name="translation-url" content="fr/translations/planning-pattern/index.html">
+<p>Building on the <a href="../../posts/tool-using-agent/">Tool Use Pattern</a>, we now explore <strong>ReAct</strong> (Reasoning + Acting) — arguably the most important agentic design pattern. This is where agents become truly autonomous problem-solvers.</p>
+<section id="what-is-the-react-pattern" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-the-react-pattern">What is the ReAct Pattern?</h2>
+<p><strong>ReAct</strong> interleaves <em>thinking</em> and <em>doing</em> in a continuous loop:</p>
+<ol type="1">
+<li><strong>Thought</strong>: The agent reasons about the current state and decides what to do next</li>
+<li><strong>Action</strong>: The agent executes a chosen tool or function</li>
+<li><strong>Observation</strong>: The agent processes the result of its action</li>
+<li><strong>Loop</strong>: Steps repeat until the task is complete</li>
+</ol>
+<p>This is fundamentally different from one-shot prompting. The agent <em>plans</em>, <em>acts</em>, <em>observes</em>, and <em>adapts</em> — just like a human problem-solver.</p>
+</section>
+<section id="the-react-loop-in-action" class="level2">
+<h2 class="anchored" data-anchor-id="the-react-loop-in-action">The ReAct Loop in Action</h2>
+<pre><code>Question: What is the GDP per capita of the country that won the 2024 Euro football championship?
+
+Thought 1: I need to find which country won Euro 2024.
+Action 1:  search("Euro 2024 winner")
+Observation 1: Spain won Euro 2024, defeating England 2-1 in the final.
+
+Thought 2: Now I need Spain's GDP per capita.
+Action 2:  search("Spain GDP per capita 2024")
+Observation 2: Spain's GDP per capita in 2024 was approximately $32,000 USD.
+
+Thought 3: I have all the information needed. Let me formulate my answer.
+Action 3:  finish("Spain won Euro 2024. Spain's GDP per capita is ~$32,000 USD.")</code></pre>
+</section>
+<section id="why-react-is-powerful" class="level2">
+<h2 class="anchored" data-anchor-id="why-react-is-powerful">Why ReAct is Powerful</h2>
+<section id="multi-step-reasoning" class="level3">
+<h3 class="anchored" data-anchor-id="multi-step-reasoning">Multi-step reasoning</h3>
+<p>Complex questions that require multiple lookups, calculations, or transformations are handled naturally through the loop.</p>
+</section>
+<section id="grounded-responses" class="level3">
+<h3 class="anchored" data-anchor-id="grounded-responses">Grounded responses</h3>
+<p>Every claim can be backed by a tool call — the agent doesn’t just <em>assert</em> facts, it <em>verifies</em> them.</p>
+</section>
+<section id="transparent-decision-making" class="level3">
+<h3 class="anchored" data-anchor-id="transparent-decision-making">Transparent decision-making</h3>
+<p>The “Thought” steps create a clear trace of the agent’s reasoning. Debugging becomes straightforward.</p>
+</section>
+<section id="error-recovery" class="level3">
+<h3 class="anchored" data-anchor-id="error-recovery">Error recovery</h3>
+<p>If an action fails, the agent can re-think and try a different approach.</p>
+</section>
+</section>
+<section id="implementation" class="level2">
+<h2 class="anchored" data-anchor-id="implementation">Implementation</h2>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">class</span> ReActAgent:</span>
+<span id="cb2-2">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">__init__</span>(<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>, llm, tools):</span>
+<span id="cb2-3">        <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>.llm <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> llm</span>
+<span id="cb2-4">        <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>.tools <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> {tool.name: tool <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> tool <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> tools}</span>
+<span id="cb2-5">        <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>.system_prompt <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"""You are a helpful assistant. </span></span>
+<span id="cb2-6"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">        For each step, output:</span></span>
+<span id="cb2-7"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">        Thought: &lt;your reasoning&gt;</span></span>
+<span id="cb2-8"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">        Action: &lt;tool_name&gt;(parameters)</span></span>
+<span id="cb2-9"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">        </span></span>
+<span id="cb2-10"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">        When done, use: Action: finish(answer)"""</span></span>
+<span id="cb2-11"></span>
+<span id="cb2-12">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> run(<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>, question, max_steps<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>):</span>
+<span id="cb2-13">        history <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"Question: </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>question<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>]</span>
+<span id="cb2-14">        </span>
+<span id="cb2-15">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> step <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">range</span>(max_steps):</span>
+<span id="cb2-16">            response <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>.llm.generate(<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>.system_prompt, history)</span>
+<span id="cb2-17">            thought, action <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>.parse(response)</span>
+<span id="cb2-18">            history.append(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"Thought </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>step<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">: </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>thought<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)</span>
+<span id="cb2-19">            </span>
+<span id="cb2-20">            <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> action.name <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"finish"</span>:</span>
+<span id="cb2-21">                <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> action.args</span>
+<span id="cb2-22">            </span>
+<span id="cb2-23">            observation <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>.tools[action.name].execute(action.args)</span>
+<span id="cb2-24">            history.append(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"Action </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>step<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">: </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>action<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)</span>
+<span id="cb2-25">            history.append(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"Observation </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>step<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">: </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>observation<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)</span>
+<span id="cb2-26">        </span>
+<span id="cb2-27">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Max steps reached without a final answer."</span></span></code></pre></div>
+</section>
+<section id="react-vs.-chain-of-thought" class="level2">
+<h2 class="anchored" data-anchor-id="react-vs.-chain-of-thought">ReAct vs.&nbsp;Chain-of-Thought</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Feature</th>
+<th>Chain-of-Thought</th>
+<th>ReAct</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Reasoning</td>
+<td>✅ Yes</td>
+<td>✅ Yes</td>
+</tr>
+<tr class="even">
+<td>Tool use</td>
+<td>❌ No</td>
+<td>✅ Yes</td>
+</tr>
+<tr class="odd">
+<td>Grounding</td>
+<td>❌ No</td>
+<td>✅ Yes (via observations)</td>
+</tr>
+<tr class="even">
+<td>Multi-step</td>
+<td>Limited</td>
+<td>✅ Full loop</td>
+</tr>
+<tr class="odd">
+<td>Error recovery</td>
+<td>❌ No</td>
+<td>✅ Yes</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="application-projects" class="level2">
+<h2 class="anchored" data-anchor-id="application-projects">Application Projects</h2>
+<p><em>Projects demonstrating the ReAct Pattern in action will be added here as they are developed.</em></p>
+<p><strong>Potential projects:</strong></p>
+<ul>
+<li><strong>Question Answering Agent</strong>: Multi-step research with web search and calculation</li>
+<li><strong>Debugging Agent</strong>: Iteratively diagnose and fix code issues<br>
+</li>
+<li><strong>Data Investigation Agent</strong>: Explore datasets with SQL queries and analysis</li>
+</ul>
+</section>
+<section id="key-takeaways" class="level2">
+<h2 class="anchored" data-anchor-id="key-takeaways">Key Takeaways</h2>
+<ol type="1">
+<li><strong>ReAct = Reasoning + Acting</strong>: The interleaving is key</li>
+<li><strong>The loop is the pattern</strong>: Think → Act → Observe → Repeat</li>
+<li><strong>Transparency</strong>: Every step is traceable and debuggable</li>
+<li><strong>Foundation pattern</strong>: Most modern agent frameworks implement ReAct under the hood</li>
+</ol>
+</section>
+<section id="resources" class="level2">
+<h2 class="anchored" data-anchor-id="resources">Resources</h2>
+<ul>
+<li><a href="https://arxiv.org/abs/2210.03629">ReAct Paper (Yao et al., 2022)</a></li>
+<li><a href="https://python.langchain.com/docs/modules/agents/agent_types/react">LangChain ReAct Agent</a></li>
+<li>Previous: <a href="../../posts/tool-using-agent/">Tool Using Agent</a></li>
+</ul>
+
+
+<div class="series-nav">
+  <div class="series-nav-header">
+    <span class="series-nav-badge">Series</span>
+    <span class="series-nav-name">Agentic Design Patterns</span>
+  </div>
+  <div class="series-nav-links">
+    <a href="../../posts/tool-using-agent/" class="series-nav-link series-nav-prev">
+      <span class="series-nav-label">← Previous post</span>
+      <span class="series-nav-title">Tool Using Agent</span>
+    </a>
+    <a href="../../posts/multi-agent-collaboration/" class="series-nav-link series-nav-next">
+      <span class="series-nav-label">Next post →</span>
+      <span class="series-nav-title">Multi Agent Collaboration</span>
+    </a>
+  </div>
+</div>
+
+</section>
+
+ ]]></description>
+  <category>AI</category>
+  <category>Agents</category>
+  <category>LLM</category>
+  <category>Design Patterns</category>
+  <category>ReAct</category>
+  <guid>https://oussou-dev.github.io/ousmanecisse/posts/react-pattern/</guid>
+  <pubDate>Mon, 09 Feb 2026 23:00:00 GMT</pubDate>
+  <media:content url="https://oussou-dev.github.io/ousmanecisse/img/reflection_pattern.png" medium="image" type="image/png" height="144" width="144"/>
+</item>
+<item>
+  <title>Reflection Agent: Self-Improving AI Through Iterative Critique</title>
+  <dc:creator>Ousmane Cissé</dc:creator>
+  <link>https://oussou-dev.github.io/ousmanecisse/posts/reflection-agent/</link>
+  <description><![CDATA[ 
+
+
+
+
+<meta name="translation-url" content="fr/translations/reflection-pattern/index.html">
+<p>The <strong>Reflection Pattern</strong> is the simplest yet surprisingly effective agentic design pattern. It allows an AI agent to evaluate its own output and iteratively improve it — like having an infinite pair-review loop built into the system.</p>
+<section id="what-is-the-reflection-pattern" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-the-reflection-pattern">What is the Reflection Pattern?</h2>
+<p>The core idea is straightforward: instead of accepting the first output from an LLM, we create a feedback loop:</p>
+<ol type="1">
+<li><strong>Generate</strong>: The LLM produces an initial response</li>
+<li><strong>Reflect</strong>: A critic (often the same LLM with a different prompt) evaluates the output</li>
+<li><strong>Refine</strong>: The LLM incorporates the critique and produces a better version</li>
+<li><strong>Repeat</strong>: The cycle continues until a stopping condition is met</li>
+</ol>
+<section id="when-to-stop" class="level3">
+<h3 class="anchored" data-anchor-id="when-to-stop">When to stop?</h3>
+<ul>
+<li>After a <strong>fixed number of iterations</strong> (e.g., 3 rounds)</li>
+<li>When the critic signals <strong>satisfaction</strong> (e.g., outputs “LGTM” or “Final”)</li>
+<li>When <strong>diminishing returns</strong> are detected</li>
+</ul>
+</section>
+</section>
+<section id="why-it-works" class="level2">
+<h2 class="anchored" data-anchor-id="why-it-works">Why It Works</h2>
+<p>The magic lies in <strong>role separation</strong>: the generator focuses on producing content, while the critic focuses on finding flaws. This separation of concerns mirrors real-world software engineering practices like code review.</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">class</span> ReflectionAgent:</span>
+<span id="cb1-2">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">__init__</span>(<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>, model<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"llama3-70b"</span>):</span>
+<span id="cb1-3">        <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>.generator_prompt <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"You are a Python programmer. Write clean, production-quality code."</span></span>
+<span id="cb1-4">        <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>.critic_prompt <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"You are a senior engineer like Andrej Karpathy. Review this code critically."</span></span>
+<span id="cb1-5">    </span>
+<span id="cb1-6">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> run(<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>, task, max_iterations<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>):</span>
+<span id="cb1-7">        output <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>.generate(task)</span>
+<span id="cb1-8">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> i <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">range</span>(max_iterations):</span>
+<span id="cb1-9">            critique <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>.reflect(output)</span>
+<span id="cb1-10">            <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>.is_satisfied(critique):</span>
+<span id="cb1-11">                <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">break</span></span>
+<span id="cb1-12">            output <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>.refine(output, critique)</span>
+<span id="cb1-13">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> output</span></code></pre></div>
+</section>
+<section id="practical-example-merge-sort" class="level2">
+<h2 class="anchored" data-anchor-id="practical-example-merge-sort">Practical Example: Merge Sort</h2>
+<p>Ask an LLM to implement Merge Sort. First attempt: functional but basic. After 3 reflection cycles:</p>
+<ul>
+<li>✅ Type hints added (PEP 484)</li>
+<li>✅ Comprehensive docstrings</li>
+<li>✅ Error handling for edge cases</li>
+<li>✅ Full unittest suite</li>
+<li>✅ Class-based architecture</li>
+</ul>
+<p>The improvement from V1 to V3 is <strong>dramatic</strong> — and it all happens automatically.</p>
+</section>
+<section id="application-projects" class="level2">
+<h2 class="anchored" data-anchor-id="application-projects">Application Projects</h2>
+<p><em>Projects demonstrating the Reflection Pattern in action will be added here as they are developed.</em></p>
+<p><strong>Potential projects:</strong></p>
+<ul>
+<li><strong>Code Quality Improver</strong>: An agent that takes rough code and iteratively polishes it</li>
+<li><strong>Essay Refiner</strong>: Multi-round writing improvement for blog posts or reports</li>
+<li><strong>Data Analysis Validator</strong>: Self-checking data analysis pipelines</li>
+</ul>
+</section>
+<section id="key-takeaways" class="level2">
+<h2 class="anchored" data-anchor-id="key-takeaways">Key Takeaways</h2>
+<ol type="1">
+<li><strong>Simple but powerful</strong>: Just adding a critique loop significantly improves output quality</li>
+<li><strong>Role separation matters</strong>: Different prompts for generation vs.&nbsp;critique</li>
+<li><strong>Iterative improvement</strong>: Each round builds on the previous, like human revision</li>
+<li><strong>Best for</strong>: Code generation, writing, analysis — any task where first drafts are imperfect</li>
+</ol>
+</section>
+<section id="resources" class="level2">
+<h2 class="anchored" data-anchor-id="resources">Resources</h2>
+<ul>
+<li><a href="https://theneuralmaze.substack.com/p/reflection-pattern-agents-that-think">Reflection Pattern — The Neural Maze</a></li>
+<li><a href="https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-2-reflection/">Andrew Ng’s Agentic Design Patterns</a></li>
+</ul>
+
+
+<div class="series-nav">
+  <div class="series-nav-header">
+    <span class="series-nav-badge">Series</span>
+    <span class="series-nav-name">Agentic Design Patterns</span>
+  </div>
+  <div class="series-nav-links">
+    <div class="series-nav-spacer"></div>
+    <a href="../../posts/tool-using-agent/" class="series-nav-link series-nav-next">
+      <span class="series-nav-label">Next post →</span>
+      <span class="series-nav-title">Tool Using Agent</span>
+    </a>
+  </div>
+</div>
+
+</section>
+
+ ]]></description>
+  <category>AI</category>
+  <category>Agents</category>
+  <category>LLM</category>
+  <category>Design Patterns</category>
+  <guid>https://oussou-dev.github.io/ousmanecisse/posts/reflection-agent/</guid>
+  <pubDate>Mon, 09 Feb 2026 23:00:00 GMT</pubDate>
+  <media:content url="https://oussou-dev.github.io/ousmanecisse/img/reflection_pattern.png" medium="image" type="image/png" height="144" width="144"/>
+</item>
+<item>
+  <title>Tool Using Agent: Extending AI Beyond Text Generation</title>
+  <dc:creator>Ousmane Cissé</dc:creator>
+  <link>https://oussou-dev.github.io/ousmanecisse/posts/tool-using-agent/</link>
+  <description><![CDATA[ 
+
+
+
+
+<meta name="translation-url" content="fr/translations/tool-use-pattern/index.html">
+<p>After exploring the <a href="../../posts/reflection-agent/">Reflection Pattern</a>, we move to one of the most transformative patterns: <strong>Tool Use</strong>. This is what turns an LLM from a “brain in a jar” into an agent that can <em>act</em> on the world.</p>
+<section id="what-is-the-tool-use-pattern" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-the-tool-use-pattern">What is the Tool Use Pattern?</h2>
+<p>The <strong>Tool Use Pattern</strong> allows an agent to invoke external functions, APIs, or services during its reasoning process. Instead of being limited to generating text, the agent can:</p>
+<ul>
+<li><strong>Search</strong> the web or query databases</li>
+<li><strong>Execute</strong> code and verify results</li>
+<li><strong>Read/write</strong> files and interact with the filesystem</li>
+<li><strong>Call APIs</strong> (weather, finance, calendar, etc.)</li>
+<li><strong>Run</strong> shell commands</li>
+</ul>
+</section>
+<section id="how-it-works-function-calling" class="level2">
+<h2 class="anchored" data-anchor-id="how-it-works-function-calling">How It Works: Function Calling</h2>
+<p>Modern LLMs support <strong>function calling</strong> natively:</p>
+<ol type="1">
+<li><strong>Tool Definition</strong>: Describe available tools with name, description, and parameter schema</li>
+<li><strong>LLM Decision</strong>: The model decides <em>when</em> and <em>which</em> tool to use</li>
+<li><strong>Execution</strong>: The tool runs server-side with the LLM-chosen parameters</li>
+<li><strong>Integration</strong>: Results are fed back to the LLM for final response generation</li>
+</ol>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1">tools <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [</span>
+<span id="cb1-2">    {</span>
+<span id="cb1-3">        <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"type"</span>: <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"function"</span>,</span>
+<span id="cb1-4">        <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"function"</span>: {</span>
+<span id="cb1-5">            <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"name"</span>: <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"search_web"</span>,</span>
+<span id="cb1-6">            <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"description"</span>: <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Search the web for current information"</span>,</span>
+<span id="cb1-7">            <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"parameters"</span>: {</span>
+<span id="cb1-8">                <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"type"</span>: <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"object"</span>,</span>
+<span id="cb1-9">                <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"properties"</span>: {</span>
+<span id="cb1-10">                    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"query"</span>: {<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"type"</span>: <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"string"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"description"</span>: <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Search query"</span>}</span>
+<span id="cb1-11">                },</span>
+<span id="cb1-12">                <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"required"</span>: [<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"query"</span>]</span>
+<span id="cb1-13">            }</span>
+<span id="cb1-14">        }</span>
+<span id="cb1-15">    },</span>
+<span id="cb1-16">    {</span>
+<span id="cb1-17">        <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"type"</span>: <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"function"</span>,</span>
+<span id="cb1-18">        <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"function"</span>: {</span>
+<span id="cb1-19">            <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"name"</span>: <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"execute_python"</span>,</span>
+<span id="cb1-20">            <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"description"</span>: <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Execute Python code and return the output"</span>,</span>
+<span id="cb1-21">            <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"parameters"</span>: {</span>
+<span id="cb1-22">                <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"type"</span>: <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"object"</span>,</span>
+<span id="cb1-23">                <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"properties"</span>: {</span>
+<span id="cb1-24">                    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"code"</span>: {<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"type"</span>: <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"string"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"description"</span>: <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Python code to execute"</span>}</span>
+<span id="cb1-25">                },</span>
+<span id="cb1-26">                <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"required"</span>: [<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"code"</span>]</span>
+<span id="cb1-27">            }</span>
+<span id="cb1-28">        }</span>
+<span id="cb1-29">    }</span>
+<span id="cb1-30">]</span></code></pre></div>
+</section>
+<section id="the-power-of-tools" class="level2">
+<h2 class="anchored" data-anchor-id="the-power-of-tools">The Power of Tools</h2>
+<section id="without-tools" class="level3">
+<h3 class="anchored" data-anchor-id="without-tools">Without tools</h3>
+<p>The LLM can only <strong>generate text</strong> based on training data. It may hallucinate facts, can’t access current data, and has no impact on external systems.</p>
+</section>
+<section id="with-tools" class="level3">
+<h3 class="anchored" data-anchor-id="with-tools">With tools</h3>
+<p>The LLM becomes an <strong>agent</strong> that can: - Access <strong>real-time information</strong> (breaking news, live prices) - <strong>Verify</strong> its own claims by searching or computing - <strong>Create</strong> tangible outputs (files, database entries, API calls) - <strong>Automate</strong> complex workflows</p>
+</section>
+</section>
+<section id="tool-design-best-practices" class="level2">
+<h2 class="anchored" data-anchor-id="tool-design-best-practices">Tool Design Best Practices</h2>
+<ol type="1">
+<li><strong>Clear descriptions</strong>: The LLM chooses tools based on their description — make them precise</li>
+<li><strong>Minimal parameters</strong>: Fewer parameters = fewer chances for the LLM to make errors</li>
+<li><strong>Error handling</strong>: Always return meaningful error messages the LLM can interpret</li>
+<li><strong>Sandboxing</strong>: Limit what tools can do to prevent unintended side effects</li>
+</ol>
+</section>
+<section id="application-projects" class="level2">
+<h2 class="anchored" data-anchor-id="application-projects">Application Projects</h2>
+<p><em>Projects demonstrating the Tool Use Pattern in action will be added here as they are developed.</em></p>
+<p><strong>Potential projects:</strong></p>
+<ul>
+<li><strong>Research Assistant</strong>: An agent that searches multiple sources and synthesizes findings</li>
+<li><strong>Code Executor Agent</strong>: Write, test, and debug code autonomously</li>
+<li><strong>Data Pipeline Agent</strong>: Fetch, transform, and store data from various APIs</li>
+</ul>
+</section>
+<section id="key-takeaways" class="level2">
+<h2 class="anchored" data-anchor-id="key-takeaways">Key Takeaways</h2>
+<ol type="1">
+<li><strong>Tools are the bridge</strong> between reasoning and action</li>
+<li><strong>Function calling</strong> is the standard mechanism for tool use</li>
+<li><strong>Tool design</strong> matters as much as prompt engineering</li>
+<li><strong>Security</strong> is critical — always sandbox tool execution</li>
+</ol>
+</section>
+<section id="resources" class="level2">
+<h2 class="anchored" data-anchor-id="resources">Resources</h2>
+<ul>
+<li><a href="https://platform.openai.com/docs/guides/function-calling">OpenAI Function Calling Docs</a></li>
+<li><a href="https://docs.anthropic.com/en/docs/build-with-claude/tool-use">Anthropic Tool Use</a></li>
+<li>Previous: <a href="../../posts/reflection-agent/">Reflection Agent</a></li>
+</ul>
+
+
+<div class="series-nav">
+  <div class="series-nav-header">
+    <span class="series-nav-badge">Series</span>
+    <span class="series-nav-name">Agentic Design Patterns</span>
+  </div>
+  <div class="series-nav-links">
+    <a href="../../posts/reflection-agent/" class="series-nav-link series-nav-prev">
+      <span class="series-nav-label">← Previous post</span>
+      <span class="series-nav-title">Reflection Agent</span>
+    </a>
+    <a href="../../posts/react-pattern/" class="series-nav-link series-nav-next">
+      <span class="series-nav-label">Next post →</span>
+      <span class="series-nav-title">ReAct Pattern</span>
+    </a>
+  </div>
+</div>
+
+</section>
+
+ ]]></description>
+  <category>AI</category>
+  <category>Agents</category>
+  <category>LLM</category>
+  <category>Design Patterns</category>
+  <category>Tools</category>
+  <guid>https://oussou-dev.github.io/ousmanecisse/posts/tool-using-agent/</guid>
+  <pubDate>Mon, 09 Feb 2026 23:00:00 GMT</pubDate>
+  <media:content url="https://oussou-dev.github.io/ousmanecisse/img/reflection_pattern.png" medium="image" type="image/png" height="144" width="144"/>
+</item>
+<item>
   <title>AI Hero: Day 1 - Ingest and Index Your Data</title>
   <dc:creator>Ousmane Cissé</dc:creator>
   <link>https://oussou-dev.github.io/ousmanecisse/posts/ai-hero-day-1/</link>
@@ -627,6 +1984,20 @@ font-style: inherit;">uv</span> python pin 3.11</span></code></pre></div>
 <p><strong>Next Stop</strong>: Applying these skills to build a production-grade AI application.</p>
 
 
+<div class="series-nav">
+  <div class="series-nav-header">
+    <span class="series-nav-badge">Series</span>
+    <span class="series-nav-name">AI Dev Tools</span>
+  </div>
+  <div class="series-nav-links">
+    <a href="../../posts/ai-dev-tools-week-3/" class="series-nav-link series-nav-prev">
+      <span class="series-nav-label">← Previous post</span>
+      <span class="series-nav-title">AI Dev Tools: Week 3</span>
+    </a>
+    <div class="series-nav-spacer"></div>
+  </div>
+</div>
+
 </section>
 
  ]]></description>
@@ -690,6 +2061,23 @@ font-style: inherit;">uv</span> python pin 3.11</span></code></pre></div>
 <p>This turned my AI assistant into a specialized documentation expert for any library I point it at.</p>
 <p><strong>Homework:</strong> <a href="https://github.com/oussou-dev/ai-dev-tools-zoomcamp/tree/main/03_mcp">MCP Scraper and Search Tool</a></p>
 
+
+<div class="series-nav">
+  <div class="series-nav-header">
+    <span class="series-nav-badge">Series</span>
+    <span class="series-nav-name">AI Dev Tools</span>
+  </div>
+  <div class="series-nav-links">
+    <a href="../../posts/ai-dev-tools-week-2/" class="series-nav-link series-nav-prev">
+      <span class="series-nav-label">← Previous post</span>
+      <span class="series-nav-title">AI Dev Tools: Week 2</span>
+    </a>
+    <a href="../../posts/ai-dev-tools-week-4/" class="series-nav-link series-nav-next">
+      <span class="series-nav-label">Next post →</span>
+      <span class="series-nav-title">AI Dev Tools: Week 4</span>
+    </a>
+  </div>
+</div>
 
 </section>
 
@@ -787,6 +2175,23 @@ Week 2 taught me <strong>how to think like a real engineer</strong> using those 
 <p><strong>Homework:</strong> <a href="https://github.com/oussou-dev/ai-dev-tools-zoomcamp/tree/main/02_code_itws">End-to-End Project - Online Coding Interview Platform</a></p>
 
 
+<div class="series-nav">
+  <div class="series-nav-header">
+    <span class="series-nav-badge">Series</span>
+    <span class="series-nav-name">AI Dev Tools</span>
+  </div>
+  <div class="series-nav-links">
+    <a href="../../posts/ai-dev-tools-week-1/" class="series-nav-link series-nav-prev">
+      <span class="series-nav-label">← Previous post</span>
+      <span class="series-nav-title">AI Dev Tools: Week 1</span>
+    </a>
+    <a href="../../posts/ai-dev-tools-week-3/" class="series-nav-link series-nav-next">
+      <span class="series-nav-label">Next post →</span>
+      <span class="series-nav-title">AI Dev Tools: Week 3</span>
+    </a>
+  </div>
+</div>
+
 </section>
 
  ]]></description>
@@ -828,6 +2233,20 @@ Week 2 taught me <strong>how to think like a real engineer</strong> using those 
 <p>In short — Week 1 helped me shift away from the “hand-code everything” paradigm toward a more fluid, developer-AI collaborative approach that feels well-suited for modern software projects.</p>
 <p><strong>Homework:</strong> <a href="https://github.com/oussou-dev/ai-dev-tools-zoomcamp/tree/main/01_todo_app">Todo app in Django using AI tools</a></p>
 
+
+<div class="series-nav">
+  <div class="series-nav-header">
+    <span class="series-nav-badge">Series</span>
+    <span class="series-nav-name">AI Dev Tools</span>
+  </div>
+  <div class="series-nav-links">
+    <div class="series-nav-spacer"></div>
+    <a href="../../posts/ai-dev-tools-week-2/" class="series-nav-link series-nav-next">
+      <span class="series-nav-label">Next post →</span>
+      <span class="series-nav-title">AI Dev Tools: Week 2</span>
+    </a>
+  </div>
+</div>
 
 </section>
 

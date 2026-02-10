@@ -341,15 +341,41 @@ ul.task-list li input[type="checkbox"] {
                     link.textContent = config.langSwitch.text;
                 }
 
-                // Fix the href: use translation-url if available, otherwise fallback
+                // Fix the href: 
+                // 1. Try translation-url meta tag first
                 if (translationUrl) {
                     let finalUrl = translationUrl;
                     if (!finalUrl.startsWith("/") && !finalUrl.startsWith("http")) {
                         finalUrl = repoName + finalUrl;
                     }
                     link.setAttribute('href', finalUrl);
-                } else {
-                    link.setAttribute('href', repoName + config.langSwitch.href);
+                }
+                // 2. SMART PATH MAPPING (fallback)
+                else {
+                    let targetUrl = config.langSwitch.href; // Default fallback (home)
+
+                    if (isFr) {
+                        // We are in FR, want to go to EN
+                        // Pattern: /fr/some-page.html -> /some-page.html
+                        // Pattern: /fr/projects/foo/index.html -> /projects/foo/index.html
+                        targetUrl = path.replace("/fr/", "/");
+                    } else {
+                        // We are in EN, want to go to FR
+                        // Pattern: /projects/foo/index.html -> /fr/projects/foo/index.html
+                        // Skip if already in fr (redundant check but safe)
+                        if (!path.includes("/fr/")) {
+                            // We need to be careful with the repoName
+                            if (repoName !== "/" && path.startsWith(repoName)) {
+                                targetUrl = path.replace(repoName, repoName + "fr/");
+                            } else {
+                                targetUrl = "/fr" + path;
+                            }
+                        }
+                    }
+
+                    // Clean up double slashes
+                    targetUrl = targetUrl.replace("//", "/");
+                    link.setAttribute('href', targetUrl);
                 }
             }
         });
