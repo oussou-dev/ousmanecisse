@@ -168,66 +168,92 @@ Available for AI consulting, LLM applications, automation and data engineering m
  <!-- /main -->
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        // 1. Helper to determine context
         const path = window.location.pathname;
         const repoName = path.startsWith("/ousmanecisse/") ? "/ousmanecisse/" : "/";
-
-        // Detect current language based on URL structure
-        // If path contains /fr/, we assume French.
         const isFr = path.includes("/fr/");
 
-        // 2. Determine target language and label
-        // If we are in FR, button should say "EN". 
-        // If we are in EN, button should say "FR".
-        const targetLabel = isFr ? "EN" : "FR";
+        // ===================================================================
+        // NAVBAR LINK MAPPINGS
+        // Define the full navbar structure for each language.
+        // This is the single source of truth for the JS-based navbar update.
+        // ===================================================================
+        const navConfig = {
+            en: {
+                left: [
+                    { text: "Projects", href: "projects.html" },
+                    { text: "Blog", href: "blog.html" },
+                    { text: "Robotics & AI", href: "robotics.html" },
+                    { text: "EN --> FR", href: "en-to-fr.html" }
+                ],
+                langSwitch: { text: "FR", href: "fr/index.html" }
+            },
+            fr: {
+                left: [
+                    { text: "Projets", href: "fr/projets.html" },
+                    { text: "Blog", href: "fr/blog.html" },
+                    { text: "Robotique & IA", href: "fr/robotique.html" },
+                    { text: "EN --> FR", href: "fr/en-to-fr.html" }
+                ],
+                langSwitch: { text: "EN", href: "index.html" }
+            }
+        };
 
-        // 3. Get translation URL from meta tag
+        const currentLang = isFr ? "fr" : "en";
+        const config = navConfig[currentLang];
+
+        // ===================================================================
+        // 1. UPDATE LEFT NAVBAR LINKS (Projects, Blog, Robotics, EN-->FR)
+        // ===================================================================
+        const leftNavLinks = document.querySelectorAll('.navbar-nav.me-auto .nav-link');
+
+        leftNavLinks.forEach((link, index) => {
+            if (index < config.left.length) {
+                const item = config.left[index];
+                // Update text (inside <span class="menu-text">)
+                const menuText = link.querySelector('.menu-text');
+                if (menuText) {
+                    menuText.textContent = item.text;
+                } else {
+                    link.textContent = item.text;
+                }
+                // Update href
+                link.setAttribute('href', repoName + item.href);
+            }
+        });
+
+        // ===================================================================
+        // 2. UPDATE LANGUAGE SWITCH BUTTON (FR / EN) + TRANSLATION URL
+        // ===================================================================
+        const rightNavLinks = document.querySelectorAll('.navbar-nav.ms-auto .nav-link');
+
+        // Get translation URL from meta tag (injected by Lua filter)
         let translationUrl = null;
         const metaTag = document.querySelector('meta[name="translation-url"]');
         if (metaTag) {
-            translationUrl = metaTag.getAttribute('content'); // use getAttribute for safety
+            translationUrl = metaTag.getAttribute('content');
         }
 
-        // 4. Construct Final Target URL
-        let finalUrl = "";
-
-        if (translationUrl) {
-            // Logic to prefix repoName if needed
-            let cleanTransUrl = translationUrl;
-            if (repoName !== "/" && !cleanTransUrl.startsWith(repoName) && !cleanTransUrl.startsWith("http")) {
-                cleanTransUrl = repoName + cleanTransUrl;
-                cleanTransUrl = cleanTransUrl.replace("//", "/");
-            } else if (repoName === "/" && !cleanTransUrl.startsWith("/")) {
-                cleanTransUrl = "/" + cleanTransUrl;
-            }
-            finalUrl = cleanTransUrl;
-        } else {
-            // FALLBACK if no metadata is found
-            if (isFr) {
-                // In FR -> Go to EN Home
-                finalUrl = repoName === "/" ? "/index.html" : repoName + "index.html";
-            } else {
-                // In EN -> Go to FR Home
-                finalUrl = repoName === "/" ? "/fr/index.html" : repoName + "fr/index.html";
-            }
-        }
-
-        // 5. Update Navbar Link
-        const langLinks = document.querySelectorAll('.navbar-nav .nav-link');
-        langLinks.forEach(link => {
+        rightNavLinks.forEach(link => {
             const text = link.innerText.trim().toUpperCase();
-
-            // We look for the existing placeholder "FR" or "EN"
             if (text === "FR" || text === "EN") {
-                // FORCE the label to be correct based on current page context
-                link.innerText = targetLabel;
+                // Fix the label
+                const menuText = link.querySelector('.menu-text');
+                if (menuText) {
+                    menuText.textContent = config.langSwitch.text;
+                } else {
+                    link.textContent = config.langSwitch.text;
+                }
 
-                // Set the URL
-                link.setAttribute('href', finalUrl);
-
-                // Add click listener just to be safe regarding browser default behaviors/SPA router if any
-                // But normally href change is enough.
-                // We leave it as a standard link.
+                // Fix the href: use translation-url if available, otherwise fallback
+                if (translationUrl) {
+                    let finalUrl = translationUrl;
+                    if (!finalUrl.startsWith("/") && !finalUrl.startsWith("http")) {
+                        finalUrl = repoName + finalUrl;
+                    }
+                    link.setAttribute('href', finalUrl);
+                } else {
+                    link.setAttribute('href', repoName + config.langSwitch.href);
+                }
             }
         });
     });
