@@ -78,9 +78,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-9de4ba47141a85e0076d50a48ec97bbb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../../site_libs/bootstrap/bootstrap-dark-fb0387139d7df336a858ae67ce89b33c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../../site_libs/bootstrap/bootstrap-9de4ba47141a85e0076d50a48ec97bbb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-a510d2b94e9a6df00c1ffa958b8cecbb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-e23e6d19005560c2f2a4d7e5a18a7266.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../site_libs/bootstrap/bootstrap-a510d2b94e9a6df00c1ffa958b8cecbb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../../../site_libs/quarto-contrib/jquery-3.6.3/jquery-3.6.3.min.js"></script>
+<script src="../../../site_libs/quarto-contrib/code-fullscreen-1.0.0/code-fullscreen.js" defer="true"></script>
+<link href="../../../site_libs/quarto-contrib/code-fullscreen-1.0.0/code-fullscreen.css" rel="stylesheet">
+<script src="../../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -108,6 +114,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Recherche"
   }
 }</script>
+<style>html{ scroll-behavior: smooth; }</style>
 
 
 <link rel="stylesheet" href="../../../styles.css">
@@ -301,16 +308,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link" href="../../../fr/en-to-fr.html"> 
+<span class="menu-text">POSTS TRADUITS</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../../../fr/livres.html"> 
-<span class="menu-text">REVUE DE LIVRES</span></a>
+<span class="menu-text">Revue de Livres</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../../../fr/robotique.html"> 
 <span class="menu-text">Robotique &amp; IA</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../../fr/en-to-fr.html"> 
-<span class="menu-text">EN –&gt; FR</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
@@ -404,15 +411,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Pourquoi ? Pour bien comprendre ce qui se passe sous le capot. On commence par le <strong>pattern de réflexion</strong>, le plus simple, mais qui apporte des gains de qualité surprenants.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../../../img/reflection_pattern.png" class="img-fluid figure-img"></p>
+<p><a href="../../../img/reflection_pattern.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Illustration du pattern de réflexion"><img src="../../../img/reflection_pattern.png" class="img-fluid figure-img" alt="Illustration du pattern de réflexion"></a></p>
 <figcaption>Illustration du pattern de réflexion</figcaption>
 </figure>
 </div>
 <section id="le-pattern-de-réflexion-en-bref" class="level2">
 <h2 class="anchored" data-anchor-id="le-pattern-de-réflexion-en-bref">Le pattern de réflexion en bref</h2>
 <p>Le <strong>pattern de réflexion</strong> permet à un agent d’évaluer sa propre production et de l’améliorer itérativement. L’idée : générer une réponse, la critiquer, l’ajuster, et recommencer.</p>
-<p>C’est une <strong>boucle simple</strong> en 4 étapes : 1. <strong>Génération</strong> : Le LLM produit une première version. 2. <strong>Réflexion</strong> : Le LLM critique cette version (erreurs, améliorations possibles). 3. <strong>Correction</strong> : Le LLM intègre les critiques pour raffiner la sortie. 4. <strong>Répétition</strong> : Retour à l’étape 1.</p>
-<p><strong>Quand arrêter la boucle ?</strong> - Après un <strong>nombre fixe d’itérations</strong> (ex. : 3 tours). - Quand le LLM génère un <strong>signal d’arrêt</strong> (ex. : “OK”, “Parfait”, “Final”).</p>
+<p>C’est une <strong>boucle simple</strong> en 4 étapes :<br>
+1. <strong>Génération</strong> : Le LLM produit une première version.<br>
+2. <strong>Réflexion</strong> : Le LLM critique cette version (erreurs, améliorations possibles).<br>
+3. <strong>Correction</strong> : Le LLM intègre les critiques pour raffiner la sortie.<br>
+4. <strong>Répétition</strong> : Retour à l’étape 1</p>
+<p><strong>Quand arrêter la boucle ?</strong><br>
+- Après un <strong>nombre fixe d’itérations</strong> (ex. : 3 tours).<br>
+- Quand le LLM génère un <strong>signal d’arrêt</strong> (ex. : “OK”, “Parfait”, “Final”).</p>
 <p>Malgré sa simplicité, ce pattern booste la qualité des réponses, surtout pour du code, des analyses ou des textes complexes.</p>
 </section>
 <section id="implémentation-de-zéro-la-boucle-de-réflexion" class="level2">
@@ -450,13 +463,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="étape-2-phase-de-réflexion">Étape 2 : Phase de réflexion</h3>
 <p>Nouveau prompt système : “Tu es un expert comme Andrej Karpathy. Critique ce code Python : erreurs, style, améliorations, tests.”</p>
 <p>On passe le code généré comme message utilisateur.</p>
-<p>Critiques typiques : - Ajouter des <strong>type hints</strong> (PEP 484). - Améliorer les <strong>noms de variables</strong> (left → left_half). - Ajouter <strong>docstrings détaillées</strong> et <strong>gestion d’erreurs</strong>. - Inclure <strong>tests unitaires</strong>.</p>
+<p>Critiques typiques :<br>
+- Ajouter des <strong>type hints</strong> (PEP 484).<br>
+- Améliorer les <strong>noms de variables</strong> (left → left_half).<br>
+- Ajouter <strong>docstrings détaillées</strong> et <strong>gestion d’erreurs</strong>.<br>
+- Inclure <strong>tests unitaires</strong>.</p>
 </section>
 <section id="étape-3-intégration-et-nouvelle-génération" class="level3">
 <h3 class="anchored" data-anchor-id="étape-3-intégration-et-nouvelle-génération">Étape 3 : Intégration et nouvelle génération</h3>
 <p>On ajoute les critiques à l’historique de génération. Le LLM produit une version 2 : classe orientée objet, tests unittest, edge cases gérés.</p>
 <p>La boucle continue jusqu’au critère d’arrêt. Résultat final : un code production-ready avec classe, tests complets (vides, doublons, négatifs), complexité indiquée.</p>
-<p><strong>Le repo GitHub</strong> de la série contient une classe <code>ReflectionAgent</code> qui encapsule tout ça proprement.</p>
+<p><a href="https://github.com/neural-maze/agentic_patterns/blob/main/src/agentic_patterns/reflection_pattern/reflection_agent.py"><strong>Le repo GitHub</strong></a> de la série contient une classe <code>ReflectionAgent</code> qui encapsule tout ça proprement.</p>
 </section>
 </section>
 <section id="lagent-de-réflexion-en-action" class="level2">
@@ -479,14 +496,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="prochaines-étapes" class="level2">
 <h2 class="anchored" data-anchor-id="prochaines-étapes">Prochaines étapes</h2>
-<p>Prochain article : les <strong>outils</strong>, ingrédient clé pour rendre les agents vraiment utiles. Abonne-toi pour ne pas rater !</p>
+<p>Prochain article : les <strong>outils</strong>, ingrédient clé pour rendre les agents vraiment utiles.</p>
 </section>
 <section id="ressources" class="level2">
 <h2 class="anchored" data-anchor-id="ressources">Ressources</h2>
 <ul>
 <li>Article original : <a href="https://theneuralmaze.substack.com/p/reflection-pattern-agents-that-think">Reflection Pattern</a></li>
-<li>Vidéo YouTube (si dispo dans l’original)</li>
-<li>Code source : <a href="lien-vers-repo">GitHub de la série</a></li>
+<li><a href="https://www.youtube.com/watch?v=0sAVI8bQdRc">Vidéo YouTube</a></li>
 </ul>
 
 
@@ -509,7 +525,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </section>
 
-</main> <!-- /main -->
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Retour au sommet</a></main> <!-- /main -->
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         const path = window.location.pathname;
@@ -1044,8 +1060,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   });
   </script>
 </div> <!-- /content -->
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 
 
+<script src="../../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

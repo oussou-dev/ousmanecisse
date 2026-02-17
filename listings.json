@@ -1,5 +1,16 @@
 [
   {
+    "listing": "/fr/projets.html",
+    "items": [
+      "/fr/projects/ai-hero/index.html",
+      "/fr/projects/nocode-ai/index.html",
+      "/fr/projects/data-engineering/index.html",
+      "/fr/projects/ml-zoomcamp/index.html",
+      "/fr/projects/langchain-vectordb/index.html",
+      "/fr/projects/ai-dev-tools/index.html"
+    ]
+  },
+  {
     "listing": "/fr/blog.html",
     "items": [
       "/fr/posts/poetry-vs-uv/index.html",
@@ -12,31 +23,20 @@
     ]
   },
   {
+    "listing": "/fr/en-to-fr.html",
+    "items": [
+      "/fr/translations/reflection-pattern/index.html",
+      "/fr/translations/what-is-an-agent/index.html",
+      "/fr/translations/multi-agent-pattern/index.html",
+      "/fr/translations/planning-pattern/index.html",
+      "/fr/translations/tool-use-pattern/index.html"
+    ]
+  },
+  {
     "listing": "/fr/livres.html",
     "items": [
       "/fr/books/llm-handbook/index.html",
       "/fr/books/mistral/index.html"
-    ]
-  },
-  {
-    "listing": "/fr/en-to-fr.html",
-    "items": [
-      "/fr/translations/planning-pattern/index.html",
-      "/fr/translations/multiagent-pattern/index.html",
-      "/fr/translations/tool-use-pattern/index.html",
-      "/fr/translations/reflection-pattern/index.html",
-      "/fr/translations/what-is-an-agent/index.html"
-    ]
-  },
-  {
-    "listing": "/fr/projets.html",
-    "items": [
-      "/fr/projects/ai-hero/index.html",
-      "/fr/projects/nocode-ai/index.html",
-      "/fr/projects/data-engineering/index.html",
-      "/fr/projects/ml-zoomcamp/index.html",
-      "/fr/projects/langchain-vectordb/index.html",
-      "/fr/projects/ai-dev-tools/index.html"
     ]
   }
 ]

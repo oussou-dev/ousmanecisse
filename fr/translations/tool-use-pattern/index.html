@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Découvrez le Tool Use Pattern : comment les agents utilisent des outils pour interagir avec le monde réel.">
+<meta name="description" content="Découvrez comment équiper vos agents d’outils pour qu’ils puissent interagir avec le monde extérieur : météo, bourse, et plus encore.">
 
-<title>Le pattern d’utilisation d’outils : quand les agents agissent sur le monde – OUSMANE CISSE</title>
+<title>Le pattern d’utilisation d’outils : le pont vers le monde extérieur – OUSMANE CISSE</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,41 +20,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -78,9 +43,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-9de4ba47141a85e0076d50a48ec97bbb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../../site_libs/bootstrap/bootstrap-dark-fb0387139d7df336a858ae67ce89b33c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../../site_libs/bootstrap/bootstrap-9de4ba47141a85e0076d50a48ec97bbb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-a510d2b94e9a6df00c1ffa958b8cecbb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-e23e6d19005560c2f2a4d7e5a18a7266.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../site_libs/bootstrap/bootstrap-a510d2b94e9a6df00c1ffa958b8cecbb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../../../site_libs/quarto-contrib/jquery-3.6.3/jquery-3.6.3.min.js"></script>
+<script src="../../../site_libs/quarto-contrib/code-fullscreen-1.0.0/code-fullscreen.js" defer="true"></script>
+<link href="../../../site_libs/quarto-contrib/code-fullscreen-1.0.0/code-fullscreen.css" rel="stylesheet">
+<script src="../../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -108,6 +79,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Recherche"
   }
 }</script>
+<style>html{ scroll-behavior: smooth; }</style>
 
 
 <link rel="stylesheet" href="../../../styles.css">
@@ -301,16 +273,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link" href="../../../fr/en-to-fr.html"> 
+<span class="menu-text">POSTS TRADUITS</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../../../fr/livres.html"> 
-<span class="menu-text">REVUE DE LIVRES</span></a>
+<span class="menu-text">Revue de Livres</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../../../fr/robotique.html"> 
 <span class="menu-text">Robotique &amp; IA</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../../fr/en-to-fr.html"> 
-<span class="menu-text">EN –&gt; FR</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
@@ -345,16 +317,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Sur cette page</h2>
    
   <ul>
-  <li><a href="#le-tool-use-pattern-en-bref" id="toc-le-tool-use-pattern-en-bref" class="nav-link active" data-scroll-target="#le-tool-use-pattern-en-bref">Le Tool Use Pattern en bref</a></li>
-  <li><a href="#comment-ça-fonctionne" id="toc-comment-ça-fonctionne" class="nav-link" data-scroll-target="#comment-ça-fonctionne">Comment ça fonctionne ?</a></li>
-  <li><a href="#cas-dusage-concrets" id="toc-cas-dusage-concrets" class="nav-link" data-scroll-target="#cas-dusage-concrets">Cas d’usage concrets</a>
+  <li><a href="#le-pattern-dutilisation-doutils-en-bref" id="toc-le-pattern-dutilisation-doutils-en-bref" class="nav-link active" data-scroll-target="#le-pattern-dutilisation-doutils-en-bref">Le pattern d’utilisation d’outils en bref</a></li>
+  <li><a href="#implémentation-de-zéro-construire-un-outil" id="toc-implémentation-de-zéro-construire-un-outil" class="nav-link" data-scroll-target="#implémentation-de-zéro-construire-un-outil">Implémentation de zéro : construire un outil</a>
   <ul class="collapse">
-  <li><a href="#recherche-dinformations" id="toc-recherche-dinformations" class="nav-link" data-scroll-target="#recherche-dinformations">Recherche d’informations</a></li>
-  <li><a href="#exécution-de-code" id="toc-exécution-de-code" class="nav-link" data-scroll-target="#exécution-de-code">Exécution de code</a></li>
-  <li><a href="#gestion-de-fichiers" id="toc-gestion-de-fichiers" class="nav-link" data-scroll-target="#gestion-de-fichiers">Gestion de fichiers</a></li>
+  <li><a href="#un-system-prompt-qui-fonctionne" id="toc-un-system-prompt-qui-fonctionne" class="nav-link" data-scroll-target="#un-system-prompt-qui-fonctionne">Un System Prompt qui fonctionne</a></li>
   </ul></li>
-  <li><a href="#pourquoi-cest-un-game-changer" id="toc-pourquoi-cest-un-game-changer" class="nav-link" data-scroll-target="#pourquoi-cest-un-game-changer">Pourquoi c’est un game-changer ?</a></li>
-  <li><a href="#applications-pratiques" id="toc-applications-pratiques" class="nav-link" data-scroll-target="#applications-pratiques">Applications pratiques</a></li>
+  <li><a href="#le-décorateur-doutils" id="toc-le-décorateur-doutils" class="nav-link" data-scroll-target="#le-décorateur-doutils">Le décorateur d’outils</a></li>
+  <li><a href="#pourquoi-ça-marche-si-bien" id="toc-pourquoi-ça-marche-si-bien" class="nav-link" data-scroll-target="#pourquoi-ça-marche-si-bien">Pourquoi ça marche si bien ?</a></li>
+  <li><a href="#prochaines-étapes" id="toc-prochaines-étapes" class="nav-link" data-scroll-target="#prochaines-étapes">Prochaines étapes</a></li>
   <li><a href="#ressources" id="toc-ressources" class="nav-link" data-scroll-target="#ressources">Ressources</a></li>
   </ul>
 </nav>
@@ -365,7 +335,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Le pattern d’utilisation d’outils : quand les agents agissent sur le monde</h1>
+<h1 class="title">Le pattern d’utilisation d’outils : le pont vers le monde extérieur</h1>
   <div class="quarto-categories">
     <div class="quarto-category">IA</div>
     <div class="quarto-category">Agents</div>
@@ -376,7 +346,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div>
   <div class="description">
-    Découvrez le Tool Use Pattern : comment les agents utilisent des outils pour interagir avec le monde réel.
+    Découvrez comment équiper vos agents d’outils pour qu’ils puissent interagir avec le monde extérieur : météo, bourse, et plus encore.
   </div>
 </div>
 
@@ -387,7 +357,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Date de publication</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">10 février 2026</p>
+      <p class="date">21 mai 2025</p>
     </div>
   </div>
   
@@ -400,73 +370,136 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <meta name="translation-url" content="posts/tool-using-agent/index.html">
-<p>Après avoir découvert le <a href="../../../fr/translations/reflection-pattern/">pattern de réflexion</a>, nous passons à un pattern encore plus puissant : le <strong>Tool Use Pattern</strong>. C’est ce qui permet à un agent de passer de “je peux raisonner” à “je peux agir”.</p>
-<section id="le-tool-use-pattern-en-bref" class="level2">
-<h2 class="anchored" data-anchor-id="le-tool-use-pattern-en-bref">Le Tool Use Pattern en bref</h2>
-<p>Le <strong>Tool Use Pattern</strong> (ou pattern d’utilisation d’outils) permet à un agent d’exécuter des actions concrètes en appelant des fonctions ou des APIs externes. Au lieu de se limiter à générer du texte, l’agent peut :</p>
+<p>Après avoir exploré le <a href="../../../fr/translations/reflection-pattern/">pattern de réflexion</a>, nous aurions pu croire que nos agents étaient imbattables. Un agent capable de réfléchir sur sa propre production, quoi de mieux ? 🤔</p>
+<p>Pourtant, le pattern de réflexion a une faiblesse majeure. Que se passe-t-il si vous demandez à cet agent le prix actuel de l’action NVIDIA ? Ou la température d’hier à Madrid ? Comme vous le savez, l’information encodée dans les poids d’un LLM ne suffit pas à fournir des réponses précises, fraîches et spécifiques au contexte.</p>
+<p><strong>C’est pourquoi nous devons équiper notre agent de moyens d’accéder au monde extérieur</strong> 🌍. C’est ici qu’interviennent les <strong>Outils</strong> (Tools). Fondamentalement, les outils sont des fonctions que le LLM peut appeler pour renforcer ses capacités. C’est le cœur du deuxième pattern : le <strong>Tool Pattern</strong>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://substackcdn.com/image/fetch/$s_!3kuk!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbed0a61b-a747-4d5b-b2bb-48ee2e520f8e_1080x1080.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Le Tool Use Pattern"><img src="https://substackcdn.com/image/fetch/$s_!3kuk!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbed0a61b-a747-4d5b-b2bb-48ee2e520f8e_1080x1080.png" class="img-fluid figure-img" alt="Le Tool Use Pattern"></a></p>
+<figcaption>Le Tool Use Pattern</figcaption>
+</figure>
+</div>
+<blockquote class="blockquote">
+<p>Vous pouvez trouver le code de toute la série sur <a href="https://github.com/neural-maze/agentic_patterns">GitHub</a> !</p>
+</blockquote>
+<hr>
+<section id="le-pattern-dutilisation-doutils-en-bref" class="level2">
+<h2 class="anchored" data-anchor-id="le-pattern-dutilisation-doutils-en-bref">Le pattern d’utilisation d’outils en bref</h2>
+<p>Le <strong>Tool Use Pattern</strong> permet à un agent d’exécuter des actions concrètes en appelant des fonctions ou des APIs externes. Au lieu de se limiter à générer du texte, l’agent peut :<br>
+- <strong>Rechercher</strong> des informations fraîches et véridiques.<br>
+- <strong>Effectuer</strong> des calculs complexes ou des opérations de données.<br>
+- <strong>Interagir</strong> avec des services tiers (météo, bourse, GitHub, etc.).</p>
+<p>Dans ce post, vous apprendrez comment fonctionnent les outils et comment les construire de zéro en utilisant <strong>Python</strong> et les LLM de <strong>Groq</strong>.</p>
+<hr>
+</section>
+<section id="implémentation-de-zéro-construire-un-outil" class="level2">
+<h2 class="anchored" data-anchor-id="implémentation-de-zéro-construire-un-outil">Implémentation de zéro : construire un outil</h2>
+<p>Commençons par les bases. Regardez cette fonction extrêmement simple :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://substackcdn.com/image/fetch/$s_!PB2G!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F976aaf37-3b4e-4df7-9c3a-17921446964e_2848x1640.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Fonction simple"><img src="https://substackcdn.com/image/fetch/$s_!PB2G!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F976aaf37-3b4e-4df7-9c3a-17921446964e_2848x1640.png" class="img-fluid figure-img" alt="Fonction simple"></a></p>
+<figcaption>Fonction simple</figcaption>
+</figure>
+</div>
+<p>La question est : <strong>comment rendre cette fonction disponible pour un LLM ?</strong></p>
+<section id="un-system-prompt-qui-fonctionne" class="level3">
+<h3 class="anchored" data-anchor-id="un-system-prompt-qui-fonctionne">Un System Prompt qui fonctionne</h3>
+<p>Pour que le LLM soit conscient de cette fonction, nous devons lui fournir des informations pertinentes dans le contexte : nom de la fonction, arguments, description, etc. Regardez le <strong>System Prompt</strong> suivant :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://substackcdn.com/image/fetch/$s_!ZwcG!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F496740b3-2d98-4816-bca5-103d326985fd_4752x2888.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="System Prompt"><img src="https://substackcdn.com/image/fetch/$s_!ZwcG!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F496740b3-2d98-4816-bca5-103d326985fd_4752x2888.png" class="img-fluid figure-img" alt="System Prompt"></a></p>
+<figcaption>System Prompt</figcaption>
+</figure>
+</div>
+<p>Ce prompt force le LLM à se comporter comme un modèle de “function calling” qui, à partir d’une liste de signatures de fonctions entre des balises XML, sélectionnera celle à utiliser.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://substackcdn.com/image/fetch/$s_!BZtX!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb417c78d-728a-4da1-8c09-c6f85f2edb90_2080x724.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Balises XML"><img src="https://substackcdn.com/image/fetch/$s_!BZtX!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb417c78d-728a-4da1-8c09-c6f85f2edb90_2080x724.png" class="img-fluid figure-img" alt="Balises XML"></a></p>
+<figcaption>Balises XML</figcaption>
+</figure>
+</div>
+<p>Testons en pratique avec une question simple : “Quelle est la température actuelle à Madrid en Celsius ?”</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://substackcdn.com/image/fetch/$s_!ILCZ!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe9e32bb0-fbbb-4ba9-bca2-2c6aa539ca22_2796x2320.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Requête et réponse de l’LLM"><img src="https://substackcdn.com/image/fetch/$s_!ILCZ!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe9e32bb0-fbbb-4ba9-bca2-2c6aa539ca22_2796x2320.png" class="img-fluid figure-img" alt="Requête et réponse de l’LLM"></a></p>
+<figcaption>Requête et réponse de l’LLM</figcaption>
+</figure>
+</div>
+<p>Après avoir exécuté ce code, nous voyons que le LLM génère l’appel à l’outil :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://substackcdn.com/image/fetch/$s_!tmMi!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff21ec4f3-bc3a-4a2b-9eb9-82b39e7c66a2_2295x892.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Appel généré"><img src="https://substackcdn.com/image/fetch/$s_!tmMi!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff21ec4f3-bc3a-4a2b-9eb9-82b39e7c66a2_2295x892.png" class="img-fluid figure-img" alt="Appel généré"></a></p>
+<figcaption>Appel généré</figcaption>
+</figure>
+</div>
+<p>C’est une avancée ! Nous n’avons pas encore la réponse finale, mais nous savons comment l’obtenir. Il nous suffit de :<br>
+1. <strong>Parser</strong> la sortie du LLM (supprimer les balises XML).<br>
+2. <strong>Charger</strong> la sortie sous forme de dictionnaire Python.</p>
+<p>L’implémentation de ces étapes est disponible <a href="https://github.com/neural-maze/agentic_patterns/blob/main/src/agentic_patterns/utils/completions.py">dans ce module Python</a>. Une fois les arguments en place, exécuter la fonction devient facile :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://substackcdn.com/image/fetch/$s_!Q51K!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F008e7d77-ebfb-4e18-872d-582a4781d308_2366x556.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Exécution de la fonction"><img src="https://substackcdn.com/image/fetch/$s_!Q51K!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F008e7d77-ebfb-4e18-872d-582a4781d308_2366x556.png" class="img-fluid figure-img" alt="Exécution de la fonction"></a></p>
+<figcaption>Exécution de la fonction</figcaption>
+</figure>
+</div>
+<p>Le résultat est exactement ce qu’on attendait : <code>{"temperature": 25, "unit": "celsius"}</code>. Enfin, nous ajoutons ce résultat à l’historique du chat pour que le LLM puisse répondre à l’utilisateur :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://substackcdn.com/image/fetch/$s_!8zwX!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F201b316c-ffa5-4c52-af87-ebcdcc6fad46_1685x1228.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Réponse finale de l’agent"><img src="https://substackcdn.com/image/fetch/$s_!8zwX!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F201b316c-ffa5-4c52-af87-ebcdcc6fad46_1685x1228.png" class="img-fluid figure-img" alt="Réponse finale de l’agent"></a></p>
+<figcaption>Réponse finale de l’agent</figcaption>
+</figure>
+</div>
+<p>Et voilà comment un outil fonctionne sous le capot !</p>
+<hr>
+</section>
+</section>
+<section id="le-décorateur-doutils" class="level2">
+<h2 class="anchored" data-anchor-id="le-décorateur-doutils">Le décorateur d’outils</h2>
+<p>Automatiser la transformation de n’importe quelle fonction en outil est essentiel. C’est là qu’intervient le <strong>décorateur d’outils</strong> (tool decorator), qui transforme une fonction Python en un objet <a href="https://github.com/neural-maze/agentic_patterns/blob/main/src/agentic_patterns/tool_pattern/tool.py#L58">Tool</a>. Vous pouvez voir l’implémentation du <a href="https://github.com/neural-maze/agentic_patterns/blob/main/src/agentic_patterns/tool_pattern/tool.py#L89">tool_decorator ici</a>.</p>
+<p>Pour voir le décorateur en action, construisons un outil qui interagit avec <a href="https://news.ycombinator.com/">Hacker News</a> :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://substackcdn.com/image/fetch/$s_!cv8a!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F37ef1afe-151c-4d41-8fa5-4c14399dc632_3836x4420.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="Décorateur d’outil Hacker News"><img src="https://substackcdn.com/image/fetch/$s_!cv8a!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F37ef1afe-151c-4d41-8fa5-4c14399dc632_3836x4420.png" class="img-fluid figure-img" alt="Décorateur d’outil Hacker News"></a></p>
+<figcaption>Décorateur d’outil Hacker News</figcaption>
+</figure>
+</div>
+<p>Le bloc de code ci-dessus transforme la fonction <code>fetch_top_hacker_news_stories</code> en un <code>Tool</code>. Sous le capot, la classe <code>Tool</code> génère automatiquement la signature de la fonction (vous pouvez voir comment <a href="https://github.com/neural-maze/agentic_patterns/blob/main/src/agentic_patterns/tool_pattern/tool.py#L5">ici</a>).</p>
+<p>Maintenant que nous avons notre outil, lançons l’<a href="https://github.com/neural-maze/agentic_patterns/blob/main/src/agentic_patterns/tool_pattern/tool_agent.py#L38">agent</a> :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://substackcdn.com/image/fetch/$s_!tOvz!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3a52fada-2cb1-423e-b258-71c2eba21a90_3236x704.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Lancement de l’agent"><img src="https://substackcdn.com/image/fetch/$s_!tOvz!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3a52fada-2cb1-423e-b258-71c2eba21a90_3236x704.png" class="img-fluid figure-img" alt="Lancement de l’agent"></a></p>
+<figcaption>Lancement de l’agent</figcaption>
+</figure>
+</div>
+<p>Et voilà ! Un outil pleinement fonctionnel 🛠️ :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://substackcdn.com/image/fetch/$s_!nb43!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0a84cb6b-f27e-4e6b-9c0a-3284a912fc00_3772x1008.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="Résultat final de l’outil"><img src="https://substackcdn.com/image/fetch/$s_!nb43!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0a84cb6b-f27e-4e6b-9c0a-3284a912fc00_3772x1008.png" class="img-fluid figure-img" alt="Résultat final de l’outil"></a></p>
+<figcaption>Résultat final de l’outil</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+<section id="pourquoi-ça-marche-si-bien" class="level2">
+<h2 class="anchored" data-anchor-id="pourquoi-ça-marche-si-bien">Pourquoi ça marche si bien ?</h2>
 <ul>
-<li><strong>Rechercher</strong> sur le web ou dans des bases de données</li>
-<li><strong>Calculer</strong> des résultats mathématiques complexes</li>
-<li><strong>Créer ou modifier</strong> des fichiers, des tickets, des entrées en base</li>
-<li><strong>Interagir</strong> avec des services externes (météo, bourse, calendrier, etc.)</li>
+<li><strong>Accès au monde réel</strong> : Dépasse les limites de connaissances statiques du modèle.</li>
+<li><strong>Actions concrètes</strong> : Permet de passer de la réflexion à l’exécution.</li>
+<li><strong>Extensibilité</strong> : N’importe quelle API ou fonction locale devient une capacité pour l’agent.</li>
 </ul>
 </section>
-<section id="comment-ça-fonctionne" class="level2">
-<h2 class="anchored" data-anchor-id="comment-ça-fonctionne">Comment ça fonctionne ?</h2>
-<p>Le mécanisme repose sur le <strong>function calling</strong> (appel de fonction) :</p>
-<ol type="1">
-<li><strong>Description des outils</strong> : On décrit au LLM les outils disponibles (nom, paramètres, description)</li>
-<li><strong>Choix du LLM</strong> : Face à une requête, le modèle décide <em>s’il</em> doit utiliser un outil et <em>lequel</em></li>
-<li><strong>Exécution</strong> : L’outil est exécuté côté serveur avec les paramètres choisis par le LLM</li>
-<li><strong>Intégration</strong> : Le résultat est renvoyé au LLM qui l’intègre dans sa réponse</li>
-</ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Exemple simplifié</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>tools <span class="op">=</span> [</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    {</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">"name"</span>: <span class="st">"search_web"</span>,</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">"description"</span>: <span class="st">"Recherche sur le web"</span>,</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">"parameters"</span>: {<span class="st">"query"</span>: <span class="st">"string"</span>}</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    },</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    {</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>        <span class="st">"name"</span>: <span class="st">"get_weather"</span>,</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        <span class="st">"description"</span>: <span class="st">"Obtenir la météo d'une ville"</span>,</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        <span class="st">"parameters"</span>: {<span class="st">"city"</span>: <span class="st">"string"</span>}</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>]</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="cas-dusage-concrets" class="level2">
-<h2 class="anchored" data-anchor-id="cas-dusage-concrets">Cas d’usage concrets</h2>
-<section id="recherche-dinformations" class="level3">
-<h3 class="anchored" data-anchor-id="recherche-dinformations">Recherche d’informations</h3>
-<p>L’agent peut interroger un moteur de recherche pour obtenir des données récentes, au-delà de sa date de coupure d’entraînement.</p>
-</section>
-<section id="exécution-de-code" class="level3">
-<h3 class="anchored" data-anchor-id="exécution-de-code">Exécution de code</h3>
-<p>Un outil <code>execute_python</code> permet à l’agent de tester et vérifier du code, plutôt que de le générer “à l’aveugle”.</p>
-</section>
-<section id="gestion-de-fichiers" class="level3">
-<h3 class="anchored" data-anchor-id="gestion-de-fichiers">Gestion de fichiers</h3>
-<p>Lire, créer, modifier des fichiers locaux — la base de tout agent de développement.</p>
-</section>
-</section>
-<section id="pourquoi-cest-un-game-changer" class="level2">
-<h2 class="anchored" data-anchor-id="pourquoi-cest-un-game-changer">Pourquoi c’est un game-changer ?</h2>
-<p>Sans outils, un LLM est un <strong>cerveau dans un bocal</strong> : brillant mais impuissant. Avec des outils :</p>
-<ul>
-<li>Il accède à des <strong>données en temps réel</strong></li>
-<li>Il peut <strong>agir</strong> sur le monde (pas seulement en parler)</li>
-<li>Il devient <strong>réellement utile</strong> dans des workflows professionnels</li>
-</ul>
-</section>
-<section id="applications-pratiques" class="level2">
-<h2 class="anchored" data-anchor-id="applications-pratiques">Applications pratiques</h2>
-<p><em>Cette section sera complétée avec des projets d’application concrets liés au Tool Use Pattern.</em></p>
+<section id="prochaines-étapes" class="level2">
+<h2 class="anchored" data-anchor-id="prochaines-étapes">Prochaines étapes</h2>
+<p>Dans le prochain post de cette série, nous aborderons le <strong>Planning Pattern</strong>, la technique <strong>ReAct</strong> et comment implémenter des heuristiques de raisonnement pour nos agents.</p>
 </section>
 <section id="ressources" class="level2">
 <h2 class="anchored" data-anchor-id="ressources">Ressources</h2>
 <ul>
-<li>Article original : <a href="https://theneuralmaze.substack.com/">Tool Use Pattern</a></li>
-<li>Article précédent : <a href="../../../fr/translations/reflection-pattern/">Le pattern de réflexion</a></li>
+<li>Article original : <a href="https://theneuralmaze.substack.com/p/agent-tools-the-bridge-to-the-outside">Agent Tools: The bridge to the outside world</a><br>
+</li>
+<li><a href="https://www.youtube.com/watch?v=0sAVI8bQdRc">Vidéo YouTube couvrant le Tool Pattern</a><br>
+</li>
+<li><a href="https://github.com/neural-maze/agentic_patterns">GitHub de la série</a></li>
 </ul>
 
 
@@ -489,7 +522,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </section>
 
-</main> <!-- /main -->
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Retour au sommet</a></main> <!-- /main -->
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         const path = window.location.pathname;
@@ -1024,8 +1057,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   });
   </script>
 </div> <!-- /content -->
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 
 
+<script src="../../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>
