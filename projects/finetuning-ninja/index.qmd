@@ -1,0 +1,38 @@
+---
+title: "Finetuning Ninja"
+subtitle: "A guided journey from pre-training to reasoning models."
+date: "2026-02-04"
+image: "finetuning-ninja.png"
+about:
+  template: jolla
+  links:
+    - icon: github
+      text: "View on GitHub"
+      href: https://github.com/oussou-dev/finetuning-sessions?tab=readme-ov-file
+include-in-header:
+  text: |
+    <meta http-equiv="refresh" content="0; url='https://github.com/oussou-dev/finetuning-sessions?tab=readme-ov-file'" />
+categories: [LLM, Finetuning, Python, GenAI, Hands-on]
+description: "Master the art of LLM finetuning! A comprehensive project covering everything from SFT basics to advanced LoRA, QLoRA, RLHF, and multimodal techniques."
+lang: en
+format: html
+translation-url: "fr/projects/finetuning-ninja/index.html"
+---
+
+## 🥷 Project Overview
+
+**Finetuning Ninja** is a hands-on project designed to build deep intuition and practical skills in training Large Language Models (LLMs). From setting up the lab environment to deploying reasoning models, this repository guides you through every critical step.
+
+It covers the complete lifecycle:
+- **Foundations**: Understanding the finetuning landscape and supervised finetuning (SFT).
+- **Efficiency**: Leveraging Parameter-Efficient Finetuning (PEFT) with **LoRA** and **QLoRA**.
+- **Alignment**: Aligning models with human preferences using **RLHF** (Reinforcement Learning from Human Feedback).
+- **Reasoning**: Exploring advanced techniques like **GRPO** (Group Relative Policy Optimization).
+- **Multimodal**: Extending capabilities to vision and audio.
+- **Production**: Best practices for LLM deployment.
+
+The project emphasizes not just *how* to run code, but *why* it works, providing the **intuition** and **theory** necessary to become a true practitioner.
+
+## 🔗 Links
+
+- **GitHub Repository**: [oussou-dev/finetuning-sessions](https://github.com/oussou-dev/finetuning-sessions?tab=readme-ov-file)

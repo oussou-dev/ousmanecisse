@@ -1,0 +1,39 @@
+---
+title: "Finetuning Ninja"
+subtitle: "Un voyage complet du pré-entraînement aux modèles de raisonnement."
+date: "2026-02-04"
+image: "finetuning-ninja.png"
+about:
+  template: jolla
+  links:
+    - icon: github
+      text: "Voir sur GitHub"
+      href: https://github.com/oussou-dev/finetuning-sessions?tab=readme-ov-file
+include-in-header:
+  text: |
+    <meta http-equiv="refresh" content="0; url='https://github.com/oussou-dev/finetuning-sessions?tab=readme-ov-file'" />
+categories: [LLM, Finetuning, Python, GenAI, Pratique]
+description: "Maîtrisez l'art du finetuning des LLMs ! Un projet complet couvrant tout, des bases du SFT aux techniques avancées comme LoRA, QLoRA, RLHF et le multimodal."
+lang: fr
+format: html
+translation-url: "projects/finetuning-ninja/index.html"
+---
+
+## 🥷 Aperçu du Projet
+
+**Finetuning Ninja** est un projet pratique conçu pour développer une intuition profonde et des compétences concrètes dans l'entraînement des Grands Modèles de Langage (LLMs). De la configuration de l'environnement de laboratoire au déploiement de modèles de raisonnement, ce dépôt vous guide à travers chaque étape critique.
+
+Il couvre le cycle de vie complet :
+- **Fondamentaux** : Comprendre le paysage du finetuning et le finetuning supervisé (SFT).
+- **Profondeur** : Comprendre les mécanismes internes des modèles.
+- **Efficacité** : Utiliser le Parameter-Efficient Finetuning (PEFT) avec **LoRA** et **QLoRA**.
+- **Alignement** : Aligner les modèles avec les préférences humaines via **RLHF** (Apprentissage par renforcement à partir de rétroaction humaine).
+- **Raisonnement** : Explorer des techniques avancées comme **GRPO** (Group Relative Policy Optimization).
+- **Multimodal** : Étendre les capacités à la vision et à l'audio.
+- **Production** : Meilleures pratiques pour le déploiement de LLM.
+
+Le projet met l'accent non seulement sur *comment* exécuter le code, mais aussi sur *pourquoi* cela fonctionne, fournissant l'**intuition** et la **théorie** nécessaires pour devenir un véritable praticien.
+
+## 🔗 Liens
+
+- **Dépôt GitHub** : [oussou-dev/finetuning-sessions](https://github.com/oussou-dev/finetuning-sessions?tab=readme-ov-file)

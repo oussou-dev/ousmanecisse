@@ -169,5 +169,11 @@
   },
   "fr/translations/multi-agent-pattern/index.qmd": {
     "index.html": "0c861f22"
+  },
+  "fr/projects/finetuning-ninja/index.qmd": {
+    "index.html": "598976a2"
+  },
+  "projects/finetuning-ninja/index.qmd": {
+    "index.html": "87853416"
   }
 }

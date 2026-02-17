@@ -1,5 +1,29 @@
 [
   {
+    "listing": "/projects.html",
+    "items": [
+      "/projects/finetuning-ninja/index.html",
+      "/projects/ai-dev-tools/index.html",
+      "/projects/ai-hero/index.html",
+      "/projects/data-engineering/index.html",
+      "/projects/nocode-ai/index.html",
+      "/projects/langchain-vectordb/index.html",
+      "/projects/ml-zoomcamp/index.html"
+    ]
+  },
+  {
+    "listing": "/fr/projets.html",
+    "items": [
+      "/fr/projects/finetuning-ninja/index.html",
+      "/fr/projects/ai-dev-tools/index.html",
+      "/fr/projects/ai-hero/index.html",
+      "/fr/projects/data-engineering/index.html",
+      "/fr/projects/nocode-ai/index.html",
+      "/fr/projects/langchain-vectordb/index.html",
+      "/fr/projects/ml-zoomcamp/index.html"
+    ]
+  },
+  {
     "listing": "/fr/blog.html",
     "items": [
       "/fr/posts/poetry-vs-uv/index.html",
@@ -66,28 +90,6 @@
     "items": [
       "/fr/books/llm-handbook/index.html",
       "/fr/books/mistral/index.html"
-    ]
-  },
-  {
-    "listing": "/fr/projets.html",
-    "items": [
-      "/fr/projects/ai-hero/index.html",
-      "/fr/projects/nocode-ai/index.html",
-      "/fr/projects/data-engineering/index.html",
-      "/fr/projects/ml-zoomcamp/index.html",
-      "/fr/projects/langchain-vectordb/index.html",
-      "/fr/projects/ai-dev-tools/index.html"
-    ]
-  },
-  {
-    "listing": "/projects.html",
-    "items": [
-      "/projects/ai-dev-tools/index.html",
-      "/projects/ai-hero/index.html",
-      "/projects/data-engineering/index.html",
-      "/projects/langchain-vectordb/index.html",
-      "/projects/ml-zoomcamp/index.html",
-      "/projects/nocode-ai/index.html"
     ]
   }
 ]

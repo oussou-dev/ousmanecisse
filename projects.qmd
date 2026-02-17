@@ -4,8 +4,14 @@ translation-url: "fr/projets.html"
 lang: en
 listing:
   contents: 
-    - "projects/*/index.qmd"
-  sort: "title asc"
+    - "projects/finetuning-ninja/index.qmd"
+    - "projects/ai-dev-tools/index.qmd"
+    - "projects/ai-hero/index.qmd"
+    - "projects/data-engineering/index.qmd"
+    - "projects/nocode-ai/index.qmd"
+    - "projects/langchain-vectordb/index.qmd"
+    - "projects/ml-zoomcamp/index.qmd"
+  sort: false
   type: grid
   categories: false
   sort-ui: false

@@ -13,7 +13,7 @@ website:
       - href: fr/blog.qmd
         text: Blog
       - href: fr/en-to-fr.qmd
-        text: "POSTS TRADUITS"
+        text: Traductions
       - href: fr/livres.qmd
         text: Revue de Livres
       - href: fr/robotique.qmd
