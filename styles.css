@@ -414,10 +414,13 @@
   position: fixed !important;
   bottom: 2rem !important;
   right: 2rem !important;
-  left: auto !important; /* Override default centering */
-  transform: none !important; /* Override default centering transform */
+  left: auto !important;
+  /* Override default centering */
+  transform: none !important;
+  /* Override default centering transform */
   width: auto !important;
-  z-index: 1050; /* Ensure it's above other elements */
+  z-index: 1050;
+  /* Ensure it's above other elements */
   background-color: rgba(255, 255, 255, 0.9);
   padding: 0.5rem 0.8rem;
   border-radius: 8px;
@@ -429,7 +432,8 @@
   transition: all 0.2s ease;
   text-decoration: none !important;
   color: #334155;
-  display: flex !important; /* Ensure flex for alignment */
+  display: flex;
+  /* Flex allowed Quarto to hide it with inline display:none */
   align-items: center;
   gap: 0.4rem;
 }
@@ -438,11 +442,8 @@
   opacity: 1;
   transform: translateY(-2px) !important;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-  color: #6366f1; /* Accent color */
-}
-
-#quarto-back-to-top i {
-  /* Icon styling if needed */
+  color: #6366f1;
+  /* Accent color */
 }
 
 /* Dark mode adjustment for back to top */
@@ -458,5 +459,23 @@
     background-color: #1e293b;
     border-color: #6366f1;
     color: #818cf8;
+  }
+}
+
+/* Ensure project listing images are fully visible */
+.quarto-grid-item .card-img-top img,
+.quarto-grid-item .thumbnail-image img {
+  object-fit: contain !important;
+  background-color: #ffffff;
+  /* Neutral background to avoid ugly gaps */
+  padding: 5px;
+  /* Subtle padding */
+}
+
+@media (prefers-color-scheme: dark) {
+
+  .quarto-grid-item .card-img-top img,
+  .quarto-grid-item .thumbnail-image img {
+    background-color: #1e293b;
   }
 }
