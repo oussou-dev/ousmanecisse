@@ -4,7 +4,7 @@
     "href": "fr/projets.html",
     "title": "Projets",
     "section": "",
-    "text": "Une sélection de projets réalisés et en cours. Cliquez sur un projet pour voir les détails et ressources liées.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAI Hero\n\n\nCréation et déploiement d’Agents IA, challenge de 7 jours.\n\n\n\n\n\n\n\n\n\n\n\n\nApplications No-Code & IA\n\n\nCréation d’apps d’entreprise internes avec des outils No-Code (Airtable, Softr, Make/Zapier) et l’IA. De l’analyse des besoins au déploiement.\n\n\n\n\n\n\n\n\n\n\n\n\nData Engineering Zoomcamp\n\n\nCours complet sur l’ingénierie des données couvrant Docker, Terraform, Google Cloud Platform, Airflow, Spark et Kafka.\n\n\n\n\n\n\n\n\n\n\n\n\nIngénieur ML ZoomCamp\n\n\nCours complet de Machine Learning Engineering couvrant le déploiement, le cloud et le MLOps.\n\n\n\n\n\n\n\n\n\n\n\n\nLangChain & Bases Vectorielles\n\n\nConstruire des apps LLM de production avec LangChain & Deep Lake. Couvre Gen AI, Prompt Engineering, RAG et Agents.\n\n\n\n\n\n\n\n\n\n\n\n\nOutils de Dev IA\n\n\nProjets et exercices du bootcamp AI Dev Tools (Vibe Coding) Zoomcamp.\n\n\n\n\n\nAucun article correspondant\n Retour au sommet"
+    "text": "Une sélection de projets réalisés et en cours. Cliquez sur un projet pour voir les détails et ressources liées.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFinetuning Ninja\n\n\nMaîtrisez l’art du finetuning des LLMs ! Un projet complet couvrant tout, des bases du SFT aux techniques avancées comme LoRA, QLoRA, RLHF et le multimodal.\n\n\n\n\n\n\n\n\n\n\n\n\nOutils de Dev IA\n\n\nProjets et exercices du bootcamp AI Dev Tools (Vibe Coding) Zoomcamp.\n\n\n\n\n\n\n\n\n\n\n\n\nAI Hero\n\n\nCréation et déploiement d’Agents IA, challenge de 7 jours.\n\n\n\n\n\n\n\n\n\n\n\n\nData Engineering Zoomcamp\n\n\nCours complet sur l’ingénierie des données couvrant Docker, Terraform, Google Cloud Platform, Airflow, Spark et Kafka.\n\n\n\n\n\n\n\n\n\n\n\n\nApplications No-Code & IA\n\n\nCréation d’apps d’entreprise internes avec des outils No-Code (Airtable, Softr, Make/Zapier) et l’IA. De l’analyse des besoins au déploiement.\n\n\n\n\n\n\n\n\n\n\n\n\nLangChain & Bases Vectorielles\n\n\nConstruire des apps LLM de production avec LangChain & Deep Lake. Couvre Gen AI, Prompt Engineering, RAG et Agents.\n\n\n\n\n\n\n\n\n\n\n\n\nIngénieur ML ZoomCamp\n\n\nCours complet de Machine Learning Engineering couvrant le déploiement, le cloud et le MLOps.\n\n\n\n\n\nAucun article correspondant\n Retour au sommet"
   },
   {
     "objectID": "fr/about.html",
@@ -322,18 +322,11 @@
     "text": "🔗 Dépôt GitHub\n\n\n\n\n Retour au sommet"
   },
   {
-    "objectID": "fr/projects/ai-hero/index.html",
-    "href": "fr/projects/ai-hero/index.html",
-    "title": "AI Hero",
+    "objectID": "fr/projects/data-engineering/index.html",
+    "href": "fr/projects/data-engineering/index.html",
+    "title": "Data Engineering Zoomcamp",
     "section": "",
-    "text": "Détails du Projet\nUn challenge de 7 jours pour construire et déployer des agents AI.\n\n🔗 Dépôt GitHub\n\n\n📝 Rapports quotidiens\n\nDay 1 — Ingest and Index Your Data (Article en anglais)\n\n\n\n\n\n\n Retour au sommet"
-  },
-  {
-    "objectID": "fr/index.html",
-    "href": "fr/index.html",
-    "title": "Ousmane Cissé",
-    "section": "",
-    "text": "Je suis Consultant Ingénieur IA basé en France avec un profil hybride en finance, audit et développement web.\nJ’aide les entreprises à transformer leurs besoins métiers en solutions IA scalables : Agents IA, systèmes RAG, automatisation et architectures de données modernes.\nMon expérience dans les services financiers et les projets numériques me permet de livrer des initiatives IA techniquement solides, conformes et alignées avec les contraintes opérationnelles réelles. Disponible pour des missions de conseil en IA, applications LLM, automatisation et ingénierie de données.\n\n\n Retour au sommet"
+    "text": "🔗 Dépôt GitHub\n\n\n\n\n Retour au sommet"
   },
   {
     "objectID": "fr/blog.html",
@@ -343,11 +336,32 @@
     "text": "Trier par\n      Ordre par défaut\n      \n        Titre\n      \n      \n        Date - Le plus ancien\n      \n      \n        Date - Le plus récent\n      \n    \n  \n\n\n\n\n\nPoetry vs UV : quel gestionnaire pour vos projets Python ?\n\n\n\npython\n\npackaging\n\ntooling\n\n\n\nUne comparaison entre Poetry et UV, deux gestionnaires de dépendances Python modernes.\n\n\n\n\n\n10 févr. 2026\n\n9 min.\n\n\n\n\n\n\nAI Hero : Jour 1 - Ingestion et Indexation des Données\n\n\n\nAgents IA\n\nLLM\n\nRAG\n\nAI Hero\n\n\n\nConstruire les fondations d’un agent IA en automatisant la récupération des données et le parsing des métadonnées.\n\n\n\n\n\n22 janv. 2026\n\n3 min.\n\n\n\n\n\n\nProjet Outils de Dev IA : Agrégateur d’actualités IA\n\n\n\nProjet\n\nAgents IA\n\nOutils Dev IA\n\nVibe Coding\n\nFastAPI\n\n\n\nUne plateforme d’actualités alimentée par l’IA, full-stack, qui scrape, résume et diffuse les tendances IA en utilisant FastAPI, Streamlit et l’orchestration multi-agents.\n\n\n\n\n\n20 janv. 2026\n\n3 min.\n\n\n\n\n\n\nOutils de Dev IA : Semaine 4 - Construire des Agents de Code\n\n\n\nIA\n\nZoomcamp\n\nAgents\n\nOutils Dev IA\n\n\n\nMaîtriser la création d’agents de code autonomes en utilisant des Agents, des Outils et du Contexte.\n\n\n\n\n\n15 janv. 2026\n\n3 min.\n\n\n\n\n\n\nOutils de Dév IA - Semaine 3\n\n\n\nIA\n\nOutils\n\nZoomcamp\n\nAI Dev Tools\n\n\n\nAperçu de la troisième semaine du AI Dev Tools Zoomcamp.\n\n\n\n\n\n3 févr. 2024\n\n1 min.\n\n\n\n\n\n\nOutils de Dév IA - Semaine 2\n\n\n\nIA\n\nOutils\n\nZoomcamp\n\nAI Dev Tools\n\n\n\nAperçu de la deuxième semaine du AI Dev Tools Zoomcamp.\n\n\n\n\n\n27 janv. 2024\n\n1 min.\n\n\n\n\n\n\nOutils de Dév IA - Semaine 1\n\n\n\nIA\n\nOutils\n\nZoomcamp\n\nAI Dev Tools\n\n\n\nAperçu de la première semaine du AI Dev Tools Zoomcamp.\n\n\n\n\n\n20 janv. 2024\n\n1 min.\n\n\n\n\nAucun article correspondant\n Retour au sommet"
   },
   {
-    "objectID": "fr/projects/data-engineering/index.html",
-    "href": "fr/projects/data-engineering/index.html",
-    "title": "Data Engineering Zoomcamp",
+    "objectID": "fr/index.html",
+    "href": "fr/index.html",
+    "title": "Ousmane Cissé",
     "section": "",
-    "text": "🔗 Dépôt GitHub\n\n\n\n\n Retour au sommet"
+    "text": "Je suis Consultant Ingénieur IA basé en France avec un profil hybride en finance, audit et développement web.\nJ’aide les entreprises à transformer leurs besoins métiers en solutions IA scalables : Agents IA, systèmes RAG, automatisation et architectures de données modernes.\nMon expérience dans les services financiers et les projets numériques me permet de livrer des initiatives IA techniquement solides, conformes et alignées avec les contraintes opérationnelles réelles. Disponible pour des missions de conseil en IA, applications LLM, automatisation et ingénierie de données.\n\n\n Retour au sommet"
+  },
+  {
+    "objectID": "fr/projects/ai-hero/index.html",
+    "href": "fr/projects/ai-hero/index.html",
+    "title": "AI Hero",
+    "section": "",
+    "text": "Détails du Projet\nUn challenge de 7 jours pour construire et déployer des agents AI.\n\n🔗 Dépôt GitHub\n\n\n📝 Rapports quotidiens\n\nDay 1 — Ingest and Index Your Data (Article en anglais)\n\n\n\n\n\n\n Retour au sommet"
+  },
+  {
+    "objectID": "fr/projects/finetuning-ninja/index.html#aperçu-du-projet",
+    "href": "fr/projects/finetuning-ninja/index.html#aperçu-du-projet",
+    "title": "Finetuning Ninja",
+    "section": "🥷 Aperçu du Projet",
+    "text": "🥷 Aperçu du Projet\nFinetuning Ninja est un projet pratique conçu pour développer une intuition profonde et des compétences concrètes dans l’entraînement des Grands Modèles de Langage (LLMs). De la configuration de l’environnement de laboratoire au déploiement de modèles de raisonnement, ce dépôt vous guide à travers chaque étape critique.\nIl couvre le cycle de vie complet : - Fondamentaux : Comprendre le paysage du finetuning et le finetuning supervisé (SFT). - Profondeur : Comprendre les mécanismes internes des modèles. - Efficacité : Utiliser le Parameter-Efficient Finetuning (PEFT) avec LoRA et QLoRA. - Alignement : Aligner les modèles avec les préférences humaines via RLHF (Apprentissage par renforcement à partir de rétroaction humaine). - Raisonnement : Explorer des techniques avancées comme GRPO (Group Relative Policy Optimization). - Multimodal : Étendre les capacités à la vision et à l’audio. - Production : Meilleures pratiques pour le déploiement de LLM.\nLe projet met l’accent non seulement sur comment exécuter le code, mais aussi sur pourquoi cela fonctionne, fournissant l’intuition et la théorie nécessaires pour devenir un véritable praticien."
+  },
+  {
+    "objectID": "fr/projects/finetuning-ninja/index.html#liens",
+    "href": "fr/projects/finetuning-ninja/index.html#liens",
+    "title": "Finetuning Ninja",
+    "section": "🔗 Liens",
+    "text": "🔗 Liens\n\nDépôt GitHub : oussou-dev/finetuning-sessions"
   },
   {
     "objectID": "fr/projects/langchain-vectordb/index.html",
@@ -443,7 +457,7 @@
   {
     "objectID": "fr/en-to-fr.html",
     "href": "fr/en-to-fr.html",
-    "title": "POSTS TRADUITS",
+    "title": "Traductions",
     "section": "",
     "text": "Bienvenue dans cette section dédiée à la traduction d’articles de l’anglais vers le français. Vous trouverez ici des versions françaises d’articles techniques et de réflexions initialement publiés en anglais.\n\n\n\n\n\n\n   \n    \n    \n      Trier par\n      Ordre par défaut\n      \n        Titre\n      \n      \n        Date - Le plus ancien\n      \n      \n        Date - Le plus récent\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\nLe pattern multi-agents : collaborer pour réussir\n\n\n\nIA\n\nAgents\n\nLLM\n\nPatterns\n\n\n\nDécouvrez comment construire un framework multi-agents minimaliste pour faire collaborer plusieurs agents spécialisés sur une tâche commune.\n\n\n\n\n\n4 juin 2025\n\n\n\n\n\n\n\nLe Planning Pattern (ReAct) : donner une stratégie aux agents\n\n\n\nIA\n\nAgents\n\nLLM\n\nPatterns\n\n\n\nDécouvrez le Planning Pattern et la technique ReAct : comment permettre à un agent de planifier une séquence d’actions pour atteindre un objectif complexe.\n\n\n\n\n\n28 mai 2025\n\n\n\n\n\n\n\nLe pattern d’utilisation d’outils : le pont vers le monde extérieur\n\n\n\nIA\n\nAgents\n\nLLM\n\nPatterns\n\n\n\nDécouvrez comment équiper vos agents d’outils pour qu’ils puissent interagir avec le monde extérieur : météo, bourse, et plus encore.\n\n\n\n\n\n21 mai 2025\n\n\n\n\n\n\n\nLe pattern de réflexion : quand les agents se corrigent\n\n\n\nIA\n\nAgents\n\nLLM\n\nPatterns\n\n\n\nDécouvrez le pattern de réflexion : un agent qui s’auto-évalue et améliore ses réponses en boucle.\n\n\n\n\n\n12 mai 2025\n\n\n\n\n\n\n\nQu’est-ce qu’un agent ?\n\n\n\nIA\n\nAgents\n\nLLM\n\nTranslation\n\n\n\nUne introduction claire aux agents IA : LLM, planification, mémoire et outils.\n\n\n\n\n\n5 mai 2025\n\n\n\n\n\nAucun article correspondant\n Retour au sommet"
   },

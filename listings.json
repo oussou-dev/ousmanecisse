@@ -2,12 +2,13 @@
   {
     "listing": "/fr/projets.html",
     "items": [
+      "/fr/projects/finetuning-ninja/index.html",
+      "/fr/projects/ai-dev-tools/index.html",
       "/fr/projects/ai-hero/index.html",
-      "/fr/projects/nocode-ai/index.html",
       "/fr/projects/data-engineering/index.html",
-      "/fr/projects/ml-zoomcamp/index.html",
+      "/fr/projects/nocode-ai/index.html",
       "/fr/projects/langchain-vectordb/index.html",
-      "/fr/projects/ai-dev-tools/index.html"
+      "/fr/projects/ml-zoomcamp/index.html"
     ]
   },
   {
