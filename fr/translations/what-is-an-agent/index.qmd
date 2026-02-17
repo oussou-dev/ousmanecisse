@@ -1,6 +1,6 @@
 ---
 title: "Qu'est-ce qu'un agent ?"
-date: "2026-02-03"
+date: "2025-05-05"
 categories: [IA, Agents, LLM, Translation]
 image: "../../../img/whats_agent.png"
 description: "Une introduction claire aux agents IA : LLM, planification, mémoire et outils."

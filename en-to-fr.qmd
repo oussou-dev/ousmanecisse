@@ -1,5 +1,5 @@
 ---
-title: "EN --> FR"
+title: "Translations"
 description: "Translations of technical articles from English to French."
 listing:
   contents: fr/translations

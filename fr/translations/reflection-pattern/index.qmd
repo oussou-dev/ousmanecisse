@@ -1,7 +1,7 @@
 ---
 title: "Le pattern de réflexion : quand les agents se corrigent"
 translation-url: "posts/reflection-agent/index.html"
-date: "2026-02-03"
+date: "2025-05-12"
 categories: [IA, Agents, LLM, Patterns]
 image: "../../../img/reflection_pattern.png"
 description: "Découvrez le pattern de réflexion : un agent qui s'auto-évalue et améliore ses réponses en boucle."
