@@ -25,11 +25,11 @@
   {
     "listing": "/fr/en-to-fr.html",
     "items": [
-      "/fr/translations/reflection-pattern/index.html",
-      "/fr/translations/what-is-an-agent/index.html",
       "/fr/translations/multi-agent-pattern/index.html",
       "/fr/translations/planning-pattern/index.html",
-      "/fr/translations/tool-use-pattern/index.html"
+      "/fr/translations/tool-use-pattern/index.html",
+      "/fr/translations/reflection-pattern/index.html",
+      "/fr/translations/what-is-an-agent/index.html"
     ]
   },
   {
