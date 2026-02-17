@@ -1,6 +1,11 @@
 project:
   type: website
 
+execute:
+  freeze: auto
+
+lightbox: auto
+
 profile:
   default: en
   group: [en, fr]
@@ -9,6 +14,8 @@ website:
   title: "OUSMANE CISSE"
   site-url: "https://oussou-dev.github.io/ousmanecisse/"
   search: true
+  back-to-top-navigation: true
+
 
 format:
   html:
@@ -18,7 +25,13 @@ format:
     css: styles.css
     toc: true
     include-after-body: scripts/lang-switch.html
+    smooth-scroll: true
+    link-external-newtab: true
+    code-copy: true
+    code-fold: show
 
 filters:
   - filters/metadata_to_meta.lua
   - filters/series_nav.lua
+  - lightbox
+  - code-fullscreen

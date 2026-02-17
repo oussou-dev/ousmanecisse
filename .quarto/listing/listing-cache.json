@@ -3,6 +3,9 @@
     "blog.qmd": [
       "posts"
     ],
+    "books.qmd": [
+      "books/*/index.qmd"
+    ],
     "courses.qmd": [
       "courses"
     ],
@@ -15,17 +18,14 @@
     "fr/en-to-fr.qmd": [
       "translations"
     ],
+    "fr/livres.qmd": [
+      "books/*/index.qmd"
+    ],
     "fr/projets.qmd": [
       "projects/*/index.qmd"
     ],
     "projects.qmd": [
       "projects/*/index.qmd"
-    ],
-    "books.qmd": [
-      "books/*/index.qmd"
-    ],
-    "fr/livres.qmd": [
-      "books/*/index.qmd"
     ]
   }
 }

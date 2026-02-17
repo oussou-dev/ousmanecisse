@@ -406,3 +406,57 @@
 #listing-listing-books .card-body {
   padding-top: 0.5rem !important;
 }
+
+/* ============================
+   Back to Top Button
+   ============================ */
+#quarto-back-to-top {
+  position: fixed !important;
+  bottom: 2rem !important;
+  right: 2rem !important;
+  left: auto !important; /* Override default centering */
+  transform: none !important; /* Override default centering transform */
+  width: auto !important;
+  z-index: 1050; /* Ensure it's above other elements */
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 0.5rem 0.8rem;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  opacity: 0.8;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  text-decoration: none !important;
+  color: #334155;
+  display: flex !important; /* Ensure flex for alignment */
+  align-items: center;
+  gap: 0.4rem;
+}
+
+#quarto-back-to-top:hover {
+  opacity: 1;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  color: #6366f1; /* Accent color */
+}
+
+#quarto-back-to-top i {
+  /* Icon styling if needed */
+}
+
+/* Dark mode adjustment for back to top */
+@media (prefers-color-scheme: dark) {
+  #quarto-back-to-top {
+    background-color: rgba(30, 41, 59, 0.9);
+    border-color: #475569;
+    color: #cbd5e1;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  }
+
+  #quarto-back-to-top:hover {
+    background-color: #1e293b;
+    border-color: #6366f1;
+    color: #818cf8;
+  }
+}
