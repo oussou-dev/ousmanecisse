@@ -1,88 +1,142 @@
 ---
-title: "Le Planning Pattern (ReAct) : quand les agents planifient et agissent"
-translation-url: "posts/react-pattern/index.html"
-date: "2026-02-10"
-categories: [IA, Agents, LLM, Patterns, ReAct]
-image: "../../../img/reflection_pattern.png"
-description: "Le pattern ReAct : un agent qui raisonne, planifie et agit de manière itérative pour résoudre des tâches complexes."
+title: "Le Planning Pattern (ReAct) : donner une stratégie aux agents"
+translation-url: "posts/planning-agent/index.html"
+date: "2025-05-28"
+categories: [IA, Agents, LLM, Patterns]
+image: "https://substackcdn.com/image/fetch/$s_!jdPC!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F81f01126-beec-499d-bb49-d075a05667e5_1080x1080.png"
+description: "Découvrez le Planning Pattern et la technique ReAct : comment permettre à un agent de planifier une séquence d'actions pour atteindre un objectif complexe."
 lang: fr
 series-name: "Agent Design Patterns"
 series-prev-url: "/fr/translations/tool-use-pattern/"
 series-prev-title: "Le pattern d'utilisation d'outils"
-series-next-url: "/fr/translations/multiagent-pattern/"
-series-next-title: "Le pattern Multi-Agent"
+series-next-url: "/fr/translations/multi-agent-pattern/"
+series-next-title: "Le pattern multi-agents"
 ---
 
-Après le [Tool Use Pattern](/fr/translations/tool-use-pattern/), nous abordons le **Planning Pattern**, et plus spécifiquement le framework **ReAct** (Reasoning + Acting). C'est ici que les agents deviennent véritablement autonomes.
+Dans les leçons précédentes, nous avons appris comment [les agents peuvent réfléchir](/fr/translations/reflection-pattern/) et [utiliser des outils](/fr/translations/tool-use-pattern/) pour interagir avec le monde extérieur. **Mais qu'en est-il de la planification ?** Comment les agents peuvent-ils déterminer la **séquence d'étapes nécessaire pour atteindre un objectif plus large** ?
 
-## Le ReAct Pattern en bref
+C'est là qu'intervient le **Planning Pattern**. Il permet à un LLM de décomposer une tâche complexe en sous-objectifs plus petits et gérables sans perdre de vue l'objectif global.
 
-**ReAct** combine raisonnement et action dans une boucle itérative :
+La technique **ReAct** — contraction de **Reason + Act** (Raisonner + Agir) — est un exemple paradigmatique de ce pattern. Dans cette leçon, vous apprendrez comment cette technique fonctionne et implémenterez un **Agent ReAct** de zéro en utilisant **Python** et les LLM de **Groq**.
 
-1. **Thought (Pensée)** : L'agent réfléchit à la situation actuelle et décide quoi faire
-2. **Action** : L'agent exécute une action (appeler un outil, rechercher, calculer)
-3. **Observation** : L'agent observe le résultat de son action
-4. **Répétition** : Le cycle recommence jusqu'à ce que la tâche soit accomplie
+**C'est parti ! 👇**
 
-C'est fondamentalement différent des approches "one-shot" où on pose une question et on obtient une réponse directe.
+![Le Planning Pattern ReAct](https://substackcdn.com/image/fetch/$s_!jdPC!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F81f01126-beec-499d-bb49-d075a05667e5_1080x1080.png)
 
-## La boucle ReAct en pratique
+> Ceci est la **troisième leçon** du cours **Agentic Patterns from Scratch**. Cette leçon s'appuie sur la théorie et le code abordés dans les précédentes, alors n'oubliez pas de les consulter si ce n'est pas déjà fait !
+> 
+> *   [Leçon Zéro : Qu'est-ce qu'un agent ?](/fr/translations/what-is-an-agent/)  
+> *   [Leçon Une : Le pattern de réflexion](/fr/translations/reflection-pattern/)  
+> *   [Leçon Deux : Le pattern d'utilisation d'outils](/fr/translations/tool-use-pattern/)  
 
-```
-Pensée : J'ai besoin de trouver la population de Paris pour répondre.
-Action  : search_web("population Paris 2024")
-Observation : Paris compte environ 2,1 millions d'habitants intra-muros.
-Pensée : J'ai l'information, je peux maintenant répondre à l'utilisateur.
-Action  : respond("Paris compte environ 2,1 millions d'habitants.")
-```
+---
 
-## Pourquoi ReAct est si puissant ?
+## Le System Prompt ReAct
 
-### Résolution de problèmes complexes
-Contrairement à un simple prompt, ReAct permet de décomposer un problème en étapes :
-- Identifier les sous-problèmes
-- Résoudre chacun avec les bons outils
-- Synthétiser les résultats
+Tout comme pour le pattern d'utilisation d'outils, la technique ReAct nécessite un System Prompt. Ce prompt est assez similaire, mais il décrit également la boucle ReAct pour s'assurer que le LLM comprend les trois opérations qu'il est autorisé à effectuer :
 
-### Traçabilité
-Chaque étape du raisonnement est visible. On peut comprendre *pourquoi* l'agent a fait tel ou tel choix — essentiel pour le debugging et la confiance.
+*   **Thought (Pensée)** : Le LLM va **réfléchir** à l'action à entreprendre.  
+*   **Action** : Le LLM va utiliser un **Outil** pour interagir avec l'environnement et passer à l'**action**.  
+*   **Observation** : Le LLM va **observer** la sortie de l'outil et réfléchir à la prochaine étape.  
 
-### Auto-correction
-Si une action échoue ou donne un résultat inattendu, l'agent peut :
-- Reconnaître l'erreur dans sa phase de réflexion
-- Essayer une approche alternative
-- Demander des clarifications
+Une autre différence clé par rapport au pattern d'utilisation d'outils est que nous allons encadrer tous les messages dans des balises, comme ceci : **< >**. Bien qu'il soit possible d'implémenter la logique ReAct sans ces balises, j'ai trouvé qu'elles facilitaient le respect des instructions par le LLM.
 
-## Implémentation
+Assez de théorie ! **Voici le prompt 👇**
 
-```python
-class ReActAgent:
-    def __init__(self, llm, tools):
-        self.llm = llm
-        self.tools = tools
+![System Prompt ReAct](https://substackcdn.com/image/fetch/$s_!8It1!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F76e7a981-0fe1-4694-9d8e-d5e2c3c9dc11_5233x3328.png)
 
-    def run(self, task):
-        history = []
-        while True:
-            # Phase de RÉFLEXION
-            thought = self.llm.think(task, history)
+Si vous regardez le prompt, vous remarquerez que nous avons besoin d'un ensemble d'outils, qui sont encadrés par les balises `<tools></tools>`. L'exemple que nous allons construire implique l'utilisation de **trois outils**, comme le montre l'extrait de code ci-dessous.
 
-            # Phase d'ACTION
-            action, params = self.llm.choose_action(thought, self.tools)
+![Les trois outils mathématiques](https://substackcdn.com/image/fetch/$s_!xLjx!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2fe610a7-7e32-4b25-bd6f-820ce1f76f4c_3692x4756.png)
 
-            if action == "finish":
-                return thought
+Rappelez-vous que le **décorateur d'outil** — implémenté dans la leçon précédente — nous permet de convertir automatiquement n'importe quelle fonction Python en un Outil. Ensuite, nous concaténons simplement les signatures des outils et les ajoutons au System Prompt.
 
-            # Phase d'OBSERVATION
-            result = self.tools[action].execute(params)
-            history.append((thought, action, result))
-```
+![Concatenation des signatures](https://substackcdn.com/image/fetch/$s_!I8Mg!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F809a4407-7332-40e5-8d26-c56961ba897f_4840x640.png)
 
-## Applications pratiques
+Avec le System Prompt complet, il est temps de commencer la première itération de la boucle ReAct !
 
-*Cette section sera complétée avec des projets d'application concrets liés au Planning Pattern (ReAct).*
+---
+
+## Boucle ReAct : Choisir le premier outil
+
+La question à laquelle nous allons répondre est la suivante :
+
+> Je veux calculer la somme de 1234 et 5678 et multiplier le résultat par 5. Ensuite, je veux prendre le logarithme de ce résultat.
+
+Comme vous pouvez le voir, la question est facilement résolue en utilisant les outils fournis dans le bon ordre, mais l'agent peut-il faire de même ? Générons la première complétion pour le découvrir.
+
+![Première complétion](https://substackcdn.com/image/fetch/$s_!tHp-!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb55b917d-d2b2-460d-acc8-ded19cb1cd38_2653x2656.png)
+
+La sortie générée est un **<thought>** et un **<tool_call>**, qui indiquent à l'Agent quel outil utiliser.
+
+![Thought et Tool Call](https://substackcdn.com/image/fetch/$s_!WjZL!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9b32af15-fe7b-4d86-90e1-689e7fddd81b_4875x640.png)
+
+---
+
+## Boucle ReAct : Exécuter le premier outil
+
+Puisque nous avons le **<tool_call>**, il est très facile d'évaluer l'Outil pour obtenir le résultat — c'est essentiellement l'action que l'agent va entreprendre.
+
+![Évaluation de l'outil](https://substackcdn.com/image/fetch/$s_!cpCf!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe83f5a3b-33c9-4536-83e7-8f6711aa8813_3083x1312.png)
+
+Le résultat de l'outil est simplement la somme de **1234** et **5678**, soit **6912**.
+
+---
+
+## Boucle ReAct : Choisir le deuxième outil
+
+Si vous regardez de près le contenu que nous avons ajouté au `chat_history`, vous remarquerez qu'on inclut le résultat de l'outil (**6912**) comme une **<observation>**. Cela permet au LLM de réfléchir, une fois de plus, au prochain outil à utiliser.
+
+En lançant une complétion comme précédemment, nous devrions obtenir quelque chose comme ceci, où le LLM sélectionne correctement l'outil de multiplication pour multiplier le résultat précédent par 5.
+
+![Choix du deuxième outil](https://substackcdn.com/image/fetch/$s_!unlE!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F71b3d522-3327-47a6-b835-79e29111a3c8_3800x640.png)
+
+On procède exactement de la même manière pour l'exécution. Le résultat de l'outil dans ce cas est **34560**.
+
+---
+
+## Boucle ReAct : Choisir le troisième outil
+
+Après avoir lancé la complétion suivante, nous obtenons la sortie suivante :
+
+![Choix du troisième outil](https://substackcdn.com/image/fetch/$s_!is-y!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc5f7a706-072f-4b8c-a731-6833d4b4658d_3764x640.png)
+
+Après avoir calculé la somme et la multiplication, la seule opération restante est le logarithme, implémenté dans l'outil `compute_log`.
+
+---
+
+## Boucle ReAct : Résultat final
+
+Après avoir exécuté l'outil de logarithme et ajouté le résultat au `chat_history`, il est temps de lancer la dernière complétion. La sortie générée contiendra une balise **<response>**, qui marque la fin de la boucle et contient la réponse finale.
+
+![Réponse finale](https://substackcdn.com/image/fetch/$s_!IIrp!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9d279b3c-61b1-4ac3-8dea-162e6aff4d36_4804x640.png)
+
+Notre LLM affiche **10.45**. Et c'est... correct ! — si vous ne me croyez pas, n'hésitez pas à vérifier avec votre calculatrice 😂
+
+---
+
+## L'Agent ReAct
+
+Comme dans les posts précédents, vous pouvez obtenir les mêmes résultats en utilisant ma bibliothèque **agentic_patterns**, qui implémente le code ci-dessus de "la bonne manière".
+
+J'ai créé une classe **ReactAgent** qui encapsule la boucle ReAct, acceptant une liste d'outils disponibles. [Découvrez-la ici !](https://github.com/neural-maze/agentic_patterns/blob/main/src/agentic_patterns/planning_pattern/react_agent.py)
+
+![ReactAgent avec la library agentic_patterns](https://substackcdn.com/image/fetch/$s_!mTVz!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F769247bf-0d20-421f-935f-0970fcb7984c_5341x976.png)
+
+---
+
+## Pourquoi ça marche si bien ?
+
+- **Décomposition des tâches** : L'agent ne s'attaque pas au problème global d'un coup, il avance étape par étape.  
+- **Auto-réflexion continue** : À chaque étape, l'agent observe le résultat et ajuste sa pensée.  
+- **Modularité** : La boucle ReAct peut intégrer n'importe quel nombre d'outils pour des workflows complexes.  
+
+## Prochaines étapes
+
+La prochaine leçon nous parlerons du **MultiAgent Pattern**.
 
 ## Ressources
 
-- Paper original : [ReAct: Synergizing Reasoning and Acting in Language Models](https://arxiv.org/abs/2210.03629)
-- Article précédent : [Tool Use Pattern](/fr/translations/tool-use-pattern/)
+- Article original : [Building a ReAct Agent from Scratch](https://theneuralmaze.substack.com/p/building-a-react-agent-from-scratch)  
+- [Vidéo YouTube couvrant le Planning Pattern](https://www.youtube.com/watch?v=0sAVI8bQdRc)  
+- [GitHub de la série](https://github.com/neural-maze/agentic_patterns)  

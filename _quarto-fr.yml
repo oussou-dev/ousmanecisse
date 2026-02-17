@@ -12,12 +12,12 @@ website:
         text: Projets
       - href: fr/blog.qmd
         text: Blog
+      - href: fr/en-to-fr.qmd
+        text: "POSTS TRADUITS"
       - href: fr/livres.qmd
-        text: REVUE DE LIVRES
+        text: Revue de Livres
       - href: fr/robotique.qmd
         text: "Robotique & IA"
-      - href: fr/en-to-fr.qmd
-        text: "EN --> FR"
     right:
       - text: "EN"
         href: index.html

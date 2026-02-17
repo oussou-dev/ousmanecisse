@@ -1,10 +1,10 @@
 ---
-title: "Le pattern d'utilisation d'outils : quand les agents agissent sur le monde"
+title: "Le pattern d'utilisation d'outils : le pont vers le monde extérieur"
 translation-url: "posts/tool-using-agent/index.html"
-date: "2026-02-10"
+date: "2025-05-21"
 categories: [IA, Agents, LLM, Patterns]
-image: "../../../img/reflection_pattern.png"
-description: "Découvrez le Tool Use Pattern : comment les agents utilisent des outils pour interagir avec le monde réel."
+image: "https://substackcdn.com/image/fetch/$s_!3kuk!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbed0a61b-a747-4d5b-b2bb-48ee2e520f8e_1080x1080.png"
+description: "Découvrez comment équiper vos agents d'outils pour qu'ils puissent interagir avec le monde extérieur : météo, bourse, et plus encore."
 lang: fr
 series-name: "Agent Design Patterns"
 series-prev-url: "/fr/translations/reflection-pattern/"
@@ -13,66 +13,106 @@ series-next-url: "/fr/translations/planning-pattern/"
 series-next-title: "Le Planning Pattern (ReAct)"
 ---
 
-Après avoir découvert le [pattern de réflexion](/fr/translations/reflection-pattern/), nous passons à un pattern encore plus puissant : le **Tool Use Pattern**. C'est ce qui permet à un agent de passer de "je peux raisonner" à "je peux agir".
+Après avoir exploré le [pattern de réflexion](/fr/translations/reflection-pattern/), nous aurions pu croire que nos agents étaient imbattables. Un agent capable de réfléchir sur sa propre production, quoi de mieux ? 🤔
 
-## Le Tool Use Pattern en bref
+Pourtant, le pattern de réflexion a une faiblesse majeure. Que se passe-t-il si vous demandez à cet agent le prix actuel de l'action NVIDIA ? Ou la température d'hier à Madrid ? Comme vous le savez, l'information encodée dans les poids d'un LLM ne suffit pas à fournir des réponses précises, fraîches et spécifiques au contexte.
 
-Le **Tool Use Pattern** (ou pattern d'utilisation d'outils) permet à un agent d'exécuter des actions concrètes en appelant des fonctions ou des APIs externes. Au lieu de se limiter à générer du texte, l'agent peut :
+**C'est pourquoi nous devons équiper notre agent de moyens d'accéder au monde extérieur** 🌍. C'est ici qu'interviennent les **Outils** (Tools). Fondamentalement, les outils sont des fonctions que le LLM peut appeler pour renforcer ses capacités. C'est le cœur du deuxième pattern : le **Tool Pattern**.
 
-- **Rechercher** sur le web ou dans des bases de données
-- **Calculer** des résultats mathématiques complexes
-- **Créer ou modifier** des fichiers, des tickets, des entrées en base
-- **Interagir** avec des services externes (météo, bourse, calendrier, etc.)
+![Le Tool Use Pattern](https://substackcdn.com/image/fetch/$s_!3kuk!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbed0a61b-a747-4d5b-b2bb-48ee2e520f8e_1080x1080.png)
 
-## Comment ça fonctionne ?
+> Vous pouvez trouver le code de toute la série sur [GitHub](https://github.com/neural-maze/agentic_patterns) !
 
-Le mécanisme repose sur le **function calling** (appel de fonction) :
+---
 
-1. **Description des outils** : On décrit au LLM les outils disponibles (nom, paramètres, description)
-2. **Choix du LLM** : Face à une requête, le modèle décide *s'il* doit utiliser un outil et *lequel*
-3. **Exécution** : L'outil est exécuté côté serveur avec les paramètres choisis par le LLM
-4. **Intégration** : Le résultat est renvoyé au LLM qui l'intègre dans sa réponse
+## Le pattern d'utilisation d'outils en bref
 
-```python
-# Exemple simplifié
-tools = [
-    {
-        "name": "search_web",
-        "description": "Recherche sur le web",
-        "parameters": {"query": "string"}
-    },
-    {
-        "name": "get_weather",
-        "description": "Obtenir la météo d'une ville",
-        "parameters": {"city": "string"}
-    }
-]
-```
+Le **Tool Use Pattern** permet à un agent d'exécuter des actions concrètes en appelant des fonctions ou des APIs externes. Au lieu de se limiter à générer du texte, l'agent peut :  
+- **Rechercher** des informations fraîches et véridiques.  
+- **Effectuer** des calculs complexes ou des opérations de données.  
+- **Interagir** avec des services tiers (météo, bourse, GitHub, etc.).  
 
-## Cas d'usage concrets
+Dans ce post, vous apprendrez comment fonctionnent les outils et comment les construire de zéro en utilisant **Python** et les LLM de **Groq**.
 
-### Recherche d'informations
-L'agent peut interroger un moteur de recherche pour obtenir des données récentes, au-delà de sa date de coupure d'entraînement.
+---
 
-### Exécution de code
-Un outil `execute_python` permet à l'agent de tester et vérifier du code, plutôt que de le générer "à l'aveugle".
+## Implémentation de zéro : construire un outil
 
-### Gestion de fichiers
-Lire, créer, modifier des fichiers locaux — la base de tout agent de développement.
+Commençons par les bases. Regardez cette fonction extrêmement simple :
 
-## Pourquoi c'est un game-changer ?
+![Fonction simple](https://substackcdn.com/image/fetch/$s_!PB2G!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F976aaf37-3b4e-4df7-9c3a-17921446964e_2848x1640.png)
 
-Sans outils, un LLM est un **cerveau dans un bocal** : brillant mais impuissant. Avec des outils :
+La question est : **comment rendre cette fonction disponible pour un LLM ?**
 
-- Il accède à des **données en temps réel**
-- Il peut **agir** sur le monde (pas seulement en parler)
-- Il devient **réellement utile** dans des workflows professionnels
+### Un System Prompt qui fonctionne
 
-## Applications pratiques
+Pour que le LLM soit conscient de cette fonction, nous devons lui fournir des informations pertinentes dans le contexte : nom de la fonction, arguments, description, etc. Regardez le **System Prompt** suivant :
 
-*Cette section sera complétée avec des projets d'application concrets liés au Tool Use Pattern.*
+![System Prompt](https://substackcdn.com/image/fetch/$s_!ZwcG!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F496740b3-2d98-4816-bca5-103d326985fd_4752x2888.png)
+
+Ce prompt force le LLM à se comporter comme un modèle de "function calling" qui, à partir d'une liste de signatures de fonctions entre des balises XML, sélectionnera celle à utiliser.
+
+![Balises XML](https://substackcdn.com/image/fetch/$s_!BZtX!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb417c78d-728a-4da1-8c09-c6f85f2edb90_2080x724.png)
+
+Testons en pratique avec une question simple : "Quelle est la température actuelle à Madrid en Celsius ?"
+
+![Requête et réponse de l'LLM](https://substackcdn.com/image/fetch/$s_!ILCZ!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe9e32bb0-fbbb-4ba9-bca2-2c6aa539ca22_2796x2320.png)
+
+Après avoir exécuté ce code, nous voyons que le LLM génère l'appel à l'outil :
+
+![Appel généré](https://substackcdn.com/image/fetch/$s_!tmMi!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff21ec4f3-bc3a-4a2b-9eb9-82b39e7c66a2_2295x892.png)
+
+C'est une avancée ! Nous n'avons pas encore la réponse finale, mais nous savons comment l'obtenir. Il nous suffit de :  
+1. **Parser** la sortie du LLM (supprimer les balises XML).  
+2. **Charger** la sortie sous forme de dictionnaire Python.  
+
+L'implémentation de ces étapes est disponible [dans ce module Python](https://github.com/neural-maze/agentic_patterns/blob/main/src/agentic_patterns/utils/completions.py). Une fois les arguments en place, exécuter la fonction devient facile :
+
+![Exécution de la fonction](https://substackcdn.com/image/fetch/$s_!Q51K!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F008e7d77-ebfb-4e18-872d-582a4781d308_2366x556.png)
+
+Le résultat est exactement ce qu'on attendait : `{"temperature": 25, "unit": "celsius"}`. Enfin, nous ajoutons ce résultat à l'historique du chat pour que le LLM puisse répondre à l'utilisateur :
+
+![Réponse finale de l'agent](https://substackcdn.com/image/fetch/$s_!8zwX!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F201b316c-ffa5-4c52-af87-ebcdcc6fad46_1685x1228.png)
+
+Et voilà comment un outil fonctionne sous le capot !
+
+---
+
+## Le décorateur d'outils
+
+Automatiser la transformation de n'importe quelle fonction en outil est essentiel. C'est là qu'intervient le **décorateur d'outils** (tool decorator), qui transforme une fonction Python en un objet [Tool](https://github.com/neural-maze/agentic_patterns/blob/main/src/agentic_patterns/tool_pattern/tool.py#L58). Vous pouvez voir l'implémentation du [tool_decorator ici](https://github.com/neural-maze/agentic_patterns/blob/main/src/agentic_patterns/tool_pattern/tool.py#L89).
+
+Pour voir le décorateur en action, construisons un outil qui interagit avec [Hacker News](https://news.ycombinator.com/) :
+
+![Décorateur d'outil Hacker News](https://substackcdn.com/image/fetch/$s_!cv8a!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F37ef1afe-151c-4d41-8fa5-4c14399dc632_3836x4420.png)
+
+Le bloc de code ci-dessus transforme la fonction `fetch_top_hacker_news_stories` en un `Tool`. Sous le capot, la classe `Tool` génère automatiquement la signature de la fonction (vous pouvez voir comment [ici](https://github.com/neural-maze/agentic_patterns/blob/main/src/agentic_patterns/tool_pattern/tool.py#L5)).
+
+Maintenant que nous avons notre outil, lançons l'[agent](https://github.com/neural-maze/agentic_patterns/blob/main/src/agentic_patterns/tool_pattern/tool_agent.py#L38) :
+
+![Lancement de l'agent](https://substackcdn.com/image/fetch/$s_!tOvz!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3a52fada-2cb1-423e-b258-71c2eba21a90_3236x704.png)
+
+Et voilà ! Un outil pleinement fonctionnel 🛠️ :
+
+![Résultat final de l'outil](https://substackcdn.com/image/fetch/$s_!nb43!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0a84cb6b-f27e-4e6b-9c0a-3284a912fc00_3772x1008.png)
+
+---
+
+
+## Pourquoi ça marche si bien ?
+
+- **Accès au monde réel** : Dépasse les limites de connaissances statiques du modèle.
+- **Actions concrètes** : Permet de passer de la réflexion à l'exécution.
+- **Extensibilité** : N'importe quelle API ou fonction locale devient une capacité pour l'agent.
+
+
+## Prochaines étapes
+
+Dans le prochain post de cette série, nous aborderons le **Planning Pattern**, la technique **ReAct** et comment implémenter des heuristiques de raisonnement pour nos agents.
+
 
 ## Ressources
 
-- Article original : [Tool Use Pattern](https://theneuralmaze.substack.com/)
-- Article précédent : [Le pattern de réflexion](/fr/translations/reflection-pattern/)
+- Article original : [Agent Tools: The bridge to the outside world](https://theneuralmaze.substack.com/p/agent-tools-the-bridge-to-the-outside)  
+- [Vidéo YouTube couvrant le Tool Pattern](https://www.youtube.com/watch?v=0sAVI8bQdRc)  
+- [GitHub de la série](https://github.com/neural-maze/agentic_patterns)  

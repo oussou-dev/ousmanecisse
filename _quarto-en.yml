@@ -14,11 +14,10 @@ website:
       - href: blog.qmd
         text: Blog
       - href: books.qmd
-        text: BOOK REVIEW
+        text: Book Review
       - href: robotics.qmd
         text: "Robotics & AI"
-      - href: en-to-fr.qmd
-        text: "EN --> FR"
+
     right:
       - text: "FR"
         href: fr/index.html

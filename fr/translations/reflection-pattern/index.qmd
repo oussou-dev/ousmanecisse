@@ -23,21 +23,25 @@ Pourquoi ? Pour bien comprendre ce qui se passe sous le capot. On commence par l
 
 Le **pattern de réflexion** permet à un agent d'évaluer sa propre production et de l'améliorer itérativement. L'idée : générer une réponse, la critiquer, l'ajuster, et recommencer.
 
-C'est une **boucle simple** en 4 étapes :
-1. **Génération** : Le LLM produit une première version.
-2. **Réflexion** : Le LLM critique cette version (erreurs, améliorations possibles).
-3. **Correction** : Le LLM intègre les critiques pour raffiner la sortie.
-4. **Répétition** : Retour à l'étape 1.
+C'est une **boucle simple** en 4 étapes :  
+1. **Génération** : Le LLM produit une première version.  
+2. **Réflexion** : Le LLM critique cette version (erreurs, améliorations possibles).  
+3. **Correction** : Le LLM intègre les critiques pour raffiner la sortie.  
+4. **Répétition** : Retour à l'étape 1  
 
-**Quand arrêter la boucle ?**
-- Après un **nombre fixe d'itérations** (ex. : 3 tours).
-- Quand le LLM génère un **signal d'arrêt** (ex. : "OK", "Parfait", "Final").
+**Quand arrêter la boucle ?**  
+- Après un **nombre fixe d'itérations** (ex. : 3 tours).  
+- Quand le LLM génère un **signal d'arrêt** (ex. : "OK", "Parfait", "Final").  
 
 Malgré sa simplicité, ce pattern booste la qualité des réponses, surtout pour du code, des analyses ou des textes complexes.
+
+
 
 ## Implémentation de zéro : la boucle de réflexion
 
 Testons sur un cas concret : demander à **Llama3 70B** (via Groq) d'implémenter l'algorithme **Merge Sort** en Python.
+
+
 
 ### Étape 1 : Génération initiale
 
@@ -72,17 +76,20 @@ def merge(left, right):
 
 Fonctionnel, mais perfectible (pas de docstrings complètes, gestion d'erreurs, etc.).
 
+
 ### Étape 2 : Phase de réflexion
 
 Nouveau prompt système : "Tu es un expert comme Andrej Karpathy. Critique ce code Python : erreurs, style, améliorations, tests."
 
 On passe le code généré comme message utilisateur.
 
-Critiques typiques :
-- Ajouter des **type hints** (PEP 484).
-- Améliorer les **noms de variables** (left → left_half).
-- Ajouter **docstrings détaillées** et **gestion d'erreurs**.
-- Inclure **tests unitaires**.
+Critiques typiques :  
+- Ajouter des **type hints** (PEP 484).  
+- Améliorer les **noms de variables** (left → left_half).  
+- Ajouter **docstrings détaillées** et **gestion d'erreurs**.  
+- Inclure **tests unitaires**.  
+
+
 
 ### Étape 3 : Intégration et nouvelle génération
 
@@ -90,7 +97,8 @@ On ajoute les critiques à l'historique de génération. Le LLM produit une vers
 
 La boucle continue jusqu'au critère d'arrêt. Résultat final : un code production-ready avec classe, tests complets (vides, doublons, négatifs), complexité indiquée.
 
-**Le repo GitHub** de la série contient une classe `ReflectionAgent` qui encapsule tout ça proprement.
+[**Le repo GitHub**](https://github.com/neural-maze/agentic_patterns/blob/main/src/agentic_patterns/reflection_pattern/reflection_agent.py) de la série contient une classe `ReflectionAgent` qui encapsule tout ça proprement.
+
 
 ## L'agent de réflexion en action
 
@@ -105,6 +113,7 @@ print(response.final_output)
 
 Sortie finale : un module complet `MergeSort` avec `__init__`, `_merge` privé, tests exhaustifs. **Amélioration massive** en quelques itérations !
 
+
 ## Pourquoi ça marche si bien ?
 
 - **Auto-correction** : L'agent simule un pair-review infini.
@@ -115,9 +124,8 @@ Idéal pour : génération de code, rédaction d'essais, analyses de données, o
 
 ## Prochaines étapes
 
-Prochain article : les **outils**, ingrédient clé pour rendre les agents vraiment utiles. Abonne-toi pour ne pas rater !
+Prochain article : les **outils**, ingrédient clé pour rendre les agents vraiment utiles.
 
 ## Ressources
 - Article original : [Reflection Pattern](https://theneuralmaze.substack.com/p/reflection-pattern-agents-that-think)
-- Vidéo YouTube (si dispo dans l'original)
-- Code source : [GitHub de la série](lien-vers-repo)
+- [Vidéo YouTube](https://www.youtube.com/watch?v=0sAVI8bQdRc)

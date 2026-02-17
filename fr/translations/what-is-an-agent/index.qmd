@@ -35,14 +35,14 @@ On peut voir le LLM comme un cerveau dans un bocal : très puissant, capable d'e
 
 Un agent n'est pas seulement là pour répondre à une question, il doit être capable de décomposer et d'organiser des tâches plus complexes.
 
-Par planification, on entend :
-- Découper un objectif global en sous-tâches.
-- Choisir un ordre d'exécution pertinent.
-- S'auto-évaluer en cours de route (réfléchir à ses erreurs, ajuster sa stratégie).
+Par planification, on entend :  
+- Découper un objectif global en sous-tâches.  
+- Choisir un ordre d'exécution pertinent.  
+- S'auto-évaluer en cours de route (réfléchir à ses erreurs, ajuster sa stratégie).  
 
 Plusieurs techniques de prompting renforcent cette capacité de raisonnement :  
 - **[**Chaîne de pensées (Chain of Thought**)](https://arxiv.org/abs/2201.11903)** : l'agent explicite ses étapes de réflexion au lieu de donner directement une réponse.  
-- **[**CoT-SC**](https://arxiv.org/abs/2203.11171)** : l'agent essaie plusieurs chemins, puis sélectionne le plus fréquent, permet d'améliore la précision et la fiabilité de la réponse.    
+- **[**CoT-SC**](https://arxiv.org/abs/2203.11171)** : l'agent essaie plusieurs chemins, puis sélectionne le plus fréquent, permet d'améliorer la précision et la fiabilité de la réponse.    
 - **[**Arbre de pensées (Tree of Thought**)](https://arxiv.org/abs/2305.10601)** : l'agent explore plusieurs pistes en parallèle, évalue différentes branches et choisit la meilleure.  
 - **[**ReAct**](https://arxiv.org/abs/2210.03629)** : permet d'interagir avec des outils externes pour récupérer des informations supplémentaires qui conduisent à des réponses plus fiables et factuelles.  
 
@@ -61,10 +61,10 @@ On distingue généralement deux types de mémoire.
 #### Mémoire à court terme
 
 C'est tout ce qui tient dans le contexte immédiat du modèle : l'historique de la conversation, les instructions récentes, les derniers résultats d'outils.  
-Concrètement :
-- Elle est limitée par la fenêtre de contexte du LLM.
-- Elle permet de maintenir le fil d'un échange ou d'une tâche en cours.
-- Elle disparaît lorsque le contexte est tronqué ou réinitialisé.
+Concrètement :  
+- Elle est limitée par la fenêtre de contexte du LLM.  
+- Elle permet de maintenir le fil d'un échange ou d'une tâche en cours.  
+- Elle disparaît lorsque le contexte est tronqué ou réinitialisé.  
 
 C'est l'équivalent de notre mémoire de travail : ce que l'on garde en tête quelques minutes pour finir une action.
 

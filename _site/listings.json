@@ -1,12 +1,30 @@
 [
   {
-    "listing": "/fr/en-to-fr.html",
+    "listing": "/fr/blog.html",
     "items": [
-      "/fr/translations/multiagent-pattern/index.html",
-      "/fr/translations/planning-pattern/index.html",
-      "/fr/translations/tool-use-pattern/index.html",
+      "/fr/posts/poetry-vs-uv/index.html",
+      "/fr/posts/ai-hero-day-1/index.html",
+      "/fr/posts/ai-news-aggregator/index.html",
+      "/fr/posts/ai-dev-tools-week-4/index.html",
+      "/fr/posts/ai-dev-tools-week-3/index.html",
+      "/fr/posts/ai-dev-tools-week-2/index.html",
+      "/fr/posts/ai-dev-tools-week-1/index.html"
+    ]
+  },
+  {
+    "listing": "/en-to-fr.html",
+    "items": [
       "/fr/translations/reflection-pattern/index.html",
-      "/fr/translations/what-is-an-agent/index.html"
+      "/fr/translations/what-is-an-agent/index.html",
+      "/fr/translations/multi-agent-pattern/index.html",
+      "/fr/translations/planning-pattern/index.html",
+      "/fr/translations/tool-use-pattern/index.html"
+    ]
+  },
+  {
+    "listing": "/courses.html",
+    "items": [
+      "/courses/ai-dev-tools.html"
     ]
   },
   {
@@ -27,31 +45,27 @@
     ]
   },
   {
-    "listing": "/courses.html",
+    "listing": "/books.html",
     "items": [
-      "/courses/ai-dev-tools.html"
+      "/books/llm-handbook/index.html",
+      "/books/mistral/index.html"
     ]
   },
   {
-    "listing": "/en-to-fr.html",
+    "listing": "/fr/en-to-fr.html",
     "items": [
-      "/fr/translations/multiagent-pattern/index.html",
-      "/fr/translations/planning-pattern/index.html",
-      "/fr/translations/tool-use-pattern/index.html",
       "/fr/translations/reflection-pattern/index.html",
-      "/fr/translations/what-is-an-agent/index.html"
+      "/fr/translations/what-is-an-agent/index.html",
+      "/fr/translations/multi-agent-pattern/index.html",
+      "/fr/translations/planning-pattern/index.html",
+      "/fr/translations/tool-use-pattern/index.html"
     ]
   },
   {
-    "listing": "/fr/blog.html",
+    "listing": "/fr/livres.html",
     "items": [
-      "/fr/posts/poetry-vs-uv/index.html",
-      "/fr/posts/ai-hero-day-1/index.html",
-      "/fr/posts/ai-news-aggregator/index.html",
-      "/fr/posts/ai-dev-tools-week-4/index.html",
-      "/fr/posts/ai-dev-tools-week-3/index.html",
-      "/fr/posts/ai-dev-tools-week-2/index.html",
-      "/fr/posts/ai-dev-tools-week-1/index.html"
+      "/fr/books/llm-handbook/index.html",
+      "/fr/books/mistral/index.html"
     ]
   },
   {
@@ -74,20 +88,6 @@
       "/projects/langchain-vectordb/index.html",
       "/projects/ml-zoomcamp/index.html",
       "/projects/nocode-ai/index.html"
-    ]
-  },
-  {
-    "listing": "/fr/livres.html",
-    "items": [
-      "/fr/books/llm-handbook/index.html",
-      "/fr/books/mistral/index.html"
-    ]
-  },
-  {
-    "listing": "/books.html",
-    "items": [
-      "/books/llm-handbook/index.html",
-      "/books/mistral/index.html"
     ]
   }
 ]

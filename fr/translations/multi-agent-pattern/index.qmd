@@ -1,0 +1,131 @@
+---
+title: "Le pattern multi-agents : collaborer pour réussir"
+translation-url: "posts/multi-agent-system/index.html"
+date: "2025-06-04"
+categories: [IA, Agents, LLM, Patterns]
+image: "https://substackcdn.com/image/fetch/$s_!8uK4!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc5eefb98-c3d1-4917-bec2-c6039b8ff081_1080x1080.png"
+description: "Découvrez comment construire un framework multi-agents minimaliste pour faire collaborer plusieurs agents spécialisés sur une tâche commune."
+lang: fr
+series-name: "Agent Design Patterns"
+series-prev-url: "/fr/translations/planning-pattern/"
+series-prev-title: "Le Planning Pattern (ReAct)"
+---
+
+Bienvenue dans la dernière leçon de la série **Agentic Patterns** ! À ce stade, vous êtes déjà familiarisé avec l'**Agent de Réflexion**, les **Outils**, et la **Technique ReAct**. Mais vous êtes probablement curieux de connaître les frameworks comme [CrewAI](https://www.crewai.com/), [AutoGen](https://microsoft.github.io/autogen/0.2/), ou [OpenAI Swarm](https://github.com/openai/swarm) — ces outils géniaux pour construire des **applications multi-agents**.
+
+Ces frameworks ne sont que des variantes du **Multiagent Pattern**, où les tâches sont décomposées en sous-tâches plus petites et traitées par des agents ayant des rôles spécifiques — comme un ingénieur logiciel, un chef de projet, etc.
+
+Dans cette leçon, nous passons au niveau supérieur en **construisant un framework multi-agents minimaliste de zéro**.
+
+C'est parti ! 🚀
+
+![Le Pattern Multi-agents](https://substackcdn.com/image/fetch/$s_!8uK4!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc5eefb98-c3d1-4917-bec2-c6039b8ff081_1080x1080.png)
+
+> Ceci est la quatrième leçon du cours Agentic Patterns from Scratch. Cette leçon s'appuie sur la théorie et le code abordés dans les précédentes, alors assurez-vous de les consulter si ce n'est pas déjà fait !
+>
+> - [Leçon Zéro : Qu'est-ce qu'un agent ?](/fr/translations/what-is-an-agent/)  
+> - [Leçon Une : Le pattern de réflexion](/fr/translations/reflection-pattern/)  
+> - [Leçon Deux : Le pattern d'utilisation d'outils](/fr/translations/tool-use-pattern/)  
+> - [Leçon Trois : Le Planning Pattern](/fr/translations/planning-pattern/)  
+
+---
+
+## Un framework multi-agents minimaliste
+
+Le framework que nous allons développer s'inspire de deux concepts fondamentaux de CrewAI : la **[Crew](https://docs.crewai.com/concepts/crews)** (l'équipage) et l'**[Agent](https://docs.crewai.com/concepts/agents)**.
+
+Dans CrewAI, une *Crew* représente un groupe collaboratif d'agents travaillant à l'unisson pour accomplir un ensemble de tâches. Un *Agent*, quant à lui, représente l'unité autonome responsable de l'exécution de tâches spécifiques.
+
+![Concept de Crew dans CrewAI](https://substackcdn.com/image/fetch/$s_!xjws!)
+*Introduction - CrewAI*
+
+Je me suis également inspiré de la philosophie de design d'[Apache Airflow](https://airflow.apache.org/), particulièrement l'utilisation des opérateurs **>>** et **<<** pour établir des **dépendances entre les agents**. Dans ce micro-framework CrewAI, les **agents** sont analogues aux **Airflow Tasks**, tandis que la **Crew** correspond à un **Airflow DAG**.
+
+![DAGs dans la documentation Airflow](https://substackcdn.com/image/fetch/$s_!oo1X!)
+*DAGs — Airflow Documentation*
+
+Commençons par la classe Agent 👇
+
+---
+
+## La classe Agent
+
+Tout d'abord, nous avons besoin d'une **Classe Agent**. Cette classe représentera un agent, intégrant la **technique ReAct en interne** (consultez la [Leçon 3](/fr/translations/planning-pattern/) pour voir cette technique en détail !).
+
+Créons un exemple d'agent pour démontrer son fonctionnement.
+
+![Définition d'un agent simple](https://substackcdn.com/image/fetch/$s_!VG_C!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F922c7675-b0ac-48cb-b2ea-2bbbcd6baa39_3621x1816.png)
+
+Vous pouvez également équiper l'agent d'outils, comme nous l'avons fait dans la [Leçon 2](/fr/translations/tool-use-pattern/). Par exemple, construisons un outil qui écrit du texte dans un fichier CSV.
+
+![Équiper un agent d'outils](https://substackcdn.com/image/fetch/$s_!oXte!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8ba16741-c089-43b5-9786-f303ca275cbc_3692x2992.png)
+
+Comme vous pouvez l'imaginer, l'exécution de ce **Tool Agent** créera un nouveau fichier nommé `tool_agent_example.txt` dans le répertoire courant, contenant le texte "This is a Tool Agent".
+
+Maintenant que nous savons comment fonctionne la classe Agent, voyons comment **définir les dépendances entre agents.**
+
+---
+
+## Définition des dépendances entre agents
+
+Supposons que nous voulions définir deux agents, où le second dépend du premier.
+
+![Définition de deux agents](https://substackcdn.com/image/fetch/$s_!2YwG!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbcc84dd9-c9d0-4e65-a6d3-4ad7ef8bfba1_3621x1564.png)
+
+Nous pouvons définir les dépendances en utilisant l'opérateur **>>**.
+
+```python
+agent_1 >> agent_2
+```
+
+Cela signifie que **agent_2** dépend de **agent_1**. On peut alors vérifier les dépendances de chaque agent.
+
+![Vérification des dépendances](https://substackcdn.com/image/fetch/$s_!AgvG!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0cbf9022-e34b-4f94-85bd-7c34b1101d8f_3740x808.png)
+
+Désormais, si nous lançons **agent_1**, ses résultats seront ajoutés au contexte de **agent_2**. Ensuite, quand nous lancerons **agent_2**, il utilisera le contexte reçu de **agent_1** pour générer sa sortie.
+
+![Propagation du contexte](https://substackcdn.com/image/fetch/$s_!tBZ_!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0b48e2f7-ca50-413d-a09b-843401488d72_1772x1160.png)
+
+---
+
+## La Crew
+
+Une fois les agents et leurs dépendances définis, la dernière pièce manquante est la **Crew**, c'est-à-dire l'objet session qui nous permettra d'orchestrer les agents.
+
+Notre *Crew* s'occupera de lancer les agents dans le bon ordre, en appliquant un algorithme appelé [Topological Sorting](https://fr.wikipedia.org/wiki/Tri_topologique). Elle permet également de visualiser le graphe des dépendances.
+
+Voyons la *Crew* en action :
+
+![Définition de la Crew](https://substackcdn.com/image/fetch/$s_!LVYN!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F074cd8e8-0ac9-4e52-900e-4ede7dd24b2a_4746x2672.png)
+
+Si nous voulons voir le graphe de dépendances, nous pouvons simplement lancer `crew.plot()`. Cette commande générera un diagramme comme celui-ci :
+
+![Visualisation du graphe](https://substackcdn.com/image/fetch/$s_!y-k5!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F507bad30-c364-4d0c-a518-1af59b4a98c9_416x375.png)
+
+Ensuite, nous n'avons plus qu'à lancer la crew et attendre les résultats !
+
+```python
+crew.run()
+```
+
+Vous devriez voir une sortie comme celle-ci, où le **Poet Agent** génère un poème sur la vie, le **Poem Translator Agent** le traduit en espagnol, et enfin le **Writer Agent** écrit le poème traduit dans un fichier `poem.txt` !
+
+![Exécution de la Crew](https://substackcdn.com/image/fetch/$s_!Ebd6!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0dc824e6-d61a-497a-9053-d9e8722b551b_1806x1314.png)
+
+Et voilà ! Nous avons réussi à mettre en place un framework multi-agents opérationnel ! Ça mérite bien un petit meme... 🤣
+
+![Multi-agents meme](https://substackcdn.com/image/fetch/$s_!EAev!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fcf211ca1-9685-4a56-9c31-525eec020c32_500x500.jpeg)
+
+---
+
+## Pourquoi ça marche si bien ?
+
+- **Spécialisation** : Chaque agent peut être "expert" dans une tâche très précise.  
+- **Collaboration** : Les agents partagent leur contexte pour construire une solution globale.  
+- **Orchestration** : La *Crew* gère la complexité de l'ordre d'exécution pour vous.  
+
+## Ressources
+
+- Article original : [What is a Multiagent system?](https://theneuralmaze.substack.com/p/what-is-a-multiagent-system)  
+- [Vidéo YouTube couvrant le Multiagent Pattern](https://www.youtube.com/watch?v=0sAVI8bQdRc)  
+- [GitHub de la série](https://github.com/neural-maze/agentic_patterns)  

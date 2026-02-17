@@ -1,5 +1,5 @@
 ---
-title: "EN --> FR"
+title: "POSTS TRADUITS"
 description: "Traductions d'articles techniques de l'anglais vers le français."
 listing:
   contents: translations

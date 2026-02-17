@@ -166,5 +166,8 @@
   },
   "fr/livres.qmd": {
     "livres.html": "97ba79c7"
+  },
+  "fr/translations/multi-agent-pattern/index.qmd": {
+    "index.html": "0c861f22"
   }
 }

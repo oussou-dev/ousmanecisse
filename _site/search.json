@@ -4,28 +4,28 @@
     "href": "robotics.html",
     "title": "Robotics & AI",
     "section": "",
-    "text": "Coming soon…"
+    "text": "Coming soon…\n\n\n\n Back to top"
   },
   {
     "objectID": "projects/ml-zoomcamp/index.html",
     "href": "projects/ml-zoomcamp/index.html",
     "title": "ML Engineer ZoomCamp",
     "section": "",
-    "text": "🔗 GitHub Repository"
+    "text": "🔗 GitHub Repository\n\n\n\n\n Back to top"
   },
   {
     "objectID": "projects/data-engineering/index.html",
     "href": "projects/data-engineering/index.html",
     "title": "Data Engineering Zoomcamp",
     "section": "",
-    "text": "🔗 GitHub Repository"
+    "text": "🔗 GitHub Repository\n\n\n\n\n Back to top"
   },
   {
     "objectID": "projects/ai-dev-tools/index.html",
     "href": "projects/ai-dev-tools/index.html",
     "title": "AI Dev Tools",
     "section": "",
-    "text": "Project Details\nThis project covers the full AI Dev Tools Zoomcamp curriculum.\n\n🔗 GitHub Repository\n\n\n📝 Related Weekly Reports\nBelow is the complete series of articles documenting my progress:\n\nWeek 1 — Vibe Coding & Foundations\nWeek 2 — End-to-End Application Development\nWeek 3 — MCP & Agents\nWeek 4 — Building Coding Agents"
+    "text": "Project Details\nThis project covers the full AI Dev Tools Zoomcamp curriculum.\n\n🔗 GitHub Repository\n\n\n📝 Related Weekly Reports\nBelow is the complete series of articles documenting my progress:\n\nWeek 1 — Vibe Coding & Foundations\nWeek 2 — End-to-End Application Development\nWeek 3 — MCP & Agents\nWeek 4 — Building Coding Agents\n\n\n\n\n\n\n Back to top"
   },
   {
     "objectID": "posts/tool-using-agent/index.html",
@@ -333,133 +333,161 @@
     "href": "index.html",
     "title": "Ousmane Cissé",
     "section": "",
-    "text": "I am an AI Engineer Consultant based in France with a hybrid background in finance, audit and web development.\nI help companies turn business needs into scalable AI solutions: AI Agents, RAG systems, automation and modern data architectures.\nMy experience in financial services and digital projects allows me to deliver AI initiatives that are technically solid, compliant, and aligned with real operational constraints.\nAvailable for AI consulting, LLM applications, automation and data engineering missions."
+    "text": "I am an AI Engineer Consultant based in France with a hybrid background in finance, audit and web development.\nI help companies turn business needs into scalable AI solutions: AI Agents, RAG systems, automation and modern data architectures.\nMy experience in financial services and digital projects allows me to deliver AI initiatives that are technically solid, compliant, and aligned with real operational constraints.\nAvailable for AI consulting, LLM applications, automation and data engineering missions.\n\n\n Back to top"
   },
   {
     "objectID": "fr/translations/tool-use-pattern/index.html",
     "href": "fr/translations/tool-use-pattern/index.html",
-    "title": "Le pattern d’utilisation d’outils : quand les agents agissent sur le monde",
+    "title": "Le pattern d’utilisation d’outils : le pont vers le monde extérieur",
     "section": "",
-    "text": "Après avoir découvert le pattern de réflexion, nous passons à un pattern encore plus puissant : le Tool Use Pattern. C’est ce qui permet à un agent de passer de “je peux raisonner” à “je peux agir”."
+    "text": "Après avoir exploré le pattern de réflexion, nous aurions pu croire que nos agents étaient imbattables. Un agent capable de réfléchir sur sa propre production, quoi de mieux ? 🤔\nPourtant, le pattern de réflexion a une faiblesse majeure. Que se passe-t-il si vous demandez à cet agent le prix actuel de l’action NVIDIA ? Ou la température d’hier à Madrid ? Comme vous le savez, l’information encodée dans les poids d’un LLM ne suffit pas à fournir des réponses précises, fraîches et spécifiques au contexte.\nC’est pourquoi nous devons équiper notre agent de moyens d’accéder au monde extérieur 🌍. C’est ici qu’interviennent les Outils (Tools). Fondamentalement, les outils sont des fonctions que le LLM peut appeler pour renforcer ses capacités. C’est le cœur du deuxième pattern : le Tool Pattern."
   },
   {
-    "objectID": "fr/translations/tool-use-pattern/index.html#le-tool-use-pattern-en-bref",
-    "href": "fr/translations/tool-use-pattern/index.html#le-tool-use-pattern-en-bref",
-    "title": "Le pattern d’utilisation d’outils : quand les agents agissent sur le monde",
-    "section": "Le Tool Use Pattern en bref",
-    "text": "Le Tool Use Pattern en bref\nLe Tool Use Pattern (ou pattern d’utilisation d’outils) permet à un agent d’exécuter des actions concrètes en appelant des fonctions ou des APIs externes. Au lieu de se limiter à générer du texte, l’agent peut :\n\nRechercher sur le web ou dans des bases de données\nCalculer des résultats mathématiques complexes\nCréer ou modifier des fichiers, des tickets, des entrées en base\nInteragir avec des services externes (météo, bourse, calendrier, etc.)"
+    "objectID": "fr/translations/tool-use-pattern/index.html#le-pattern-dutilisation-doutils-en-bref",
+    "href": "fr/translations/tool-use-pattern/index.html#le-pattern-dutilisation-doutils-en-bref",
+    "title": "Le pattern d’utilisation d’outils : le pont vers le monde extérieur",
+    "section": "Le pattern d’utilisation d’outils en bref",
+    "text": "Le pattern d’utilisation d’outils en bref\nLe Tool Use Pattern permet à un agent d’exécuter des actions concrètes en appelant des fonctions ou des APIs externes. Au lieu de se limiter à générer du texte, l’agent peut :\n- Rechercher des informations fraîches et véridiques.\n- Effectuer des calculs complexes ou des opérations de données.\n- Interagir avec des services tiers (météo, bourse, GitHub, etc.).\nDans ce post, vous apprendrez comment fonctionnent les outils et comment les construire de zéro en utilisant Python et les LLM de Groq."
   },
   {
-    "objectID": "fr/translations/tool-use-pattern/index.html#comment-ça-fonctionne",
-    "href": "fr/translations/tool-use-pattern/index.html#comment-ça-fonctionne",
-    "title": "Le pattern d’utilisation d’outils : quand les agents agissent sur le monde",
-    "section": "Comment ça fonctionne ?",
-    "text": "Comment ça fonctionne ?\nLe mécanisme repose sur le function calling (appel de fonction) :\n\nDescription des outils : On décrit au LLM les outils disponibles (nom, paramètres, description)\nChoix du LLM : Face à une requête, le modèle décide s’il doit utiliser un outil et lequel\nExécution : L’outil est exécuté côté serveur avec les paramètres choisis par le LLM\nIntégration : Le résultat est renvoyé au LLM qui l’intègre dans sa réponse\n\n# Exemple simplifié\ntools = [\n    {\n        \"name\": \"search_web\",\n        \"description\": \"Recherche sur le web\",\n        \"parameters\": {\"query\": \"string\"}\n    },\n    {\n        \"name\": \"get_weather\",\n        \"description\": \"Obtenir la météo d'une ville\",\n        \"parameters\": {\"city\": \"string\"}\n    }\n]"
+    "objectID": "fr/translations/tool-use-pattern/index.html#implémentation-de-zéro-construire-un-outil",
+    "href": "fr/translations/tool-use-pattern/index.html#implémentation-de-zéro-construire-un-outil",
+    "title": "Le pattern d’utilisation d’outils : le pont vers le monde extérieur",
+    "section": "Implémentation de zéro : construire un outil",
+    "text": "Implémentation de zéro : construire un outil\nCommençons par les bases. Regardez cette fonction extrêmement simple :\n\n\n\nFonction simple\n\n\nLa question est : comment rendre cette fonction disponible pour un LLM ?\n\nUn System Prompt qui fonctionne\nPour que le LLM soit conscient de cette fonction, nous devons lui fournir des informations pertinentes dans le contexte : nom de la fonction, arguments, description, etc. Regardez le System Prompt suivant :\n\n\n\nSystem Prompt\n\n\nCe prompt force le LLM à se comporter comme un modèle de “function calling” qui, à partir d’une liste de signatures de fonctions entre des balises XML, sélectionnera celle à utiliser.\n\n\n\nBalises XML\n\n\nTestons en pratique avec une question simple : “Quelle est la température actuelle à Madrid en Celsius ?”\n\n\n\nRequête et réponse de l’LLM\n\n\nAprès avoir exécuté ce code, nous voyons que le LLM génère l’appel à l’outil :\n\n\n\nAppel généré\n\n\nC’est une avancée ! Nous n’avons pas encore la réponse finale, mais nous savons comment l’obtenir. Il nous suffit de :\n1. Parser la sortie du LLM (supprimer les balises XML).\n2. Charger la sortie sous forme de dictionnaire Python.\nL’implémentation de ces étapes est disponible dans ce module Python. Une fois les arguments en place, exécuter la fonction devient facile :\n\n\n\nExécution de la fonction\n\n\nLe résultat est exactement ce qu’on attendait : {\"temperature\": 25, \"unit\": \"celsius\"}. Enfin, nous ajoutons ce résultat à l’historique du chat pour que le LLM puisse répondre à l’utilisateur :\n\n\n\nRéponse finale de l’agent\n\n\nEt voilà comment un outil fonctionne sous le capot !"
   },
   {
-    "objectID": "fr/translations/tool-use-pattern/index.html#cas-dusage-concrets",
-    "href": "fr/translations/tool-use-pattern/index.html#cas-dusage-concrets",
-    "title": "Le pattern d’utilisation d’outils : quand les agents agissent sur le monde",
-    "section": "Cas d’usage concrets",
-    "text": "Cas d’usage concrets\n\nRecherche d’informations\nL’agent peut interroger un moteur de recherche pour obtenir des données récentes, au-delà de sa date de coupure d’entraînement.\n\n\nExécution de code\nUn outil execute_python permet à l’agent de tester et vérifier du code, plutôt que de le générer “à l’aveugle”.\n\n\nGestion de fichiers\nLire, créer, modifier des fichiers locaux — la base de tout agent de développement."
+    "objectID": "fr/translations/tool-use-pattern/index.html#le-décorateur-doutils",
+    "href": "fr/translations/tool-use-pattern/index.html#le-décorateur-doutils",
+    "title": "Le pattern d’utilisation d’outils : le pont vers le monde extérieur",
+    "section": "Le décorateur d’outils",
+    "text": "Le décorateur d’outils\nAutomatiser la transformation de n’importe quelle fonction en outil est essentiel. C’est là qu’intervient le décorateur d’outils (tool decorator), qui transforme une fonction Python en un objet Tool. Vous pouvez voir l’implémentation du tool_decorator ici.\nPour voir le décorateur en action, construisons un outil qui interagit avec Hacker News :\n\n\n\nDécorateur d’outil Hacker News\n\n\nLe bloc de code ci-dessus transforme la fonction fetch_top_hacker_news_stories en un Tool. Sous le capot, la classe Tool génère automatiquement la signature de la fonction (vous pouvez voir comment ici).\nMaintenant que nous avons notre outil, lançons l’agent :\n\n\n\nLancement de l’agent\n\n\nEt voilà ! Un outil pleinement fonctionnel 🛠️ :\n\n\n\nRésultat final de l’outil"
   },
   {
-    "objectID": "fr/translations/tool-use-pattern/index.html#pourquoi-cest-un-game-changer",
-    "href": "fr/translations/tool-use-pattern/index.html#pourquoi-cest-un-game-changer",
-    "title": "Le pattern d’utilisation d’outils : quand les agents agissent sur le monde",
-    "section": "Pourquoi c’est un game-changer ?",
-    "text": "Pourquoi c’est un game-changer ?\nSans outils, un LLM est un cerveau dans un bocal : brillant mais impuissant. Avec des outils :\n\nIl accède à des données en temps réel\nIl peut agir sur le monde (pas seulement en parler)\nIl devient réellement utile dans des workflows professionnels"
+    "objectID": "fr/translations/tool-use-pattern/index.html#pourquoi-ça-marche-si-bien",
+    "href": "fr/translations/tool-use-pattern/index.html#pourquoi-ça-marche-si-bien",
+    "title": "Le pattern d’utilisation d’outils : le pont vers le monde extérieur",
+    "section": "Pourquoi ça marche si bien ?",
+    "text": "Pourquoi ça marche si bien ?\n\nAccès au monde réel : Dépasse les limites de connaissances statiques du modèle.\nActions concrètes : Permet de passer de la réflexion à l’exécution.\nExtensibilité : N’importe quelle API ou fonction locale devient une capacité pour l’agent."
   },
   {
-    "objectID": "fr/translations/tool-use-pattern/index.html#applications-pratiques",
-    "href": "fr/translations/tool-use-pattern/index.html#applications-pratiques",
-    "title": "Le pattern d’utilisation d’outils : quand les agents agissent sur le monde",
-    "section": "Applications pratiques",
-    "text": "Applications pratiques\nCette section sera complétée avec des projets d’application concrets liés au Tool Use Pattern."
+    "objectID": "fr/translations/tool-use-pattern/index.html#prochaines-étapes",
+    "href": "fr/translations/tool-use-pattern/index.html#prochaines-étapes",
+    "title": "Le pattern d’utilisation d’outils : le pont vers le monde extérieur",
+    "section": "Prochaines étapes",
+    "text": "Prochaines étapes\nDans le prochain post de cette série, nous aborderons le Planning Pattern, la technique ReAct et comment implémenter des heuristiques de raisonnement pour nos agents."
   },
   {
     "objectID": "fr/translations/tool-use-pattern/index.html#ressources",
     "href": "fr/translations/tool-use-pattern/index.html#ressources",
-    "title": "Le pattern d’utilisation d’outils : quand les agents agissent sur le monde",
+    "title": "Le pattern d’utilisation d’outils : le pont vers le monde extérieur",
     "section": "Ressources",
-    "text": "Ressources\n\nArticle original : Tool Use Pattern\nArticle précédent : Le pattern de réflexion\n\n\n\n\n  \n    Série\n    Agent Design Patterns\n  \n  \n    \n      ← Article précédent\n      Le pattern de réflexion\n    \n    \n      Article suivant →\n      Le Planning Pattern (ReAct)"
+    "text": "Ressources\n\nArticle original : Agent Tools: The bridge to the outside world\n\nVidéo YouTube couvrant le Tool Pattern\n\nGitHub de la série\n\n\n\n\n  \n    Série\n    Agent Design Patterns\n  \n  \n    \n      ← Article précédent\n      Le pattern de réflexion\n    \n    \n      Article suivant →\n      Le Planning Pattern (ReAct)"
   },
   {
     "objectID": "fr/translations/planning-pattern/index.html",
     "href": "fr/translations/planning-pattern/index.html",
-    "title": "Le Planning Pattern (ReAct) : quand les agents planifient et agissent",
+    "title": "Le Planning Pattern (ReAct) : donner une stratégie aux agents",
     "section": "",
-    "text": "Après le Tool Use Pattern, nous abordons le Planning Pattern, et plus spécifiquement le framework ReAct (Reasoning + Acting). C’est ici que les agents deviennent véritablement autonomes."
+    "text": "Dans les leçons précédentes, nous avons appris comment les agents peuvent réfléchir et utiliser des outils pour interagir avec le monde extérieur. Mais qu’en est-il de la planification ? Comment les agents peuvent-ils déterminer la séquence d’étapes nécessaire pour atteindre un objectif plus large ?\nC’est là qu’intervient le Planning Pattern. Il permet à un LLM de décomposer une tâche complexe en sous-objectifs plus petits et gérables sans perdre de vue l’objectif global.\nLa technique ReAct — contraction de Reason + Act (Raisonner + Agir) — est un exemple paradigmatique de ce pattern. Dans cette leçon, vous apprendrez comment cette technique fonctionne et implémenterez un Agent ReAct de zéro en utilisant Python et les LLM de Groq.\nC’est parti ! 👇"
   },
   {
-    "objectID": "fr/translations/planning-pattern/index.html#le-react-pattern-en-bref",
-    "href": "fr/translations/planning-pattern/index.html#le-react-pattern-en-bref",
-    "title": "Le Planning Pattern (ReAct) : quand les agents planifient et agissent",
-    "section": "Le ReAct Pattern en bref",
-    "text": "Le ReAct Pattern en bref\nReAct combine raisonnement et action dans une boucle itérative :\n\nThought (Pensée) : L’agent réfléchit à la situation actuelle et décide quoi faire\nAction : L’agent exécute une action (appeler un outil, rechercher, calculer)\nObservation : L’agent observe le résultat de son action\nRépétition : Le cycle recommence jusqu’à ce que la tâche soit accomplie\n\nC’est fondamentalement différent des approches “one-shot” où on pose une question et on obtient une réponse directe."
+    "objectID": "fr/translations/planning-pattern/index.html#le-system-prompt-react",
+    "href": "fr/translations/planning-pattern/index.html#le-system-prompt-react",
+    "title": "Le Planning Pattern (ReAct) : donner une stratégie aux agents",
+    "section": "Le System Prompt ReAct",
+    "text": "Le System Prompt ReAct\nTout comme pour le pattern d’utilisation d’outils, la technique ReAct nécessite un System Prompt. Ce prompt est assez similaire, mais il décrit également la boucle ReAct pour s’assurer que le LLM comprend les trois opérations qu’il est autorisé à effectuer :\n\nThought (Pensée) : Le LLM va réfléchir à l’action à entreprendre.\n\nAction : Le LLM va utiliser un Outil pour interagir avec l’environnement et passer à l’action.\n\nObservation : Le LLM va observer la sortie de l’outil et réfléchir à la prochaine étape.\n\nUne autre différence clé par rapport au pattern d’utilisation d’outils est que nous allons encadrer tous les messages dans des balises, comme ceci : &lt; &gt;. Bien qu’il soit possible d’implémenter la logique ReAct sans ces balises, j’ai trouvé qu’elles facilitaient le respect des instructions par le LLM.\nAssez de théorie ! Voici le prompt 👇\n\n\n\nSystem Prompt ReAct\n\n\nSi vous regardez le prompt, vous remarquerez que nous avons besoin d’un ensemble d’outils, qui sont encadrés par les balises &lt;tools&gt;&lt;/tools&gt;. L’exemple que nous allons construire implique l’utilisation de trois outils, comme le montre l’extrait de code ci-dessous.\n\n\n\nLes trois outils mathématiques\n\n\nRappelez-vous que le décorateur d’outil — implémenté dans la leçon précédente — nous permet de convertir automatiquement n’importe quelle fonction Python en un Outil. Ensuite, nous concaténons simplement les signatures des outils et les ajoutons au System Prompt.\n\n\n\nConcatenation des signatures\n\n\nAvec le System Prompt complet, il est temps de commencer la première itération de la boucle ReAct !"
   },
   {
-    "objectID": "fr/translations/planning-pattern/index.html#la-boucle-react-en-pratique",
-    "href": "fr/translations/planning-pattern/index.html#la-boucle-react-en-pratique",
-    "title": "Le Planning Pattern (ReAct) : quand les agents planifient et agissent",
-    "section": "La boucle ReAct en pratique",
-    "text": "La boucle ReAct en pratique\nPensée : J'ai besoin de trouver la population de Paris pour répondre.\nAction  : search_web(\"population Paris 2024\")\nObservation : Paris compte environ 2,1 millions d'habitants intra-muros.\nPensée : J'ai l'information, je peux maintenant répondre à l'utilisateur.\nAction  : respond(\"Paris compte environ 2,1 millions d'habitants.\")"
+    "objectID": "fr/translations/planning-pattern/index.html#boucle-react-choisir-le-premier-outil",
+    "href": "fr/translations/planning-pattern/index.html#boucle-react-choisir-le-premier-outil",
+    "title": "Le Planning Pattern (ReAct) : donner une stratégie aux agents",
+    "section": "Boucle ReAct : Choisir le premier outil",
+    "text": "Boucle ReAct : Choisir le premier outil\nLa question à laquelle nous allons répondre est la suivante :\n\nJe veux calculer la somme de 1234 et 5678 et multiplier le résultat par 5. Ensuite, je veux prendre le logarithme de ce résultat.\n\nComme vous pouvez le voir, la question est facilement résolue en utilisant les outils fournis dans le bon ordre, mais l’agent peut-il faire de même ? Générons la première complétion pour le découvrir.\n\n\n\nPremière complétion\n\n\nLa sortie générée est un  et un , qui indiquent à l’Agent quel outil utiliser.\n\n\n\nThought et Tool Call"
   },
   {
-    "objectID": "fr/translations/planning-pattern/index.html#pourquoi-react-est-si-puissant",
-    "href": "fr/translations/planning-pattern/index.html#pourquoi-react-est-si-puissant",
-    "title": "Le Planning Pattern (ReAct) : quand les agents planifient et agissent",
-    "section": "Pourquoi ReAct est si puissant ?",
-    "text": "Pourquoi ReAct est si puissant ?\n\nRésolution de problèmes complexes\nContrairement à un simple prompt, ReAct permet de décomposer un problème en étapes : - Identifier les sous-problèmes - Résoudre chacun avec les bons outils - Synthétiser les résultats\n\n\nTraçabilité\nChaque étape du raisonnement est visible. On peut comprendre pourquoi l’agent a fait tel ou tel choix — essentiel pour le debugging et la confiance.\n\n\nAuto-correction\nSi une action échoue ou donne un résultat inattendu, l’agent peut : - Reconnaître l’erreur dans sa phase de réflexion - Essayer une approche alternative - Demander des clarifications"
+    "objectID": "fr/translations/planning-pattern/index.html#boucle-react-exécuter-le-premier-outil",
+    "href": "fr/translations/planning-pattern/index.html#boucle-react-exécuter-le-premier-outil",
+    "title": "Le Planning Pattern (ReAct) : donner une stratégie aux agents",
+    "section": "Boucle ReAct : Exécuter le premier outil",
+    "text": "Boucle ReAct : Exécuter le premier outil\nPuisque nous avons le , il est très facile d’évaluer l’Outil pour obtenir le résultat — c’est essentiellement l’action que l’agent va entreprendre.\n\n\n\nÉvaluation de l’outil\n\n\nLe résultat de l’outil est simplement la somme de 1234 et 5678, soit 6912."
   },
   {
-    "objectID": "fr/translations/planning-pattern/index.html#implémentation",
-    "href": "fr/translations/planning-pattern/index.html#implémentation",
-    "title": "Le Planning Pattern (ReAct) : quand les agents planifient et agissent",
-    "section": "Implémentation",
-    "text": "Implémentation\nclass ReActAgent:\n    def __init__(self, llm, tools):\n        self.llm = llm\n        self.tools = tools\n\n    def run(self, task):\n        history = []\n        while True:\n            # Phase de RÉFLEXION\n            thought = self.llm.think(task, history)\n\n            # Phase d'ACTION\n            action, params = self.llm.choose_action(thought, self.tools)\n\n            if action == \"finish\":\n                return thought\n\n            # Phase d'OBSERVATION\n            result = self.tools[action].execute(params)\n            history.append((thought, action, result))"
+    "objectID": "fr/translations/planning-pattern/index.html#boucle-react-choisir-le-deuxième-outil",
+    "href": "fr/translations/planning-pattern/index.html#boucle-react-choisir-le-deuxième-outil",
+    "title": "Le Planning Pattern (ReAct) : donner une stratégie aux agents",
+    "section": "Boucle ReAct : Choisir le deuxième outil",
+    "text": "Boucle ReAct : Choisir le deuxième outil\nSi vous regardez de près le contenu que nous avons ajouté au chat_history, vous remarquerez qu’on inclut le résultat de l’outil (6912) comme une . Cela permet au LLM de réfléchir, une fois de plus, au prochain outil à utiliser.\nEn lançant une complétion comme précédemment, nous devrions obtenir quelque chose comme ceci, où le LLM sélectionne correctement l’outil de multiplication pour multiplier le résultat précédent par 5.\n\n\n\nChoix du deuxième outil\n\n\nOn procède exactement de la même manière pour l’exécution. Le résultat de l’outil dans ce cas est 34560."
   },
   {
-    "objectID": "fr/translations/planning-pattern/index.html#applications-pratiques",
-    "href": "fr/translations/planning-pattern/index.html#applications-pratiques",
-    "title": "Le Planning Pattern (ReAct) : quand les agents planifient et agissent",
-    "section": "Applications pratiques",
-    "text": "Applications pratiques\nCette section sera complétée avec des projets d’application concrets liés au Planning Pattern (ReAct)."
+    "objectID": "fr/translations/planning-pattern/index.html#boucle-react-choisir-le-troisième-outil",
+    "href": "fr/translations/planning-pattern/index.html#boucle-react-choisir-le-troisième-outil",
+    "title": "Le Planning Pattern (ReAct) : donner une stratégie aux agents",
+    "section": "Boucle ReAct : Choisir le troisième outil",
+    "text": "Boucle ReAct : Choisir le troisième outil\nAprès avoir lancé la complétion suivante, nous obtenons la sortie suivante :\n\n\n\nChoix du troisième outil\n\n\nAprès avoir calculé la somme et la multiplication, la seule opération restante est le logarithme, implémenté dans l’outil compute_log."
+  },
+  {
+    "objectID": "fr/translations/planning-pattern/index.html#boucle-react-résultat-final",
+    "href": "fr/translations/planning-pattern/index.html#boucle-react-résultat-final",
+    "title": "Le Planning Pattern (ReAct) : donner une stratégie aux agents",
+    "section": "Boucle ReAct : Résultat final",
+    "text": "Boucle ReAct : Résultat final\nAprès avoir exécuté l’outil de logarithme et ajouté le résultat au chat_history, il est temps de lancer la dernière complétion. La sortie générée contiendra une balise , qui marque la fin de la boucle et contient la réponse finale.\n\n\n\nRéponse finale\n\n\nNotre LLM affiche 10.45. Et c’est… correct ! — si vous ne me croyez pas, n’hésitez pas à vérifier avec votre calculatrice 😂"
+  },
+  {
+    "objectID": "fr/translations/planning-pattern/index.html#lagent-react",
+    "href": "fr/translations/planning-pattern/index.html#lagent-react",
+    "title": "Le Planning Pattern (ReAct) : donner une stratégie aux agents",
+    "section": "L’Agent ReAct",
+    "text": "L’Agent ReAct\nComme dans les posts précédents, vous pouvez obtenir les mêmes résultats en utilisant ma bibliothèque agentic_patterns, qui implémente le code ci-dessus de “la bonne manière”.\nJ’ai créé une classe ReactAgent qui encapsule la boucle ReAct, acceptant une liste d’outils disponibles. Découvrez-la ici !\n\n\n\nReactAgent avec la library agentic_patterns"
+  },
+  {
+    "objectID": "fr/translations/planning-pattern/index.html#pourquoi-ça-marche-si-bien",
+    "href": "fr/translations/planning-pattern/index.html#pourquoi-ça-marche-si-bien",
+    "title": "Le Planning Pattern (ReAct) : donner une stratégie aux agents",
+    "section": "Pourquoi ça marche si bien ?",
+    "text": "Pourquoi ça marche si bien ?\n\nDécomposition des tâches : L’agent ne s’attaque pas au problème global d’un coup, il avance étape par étape.\n\nAuto-réflexion continue : À chaque étape, l’agent observe le résultat et ajuste sa pensée.\n\nModularité : La boucle ReAct peut intégrer n’importe quel nombre d’outils pour des workflows complexes."
+  },
+  {
+    "objectID": "fr/translations/planning-pattern/index.html#prochaines-étapes",
+    "href": "fr/translations/planning-pattern/index.html#prochaines-étapes",
+    "title": "Le Planning Pattern (ReAct) : donner une stratégie aux agents",
+    "section": "Prochaines étapes",
+    "text": "Prochaines étapes\nLa prochaine leçon nous parlerons du MultiAgent Pattern."
   },
   {
     "objectID": "fr/translations/planning-pattern/index.html#ressources",
     "href": "fr/translations/planning-pattern/index.html#ressources",
-    "title": "Le Planning Pattern (ReAct) : quand les agents planifient et agissent",
+    "title": "Le Planning Pattern (ReAct) : donner une stratégie aux agents",
     "section": "Ressources",
-    "text": "Ressources\n\nPaper original : ReAct: Synergizing Reasoning and Acting in Language Models\nArticle précédent : Tool Use Pattern\n\n\n\n\n  \n    Série\n    Agent Design Patterns\n  \n  \n    \n      ← Article précédent\n      Le pattern d’utilisation d’outils\n    \n    \n      Article suivant →\n      Le pattern Multi-Agent"
+    "text": "Ressources\n\nArticle original : Building a ReAct Agent from Scratch\n\nVidéo YouTube couvrant le Planning Pattern\n\nGitHub de la série\n\n\n\n\n  \n    Série\n    Agent Design Patterns\n  \n  \n    \n      ← Article précédent\n      Le pattern d’utilisation d’outils\n    \n    \n      Article suivant →\n      Le pattern multi-agents"
   },
   {
     "objectID": "fr/robotique.html",
     "href": "fr/robotique.html",
     "title": "Robotique et IA",
     "section": "",
-    "text": "Bientôt disponible…"
+    "text": "Bientôt disponible…\n\n\n\n Retour au sommet"
   },
   {
     "objectID": "fr/projects/nocode-ai/index.html",
     "href": "fr/projects/nocode-ai/index.html",
     "title": "Applications No-Code & IA",
     "section": "",
-    "text": "🔗 Dépôt GitHub"
+    "text": "🔗 Dépôt GitHub\n\n\n\n\n Retour au sommet"
   },
   {
     "objectID": "fr/projects/langchain-vectordb/index.html",
     "href": "fr/projects/langchain-vectordb/index.html",
     "title": "LangChain & Bases Vectorielles",
     "section": "",
-    "text": "Détails du Projet\nApprendre à construire des applications LLM prêtes pour la production.\n\n🔗 Dépôt GitHub\n\n\n📝 Série d’articles — Patterns d’Agents\n\nQu’est-ce qu’un agent?\nLe Pattern de Réflexion\nLe Pattern d’Utilisation d’Outils\nLe Pattern de Planification (ReAct)\nLe Pattern Multi-Agent"
+    "text": "Détails du Projet\nApprendre à construire des applications LLM prêtes pour la production.\n\n🔗 Dépôt GitHub\n\n\n📝 Série d’articles — Patterns d’Agents\n\nQu’est-ce qu’un agent?\nLe Pattern de Réflexion\nLe Pattern d’Utilisation d’Outils\nLe Pattern de Planification (ReAct)\nLe Pattern Multi-Agent\n\n\n\n\n\n\n Retour au sommet"
   },
   {
     "objectID": "fr/projects/ai-hero/index.html",
     "href": "fr/projects/ai-hero/index.html",
     "title": "AI Hero",
     "section": "",
-    "text": "Détails du Projet\nUn challenge de 7 jours pour construire et déployer des agents AI.\n\n🔗 Dépôt GitHub\n\n\n📝 Rapports quotidiens\n\nDay 1 — Ingest and Index Your Data (Article en anglais)"
+    "text": "Détails du Projet\nUn challenge de 7 jours pour construire et déployer des agents AI.\n\n🔗 Dépôt GitHub\n\n\n📝 Rapports quotidiens\n\nDay 1 — Ingest and Index Your Data (Article en anglais)\n\n\n\n\n\n\n Retour au sommet"
   },
   {
     "objectID": "fr/posts/poetry-vs-uv/index.html#introduction",
@@ -609,18 +637,74 @@
     "text": "Conclusion\nUne première semaine passionnante qui pose les bases pour la suite du programme.\n\n\n\n  \n    Série\n    Outils de Dév IA\n  \n  \n    \n    \n      Article suivant →\n      Outils de Dév IA - Semaine 2"
   },
   {
-    "objectID": "fr/en-to-fr.html",
-    "href": "fr/en-to-fr.html",
-    "title": "EN –> FR",
+    "objectID": "fr/index.html",
+    "href": "fr/index.html",
+    "title": "Ousmane Cissé",
     "section": "",
-    "text": "Bienvenue dans cette section dédiée à la traduction d’articles de l’anglais vers le français. Vous trouverez ici des versions françaises d’articles techniques et de réflexions initialement publiés en anglais.\n\n\n\n\n\n\n   \n     \n     \n       Trier par\n       Ordre par défaut\n         \n          Titre\n        \n         \n          Date - Le plus ancien\n        \n         \n          Date - Le plus récent\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nLe pattern Multi-Agent : quand les agents collaborent\n\n\n\n\n\n\nIA\n\n\nAgents\n\n\nLLM\n\n\nPatterns\n\n\nMulti-Agent\n\n\n\nLe pattern Multi-Agent : plusieurs agents spécialisés qui collaborent pour résoudre des problèmes complexes.\n\n\n\n\n\n10 févr. 2026\n\n\n\n\n\n\n\nLe Planning Pattern (ReAct) : quand les agents planifient et agissent\n\n\n\n\n\n\nIA\n\n\nAgents\n\n\nLLM\n\n\nPatterns\n\n\nReAct\n\n\n\nLe pattern ReAct : un agent qui raisonne, planifie et agit de manière itérative pour résoudre des tâches complexes.\n\n\n\n\n\n10 févr. 2026\n\n\n\n\n\n\n\nLe pattern d’utilisation d’outils : quand les agents agissent sur le monde\n\n\n\n\n\n\nIA\n\n\nAgents\n\n\nLLM\n\n\nPatterns\n\n\n\nDécouvrez le Tool Use Pattern : comment les agents utilisent des outils pour interagir avec le monde réel.\n\n\n\n\n\n10 févr. 2026\n\n\n\n\n\n\n\nLe pattern de réflexion : quand les agents se corrigent\n\n\n\n\n\n\nIA\n\n\nAgents\n\n\nLLM\n\n\nPatterns\n\n\n\nDécouvrez le pattern de réflexion : un agent qui s’auto-évalue et améliore ses réponses en boucle.\n\n\n\n\n\n3 févr. 2026\n\n\n\n\n\n\n\nQu’est-ce qu’un agent ?\n\n\n\n\n\n\nIA\n\n\nAgents\n\n\nLLM\n\n\nTranslation\n\n\n\nUne introduction claire aux agents IA : LLM, planification, mémoire et outils.\n\n\n\n\n\n3 févr. 2026\n\n\n\n\n\n\nAucun article correspondant"
+    "text": "Je suis Consultant Ingénieur IA basé en France avec un profil hybride en finance, audit et développement web.\nJ’aide les entreprises à transformer leurs besoins métiers en solutions IA scalables : Agents IA, systèmes RAG, automatisation et architectures de données modernes.\nMon expérience dans les services financiers et les projets numériques me permet de livrer des initiatives IA techniquement solides, conformes et alignées avec les contraintes opérationnelles réelles. Disponible pour des missions de conseil en IA, applications LLM, automatisation et ingénierie de données.\n\n\n Retour au sommet"
   },
   {
-    "objectID": "fr/about.html",
-    "href": "fr/about.html",
-    "title": "À propos de moi",
+    "objectID": "fr/books/mistral/index.html",
+    "href": "fr/books/mistral/index.html",
+    "title": "Mistral AI",
     "section": "",
-    "text": "Je suis Consultant Ingénieur IA basé en France avec un profil hybride en finance, audit et développement web.\nJ’aide les entreprises à transformer leurs besoins métiers en solutions IA scalables : Agents IA, systèmes RAG, automatisation et architectures de données modernes.\nMon expérience dans les services financiers et les projets numériques me permet de livrer des initiatives IA techniquement solides, conformes et alignées avec les contraintes opérationnelles réelles. Disponible pour des missions de conseil en IA, applications LLM, automatisation et ingénierie de données."
+    "text": "Mistral AI\nCette section regroupe mes notes et explorations techniques sur les modèles Mistral AI.\nStatut : 🚧 En cours\n\n📝 Résumés et Notes\nContenu à venir.\n\n\n\n\n\n Retour au sommet"
+  },
+  {
+    "objectID": "fr/blog.html",
+    "href": "fr/blog.html",
+    "title": "Blog",
+    "section": "",
+    "text": "Trier par\n       Ordre par défaut\n         \n          Titre\n        \n         \n          Date - Le plus ancien\n        \n         \n          Date - Le plus récent\n        \n     \n  \n\n\n\n\n\nPoetry vs UV : quel gestionnaire pour vos projets Python ?\n\n\n\n\n\n\npython\n\n\npackaging\n\n\ntooling\n\n\n\nUne comparaison entre Poetry et UV, deux gestionnaires de dépendances Python modernes.\n\n\n\n\n\n10 févr. 2026\n\n\n9 min.\n\n\n\n\n\n\n\nAI Hero : Jour 1 - Ingestion et Indexation des Données\n\n\n\n\n\n\nAgents IA\n\n\nLLM\n\n\nRAG\n\n\nAI Hero\n\n\n\nConstruire les fondations d’un agent IA en automatisant la récupération des données et le parsing des métadonnées.\n\n\n\n\n\n22 janv. 2026\n\n\n3 min.\n\n\n\n\n\n\n\nProjet Outils de Dev IA : Agrégateur d’actualités IA\n\n\n\n\n\n\nProjet\n\n\nAgents IA\n\n\nOutils Dev IA\n\n\nVibe Coding\n\n\nFastAPI\n\n\n\nUne plateforme d’actualités alimentée par l’IA, full-stack, qui scrape, résume et diffuse les tendances IA en utilisant FastAPI, Streamlit et l’orchestration multi-agents.\n\n\n\n\n\n20 janv. 2026\n\n\n3 min.\n\n\n\n\n\n\n\nOutils de Dev IA : Semaine 4 - Construire des Agents de Code\n\n\n\n\n\n\nIA\n\n\nZoomcamp\n\n\nAgents\n\n\nOutils Dev IA\n\n\n\nMaîtriser la création d’agents de code autonomes en utilisant des Agents, des Outils et du Contexte.\n\n\n\n\n\n15 janv. 2026\n\n\n3 min.\n\n\n\n\n\n\n\nOutils de Dév IA - Semaine 3\n\n\n\n\n\n\nIA\n\n\nOutils\n\n\nZoomcamp\n\n\nAI Dev Tools\n\n\n\nAperçu de la troisième semaine du AI Dev Tools Zoomcamp.\n\n\n\n\n\n3 févr. 2024\n\n\n1 min.\n\n\n\n\n\n\n\nOutils de Dév IA - Semaine 2\n\n\n\n\n\n\nIA\n\n\nOutils\n\n\nZoomcamp\n\n\nAI Dev Tools\n\n\n\nAperçu de la deuxième semaine du AI Dev Tools Zoomcamp.\n\n\n\n\n\n27 janv. 2024\n\n\n1 min.\n\n\n\n\n\n\n\nOutils de Dév IA - Semaine 1\n\n\n\n\n\n\nIA\n\n\nOutils\n\n\nZoomcamp\n\n\nAI Dev Tools\n\n\n\nAperçu de la première semaine du AI Dev Tools Zoomcamp.\n\n\n\n\n\n20 janv. 2024\n\n\n1 min.\n\n\n\n\n\n\nAucun article correspondant\n\n Retour au sommet"
+  },
+  {
+    "objectID": "en-to-fr.html",
+    "href": "en-to-fr.html",
+    "title": "EN –> FR",
+    "section": "",
+    "text": "Welcome to this section dedicated to translating articles from English to French.\nHere you will find French versions of technical articles and reflections originally published in English.\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nLe pattern de réflexion : quand les agents se corrigent\n\n\n\n\n\n\nIA\n\n\nAgents\n\n\nLLM\n\n\nPatterns\n\n\n\nDécouvrez le pattern de réflexion : un agent qui s’auto-évalue et améliore ses réponses en boucle.\n\n\n\n\n\nFeb 3, 2026\n\n\n\n\n\n\n\nQu’est-ce qu’un agent ?\n\n\n\n\n\n\nIA\n\n\nAgents\n\n\nLLM\n\n\nTranslation\n\n\n\nUne introduction claire aux agents IA : LLM, planification, mémoire et outils.\n\n\n\n\n\nFeb 3, 2026\n\n\n\n\n\n\n\nLe pattern multi-agents : collaborer pour réussir\n\n\n\n\n\n\nIA\n\n\nAgents\n\n\nLLM\n\n\nPatterns\n\n\n\nDécouvrez comment construire un framework multi-agents minimaliste pour faire collaborer plusieurs agents spécialisés sur une tâche commune.\n\n\n\n\n\nJun 4, 2025\n\n\n\n\n\n\n\nLe Planning Pattern (ReAct) : donner une stratégie aux agents\n\n\n\n\n\n\nIA\n\n\nAgents\n\n\nLLM\n\n\nPatterns\n\n\n\nDécouvrez le Planning Pattern et la technique ReAct : comment permettre à un agent de planifier une séquence d’actions pour atteindre un objectif complexe.\n\n\n\n\n\nMay 28, 2025\n\n\n\n\n\n\n\nLe pattern d’utilisation d’outils : le pont vers le monde extérieur\n\n\n\n\n\n\nIA\n\n\nAgents\n\n\nLLM\n\n\nPatterns\n\n\n\nDécouvrez comment équiper vos agents d’outils pour qu’ils puissent interagir avec le monde extérieur : météo, bourse, et plus encore.\n\n\n\n\n\nMay 21, 2025\n\n\n\n\n\n\nNo matching items\n\n Back to top"
+  },
+  {
+    "objectID": "courses.html",
+    "href": "courses.html",
+    "title": "Self-Study Courses",
+    "section": "",
+    "text": "Here you can find the various self-study courses I am currently following or have completed.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAI Dev Tools by Zoomcamp\n\n\n8 min\n\n\nMy learning notes and progress for the AI Dev Tools course.\n\n\n\nNov 28, 2025\n\n\n\n\n\n\n\n\nNo matching items\n\n Back to top"
+  },
+  {
+    "objectID": "books/llm-handbook/index.html",
+    "href": "books/llm-handbook/index.html",
+    "title": "LLM Engineer’s Handbook",
+    "section": "",
+    "text": "LLM Engineer’s Handbook\nThis project documents my reading and implementation of the LLM Engineer’s Handbook.\nStatus: 🚧 In Progress\n\n📝 Chapter Summaries\nSummaries will be added as I progress through the book.\n\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "blog.html",
+    "href": "blog.html",
+    "title": "Blog",
+    "section": "",
+    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n     \n  \n\n\n\n\n\nMemory-Based Agent: AI That Remembers and Learns\n\n\n\n\n\n\nAI\n\n\nAgents\n\n\nLLM\n\n\nDesign Patterns\n\n\nMemory\n\n\nRAG\n\n\n\nThe Memory Pattern: how AI agents use short-term and long-term memory to maintain context and learn from past interactions.\n\n\n\n\n\nFeb 10, 2026\n\n\n5 min\n\n\n\n\n\n\n\nMulti Agent Collaboration: When AI Agents Work as a Team\n\n\n\n\n\n\nAI\n\n\nAgents\n\n\nLLM\n\n\nDesign Patterns\n\n\nMulti-Agent\n\n\n\nThe Multi-Agent Pattern: specialized AI agents collaborating to solve complex problems that no single agent could handle alone.\n\n\n\n\n\nFeb 10, 2026\n\n\n3 min\n\n\n\n\n\n\n\nPoetry vs UV: which tool for your Python projects?\n\n\n\n\n\n\npython\n\n\npackaging\n\n\ntooling\n\n\n\nA comparison between Poetry and UV, two modern Python dependency managers.\n\n\n\n\n\nFeb 10, 2026\n\n\n8 min\n\n\n\n\n\n\n\nReAct Pattern: Reasoning and Acting in Harmony\n\n\n\n\n\n\nAI\n\n\nAgents\n\n\nLLM\n\n\nDesign Patterns\n\n\nReAct\n\n\n\nThe ReAct Pattern: an agent that interleaves reasoning and action to solve complex, multi-step tasks autonomously.\n\n\n\n\n\nFeb 10, 2026\n\n\n4 min\n\n\n\n\n\n\n\nReflection Agent: Self-Improving AI Through Iterative Critique\n\n\n\n\n\n\nAI\n\n\nAgents\n\n\nLLM\n\n\nDesign Patterns\n\n\n\nLearn the Reflection Pattern: an agent that evaluates and improves its own output through iterative self-critique loops.\n\n\n\n\n\nFeb 10, 2026\n\n\n3 min\n\n\n\n\n\n\n\nTool Using Agent: Extending AI Beyond Text Generation\n\n\n\n\n\n\nAI\n\n\nAgents\n\n\nLLM\n\n\nDesign Patterns\n\n\nTools\n\n\n\nThe Tool Use Pattern: how AI agents leverage external tools, APIs, and services to interact with the real world.\n\n\n\n\n\nFeb 10, 2026\n\n\n4 min\n\n\n\n\n\n\n\nAI Hero: Day 1 - Ingest and Index Your Data\n\n\n\n\n\n\nAI Agents\n\n\nLLM\n\n\nPython\n\n\nRAG\n\n\nAI Hero\n\n\n\nBuilding the foundation of an AI agent by automating data retrieval and metadata parsing.\n\n\n\n\n\nJan 22, 2026\n\n\n3 min\n\n\n\n\n\n\n\nAI DEV TOOLS Project: AI News Aggregator\n\n\n\n\n\n\nProject\n\n\nAI Agents\n\n\nAI Dev Tools\n\n\nVIBE CODING\n\n\nFastAPI\n\n\n\nA full-stack, AI-powered news platform that scrapes, summarizes, and serves AI trends using FastAPI, Streamlit, and Multi-Agent Orchestration.\n\n\n\n\n\nJan 20, 2026\n\n\n3 min\n\n\n\n\n\n\n\nAI Dev Tools: Week 4 - Building Coding Agents\n\n\n\n\n\n\nAI\n\n\nZoomcamp\n\n\nAgents\n\n\nAI Dev Tools\n\n\n\nMastering the creation of autonomous coding agents using Agents, Tools, and Context.\n\n\n\n\n\nJan 15, 2026\n\n\n3 min\n\n\n\n\n\n\n\nAI Dev Tools: Week 3 - MCP & Agents\n\n\n\n\n\n\nAI\n\n\nZoomcamp\n\n\nMCP\n\n\nAgents\n\n\nAI Dev Tools\n\n\n\nDiving deep into the Model Context Protocol, Agents, and building custom tools.\n\n\n\n\n\nDec 12, 2025\n\n\n3 min\n\n\n\n\n\n\n\nAI Dev Tools: Week 2 - End-to-End Application Development\n\n\n\n\n\n\nAI\n\n\nZoomcamp\n\n\nCI/CD\n\n\nAI Dev Tools\n\n\n\nBuilding a complete application with AI: Frontend-first, OpenAPI, Docker, and CI/CD.\n\n\n\n\n\nDec 5, 2025\n\n\n4 min\n\n\n\n\n\n\n\nAI Dev Tools: Week 1 - Vibe Coding & Foundations\n\n\n\n\n\n\nAI\n\n\nZoomcamp\n\n\nVibe Coding\n\n\nAI Dev Tools\n\n\n\nExploring the landscape of AI-assisted development, from coding assistants to project bootstrappers.\n\n\n\n\n\nNov 28, 2025\n\n\n2 min\n\n\n\n\n\n\nNo matching items\n\n Back to top"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About Me",
+    "section": "",
+    "text": "I am an AI Engineer Consultant based in France with a hybrid background in finance, audit and web development.\nI help companies turn business needs into scalable AI solutions: AI Agents, RAG systems, automation and modern data architectures.\nMy experience in financial services and digital projects allows me to deliver AI initiatives that are technically solid, compliant, and aligned with real operational constraints. Available for AI consulting, LLM applications, automation and data engineering missions.\n\n\n Back to top"
+  },
+  {
+    "objectID": "books.html",
+    "href": "books.html",
+    "title": "BOOK REVIEW",
+    "section": "",
+    "text": "A collection of books I have read and reviewed. Click on a book to see chapter summaries and technical implementations.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLLM Engineer’s Handbook\n\n\nA comprehensive guide to building production-ready LLM applications. (In Progress)\n\n\n\n\n\n\n\n\n\n\n\n\n\nMistral AI\n\n\nExploring Mistral AI models and implementation strategies. (In Progress)\n\n\n\n\n\n\n\nNo matching items\n\n Back to top"
+  },
+  {
+    "objectID": "books/mistral/index.html",
+    "href": "books/mistral/index.html",
+    "title": "Mistral AI",
+    "section": "",
+    "text": "Mistral AI\nThis section covers my notes and technical explorations of Mistral AI models.\nStatus: 🚧 In Progress\n\n📝 Summaries and Notes\nContent coming soon.\n\n\n\n\n\n Back to top"
   },
   {
     "objectID": "courses/ai-dev-tools.html",
@@ -651,46 +735,32 @@
     "text": "Understand the Model Context Protocol (MCP) and its primitives\nExplore the MCP ecosystem (clients, servers, and tools)\nCompare communication modes: stdio vs HTTP/SSE\nUse mcp-inspector and fastmcp for development\nBuild and integrate custom MCP tools (Scraper, Search)\nLeverage MCP servers for live documentation and workflow automation\n\n\n\n\nThis week was a deep dive into the Model Context Protocol (MCP), an open standard that enables AI models to interact with external data sources and tools in a standardized way. Here’s what I learned:\n\n\nMCP solves the problem of “bespoke” integrations for every AI tool. Instead of writing custom code for each AI assistant to access a database or API, we can now build MCP Servers that any MCP Client (like Cursor, Claude Desktop, or VSCode) can understand. This decoupling of the “brain” (AI model) from the “hands” (tools/data) is a game-changer for developer productivity.\n\n\n\nI learned the three core building blocks of MCP:\n- Tools: Executable functions the AI can call (e.g., get_weather, scrape_website).\n- Resources: Read-only data sources the AI can inspect (e.g., local files, API docs).\n- Prompts: Pre-defined templates that guide how the AI should interact with the user or the tools.\n\n\n\nUsing FastMCP (by Jon Lowin) made building servers incredibly easy. With just a few lines of Python and a decorator (@mcp.tool), I could transform a standard function into an MCP tool. The library handles the complex JSON-RPC communication under the hood, allowing developers to focus on the logic.\n\n\n\nWe explored two main ways MCP clients and servers communicate:\n- Stdio: The standard way for local integrations (e.g., a CLI tool or a plugin within an IDE).\n- SSE (Server-Sent Events): Enables remote communication over HTTP, which is essential for web-based agents and distributed systems.\n\n\n\nOne of the most powerful use cases we saw was using Context 7. By connecting an AI assistant to live documentation (like Airflow or Astro) via MCP, the model can “see” the latest updates and fix code based on real-time info, rather than relying on stale training data.\n\n\n\n\nMCP is the “USB port” for AI: It provides a universal interface for AI power.\nFast prototyping is key: Tools like mcp-inspector allow you to test your server logic instantly without needing a full AI client.\nConnect to the real world: Whether it’s scraping a website or indexing a GitHub repo, MCP allows AI to act on real, current data.\n\n\n\n\n\nI implemented an MCP server that included:\n1. Web Scraper Tool: Uses the Jina Reader API to convert any URL into clean markdown for the AI to process.\n2. Documentation Search Tool: Downloads a repository, indexes markdown files using Minsearch, and provides a search function to retrieve relevant context.\nThis turned my AI assistant into a specialized documentation expert for any library I point it at.\nHomework: MCP Scraper and Search Tool"
   },
   {
-    "objectID": "blog.html",
-    "href": "blog.html",
-    "title": "Blog",
+    "objectID": "fr/about.html",
+    "href": "fr/about.html",
+    "title": "À propos de moi",
     "section": "",
-    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n     \n  \n\n\n\n\n\nMemory-Based Agent: AI That Remembers and Learns\n\n\n\n\n\n\nAI\n\n\nAgents\n\n\nLLM\n\n\nDesign Patterns\n\n\nMemory\n\n\nRAG\n\n\n\nThe Memory Pattern: how AI agents use short-term and long-term memory to maintain context and learn from past interactions.\n\n\n\n\n\nFeb 10, 2026\n\n\n5 min\n\n\n\n\n\n\n\nMulti Agent Collaboration: When AI Agents Work as a Team\n\n\n\n\n\n\nAI\n\n\nAgents\n\n\nLLM\n\n\nDesign Patterns\n\n\nMulti-Agent\n\n\n\nThe Multi-Agent Pattern: specialized AI agents collaborating to solve complex problems that no single agent could handle alone.\n\n\n\n\n\nFeb 10, 2026\n\n\n3 min\n\n\n\n\n\n\n\nPoetry vs UV: which tool for your Python projects?\n\n\n\n\n\n\npython\n\n\npackaging\n\n\ntooling\n\n\n\nA comparison between Poetry and UV, two modern Python dependency managers.\n\n\n\n\n\nFeb 10, 2026\n\n\n8 min\n\n\n\n\n\n\n\nReAct Pattern: Reasoning and Acting in Harmony\n\n\n\n\n\n\nAI\n\n\nAgents\n\n\nLLM\n\n\nDesign Patterns\n\n\nReAct\n\n\n\nThe ReAct Pattern: an agent that interleaves reasoning and action to solve complex, multi-step tasks autonomously.\n\n\n\n\n\nFeb 10, 2026\n\n\n4 min\n\n\n\n\n\n\n\nReflection Agent: Self-Improving AI Through Iterative Critique\n\n\n\n\n\n\nAI\n\n\nAgents\n\n\nLLM\n\n\nDesign Patterns\n\n\n\nLearn the Reflection Pattern: an agent that evaluates and improves its own output through iterative self-critique loops.\n\n\n\n\n\nFeb 10, 2026\n\n\n3 min\n\n\n\n\n\n\n\nTool Using Agent: Extending AI Beyond Text Generation\n\n\n\n\n\n\nAI\n\n\nAgents\n\n\nLLM\n\n\nDesign Patterns\n\n\nTools\n\n\n\nThe Tool Use Pattern: how AI agents leverage external tools, APIs, and services to interact with the real world.\n\n\n\n\n\nFeb 10, 2026\n\n\n4 min\n\n\n\n\n\n\n\nAI Hero: Day 1 - Ingest and Index Your Data\n\n\n\n\n\n\nAI Agents\n\n\nLLM\n\n\nPython\n\n\nRAG\n\n\nAI Hero\n\n\n\nBuilding the foundation of an AI agent by automating data retrieval and metadata parsing.\n\n\n\n\n\nJan 22, 2026\n\n\n3 min\n\n\n\n\n\n\n\nAI DEV TOOLS Project: AI News Aggregator\n\n\n\n\n\n\nProject\n\n\nAI Agents\n\n\nAI Dev Tools\n\n\nVIBE CODING\n\n\nFastAPI\n\n\n\nA full-stack, AI-powered news platform that scrapes, summarizes, and serves AI trends using FastAPI, Streamlit, and Multi-Agent Orchestration.\n\n\n\n\n\nJan 20, 2026\n\n\n3 min\n\n\n\n\n\n\n\nAI Dev Tools: Week 4 - Building Coding Agents\n\n\n\n\n\n\nAI\n\n\nZoomcamp\n\n\nAgents\n\n\nAI Dev Tools\n\n\n\nMastering the creation of autonomous coding agents using Agents, Tools, and Context.\n\n\n\n\n\nJan 15, 2026\n\n\n3 min\n\n\n\n\n\n\n\nAI Dev Tools: Week 3 - MCP & Agents\n\n\n\n\n\n\nAI\n\n\nZoomcamp\n\n\nMCP\n\n\nAgents\n\n\nAI Dev Tools\n\n\n\nDiving deep into the Model Context Protocol, Agents, and building custom tools.\n\n\n\n\n\nDec 12, 2025\n\n\n3 min\n\n\n\n\n\n\n\nAI Dev Tools: Week 2 - End-to-End Application Development\n\n\n\n\n\n\nAI\n\n\nZoomcamp\n\n\nCI/CD\n\n\nAI Dev Tools\n\n\n\nBuilding a complete application with AI: Frontend-first, OpenAPI, Docker, and CI/CD.\n\n\n\n\n\nDec 5, 2025\n\n\n4 min\n\n\n\n\n\n\n\nAI Dev Tools: Week 1 - Vibe Coding & Foundations\n\n\n\n\n\n\nAI\n\n\nZoomcamp\n\n\nVibe Coding\n\n\nAI Dev Tools\n\n\n\nExploring the landscape of AI-assisted development, from coding assistants to project bootstrappers.\n\n\n\n\n\nNov 28, 2025\n\n\n2 min\n\n\n\n\n\n\nNo matching items"
+    "text": "Je suis Consultant Ingénieur IA basé en France avec un profil hybride en finance, audit et développement web.\nJ’aide les entreprises à transformer leurs besoins métiers en solutions IA scalables : Agents IA, systèmes RAG, automatisation et architectures de données modernes.\nMon expérience dans les services financiers et les projets numériques me permet de livrer des initiatives IA techniquement solides, conformes et alignées avec les contraintes opérationnelles réelles. Disponible pour des missions de conseil en IA, applications LLM, automatisation et ingénierie de données.\n\n\n Retour au sommet"
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About Me",
+    "objectID": "fr/books/llm-handbook/index.html",
+    "href": "fr/books/llm-handbook/index.html",
+    "title": "LLM Engineer’s Handbook",
     "section": "",
-    "text": "I am an AI Engineer Consultant based in France with a hybrid background in finance, audit and web development.\nI help companies turn business needs into scalable AI solutions: AI Agents, RAG systems, automation and modern data architectures.\nMy experience in financial services and digital projects allows me to deliver AI initiatives that are technically solid, compliant, and aligned with real operational constraints. Available for AI consulting, LLM applications, automation and data engineering missions."
+    "text": "LLM Engineer’s Handbook\nCe projet documente ma lecture et mes implémentations du livre LLM Engineer’s Handbook.\nStatut : 🚧 En cours\n\n📝 Résumés par chapitre\nLes résumés seront ajoutés au fur et à mesure de ma progression.\n\n\n\n\n\n Retour au sommet"
   },
   {
-    "objectID": "courses.html",
-    "href": "courses.html",
-    "title": "Self-Study Courses",
+    "objectID": "fr/en-to-fr.html",
+    "href": "fr/en-to-fr.html",
+    "title": "POSTS TRADUITS",
     "section": "",
-    "text": "Here you can find the various self-study courses I am currently following or have completed.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAI Dev Tools by Zoomcamp\n\n\n8 min\n\n\nMy learning notes and progress for the AI Dev Tools course.\n\n\n\nNov 28, 2025\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Bienvenue dans cette section dédiée à la traduction d’articles de l’anglais vers le français. Vous trouverez ici des versions françaises d’articles techniques et de réflexions initialement publiés en anglais.\n\n\n\n\n\n\n   \n     \n     \n       Trier par\n       Ordre par défaut\n         \n          Titre\n        \n         \n          Date - Le plus ancien\n        \n         \n          Date - Le plus récent\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nLe pattern de réflexion : quand les agents se corrigent\n\n\n\n\n\n\nIA\n\n\nAgents\n\n\nLLM\n\n\nPatterns\n\n\n\nDécouvrez le pattern de réflexion : un agent qui s’auto-évalue et améliore ses réponses en boucle.\n\n\n\n\n\n3 févr. 2026\n\n\n\n\n\n\n\nQu’est-ce qu’un agent ?\n\n\n\n\n\n\nIA\n\n\nAgents\n\n\nLLM\n\n\nTranslation\n\n\n\nUne introduction claire aux agents IA : LLM, planification, mémoire et outils.\n\n\n\n\n\n3 févr. 2026\n\n\n\n\n\n\n\nLe pattern multi-agents : collaborer pour réussir\n\n\n\n\n\n\nIA\n\n\nAgents\n\n\nLLM\n\n\nPatterns\n\n\n\nDécouvrez comment construire un framework multi-agents minimaliste pour faire collaborer plusieurs agents spécialisés sur une tâche commune.\n\n\n\n\n\n4 juin 2025\n\n\n\n\n\n\n\nLe Planning Pattern (ReAct) : donner une stratégie aux agents\n\n\n\n\n\n\nIA\n\n\nAgents\n\n\nLLM\n\n\nPatterns\n\n\n\nDécouvrez le Planning Pattern et la technique ReAct : comment permettre à un agent de planifier une séquence d’actions pour atteindre un objectif complexe.\n\n\n\n\n\n28 mai 2025\n\n\n\n\n\n\n\nLe pattern d’utilisation d’outils : le pont vers le monde extérieur\n\n\n\n\n\n\nIA\n\n\nAgents\n\n\nLLM\n\n\nPatterns\n\n\n\nDécouvrez comment équiper vos agents d’outils pour qu’ils puissent interagir avec le monde extérieur : météo, bourse, et plus encore.\n\n\n\n\n\n21 mai 2025\n\n\n\n\n\n\nAucun article correspondant\n\n Retour au sommet"
   },
   {
-    "objectID": "en-to-fr.html",
-    "href": "en-to-fr.html",
-    "title": "EN –> FR",
+    "objectID": "fr/livres.html",
+    "href": "fr/livres.html",
+    "title": "REVUE DE LIVRES",
     "section": "",
-    "text": "Welcome to this section dedicated to translating articles from English to French.\nHere you will find French versions of technical articles and reflections originally published in English.\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nLe pattern Multi-Agent : quand les agents collaborent\n\n\n\n\n\n\nIA\n\n\nAgents\n\n\nLLM\n\n\nPatterns\n\n\nMulti-Agent\n\n\n\nLe pattern Multi-Agent : plusieurs agents spécialisés qui collaborent pour résoudre des problèmes complexes.\n\n\n\n\n\nFeb 10, 2026\n\n\n\n\n\n\n\nLe Planning Pattern (ReAct) : quand les agents planifient et agissent\n\n\n\n\n\n\nIA\n\n\nAgents\n\n\nLLM\n\n\nPatterns\n\n\nReAct\n\n\n\nLe pattern ReAct : un agent qui raisonne, planifie et agit de manière itérative pour résoudre des tâches complexes.\n\n\n\n\n\nFeb 10, 2026\n\n\n\n\n\n\n\nLe pattern d’utilisation d’outils : quand les agents agissent sur le monde\n\n\n\n\n\n\nIA\n\n\nAgents\n\n\nLLM\n\n\nPatterns\n\n\n\nDécouvrez le Tool Use Pattern : comment les agents utilisent des outils pour interagir avec le monde réel.\n\n\n\n\n\nFeb 10, 2026\n\n\n\n\n\n\n\nLe pattern de réflexion : quand les agents se corrigent\n\n\n\n\n\n\nIA\n\n\nAgents\n\n\nLLM\n\n\nPatterns\n\n\n\nDécouvrez le pattern de réflexion : un agent qui s’auto-évalue et améliore ses réponses en boucle.\n\n\n\n\n\nFeb 3, 2026\n\n\n\n\n\n\n\nQu’est-ce qu’un agent ?\n\n\n\n\n\n\nIA\n\n\nAgents\n\n\nLLM\n\n\nTranslation\n\n\n\nUne introduction claire aux agents IA : LLM, planification, mémoire et outils.\n\n\n\n\n\nFeb 3, 2026\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "fr/blog.html",
-    "href": "fr/blog.html",
-    "title": "Blog",
-    "section": "",
-    "text": "Trier par\n       Ordre par défaut\n         \n          Titre\n        \n         \n          Date - Le plus ancien\n        \n         \n          Date - Le plus récent\n        \n     \n  \n\n\n\n\n\nPoetry vs UV : quel gestionnaire pour vos projets Python ?\n\n\n\n\n\n\npython\n\n\npackaging\n\n\ntooling\n\n\n\nUne comparaison entre Poetry et UV, deux gestionnaires de dépendances Python modernes.\n\n\n\n\n\n10 févr. 2026\n\n\n9 min.\n\n\n\n\n\n\n\nAI Hero : Jour 1 - Ingestion et Indexation des Données\n\n\n\n\n\n\nAgents IA\n\n\nLLM\n\n\nRAG\n\n\nAI Hero\n\n\n\nConstruire les fondations d’un agent IA en automatisant la récupération des données et le parsing des métadonnées.\n\n\n\n\n\n22 janv. 2026\n\n\n3 min.\n\n\n\n\n\n\n\nProjet Outils de Dev IA : Agrégateur d’actualités IA\n\n\n\n\n\n\nProjet\n\n\nAgents IA\n\n\nOutils Dev IA\n\n\nVibe Coding\n\n\nFastAPI\n\n\n\nUne plateforme d’actualités alimentée par l’IA, full-stack, qui scrape, résume et diffuse les tendances IA en utilisant FastAPI, Streamlit et l’orchestration multi-agents.\n\n\n\n\n\n20 janv. 2026\n\n\n3 min.\n\n\n\n\n\n\n\nOutils de Dev IA : Semaine 4 - Construire des Agents de Code\n\n\n\n\n\n\nIA\n\n\nZoomcamp\n\n\nAgents\n\n\nOutils Dev IA\n\n\n\nMaîtriser la création d’agents de code autonomes en utilisant des Agents, des Outils et du Contexte.\n\n\n\n\n\n15 janv. 2026\n\n\n3 min.\n\n\n\n\n\n\n\nOutils de Dév IA - Semaine 3\n\n\n\n\n\n\nIA\n\n\nOutils\n\n\nZoomcamp\n\n\nAI Dev Tools\n\n\n\nAperçu de la troisième semaine du AI Dev Tools Zoomcamp.\n\n\n\n\n\n3 févr. 2024\n\n\n1 min.\n\n\n\n\n\n\n\nOutils de Dév IA - Semaine 2\n\n\n\n\n\n\nIA\n\n\nOutils\n\n\nZoomcamp\n\n\nAI Dev Tools\n\n\n\nAperçu de la deuxième semaine du AI Dev Tools Zoomcamp.\n\n\n\n\n\n27 janv. 2024\n\n\n1 min.\n\n\n\n\n\n\n\nOutils de Dév IA - Semaine 1\n\n\n\n\n\n\nIA\n\n\nOutils\n\n\nZoomcamp\n\n\nAI Dev Tools\n\n\n\nAperçu de la première semaine du AI Dev Tools Zoomcamp.\n\n\n\n\n\n20 janv. 2024\n\n\n1 min.\n\n\n\n\n\n\nAucun article correspondant"
-  },
-  {
-    "objectID": "fr/index.html",
-    "href": "fr/index.html",
-    "title": "Ousmane Cissé",
-    "section": "",
-    "text": "Je suis Consultant Ingénieur IA basé en France avec un profil hybride en finance, audit et développement web.\nJ’aide les entreprises à transformer leurs besoins métiers en solutions IA scalables : Agents IA, systèmes RAG, automatisation et architectures de données modernes.\nMon expérience dans les services financiers et les projets numériques me permet de livrer des initiatives IA techniquement solides, conformes et alignées avec les contraintes opérationnelles réelles. Disponible pour des missions de conseil en IA, applications LLM, automatisation et ingénierie de données."
+    "text": "Une collection de livres que j’ai lus et résumés. Cliquez sur un livre pour accéder aux résumés de chapitres et aux implémentations techniques.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLLM Engineer’s Handbook\n\n\nLe guide complet pour construire des applications LLM prêtes pour la production. (En cours)\n\n\n\n\n\n\n\n\n\n\n\n\n\nMistral AI\n\n\nExploration des modèles Mistral AI et des stratégies d’implémentation. (En cours)\n\n\n\n\n\n\n\nAucun article correspondant\n\n Retour au sommet"
   },
   {
     "objectID": "fr/posts/ai-dev-tools-week-2/index.html#introduction",
@@ -774,84 +844,77 @@
     "href": "fr/projects/ai-dev-tools/index.html",
     "title": "Outils de Dev IA",
     "section": "",
-    "text": "Détails du Projet\nCe dépôt rassemble mon travail sur le AI Dev Tools Zoomcamp.\n\n🔗 Dépôt GitHub\n\n\n📝 Rapports hebdomadaires\n\nSemaine 1 — Outils de Dév IA : Vibe Coding\nSemaine 2 — Développement d’Applications End-to-End\nSemaine 3 — MCP & Agents\nSemaine 4 — Construire des Agents de Code"
+    "text": "Détails du Projet\nCe dépôt rassemble mon travail sur le AI Dev Tools Zoomcamp.\n\n🔗 Dépôt GitHub\n\n\n📝 Rapports hebdomadaires\n\nSemaine 1 — Outils de Dév IA : Vibe Coding\nSemaine 2 — Développement d’Applications End-to-End\nSemaine 3 — MCP & Agents\nSemaine 4 — Construire des Agents de Code\n\n\n\n\n\n\n Retour au sommet"
   },
   {
     "objectID": "fr/projects/data-engineering/index.html",
     "href": "fr/projects/data-engineering/index.html",
     "title": "Data Engineering Zoomcamp",
     "section": "",
-    "text": "🔗 Dépôt GitHub"
+    "text": "🔗 Dépôt GitHub\n\n\n\n\n Retour au sommet"
   },
   {
     "objectID": "fr/projects/ml-zoomcamp/index.html",
     "href": "fr/projects/ml-zoomcamp/index.html",
     "title": "Ingénieur ML ZoomCamp",
     "section": "",
-    "text": "🔗 Dépôt GitHub"
+    "text": "🔗 Dépôt GitHub\n\n\n\n\n Retour au sommet"
   },
   {
     "objectID": "fr/projets.html",
     "href": "fr/projets.html",
     "title": "Projets",
     "section": "",
-    "text": "Une sélection de projets réalisés et en cours. Cliquez sur un projet pour voir les détails et ressources liées.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAI Hero\n\n\nCréation et déploiement d’Agents IA, challenge de 7 jours.\n\n\n\n\n\n\n\n\n\n\n\n\n\nApplications No-Code & IA\n\n\nCréation d’apps d’entreprise internes avec des outils No-Code (Airtable, Softr, Make/Zapier) et l’IA. De l’analyse des besoins au déploiement.\n\n\n\n\n\n\n\n\n\n\n\n\n\nData Engineering Zoomcamp\n\n\nCours complet sur l’ingénierie des données couvrant Docker, Terraform, Google Cloud Platform, Airflow, Spark et Kafka.\n\n\n\n\n\n\n\n\n\n\n\n\n\nIngénieur ML ZoomCamp\n\n\nCours complet de Machine Learning Engineering couvrant le déploiement, le cloud et le MLOps.\n\n\n\n\n\n\n\n\n\n\n\n\n\nLangChain & Bases Vectorielles\n\n\nConstruire des apps LLM de production avec LangChain & Deep Lake. Couvre Gen AI, Prompt Engineering, RAG et Agents.\n\n\n\n\n\n\n\n\n\n\n\n\n\nOutils de Dev IA\n\n\nProjets et exercices du bootcamp AI Dev Tools (Vibe Coding) Zoomcamp.\n\n\n\n\n\n\n\nAucun article correspondant"
+    "text": "Une sélection de projets réalisés et en cours. Cliquez sur un projet pour voir les détails et ressources liées.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAI Hero\n\n\nCréation et déploiement d’Agents IA, challenge de 7 jours.\n\n\n\n\n\n\n\n\n\n\n\n\n\nApplications No-Code & IA\n\n\nCréation d’apps d’entreprise internes avec des outils No-Code (Airtable, Softr, Make/Zapier) et l’IA. De l’analyse des besoins au déploiement.\n\n\n\n\n\n\n\n\n\n\n\n\n\nData Engineering Zoomcamp\n\n\nCours complet sur l’ingénierie des données couvrant Docker, Terraform, Google Cloud Platform, Airflow, Spark et Kafka.\n\n\n\n\n\n\n\n\n\n\n\n\n\nIngénieur ML ZoomCamp\n\n\nCours complet de Machine Learning Engineering couvrant le déploiement, le cloud et le MLOps.\n\n\n\n\n\n\n\n\n\n\n\n\n\nLangChain & Bases Vectorielles\n\n\nConstruire des apps LLM de production avec LangChain & Deep Lake. Couvre Gen AI, Prompt Engineering, RAG et Agents.\n\n\n\n\n\n\n\n\n\n\n\n\n\nOutils de Dev IA\n\n\nProjets et exercices du bootcamp AI Dev Tools (Vibe Coding) Zoomcamp.\n\n\n\n\n\n\n\nAucun article correspondant\n\n Retour au sommet"
   },
   {
-    "objectID": "fr/translations/multiagent-pattern/index.html",
-    "href": "fr/translations/multiagent-pattern/index.html",
-    "title": "Le pattern Multi-Agent : quand les agents collaborent",
+    "objectID": "fr/translations/multi-agent-pattern/index.html",
+    "href": "fr/translations/multi-agent-pattern/index.html",
+    "title": "Le pattern multi-agents : collaborer pour réussir",
     "section": "",
-    "text": "Dernier pattern de cette série : le Multi-Agent Pattern. Après avoir vu comment un agent seul peut réfléchir, utiliser des outils et planifier, voyons ce qui se passe quand plusieurs agents travaillent ensemble."
+    "text": "Bienvenue dans la dernière leçon de la série Agentic Patterns ! À ce stade, vous êtes déjà familiarisé avec l’Agent de Réflexion, les Outils, et la Technique ReAct. Mais vous êtes probablement curieux de connaître les frameworks comme CrewAI, AutoGen, ou OpenAI Swarm — ces outils géniaux pour construire des applications multi-agents.\nCes frameworks ne sont que des variantes du Multiagent Pattern, où les tâches sont décomposées en sous-tâches plus petites et traitées par des agents ayant des rôles spécifiques — comme un ingénieur logiciel, un chef de projet, etc.\nDans cette leçon, nous passons au niveau supérieur en construisant un framework multi-agents minimaliste de zéro.\nC’est parti ! 🚀"
   },
   {
-    "objectID": "fr/translations/multiagent-pattern/index.html#le-multi-agent-pattern-en-bref",
-    "href": "fr/translations/multiagent-pattern/index.html#le-multi-agent-pattern-en-bref",
-    "title": "Le pattern Multi-Agent : quand les agents collaborent",
-    "section": "Le Multi-Agent Pattern en bref",
-    "text": "Le Multi-Agent Pattern en bref\nLe principe est simple : au lieu d’un seul agent généraliste, on crée plusieurs agents spécialisés qui collaborent :\n\nUn agent coordinateur (orchestrateur) qui distribue les tâches\nDes agents spécialistes qui se concentrent chacun sur un domaine précis\nUn protocole de communication pour que les agents échangent des informations"
+    "objectID": "fr/translations/multi-agent-pattern/index.html#un-framework-multi-agents-minimaliste",
+    "href": "fr/translations/multi-agent-pattern/index.html#un-framework-multi-agents-minimaliste",
+    "title": "Le pattern multi-agents : collaborer pour réussir",
+    "section": "Un framework multi-agents minimaliste",
+    "text": "Un framework multi-agents minimaliste\nLe framework que nous allons développer s’inspire de deux concepts fondamentaux de CrewAI : la Crew (l’équipage) et l’Agent.\nDans CrewAI, une Crew représente un groupe collaboratif d’agents travaillant à l’unisson pour accomplir un ensemble de tâches. Un Agent, quant à lui, représente l’unité autonome responsable de l’exécution de tâches spécifiques.\n Introduction - CrewAI\nJe me suis également inspiré de la philosophie de design d’Apache Airflow, particulièrement l’utilisation des opérateurs &gt;&gt; et &lt;&lt; pour établir des dépendances entre les agents. Dans ce micro-framework CrewAI, les agents sont analogues aux Airflow Tasks, tandis que la Crew correspond à un Airflow DAG.\n DAGs — Airflow Documentation\nCommençons par la classe Agent 👇"
   },
   {
-    "objectID": "fr/translations/multiagent-pattern/index.html#pourquoi-plusieurs-agents",
-    "href": "fr/translations/multiagent-pattern/index.html#pourquoi-plusieurs-agents",
-    "title": "Le pattern Multi-Agent : quand les agents collaborent",
-    "section": "Pourquoi plusieurs agents ?",
-    "text": "Pourquoi plusieurs agents ?\n\nSpécialisation\nChaque agent peut avoir : - Son propre prompt système optimisé pour sa tâche - Ses propres outils pertinents - Son propre modèle (un petit modèle rapide pour le tri, un grand pour la rédaction)\n\n\nParallélisme\nPlusieurs agents peuvent travailler simultanément sur différentes sous-tâches, accélérant considérablement le processus.\n\n\nRobustesse\nSi un agent échoue, les autres peuvent prendre le relais ou signaler le problème à l’orchestrateur."
+    "objectID": "fr/translations/multi-agent-pattern/index.html#la-classe-agent",
+    "href": "fr/translations/multi-agent-pattern/index.html#la-classe-agent",
+    "title": "Le pattern multi-agents : collaborer pour réussir",
+    "section": "La classe Agent",
+    "text": "La classe Agent\nTout d’abord, nous avons besoin d’une Classe Agent. Cette classe représentera un agent, intégrant la technique ReAct en interne (consultez la Leçon 3 pour voir cette technique en détail !).\nCréons un exemple d’agent pour démontrer son fonctionnement.\n\n\n\nDéfinition d’un agent simple\n\n\nVous pouvez également équiper l’agent d’outils, comme nous l’avons fait dans la Leçon 2. Par exemple, construisons un outil qui écrit du texte dans un fichier CSV.\n\n\n\nÉquiper un agent d’outils\n\n\nComme vous pouvez l’imaginer, l’exécution de ce Tool Agent créera un nouveau fichier nommé tool_agent_example.txt dans le répertoire courant, contenant le texte “This is a Tool Agent”.\nMaintenant que nous savons comment fonctionne la classe Agent, voyons comment définir les dépendances entre agents."
   },
   {
-    "objectID": "fr/translations/multiagent-pattern/index.html#architectures-multi-agent",
-    "href": "fr/translations/multiagent-pattern/index.html#architectures-multi-agent",
-    "title": "Le pattern Multi-Agent : quand les agents collaborent",
-    "section": "Architectures Multi-Agent",
-    "text": "Architectures Multi-Agent\n\n1. Orchestrateur centralisé\nUn agent principal distribue le travail et collecte les résultats :\nOrchestrateur\n  ├── Agent Recherche  → trouve les informations\n  ├── Agent Analyse    → analyse les données\n  └── Agent Rédaction  → rédige le rapport final\n\n\n2. Chaîne séquentielle\nLes agents s’exécutent les uns après les autres, chacun enrichissant le travail du précédent :\nAgent 1 (brouillon) → Agent 2 (critique) → Agent 3 (finalisation)\n\n\n3. Débat contradictoire\nDeux agents ou plus débattent d’une question pour arriver à une meilleure réponse, similaire au peer review."
+    "objectID": "fr/translations/multi-agent-pattern/index.html#définition-des-dépendances-entre-agents",
+    "href": "fr/translations/multi-agent-pattern/index.html#définition-des-dépendances-entre-agents",
+    "title": "Le pattern multi-agents : collaborer pour réussir",
+    "section": "Définition des dépendances entre agents",
+    "text": "Définition des dépendances entre agents\nSupposons que nous voulions définir deux agents, où le second dépend du premier.\n\n\n\nDéfinition de deux agents\n\n\nNous pouvons définir les dépendances en utilisant l’opérateur &gt;&gt;.\nagent_1 &gt;&gt; agent_2\nCela signifie que agent_2 dépend de agent_1. On peut alors vérifier les dépendances de chaque agent.\n\n\n\nVérification des dépendances\n\n\nDésormais, si nous lançons agent_1, ses résultats seront ajoutés au contexte de agent_2. Ensuite, quand nous lancerons agent_2, il utilisera le contexte reçu de agent_1 pour générer sa sortie.\n\n\n\nPropagation du contexte"
   },
   {
-    "objectID": "fr/translations/multiagent-pattern/index.html#cas-dusage-concrets",
-    "href": "fr/translations/multiagent-pattern/index.html#cas-dusage-concrets",
-    "title": "Le pattern Multi-Agent : quand les agents collaborent",
-    "section": "Cas d’usage concrets",
-    "text": "Cas d’usage concrets\n\nÉquipe de développement virtuelle\n\nAgent PM : comprend les requirements et crée des tickets\nAgent Dev : écrit le code\nAgent QA : écrit et exécute les tests\nAgent DevOps : déploie le code\n\n\n\nPipeline d’analyse\n\nAgent Collecteur : récupère les données\nAgent Analyste : effectue l’analyse statistique\nAgent Reporter : génère le rapport avec visualisations"
+    "objectID": "fr/translations/multi-agent-pattern/index.html#la-crew",
+    "href": "fr/translations/multi-agent-pattern/index.html#la-crew",
+    "title": "Le pattern multi-agents : collaborer pour réussir",
+    "section": "La Crew",
+    "text": "La Crew\nUne fois les agents et leurs dépendances définis, la dernière pièce manquante est la Crew, c’est-à-dire l’objet session qui nous permettra d’orchestrer les agents.\nNotre Crew s’occupera de lancer les agents dans le bon ordre, en appliquant un algorithme appelé Topological Sorting. Elle permet également de visualiser le graphe des dépendances.\nVoyons la Crew en action :\n\n\n\nDéfinition de la Crew\n\n\nSi nous voulons voir le graphe de dépendances, nous pouvons simplement lancer crew.plot(). Cette commande générera un diagramme comme celui-ci :\n\n\n\nVisualisation du graphe\n\n\nEnsuite, nous n’avons plus qu’à lancer la crew et attendre les résultats !\ncrew.run()\nVous devriez voir une sortie comme celle-ci, où le Poet Agent génère un poème sur la vie, le Poem Translator Agent le traduit en espagnol, et enfin le Writer Agent écrit le poème traduit dans un fichier poem.txt !\n\n\n\nExécution de la Crew\n\n\nEt voilà ! Nous avons réussi à mettre en place un framework multi-agents opérationnel ! Ça mérite bien un petit meme… 🤣\n\n\n\nMulti-agents meme"
   },
   {
-    "objectID": "fr/translations/multiagent-pattern/index.html#frameworks-populaires",
-    "href": "fr/translations/multiagent-pattern/index.html#frameworks-populaires",
-    "title": "Le pattern Multi-Agent : quand les agents collaborent",
-    "section": "Frameworks populaires",
-    "text": "Frameworks populaires\nPlusieurs frameworks facilitent la création de systèmes multi-agents : - CrewAI : Framework Python pour orchestrer des équipes d’agents - AutoGen (Microsoft) : Conversation multi-agents - LangGraph : Graphes d’agents avec gestion d’état"
+    "objectID": "fr/translations/multi-agent-pattern/index.html#pourquoi-ça-marche-si-bien",
+    "href": "fr/translations/multi-agent-pattern/index.html#pourquoi-ça-marche-si-bien",
+    "title": "Le pattern multi-agents : collaborer pour réussir",
+    "section": "Pourquoi ça marche si bien ?",
+    "text": "Pourquoi ça marche si bien ?\n\nSpécialisation : Chaque agent peut être “expert” dans une tâche très précise.\n\nCollaboration : Les agents partagent leur contexte pour construire une solution globale.\n\nOrchestration : La Crew gère la complexité de l’ordre d’exécution pour vous."
   },
   {
-    "objectID": "fr/translations/multiagent-pattern/index.html#applications-pratiques",
-    "href": "fr/translations/multiagent-pattern/index.html#applications-pratiques",
-    "title": "Le pattern Multi-Agent : quand les agents collaborent",
-    "section": "Applications pratiques",
-    "text": "Applications pratiques\nCette section sera complétée avec des projets d’application concrets liés au Multi-Agent Pattern."
-  },
-  {
-    "objectID": "fr/translations/multiagent-pattern/index.html#ressources",
-    "href": "fr/translations/multiagent-pattern/index.html#ressources",
-    "title": "Le pattern Multi-Agent : quand les agents collaborent",
+    "objectID": "fr/translations/multi-agent-pattern/index.html#ressources",
+    "href": "fr/translations/multi-agent-pattern/index.html#ressources",
+    "title": "Le pattern multi-agents : collaborer pour réussir",
     "section": "Ressources",
-    "text": "Ressources\n\nArticle précédent : Planning Pattern (ReAct)\nCette série : Qu’est-ce qu’un agent ? → Réflexion → Outils → Planning → Multi-Agent\n\n\n\n\n  \n    Série\n    Agent Design Patterns\n  \n  \n    \n      ← Article précédent\n      Le Planning Pattern (ReAct)"
+    "text": "Ressources\n\nArticle original : What is a Multiagent system?\n\nVidéo YouTube couvrant le Multiagent Pattern\n\nGitHub de la série\n\n\n\n\n  \n    Série\n    Agent Design Patterns\n  \n  \n    \n      ← Article précédent\n      Le Planning Pattern (ReAct)"
   },
   {
     "objectID": "fr/translations/reflection-pattern/index.html",
@@ -865,14 +928,14 @@
     "href": "fr/translations/reflection-pattern/index.html#le-pattern-de-réflexion-en-bref",
     "title": "Le pattern de réflexion : quand les agents se corrigent",
     "section": "Le pattern de réflexion en bref",
-    "text": "Le pattern de réflexion en bref\nLe pattern de réflexion permet à un agent d’évaluer sa propre production et de l’améliorer itérativement. L’idée : générer une réponse, la critiquer, l’ajuster, et recommencer.\nC’est une boucle simple en 4 étapes : 1. Génération : Le LLM produit une première version. 2. Réflexion : Le LLM critique cette version (erreurs, améliorations possibles). 3. Correction : Le LLM intègre les critiques pour raffiner la sortie. 4. Répétition : Retour à l’étape 1.\nQuand arrêter la boucle ? - Après un nombre fixe d’itérations (ex. : 3 tours). - Quand le LLM génère un signal d’arrêt (ex. : “OK”, “Parfait”, “Final”).\nMalgré sa simplicité, ce pattern booste la qualité des réponses, surtout pour du code, des analyses ou des textes complexes."
+    "text": "Le pattern de réflexion en bref\nLe pattern de réflexion permet à un agent d’évaluer sa propre production et de l’améliorer itérativement. L’idée : générer une réponse, la critiquer, l’ajuster, et recommencer.\nC’est une boucle simple en 4 étapes :\n1. Génération : Le LLM produit une première version.\n2. Réflexion : Le LLM critique cette version (erreurs, améliorations possibles).\n3. Correction : Le LLM intègre les critiques pour raffiner la sortie.\n4. Répétition : Retour à l’étape 1\nQuand arrêter la boucle ?\n- Après un nombre fixe d’itérations (ex. : 3 tours).\n- Quand le LLM génère un signal d’arrêt (ex. : “OK”, “Parfait”, “Final”).\nMalgré sa simplicité, ce pattern booste la qualité des réponses, surtout pour du code, des analyses ou des textes complexes."
   },
   {
     "objectID": "fr/translations/reflection-pattern/index.html#implémentation-de-zéro-la-boucle-de-réflexion",
     "href": "fr/translations/reflection-pattern/index.html#implémentation-de-zéro-la-boucle-de-réflexion",
     "title": "Le pattern de réflexion : quand les agents se corrigent",
     "section": "Implémentation de zéro : la boucle de réflexion",
-    "text": "Implémentation de zéro : la boucle de réflexion\nTestons sur un cas concret : demander à Llama3 70B (via Groq) d’implémenter l’algorithme Merge Sort en Python.\n\nÉtape 1 : Génération initiale\nOn initialise un client Groq et un historique de chat avec un prompt système : “Tu es un programmeur Python qui accepte les feedbacks.”\nPrompt utilisateur : “Implémente Merge Sort en Python.”\nRésultat typique (version 1) :\ndef merge_sort(arr):\n    if len(arr) &lt;= 1:\n        return arr\n    mid = len(arr) // 2\n    left = merge_sort(arr[:mid])\n    right = merge_sort(arr[mid:])\n    return merge(left, right)\n\ndef merge(left, right):\n    result = []\n    i, j = 0, 0\n    while i &lt; len(left) and j &lt; len(right):\n        if left[i] &lt;= right[j]:\n            result.append(left[i])\n            i += 1\n        else:\n            result.append(right[j])\n            j += 1\n    result.extend(left[i:])\n    result.extend(right[j:])\n    return result\nFonctionnel, mais perfectible (pas de docstrings complètes, gestion d’erreurs, etc.).\n\n\nÉtape 2 : Phase de réflexion\nNouveau prompt système : “Tu es un expert comme Andrej Karpathy. Critique ce code Python : erreurs, style, améliorations, tests.”\nOn passe le code généré comme message utilisateur.\nCritiques typiques : - Ajouter des type hints (PEP 484). - Améliorer les noms de variables (left → left_half). - Ajouter docstrings détaillées et gestion d’erreurs. - Inclure tests unitaires.\n\n\nÉtape 3 : Intégration et nouvelle génération\nOn ajoute les critiques à l’historique de génération. Le LLM produit une version 2 : classe orientée objet, tests unittest, edge cases gérés.\nLa boucle continue jusqu’au critère d’arrêt. Résultat final : un code production-ready avec classe, tests complets (vides, doublons, négatifs), complexité indiquée.\nLe repo GitHub de la série contient une classe ReflectionAgent qui encapsule tout ça proprement."
+    "text": "Implémentation de zéro : la boucle de réflexion\nTestons sur un cas concret : demander à Llama3 70B (via Groq) d’implémenter l’algorithme Merge Sort en Python.\n\nÉtape 1 : Génération initiale\nOn initialise un client Groq et un historique de chat avec un prompt système : “Tu es un programmeur Python qui accepte les feedbacks.”\nPrompt utilisateur : “Implémente Merge Sort en Python.”\nRésultat typique (version 1) :\ndef merge_sort(arr):\n    if len(arr) &lt;= 1:\n        return arr\n    mid = len(arr) // 2\n    left = merge_sort(arr[:mid])\n    right = merge_sort(arr[mid:])\n    return merge(left, right)\n\ndef merge(left, right):\n    result = []\n    i, j = 0, 0\n    while i &lt; len(left) and j &lt; len(right):\n        if left[i] &lt;= right[j]:\n            result.append(left[i])\n            i += 1\n        else:\n            result.append(right[j])\n            j += 1\n    result.extend(left[i:])\n    result.extend(right[j:])\n    return result\nFonctionnel, mais perfectible (pas de docstrings complètes, gestion d’erreurs, etc.).\n\n\nÉtape 2 : Phase de réflexion\nNouveau prompt système : “Tu es un expert comme Andrej Karpathy. Critique ce code Python : erreurs, style, améliorations, tests.”\nOn passe le code généré comme message utilisateur.\nCritiques typiques :\n- Ajouter des type hints (PEP 484).\n- Améliorer les noms de variables (left → left_half).\n- Ajouter docstrings détaillées et gestion d’erreurs.\n- Inclure tests unitaires.\n\n\nÉtape 3 : Intégration et nouvelle génération\nOn ajoute les critiques à l’historique de génération. Le LLM produit une version 2 : classe orientée objet, tests unittest, edge cases gérés.\nLa boucle continue jusqu’au critère d’arrêt. Résultat final : un code production-ready avec classe, tests complets (vides, doublons, négatifs), complexité indiquée.\nLe repo GitHub de la série contient une classe ReflectionAgent qui encapsule tout ça proprement."
   },
   {
     "objectID": "fr/translations/reflection-pattern/index.html#lagent-de-réflexion-en-action",
@@ -893,14 +956,14 @@
     "href": "fr/translations/reflection-pattern/index.html#prochaines-étapes",
     "title": "Le pattern de réflexion : quand les agents se corrigent",
     "section": "Prochaines étapes",
-    "text": "Prochaines étapes\nProchain article : les outils, ingrédient clé pour rendre les agents vraiment utiles. Abonne-toi pour ne pas rater !"
+    "text": "Prochaines étapes\nProchain article : les outils, ingrédient clé pour rendre les agents vraiment utiles."
   },
   {
     "objectID": "fr/translations/reflection-pattern/index.html#ressources",
     "href": "fr/translations/reflection-pattern/index.html#ressources",
     "title": "Le pattern de réflexion : quand les agents se corrigent",
     "section": "Ressources",
-    "text": "Ressources\n\nArticle original : Reflection Pattern\nVidéo YouTube (si dispo dans l’original)\nCode source : GitHub de la série\n\n\n\n\n  \n    Série\n    Agent Design Patterns\n  \n  \n    \n      ← Article précédent\n      Qu’est-ce qu’un agent ?\n    \n    \n      Article suivant →\n      Le pattern d’utilisation d’outils"
+    "text": "Ressources\n\nArticle original : Reflection Pattern\nVidéo YouTube\n\n\n\n\n  \n    Série\n    Agent Design Patterns\n  \n  \n    \n      ← Article précédent\n      Qu’est-ce qu’un agent ?\n    \n    \n      Article suivant →\n      Le pattern d’utilisation d’outils"
   },
   {
     "objectID": "fr/translations/what-is-an-agent/index.html",
@@ -921,7 +984,7 @@
     "href": "fr/translations/what-is-an-agent/index.html#les-composants-de-lagent",
     "title": "Qu’est-ce qu’un agent ?",
     "section": "Les composants de l’Agent",
-    "text": "Les composants de l’Agent\n\nDonner des capacités de planification\nUn agent n’est pas seulement là pour répondre à une question, il doit être capable de décomposer et d’organiser des tâches plus complexes.\nPar planification, on entend : - Découper un objectif global en sous-tâches. - Choisir un ordre d’exécution pertinent. - S’auto-évaluer en cours de route (réfléchir à ses erreurs, ajuster sa stratégie).\nPlusieurs techniques de prompting renforcent cette capacité de raisonnement :\n- Chaîne de pensées (Chain of Thought) : l’agent explicite ses étapes de réflexion au lieu de donner directement une réponse.\n- CoT-SC : l’agent essaie plusieurs chemins, puis sélectionne le plus fréquent, permet d’améliore la précision et la fiabilité de la réponse.\n- Arbre de pensées (Tree of Thought) : l’agent explore plusieurs pistes en parallèle, évalue différentes branches et choisit la meilleure.\n- ReAct : permet d’interagir avec des outils externes pour récupérer des informations supplémentaires qui conduisent à des réponses plus fiables et factuelles.\nMême si ces méthodes restent basées sur du texte, elles ajoutent une forme de structure au raisonnement, indispensable pour sortir du simple “chatbot” et tendre vers un agent qui sait gérer des objectifs plus ambitieux.\n\nReAct est la plus importante technique de planification et nous la couvrirons en détail dans la leçon 3 dédiée au Planning Pattern.\n\n\nDoter l’Agent d’une mémoire\nPour agir de manière cohérente dans le temps, un agent a besoin de mémoire. Sans mémoire, chaque message serait traité comme si le passé n’existait pas.\nOn distingue généralement deux types de mémoire.\n\nMémoire à court terme\nC’est tout ce qui tient dans le contexte immédiat du modèle : l’historique de la conversation, les instructions récentes, les derniers résultats d’outils.\nConcrètement : - Elle est limitée par la fenêtre de contexte du LLM. - Elle permet de maintenir le fil d’un échange ou d’une tâche en cours. - Elle disparaît lorsque le contexte est tronqué ou réinitialisé.\nC’est l’équivalent de notre mémoire de travail : ce que l’on garde en tête quelques minutes pour finir une action.\n\n\n\nImage from Donato Riccio’s amazing Medium article: https://towardsdatascience.com/extending-context-length-in-large-language-models-74e59201b51f\n\n\n\n\nMémoire à long terme\nLa mémoire à long terme sert à conserver des informations au-delà de la simple fenêtre de contexte, parfois pendant des jours, des semaines ou plus.\nElle est souvent implémentée via :\n- Des bases vectorielles (Qdrant, Weaviate, Pinecone, etc.).\n- Des index de documents ou de connaissances métiers.\n- Des systèmes de “notes” que l’agent peut retrouver par similarité sémantique.\nGrâce à cette mémoire persistante, l’agent peut par exemple :\n- Se rappeler des préférences d’un utilisateur.\n- Réutiliser des connaissances acquises lors de précédents échanges.\n- Accéder à des informations qui ne figurent pas dans les poids du modèle.\n\n\n\nImage from Pinecone’s blog: https://www.pinecone.io/learn/vector-database/\n\n\n\n\n\nLes outils : ouvrir l’agent sur le monde\nMême avec un bon modèle, du raisonnement et de la mémoire, un agent reste limité tant qu’il ne peut pas interagir avec son environnement. C’est là qu’interviennent les outils.\nUn outil est, en pratique, une action que l’agent peut déclencher :\n- Interroger une API (météo, bourse, résultats sportifs, etc.).\n- Consulter une base de données ou un moteur de recherche.\n- Créer, modifier ou supprimer des éléments dans un système externe (fichier, ticket, événement calendrier, ligne dans une base SQL, etc.).\nCes outils permettent à l’agent de :\n- Compléter ce que le modèle ne sait pas (informations trop récentes, trop spécifiques ou volumineuses).\n- Avoir un impact réel sur le monde numérique : automatisation de workflows, intégration dans des pipelines de données, assistants métier, etc.\nL’agent doit donc non seulement savoir quand appeler un outil, mais aussi comment interpréter sa réponse et l’intégrer dans son raisonnement."
+    "text": "Les composants de l’Agent\n\nDonner des capacités de planification\nUn agent n’est pas seulement là pour répondre à une question, il doit être capable de décomposer et d’organiser des tâches plus complexes.\nPar planification, on entend :\n- Découper un objectif global en sous-tâches.\n- Choisir un ordre d’exécution pertinent.\n- S’auto-évaluer en cours de route (réfléchir à ses erreurs, ajuster sa stratégie).\nPlusieurs techniques de prompting renforcent cette capacité de raisonnement :\n- Chaîne de pensées (Chain of Thought) : l’agent explicite ses étapes de réflexion au lieu de donner directement une réponse.\n- CoT-SC : l’agent essaie plusieurs chemins, puis sélectionne le plus fréquent, permet d’améliorer la précision et la fiabilité de la réponse.\n- Arbre de pensées (Tree of Thought) : l’agent explore plusieurs pistes en parallèle, évalue différentes branches et choisit la meilleure.\n- ReAct : permet d’interagir avec des outils externes pour récupérer des informations supplémentaires qui conduisent à des réponses plus fiables et factuelles.\nMême si ces méthodes restent basées sur du texte, elles ajoutent une forme de structure au raisonnement, indispensable pour sortir du simple “chatbot” et tendre vers un agent qui sait gérer des objectifs plus ambitieux.\n\nReAct est la plus importante technique de planification et nous la couvrirons en détail dans la leçon 3 dédiée au Planning Pattern.\n\n\nDoter l’Agent d’une mémoire\nPour agir de manière cohérente dans le temps, un agent a besoin de mémoire. Sans mémoire, chaque message serait traité comme si le passé n’existait pas.\nOn distingue généralement deux types de mémoire.\n\nMémoire à court terme\nC’est tout ce qui tient dans le contexte immédiat du modèle : l’historique de la conversation, les instructions récentes, les derniers résultats d’outils.\nConcrètement :\n- Elle est limitée par la fenêtre de contexte du LLM.\n- Elle permet de maintenir le fil d’un échange ou d’une tâche en cours.\n- Elle disparaît lorsque le contexte est tronqué ou réinitialisé.\nC’est l’équivalent de notre mémoire de travail : ce que l’on garde en tête quelques minutes pour finir une action.\n\n\n\nImage from Donato Riccio’s amazing Medium article: https://towardsdatascience.com/extending-context-length-in-large-language-models-74e59201b51f\n\n\n\n\nMémoire à long terme\nLa mémoire à long terme sert à conserver des informations au-delà de la simple fenêtre de contexte, parfois pendant des jours, des semaines ou plus.\nElle est souvent implémentée via :\n- Des bases vectorielles (Qdrant, Weaviate, Pinecone, etc.).\n- Des index de documents ou de connaissances métiers.\n- Des systèmes de “notes” que l’agent peut retrouver par similarité sémantique.\nGrâce à cette mémoire persistante, l’agent peut par exemple :\n- Se rappeler des préférences d’un utilisateur.\n- Réutiliser des connaissances acquises lors de précédents échanges.\n- Accéder à des informations qui ne figurent pas dans les poids du modèle.\n\n\n\nImage from Pinecone’s blog: https://www.pinecone.io/learn/vector-database/\n\n\n\n\n\nLes outils : ouvrir l’agent sur le monde\nMême avec un bon modèle, du raisonnement et de la mémoire, un agent reste limité tant qu’il ne peut pas interagir avec son environnement. C’est là qu’interviennent les outils.\nUn outil est, en pratique, une action que l’agent peut déclencher :\n- Interroger une API (météo, bourse, résultats sportifs, etc.).\n- Consulter une base de données ou un moteur de recherche.\n- Créer, modifier ou supprimer des éléments dans un système externe (fichier, ticket, événement calendrier, ligne dans une base SQL, etc.).\nCes outils permettent à l’agent de :\n- Compléter ce que le modèle ne sait pas (informations trop récentes, trop spécifiques ou volumineuses).\n- Avoir un impact réel sur le monde numérique : automatisation de workflows, intégration dans des pipelines de données, assistants métier, etc.\nL’agent doit donc non seulement savoir quand appeler un outil, mais aussi comment interpréter sa réponse et l’intégrer dans son raisonnement."
   },
   {
     "objectID": "fr/translations/what-is-an-agent/index.html#récapitulatif-un-agent-cest-quoi-alors",
@@ -1257,69 +1320,27 @@
     "href": "projects.html",
     "title": "Projects",
     "section": "",
-    "text": "A selection of projects I’ve worked on. Click on a project to see details and related resources.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAI Dev Tools\n\n\nProjects and assignments from the AI Dev Tools (Vibe Coding) Zoomcamp.\n\n\n\n\n\n\n\n\n\n\n\n\n\nAI Hero\n\n\nBuilding and deploying AI agents projects 7-day challenge.\n\n\n\n\n\n\n\n\n\n\n\n\n\nData Engineering Zoomcamp\n\n\nA comprehensive course on Data Engineering covering Docker, Terraform, Google Cloud Platform, Airflow, Spark, and Kafka.\n\n\n\n\n\n\n\n\n\n\n\n\n\nLangChain & Vector Databases\n\n\nBuild Production-Grade LLM Applications with LangChain & Deep Lake. Covers Gen AI, Prompt Engineering, RAG, and Agents.\n\n\n\n\n\n\n\n\n\n\n\n\n\nML Engineer ZoomCamp\n\n\nA comprehensive machine learning engineering course covering deployment, cloud, and MLOps.\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo-Code & AI Enterprise Apps\n\n\nBuilding internal enterprise apps using No-Code tools (Airtable, Softr, Make/Zapier) and AI. Covers needs analysis, BPMN modeling, and full implementation.\n\n\n\n\n\n\n\nNo matching items"
+    "text": "A selection of projects I’ve worked on. Click on a project to see details and related resources.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAI Dev Tools\n\n\nProjects and assignments from the AI Dev Tools (Vibe Coding) Zoomcamp.\n\n\n\n\n\n\n\n\n\n\n\n\n\nAI Hero\n\n\nBuilding and deploying AI agents projects 7-day challenge.\n\n\n\n\n\n\n\n\n\n\n\n\n\nData Engineering Zoomcamp\n\n\nA comprehensive course on Data Engineering covering Docker, Terraform, Google Cloud Platform, Airflow, Spark, and Kafka.\n\n\n\n\n\n\n\n\n\n\n\n\n\nLangChain & Vector Databases\n\n\nBuild Production-Grade LLM Applications with LangChain & Deep Lake. Covers Gen AI, Prompt Engineering, RAG, and Agents.\n\n\n\n\n\n\n\n\n\n\n\n\n\nML Engineer ZoomCamp\n\n\nA comprehensive machine learning engineering course covering deployment, cloud, and MLOps.\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo-Code & AI Enterprise Apps\n\n\nBuilding internal enterprise apps using No-Code tools (Airtable, Softr, Make/Zapier) and AI. Covers needs analysis, BPMN modeling, and full implementation.\n\n\n\n\n\n\n\nNo matching items\n\n Back to top"
   },
   {
     "objectID": "projects/ai-hero/index.html",
     "href": "projects/ai-hero/index.html",
     "title": "AI Hero",
     "section": "",
-    "text": "Project Details\nA 7-day challenge to build and deploy AI agents from scratch.\n\n🔗 GitHub Repository\n\n\n📝 Related Weekly Reports\n\nDay 1 — Ingest and Index Your Data"
+    "text": "Project Details\nA 7-day challenge to build and deploy AI agents from scratch.\n\n🔗 GitHub Repository\n\n\n📝 Related Weekly Reports\n\nDay 1 — Ingest and Index Your Data\n\n\n\n\n\n\n Back to top"
   },
   {
     "objectID": "projects/langchain-vectordb/index.html",
     "href": "projects/langchain-vectordb/index.html",
     "title": "LangChain & Vector Databases",
     "section": "",
-    "text": "Project Details\nLearning to build production-grade LLM applications.\n\n🔗 GitHub Repository\n\n\n📝 Related Series - Agentic Design Patterns\n\nReflection Agent\nTool Using Agent\nReAct Pattern\nMulti Agent Collaboration\nMemory-Based Agent"
+    "text": "Project Details\nLearning to build production-grade LLM applications.\n\n🔗 GitHub Repository\n\n\n📝 Related Series - Agentic Design Patterns\n\nReflection Agent\nTool Using Agent\nReAct Pattern\nMulti Agent Collaboration\nMemory-Based Agent\n\n\n\n\n\n\n Back to top"
   },
   {
     "objectID": "projects/nocode-ai/index.html",
     "href": "projects/nocode-ai/index.html",
     "title": "No-Code & AI Enterprise Apps",
     "section": "",
-    "text": "🔗 GitHub Repository"
-  },
-  {
-    "objectID": "fr/livres.html",
-    "href": "fr/livres.html",
-    "title": "REVUE DE LIVRES",
-    "section": "",
-    "text": "Une collection de livres que j’ai lus et résumés. Cliquez sur un livre pour accéder aux résumés de chapitres et aux implémentations techniques.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLLM Engineer’s Handbook\n\n\nLe guide complet pour construire des applications LLM prêtes pour la production. (En cours)\n\n\n\n\n\n\n\n\n\n\n\n\n\nMistral AI\n\n\nExploration des modèles Mistral AI et des stratégies d’implémentation. (En cours)\n\n\n\n\n\n\n\nAucun article correspondant"
-  },
-  {
-    "objectID": "fr/books/llm-handbook/index.html",
-    "href": "fr/books/llm-handbook/index.html",
-    "title": "LLM Engineer’s Handbook",
-    "section": "",
-    "text": "LLM Engineer’s Handbook\nCe projet documente ma lecture et mes implémentations du livre LLM Engineer’s Handbook.\nStatut : 🚧 En cours\n\n📝 Résumés par chapitre\nLes résumés seront ajoutés au fur et à mesure de ma progression."
-  },
-  {
-    "objectID": "books/llm-handbook/index.html",
-    "href": "books/llm-handbook/index.html",
-    "title": "LLM Engineer’s Handbook",
-    "section": "",
-    "text": "LLM Engineer’s Handbook\nThis project documents my reading and implementation of the LLM Engineer’s Handbook.\nStatus: 🚧 In Progress\n\n📝 Chapter Summaries\nSummaries will be added as I progress through the book."
-  },
-  {
-    "objectID": "books.html",
-    "href": "books.html",
-    "title": "BOOK REVIEW",
-    "section": "",
-    "text": "A collection of books I have read and reviewed. Click on a book to see chapter summaries and technical implementations.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLLM Engineer’s Handbook\n\n\nA comprehensive guide to building production-ready LLM applications. (In Progress)\n\n\n\n\n\n\n\n\n\n\n\n\n\nMistral AI\n\n\nExploring Mistral AI models and implementation strategies. (In Progress)\n\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "books/mistral/index.html",
-    "href": "books/mistral/index.html",
-    "title": "Mistral AI",
-    "section": "",
-    "text": "Mistral AI\nThis section covers my notes and technical explorations of Mistral AI models.\nStatus: 🚧 In Progress\n\n📝 Summaries and Notes\nContent coming soon."
-  },
-  {
-    "objectID": "fr/books/mistral/index.html",
-    "href": "fr/books/mistral/index.html",
-    "title": "Mistral AI",
-    "section": "",
-    "text": "Mistral AI\nCette section regroupe mes notes et explorations techniques sur les modèles Mistral AI.\nStatut : 🚧 En cours\n\n📝 Résumés et Notes\nContenu à venir."
+    "text": "🔗 GitHub Repository\n\n\n\n\n Back to top"
   }
 ]
