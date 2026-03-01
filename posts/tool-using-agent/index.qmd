@@ -1,7 +1,7 @@
 ---
 title: "Tool Using Agent: Extending AI Beyond Text Generation"
 translation-url: "fr/translations/tool-use-pattern/index.html"
-date: "2026-02-10"
+date: "2026-01-15"
 categories: [AI, Agents, LLM, Design Patterns, Tools]
 image: "../../img/reflection_pattern.png"
 description: "The Tool Use Pattern: how AI agents leverage external tools, APIs, and services to interact with the real world."

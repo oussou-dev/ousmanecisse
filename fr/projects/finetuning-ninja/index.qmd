@@ -9,9 +9,6 @@ about:
     - icon: github
       text: "Voir sur GitHub"
       href: https://github.com/oussou-dev/finetuning-sessions?tab=readme-ov-file
-include-in-header:
-  text: |
-    <meta http-equiv="refresh" content="0; url='https://github.com/oussou-dev/finetuning-sessions?tab=readme-ov-file'" />
 categories: [LLM, Finetuning, Python, GenAI, Pratique]
 description: "Maîtrisez l'art du finetuning des LLMs ! Un projet complet couvrant tout, des bases du SFT aux techniques avancées comme LoRA, QLoRA, RLHF et le multimodal."
 lang: fr
@@ -37,3 +34,9 @@ Le projet met l'accent non seulement sur *comment* exécuter le code, mais aussi
 ## 🔗 Liens
 
 - **Dépôt GitHub** : [oussou-dev/finetuning-sessions](https://github.com/oussou-dev/finetuning-sessions?tab=readme-ov-file)
+
+## 📝 Articles Liés
+
+Suivez ma progression à travers ces leçons hebdomadaires détaillées :
+
+- **[Semaine 1 — Le Paysage du Finetuning](/fr/posts/finetuning-ninja-week-1/index.html)**

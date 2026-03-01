@@ -1,4 +1,43 @@
+# Quarto related
 /.quarto/
 /_site/
+/_freeze/
 
+# Generated HTML (Quarto) - but keep our scripts
+*.html
+!scripts/*.html
+
+# Python related
+/.venv/
+/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+pip-log.txt
+pip-delete-this-directory.txt
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# IDE / Editors
+/.vscode/
+/.idea/
+*.swp
+*.swo
+
+# OS related
+.DS_Store
+Thumbs.db
+.ipynb_checkpoints/
+
+# Project specifics
 /.luarc.json

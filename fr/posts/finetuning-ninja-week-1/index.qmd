@@ -1,0 +1,155 @@
+---
+title: "Finetuning Ninja : Semaine 1 - Le Paysage"
+subtitle: "Leçon 1 : Cartographie de l'Entraînement des LLMs Modernes"
+translation-url: "posts/finetuning-ninja-week-1/index.html"
+description: "Exploration de l'évolution des RNNs aux Transformers et du pipeline d'entraînement moderne des LLMs."
+author: "Ousmane Cissé"
+date: "2026-02-04"
+categories: [LLM, Finetuning, IA, Deep Learning]
+image: "https://substackcdn.com/image/fetch/$s_!_Yph!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff1909018-fbb6-4a19-8eb3-7cce5c333837_1920x1080.png"
+lang: fr
+series-name: "Finetuning Ninja"
+---
+
+Bienvenue dans cette première semaine de notre Bootcamp dédié au Finetuning ! Petit retournement de situation pour commencer : **nous n'allons pas du tout parler de finetuning aujourd'hui**. 
+
+Avant de plonger dans des techniques avancées comme le SFT (Supervised Fine-Tuning) ou LoRA, il est crucial de bâtir une carte mentale solide de ce qui se passe *avant* cette étape. Cette leçon pose les fondations de l'architecture Transformer et du pré-entraînement (pretraining), car comprendre le fonctionnement interne des modèles est essentiel pour maîtriser les techniques d'optimisation futures.
+
+---
+
+### 1. L'Évolution : Des RNNs à l'Attention
+
+![Transformer Meme](https://substackcdn.com/image/fetch/$s_!dxuS!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F900aa4be-69b0-40a7-a71e-93ccad6c3f02_2108x1186.jpeg)
+
+Aujourd'hui, presque tous les modèles de langage de pointe (LLMs) reposent sur l'architecture Transformer. Mais l'innovation clé qui les fait fonctionner – **le mécanisme d'attention** – n'a pas été inventée avec le Transformer.
+
+Avant cela, le Deep Learning s'appuyait sur les CNNs pour la vision et les RNNs (notamment les LSTMs) pour les tâches séquentielles comme la traduction. Le problème des RNNs ? Ils peinaient avec les **longues séquences** car ils devaient compresser toute la phrase d'entrée en un seul vecteur de taille fixe.
+
+L'attention a été introduite pour résoudre ce problème : **et si le modèle pouvait "regarder en arrière" vers différentes parties spécifiques de l'entrée au moment où il en a besoin ?**.
+
+![Encoder-Decoder Attention](https://substackcdn.com/image/fetch/$s_!jqNl!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbeb4b694-e899-4244-9572-76c99c4cc6c7_1200x209.png)
+
+**Comment fonctionne l'Attention ?**
+À la base, l'attention est un mécanisme de recherche pondérée qui utilise trois éléments :  
+*   Des **Keys (Clés - K)**  
+*   Des **Values (Valeurs - V)**  
+*   Une **Query (Requête - Q)**  
+
+Le mécanisme compare la requête (Q) à toutes les clés (K), attribue un poids à chacune (un score d'importance), puis produit une **somme pondérée des valeurs (V)**. L'attention décide ainsi de ce qui est important dans le contexte et le combine dynamiquement.
+
+![Attention Mechanism](https://substackcdn.com/image/fetch/$s_!ITLW!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2f86980f-0b97-4cb4-8630-7e5471bb0ef7_910x579.png)
+
+---
+
+### 2. Le Cœur du Transformer : Self-Attention et Multi-Head Attention
+
+Si l'attention permettait à un décodeur de regarder un encodeur, la **Self-Attention** (Auto-attention) va plus loin : **chaque token d'une séquence porte son attention sur tous les autres tokens de cette *même* séquence**.
+
+![Self-Attention](https://substackcdn.com/image/fetch/$s_!aVXN!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff970d7f6-c93f-4558-8f49-780f02c572ee_701x459.png)
+
+Dans la self-attention, chaque token devient à la fois Q, K et V. Par exemple, pour mettre à jour la représentation du mot "sat" (assis), le modèle portera une forte attention sur "cat" (le chat) et "mat" (le tapis), tout en ignorant les mots de liaison moins pertinents comme "the".
+
+Pour faire fonctionner cela, l'architecture Transformer introduit des composants spécifiques :  
+1.  **Positional Encodings (Encodages de position)** : L'attention n'a pas de notion d'ordre spatial ou temporel. On injecte donc des informations de position via des fonctions mathématiques (sinus et cosinus à différentes fréquences) pour que le modèle distingue le premier, le suivant ou le dernier token.  
+2.  **Scaled Dot-Product Attention** : C'est l'implémentation mathématique où les Queries et les Keys sont multipliées (dot product), normalisées par une fonction softmax, puis utilisées pour calculer une somme pondérée des Values.  
+3.  **Multi-Head Attention** : Au lieu d'avoir un seul point de vue, le modèle utilise "plusieurs têtes" travaillant en parallèle. Différentes têtes se spécialisent dans divers motifs (dépendances à long terme, syntaxe, sémantique), permettant au modèle d'examiner l'information sous plusieurs angles simultanément.  
+
+---
+
+### 3. Les Trois Architectures de Transformers
+
+Bien que l'on regroupe souvent tout sous le terme de LLM, il existe **trois familles distinctes** de Transformers, chacune conçue pour des problèmes différents :
+
+![Les 3 Architectures](https://substackcdn.com/image/fetch/$s_!mRlz!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa13c886e-05c9-4da4-aeec-3e4c6deeb046_1200x630.png)
+
+1.  **Encoder-only (ex: BERT)** : Conçu pour générer des représentations riches. Il utilise une attention bidirectionnelle (les tokens regardent en avant et en arrière). Parfait pour la classification, la similarité sémantique et la recherche, mais il ne génère pas de texte.  
+2.  **Encoder-Decoder (ex: T5, BART)** : L'architecture originale. L'encodeur lit l'entrée, et le décodeur génère la sortie token par token en utilisant l'attention croisée (cross-attention). Idéal pour les tâches où l'entrée et la sortie sont des séquences de longueur variable comme la traduction.  
+3.  **Decoder-only (ex: ChatGPT, Claude, Qwen)** : C'est le moteur de presque tous les LLMs modernes. Il supprime complètement l'encodeur et utilise l'**attention causale** : chaque token ne peut regarder que les tokens qui le précèdent. Son seul objectif est de prédire le token suivant.  
+
+Le succès foudroyant de l'architecture "Decoder-only" s'explique en grande partie par les **lois d'échelle (Scaling laws)**. Des études ont montré que la performance de ces modèles s'améliore de façon prévisible lorsque l'on augmente la taille du modèle (paramètres), les données d'entraînement (tokens) et la puissance de calcul. 
+
+![Scaling Laws](https://substackcdn.com/image/fetch/$s_!CetZ!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F48baf6dd-9664-4ccc-9ebf-4fca2bb400fe_1200x394.png)
+
+---
+
+### 4. Le Pipeline d'Entraînement des LLMs et le Pretraining
+
+Depuis l'introduction du modèle InstructGPT d'OpenAI en 2022, la norme d'entraînement d'un LLM (Decoder-only) suit un **pipeline bien défini en trois étapes** :  
+1.  **Pretraining** (Pré-entraînement sur de vastes corpus de textes bruts).  
+2.  **Supervised Fine-Tuning - SFT** (Affinement supervisé sur des exemples de haute qualité orientés vers des tâches).  
+3.  **RLHF - Reinforcement Learning from Human Feedback** (Alignement basé sur les préférences humaines).  
+
+![Pretrained Model Ex](https://substackcdn.com/image/fetch/$s_!gb6a!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa2a095ff-c348-4a7a-a09f-5228019d8246_3106x1888.png)
+
+**Zoom sur le Pretraining :**
+C'est l'étape la plus gourmande en données et en calcul. Un modèle Transformer "Decoder-only" s'entraîne via un apprentissage auto-supervisé : **le label à prédire est simplement le token suivant dans le texte (Causal Language Modeling)**.
+
+![Math dataset](https://substackcdn.com/image/fetch/$s_!gm6Z!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffc83ad34-7a9f-4e92-8165-2c85880a0a64_1015x742.png)
+
+En "lisant" des quantités massives de pages web, de livres et de code, le modèle acquiert la grammaire, la syntaxe, des faits et du sens commun. C'est la phase où il "apprend le monde".
+
+**Le résultat est un "Modèle de Base" (Foundation Model)**.
+Mais attention : à ce stade, le modèle excelle pour continuer un texte, mais **il ne sait pas répondre de manière fiable à des instructions ou interagir**. C'est un moteur brut de reconnaissance de motifs. Le finetuning (SFT, LoRA) sert à **façonner et orienter (shape and steer)** l'intelligence brute acquise lors du pretraining pour la rendre utilisable et alignée sur nos attentes.
+
+**Le Continued Pretraining :**
+Si vous devez ajouter un domaine très spécifique (droit, médical) ou une langue sous-représentée, on utilise le **Continued Pretraining**. Au lieu de tout recommencer de zéro, on expose un modèle de base existant à de nouvelles données pour qu'il absorbe ces nouveaux motifs tout en conservant ses connaissances générales.
+
+---
+
+### 🎯 Quiz d'Auto-Évaluation : Testez vos connaissances
+
+**Question 1 : Quel problème fondamental des réseaux de neurones récurrents (RNNs) le mécanisme d'attention original cherchait-il à résoudre ?**
+
+::: {.callout-note collapse="true"}
+## Réponse
+Les architectures récurrentes antérieures (comme les encodeurs-décodeurs basés sur les LSTMs) devaient compresser toute une séquence d'entrée en un seul vecteur de taille fixe. Cela limitait fortement leurs performances sur les longues séquences. L'attention a résolu ce problème en permettant au décodeur de regarder dynamiquement différentes parties de l'entrée au moment où il en a besoin, au lieu de s'appuyer sur un état compressé unique.
+:::
+
+**Question 2 : Quelle est la principale différence entre l'attention classique et la "Self-Attention" ?**
+
+::: {.callout-note collapse="true"}
+## Réponse
+L'attention classique permet à une séquence (le décodeur) de prêter attention à une autre séquence (l'encodeur). La "Self-Attention" (auto-attention) va plus loin : elle permet à *chaque token d'une séquence de prêter attention à tous les autres tokens de cette même séquence*. Ainsi, les requêtes (Q), les clés (K) et les valeurs (V) proviennent toutes de la même source.
+:::
+
+**Question 3 : Pourquoi l'architecture Transformer nécessite-t-elle l'utilisation d'encodages de position (Positional Encodings) ?**
+
+::: {.callout-note collapse="true"}
+## Réponse
+Le mécanisme d'attention en lui-même n'a aucune notion de l'ordre des éléments dans une séquence. Contrairement aux RNNs qui traitent les données séquentiellement, les Transformers traitent les tokens en parallèle. Les encodages de position (basés sur des fonctions sinus et cosinus) injectent artificiellement des informations spatiales dans les représentations des tokens pour que le modèle puisse distinguer le "premier", le "suivant" et le "dernier" élément.
+:::
+
+**Question 4 : Parmi les trois familles d'architectures Transformer, laquelle est utilisée par des modèles comme ChatGPT et Claude, et quel est son objectif d'entraînement principal ?**
+
+::: {.callout-note collapse="true"}
+## Réponse
+Ces modèles utilisent l'architecture **Decoder-only** (décodeur uniquement). Son objectif d'entraînement principal, via une attention causale (qui empêche de regarder les tokens futurs), est extrêmement simple : **prédire le token suivant** (Causal Language Modeling).
+:::
+
+**Question 5 : Quel est l'objectif du Supervised Fine-Tuning (SFT) et du RLHF si le modèle a déjà appris le langage lors du pretraining ?**
+
+::: {.callout-note collapse="true"}
+## Réponse
+Le pretraining produit un "modèle de base" capable de générer du texte de manière très crédible et possédant une grande connaissance du monde, mais il se contente de continuer le texte sans savoir répondre à des instructions ou être utile. Le SFT et le RLHF servent à **façonner et orienter** cette intelligence brute. Ils apprennent au modèle comment structurer ses réponses, suivre des consignes, et se comporter selon les attentes et la sécurité humaines, sans avoir à lui réapprendre le langage depuis zéro.
+:::
+
+**Question 6 : Quel est le rôle des composantes "Query", "Key" et "Value" ?**
+
+::: {.callout-note collapse="true"}
+## Réponse
+C'est une métaphore de recherche. La Query représente ce que je cherche, la Key est l'étiquette de l'information disponible, et la Value est l'information elle-même. Le score d'attention (Query x Key) détermine combien de "poids" on donne à chaque "Value".
+:::
+
+**Question 7 : Pourquoi les modèles modernes comme Llama ou GPT utilisent-ils principalement l'architecture "Decoder-only" ?**
+
+::: {.callout-note collapse="true"}
+## Réponse
+Cette architecture est plus simple à passer à l'échelle (scaling). Elle s'est avérée incroyablement efficace pour l'apprentissage auto-supervisé sur d'immenses volumes de données, et elle possède des capacités émergentes (raisonnement, calcul) que les autres architectures n'atteignent pas aussi facilement.
+:::
+
+**Question 8 : Dans quel cas utiliseriez-vous le "Continued Pretraining" au lieu du simple Fine-tuning ?**
+
+::: {.callout-note collapse="true"}
+## Réponse
+On utilise le pré-entraînement continu quand on veut injecter des connaissances massives dans un domaine très spécifique (ex : droit médical complexe, langage de programmation rare ou langue peu représentée) que le modèle n'a jamais vu, avant de lui apprendre à suivre des instructions dans ce domaine.
+:::
