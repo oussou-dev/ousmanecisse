@@ -6,10 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-02-04">
-<meta name="description" content="Master the art of LLM finetuning! A comprehensive project covering everything from SFT basics to advanced LoRA, QLoRA, RLHF, and multimodal techniques.">
+<meta name="author" content="Ousmane Cissé">
+<meta name="dcterms.date" content="2026-02-05">
+<meta name="description" content="Detailed summary of the first lab covering Continued Pretraining, Curriculum Learning, and hardware optimization strategies.">
 
-<title>Finetuning Ninja – OUSMANE CISSE</title>
+<title>Finetuning Ninja: Week 1 - The Lab – OUSMANE CISSE</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -37,6 +38,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-4d9afe2b8d18ee9fa5d0d57b5ed4214d.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
@@ -49,6 +51,9 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-contrib/jquery-3.6.3/jquery-3.6.3.min.js"></script>
 <script src="../../site_libs/quarto-contrib/code-fullscreen-1.0.0/code-fullscreen.js" defer="true"></script>
 <link href="../../site_libs/quarto-contrib/code-fullscreen-1.0.0/code-fullscreen.css" rel="stylesheet">
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -312,125 +317,220 @@ ul.task-list li input[type="checkbox"] {
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
+   
   <ul>
-  <li><a href="#project-overview" id="toc-project-overview" class="nav-link active" data-scroll-target="#project-overview">🥷 Project Overview</a></li>
-  <li><a href="#links" id="toc-links" class="nav-link" data-scroll-target="#links">🔗 Links</a></li>
-  <li><a href="#related-articles" id="toc-related-articles" class="nav-link" data-scroll-target="#related-articles">📝 Related Articles</a></li>
+  <li><a href="#continued-pretraining-cpt-learning-a-new-domain" id="toc-continued-pretraining-cpt-learning-a-new-domain" class="nav-link active" data-scroll-target="#continued-pretraining-cpt-learning-a-new-domain">1. “Continued PreTraining” (CPT): Learning a New Domain</a></li>
+  <li><a href="#curriculum-learning" id="toc-curriculum-learning" class="nav-link" data-scroll-target="#curriculum-learning">2. Curriculum Learning</a></li>
+  <li><a href="#knowledge-distillation" id="toc-knowledge-distillation" class="nav-link" data-scroll-target="#knowledge-distillation">3. Knowledge Distillation</a></li>
+  <li><a href="#taming-the-memory-wall-hardware-optimization" id="toc-taming-the-memory-wall-hardware-optimization" class="nav-link" data-scroll-target="#taming-the-memory-wall-hardware-optimization">4. Taming the “Memory Wall” (Hardware &amp; Optimization)</a></li>
+  <li><a href="#the-multi-gpu-orchestra-parallelism" id="toc-the-multi-gpu-orchestra-parallelism" class="nav-link" data-scroll-target="#the-multi-gpu-orchestra-parallelism">5. The Multi-GPU Orchestra (Parallelism)</a></li>
+  <li><a href="#self-assessment-quiz-test-your-knowledge" id="toc-self-assessment-quiz-test-your-knowledge" class="nav-link" data-scroll-target="#self-assessment-quiz-test-your-knowledge">🎯 Self-Assessment Quiz: Test Your Knowledge</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<div class="quarto-about-jolla">
-  <img src="finetuning-ninja.png" class="about-image
-  round " style="height: 15em; width: 15em;">
- <header id="title-block-header" class="quarto-title-block default">
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Finetuning Ninja</h1>
-<p class="subtitle lead">A guided journey from pre-training to reasoning models.</p>
+<h1 class="title">Finetuning Ninja: Week 1 - The Lab</h1>
+<p class="subtitle lead">Session 1: Modern Pre-training Strategies – Practical Guide</p>
   <div class="quarto-categories">
     <div class="quarto-category">LLM</div>
     <div class="quarto-category">Finetuning</div>
-    <div class="quarto-category">Python</div>
-    <div class="quarto-category">GenAI</div>
-    <div class="quarto-category">Hands-on</div>
+    <div class="quarto-category">Pretraining</div>
+    <div class="quarto-category">Hardware</div>
+    <div class="quarto-category">Lab</div>
   </div>
   </div>
+
 <div>
   <div class="description">
-    Master the art of LLM finetuning! A comprehensive project covering everything from SFT basics to advanced LoRA, QLoRA, RLHF, and multimodal techniques.
+    Detailed summary of the first lab covering Continued Pretraining, Curriculum Learning, and hardware optimization strategies.
   </div>
 </div>
+
+
 <div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Ousmane Cissé </p>
+          </div>
+  </div>
+    
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 4, 2026</p>
+      <p class="date">February 5, 2026</p>
     </div>
   </div>
+  
+    
   </div>
-</header><main class="content" id="quarto-document-content">
+  
 
 
-<meta name="translation-url" content="fr/projects/finetuning-ninja/index.html">
-<section id="project-overview" class="level2">
-<h2 data-anchor-id="project-overview">🥷 Project Overview</h2>
-<p><strong>Finetuning Ninja</strong> is a hands-on project designed to build deep intuition and practical skills in training Large Language Models (LLMs). From setting up the lab environment to deploying reasoning models, this repository guides you through every critical step.</p>
-<p>It covers the complete lifecycle:</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Focus</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><strong>Foundations</strong></td>
-<td style="text-align: left;">Understanding the finetuning landscape and supervised finetuning (SFT).</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>Depth</strong></td>
-<td style="text-align: left;">Understanding the internal mechanisms of models.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>Efficiency</strong></td>
-<td style="text-align: left;">Leveraging Parameter-Efficient Finetuning (PEFT) with <strong>LoRA</strong> and <strong>QLoRA</strong>.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>Alignment</strong></td>
-<td style="text-align: left;">Aligning models with human preferences using <strong>RLHF</strong> (Reinforcement Learning from Human Feedback).</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>Reasoning</strong></td>
-<td style="text-align: left;">Exploring advanced techniques like <strong>GRPO</strong> (Group Relative Policy Optimization).</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>Multimodal</strong></td>
-<td style="text-align: left;">Extending capabilities to vision and audio.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>Production</strong></td>
-<td style="text-align: left;">Best practices for LLM deployment.</td>
-</tr>
-</tbody>
-</table>
-<p>The project emphasizes not just <em>how</em> to run code, but <em>why</em> it works, providing the <strong>intuition</strong> and <strong>theory</strong> necessary to become a true practitioner.</p>
-</section>
-<section id="links" class="level2">
-<h2 data-anchor-id="links">🔗 Links</h2>
-<p><a href="https://github.com/oussou-dev/finetuning-sessions?tab=readme-ov-file" class="btn btn-outline-dark" target="_blank" role="button"><i class="bi bi-github"></i> View on GitHub</a></p>
-</section>
-<section id="related-articles" class="level2">
-<h2 data-anchor-id="related-articles">📝 Related Articles</h2>
-<p>Follow my progress through these detailed weekly lessons:</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th style="text-align: left;">Week</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Week 1</td>
-<td style="text-align: left;"><a href="../../posts/finetuning-ninja-week-1/index.html">The Finetuning Landscape</a></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Week 1 (Lab)</td>
-<td style="text-align: left;"><a href="../../posts/finetuning-ninja-lab-1/index.html">Lab 1: Modern Pre-training Strategies</a></td>
-</tr>
-</tbody>
-</table>
+</header>
 
 
-</section>
-<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main>  
+<meta name="translation-url" content="fr/posts/finetuning-ninja-lab-1/index.html">
+<p>After laying the theoretical foundations of Transformers and pre-training in the previous lesson, it’s time for some hands-on practice! This first laboratory (Lab) dives into modern strategies for adapting a model to a specific domain and addresses the crucial hardware challenges associated with training LLMs.</p>
+<hr>
+<section id="continued-pretraining-cpt-learning-a-new-domain" class="level2">
+<h2 class="anchored" data-anchor-id="continued-pretraining-cpt-learning-a-new-domain">1. “Continued PreTraining” (CPT): Learning a New Domain</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://substackcdn.com/image/fetch/$s_!G-0m!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb9959bd9-ae1a-4f3e-9b47-3923ff0f140d_2048x2048.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Continued Pretraining"><img src="https://substackcdn.com/image/fetch/$s_!G-0m!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb9959bd9-ae1a-4f3e-9b47-3923ff0f140d_2048x2048.png" class="img-fluid figure-img" alt="Continued Pretraining"></a></p>
+<figcaption>Continued Pretraining</figcaption>
+</figure>
 </div>
- <!-- /main -->
+<p>What if you need a model that is an expert in law, medicine, or a very specific codebase? Classic pre-training on general internet data (which skims over many topics superficially) is not enough. This is where <strong>Continued PreTraining (CPT)</strong> comes in.</p>
+<p>⚠️ <strong>Note the fundamental nuance: CPT is not Supervised Fine-Tuning (SFT)!</strong> * In <strong>SFT</strong>, we provide “prompt-response” pairs to teach the model how to behave and interact. * In <strong>CPT</strong>, we go back to <strong>self-supervised learning</strong>. We feed the model raw, unlabeled text (e.g., 50GB of internal documents or math publications) with the objective of “predicting the next token.”</p>
+<p><strong>Why is this step crucial?</strong> 1. <strong>Domain Vocabulary:</strong> The model learns highly specialized terms and their contexts, often missing from the initial pre-training. 2. <strong>Updating Knowledge (World Knowledge):</strong> It’s the way to update a model (e.g., teaching it 2025 discoveries if it was trained in 2023). 3. <strong>A Better Foundation for SFT:</strong> If the base model doesn’t intrinsically understand the concepts of a domain, attempting to finetune (SFT) it on instructions from that domain will inevitably lead to severe hallucinations.</p>
+<hr>
+</section>
+<section id="curriculum-learning" class="level2">
+<h2 class="anchored" data-anchor-id="curriculum-learning">2. Curriculum Learning</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://substackcdn.com/image/fetch/$s_!-lwD!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F043e38e4-b0f3-43e3-a16f-3b638064d6d3_2048x2048.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Small Language Models"><img src="https://substackcdn.com/image/fetch/$s_!-lwD!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F043e38e4-b0f3-43e3-a16f-3b638064d6d3_2048x2048.png" class="img-fluid figure-img" alt="Small Language Models"></a></p>
+<figcaption>Small Language Models</figcaption>
+</figure>
+</div>
+<p>Adapting a model (especially a Small Language Model, or SLM) to a rigorous domain like mathematics is not as simple as “throwing” an entire manual at it. If you immediately provide data that is too complex, the model saturates: its gradients become unstable and it struggles to converge.</p>
+<p>The solution is <strong>Curriculum Learning</strong>, inspired by human education: we don’t teach integral calculus to a child before they know how to add. We organize data by complexity or signal-to-noise ratio.</p>
+<p><strong>Two common implementation methods:</strong> 1. <strong>Data Quality Sorting:</strong> Start with “Gold Standard” data (Wikipedia, basic textbooks) before introducing denser or noisier data (Reddit, web crawl). 2. <strong>Sequence Length Scaling:</strong> Start with a small context window (e.g., 512 tokens) to grasp local syntax, then gradually increase (4k, 8k, etc.) to capture long-term dependencies.</p>
+<p><strong>Result:</strong> Faster convergence, lower final loss, and a much more robust model.</p>
+<hr>
+</section>
+<section id="knowledge-distillation" class="level2">
+<h2 class="anchored" data-anchor-id="knowledge-distillation">3. Knowledge Distillation</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://substackcdn.com/image/fetch/$s_!amBl!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fcea9e6ee-386c-449a-9f97-19fa467f75e5_2048x2048.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Knowledge Distillation"><img src="https://substackcdn.com/image/fetch/$s_!amBl!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fcea9e6ee-386c-449a-9f97-19fa467f75e5_2048x2048.png" class="img-fluid figure-img" alt="Knowledge Distillation"></a></p>
+<figcaption>Knowledge Distillation</figcaption>
+</figure>
+</div>
+<p>How can a “small” model with 7 billion parameters sometimes beat a giant with 70B? Through distillation.</p>
+<p>The idea: use the intelligence of a massive <strong>“Teacher”</strong> model (like GPT-4) to train a small <strong>“Student”</strong> model. Instead of using strict labels (e.g., “the next word is <em>Paris</em>”), the Student learns from the Teacher’s <strong>“Soft Targets.”</strong> The Teacher provides a probability distribution: “I’m 90% sure it’s <em>Paris</em>, 8% <em>Lyon</em>, 2% <em>London</em>.”</p>
+<p>This information (often called “Dark Knowledge”) reveals how the Teacher perceives semantic relationships. * <strong>Efficiency:</strong> We get a model 10x smaller and faster, retaining much of the Teacher’s capabilities. * <strong>Reasoning Transfer:</strong> Through “Chain-of-Thought” (CoT) distillation, the Student can even learn the Teacher’s step-by-step thinking process.</p>
+<hr>
+</section>
+<section id="taming-the-memory-wall-hardware-optimization" class="level2">
+<h2 class="anchored" data-anchor-id="taming-the-memory-wall-hardware-optimization">4. Taming the “Memory Wall” (Hardware &amp; Optimization)</h2>
+<p>Training is resource-intensive. A beginner mistake is thinking a 14GB model will fit in a 16GB GPU. <strong>It won’t!</strong> During training, you need to store weights, but also activations, gradients, and most importantly <strong>optimizer states (which can be 3-4 times the size of the weights!)</strong>.</p>
+<p><strong>Optimization Techniques (Tricks):</strong> * <strong>Mixed Precision (BF16):</strong> “Brain Float 16” offers the dynamic range of a 32-bit format but with the memory footprint of 16-bit. It speeds up training without the instability of classic FP16. * <strong>Gradient Accumulation:</strong> If GPU memory is too small for a large batch, we calculate gradients on “micro-batches” and only update weights after several steps. * <strong>Activation Checkpointing:</strong> Instead of storing all activations (intermediate thoughts) during the forward pass, we delete them from memory and recalculate them during the backward pass. <strong>Trade-off: significant VRAM savings at the cost of about 25% extra compute time</strong>.</p>
+<p><em>(Tip: If GPU memory is full but compute (SM) usage is low, the bottleneck is your CPU or data loader, not the GPU!)</em></p>
+<hr>
+</section>
+<section id="the-multi-gpu-orchestra-parallelism" class="level2">
+<h2 class="anchored" data-anchor-id="the-multi-gpu-orchestra-parallelism">5. The Multi-GPU Orchestra (Parallelism)</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://substackcdn.com/image/fetch/$s_!MBJy!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fca241191-532e-4fac-94bd-8fe0a5437733_2048x2048.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Multi GPU"><img src="https://substackcdn.com/image/fetch/$s_!MBJy!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fca241191-532e-4fac-94bd-8fe0a5437733_2048x2048.png" class="img-fluid figure-img" alt="Multi GPU"></a></p>
+<figcaption>Multi GPU</figcaption>
+</figure>
+</div>
+<p>For very large models, a single GPU is not enough. You have to divide the work: 1. <strong>Data Parallelism (DP/DDP):</strong> The entire model is copied to each GPU, but each GPU processes a different subset of data. 2. <strong>Tensor Parallelism (TP):</strong> We literally split the weight matrices of a single layer across multiple GPUs. Requires ultra-fast connections (NVLink). 3. <strong>Pipeline Parallelism (PP):</strong> Vertical division by layers (e.g., GPU 0 handles layers 1-10, GPU 1 handles layers 11-20). The challenge is minimizing “bubbles” (idle time). 4. <strong>Sequence Parallelism (SP):</strong> Essential for processing extremely long contexts that would otherwise explode memory.</p>
+<p><strong>The Modern Standard: FSDP (Fully Sharded Data Parallelism).</strong> This is a hybrid approach that shards weights, gradients, and optimizer states across all GPUs, offering the memory efficiency of model parallelism with the simplicity of data parallelism.</p>
+<hr>
+</section>
+<section id="self-assessment-quiz-test-your-knowledge" class="level2">
+<h2 class="anchored" data-anchor-id="self-assessment-quiz-test-your-knowledge">🎯 Self-Assessment Quiz: Test Your Knowledge</h2>
+<p>Here are 5 questions to validate your understanding of the concepts in this Lab:</p>
+<p><strong>Question 1: What is the fundamental difference in training objectives between Continued PreTraining (CPT) and Supervised Fine-Tuning (SFT)?</strong></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>CPT uses self-supervised learning on raw (unlabeled) text with the objective of “predicting the next token,” exactly like the initial pre-training. SFT, on the other hand, uses structured “prompt-response” pairs to teach the model how to follow specific instructions and format its responses.</p>
+</div>
+</div>
+</div>
+<p><strong>Question 2: Why is it discouraged to immediately provide extremely complex data to a model during Continued PreTraining, and what technique avoids this problem?</strong></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Providing data that is too dense or noisy from the start can cause model “saturation” and make gradients unstable (struggling to converge or learning bad patterns). The technique to avoid this is <strong>Curriculum Learning</strong>, which involves ordering data from simplest/cleanest to most complex, allowing model weights to configure themselves more robustly.</p>
+</div>
+</div>
+</div>
+<p><strong>Question 3: In Knowledge Distillation, why are the Teacher model’s “Soft Targets” more useful than traditional Hard Labels?</strong></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Soft Targets provide a probability distribution across the entire vocabulary, not just a single “correct” answer. This distribution (“Dark Knowledge”) contains crucial information about how the Teacher perceives semantic relationships between words (e.g., knowing that a wrong answer is still semantically close to the right one), which helps the Student generalize much more effectively.</p>
+</div>
+</div>
+</div>
+<p><strong>Question 4: What technical trade-off does “Activation Checkpointing” offer during training to avoid “Out Of Memory” (OOM) errors?</strong></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Activation Checkpointing saves massive amounts of VRAM (GPU memory) by removing intermediate activations calculated during the forward pass from memory. The trade-off is that these activations must be recalculated during the backward pass, which increases compute time by about 25%. We exchange compute time for memory space.</p>
+</div>
+</div>
+</div>
+<p><strong>Question 5: Why is classic “Data Parallelism” (DP) no longer sufficient for today’s giant models, and why do we use FSDP?</strong></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Data Parallelism (DP) copies the entire model onto each GPU. For giant models (like a 70B), even a single model with its optimizer states exceeds the capacity of a high-end GPU (like an 80GB H100). <strong>FSDP (Fully Sharded Data Parallelism)</strong> solves this by sharding model weights, gradients, and optimizer states across all available GPUs, combining the memory efficiency of model parallelism with the simplicity of data parallelism management.</p>
+</div>
+</div>
+</div>
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         const path = window.location.pathname;
@@ -567,6 +667,13 @@ ul.task-list li input[type="checkbox"] {
       window.document.body.appendChild(a);
     }
     setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
         if (clz.startsWith('code-annotation-')) {                     
@@ -959,6 +1066,38 @@ ul.task-list li input[type="checkbox"] {
   });
   </script>
 </div> <!-- /content -->
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 

@@ -423,6 +423,440 @@ font-style: inherit;">uv</span> python pin 3.11</span></code></pre></div></div>
   <pubDate>Tue, 10 Feb 2026 00:00:00 GMT</pubDate>
 </item>
 <item>
+  <title>Finetuning Ninja : Semaine 1 - Le Lab</title>
+  <dc:creator>Ousmane Cissé</dc:creator>
+  <link>https://oussou-dev.github.io/ousmanecisse/fr/posts/finetuning-ninja-lab-1/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<meta name="translation-url" content="posts/finetuning-ninja-lab-1/index.html">
+<p>Après avoir posé les bases théoriques des Transformers et du pré-entraînement dans la leçon précédente, il est temps de passer à la pratique ! Ce premier laboratoire (Lab) plonge au cœur des stratégies modernes pour adapter un modèle à un domaine spécifique et aborde les défis matériels cruciaux liés à l’entraînement des LLMs.</p>
+<hr>
+<section id="le-continued-pretraining-cpt-apprendre-un-nouveau-domaine" class="level2">
+<h2 class="anchored" data-anchor-id="le-continued-pretraining-cpt-apprendre-un-nouveau-domaine">1. Le “Continued PreTraining” (CPT) : Apprendre un Nouveau Domaine</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://substackcdn.com/image/fetch/$s_!G-0m!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb9959bd9-ae1a-4f3e-9b47-3923ff0f140d_2048x2048.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Continued Pretraining"><img src="https://substackcdn.com/image/fetch/$s_!G-0m!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb9959bd9-ae1a-4f3e-9b47-3923ff0f140d_2048x2048.png" class="img-fluid figure-img" alt="Continued Pretraining"></a></p>
+<figcaption>Continued Pretraining</figcaption>
+</figure>
+</div>
+<p>Que faire si vous avez besoin d’un modèle expert en droit, en médecine ou sur une base de code très spécifique ? Le pré-entraînement classique sur des données générales d’Internet (qui survole de nombreux sujets de manière superficielle) ne suffit pas. C’est là qu’intervient le <strong>Continued PreTraining (CPT)</strong>.</p>
+<p>⚠️ <strong>Attention à la nuance fondamentale : le CPT n’est pas du Supervised Fine-Tuning (SFT) !</strong> * Dans le <strong>SFT</strong>, on fournit des paires “prompt-réponse” pour apprendre au modèle à se comporter et à interagir. * Dans le <strong>CPT</strong>, on retourne à l’<strong>apprentissage auto-supervisé</strong>. On nourrit le modèle avec des textes bruts et non labellisés (par exemple, 50 Go de documents internes ou de publications mathématiques) avec l’objectif de “prédire le token suivant”.</p>
+<p><strong>Pourquoi cette étape est-elle cruciale ?</strong> 1. <strong>Vocabulaire du domaine :</strong> Le modèle apprend des termes très spécialisés et leurs contextes, souvent absents du pré-entraînement initial. 2. <strong>Mise à jour des connaissances (World Knowledge) :</strong> C’est le moyen de mettre à jour un modèle (ex: lui apprendre les découvertes de 2025 s’il a été entraîné en 2023). 3. <strong>Une meilleure fondation pour le SFT :</strong> Si le modèle de base ne comprend pas intrinsèquement les concepts d’un domaine, tenter de le finetuner (SFT) sur des instructions de ce domaine entraînera inévitablement de fortes hallucinations.</p>
+<hr>
+</section>
+<section id="lapprentissage-curriculaire-curriculum-learning" class="level2">
+<h2 class="anchored" data-anchor-id="lapprentissage-curriculaire-curriculum-learning">2. L’Apprentissage Curriculaire (Curriculum Learning)</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://substackcdn.com/image/fetch/$s_!-lwD!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F043e38e4-b0f3-43e3-a16f-3b638064d6d3_2048x2048.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Small Language Models"><img src="https://substackcdn.com/image/fetch/$s_!-lwD!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F043e38e4-b0f3-43e3-a16f-3b638064d6d3_2048x2048.png" class="img-fluid figure-img" alt="Small Language Models"></a></p>
+<figcaption>Small Language Models</figcaption>
+</figure>
+</div>
+<p>Adapter un modèle (surtout un Small Language Model, ou SLM) à un domaine rigoureux comme les mathématiques n’est pas aussi simple que de lui “jeter” un manuel entier. Si l’on donne immédiatement des données trop complexes, le modèle sature : ses gradients deviennent instables et il peine à converger.</p>
+<p>La solution est le <strong>Curriculum Learning</strong>, inspiré de l’éducation humaine : on n’enseigne pas le calcul intégral à un enfant avant qu’il sache additionner. On organise les données par complexité ou par ratio signal/bruit.</p>
+<p><strong>Deux méthodes courantes d’implémentation :</strong> 1. <strong>Tri par qualité des données (Data Quality Sorting) :</strong> Commencer par des données “Gold Standard” (Wikipedia, manuels de base) avant d’introduire des données plus denses ou plus bruitées (Reddit, web crawl). 2. <strong>Mise à l’échelle de la longueur de séquence (Sequence Length Scaling) :</strong> Démarrer avec une petite fenêtre de contexte (ex: 512 tokens) pour assimiler la syntaxe locale, puis augmenter progressivement (4k, 8k, etc.) pour capter les dépendances à long terme.</p>
+<p><strong>Résultat :</strong> Une convergence plus rapide, une perte (loss) finale plus basse, et un modèle beaucoup plus robuste.</p>
+<hr>
+</section>
+<section id="la-distillation-de-connaissances-knowledge-distillation" class="level2">
+<h2 class="anchored" data-anchor-id="la-distillation-de-connaissances-knowledge-distillation">3. La Distillation de Connaissances (Knowledge Distillation)</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://substackcdn.com/image/fetch/$s_!amBl!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fcea9e6ee-386c-449a-9f97-19fa467f75e5_2048x2048.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Knowledge Distillation"><img src="https://substackcdn.com/image/fetch/$s_!amBl!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fcea9e6ee-386c-449a-9f97-19fa467f75e5_2048x2048.png" class="img-fluid figure-img" alt="Knowledge Distillation"></a></p>
+<figcaption>Knowledge Distillation</figcaption>
+</figure>
+</div>
+<p>Comment un “petit” modèle de 7 milliards de paramètres peut-il parfois battre un géant de 70B ? Grâce à la distillation.</p>
+<p>L’idée : utiliser l’intelligence d’un modèle <strong>“Professeur”</strong> (Teacher) massif (comme GPT-4) pour entraîner un petit modèle <strong>“Élève”</strong> (Student). Plutôt que d’utiliser des labels stricts (ex: “le mot suivant est <em>Paris</em>”), l’Élève apprend à partir des <strong>“Soft Targets”</strong> du Professeur. Le Professeur fournit une distribution de probabilités : “Je suis sûr à 90% que c’est <em>Paris</em>, 8% <em>Lyon</em>, 2% <em>Londres</em>”.</p>
+<p>Cette information (souvent appelée “Dark Knowledge”) révèle comment le Professeur perçoit les relations sémantiques. * <strong>Efficacité :</strong> On obtient un modèle 10x plus petit et rapide, conservant une grande partie des capacités du Professeur. * <strong>Transfert de raisonnement :</strong> Via la distillation “Chain-of-Thought” (CoT), l’Élève peut même apprendre le processus de réflexion étape par étape du Professeur.</p>
+<hr>
+</section>
+<section id="dompter-le-mur-de-la-mémoire-hardware-optimisation" class="level2">
+<h2 class="anchored" data-anchor-id="dompter-le-mur-de-la-mémoire-hardware-optimisation">4. Dompter le “Mur de la Mémoire” (Hardware &amp; Optimisation)</h2>
+<p>L’entraînement coûte cher en ressources. Une erreur de débutant est de penser qu’un modèle de 14 Go rentrera dans un GPU de 16 Go. <strong>C’est faux !</strong> Pendant l’entraînement, il faut stocker les poids, mais aussi les activations, les gradients et surtout <strong>les états de l’optimiseur (qui peuvent représenter 3 à 4 fois la taille des poids !)</strong>.</p>
+<p><strong>Les techniques d’optimisation (Tricks) :</strong> * <strong>Mixed Precision (BF16) :</strong> Le “Brain Float 16” offre la plage dynamique d’un format 32-bits mais avec l’empreinte mémoire d’un 16-bits. Il accélère l’entraînement sans l’instabilité du FP16 classique. * <strong>Gradient Accumulation :</strong> Si la mémoire du GPU est trop petite pour un grand batch, on calcule les gradients sur des “micro-batchs” et on ne met à jour les poids qu’après plusieurs étapes. * <strong>Activation Checkpointing :</strong> Plutôt que de stocker toutes les activations (pensées intermédiaires) lors de la passe avant (forward pass), on les supprime de la mémoire et on les recalcule lors de la passe arrière (backward pass). <strong>Compromis : on économise énormément de VRAM au prix d’environ 25% de temps de calcul supplémentaire</strong>.</p>
+<p><em>(Astuce : Si la mémoire GPU est pleine mais que l’utilisation de calcul (SM) est faible, le goulot d’étranglement est votre CPU ou votre chargeur de données, pas le GPU !)</em></p>
+<hr>
+</section>
+<section id="lorchestre-multi-gpu-parallélisme" class="level2">
+<h2 class="anchored" data-anchor-id="lorchestre-multi-gpu-parallélisme">5. L’Orchestre Multi-GPU (Parallélisme)</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://substackcdn.com/image/fetch/$s_!MBJy!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fca241191-532e-4fac-94bd-8fe0a5437733_2048x2048.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Multi GPU"><img src="https://substackcdn.com/image/fetch/$s_!MBJy!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fca241191-532e-4fac-94bd-8fe0a5437733_2048x2048.png" class="img-fluid figure-img" alt="Multi GPU"></a></p>
+<figcaption>Multi GPU</figcaption>
+</figure>
+</div>
+<p>Pour les très gros modèles, un seul GPU ne suffit pas. Il faut diviser le travail : 1. <strong>Data Parallelism (DP/DDP) :</strong> Le modèle entier est copié sur chaque GPU, mais chaque GPU traite un sous-ensemble différent des données. 2. <strong>Tensor Parallelism (TP) :</strong> On divise littéralement les matrices de poids d’une même couche sur plusieurs GPUs. Nécessite des connexions ultra-rapides (NVLink). 3. <strong>Pipeline Parallelism (PP) :</strong> Division verticale par couches (ex: GPU 0 gère les couches 1-10, GPU 1 les couches 11-20). Le défi est de minimiser les temps d’inactivité (“bubbles”). 4. <strong>Sequence Parallelism (SP) :</strong> Indispensable pour traiter des contextes extrêmement longs qui feraient exploser la mémoire.</p>
+<p><strong>Le Standard Moderne : FSDP (Fully Sharded Data Parallelism).</strong> C’est une approche hybride qui fragmente (shard) les poids, les gradients et les états de l’optimiseur sur tous les GPUs, offrant l’efficacité mémoire du parallélisme de modèle avec la simplicité du parallélisme de données.</p>
+<hr>
+</section>
+<section id="quiz-dauto-évaluation-testez-vos-connaissances" class="level2">
+<h2 class="anchored" data-anchor-id="quiz-dauto-évaluation-testez-vos-connaissances">🎯 Quiz d’Auto-Évaluation : Testez vos connaissances</h2>
+<p>Voici 5 questions pour valider votre assimilation des concepts de ce Lab :</p>
+<p><strong>Question 1 : Quelle est la différence fondamentale dans l’objectif d’entraînement entre le Continued PreTraining (CPT) et le Supervised Fine-Tuning (SFT) ?</strong></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Le CPT utilise l’apprentissage auto-supervisé sur des textes bruts (non labellisés) avec l’objectif de “prédire le token suivant”, exactement comme lors du pré-entraînement initial. Le SFT, en revanche, utilise des paires “prompt-réponse” structurées pour apprendre au modèle à suivre des instructions spécifiques et à formater ses réponses.</p>
+</div>
+</div>
+</div>
+<p><strong>Question 2 : Pourquoi est-il déconseillé de fournir immédiatement des données extrêmement complexes à un modèle lors du Continued PreTraining, et quelle technique permet d’éviter ce problème ?</strong></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Fournir des données trop denses ou bruitées d’emblée peut provoquer une “saturation” du modèle et rendre ses gradients instables (il peine à converger ou apprend de mauvais motifs). La technique pour éviter cela est le <strong>Curriculum Learning</strong> (Apprentissage Curriculaire), qui consiste à ordonner les données de la plus simple/propre à la plus complexe, permettant aux poids du modèle de se configurer de manière plus robuste.</p>
+</div>
+</div>
+</div>
+<p><strong>Question 3 : Dans la distillation de connaissances (Knowledge Distillation), pourquoi les “Soft Targets” du modèle Professeur sont-elles plus utiles que des labels classiques (Hard Labels) ?</strong></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Les Soft Targets fournissent une distribution de probabilités pour l’ensemble du vocabulaire, et non pas une seule réponse “correcte”. Cette distribution (le “Dark Knowledge”) contient des informations cruciales sur la façon dont le Professeur perçoit les relations sémantiques entre les mots (ex: savoir qu’une mauvaise réponse est tout de même sémantiquement proche de la bonne réponse), ce qui aide l’Élève à généraliser bien plus efficacement.</p>
+</div>
+</div>
+</div>
+<p><strong>Question 4 : Quel compromis technique offre l’“Activation Checkpointing” lors de l’entraînement d’un modèle pour éviter l’erreur “Out Of Memory” (OOM) ?</strong></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>L’Activation Checkpointing permet d’économiser massivement de la VRAM (mémoire GPU) en supprimant de la mémoire les activations intermédiaires calculées lors de la passe avant (forward pass). Le compromis est que ces activations doivent être recalculées lors de la passe arrière (backward pass), ce qui augmente le temps de calcul (compute) d’environ 25%. On échange donc du temps de calcul contre de l’espace mémoire.</p>
+</div>
+</div>
+</div>
+<p><strong>Question 5 : Pourquoi le “Data Parallelism” classique (DP) n’est-il plus suffisant pour les modèles géants actuels, et pourquoi utilise-t-on le FSDP ?</strong></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Le Data Parallelism (DP) copie l’intégralité du modèle sur chaque GPU. Pour les modèles géants (comme un 70B), même un seul modèle avec ses états d’optimisation dépasse la capacité d’un GPU haut de gamme (comme un H100 de 80 Go). Le <strong>FSDP (Fully Sharded Data Parallelism)</strong> résout ce problème en fragmentant (sharding) les poids du modèle, les gradients et les états de l’optimiseur à travers tous les GPUs disponibles, combinant l’efficacité mémoire du parallélisme de modèle avec la simplicité de gestion du parallélisme de données.</p>
+</div>
+</div>
+</div>
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Retour au sommet</a> ]]></description>
+  <category>LLM</category>
+  <category>Finetuning</category>
+  <category>Pretraining</category>
+  <category>Hardware</category>
+  <category>Lab</category>
+  <guid>https://oussou-dev.github.io/ousmanecisse/fr/posts/finetuning-ninja-lab-1/</guid>
+  <pubDate>Thu, 05 Feb 2026 00:00:00 GMT</pubDate>
+  <media:content url="https://substackcdn.com/image/fetch/$s_!O7zp!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3d572d8e-0c2c-4644-96c6-84dc093f2cc4_1200x630.png" medium="image" type="image/png"/>
+</item>
+<item>
+  <title>Finetuning Ninja : Semaine 1 - Le Paysage</title>
+  <dc:creator>Ousmane Cissé</dc:creator>
+  <link>https://oussou-dev.github.io/ousmanecisse/fr/posts/finetuning-ninja-week-1/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<meta name="translation-url" content="posts/finetuning-ninja-week-1/index.html">
+<p>Bienvenue dans cette première semaine de notre Bootcamp dédié au Finetuning ! Petit retournement de situation pour commencer : <strong>nous n’allons pas du tout parler de finetuning aujourd’hui</strong>.</p>
+<p>Avant de plonger dans des techniques avancées comme le SFT (Supervised Fine-Tuning) ou LoRA, il est crucial de bâtir une carte mentale solide de ce qui se passe <em>avant</em> cette étape. Cette leçon pose les fondations de l’architecture Transformer et du pré-entraînement (pretraining), car comprendre le fonctionnement interne des modèles est essentiel pour maîtriser les techniques d’optimisation futures.</p>
+<hr>
+<section id="lévolution-des-rnns-à-lattention" class="level3">
+<h3 class="anchored" data-anchor-id="lévolution-des-rnns-à-lattention">1. L’Évolution : Des RNNs à l’Attention</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://substackcdn.com/image/fetch/$s_!dxuS!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F900aa4be-69b0-40a7-a71e-93ccad6c3f02_2108x1186.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Transformer Meme"><img src="https://substackcdn.com/image/fetch/$s_!dxuS!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F900aa4be-69b0-40a7-a71e-93ccad6c3f02_2108x1186.jpeg" class="img-fluid figure-img" alt="Transformer Meme"></a></p>
+<figcaption>Transformer Meme</figcaption>
+</figure>
+</div>
+<p>Aujourd’hui, presque tous les modèles de langage de pointe (LLMs) reposent sur l’architecture Transformer. Mais l’innovation clé qui les fait fonctionner – <strong>le mécanisme d’attention</strong> – n’a pas été inventée avec le Transformer.</p>
+<p>Avant cela, le Deep Learning s’appuyait sur les CNNs pour la vision et les RNNs (notamment les LSTMs) pour les tâches séquentielles comme la traduction. Le problème des RNNs ? Ils peinaient avec les <strong>longues séquences</strong> car ils devaient compresser toute la phrase d’entrée en un seul vecteur de taille fixe.</p>
+<p>L’attention a été introduite pour résoudre ce problème : <strong>et si le modèle pouvait “regarder en arrière” vers différentes parties spécifiques de l’entrée au moment où il en a besoin ?</strong>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://substackcdn.com/image/fetch/$s_!jqNl!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbeb4b694-e899-4244-9572-76c99c4cc6c7_1200x209.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Encoder-Decoder Attention"><img src="https://substackcdn.com/image/fetch/$s_!jqNl!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbeb4b694-e899-4244-9572-76c99c4cc6c7_1200x209.png" class="img-fluid figure-img" alt="Encoder-Decoder Attention"></a></p>
+<figcaption>Encoder-Decoder Attention</figcaption>
+</figure>
+</div>
+<p><strong>Comment fonctionne l’Attention ?</strong> À la base, l’attention est un mécanisme de recherche pondérée qui utilise trois éléments :<br>
+* Des <strong>Keys (Clés - K)</strong><br>
+* Des <strong>Values (Valeurs - V)</strong><br>
+* Une <strong>Query (Requête - Q)</strong></p>
+<p>Le mécanisme compare la requête (Q) à toutes les clés (K), attribue un poids à chacune (un score d’importance), puis produit une <strong>somme pondérée des valeurs (V)</strong>. L’attention décide ainsi de ce qui est important dans le contexte et le combine dynamiquement.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://substackcdn.com/image/fetch/$s_!ITLW!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2f86980f-0b97-4cb4-8630-7e5471bb0ef7_910x579.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Attention Mechanism"><img src="https://substackcdn.com/image/fetch/$s_!ITLW!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2f86980f-0b97-4cb4-8630-7e5471bb0ef7_910x579.png" class="img-fluid figure-img" alt="Attention Mechanism"></a></p>
+<figcaption>Attention Mechanism</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+<section id="le-cœur-du-transformer-self-attention-et-multi-head-attention" class="level3">
+<h3 class="anchored" data-anchor-id="le-cœur-du-transformer-self-attention-et-multi-head-attention">2. Le Cœur du Transformer : Self-Attention et Multi-Head Attention</h3>
+<p>Si l’attention permettait à un décodeur de regarder un encodeur, la <strong>Self-Attention</strong> (Auto-attention) va plus loin : <strong>chaque token d’une séquence porte son attention sur tous les autres tokens de cette <em>même</em> séquence</strong>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://substackcdn.com/image/fetch/$s_!aVXN!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff970d7f6-c93f-4558-8f49-780f02c572ee_701x459.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Self-Attention"><img src="https://substackcdn.com/image/fetch/$s_!aVXN!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff970d7f6-c93f-4558-8f49-780f02c572ee_701x459.png" class="img-fluid figure-img" alt="Self-Attention"></a></p>
+<figcaption>Self-Attention</figcaption>
+</figure>
+</div>
+<p>Dans la self-attention, chaque token devient à la fois Q, K et V. Par exemple, pour mettre à jour la représentation du mot “sat” (assis), le modèle portera une forte attention sur “cat” (le chat) et “mat” (le tapis), tout en ignorant les mots de liaison moins pertinents comme “the”.</p>
+<p>Pour faire fonctionner cela, l’architecture Transformer introduit des composants spécifiques :<br>
+1. <strong>Positional Encodings (Encodages de position)</strong> : L’attention n’a pas de notion d’ordre spatial ou temporel. On injecte donc des informations de position via des fonctions mathématiques (sinus et cosinus à différentes fréquences) pour que le modèle distingue le premier, le suivant ou le dernier token.<br>
+2. <strong>Scaled Dot-Product Attention</strong> : C’est l’implémentation mathématique où les Queries et les Keys sont multipliées (dot product), normalisées par une fonction softmax, puis utilisées pour calculer une somme pondérée des Values.<br>
+3. <strong>Multi-Head Attention</strong> : Au lieu d’avoir un seul point de vue, le modèle utilise “plusieurs têtes” travaillant en parallèle. Différentes têtes se spécialisent dans divers motifs (dépendances à long terme, syntaxe, sémantique), permettant au modèle d’examiner l’information sous plusieurs angles simultanément.</p>
+<hr>
+</section>
+<section id="les-trois-architectures-de-transformers" class="level3">
+<h3 class="anchored" data-anchor-id="les-trois-architectures-de-transformers">3. Les Trois Architectures de Transformers</h3>
+<p>Bien que l’on regroupe souvent tout sous le terme de LLM, il existe <strong>trois familles distinctes</strong> de Transformers, chacune conçue pour des problèmes différents :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://substackcdn.com/image/fetch/$s_!mRlz!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa13c886e-05c9-4da4-aeec-3e4c6deeb046_1200x630.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Les 3 Architectures"><img src="https://substackcdn.com/image/fetch/$s_!mRlz!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa13c886e-05c9-4da4-aeec-3e4c6deeb046_1200x630.png" class="img-fluid figure-img" alt="Les 3 Architectures"></a></p>
+<figcaption>Les 3 Architectures</figcaption>
+</figure>
+</div>
+<ol type="1">
+<li><strong>Encoder-only (ex: BERT)</strong> : Conçu pour générer des représentations riches. Il utilise une attention bidirectionnelle (les tokens regardent en avant et en arrière). Parfait pour la classification, la similarité sémantique et la recherche, mais il ne génère pas de texte.<br>
+</li>
+<li><strong>Encoder-Decoder (ex: T5, BART)</strong> : L’architecture originale. L’encodeur lit l’entrée, et le décodeur génère la sortie token par token en utilisant l’attention croisée (cross-attention). Idéal pour les tâches où l’entrée et la sortie sont des séquences de longueur variable comme la traduction.<br>
+</li>
+<li><strong>Decoder-only (ex: ChatGPT, Claude, Qwen)</strong> : C’est le moteur de presque tous les LLMs modernes. Il supprime complètement l’encodeur et utilise l’<strong>attention causale</strong> : chaque token ne peut regarder que les tokens qui le précèdent. Son seul objectif est de prédire le token suivant.</li>
+</ol>
+<p>Le succès foudroyant de l’architecture “Decoder-only” s’explique en grande partie par les <strong>lois d’échelle (Scaling laws)</strong>. Des études ont montré que la performance de ces modèles s’améliore de façon prévisible lorsque l’on augmente la taille du modèle (paramètres), les données d’entraînement (tokens) et la puissance de calcul.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://substackcdn.com/image/fetch/$s_!CetZ!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F48baf6dd-9664-4ccc-9ebf-4fca2bb400fe_1200x394.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Scaling Laws"><img src="https://substackcdn.com/image/fetch/$s_!CetZ!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F48baf6dd-9664-4ccc-9ebf-4fca2bb400fe_1200x394.png" class="img-fluid figure-img" alt="Scaling Laws"></a></p>
+<figcaption>Scaling Laws</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+<section id="le-pipeline-dentraînement-des-llms-et-le-pretraining" class="level3">
+<h3 class="anchored" data-anchor-id="le-pipeline-dentraînement-des-llms-et-le-pretraining">4. Le Pipeline d’Entraînement des LLMs et le Pretraining</h3>
+<p>Depuis l’introduction du modèle InstructGPT d’OpenAI en 2022, la norme d’entraînement d’un LLM (Decoder-only) suit un <strong>pipeline bien défini en trois étapes</strong> :<br>
+1. <strong>Pretraining</strong> (Pré-entraînement sur de vastes corpus de textes bruts).<br>
+2. <strong>Supervised Fine-Tuning - SFT</strong> (Affinement supervisé sur des exemples de haute qualité orientés vers des tâches).<br>
+3. <strong>RLHF - Reinforcement Learning from Human Feedback</strong> (Alignement basé sur les préférences humaines).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://substackcdn.com/image/fetch/$s_!gb6a!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa2a095ff-c348-4a7a-a09f-5228019d8246_3106x1888.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Pretrained Model Ex"><img src="https://substackcdn.com/image/fetch/$s_!gb6a!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa2a095ff-c348-4a7a-a09f-5228019d8246_3106x1888.png" class="img-fluid figure-img" alt="Pretrained Model Ex"></a></p>
+<figcaption>Pretrained Model Ex</figcaption>
+</figure>
+</div>
+<p><strong>Zoom sur le Pretraining :</strong> C’est l’étape la plus gourmande en données et en calcul. Un modèle Transformer “Decoder-only” s’entraîne via un apprentissage auto-supervisé : <strong>le label à prédire est simplement le token suivant dans le texte (Causal Language Modeling)</strong>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://substackcdn.com/image/fetch/$s_!gm6Z!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffc83ad34-7a9f-4e92-8165-2c85880a0a64_1015x742.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Math dataset"><img src="https://substackcdn.com/image/fetch/$s_!gm6Z!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffc83ad34-7a9f-4e92-8165-2c85880a0a64_1015x742.png" class="img-fluid figure-img" alt="Math dataset"></a></p>
+<figcaption>Math dataset</figcaption>
+</figure>
+</div>
+<p>En “lisant” des quantités massives de pages web, de livres et de code, le modèle acquiert la grammaire, la syntaxe, des faits et du sens commun. C’est la phase où il “apprend le monde”.</p>
+<p><strong>Le résultat est un “Modèle de Base” (Foundation Model)</strong>. Mais attention : à ce stade, le modèle excelle pour continuer un texte, mais <strong>il ne sait pas répondre de manière fiable à des instructions ou interagir</strong>. C’est un moteur brut de reconnaissance de motifs. Le finetuning (SFT, LoRA) sert à <strong>façonner et orienter (shape and steer)</strong> l’intelligence brute acquise lors du pretraining pour la rendre utilisable et alignée sur nos attentes.</p>
+<p><strong>Le Continued Pretraining :</strong> Si vous devez ajouter un domaine très spécifique (droit, médical) ou une langue sous-représentée, on utilise le <strong>Continued Pretraining</strong>. Au lieu de tout recommencer de zéro, on expose un modèle de base existant à de nouvelles données pour qu’il absorbe ces nouveaux motifs tout en conservant ses connaissances générales.</p>
+<hr>
+</section>
+<section id="quiz-dauto-évaluation-testez-vos-connaissances" class="level3">
+<h3 class="anchored" data-anchor-id="quiz-dauto-évaluation-testez-vos-connaissances">🎯 Quiz d’Auto-Évaluation : Testez vos connaissances</h3>
+<p><strong>Question 1 : Quel problème fondamental des réseaux de neurones récurrents (RNNs) le mécanisme d’attention original cherchait-il à résoudre ?</strong></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Les architectures récurrentes antérieures (comme les encodeurs-décodeurs basés sur les LSTMs) devaient compresser toute une séquence d’entrée en un seul vecteur de taille fixe. Cela limitait fortement leurs performances sur les longues séquences. L’attention a résolu ce problème en permettant au décodeur de regarder dynamiquement différentes parties de l’entrée au moment où il en a besoin, au lieu de s’appuyer sur un état compressé unique.</p>
+</div>
+</div>
+</div>
+<p><strong>Question 2 : Quelle est la principale différence entre l’attention classique et la “Self-Attention” ?</strong></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>L’attention classique permet à une séquence (le décodeur) de prêter attention à une autre séquence (l’encodeur). La “Self-Attention” (auto-attention) va plus loin : elle permet à <em>chaque token d’une séquence de prêter attention à tous les autres tokens de cette même séquence</em>. Ainsi, les requêtes (Q), les clés (K) et les valeurs (V) proviennent toutes de la même source.</p>
+</div>
+</div>
+</div>
+<p><strong>Question 3 : Pourquoi l’architecture Transformer nécessite-t-elle l’utilisation d’encodages de position (Positional Encodings) ?</strong></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Le mécanisme d’attention en lui-même n’a aucune notion de l’ordre des éléments dans une séquence. Contrairement aux RNNs qui traitent les données séquentiellement, les Transformers traitent les tokens en parallèle. Les encodages de position (basés sur des fonctions sinus et cosinus) injectent artificiellement des informations spatiales dans les représentations des tokens pour que le modèle puisse distinguer le “premier”, le “suivant” et le “dernier” élément.</p>
+</div>
+</div>
+</div>
+<p><strong>Question 4 : Parmi les trois familles d’architectures Transformer, laquelle est utilisée par des modèles comme ChatGPT et Claude, et quel est son objectif d’entraînement principal ?</strong></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Ces modèles utilisent l’architecture <strong>Decoder-only</strong> (décodeur uniquement). Son objectif d’entraînement principal, via une attention causale (qui empêche de regarder les tokens futurs), est extrêmement simple : <strong>prédire le token suivant</strong> (Causal Language Modeling).</p>
+</div>
+</div>
+</div>
+<p><strong>Question 5 : Quel est l’objectif du Supervised Fine-Tuning (SFT) et du RLHF si le modèle a déjà appris le langage lors du pretraining ?</strong></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Le pretraining produit un “modèle de base” capable de générer du texte de manière très crédible et possédant une grande connaissance du monde, mais il se contente de continuer le texte sans savoir répondre à des instructions ou être utile. Le SFT et le RLHF servent à <strong>façonner et orienter</strong> cette intelligence brute. Ils apprennent au modèle comment structurer ses réponses, suivre des consignes, et se comporter selon les attentes et la sécurité humaines, sans avoir à lui réapprendre le langage depuis zéro.</p>
+</div>
+</div>
+</div>
+<p><strong>Question 6 : Quel est le rôle des composantes “Query”, “Key” et “Value” ?</strong></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>C’est une métaphore de recherche. La Query représente ce que je cherche, la Key est l’étiquette de l’information disponible, et la Value est l’information elle-même. Le score d’attention (Query x Key) détermine combien de “poids” on donne à chaque “Value”.</p>
+</div>
+</div>
+</div>
+<p><strong>Question 7 : Pourquoi les modèles modernes comme Llama ou GPT utilisent-ils principalement l’architecture “Decoder-only” ?</strong></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Cette architecture est plus simple à passer à l’échelle (scaling). Elle s’est avérée incroyablement efficace pour l’apprentissage auto-supervisé sur d’immenses volumes de données, et elle possède des capacités émergentes (raisonnement, calcul) que les autres architectures n’atteignent pas aussi facilement.</p>
+</div>
+</div>
+</div>
+<p><strong>Question 8 : Dans quel cas utiliseriez-vous le “Continued Pretraining” au lieu du simple Fine-tuning ?</strong></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>On utilise le pré-entraînement continu quand on veut injecter des connaissances massives dans un domaine très spécifique (ex : droit médical complexe, langage de programmation rare ou langue peu représentée) que le modèle n’a jamais vu, avant de lui apprendre à suivre des instructions dans ce domaine.</p>
+</div>
+</div>
+</div>
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Retour au sommet</a> ]]></description>
+  <category>LLM</category>
+  <category>Finetuning</category>
+  <category>IA</category>
+  <category>Deep Learning</category>
+  <guid>https://oussou-dev.github.io/ousmanecisse/fr/posts/finetuning-ninja-week-1/</guid>
+  <pubDate>Wed, 04 Feb 2026 00:00:00 GMT</pubDate>
+  <media:content url="https://substackcdn.com/image/fetch/$s_!_Yph!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff1909018-fbb6-4a19-8eb3-7cce5c333837_1920x1080.png" medium="image" type="image/png"/>
+</item>
+<item>
   <title>AI Hero : Jour 1 - Ingestion et Indexation des Données</title>
   <dc:creator>Ousmane Cissé</dc:creator>
   <link>https://oussou-dev.github.io/ousmanecisse/fr/posts/ai-hero-day-1/</link>

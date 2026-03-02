@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>BOOK REVIEW – OUSMANE CISSE</title>
+<title>BOOK REVIEWS – OUSMANE CISSE</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -334,7 +334,7 @@ window.Quarto = {
   </li>  
   <li class="nav-item">
     <a class="nav-link active" href="./books.html" aria-current="page"> 
-<span class="menu-text">Book Review</span></a>
+<span class="menu-text">Book Reviews</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./robotics.html"> 
@@ -344,7 +344,7 @@ window.Quarto = {
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
     <a class="nav-link" href="./fr/index.html"> 
-<span class="menu-text">FR</span></a>
+<span class="menu-text">🇫🇷 FR</span></a>
   </li>  
   <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/oussou-dev"> <i class="bi bi-github" role="img">
@@ -377,7 +377,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">BOOK REVIEW</h1>
+<h1 class="title">BOOK REVIEWS</h1>
 </div>
 
 
@@ -402,7 +402,7 @@ window.Quarto = {
 
 <div class="quarto-listing quarto-listing-container-grid" id="listing-listing-books">
 <div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1771335644667" data-listing-reading-time-sort="1" data-listing-word-count-sort="27">
+<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1772450839550" data-listing-reading-time-sort="1" data-listing-word-count-sort="27">
 <a href="./books/llm-handbook/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -418,7 +418,7 @@ LLM Engineer’s Handbook
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="1" data-listing-file-modified-sort="1771335644667" data-listing-reading-time-sort="1" data-listing-word-count-sort="21">
+<div class="g-col-1" data-index="1" data-listing-file-modified-sort="1772450839550" data-listing-reading-time-sort="1" data-listing-word-count-sort="21">
 <a href="./books/mistral/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -454,10 +454,10 @@ Mistral AI
                     { text: "Projects", href: "projects.html" },
                     { text: "Blog", href: "blog.html" },
                     { text: "Translations", href: "en-to-fr.html" },
-                    { text: "Book Review", href: "books.html" },
+                    { text: "Book Reviews", href: "books.html" },
                     { text: "Robotics & AI", href: "robotics.html" }
                 ],
-                langSwitch: { text: "FR", href: "fr/index.html" }
+                langSwitch: { text: "🇫🇷 FR", href: "fr/index.html" }
             },
             fr: {
                 left: [
@@ -467,7 +467,7 @@ Mistral AI
                     { text: "Revue de Livres", href: "fr/livres.html" },
                     { text: "Robotique & IA", href: "fr/robotique.html" }
                 ],
-                langSwitch: { text: "EN", href: "index.html" }
+                langSwitch: { text: "🇬🇧 EN", href: "index.html" }
             }
         };
 
@@ -508,7 +508,8 @@ Mistral AI
 
         rightNavLinks.forEach(link => {
             const text = link.innerText.trim().toUpperCase();
-            if (text === "FR" || text === "EN") {
+            // Match any previous or new labels for robust detection
+            if (text.includes("FR") || text.includes("EN") || text.includes("🇫🇷") || text.includes("🇬🇧")) {
                 // Fix the label
                 const menuText = link.querySelector('.menu-text');
                 if (menuText) {

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Ousmane Cissé">
-<meta name="dcterms.date" content="2026-02-10">
+<meta name="dcterms.date" content="2026-01-10">
 <meta name="description" content="Learn the Reflection Pattern: an agent that evaluates and improves its own output through iterative self-critique loops.">
 
 <title>Reflection Agent: Self-Improving AI Through Iterative Critique – OUSMANE CISSE</title>
@@ -312,7 +312,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../../books.html"> 
-<span class="menu-text">Book Review</span></a>
+<span class="menu-text">Book Reviews</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../../robotics.html"> 
@@ -322,7 +322,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
     <a class="nav-link" href="../../fr/index.html"> 
-<span class="menu-text">FR</span></a>
+<span class="menu-text">🇫🇷 FR</span></a>
   </li>  
   <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/oussou-dev"> <i class="bi bi-github" role="img">
@@ -351,15 +351,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#what-is-the-reflection-pattern" id="toc-what-is-the-reflection-pattern" class="nav-link active" data-scroll-target="#what-is-the-reflection-pattern">What is the Reflection Pattern?</a>
+  <li><a href="#introduction-to-reflection-agent" id="toc-introduction-to-reflection-agent" class="nav-link active" data-scroll-target="#introduction-to-reflection-agent">Introduction to Reflection Agent</a>
   <ul class="collapse">
-  <li><a href="#when-to-stop" id="toc-when-to-stop" class="nav-link" data-scroll-target="#when-to-stop">When to stop?</a></li>
+  <li><a href="#key-characteristics" id="toc-key-characteristics" class="nav-link" data-scroll-target="#key-characteristics">Key Characteristics</a></li>
+  <li><a href="#analogy" id="toc-analogy" class="nav-link" data-scroll-target="#analogy">Analogy</a></li>
+  <li><a href="#simple-python-example" id="toc-simple-python-example" class="nav-link" data-scroll-target="#simple-python-example">Simple Python Example</a></li>
   </ul></li>
-  <li><a href="#why-it-works" id="toc-why-it-works" class="nav-link" data-scroll-target="#why-it-works">Why It Works</a></li>
-  <li><a href="#practical-example-merge-sort" id="toc-practical-example-merge-sort" class="nav-link" data-scroll-target="#practical-example-merge-sort">Practical Example: Merge Sort</a></li>
-  <li><a href="#application-projects" id="toc-application-projects" class="nav-link" data-scroll-target="#application-projects">Application Projects</a></li>
-  <li><a href="#key-takeaways" id="toc-key-takeaways" class="nav-link" data-scroll-target="#key-takeaways">Key Takeaways</a></li>
-  <li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources">Resources</a></li>
+  <li><a href="#common-reflection-loop" id="toc-common-reflection-loop" class="nav-link" data-scroll-target="#common-reflection-loop">Common Reflection Loop</a></li>
+  <li><a href="#llm-based-example-high-level" id="toc-llm-based-example-high-level" class="nav-link" data-scroll-target="#llm-based-example-high-level">LLM-Based Example (High-Level)</a></li>
+  <li><a href="#use-cases" id="toc-use-cases" class="nav-link" data-scroll-target="#use-cases">Use Cases</a></li>
+  <li><a href="#key-prompt-pattern-for-llms" id="toc-key-prompt-pattern-for-llms" class="nav-link" data-scroll-target="#key-prompt-pattern-for-llms">Key Prompt Pattern for LLMs</a></li>
+  <li><a href="#projects" id="toc-projects" class="nav-link" data-scroll-target="#projects">Projects</a></li>
   </ul>
 </nav>
     </div>
@@ -397,7 +399,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 10, 2026</p>
+      <p class="date">January 10, 2026</p>
     </div>
   </div>
   
@@ -411,77 +413,105 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <meta name="translation-url" content="fr/translations/reflection-pattern/index.html">
 <p>The <strong>Reflection Pattern</strong> is the simplest yet surprisingly effective agentic design pattern. It allows an AI agent to evaluate its own output and iteratively improve it — like having an infinite pair-review loop built into the system.</p>
-<section id="what-is-the-reflection-pattern" class="level2">
-<h2 class="anchored" data-anchor-id="what-is-the-reflection-pattern">What is the Reflection Pattern?</h2>
-<p>The core idea is straightforward: instead of accepting the first output from an LLM, we create a feedback loop:</p>
+<section id="introduction-to-reflection-agent" class="level2">
+<h2 class="anchored" data-anchor-id="introduction-to-reflection-agent">Introduction to Reflection Agent</h2>
+<p>A Reflection Agent is an agent that thinks about its own outputs or decisions, evaluates their quality or correctness, and then revises or improves them. This is inspired by metacognition—thinking about thinking. The agent uses its own generated critique or structured prompts to self-evaluate and refine its responses.</p>
+<section id="key-characteristics" class="level3">
+<h3 class="anchored" data-anchor-id="key-characteristics">Key Characteristics</h3>
+<ul>
+<li><p>Generates initial output</p></li>
+<li><p>Critiques or reflects on that output</p></li>
+<li><p>Refines or rewrites based on the reflection</p></li>
+<li><p>Often operates in a two-pass loop: generate → reflect → improve</p></li>
+<li><p>Can be part of self-correcting, ReAct, or Chain-of-Thought workflows</p></li>
+</ul>
+</section>
+<section id="analogy" class="level3">
+<h3 class="anchored" data-anchor-id="analogy">Analogy</h3>
+<p>Think of a student writing an essay:</p>
+<ul>
+<li><p>Writes the first draft</p></li>
+<li><p>Reads it and thinks, “Hmm, this part is vague.”</p></li>
+<li><p>Revises that section for clarity</p></li>
+</ul>
+<p>That’s reflection in action.</p>
+</section>
+<section id="simple-python-example" class="level3">
+<h3 class="anchored" data-anchor-id="simple-python-example">Simple Python Example</h3>
+<div id="93eba3ba" class="cell" data-execution_count="1">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> generate_summary(text):</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="ss">f"Summary: </span><span class="sc">{</span>text[:<span class="dv">50</span>]<span class="sc">}</span><span class="ss">..."</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> reflect_on_summary(summary):</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">"..."</span> <span class="kw">in</span> summary:</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"This summary seems incomplete or too short."</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="st">"Summary looks good."</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> improve_summary(text, reflection):</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">"incomplete"</span> <span class="kw">in</span> reflection:</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="ss">f"Improved Summary: </span><span class="sc">{</span>text[:<span class="dv">100</span>]<span class="sc">}</span><span class="ss">..."</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> generate_summary(text)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Input text</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>text <span class="op">=</span> <span class="st">"Artificial Intelligence (AI) enables machines to learn from data, adapt to new inputs, and perform tasks that typically require human intelligence."</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Run reflection agent</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>summary <span class="op">=</span> generate_summary(text)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>reflection <span class="op">=</span> reflect_on_summary(summary)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>improved <span class="op">=</span> improve_summary(text, reflection)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(improved)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Improved Summary: Artificial Intelligence (AI) enables machines to learn from data, adapt to new inputs, and perform t...</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="common-reflection-loop" class="level2">
+<h2 class="anchored" data-anchor-id="common-reflection-loop">Common Reflection Loop</h2>
 <ol type="1">
-<li><strong>Generate</strong>: The LLM produces an initial response</li>
-<li><strong>Reflect</strong>: A critic (often the same LLM with a different prompt) evaluates the output</li>
-<li><strong>Refine</strong>: The LLM incorporates the critique and produces a better version</li>
-<li><strong>Repeat</strong>: The cycle continues until a stopping condition is met</li>
+<li><p><strong>Task</strong>: Generate a response or solution</p></li>
+<li><p><strong>Self-critique</strong>: Evaluate it (e.g., clarity, correctness, completeness)</p></li>
+<li><p><strong>Refine</strong>: Use critique to revise the original</p></li>
 </ol>
-<section id="when-to-stop" class="level3">
-<h3 class="anchored" data-anchor-id="when-to-stop">When to stop?</h3>
+<p>This loop can run once or multiple times.</p>
+</section>
+<section id="llm-based-example-high-level" class="level2">
+<h2 class="anchored" data-anchor-id="llm-based-example-high-level">LLM-Based Example (High-Level)</h2>
+<p>Prompt format:</p>
+<p><strong>Step 1</strong>: Write a short blog intro</p>
+<p><strong>Step 2</strong>: Critique it (Was it engaging? Too vague?)</p>
+<p><strong>Step 3</strong>: Rewrite it using the feedback</p>
+<p>You can use LangChain or CrewAI to chain these steps into a multi-agent or single-agent pipeline.</p>
+</section>
+<section id="use-cases" class="level2">
+<h2 class="anchored" data-anchor-id="use-cases">Use Cases</h2>
 <ul>
-<li>After a <strong>fixed number of iterations</strong> (e.g., 3 rounds)</li>
-<li>When the critic signals <strong>satisfaction</strong> (e.g., outputs “LGTM” or “Final”)</li>
-<li>When <strong>diminishing returns</strong> are detected</li>
+<li><p>Self-revising writing agents (blogs, summaries, essays)</p></li>
+<li><p>Code improvement agents (e.g., Copilot → Critique → Fix)</p></li>
+<li><p>Research agents that review and refine findings</p></li>
+<li><p>Teaching agents that reflect on student misconceptions</p></li>
+<li><p>Email agents that rewrite for tone, clarity, and grammar</p></li>
 </ul>
 </section>
+<section id="key-prompt-pattern-for-llms" class="level2">
+<h2 class="anchored" data-anchor-id="key-prompt-pattern-for-llms">Key Prompt Pattern for LLMs</h2>
+<p><strong>Task</strong>: Summarize the following text.</p>
+<p><strong>Reflection</strong>: Is the summary accurate, complete, and clear?</p>
+<p><strong>Improved Output</strong>: Rewrite the summary based on your reflection.</p>
 </section>
-<section id="why-it-works" class="level2">
-<h2 class="anchored" data-anchor-id="why-it-works">Why It Works</h2>
-<p>The magic lies in <strong>role separation</strong>: the generator focuses on producing content, while the critic focuses on finding flaws. This separation of concerns mirrors real-world software engineering practices like code review.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> ReflectionAgent:</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, model<span class="op">=</span><span class="st">"llama3-70b"</span>):</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.generator_prompt <span class="op">=</span> <span class="st">"You are a Python programmer. Write clean, production-quality code."</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.critic_prompt <span class="op">=</span> <span class="st">"You are a senior engineer like Andrej Karpathy. Review this code critically."</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> run(<span class="va">self</span>, task, max_iterations<span class="op">=</span><span class="dv">3</span>):</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        output <span class="op">=</span> <span class="va">self</span>.generate(task)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(max_iterations):</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>            critique <span class="op">=</span> <span class="va">self</span>.reflect(output)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="va">self</span>.is_satisfied(critique):</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>                <span class="cf">break</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>            output <span class="op">=</span> <span class="va">self</span>.refine(output, critique)</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> output</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="practical-example-merge-sort" class="level2">
-<h2 class="anchored" data-anchor-id="practical-example-merge-sort">Practical Example: Merge Sort</h2>
-<p>Ask an LLM to implement Merge Sort. First attempt: functional but basic. After 3 reflection cycles:</p>
+<section id="projects" class="level2">
+<h2 class="anchored" data-anchor-id="projects">Projects</h2>
+<p><a href="https://github.com/oussou-dev/agentic-design-patterns/tree/main/reflection-agent">GitHub</a></p>
 <ul>
-<li>✅ Type hints added (PEP 484)</li>
-<li>✅ Comprehensive docstrings</li>
-<li>✅ Error handling for edge cases</li>
-<li>✅ Full unittest suite</li>
-<li>✅ Class-based architecture</li>
-</ul>
-<p>The improvement from V1 to V3 is <strong>dramatic</strong> — and it all happens automatically.</p>
-</section>
-<section id="application-projects" class="level2">
-<h2 class="anchored" data-anchor-id="application-projects">Application Projects</h2>
-<p><em>Projects demonstrating the Reflection Pattern in action will be added here as they are developed.</em></p>
-<p><strong>Potential projects:</strong></p>
-<ul>
-<li><strong>Code Quality Improver</strong>: An agent that takes rough code and iteratively polishes it</li>
-<li><strong>Essay Refiner</strong>: Multi-round writing improvement for blog posts or reports</li>
-<li><strong>Data Analysis Validator</strong>: Self-checking data analysis pipelines</li>
-</ul>
-</section>
-<section id="key-takeaways" class="level2">
-<h2 class="anchored" data-anchor-id="key-takeaways">Key Takeaways</h2>
-<ol type="1">
-<li><strong>Simple but powerful</strong>: Just adding a critique loop significantly improves output quality</li>
-<li><strong>Role separation matters</strong>: Different prompts for generation vs.&nbsp;critique</li>
-<li><strong>Iterative improvement</strong>: Each round builds on the previous, like human revision</li>
-<li><strong>Best for</strong>: Code generation, writing, analysis — any task where first drafts are imperfect</li>
-</ol>
-</section>
-<section id="resources" class="level2">
-<h2 class="anchored" data-anchor-id="resources">Resources</h2>
-<ul>
-<li><a href="https://theneuralmaze.substack.com/p/reflection-pattern-agents-that-think">Reflection Pattern — The Neural Maze</a></li>
-<li><a href="https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-2-reflection/">Andrew Ng’s Agentic Design Patterns</a></li>
+<li>Self-Improving Summary Generator</li>
+<li>Essay Evaluator Agent</li>
+<li>Code Reviewer Agent</li>
+<li>Story Improver Agent</li>
+<li>Idea Evaluator</li>
 </ul>
 
 
@@ -519,10 +549,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
                     { text: "Projects", href: "projects.html" },
                     { text: "Blog", href: "blog.html" },
                     { text: "Translations", href: "en-to-fr.html" },
-                    { text: "Book Review", href: "books.html" },
+                    { text: "Book Reviews", href: "books.html" },
                     { text: "Robotics & AI", href: "robotics.html" }
                 ],
-                langSwitch: { text: "FR", href: "fr/index.html" }
+                langSwitch: { text: "🇫🇷 FR", href: "fr/index.html" }
             },
             fr: {
                 left: [
@@ -532,7 +562,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
                     { text: "Revue de Livres", href: "fr/livres.html" },
                     { text: "Robotique & IA", href: "fr/robotique.html" }
                 ],
-                langSwitch: { text: "EN", href: "index.html" }
+                langSwitch: { text: "🇬🇧 EN", href: "index.html" }
             }
         };
 
@@ -573,7 +603,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
         rightNavLinks.forEach(link => {
             const text = link.innerText.trim().toUpperCase();
-            if (text === "FR" || text === "EN") {
+            // Match any previous or new labels for robust detection
+            if (text.includes("FR") || text.includes("EN") || text.includes("🇫🇷") || text.includes("🇬🇧")) {
                 // Fix the label
                 const menuText = link.querySelector('.menu-text');
                 if (menuText) {

@@ -6,7 +6,6 @@
       "/fr/projects/ai-dev-tools/index.html",
       "/fr/projects/ai-hero/index.html",
       "/fr/projects/data-engineering/index.html",
-      "/fr/projects/nocode-ai/index.html",
       "/fr/projects/langchain-vectordb/index.html",
       "/fr/projects/ml-zoomcamp/index.html"
     ]
@@ -15,6 +14,8 @@
     "listing": "/fr/blog.html",
     "items": [
       "/fr/posts/poetry-vs-uv/index.html",
+      "/fr/posts/finetuning-ninja-lab-1/index.html",
+      "/fr/posts/finetuning-ninja-week-1/index.html",
       "/fr/posts/ai-hero-day-1/index.html",
       "/fr/posts/ai-news-aggregator/index.html",
       "/fr/posts/ai-dev-tools-week-4/index.html",

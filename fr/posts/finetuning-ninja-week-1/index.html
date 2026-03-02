@@ -6,9 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Aperçu de la troisième semaine du AI Dev Tools Zoomcamp.">
+<meta name="author" content="Ousmane Cissé">
+<meta name="description" content="Exploration de l’évolution des RNNs aux Transformers et du pipeline d’entraînement moderne des LLMs.">
 
-<title>Outils de Dév IA - Semaine 3 – OUSMANE CISSE</title>
+<title>Finetuning Ninja : Semaine 1 - Le Paysage – OUSMANE CISSE</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -49,6 +50,9 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../../site_libs/quarto-contrib/jquery-3.6.3/jquery-3.6.3.min.js"></script>
 <script src="../../../site_libs/quarto-contrib/code-fullscreen-1.0.0/code-fullscreen.js" defer="true"></script>
 <link href="../../../site_libs/quarto-contrib/code-fullscreen-1.0.0/code-fullscreen.css" rel="stylesheet">
+<script src="../../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -314,9 +318,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Sur cette page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#points-clés" id="toc-points-clés" class="nav-link" data-scroll-target="#points-clés">Points Clés</a></li>
-  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  <li><a href="#lévolution-des-rnns-à-lattention" id="toc-lévolution-des-rnns-à-lattention" class="nav-link active" data-scroll-target="#lévolution-des-rnns-à-lattention">1. L’Évolution : Des RNNs à l’Attention</a></li>
+  <li><a href="#le-cœur-du-transformer-self-attention-et-multi-head-attention" id="toc-le-cœur-du-transformer-self-attention-et-multi-head-attention" class="nav-link" data-scroll-target="#le-cœur-du-transformer-self-attention-et-multi-head-attention">2. Le Cœur du Transformer : Self-Attention et Multi-Head Attention</a></li>
+  <li><a href="#les-trois-architectures-de-transformers" id="toc-les-trois-architectures-de-transformers" class="nav-link" data-scroll-target="#les-trois-architectures-de-transformers">3. Les Trois Architectures de Transformers</a></li>
+  <li><a href="#le-pipeline-dentraînement-des-llms-et-le-pretraining" id="toc-le-pipeline-dentraînement-des-llms-et-le-pretraining" class="nav-link" data-scroll-target="#le-pipeline-dentraînement-des-llms-et-le-pretraining">4. Le Pipeline d’Entraînement des LLMs et le Pretraining</a></li>
+  <li><a href="#quiz-dauto-évaluation-testez-vos-connaissances" id="toc-quiz-dauto-évaluation-testez-vos-connaissances" class="nav-link" data-scroll-target="#quiz-dauto-évaluation-testez-vos-connaissances">🎯 Quiz d’Auto-Évaluation : Testez vos connaissances</a></li>
   </ul>
 </nav>
     </div>
@@ -326,29 +332,36 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Outils de Dév IA - Semaine 3</h1>
+<h1 class="title">Finetuning Ninja : Semaine 1 - Le Paysage</h1>
+<p class="subtitle lead">Leçon 1 : Cartographie de l’Entraînement des LLMs Modernes</p>
   <div class="quarto-categories">
+    <div class="quarto-category">LLM</div>
+    <div class="quarto-category">Finetuning</div>
     <div class="quarto-category">IA</div>
-    <div class="quarto-category">Outils</div>
-    <div class="quarto-category">Zoomcamp</div>
-    <div class="quarto-category">AI Dev Tools</div>
+    <div class="quarto-category">Deep Learning</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    Aperçu de la troisième semaine du AI Dev Tools Zoomcamp.
+    Exploration de l’évolution des RNNs aux Transformers et du pipeline d’entraînement moderne des LLMs.
   </div>
 </div>
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Auteur·rice</div>
+    <div class="quarto-title-meta-contents">
+             <p>Ousmane Cissé </p>
+          </div>
+  </div>
     
     <div>
     <div class="quarto-title-meta-heading">Date de publication</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">3 février 2024</p>
+      <p class="date">4 février 2026</p>
     </div>
   </div>
   
@@ -360,40 +373,244 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<meta name="translation-url" content="posts/ai-dev-tools-week-3/index.html">
-<section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>Cette semaine était dédiée à la création d’agents et à l’utilisation du protocole MCP.</p>
-</section>
-<section id="points-clés" class="level2">
-<h2 class="anchored" data-anchor-id="points-clés">Points Clés</h2>
-<ul>
-<li>Comprendre le Model Context Protocol (MCP).</li>
-<li>Construire un serveur MCP simple.</li>
-<li>Connecter des outils personnalisés aux LLMs.</li>
-</ul>
-</section>
-<section id="conclusion" class="level2">
-<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
-<p>Le MCP ouvre des possibilités incroyables pour l’interopérabilité entre les outils d’IA.</p>
-
-
-<div class="series-nav">
-  <div class="series-nav-header">
-    <span class="series-nav-badge">Série</span>
-    <span class="series-nav-name">Outils de Dév IA</span>
-  </div>
-  <div class="series-nav-links">
-    <a href="../../../fr/posts/ai-dev-tools-week-2/" class="series-nav-link series-nav-prev">
-      <span class="series-nav-label">← Article précédent</span>
-      <span class="series-nav-title">Outils de Dév IA - Semaine 2</span>
-    </a>
-    <a href="../../../fr/posts/ai-dev-tools-week-4/" class="series-nav-link series-nav-next">
-      <span class="series-nav-label">Article suivant →</span>
-      <span class="series-nav-title">Outils de Dev IA : Semaine 4</span>
-    </a>
-  </div>
+<meta name="translation-url" content="posts/finetuning-ninja-week-1/index.html">
+<p>Bienvenue dans cette première semaine de notre Bootcamp dédié au Finetuning ! Petit retournement de situation pour commencer : <strong>nous n’allons pas du tout parler de finetuning aujourd’hui</strong>.</p>
+<p>Avant de plonger dans des techniques avancées comme le SFT (Supervised Fine-Tuning) ou LoRA, il est crucial de bâtir une carte mentale solide de ce qui se passe <em>avant</em> cette étape. Cette leçon pose les fondations de l’architecture Transformer et du pré-entraînement (pretraining), car comprendre le fonctionnement interne des modèles est essentiel pour maîtriser les techniques d’optimisation futures.</p>
+<hr>
+<section id="lévolution-des-rnns-à-lattention" class="level3">
+<h3 class="anchored" data-anchor-id="lévolution-des-rnns-à-lattention">1. L’Évolution : Des RNNs à l’Attention</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://substackcdn.com/image/fetch/$s_!dxuS!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F900aa4be-69b0-40a7-a71e-93ccad6c3f02_2108x1186.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Transformer Meme"><img src="https://substackcdn.com/image/fetch/$s_!dxuS!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F900aa4be-69b0-40a7-a71e-93ccad6c3f02_2108x1186.jpeg" class="img-fluid figure-img" alt="Transformer Meme"></a></p>
+<figcaption>Transformer Meme</figcaption>
+</figure>
 </div>
+<p>Aujourd’hui, presque tous les modèles de langage de pointe (LLMs) reposent sur l’architecture Transformer. Mais l’innovation clé qui les fait fonctionner – <strong>le mécanisme d’attention</strong> – n’a pas été inventée avec le Transformer.</p>
+<p>Avant cela, le Deep Learning s’appuyait sur les CNNs pour la vision et les RNNs (notamment les LSTMs) pour les tâches séquentielles comme la traduction. Le problème des RNNs ? Ils peinaient avec les <strong>longues séquences</strong> car ils devaient compresser toute la phrase d’entrée en un seul vecteur de taille fixe.</p>
+<p>L’attention a été introduite pour résoudre ce problème : <strong>et si le modèle pouvait “regarder en arrière” vers différentes parties spécifiques de l’entrée au moment où il en a besoin ?</strong>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://substackcdn.com/image/fetch/$s_!jqNl!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbeb4b694-e899-4244-9572-76c99c4cc6c7_1200x209.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Encoder-Decoder Attention"><img src="https://substackcdn.com/image/fetch/$s_!jqNl!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbeb4b694-e899-4244-9572-76c99c4cc6c7_1200x209.png" class="img-fluid figure-img" alt="Encoder-Decoder Attention"></a></p>
+<figcaption>Encoder-Decoder Attention</figcaption>
+</figure>
+</div>
+<p><strong>Comment fonctionne l’Attention ?</strong> À la base, l’attention est un mécanisme de recherche pondérée qui utilise trois éléments :<br>
+* Des <strong>Keys (Clés - K)</strong><br>
+* Des <strong>Values (Valeurs - V)</strong><br>
+* Une <strong>Query (Requête - Q)</strong></p>
+<p>Le mécanisme compare la requête (Q) à toutes les clés (K), attribue un poids à chacune (un score d’importance), puis produit une <strong>somme pondérée des valeurs (V)</strong>. L’attention décide ainsi de ce qui est important dans le contexte et le combine dynamiquement.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://substackcdn.com/image/fetch/$s_!ITLW!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2f86980f-0b97-4cb4-8630-7e5471bb0ef7_910x579.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Attention Mechanism"><img src="https://substackcdn.com/image/fetch/$s_!ITLW!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2f86980f-0b97-4cb4-8630-7e5471bb0ef7_910x579.png" class="img-fluid figure-img" alt="Attention Mechanism"></a></p>
+<figcaption>Attention Mechanism</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+<section id="le-cœur-du-transformer-self-attention-et-multi-head-attention" class="level3">
+<h3 class="anchored" data-anchor-id="le-cœur-du-transformer-self-attention-et-multi-head-attention">2. Le Cœur du Transformer : Self-Attention et Multi-Head Attention</h3>
+<p>Si l’attention permettait à un décodeur de regarder un encodeur, la <strong>Self-Attention</strong> (Auto-attention) va plus loin : <strong>chaque token d’une séquence porte son attention sur tous les autres tokens de cette <em>même</em> séquence</strong>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://substackcdn.com/image/fetch/$s_!aVXN!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff970d7f6-c93f-4558-8f49-780f02c572ee_701x459.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Self-Attention"><img src="https://substackcdn.com/image/fetch/$s_!aVXN!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff970d7f6-c93f-4558-8f49-780f02c572ee_701x459.png" class="img-fluid figure-img" alt="Self-Attention"></a></p>
+<figcaption>Self-Attention</figcaption>
+</figure>
+</div>
+<p>Dans la self-attention, chaque token devient à la fois Q, K et V. Par exemple, pour mettre à jour la représentation du mot “sat” (assis), le modèle portera une forte attention sur “cat” (le chat) et “mat” (le tapis), tout en ignorant les mots de liaison moins pertinents comme “the”.</p>
+<p>Pour faire fonctionner cela, l’architecture Transformer introduit des composants spécifiques :<br>
+1. <strong>Positional Encodings (Encodages de position)</strong> : L’attention n’a pas de notion d’ordre spatial ou temporel. On injecte donc des informations de position via des fonctions mathématiques (sinus et cosinus à différentes fréquences) pour que le modèle distingue le premier, le suivant ou le dernier token.<br>
+2. <strong>Scaled Dot-Product Attention</strong> : C’est l’implémentation mathématique où les Queries et les Keys sont multipliées (dot product), normalisées par une fonction softmax, puis utilisées pour calculer une somme pondérée des Values.<br>
+3. <strong>Multi-Head Attention</strong> : Au lieu d’avoir un seul point de vue, le modèle utilise “plusieurs têtes” travaillant en parallèle. Différentes têtes se spécialisent dans divers motifs (dépendances à long terme, syntaxe, sémantique), permettant au modèle d’examiner l’information sous plusieurs angles simultanément.</p>
+<hr>
+</section>
+<section id="les-trois-architectures-de-transformers" class="level3">
+<h3 class="anchored" data-anchor-id="les-trois-architectures-de-transformers">3. Les Trois Architectures de Transformers</h3>
+<p>Bien que l’on regroupe souvent tout sous le terme de LLM, il existe <strong>trois familles distinctes</strong> de Transformers, chacune conçue pour des problèmes différents :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://substackcdn.com/image/fetch/$s_!mRlz!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa13c886e-05c9-4da4-aeec-3e4c6deeb046_1200x630.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Les 3 Architectures"><img src="https://substackcdn.com/image/fetch/$s_!mRlz!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa13c886e-05c9-4da4-aeec-3e4c6deeb046_1200x630.png" class="img-fluid figure-img" alt="Les 3 Architectures"></a></p>
+<figcaption>Les 3 Architectures</figcaption>
+</figure>
+</div>
+<ol type="1">
+<li><strong>Encoder-only (ex: BERT)</strong> : Conçu pour générer des représentations riches. Il utilise une attention bidirectionnelle (les tokens regardent en avant et en arrière). Parfait pour la classification, la similarité sémantique et la recherche, mais il ne génère pas de texte.<br>
+</li>
+<li><strong>Encoder-Decoder (ex: T5, BART)</strong> : L’architecture originale. L’encodeur lit l’entrée, et le décodeur génère la sortie token par token en utilisant l’attention croisée (cross-attention). Idéal pour les tâches où l’entrée et la sortie sont des séquences de longueur variable comme la traduction.<br>
+</li>
+<li><strong>Decoder-only (ex: ChatGPT, Claude, Qwen)</strong> : C’est le moteur de presque tous les LLMs modernes. Il supprime complètement l’encodeur et utilise l’<strong>attention causale</strong> : chaque token ne peut regarder que les tokens qui le précèdent. Son seul objectif est de prédire le token suivant.</li>
+</ol>
+<p>Le succès foudroyant de l’architecture “Decoder-only” s’explique en grande partie par les <strong>lois d’échelle (Scaling laws)</strong>. Des études ont montré que la performance de ces modèles s’améliore de façon prévisible lorsque l’on augmente la taille du modèle (paramètres), les données d’entraînement (tokens) et la puissance de calcul.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://substackcdn.com/image/fetch/$s_!CetZ!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F48baf6dd-9664-4ccc-9ebf-4fca2bb400fe_1200x394.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Scaling Laws"><img src="https://substackcdn.com/image/fetch/$s_!CetZ!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F48baf6dd-9664-4ccc-9ebf-4fca2bb400fe_1200x394.png" class="img-fluid figure-img" alt="Scaling Laws"></a></p>
+<figcaption>Scaling Laws</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+<section id="le-pipeline-dentraînement-des-llms-et-le-pretraining" class="level3">
+<h3 class="anchored" data-anchor-id="le-pipeline-dentraînement-des-llms-et-le-pretraining">4. Le Pipeline d’Entraînement des LLMs et le Pretraining</h3>
+<p>Depuis l’introduction du modèle InstructGPT d’OpenAI en 2022, la norme d’entraînement d’un LLM (Decoder-only) suit un <strong>pipeline bien défini en trois étapes</strong> :<br>
+1. <strong>Pretraining</strong> (Pré-entraînement sur de vastes corpus de textes bruts).<br>
+2. <strong>Supervised Fine-Tuning - SFT</strong> (Affinement supervisé sur des exemples de haute qualité orientés vers des tâches).<br>
+3. <strong>RLHF - Reinforcement Learning from Human Feedback</strong> (Alignement basé sur les préférences humaines).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://substackcdn.com/image/fetch/$s_!gb6a!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa2a095ff-c348-4a7a-a09f-5228019d8246_3106x1888.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Pretrained Model Ex"><img src="https://substackcdn.com/image/fetch/$s_!gb6a!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa2a095ff-c348-4a7a-a09f-5228019d8246_3106x1888.png" class="img-fluid figure-img" alt="Pretrained Model Ex"></a></p>
+<figcaption>Pretrained Model Ex</figcaption>
+</figure>
+</div>
+<p><strong>Zoom sur le Pretraining :</strong> C’est l’étape la plus gourmande en données et en calcul. Un modèle Transformer “Decoder-only” s’entraîne via un apprentissage auto-supervisé : <strong>le label à prédire est simplement le token suivant dans le texte (Causal Language Modeling)</strong>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://substackcdn.com/image/fetch/$s_!gm6Z!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffc83ad34-7a9f-4e92-8165-2c85880a0a64_1015x742.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Math dataset"><img src="https://substackcdn.com/image/fetch/$s_!gm6Z!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffc83ad34-7a9f-4e92-8165-2c85880a0a64_1015x742.png" class="img-fluid figure-img" alt="Math dataset"></a></p>
+<figcaption>Math dataset</figcaption>
+</figure>
+</div>
+<p>En “lisant” des quantités massives de pages web, de livres et de code, le modèle acquiert la grammaire, la syntaxe, des faits et du sens commun. C’est la phase où il “apprend le monde”.</p>
+<p><strong>Le résultat est un “Modèle de Base” (Foundation Model)</strong>. Mais attention : à ce stade, le modèle excelle pour continuer un texte, mais <strong>il ne sait pas répondre de manière fiable à des instructions ou interagir</strong>. C’est un moteur brut de reconnaissance de motifs. Le finetuning (SFT, LoRA) sert à <strong>façonner et orienter (shape and steer)</strong> l’intelligence brute acquise lors du pretraining pour la rendre utilisable et alignée sur nos attentes.</p>
+<p><strong>Le Continued Pretraining :</strong> Si vous devez ajouter un domaine très spécifique (droit, médical) ou une langue sous-représentée, on utilise le <strong>Continued Pretraining</strong>. Au lieu de tout recommencer de zéro, on expose un modèle de base existant à de nouvelles données pour qu’il absorbe ces nouveaux motifs tout en conservant ses connaissances générales.</p>
+<hr>
+</section>
+<section id="quiz-dauto-évaluation-testez-vos-connaissances" class="level3">
+<h3 class="anchored" data-anchor-id="quiz-dauto-évaluation-testez-vos-connaissances">🎯 Quiz d’Auto-Évaluation : Testez vos connaissances</h3>
+<p><strong>Question 1 : Quel problème fondamental des réseaux de neurones récurrents (RNNs) le mécanisme d’attention original cherchait-il à résoudre ?</strong></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Les architectures récurrentes antérieures (comme les encodeurs-décodeurs basés sur les LSTMs) devaient compresser toute une séquence d’entrée en un seul vecteur de taille fixe. Cela limitait fortement leurs performances sur les longues séquences. L’attention a résolu ce problème en permettant au décodeur de regarder dynamiquement différentes parties de l’entrée au moment où il en a besoin, au lieu de s’appuyer sur un état compressé unique.</p>
+</div>
+</div>
+</div>
+<p><strong>Question 2 : Quelle est la principale différence entre l’attention classique et la “Self-Attention” ?</strong></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>L’attention classique permet à une séquence (le décodeur) de prêter attention à une autre séquence (l’encodeur). La “Self-Attention” (auto-attention) va plus loin : elle permet à <em>chaque token d’une séquence de prêter attention à tous les autres tokens de cette même séquence</em>. Ainsi, les requêtes (Q), les clés (K) et les valeurs (V) proviennent toutes de la même source.</p>
+</div>
+</div>
+</div>
+<p><strong>Question 3 : Pourquoi l’architecture Transformer nécessite-t-elle l’utilisation d’encodages de position (Positional Encodings) ?</strong></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Le mécanisme d’attention en lui-même n’a aucune notion de l’ordre des éléments dans une séquence. Contrairement aux RNNs qui traitent les données séquentiellement, les Transformers traitent les tokens en parallèle. Les encodages de position (basés sur des fonctions sinus et cosinus) injectent artificiellement des informations spatiales dans les représentations des tokens pour que le modèle puisse distinguer le “premier”, le “suivant” et le “dernier” élément.</p>
+</div>
+</div>
+</div>
+<p><strong>Question 4 : Parmi les trois familles d’architectures Transformer, laquelle est utilisée par des modèles comme ChatGPT et Claude, et quel est son objectif d’entraînement principal ?</strong></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Ces modèles utilisent l’architecture <strong>Decoder-only</strong> (décodeur uniquement). Son objectif d’entraînement principal, via une attention causale (qui empêche de regarder les tokens futurs), est extrêmement simple : <strong>prédire le token suivant</strong> (Causal Language Modeling).</p>
+</div>
+</div>
+</div>
+<p><strong>Question 5 : Quel est l’objectif du Supervised Fine-Tuning (SFT) et du RLHF si le modèle a déjà appris le langage lors du pretraining ?</strong></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Le pretraining produit un “modèle de base” capable de générer du texte de manière très crédible et possédant une grande connaissance du monde, mais il se contente de continuer le texte sans savoir répondre à des instructions ou être utile. Le SFT et le RLHF servent à <strong>façonner et orienter</strong> cette intelligence brute. Ils apprennent au modèle comment structurer ses réponses, suivre des consignes, et se comporter selon les attentes et la sécurité humaines, sans avoir à lui réapprendre le langage depuis zéro.</p>
+</div>
+</div>
+</div>
+<p><strong>Question 6 : Quel est le rôle des composantes “Query”, “Key” et “Value” ?</strong></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>C’est une métaphore de recherche. La Query représente ce que je cherche, la Key est l’étiquette de l’information disponible, et la Value est l’information elle-même. Le score d’attention (Query x Key) détermine combien de “poids” on donne à chaque “Value”.</p>
+</div>
+</div>
+</div>
+<p><strong>Question 7 : Pourquoi les modèles modernes comme Llama ou GPT utilisent-ils principalement l’architecture “Decoder-only” ?</strong></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Cette architecture est plus simple à passer à l’échelle (scaling). Elle s’est avérée incroyablement efficace pour l’apprentissage auto-supervisé sur d’immenses volumes de données, et elle possède des capacités émergentes (raisonnement, calcul) que les autres architectures n’atteignent pas aussi facilement.</p>
+</div>
+</div>
+</div>
+<p><strong>Question 8 : Dans quel cas utiliseriez-vous le “Continued Pretraining” au lieu du simple Fine-tuning ?</strong></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Réponse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>On utilise le pré-entraînement continu quand on veut injecter des connaissances massives dans un domaine très spécifique (ex : droit médical complexe, langage de programmation rare ou langue peu représentée) que le modèle n’a jamais vu, avant de lui apprendre à suivre des instructions dans ce domaine.</p>
+</div>
+</div>
+</div>
+
 
 </section>
 
@@ -933,6 +1150,38 @@ ul.task-list li input[type="checkbox"] {
   });
   </script>
 </div> <!-- /content -->
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 

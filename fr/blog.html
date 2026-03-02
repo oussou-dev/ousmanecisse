@@ -89,7 +89,7 @@ ul.task-list li input[type="checkbox"] {
     const options = {
       valueNames: ['listing-date','listing-title','listing-reading-time','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
+      searchColumns: ["listing-date","listing-title","listing-author","listing-subtitle","listing-image","listing-description","listing-categories"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -344,7 +344,7 @@ window.Quarto = {
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
     <a class="nav-link" href="../index.html"> 
-<span class="menu-text">EN</span></a>
+<span class="menu-text">🇬🇧 EN</span></a>
   </li>  
   <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/oussou-dev"> <i class="bi bi-github" role="img">
@@ -370,7 +370,7 @@ window.Quarto = {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Catégories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">Tous <span class="quarto-category-count">(7)</span></div><div class="category" data-category="QWdlbnRz">Agents <span class="quarto-category-count">(1)</span></div><div class="category" data-category="QWdlbnRzJTIwSUE=">Agents IA <span class="quarto-category-count">(2)</span></div><div class="category" data-category="QUklMjBEZXYlMjBUb29scw==">AI Dev Tools <span class="quarto-category-count">(3)</span></div><div class="category" data-category="QUklMjBIZXJv">AI Hero <span class="quarto-category-count">(1)</span></div><div class="category" data-category="RmFzdEFQSQ==">FastAPI <span class="quarto-category-count">(1)</span></div><div class="category" data-category="SUE=">IA <span class="quarto-category-count">(4)</span></div><div class="category" data-category="TExN">LLM <span class="quarto-category-count">(1)</span></div><div class="category" data-category="T3V0aWxz">Outils <span class="quarto-category-count">(3)</span></div><div class="category" data-category="T3V0aWxzJTIwRGV2JTIwSUE=">Outils Dev IA <span class="quarto-category-count">(2)</span></div><div class="category" data-category="cGFja2FnaW5n">packaging <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UHJvamV0">Projet <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cHl0aG9u">python <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UkFH">RAG <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dG9vbGluZw==">tooling <span class="quarto-category-count">(1)</span></div><div class="category" data-category="VmliZSUyMENvZGluZw==">Vibe Coding <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Wm9vbWNhbXA=">Zoomcamp <span class="quarto-category-count">(4)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Catégories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">Tous <span class="quarto-category-count">(9)</span></div><div class="category" data-category="QWdlbnRz">Agents <span class="quarto-category-count">(1)</span></div><div class="category" data-category="QWdlbnRzJTIwSUE=">Agents IA <span class="quarto-category-count">(2)</span></div><div class="category" data-category="QUklMjBEZXYlMjBUb29scw==">AI Dev Tools <span class="quarto-category-count">(3)</span></div><div class="category" data-category="QUklMjBIZXJv">AI Hero <span class="quarto-category-count">(1)</span></div><div class="category" data-category="RGVlcCUyMExlYXJuaW5n">Deep Learning <span class="quarto-category-count">(1)</span></div><div class="category" data-category="RmFzdEFQSQ==">FastAPI <span class="quarto-category-count">(1)</span></div><div class="category" data-category="RmluZXR1bmluZw==">Finetuning <span class="quarto-category-count">(2)</span></div><div class="category" data-category="SGFyZHdhcmU=">Hardware <span class="quarto-category-count">(1)</span></div><div class="category" data-category="SUE=">IA <span class="quarto-category-count">(5)</span></div><div class="category" data-category="TGFi">Lab <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TExN">LLM <span class="quarto-category-count">(3)</span></div><div class="category" data-category="T3V0aWxz">Outils <span class="quarto-category-count">(3)</span></div><div class="category" data-category="T3V0aWxzJTIwRGV2JTIwSUE=">Outils Dev IA <span class="quarto-category-count">(2)</span></div><div class="category" data-category="cGFja2FnaW5n">packaging <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UHJldHJhaW5pbmc=">Pretraining <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UHJvamV0">Projet <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cHl0aG9u">python <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UkFH">RAG <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dG9vbGluZw==">tooling <span class="quarto-category-count">(1)</span></div><div class="category" data-category="VmliZSUyMENvZGluZw==">Vibe Coding <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Wm9vbWNhbXA=">Zoomcamp <span class="quarto-category-count">(4)</span></div></div></div>
 <!-- main -->
 <main class="content column-page-left" id="quarto-document-content">
 
@@ -419,7 +419,7 @@ window.Quarto = {
   </div>
 </div>
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="cHl0aG9uJTJDcGFja2FnaW5nJTJDdG9vbGluZw==" data-listing-date-sort="1770681600000" data-listing-file-modified-sort="1771335644668" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1665">
+<div class="quarto-post image-right" data-index="0" data-categories="cHl0aG9uJTJDcGFja2FnaW5nJTJDdG9vbGluZw==" data-listing-date-sort="1770681600000" data-listing-file-modified-sort="1772450839551" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1665">
 <div class="body">
 <h3 class="no-anchor listing-title">
 <a href="../fr/posts/poetry-vs-uv/index.html" class="no-external">Poetry vs UV : quel gestionnaire pour vos projets Python ?</a>
@@ -446,7 +446,67 @@ window.Quarto = {
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="QWdlbnRzJTIwSUElMkNMTE0lMkNSQUclMkNBSSUyMEhlcm8=" data-listing-date-sort="1769040000000" data-listing-file-modified-sort="1771335644668" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="563">
+<div class="quarto-post image-right" data-index="1" data-categories="TExNJTJDRmluZXR1bmluZyUyQ1ByZXRyYWluaW5nJTJDSGFyZHdhcmUlMkNMYWI=" data-listing-date-sort="1770249600000" data-listing-file-modified-sort="1772450839551" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1440">
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../fr/posts/finetuning-ninja-lab-1/index.html" class="no-external">Finetuning Ninja : Semaine 1 - Le Lab</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('TExN'); return false;">LLM</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('RmluZXR1bmluZw=='); return false;">Finetuning</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('UHJldHJhaW5pbmc='); return false;">Pretraining</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('SGFyZHdhcmU='); return false;">Hardware</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('TGFi'); return false;">Lab</div>
+
+</div>
+<div class="delink listing-description"><a href="../fr/posts/finetuning-ninja-lab-1/index.html" class="no-external">
+<p>Résumé détaillé du premier laboratoire sur les stratégies de Continued Pretraining, Curriculum Learning et optimisation matérielle.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="../fr/posts/finetuning-ninja-lab-1/index.html" class="no-external">
+<div class="listing-date">
+5 févr. 2026
+</div>
+<div class="listing-reading-time">8 min.</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="2" data-categories="TExNJTJDRmluZXR1bmluZyUyQ0lBJTJDRGVlcCUyMExlYXJuaW5n" data-listing-date-sort="1770163200000" data-listing-file-modified-sort="1772450839551" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1599">
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../fr/posts/finetuning-ninja-week-1/index.html" class="no-external">Finetuning Ninja : Semaine 1 - Le Paysage</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('TExN'); return false;">LLM</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('RmluZXR1bmluZw=='); return false;">Finetuning</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('SUE='); return false;">IA</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('RGVlcCUyMExlYXJuaW5n'); return false;">Deep Learning</div>
+
+</div>
+<div class="delink listing-description"><a href="../fr/posts/finetuning-ninja-week-1/index.html" class="no-external">
+<p>Exploration de l’évolution des RNNs aux Transformers et du pipeline d’entraînement moderne des LLMs.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="../fr/posts/finetuning-ninja-week-1/index.html" class="no-external">
+<div class="listing-date">
+4 févr. 2026
+</div>
+<div class="listing-reading-time">8 min.</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="3" data-categories="QWdlbnRzJTIwSUElMkNMTE0lMkNSQUclMkNBSSUyMEhlcm8=" data-listing-date-sort="1769040000000" data-listing-file-modified-sort="1772450839551" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="563">
 <div class="body">
 <h3 class="no-anchor listing-title">
 <a href="../fr/posts/ai-hero-day-1/index.html" class="no-external">AI Hero : Jour 1 - Ingestion et Indexation des Données</a>
@@ -475,7 +535,7 @@ window.Quarto = {
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="2" data-categories="UHJvamV0JTJDQWdlbnRzJTIwSUElMkNPdXRpbHMlMjBEZXYlMjBJQSUyQ1ZpYmUlMjBDb2RpbmclMkNGYXN0QVBJ" data-listing-date-sort="1768867200000" data-listing-file-modified-sort="1771335644668" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="485">
+<div class="quarto-post image-right" data-index="4" data-categories="UHJvamV0JTJDQWdlbnRzJTIwSUElMkNPdXRpbHMlMjBEZXYlMjBJQSUyQ1ZpYmUlMjBDb2RpbmclMkNGYXN0QVBJ" data-listing-date-sort="1768867200000" data-listing-file-modified-sort="1772450839551" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="485">
 <div class="body">
 <h3 class="no-anchor listing-title">
 <a href="../fr/posts/ai-news-aggregator/index.html" class="no-external">Projet Outils de Dev IA : Agrégateur d’actualités IA</a>
@@ -506,7 +566,7 @@ window.Quarto = {
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="3" data-categories="SUElMkNab29tY2FtcCUyQ0FnZW50cyUyQ091dGlscyUyMERldiUyMElB" data-listing-date-sort="1768435200000" data-listing-file-modified-sort="1771335644668" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="518">
+<div class="quarto-post image-right" data-index="5" data-categories="SUElMkNab29tY2FtcCUyQ0FnZW50cyUyQ091dGlscyUyMERldiUyMElB" data-listing-date-sort="1768435200000" data-listing-file-modified-sort="1772450839551" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="518">
 <div class="body">
 <h3 class="no-anchor listing-title">
 <a href="../fr/posts/ai-dev-tools-week-4/index.html" class="no-external">Outils de Dev IA : Semaine 4 - Construire des Agents de Code</a>
@@ -535,7 +595,7 @@ window.Quarto = {
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="4" data-categories="SUElMkNPdXRpbHMlMkNab29tY2FtcCUyQ0FJJTIwRGV2JTIwVG9vbHM=" data-listing-date-sort="1706918400000" data-listing-file-modified-sort="1771335644668" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="45">
+<div class="quarto-post image-right" data-index="6" data-categories="SUElMkNPdXRpbHMlMkNab29tY2FtcCUyQ0FJJTIwRGV2JTIwVG9vbHM=" data-listing-date-sort="1706918400000" data-listing-file-modified-sort="1772450839551" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="45">
 <div class="body">
 <h3 class="no-anchor listing-title">
 <a href="../fr/posts/ai-dev-tools-week-3/index.html" class="no-external">Outils de Dév IA - Semaine 3</a>
@@ -564,7 +624,7 @@ window.Quarto = {
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="5" data-categories="SUElMkNPdXRpbHMlMkNab29tY2FtcCUyQ0FJJTIwRGV2JTIwVG9vbHM=" data-listing-date-sort="1706313600000" data-listing-file-modified-sort="1771335644668" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="52">
+<div class="quarto-post image-right" data-index="7" data-categories="SUElMkNPdXRpbHMlMkNab29tY2FtcCUyQ0FJJTIwRGV2JTIwVG9vbHM=" data-listing-date-sort="1706313600000" data-listing-file-modified-sort="1772450839551" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="52">
 <div class="body">
 <h3 class="no-anchor listing-title">
 <a href="../fr/posts/ai-dev-tools-week-2/index.html" class="no-external">Outils de Dév IA - Semaine 2</a>
@@ -593,7 +653,7 @@ window.Quarto = {
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="6" data-categories="SUElMkNPdXRpbHMlMkNab29tY2FtcCUyQ0FJJTIwRGV2JTIwVG9vbHM=" data-listing-date-sort="1705708800000" data-listing-file-modified-sort="1771335644668" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="60">
+<div class="quarto-post image-right" data-index="8" data-categories="SUElMkNPdXRpbHMlMkNab29tY2FtcCUyQ0FJJTIwRGV2JTIwVG9vbHM=" data-listing-date-sort="1705708800000" data-listing-file-modified-sort="1772450839551" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="60">
 <div class="body">
 <h3 class="no-anchor listing-title">
 <a href="../fr/posts/ai-dev-tools-week-1/index.html" class="no-external">Outils de Dév IA - Semaine 1</a>
@@ -642,10 +702,10 @@ window.Quarto = {
                     { text: "Projects", href: "projects.html" },
                     { text: "Blog", href: "blog.html" },
                     { text: "Translations", href: "en-to-fr.html" },
-                    { text: "Book Review", href: "books.html" },
+                    { text: "Book Reviews", href: "books.html" },
                     { text: "Robotics & AI", href: "robotics.html" }
                 ],
-                langSwitch: { text: "FR", href: "fr/index.html" }
+                langSwitch: { text: "🇫🇷 FR", href: "fr/index.html" }
             },
             fr: {
                 left: [
@@ -655,7 +715,7 @@ window.Quarto = {
                     { text: "Revue de Livres", href: "fr/livres.html" },
                     { text: "Robotique & IA", href: "fr/robotique.html" }
                 ],
-                langSwitch: { text: "EN", href: "index.html" }
+                langSwitch: { text: "🇬🇧 EN", href: "index.html" }
             }
         };
 
@@ -696,7 +756,8 @@ window.Quarto = {
 
         rightNavLinks.forEach(link => {
             const text = link.innerText.trim().toUpperCase();
-            if (text === "FR" || text === "EN") {
+            // Match any previous or new labels for robust detection
+            if (text.includes("FR") || text.includes("EN") || text.includes("🇫🇷") || text.includes("🇬🇧")) {
                 // Fix the label
                 const menuText = link.querySelector('.menu-text');
                 if (menuText) {

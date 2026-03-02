@@ -6,10 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Ousmane Cissé">
 <meta name="dcterms.date" content="2026-02-04">
-<meta name="description" content="Master the art of LLM finetuning! A comprehensive project covering everything from SFT basics to advanced LoRA, QLoRA, RLHF, and multimodal techniques.">
+<meta name="description" content="Exploring the evolution from RNNs to Transformers and the modern LLM training pipeline.">
 
-<title>Finetuning Ninja – OUSMANE CISSE</title>
+<title>Finetuning Ninja: Week 1 - The Landscape – OUSMANE CISSE</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -37,6 +38,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-4d9afe2b8d18ee9fa5d0d57b5ed4214d.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
@@ -49,6 +51,9 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-contrib/jquery-3.6.3/jquery-3.6.3.min.js"></script>
 <script src="../../site_libs/quarto-contrib/code-fullscreen-1.0.0/code-fullscreen.js" defer="true"></script>
 <link href="../../site_libs/quarto-contrib/code-fullscreen-1.0.0/code-fullscreen.css" rel="stylesheet">
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -312,125 +317,294 @@ ul.task-list li input[type="checkbox"] {
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
+   
   <ul>
-  <li><a href="#project-overview" id="toc-project-overview" class="nav-link active" data-scroll-target="#project-overview">🥷 Project Overview</a></li>
-  <li><a href="#links" id="toc-links" class="nav-link" data-scroll-target="#links">🔗 Links</a></li>
-  <li><a href="#related-articles" id="toc-related-articles" class="nav-link" data-scroll-target="#related-articles">📝 Related Articles</a></li>
+  <li><a href="#the-evolution-from-rnns-to-attention" id="toc-the-evolution-from-rnns-to-attention" class="nav-link active" data-scroll-target="#the-evolution-from-rnns-to-attention">1. The Evolution: From RNNs to Attention</a></li>
+  <li><a href="#the-core-of-the-transformer-self-attention-and-multi-head-attention" id="toc-the-core-of-the-transformer-self-attention-and-multi-head-attention" class="nav-link" data-scroll-target="#the-core-of-the-transformer-self-attention-and-multi-head-attention">2. The Core of the Transformer: Self-Attention and Multi-Head Attention</a></li>
+  <li><a href="#the-three-transformer-architectures" id="toc-the-three-transformer-architectures" class="nav-link" data-scroll-target="#the-three-transformer-architectures">3. The Three Transformer Architectures</a></li>
+  <li><a href="#the-llm-training-pipeline-and-pretraining" id="toc-the-llm-training-pipeline-and-pretraining" class="nav-link" data-scroll-target="#the-llm-training-pipeline-and-pretraining">4. The LLM Training Pipeline and Pretraining</a></li>
+  <li><a href="#self-assessment-quiz-test-your-knowledge" id="toc-self-assessment-quiz-test-your-knowledge" class="nav-link" data-scroll-target="#self-assessment-quiz-test-your-knowledge">🎯 Self-Assessment Quiz: Test Your Knowledge</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<div class="quarto-about-jolla">
-  <img src="finetuning-ninja.png" class="about-image
-  round " style="height: 15em; width: 15em;">
- <header id="title-block-header" class="quarto-title-block default">
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Finetuning Ninja</h1>
-<p class="subtitle lead">A guided journey from pre-training to reasoning models.</p>
+<h1 class="title">Finetuning Ninja: Week 1 - The Landscape</h1>
+<p class="subtitle lead">Lesson 1: Mapping Modern LLM Training</p>
   <div class="quarto-categories">
     <div class="quarto-category">LLM</div>
     <div class="quarto-category">Finetuning</div>
-    <div class="quarto-category">Python</div>
-    <div class="quarto-category">GenAI</div>
-    <div class="quarto-category">Hands-on</div>
+    <div class="quarto-category">AI</div>
+    <div class="quarto-category">Deep Learning</div>
   </div>
   </div>
+
 <div>
   <div class="description">
-    Master the art of LLM finetuning! A comprehensive project covering everything from SFT basics to advanced LoRA, QLoRA, RLHF, and multimodal techniques.
+    Exploring the evolution from RNNs to Transformers and the modern LLM training pipeline.
   </div>
 </div>
+
+
 <div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Ousmane Cissé </p>
+          </div>
+  </div>
+    
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
       <p class="date">February 4, 2026</p>
     </div>
   </div>
+  
+    
   </div>
-</header><main class="content" id="quarto-document-content">
+  
 
 
-<meta name="translation-url" content="fr/projects/finetuning-ninja/index.html">
-<section id="project-overview" class="level2">
-<h2 data-anchor-id="project-overview">🥷 Project Overview</h2>
-<p><strong>Finetuning Ninja</strong> is a hands-on project designed to build deep intuition and practical skills in training Large Language Models (LLMs). From setting up the lab environment to deploying reasoning models, this repository guides you through every critical step.</p>
-<p>It covers the complete lifecycle:</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Focus</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><strong>Foundations</strong></td>
-<td style="text-align: left;">Understanding the finetuning landscape and supervised finetuning (SFT).</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>Depth</strong></td>
-<td style="text-align: left;">Understanding the internal mechanisms of models.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>Efficiency</strong></td>
-<td style="text-align: left;">Leveraging Parameter-Efficient Finetuning (PEFT) with <strong>LoRA</strong> and <strong>QLoRA</strong>.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>Alignment</strong></td>
-<td style="text-align: left;">Aligning models with human preferences using <strong>RLHF</strong> (Reinforcement Learning from Human Feedback).</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>Reasoning</strong></td>
-<td style="text-align: left;">Exploring advanced techniques like <strong>GRPO</strong> (Group Relative Policy Optimization).</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>Multimodal</strong></td>
-<td style="text-align: left;">Extending capabilities to vision and audio.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>Production</strong></td>
-<td style="text-align: left;">Best practices for LLM deployment.</td>
-</tr>
-</tbody>
-</table>
-<p>The project emphasizes not just <em>how</em> to run code, but <em>why</em> it works, providing the <strong>intuition</strong> and <strong>theory</strong> necessary to become a true practitioner.</p>
-</section>
-<section id="links" class="level2">
-<h2 data-anchor-id="links">🔗 Links</h2>
-<p><a href="https://github.com/oussou-dev/finetuning-sessions?tab=readme-ov-file" class="btn btn-outline-dark" target="_blank" role="button"><i class="bi bi-github"></i> View on GitHub</a></p>
-</section>
-<section id="related-articles" class="level2">
-<h2 data-anchor-id="related-articles">📝 Related Articles</h2>
-<p>Follow my progress through these detailed weekly lessons:</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th style="text-align: left;">Week</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Week 1</td>
-<td style="text-align: left;"><a href="../../posts/finetuning-ninja-week-1/index.html">The Finetuning Landscape</a></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Week 1 (Lab)</td>
-<td style="text-align: left;"><a href="../../posts/finetuning-ninja-lab-1/index.html">Lab 1: Modern Pre-training Strategies</a></td>
-</tr>
-</tbody>
-</table>
+</header>
 
 
-</section>
-<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main>  
+<meta name="translation-url" content="fr/posts/finetuning-ninja-week-1/index.html">
+<p>Welcome to the first week of our Finetuning Bootcamp! Here’s a small plot twist to kick things off: <strong>we’re not talking about finetuning today</strong>.</p>
+<p>Before jumping into advanced techniques like SFT (Supervised Fine-Tuning) or LoRA, it’s crucial to build a solid mental map of what happens <em>before</em> finetuning even starts. This lesson lays the foundation of the Transformer architecture and pretraining, because understanding how models work under the hood is essential to mastering optimization techniques later on.</p>
+<hr>
+<section id="the-evolution-from-rnns-to-attention" class="level3">
+<h3 class="anchored" data-anchor-id="the-evolution-from-rnns-to-attention">1. The Evolution: From RNNs to Attention</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://substackcdn.com/image/fetch/$s_!dxuS!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F900aa4be-69b0-40a7-a71e-93ccad6c3f02_2108x1186.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Transformer Meme"><img src="https://substackcdn.com/image/fetch/$s_!dxuS!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F900aa4be-69b0-40a7-a71e-93ccad6c3f02_2108x1186.jpeg" class="img-fluid figure-img" alt="Transformer Meme"></a></p>
+<figcaption>Transformer Meme</figcaption>
+</figure>
 </div>
- <!-- /main -->
+<p>Today, nearly every state-of-the-art language model is built on top of the Transformer architecture. But the key innovation that makes them work—<strong>the attention mechanism</strong>—was not invented in the Transformer paper.</p>
+<p>Long before that, deep learning relied on CNNs for vision and RNNs (especially LSTMs) for sequence modeling tasks like machine translation. The problem with RNNs? They struggled with <strong>long sequences</strong> because they had to compress an entire input sequence into a single, fixed-length vector.</p>
+<p>Attention was introduced to solve this exact problem: <strong>instead of compressing everything, why not allow the model to <em>look back</em> at different parts of the input dynamically as needed?</strong>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://substackcdn.com/image/fetch/$s_!jqNl!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbeb4b694-e899-4244-9572-76c99c4cc6c7_1200x209.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Encoder-Decoder Attention"><img src="https://substackcdn.com/image/fetch/$s_!jqNl!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbeb4b694-e899-4244-9572-76c99c4cc6c7_1200x209.png" class="img-fluid figure-img" alt="Encoder-Decoder Attention"></a></p>
+<figcaption>Encoder-Decoder Attention</figcaption>
+</figure>
+</div>
+<p><strong>How does Attention work?</strong> At its core, attention is a weighted lookup mechanism that uses three elements: * A set of <strong>Keys (K)</strong> * A set of <strong>Values (V)</strong> * A <strong>Query (Q)</strong></p>
+<p>The mechanism compares the query to all keys, assigns a weight (importance score) to each one, and then produces a <strong>weighted sum of the values</strong>. Attention decides which pieces of information matter most in context and combines them dynamically.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://substackcdn.com/image/fetch/$s_!ITLW!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2f86980f-0b97-4cb4-8630-7e5471bb0ef7_910x579.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Attention Mechanism"><img src="https://substackcdn.com/image/fetch/$s_!ITLW!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2f86980f-0b97-4cb4-8630-7e5471bb0ef7_910x579.png" class="img-fluid figure-img" alt="Attention Mechanism"></a></p>
+<figcaption>Attention Mechanism</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+<section id="the-core-of-the-transformer-self-attention-and-multi-head-attention" class="level3">
+<h3 class="anchored" data-anchor-id="the-core-of-the-transformer-self-attention-and-multi-head-attention">2. The Core of the Transformer: Self-Attention and Multi-Head Attention</h3>
+<p>While attention allowed a decoder to look back at an encoder, <strong>Self-Attention</strong> takes the idea one step further: <strong>each token in a sequence attends to all the other tokens in the <em>same</em> sequence</strong>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://substackcdn.com/image/fetch/$s_!aVXN!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff970d7f6-c93f-4558-8f49-780f02c572ee_701x459.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Self-Attention"><img src="https://substackcdn.com/image/fetch/$s_!aVXN!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff970d7f6-c93f-4558-8f49-780f02c572ee_701x459.png" class="img-fluid figure-img" alt="Self-Attention"></a></p>
+<figcaption>Self-Attention</figcaption>
+</figure>
+</div>
+<p>In self-attention, every token becomes a Query, a Key, and a Value. For example, when updating the representation of the word “sat”, the model can strongly attend to “cat” (who is sitting) and “mat” (where it happens), while ignoring less relevant function words like “the”.</p>
+<p>To make this work, the Transformer architecture introduces specific components: 1. <strong>Positional Encodings</strong>: Attention itself has no notion of order. Positional information is injected via mathematical functions (sine and cosine at different frequencies) so the model can distinguish the first, next, or last token. 2. <strong>Scaled Dot-Product Attention</strong>: This is the mathematical implementation where Queries and Keys are compared using a dot product, normalized with a softmax function, and then used to compute a weighted sum of the Values. 3. <strong>Multi-Head Attention</strong>: Instead of forcing the model into one single view, it uses “multiple heads” working in parallel. Different heads can specialize in syntactic relationships, semantic similarity, or long-range dependencies, processing information from different angles at once.</p>
+<hr>
+</section>
+<section id="the-three-transformer-architectures" class="level3">
+<h3 class="anchored" data-anchor-id="the-three-transformer-architectures">3. The Three Transformer Architectures</h3>
+<p>While people group everything under “LLMs,” there are actually <strong>three different Transformer architectures</strong>, designed for different problems:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://substackcdn.com/image/fetch/$s_!mRlz!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa13c886e-05c9-4da4-aeec-3e4c6deeb046_1200x630.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="The 3 Architectures"><img src="https://substackcdn.com/image/fetch/$s_!mRlz!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa13c886e-05c9-4da4-aeec-3e4c6deeb046_1200x630.png" class="img-fluid figure-img" alt="The 3 Architectures"></a></p>
+<figcaption>The 3 Architectures</figcaption>
+</figure>
+</div>
+<ol type="1">
+<li><strong>Encoder-only (e.g., BERT)</strong>: Designed to create rich representations. It uses bidirectional self-attention (tokens look forward and backward). It’s great for text understanding, classification, and retrieval, but it does not generate text.</li>
+<li><strong>Encoder-Decoder (e.g., T5, BART)</strong>: The original Transformer design. The encoder reads the sequence, and the decoder generates the output token by token using cross-attention. Ideal for sequence-to-sequence tasks like translation and summarization.</li>
+<li><strong>Decoder-only (e.g., ChatGPT, Claude, Qwen)</strong>: The engine behind modern LLMs. It removes the encoder entirely and relies on <strong>causal self-attention</strong>: each token can only attend to tokens that came before it. Its simple objective is to predict the next token.</li>
+</ol>
+<p>The massive success of the decoder-only architecture is largely due to <strong>scaling laws</strong>. Empirical studies show that model performance improves smoothly and predictably as you increase model size (parameters), training data (tokens), and compute power.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://substackcdn.com/image/fetch/$s_!CetZ!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F48baf6dd-9664-4ccc-9ebf-4fca2bb400fe_1200x394.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Scaling Laws"><img src="https://substackcdn.com/image/fetch/$s_!CetZ!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F48baf6dd-9664-4ccc-9ebf-4fca2bb400fe_1200x394.png" class="img-fluid figure-img" alt="Scaling Laws"></a></p>
+<figcaption>Scaling Laws</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+<section id="the-llm-training-pipeline-and-pretraining" class="level3">
+<h3 class="anchored" data-anchor-id="the-llm-training-pipeline-and-pretraining">4. The LLM Training Pipeline and Pretraining</h3>
+<p>Since OpenAI’s InstructGPT in 2022, training a modern LLM typically follows a well-defined <strong>three-stage framework</strong>: 1. <strong>Pretraining</strong> (on large-scale raw text). 2. <strong>Supervised Fine-Tuning (SFT)</strong> (on high-quality, task-oriented examples). 3. <strong>RLHF - Reinforcement Learning from Human Feedback</strong> (Alignment).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://substackcdn.com/image/fetch/$s_!gb6a!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa2a095ff-c348-4a7a-a09f-5228019d8246_3106x1888.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Pretrained Model Ex"><img src="https://substackcdn.com/image/fetch/$s_!gb6a!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa2a095ff-c348-4a7a-a09f-5228019d8246_3106x1888.png" class="img-fluid figure-img" alt="Pretrained Model Ex"></a></p>
+<figcaption>Pretrained Model Ex</figcaption>
+</figure>
+</div>
+<p><strong>Zooming in on Pretraining:</strong> This is where the vast majority of compute and data is spent. A decoder-only Transformer trains via self-supervised learning: <strong>the label to predict is simply the <em>next token</em> (Causal Language Modeling)</strong>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://substackcdn.com/image/fetch/$s_!gm6Z!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffc83ad34-7a9f-4e92-8165-2c85880a0a64_1015x742.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Math dataset"><img src="https://substackcdn.com/image/fetch/$s_!gm6Z!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffc83ad34-7a9f-4e92-8165-2c85880a0a64_1015x742.png" class="img-fluid figure-img" alt="Math dataset"></a></p>
+<figcaption>Math dataset</figcaption>
+</figure>
+</div>
+<p>By consuming the internet (web pages, books, code), the model acquires grammar, syntax, code patterns, and common sense facts. This is the phase where it “learns the world”.</p>
+<p><strong>The result is a “Base Model” (Foundation Model)</strong>. But beware: at this stage, the model is incredibly good at continuing text, but <strong>it cannot reliably follow instructions or behave safely</strong>. It’s a raw pattern-learning engine. Finetuning (SFT, LoRA) does not teach the model language from scratch; instead, it <strong>shapes and steers</strong> the raw capabilities learned during pretraining to make the model usable.</p>
+<p><strong>Continued Pretraining:</strong> What if you need highly specialized domain knowledge (legal, medical) or an underrepresented language? You can use <strong>Continued Pretraining</strong>. Instead of starting from scratch, you expose an existing base model to new data so it absorbs new patterns while retaining what it already knows.</p>
+<hr>
+</section>
+<section id="self-assessment-quiz-test-your-knowledge" class="level3">
+<h3 class="anchored" data-anchor-id="self-assessment-quiz-test-your-knowledge">🎯 Self-Assessment Quiz: Test Your Knowledge</h3>
+<p><strong>Question 1: What fundamental problem with Recurrent Neural Networks (RNNs) was the original attention mechanism trying to solve?</strong></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Early recurrent architectures (like LSTM-based encoder-decoders) had to compress an entire input sequence into a single, fixed-length vector. This severely limited their performance on long sequences. Attention solved this by allowing the decoder to dynamically look back at all encoder states and access specific parts of the input exactly when needed, rather than relying on one compressed state.</p>
+</div>
+</div>
+</div>
+<p><strong>Question 2: What is the main difference between classic attention and “Self-Attention”?</strong></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Classic attention was used to help one sequence (the decoder) attend to another sequence (the encoder). “Self-Attention” takes this further by having <em>each token in a sequence attend to all the other tokens in the same sequence</em>. As a result, the Queries (Q), Keys (K), and Values (V) all come from the same input source.</p>
+</div>
+</div>
+</div>
+<p><strong>Question 3: Why does the Transformer architecture require Positional Encodings?</strong></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The attention mechanism inherently has no concept of sequence order. Unlike RNNs that process text sequentially, Transformers process tokens in parallel. Positional encodings (built using sine and cosine functions) artificially inject spatial information into the token representations so the model can distinguish between the “first”, “next”, and “last” elements.</p>
+</div>
+</div>
+</div>
+<p><strong>Question 4: Which of the three Transformer architectures is used by models like ChatGPT and Claude, and what is its primary training objective?</strong></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>These models are built on the <strong>Decoder-only</strong> architecture. Its primary training objective, utilizing causal self-attention (which prevents the model from peeking at future tokens), is remarkably simple: <strong>predict the next token</strong> (Causal Language Modeling).</p>
+</div>
+</div>
+</div>
+<p><strong>Question 5: What is the purpose of Supervised Fine-Tuning (SFT) and RLHF if the model already learned language during pretraining?</strong></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Pretraining produces a “base model” that is excellent at generating text and possesses broad world knowledge, but it simply continues patterns and cannot reliably follow instructions or act safely. SFT and RLHF are used to <strong>shape and steer</strong> this raw intelligence. They teach the model how to structure answers, follow directions, and align with human expectations without having to rewrite its underlying understanding of language.</p>
+</div>
+</div>
+</div>
+<p><strong>Question 6: What are the roles of the “Query”, “Key”, and “Value” components?</strong></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Think of it as a retrieval system. The Query is what you are looking for, the Key is the label of the available information, and the Value is the information itself. The attention score (Query x Key) determines how much “weight” is given to each “Value”.</p>
+</div>
+</div>
+</div>
+<p><strong>Question 7: Why do modern models like Llama or GPT primarily use the “Decoder-only” architecture?</strong></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>This architecture is easier to scale. It has proven incredibly effective for self-supervised learning on massive datasets, and it possesses emergent capabilities (reasoning, logic) that other architectures do not reach as easily.</p>
+</div>
+</div>
+</div>
+<p><strong>Question 8: In which scenario would you use “Continued Pretraining” instead of simple Fine-tuning?</strong></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Continued pretraining is used when you want to inject massive knowledge from a very specific domain (e.g., complex medical law, rare programming languages, or underrepresented human languages) that the model has never seen, before teaching it to follow instructions in that domain.</p>
+</div>
+</div>
+</div>
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         const path = window.location.pathname;
@@ -567,6 +741,13 @@ ul.task-list li input[type="checkbox"] {
       window.document.body.appendChild(a);
     }
     setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
         if (clz.startsWith('code-annotation-')) {                     
@@ -959,6 +1140,38 @@ ul.task-list li input[type="checkbox"] {
   });
   </script>
 </div> <!-- /content -->
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 

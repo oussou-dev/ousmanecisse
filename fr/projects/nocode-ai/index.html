@@ -77,6 +77,7 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
+<meta name="quarto:status" content="draft">
 
 
 <link rel="stylesheet" href="../../../styles.css">
@@ -247,7 +248,7 @@ ul.task-list li input[type="checkbox"] {
   </script>
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
+  <header id="quarto-header" class="headroom fixed-top"><div id="quarto-draft-alert" class="alert alert-warning"><i class="bi bi-pencil-square"></i>Brouillon</div>
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
@@ -285,7 +286,7 @@ ul.task-list li input[type="checkbox"] {
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
     <a class="nav-link" href="../../../index.html"> 
-<span class="menu-text">EN</span></a>
+<span class="menu-text">🇬🇧 EN</span></a>
   </li>  
   <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/oussou-dev"> <i class="bi bi-github" role="img">
@@ -371,10 +372,10 @@ ul.task-list li input[type="checkbox"] {
                     { text: "Projects", href: "projects.html" },
                     { text: "Blog", href: "blog.html" },
                     { text: "Translations", href: "en-to-fr.html" },
-                    { text: "Book Review", href: "books.html" },
+                    { text: "Book Reviews", href: "books.html" },
                     { text: "Robotics & AI", href: "robotics.html" }
                 ],
-                langSwitch: { text: "FR", href: "fr/index.html" }
+                langSwitch: { text: "🇫🇷 FR", href: "fr/index.html" }
             },
             fr: {
                 left: [
@@ -384,7 +385,7 @@ ul.task-list li input[type="checkbox"] {
                     { text: "Revue de Livres", href: "fr/livres.html" },
                     { text: "Robotique & IA", href: "fr/robotique.html" }
                 ],
-                langSwitch: { text: "EN", href: "index.html" }
+                langSwitch: { text: "🇬🇧 EN", href: "index.html" }
             }
         };
 
@@ -425,7 +426,8 @@ ul.task-list li input[type="checkbox"] {
 
         rightNavLinks.forEach(link => {
             const text = link.innerText.trim().toUpperCase();
-            if (text === "FR" || text === "EN") {
+            // Match any previous or new labels for robust detection
+            if (text.includes("FR") || text.includes("EN") || text.includes("🇫🇷") || text.includes("🇬🇧")) {
                 // Fix the label
                 const menuText = link.querySelector('.menu-text');
                 if (menuText) {

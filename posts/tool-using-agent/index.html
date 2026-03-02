@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Ousmane Cissé">
-<meta name="dcterms.date" content="2026-02-10">
+<meta name="dcterms.date" content="2026-01-15">
 <meta name="description" content="The Tool Use Pattern: how AI agents leverage external tools, APIs, and services to interact with the real world.">
 
 <title>Tool Using Agent: Extending AI Beyond Text Generation – OUSMANE CISSE</title>
@@ -312,7 +312,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../../books.html"> 
-<span class="menu-text">Book Review</span></a>
+<span class="menu-text">Book Reviews</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../../robotics.html"> 
@@ -322,7 +322,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
     <a class="nav-link" href="../../fr/index.html"> 
-<span class="menu-text">FR</span></a>
+<span class="menu-text">🇫🇷 FR</span></a>
   </li>  
   <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/oussou-dev"> <i class="bi bi-github" role="img">
@@ -400,7 +400,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 10, 2026</p>
+      <p class="date">January 15, 2026</p>
     </div>
   </div>
   
@@ -550,10 +550,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
                     { text: "Projects", href: "projects.html" },
                     { text: "Blog", href: "blog.html" },
                     { text: "Translations", href: "en-to-fr.html" },
-                    { text: "Book Review", href: "books.html" },
+                    { text: "Book Reviews", href: "books.html" },
                     { text: "Robotics & AI", href: "robotics.html" }
                 ],
-                langSwitch: { text: "FR", href: "fr/index.html" }
+                langSwitch: { text: "🇫🇷 FR", href: "fr/index.html" }
             },
             fr: {
                 left: [
@@ -563,7 +563,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
                     { text: "Revue de Livres", href: "fr/livres.html" },
                     { text: "Robotique & IA", href: "fr/robotique.html" }
                 ],
-                langSwitch: { text: "EN", href: "index.html" }
+                langSwitch: { text: "🇬🇧 EN", href: "index.html" }
             }
         };
 
@@ -604,7 +604,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
         rightNavLinks.forEach(link => {
             const text = link.innerText.trim().toUpperCase();
-            if (text === "FR" || text === "EN") {
+            // Match any previous or new labels for robust detection
+            if (text.includes("FR") || text.includes("EN") || text.includes("🇫🇷") || text.includes("🇬🇧")) {
                 // Fix the label
                 const menuText = link.querySelector('.menu-text');
                 if (menuText) {
