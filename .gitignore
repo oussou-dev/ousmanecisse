@@ -1,7 +1,7 @@
 # Quarto related
 /.quarto/
 /_site/
-/_freeze/
+# /_freeze/  # Do NOT ignore this, needed for GitHub Actions rendering without Python environment
 
 # Generated HTML (Quarto) - but keep our scripts
 *.html
