@@ -16,12 +16,12 @@ website:
       - href: en-to-fr.qmd
         text: Translations
       - href: books.qmd
-        text: Book Review
+        text: Book Reviews
       - href: robotics.qmd
         text: "Robotics & AI"
 
     right:
-      - text: "FR"
+      - text: "🇫🇷 FR"
         href: fr/index.html
       - icon: github
         href: https://github.com/oussou-dev

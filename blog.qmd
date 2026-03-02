@@ -11,7 +11,7 @@ listing:
   include:
     lang: en
   fields: [date, title, reading-time, description, categories]
-  feed: true
+  feed: false
 page-layout: full
 title-block-banner: false
 ---

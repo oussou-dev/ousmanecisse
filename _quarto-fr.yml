@@ -6,6 +6,7 @@ project:
 lang: fr-FR
 
 website:
+  site-url: "https://oussou-dev.github.io/ousmanecisse/"
   navbar:
     left:
       - href: fr/projets.qmd
@@ -19,7 +20,7 @@ website:
       - href: fr/robotique.qmd
         text: "Robotique & IA"
     right:
-      - text: "EN"
+      - text: "🇬🇧 EN"
         href: index.html
       - icon: github
         href: https://github.com/oussou-dev

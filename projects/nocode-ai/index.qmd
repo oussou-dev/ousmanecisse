@@ -3,6 +3,8 @@ title: "No-Code & AI Enterprise Apps"
 translation-url: "fr/projects/nocode-ai/index.html"
 description: "Building internal enterprise apps using No-Code tools (Airtable, Softr, Make/Zapier) and AI. Covers needs analysis, BPMN modeling, and full implementation."
 image: "/img/nocode_ai_enterprise_cover.png"
+draft: true
+draft-mode: hidden
 lang: en
 ---
 
