@@ -41,3 +41,10 @@ Thumbs.db
 
 # Project specifics
 /.luarc.json
+*-listing.json
+site_libs/
+/_site/
+/blog.xml
+/fr/blog.xml
+/*.feed-full-staged
+/*.feed-header-staged
