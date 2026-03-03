@@ -584,6 +584,20 @@ font-style: inherit;">uv</span> python pin 3.11</span></code></pre></div></div>
 </div>
 
 
+<div class="series-nav">
+  <div class="series-nav-header">
+    <span class="series-nav-badge">Série</span>
+    <span class="series-nav-name">Finetuning Ninja</span>
+  </div>
+  <div class="series-nav-links">
+    <a href="../../../fr/posts/finetuning-ninja-week-1/" class="series-nav-link series-nav-prev">
+      <span class="series-nav-label">← Article précédent</span>
+      <span class="series-nav-title">Finetuning Ninja : Semaine 1 - Le Paysage</span>
+    </a>
+    <div class="series-nav-spacer"></div>
+  </div>
+</div>
+
 </section>
 
 <a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Retour au sommet</a> ]]></description>
@@ -845,6 +859,20 @@ font-style: inherit;">uv</span> python pin 3.11</span></code></pre></div></div>
 </div>
 
 
+<div class="series-nav">
+  <div class="series-nav-header">
+    <span class="series-nav-badge">Série</span>
+    <span class="series-nav-name">Finetuning Ninja</span>
+  </div>
+  <div class="series-nav-links">
+    <div class="series-nav-spacer"></div>
+    <a href="../../../fr/posts/finetuning-ninja-lab-1/" class="series-nav-link series-nav-next">
+      <span class="series-nav-label">Article suivant →</span>
+      <span class="series-nav-title">Finetuning Ninja : Semaine 1 - Le Lab</span>
+    </a>
+  </div>
+</div>
+
 </section>
 
 <a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Retour au sommet</a> ]]></description>
@@ -1088,6 +1116,241 @@ font-style: inherit;">uv</span> python pin 3.11</span></code></pre></div></div>
   <media:content url="https://oussou-dev.github.io/ousmanecisse/fr/img/week_4_ai_dev_tools.webp" medium="image" type="image/webp"/>
 </item>
 <item>
+  <title>Le pattern de réflexion : quand les agents se corrigent</title>
+  <link>https://oussou-dev.github.io/ousmanecisse/fr/translations/reflection-pattern/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<meta name="translation-url" content="posts/reflection-agent/index.html">
+<div class="quarto-audio-container" style="background-color: var(--bs-tertiary-bg); border-left: 4px solid var(--bs-primary); padding: 1.2em; margin-bottom: 2em; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+  <h4 style="margin-top: 0; font-size: 1.1em; display: flex; align-items: center; gap: 8px; margin-bottom: 15px; color: var(--bs-heading-color);" class="anchored">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-headphones" viewbox="0 0 16 16">
+      <path d="M8 3a5 5 0 0 0-5 5v1h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V8a6 6 0 1 1 12 0v5a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1V8a5 5 0 0 0-5-5z"></path>
+    </svg>
+    Version Audio IA
+  </h4>
+<div style="margin-bottom: 12px;">
+    <div style="font-size: 0.9em; font-weight: 600; margin-bottom: 6px; color: var(--bs-body-color);">⚡ Résumé Rapide (0m13)</div>
+    <audio controls="" style="width: 100%; height: 40px; outline: none;" src="../../../assets/audio/short/reflection-pattern.mp3"></audio>
+</div>
+</div>
+<p>Après avoir vu <a href="../../../fr/translations/what-is-an-agent/">qu’est-ce qu’un agent</a>, passons aux <strong>patterns agentiques</strong> popularisés par Andrew Ng. Dans cette série, nous implémentons chaque pattern <strong>de zéro</strong>, en Python pur avec des LLM comme Groq, sans frameworks (pas de LlamaIndex ou CrewAI pour l’instant).</p>
+<p>Pourquoi ? Pour bien comprendre ce qui se passe sous le capot. On commence par le <strong>pattern de réflexion</strong>, le plus simple, mais qui apporte des gains de qualité surprenants.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="../../../img/reflection_pattern.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Illustration du pattern de réflexion"><img src="https://oussou-dev.github.io/ousmanecisse/img/reflection_pattern.png" class="img-fluid figure-img" alt="Illustration du pattern de réflexion"></a></p>
+<figcaption>Illustration du pattern de réflexion</figcaption>
+</figure>
+</div>
+<section id="le-pattern-de-réflexion-en-bref" class="level2">
+<h2 class="anchored" data-anchor-id="le-pattern-de-réflexion-en-bref">Le pattern de réflexion en bref</h2>
+<p>Le <strong>pattern de réflexion</strong> permet à un agent d’évaluer sa propre production et de l’améliorer itérativement. L’idée : générer une réponse, la critiquer, l’ajuster, et recommencer.</p>
+<p>C’est une <strong>boucle simple</strong> en 4 étapes :<br>
+1. <strong>Génération</strong> : Le LLM produit une première version.<br>
+2. <strong>Réflexion</strong> : Le LLM critique cette version (erreurs, améliorations possibles).<br>
+3. <strong>Correction</strong> : Le LLM intègre les critiques pour raffiner la sortie.<br>
+4. <strong>Répétition</strong> : Retour à l’étape 1</p>
+<p><strong>Quand arrêter la boucle ?</strong><br>
+- Après un <strong>nombre fixe d’itérations</strong> (ex. : 3 tours).<br>
+- Quand le LLM génère un <strong>signal d’arrêt</strong> (ex. : “OK”, “Parfait”, “Final”).</p>
+<p>Malgré sa simplicité, ce pattern booste la qualité des réponses, surtout pour du code, des analyses ou des textes complexes.</p>
+</section>
+<section id="implémentation-de-zéro-la-boucle-de-réflexion" class="level2">
+<h2 class="anchored" data-anchor-id="implémentation-de-zéro-la-boucle-de-réflexion">Implémentation de zéro : la boucle de réflexion</h2>
+<p>Testons sur un cas concret : demander à <strong>Llama3 70B</strong> (via Groq) d’implémenter l’algorithme <strong>Merge Sort</strong> en Python.</p>
+<section id="étape-1-génération-initiale" class="level3">
+<h3 class="anchored" data-anchor-id="étape-1-génération-initiale">Étape 1 : Génération initiale</h3>
+<p>On initialise un client Groq et un historique de chat avec un prompt système : “Tu es un programmeur Python qui accepte les feedbacks.”</p>
+<p>Prompt utilisateur : “Implémente Merge Sort en Python.”</p>
+<p>Résultat typique (version 1) :</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> merge_sort(arr):</span>
+<span id="cb1-2">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">len</span>(arr) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>:</span>
+<span id="cb1-3">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> arr</span>
+<span id="cb1-4">    mid <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">len</span>(arr) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">//</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span></span>
+<span id="cb1-5">    left <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> merge_sort(arr[:mid])</span>
+<span id="cb1-6">    right <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> merge_sort(arr[mid:])</span>
+<span id="cb1-7">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> merge(left, right)</span>
+<span id="cb1-8"></span>
+<span id="cb1-9"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> merge(left, right):</span>
+<span id="cb1-10">    result <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> []</span>
+<span id="cb1-11">    i, j <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span></span>
+<span id="cb1-12">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">while</span> i <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">len</span>(left) <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">and</span> j <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">len</span>(right):</span>
+<span id="cb1-13">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> left[i] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;=</span> right[j]:</span>
+<span id="cb1-14">            result.append(left[i])</span>
+<span id="cb1-15">            i <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span></span>
+<span id="cb1-16">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">else</span>:</span>
+<span id="cb1-17">            result.append(right[j])</span>
+<span id="cb1-18">            j <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span></span>
+<span id="cb1-19">    result.extend(left[i:])</span>
+<span id="cb1-20">    result.extend(right[j:])</span>
+<span id="cb1-21">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> result</span></code></pre></div></div>
+<p>Fonctionnel, mais perfectible (pas de docstrings complètes, gestion d’erreurs, etc.).</p>
+</section>
+<section id="étape-2-phase-de-réflexion" class="level3">
+<h3 class="anchored" data-anchor-id="étape-2-phase-de-réflexion">Étape 2 : Phase de réflexion</h3>
+<p>Nouveau prompt système : “Tu es un expert comme Andrej Karpathy. Critique ce code Python : erreurs, style, améliorations, tests.”</p>
+<p>On passe le code généré comme message utilisateur.</p>
+<p>Critiques typiques :<br>
+- Ajouter des <strong>type hints</strong> (PEP 484).<br>
+- Améliorer les <strong>noms de variables</strong> (left → left_half).<br>
+- Ajouter <strong>docstrings détaillées</strong> et <strong>gestion d’erreurs</strong>.<br>
+- Inclure <strong>tests unitaires</strong>.</p>
+</section>
+<section id="étape-3-intégration-et-nouvelle-génération" class="level3">
+<h3 class="anchored" data-anchor-id="étape-3-intégration-et-nouvelle-génération">Étape 3 : Intégration et nouvelle génération</h3>
+<p>On ajoute les critiques à l’historique de génération. Le LLM produit une version 2 : classe orientée objet, tests unittest, edge cases gérés.</p>
+<p>La boucle continue jusqu’au critère d’arrêt. Résultat final : un code production-ready avec classe, tests complets (vides, doublons, négatifs), complexité indiquée.</p>
+<p><a href="https://github.com/neural-maze/agentic_patterns/blob/main/src/agentic_patterns/reflection_pattern/reflection_agent.py"><strong>Le repo GitHub</strong></a> de la série contient une classe <code>ReflectionAgent</code> qui encapsule tout ça proprement.</p>
+</section>
+</section>
+<section id="lagent-de-réflexion-en-action" class="level2">
+<h2 class="anchored" data-anchor-id="lagent-de-réflexion-en-action">L’agent de réflexion en action</h2>
+<p>Installation : <code>pip install agentic-patterns</code> (lib perso pour la série).</p>
+<p>Usage simple :</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1">agent <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> ReflectionAgent(model<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"llama3-70b"</span>)</span>
+<span id="cb2-2">response <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> agent.run(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Implémente Merge Sort avec tests"</span>)</span>
+<span id="cb2-3"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(response.final_output)</span></code></pre></div></div>
+<p>Sortie finale : un module complet <code>MergeSort</code> avec <code>__init__</code>, <code>_merge</code> privé, tests exhaustifs. <strong>Amélioration massive</strong> en quelques itérations !</p>
+</section>
+<section id="pourquoi-ça-marche-si-bien" class="level2">
+<h2 class="anchored" data-anchor-id="pourquoi-ça-marche-si-bien">Pourquoi ça marche si bien ?</h2>
+<ul>
+<li><strong>Auto-correction</strong> : L’agent simule un pair-review infini.</li>
+<li><strong>Spécialisation</strong> : Un prompt pour générer, un autre pour critiquer.</li>
+<li><strong>Itératif</strong> : Chaque tour affine, comme un humain qui révise.</li>
+</ul>
+<p>Idéal pour : génération de code, rédaction d’essais, analyses de données, où la première tentative est souvent imparfaite.</p>
+</section>
+<section id="prochaines-étapes" class="level2">
+<h2 class="anchored" data-anchor-id="prochaines-étapes">Prochaines étapes</h2>
+<p>Prochain article : les <strong>outils</strong>, ingrédient clé pour rendre les agents vraiment utiles.</p>
+</section>
+<section id="ressources" class="level2">
+<h2 class="anchored" data-anchor-id="ressources">Ressources</h2>
+<ul>
+<li>Article original : <a href="https://theneuralmaze.substack.com/p/reflection-pattern-agents-that-think">Reflection Pattern</a></li>
+<li><a href="https://www.youtube.com/watch?v=0sAVI8bQdRc">Vidéo YouTube</a></li>
+</ul>
+
+
+<div class="series-nav">
+  <div class="series-nav-header">
+    <span class="series-nav-badge">Série</span>
+    <span class="series-nav-name">Agent Design Patterns</span>
+  </div>
+  <div class="series-nav-links">
+    <a href="../../../fr/translations/what-is-an-agent/" class="series-nav-link series-nav-prev">
+      <span class="series-nav-label">← Article précédent</span>
+      <span class="series-nav-title">Qu’est-ce qu’un agent ?</span>
+    </a>
+    <a href="../../../fr/translations/tool-use-pattern/" class="series-nav-link series-nav-next">
+      <span class="series-nav-label">Article suivant →</span>
+      <span class="series-nav-title">Le pattern d’utilisation d’outils</span>
+    </a>
+  </div>
+</div>
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Retour au sommet</a> ]]></description>
+  <category>IA</category>
+  <category>Agents</category>
+  <category>LLM</category>
+  <category>Patterns</category>
+  <guid>https://oussou-dev.github.io/ousmanecisse/fr/translations/reflection-pattern/</guid>
+  <pubDate>Mon, 12 May 2025 00:00:00 GMT</pubDate>
+  <media:content url="https://oussou-dev.github.io/ousmanecisse/../img/reflection_pattern.png" medium="image" type="image/png"/>
+</item>
+<item>
   <title>Outils de Dév IA - Semaine 3</title>
   <link>https://oussou-dev.github.io/ousmanecisse/fr/posts/ai-dev-tools-week-3/</link>
   <description><![CDATA[ 
@@ -1245,6 +1508,7 @@ font-style: inherit;">uv</span> python pin 3.11</span></code></pre></div></div>
   <category>AI Dev Tools</category>
   <guid>https://oussou-dev.github.io/ousmanecisse/fr/posts/ai-dev-tools-week-1/</guid>
   <pubDate>Sat, 20 Jan 2024 00:00:00 GMT</pubDate>
+  <media:content url="https://oussou-dev.github.io/ousmanecisse/../img/week_1_ai_dev_tools.png" medium="image" type="image/png"/>
 </item>
 </channel>
 </rss>

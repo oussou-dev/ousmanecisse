@@ -1,0 +1,121 @@
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const path = window.location.pathname;
+        const repoName = path.startsWith("/ousmanecisse/") ? "/ousmanecisse/" : "/";
+        const isFr = path.includes("/fr/");
+
+        // ===================================================================
+        // NAVBAR LINK MAPPINGS
+        // Define the full navbar structure for each language.
+        // This is the single source of truth for the JS-based navbar update.
+        // ===================================================================
+        const navConfig = {
+            en: {
+                left: [
+                    { text: "Projects", href: "projects.html" },
+                    { text: "Blog", href: "blog.html" },
+                    { text: "Translations", href: "en-to-fr.html" },
+                    { text: "Book Reviews", href: "books.html" },
+                    { text: "Robotics & AI", href: "robotics.html" }
+                ],
+                langSwitch: { text: "🇫🇷 FR", href: "fr/index.html" }
+            },
+            fr: {
+                left: [
+                    { text: "Projets", href: "fr/projets.html" },
+                    { text: "Blog", href: "fr/blog.html" },
+                    { text: "Traductions", href: "fr/en-to-fr.html" },
+                    { text: "Revue de Livres", href: "fr/livres.html" },
+                    { text: "Robotique & IA", href: "fr/robotique.html" }
+                ],
+                langSwitch: { text: "🇬🇧 EN", href: "index.html" }
+            }
+        };
+
+        const currentLang = isFr ? "fr" : "en";
+        const config = navConfig[currentLang];
+
+        // ===================================================================
+        // 1. UPDATE LEFT NAVBAR LINKS (Projects, Blog, Robotics, EN-->FR)
+        // ===================================================================
+        const leftNavLinks = document.querySelectorAll('.navbar-nav.me-auto .nav-link');
+
+        leftNavLinks.forEach((link, index) => {
+            if (index < config.left.length) {
+                const item = config.left[index];
+                // Update text (inside <span class="menu-text">)
+                const menuText = link.querySelector('.menu-text');
+                if (menuText) {
+                    menuText.textContent = item.text;
+                } else {
+                    link.textContent = item.text;
+                }
+                // Update href
+                link.setAttribute('href', repoName + item.href);
+            }
+        });
+
+        // ===================================================================
+        // 2. UPDATE LANGUAGE SWITCH BUTTON (FR / EN) + TRANSLATION URL
+        // ===================================================================
+        const rightNavLinks = document.querySelectorAll('.navbar-nav.ms-auto .nav-link');
+
+        // Get translation URL from meta tag (injected by Lua filter)
+        let translationUrl = null;
+        const metaTag = document.querySelector('meta[name="translation-url"]');
+        if (metaTag) {
+            translationUrl = metaTag.getAttribute('content');
+        }
+
+        rightNavLinks.forEach(link => {
+            const text = link.innerText.trim().toUpperCase();
+            // Match any previous or new labels for robust detection
+            if (text.includes("FR") || text.includes("EN") || text.includes("🇫🇷") || text.includes("🇬🇧")) {
+                // Fix the label
+                const menuText = link.querySelector('.menu-text');
+                if (menuText) {
+                    menuText.textContent = config.langSwitch.text;
+                } else {
+                    link.textContent = config.langSwitch.text;
+                }
+
+                // Fix the href: 
+                // 1. Try translation-url meta tag first
+                if (translationUrl) {
+                    let finalUrl = translationUrl;
+                    if (!finalUrl.startsWith("/") && !finalUrl.startsWith("http")) {
+                        finalUrl = repoName + finalUrl;
+                    }
+                    link.setAttribute('href', finalUrl);
+                }
+                // 2. SMART PATH MAPPING (fallback)
+                else {
+                    let targetUrl = config.langSwitch.href; // Default fallback (home)
+
+                    if (isFr) {
+                        // We are in FR, want to go to EN
+                        // Pattern: /fr/some-page.html -> /some-page.html
+                        // Pattern: /fr/projects/foo/index.html -> /projects/foo/index.html
+                        targetUrl = path.replace("/fr/", "/");
+                    } else {
+                        // We are in EN, want to go to FR
+                        // Pattern: /projects/foo/index.html -> /fr/projects/foo/index.html
+                        // Skip if already in fr (redundant check but safe)
+                        if (!path.includes("/fr/")) {
+                            // We need to be careful with the repoName
+                            if (repoName !== "/" && path.startsWith(repoName)) {
+                                targetUrl = path.replace(repoName, repoName + "fr/");
+                            } else {
+                                targetUrl = "/fr" + path;
+                            }
+                        }
+                    }
+
+                    // Clean up double slashes
+                    targetUrl = targetUrl.replace("//", "/");
+                    link.setAttribute('href', targetUrl);
+                }
+            }
+        });
+    });
+</script>
