@@ -1,16 +1,24 @@
 ---
-title: "Le pattern de réflexion : quand les agents se corrigent"
-translation-url: "posts/reflection-agent/index.html"
-date: "2025-05-12"
-categories: [IA, Agents, LLM, Patterns]
-image: "../../../img/reflection_pattern.png"
-description: "Découvrez le pattern de réflexion : un agent qui s'auto-évalue et améliore ses réponses en boucle."
+audio-short: ../../../assets/audio/short/reflection-pattern.mp3
+categories:
+- IA
+- Agents
+- LLM
+- Patterns
+date: '2025-05-12'
+description: 'Découvrez le pattern de réflexion : un agent qui s''auto-évalue et améliore
+  ses réponses en boucle.'
+duration-short: 13
+image: ../../../img/reflection_pattern.png
 lang: fr
-series-name: "Agent Design Patterns"
-series-prev-url: "/fr/translations/what-is-an-agent/"
-series-prev-title: "Qu'est-ce qu'un agent ?"
-series-next-url: "/fr/translations/tool-use-pattern/"
-series-next-title: "Le pattern d'utilisation d'outils"
+series-name: Agent Design Patterns
+featured-series: true
+series-next-title: Le pattern d'utilisation d'outils
+series-next-url: /fr/translations/tool-use-pattern/
+series-prev-title: Qu'est-ce qu'un agent ?
+series-prev-url: /fr/translations/what-is-an-agent/
+title: 'Le pattern de réflexion : quand les agents se corrigent'
+translation-url: posts/reflection-agent/index.html
 ---
 
 Après avoir vu [qu'est-ce qu'un agent](/fr/translations/what-is-an-agent/), passons aux **patterns agentiques** popularisés par Andrew Ng. Dans cette série, nous implémentons chaque pattern **de zéro**, en Python pur avec des LLM comme Groq, sans frameworks (pas de LlamaIndex ou CrewAI pour l'instant).

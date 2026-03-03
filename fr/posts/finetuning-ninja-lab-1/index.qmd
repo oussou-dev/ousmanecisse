@@ -9,6 +9,8 @@ categories: [LLM, Finetuning, Pretraining, Hardware, Lab]
 image: "https://substackcdn.com/image/fetch/$s_!O7zp!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3d572d8e-0c2c-4644-96c6-84dc093f2cc4_1200x630.png"
 lang: fr
 series-name: "Finetuning Ninja"
+series-prev-url: "/fr/posts/finetuning-ninja-week-1/"
+series-prev-title: "Finetuning Ninja : Semaine 1 - Le Paysage"
 ---
 
 Après avoir posé les bases théoriques des Transformers et du pré-entraînement dans la leçon précédente, il est temps de passer à la pratique ! Ce premier laboratoire (Lab) plonge au cœur des stratégies modernes pour adapter un modèle à un domaine spécifique et aborde les défis matériels cruciaux liés à l'entraînement des LLMs.

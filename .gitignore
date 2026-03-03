@@ -48,3 +48,5 @@ site_libs/
 /fr/blog.xml
 /*.feed-full-staged
 /*.feed-header-staged
+assets/audio/
+assets/transcripts/

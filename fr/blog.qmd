@@ -1,17 +1,45 @@
 ---
 title: "Blog"
 translation-url: "blog.html"
-listing:
-  contents: "posts"
-  sort: "date desc"
-  type: default
-  categories: true
-  sort-ui: true
-  filter-ui: false
-  include:
-    lang: fr
-  fields: [date, title, reading-time, description, categories]
-  feed: true
 page-layout: full
 title-block-banner: false
+listing:
+  - id: featured-series
+    contents:
+      - path: "posts/finetuning-ninja-week-1/index.qmd"
+        image: "https://substackcdn.com/image/fetch/$s_!_Yph!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff1909018-fbb6-4a19-8eb3-7cce5c333837_1920x1080.png"
+        title: "Finetuning Ninja"
+      - path: "translations/reflection-pattern/index.qmd"
+        image: "../img/reflection_pattern.png"
+        title: "Agentic Design Patterns"
+      - path: "posts/ai-dev-tools-week-1/index.qmd"
+        image: "../img/week_1_ai_dev_tools.png"
+        title: "AI Dev Tools"
+    type: grid
+    sort: false
+    fields: [image, title]
+  
+  - id: all-posts
+    contents: "posts"
+    include:
+      lang: fr
+    type: default
+    sort: "date desc"
+    categories: true
+    sort-ui: true
+    filter-ui: false
+    fields: [date, title, reading-time, description, categories]
+    feed: true
 ---
+
+### 🌟 Séries & Dossiers Spéciaux
+
+:::{#featured-series}
+:::
+
+---
+
+### 📚 Tous les articles
+
+:::{#all-posts}
+:::

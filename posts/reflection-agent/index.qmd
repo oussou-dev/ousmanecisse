@@ -1,15 +1,23 @@
 ---
-title: "Reflection Agent: Self-Improving AI Through Iterative Critique"
-translation-url: "fr/translations/reflection-pattern/index.html"
-date: "2026-01-10"
-categories: [AI, Agents, LLM, Design Patterns]
-image: "../../img/reflection_pattern.png"
-description: "Learn the Reflection Pattern: an agent that evaluates and improves its own output through iterative self-critique loops."
-author: "Ousmane Cissé"
+audio-short: ../../assets/audio/short/reflection-agent.mp3
+author: Ousmane Cissé
+categories:
+- AI
+- Agents
+- LLM
+- Design Patterns
+date: '2026-01-10'
+description: 'Learn the Reflection Pattern: an agent that evaluates and improves its
+  own output through iterative self-critique loops.'
+duration-short: 9
+image: ../../img/reflection_pattern.png
 lang: en
-series-name: "Agentic Design Patterns"
-series-next-url: "/posts/tool-using-agent/"
-series-next-title: "Tool Using Agent"
+series-name: Agentic Design Patterns
+featured-series: true
+series-next-title: Tool Using Agent
+series-next-url: /posts/tool-using-agent/
+title: 'Reflection Agent: Self-Improving AI Through Iterative Critique'
+translation-url: fr/translations/reflection-pattern/index.html
 ---
 
 The **Reflection Pattern** is the simplest yet surprisingly effective agentic design pattern. It allows an AI agent to evaluate its own output and iteratively improve it — like having an infinite pair-review loop built into the system.

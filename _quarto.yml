@@ -29,8 +29,14 @@ format:
     link-external-newtab: true
     code-copy: true
     code-fold: show
+    resources: 
+      - "assets"
+      - "img"
+      - "styles.css"
+      - "scripts"
 
 filters:
+  - filters/audio_player.lua
   - filters/metadata_to_meta.lua
   - filters/series_nav.lua
   - lightbox

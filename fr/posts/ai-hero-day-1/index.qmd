@@ -1,5 +1,6 @@
 ---
 title: "AI Hero : Jour 1 - Ingestion et Indexation des Données"
+series-name: "AI Hero"
 description: "Construire les fondations d'un agent IA en automatisant la récupération des données et le parsing des métadonnées."
 author: "Ousmane Cissé"
 date: "2026-01-22"

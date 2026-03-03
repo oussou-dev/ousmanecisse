@@ -6,6 +6,7 @@ categories: [IA, Outils, Zoomcamp, AI Dev Tools]
 description: "Aperçu de la première semaine du AI Dev Tools Zoomcamp."
 lang: fr
 series-name: "Outils de Dév IA"
+featured-series: true
 series-next-url: "/fr/posts/ai-dev-tools-week-2/"
 series-next-title: "Outils de Dév IA - Semaine 2"
 ---

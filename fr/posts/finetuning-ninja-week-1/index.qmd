@@ -9,6 +9,9 @@ categories: [LLM, Finetuning, IA, Deep Learning]
 image: "https://substackcdn.com/image/fetch/$s_!_Yph!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff1909018-fbb6-4a19-8eb3-7cce5c333837_1920x1080.png"
 lang: fr
 series-name: "Finetuning Ninja"
+featured-series: true
+series-next-url: "/fr/posts/finetuning-ninja-lab-1/"
+series-next-title: "Finetuning Ninja : Semaine 1 - Le Lab"
 ---
 
 Bienvenue dans cette première semaine de notre Bootcamp dédié au Finetuning ! Petit retournement de situation pour commencer : **nous n'allons pas du tout parler de finetuning aujourd'hui**. 

@@ -8,6 +8,7 @@ categories: [AI, Zoomcamp, Vibe Coding, AI Dev Tools]
 image: "../../img/week_1_ai_dev_tools.png"
 lang: en
 series-name: "AI Dev Tools"
+featured-series: true
 series-next-url: "/posts/ai-dev-tools-week-2/"
 series-next-title: "AI Dev Tools: Week 2"
 ---
