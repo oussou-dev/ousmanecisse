@@ -2,6 +2,8 @@
   {
     "listing": "/fr/projets.html",
     "items": [
+      "/fr/projects/ai-agents-in-practice/index.html",
+      "/fr/projects/legacyloom/index.html",
       "/fr/projects/finetuning-ninja/index.html",
       "/fr/projects/ai-dev-tools/index.html",
       "/fr/projects/ai-hero/index.html",
@@ -11,11 +13,27 @@
     ]
   },
   {
+    "listing": "/fr/projects/ai-agents-in-practice/index.html",
+    "items": [
+      "/fr/projects/ai-agents-in-practice/themes/personal-productivity/index.html",
+      "/fr/projects/ai-agents-in-practice/themes/writing-content/index.html",
+      "/fr/projects/ai-agents-in-practice/themes/research-analysis/index.html",
+      "/fr/projects/ai-agents-in-practice/themes/business-operations/index.html",
+      "/fr/projects/ai-agents-in-practice/themes/marketing-growth/index.html",
+      "/fr/projects/ai-agents-in-practice/themes/data-automation/index.html",
+      "/fr/projects/ai-agents-in-practice/themes/ai-engineering/index.html",
+      "/fr/projects/ai-agents-in-practice/themes/hr-legal-compliance/index.html",
+      "/fr/projects/ai-agents-in-practice/themes/finance-decision-making/index.html",
+      "/fr/projects/ai-agents-in-practice/themes/advanced-creative/index.html"
+    ]
+  },
+  {
     "listing": "/fr/blog.html",
     "items": [
       "/fr/posts/finetuning-ninja-week-1/index.html",
       "/fr/translations/reflection-pattern/index.html",
       "/fr/posts/ai-dev-tools-week-1/index.html",
+      "/fr/posts/legacyloom-hackathon/index.html",
       "/fr/posts/poetry-vs-uv/index.html",
       "/fr/posts/finetuning-ninja-lab-1/index.html",
       "/fr/posts/ai-hero-day-1/index.html",
