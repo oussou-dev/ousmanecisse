@@ -12,7 +12,7 @@ profile:
 
 website:
   title: "OUSMANE CISSE"
-  site-url: "https://oussou-dev.github.io/ousmanecisse/"
+  site-url: "https://oussou.dev"
   search: true
   back-to-top-navigation: true
 
@@ -29,11 +29,12 @@ format:
     link-external-newtab: true
     code-copy: true
     code-fold: show
-    resources: 
+    resources:
       - "assets"
       - "img"
       - "styles.css"
       - "scripts"
+      - "CNAME"
 
 filters:
   - filters/audio_player.lua
