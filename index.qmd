@@ -1,6 +1,6 @@
 ---
 title: "Ousmane Cissé"
-subtitle: "AI Engineer Consultant"
+subtitle: "AI Solutions Architect"
 about:
   template: jolla
   image: img/photo_bg_white.jpeg
@@ -13,7 +13,7 @@ about:
       href: https://github.com/oussou-dev?tab=repositories
 ---
 
-I am an AI Engineer Consultant based in France with a hybrid background in finance, audit and web development.
+I am AI Solutions Architect based in France with a hybrid background in finance, audit and web development.
 
 I help companies turn business needs into scalable AI solutions: AI Agents, RAG systems, automation and modern data architectures. 
 

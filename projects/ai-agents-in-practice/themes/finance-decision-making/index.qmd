@@ -1,0 +1,212 @@
+---
+title: "Finance & Decision Making"
+translation-url: "fr/projects/ai-agents-in-practice/themes/finance-decision-making/index.html"
+description: "Agents that analyze financial data, forecast performance, and surface risks to sharpen decision-making."
+image: "/img/ai-agents-in-practice/finance-decision-making.jpg"
+lang: en
+format: html
+---
+
+# Finance & Decision Making Agents
+
+These agents process financial signals faster than any human team — detecting risks, modeling scenarios, and translating raw numbers into clear strategic guidance.
+
+## 🛠 Active Use Cases
+
+---
+
+### 📊 Financial Report Analyzer
+
+::: {.callout-note collapse="true"}
+## Description
+An agent that ingests quarterly/annual financial reports (10-K, 10-Q, earnings releases) or internal P&L statements and produces a structured analysis: revenue trends, margin evolution, balance sheet health, and key ratios. It also flags unusual items or accounting changes that warrant deeper investigation.
+:::
+
+::: {.callout-tip collapse="true"}
+## Implementation — Python
+```python
+import PyPDF2
+from anthropic import Anthropic
+
+client = Anthropic()
+
+def extract_pdf_text(path: str) -> str:
+    with open(path, "rb") as f:
+        reader = PyPDF2.PdfReader(f)
+        return "\n".join([p.extract_text() for p in reader.pages])[:8000]
+
+def analyze_financial_report(report_text: str, company: str, period: str) -> str:
+    response = client.messages.create(
+        model="claude-opus-4-6",
+        max_tokens=4000,
+        system="You are a CFA-level financial analyst. Produce rigorous, structured analyses. Always cite specific figures. Flag accounting anomalies or one-time items explicitly.",
+        messages=[{
+            "role": "user",
+            "content": f"""Analyze this financial report for {company} ({period}):
+
+{report_text}
+
+Structure:
+1. Executive Summary (3 bullets)
+2. Revenue Analysis (trend, growth drivers, segments)
+3. Profitability (gross margin, EBITDA, net margin vs prior period)
+4. Balance Sheet Health (liquidity, leverage, key ratios)
+5. Red Flags & Anomalies
+6. Outlook & Key Risks"""
+        }]
+    )
+    return response.content[0].text
+
+report = extract_pdf_text("reports/q4_2025_annual_report.pdf")
+analysis = analyze_financial_report(report, "Acme Corp", "FY2025")
+print(analysis)
+```
+:::
+
+::: {.callout-warning collapse="true"}
+## Implementation — Low/NoCode
+**Stack:** Make + PDF upload + Claude API + Notion
+
+1. **Trigger**: A new PDF is dropped into a "Financial Reports" folder in Google Drive.
+2. **Extract**: Make parses the PDF and extracts the text content.
+3. **Analyze**: The text is sent to Claude with the financial analysis framework.
+4. **Store**: The structured analysis is saved to a Notion database with tags for company, period, and key metrics.
+5. **Alert**: If red flags are detected, a Slack notification is sent to the finance team.
+:::
+
+---
+
+### 💰 Budget Forecasting & Scenario Agent
+
+::: {.callout-note collapse="true"}
+## Description
+An agent that takes historical budget and actuals data, builds baseline projections, and models multiple scenarios (optimistic, base, pessimistic) under different assumptions. It explains the key assumptions and flags which line items are most sensitive — enabling faster and more informed planning cycles.
+:::
+
+::: {.callout-tip collapse="true"}
+## Implementation — Python
+```python
+import json
+from anthropic import Anthropic
+
+client = Anthropic()
+
+def build_forecast(historical_data: dict, assumptions: dict) -> str:
+    response = client.messages.create(
+        model="claude-opus-4-6",
+        max_tokens=3000,
+        system="""You are a CFO-level financial planning expert.
+Build 3-scenario forecasts with clear assumptions.
+Show: Base case, Bull case (+15-25% upside), Bear case (-15-25% downside).
+Identify the top 3 sensitivity drivers.""",
+        messages=[{
+            "role": "user",
+            "content": f"""Historical data (last 4 quarters):
+{json.dumps(historical_data, indent=2)}
+
+Management assumptions:
+{json.dumps(assumptions, indent=2)}
+
+Build a 4-quarter forecast with 3 scenarios. Identify which line items have the highest uncertainty."""
+        }]
+    )
+    return response.content[0].text
+
+historical = {
+    "Q1_2025": {"revenue": 1200000, "cogs": 480000, "opex": 350000},
+    "Q2_2025": {"revenue": 1380000, "cogs": 530000, "opex": 360000},
+    "Q3_2025": {"revenue": 1450000, "cogs": 560000, "opex": 375000},
+    "Q4_2025": {"revenue": 1620000, "cogs": 610000, "opex": 390000},
+}
+assumptions = {
+    "revenue_growth_rate": "15-25% YoY",
+    "new_product_launch": "Q2 2026",
+    "headcount_increase": "10 engineers in Q1",
+}
+forecast = build_forecast(historical, assumptions)
+print(forecast)
+```
+:::
+
+::: {.callout-warning collapse="true"}
+## Implementation — Low/NoCode
+**Stack:** Google Sheets + n8n + Claude API + Google Slides
+
+1. **Input**: Finance team maintains a Google Sheet with historical actuals and scenario assumption inputs.
+2. **Trigger**: n8n reads the sheet when a "Generate Forecast" checkbox is ticked.
+3. **Model**: Data is sent to Claude, which returns a structured forecast narrative and scenario tables.
+4. **Export**: n8n populates a Google Slides template with the scenario tables and narrative.
+5. **Review**: The CFO receives a Slack link to the auto-generated forecast presentation.
+:::
+
+---
+
+### ⚠️ Risk Assessment & Early Warning Agent
+
+::: {.callout-note collapse="true"}
+## Description
+An agent that continuously monitors financial and operational signals (cash runway, burn rate, customer concentration, payment delays) and triggers alerts when risk thresholds are breached. It synthesizes signals across systems that humans typically check in isolation — surfacing systemic risks before they become crises.
+:::
+
+::: {.callout-tip collapse="true"}
+## Implementation — Python
+```python
+from anthropic import Anthropic
+from datetime import datetime
+
+client = Anthropic()
+
+RISK_THRESHOLDS = {
+    "cash_runway_months": {"critical": 3, "warning": 6},
+    "monthly_burn_rate_increase_pct": {"critical": 30, "warning": 15},
+    "top_customer_revenue_concentration_pct": {"critical": 40, "warning": 25},
+    "accounts_receivable_days": {"critical": 90, "warning": 60},
+}
+
+def assess_risks(metrics: dict) -> str:
+    triggered = {}
+    for metric, value in metrics.items():
+        if metric in RISK_THRESHOLDS:
+            thresholds = RISK_THRESHOLDS[metric]
+            if value <= thresholds.get("critical", float("inf")):
+                triggered[metric] = {"value": value, "severity": "CRITICAL"}
+            elif value <= thresholds.get("warning", float("inf")):
+                triggered[metric] = {"value": value, "severity": "WARNING"}
+
+    response = client.messages.create(
+        model="claude-sonnet-4-6",
+        max_tokens=1500,
+        system="You are a CFO and risk management expert. Synthesize financial risk signals into a clear executive briefing.",
+        messages=[{
+            "role": "user",
+            "content": f"""Date: {datetime.now().strftime('%Y-%m-%d')}
+All metrics: {metrics}
+Triggered alerts: {triggered}
+
+Write an executive risk briefing with: severity assessment, interconnected risk analysis, and top 3 immediate actions."""
+        }]
+    )
+    return response.content[0].text
+
+metrics = {
+    "cash_runway_months": 4.5,
+    "monthly_burn_rate_increase_pct": 22,
+    "top_customer_revenue_concentration_pct": 35,
+    "accounts_receivable_days": 75,
+}
+briefing = assess_risks(metrics)
+print(briefing)
+```
+:::
+
+::: {.callout-warning collapse="true"}
+## Implementation — Low/NoCode
+**Stack:** Stripe + QuickBooks API + n8n + Claude API + PagerDuty + Slack
+
+1. **Daily Fetch**: n8n pulls financial metrics from Stripe (MRR, churn), QuickBooks (burn rate, AR), and the CRM (customer concentration).
+2. **Threshold Check**: n8n compares each metric against predefined thresholds using a Code node.
+3. **Synthesis**: Triggered alerts + all metrics are sent to Claude for a narrative risk assessment.
+4. **Escalation**:
+   - CRITICAL → PagerDuty incident + direct Slack DM to CFO and CEO.
+   - WARNING → Weekly summary posted to `#finance-alerts`.
+:::

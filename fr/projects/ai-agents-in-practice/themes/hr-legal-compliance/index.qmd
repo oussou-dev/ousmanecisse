@@ -1,0 +1,203 @@
+---
+title: "RH, Légal & Conformité"
+translation-url: "projects/ai-agents-in-practice/themes/hr-legal-compliance/index.html"
+description: "Des agents qui rationalisent le recrutement, la revue de contrats et les workflows de conformité réglementaire."
+image: "/img/ai-agents-in-practice/hr-legal-compliance.jpg"
+lang: fr
+format: html
+---
+
+# Agents RH, Légal & Conformité
+
+Des workflows à fort enjeu, saturés de documents, qui nécessitent traditionnellement une expertise humaine coûteuse. Ces agents accélèrent le traitement tout en maintenant la rigueur requise dans les contextes légaux et RH.
+
+## 🛠 Cas d'Usage Actifs
+
+---
+
+### 📋 Agent de Présélection et Classement de CV
+
+::: {.callout-note collapse="true"}
+## Description
+Un agent qui traite un lot de CV face à une description de poste, note chaque candidat sur des critères pertinents (adéquation compétences, niveau d'expérience, trajectoire de carrière) et produit une short-list classée avec des justifications structurées. Il réduit le temps de présélection de jours à minutes, tout en appliquant des critères d'évaluation cohérents et neutres.
+:::
+
+::: {.callout-tip collapse="true"}
+## Implémentation — Python
+```python
+import PyPDF2
+import json
+from anthropic import Anthropic
+
+client = Anthropic()
+
+def extraire_texte_pdf(chemin: str) -> str:
+    with open(chemin, "rb") as f:
+        reader = PyPDF2.PdfReader(f)
+        return " ".join([page.extract_text() for page in reader.pages])
+
+def noter_candidat(texte_cv: str, description_poste: str) -> dict:
+    response = client.messages.create(
+        model="claude-sonnet-4-6",
+        max_tokens=1024,
+        system="""Tu es un assistant RH objectif. Évalue les candidats équitablement sur les compétences et l'expérience uniquement.
+Ne tiens jamais compte de : l'âge, le genre, la nationalité ou l'année d'obtention du diplôme.
+Retourne un objet JSON valide.""",
+        messages=[{
+            "role": "user",
+            "content": f"""Description du poste :
+{description_poste}
+
+CV du candidat :
+{texte_cv[:3000]}
+
+Retourne du JSON :
+{{
+  "score_global": 0-100,
+  "adequation_competences": 0-100,
+  "pertinence_experience": 0-100,
+  "points_forts": ["...", "..."],
+  "lacunes": ["...", "..."],
+  "recommandation": "Oui fortement / Oui / Peut-être / Non",
+  "resume": "Justification en 2-3 phrases"
+}}"""
+        }]
+    )
+    return json.loads(response.content[0].text)
+
+fiche_poste = "Ingénieur Python Senior, 5+ ans d'expérience en systèmes distribués et architectures cloud-native."
+texte_cv = extraire_texte_pdf("candidats/jean_dupont.pdf")
+resultat = noter_candidat(texte_cv, fiche_poste)
+print(resultat)
+```
+:::
+
+::: {.callout-warning collapse="true"}
+## Implémentation — Low/NoCode
+**Stack :** Typeform + Make + Claude API + Airtable
+
+1. **Collecte** : Les candidats postulent via un Typeform qui accepte les uploads de CV.
+2. **Traitement** : Make se déclenche sur les nouvelles soumissions, extrait le texte PDF via un module parseur.
+3. **Notation** : Texte CV + description de poste envoyés à Claude API. La réponse JSON structurée est parsée.
+4. **Base de données** : Score, points forts, lacunes et recommandation de chaque candidat stockés dans Airtable.
+5. **Short-list** : Une vue Airtable filtre automatiquement les candidats avec `score_global >= 70` pour revue du recruteur.
+:::
+
+---
+
+### 📜 Agent de Revue de Contrats & Analyse des Risques
+
+::: {.callout-note collapse="true"}
+## Description
+Un agent qui lit des contrats (NDAs, contrats de services, contrats fournisseurs) et identifie les clauses risquées : plafonds de responsabilité défavorables, renouvellements automatiques, ambiguïtés sur la propriété IP, et protections standard manquantes. Il produit un résumé des clauses classées par risque — un premier passage puissant avant la revue juridique.
+:::
+
+::: {.callout-tip collapse="true"}
+## Implémentation — Python
+```python
+import PyPDF2
+from anthropic import Anthropic
+
+client = Anthropic()
+
+CADRE_RISQUE = """
+Évalue ces catégories de risque :
+1. RESPONSABILITÉ : Responsabilité illimitée, étendue de l'indemnisation
+2. PI : Portée de la cession de PI, clauses work-for-hire
+3. RÉSILIATION : Délais de préavis, résiliation pour convenance, pénalités
+4. RENOUVELLEMENT AUTO : Conditions de renouvellement, fenêtres d'opt-out
+5. JURIDICTION : Droit applicable, lieu de résolution des litiges
+6. DONNÉES : Propriété des données, obligations RGPD, notification de violation
+"""
+
+def reviser_contrat(texte_contrat: str, nom_entreprise: str) -> str:
+    response = client.messages.create(
+        model="claude-opus-4-6",
+        max_tokens=4000,
+        system=f"""Tu es un spécialiste de la revue de contrats travaillant pour le compte de {nom_entreprise}.
+{CADRE_RISQUE}
+Signale les problèmes comme : 🔴 RISQUE ÉLEVÉ | 🟡 RISQUE MOYEN | 🟢 FAIBLE RISQUE / Standard.
+Cite toujours le texte exact du contrat avant d'expliquer le risque.""",
+        messages=[{
+            "role": "user",
+            "content": f"Révise ce contrat :\n\n{texte_contrat[:6000]}"
+        }]
+    )
+    return response.content[0].text
+
+with open("contrats/accord_fournisseur.pdf", "rb") as f:
+    reader = PyPDF2.PdfReader(f)
+    texte_contrat = " ".join([p.extract_text() for p in reader.pages])
+
+rapport = reviser_contrat(texte_contrat, "Acme Corp")
+print(rapport)
+```
+:::
+
+::: {.callout-warning collapse="true"}
+## Implémentation — Low/NoCode
+**Stack :** Make + Upload PDF + Claude API + Notion + Slack
+
+1. **Déclencheur** : Un nouveau PDF de contrat est déposé dans un dossier Google Drive dédié.
+2. **Extraction** : Make utilise un parseur PDF pour extraire le texte du contrat.
+3. **Revue** : Le texte est envoyé à Claude avec le cadre d'évaluation des risques dans le system prompt.
+4. **Rapport** : Le rapport de risque est sauvegardé comme page Notion taggée par type de contrat et niveau de risque.
+5. **Alerte** : Si des clauses à RISQUE ÉLEVÉ sont trouvées, une alerte Slack est envoyée immédiatement à l'équipe juridique.
+:::
+
+---
+
+### ✅ Vérificateur de Conformité aux Politiques
+
+::: {.callout-note collapse="true"}
+## Description
+Un agent qui croise les politiques internes de l'entreprise (règlement intérieur, politique de gouvernance des données, règles d'achat) avec des pratiques réelles, documents ou demandes, pour signaler les non-conformités. Cas d'usage : vérification des notes de frais par rapport à la politique voyages, validation des dossiers fournisseurs par rapport aux règles d'achats.
+:::
+
+::: {.callout-tip collapse="true"}
+## Implémentation — Python
+```python
+from anthropic import Anthropic
+
+client = Anthropic()
+
+def verifier_conformite(document: str, texte_politique: str, nom_politique: str) -> str:
+    response = client.messages.create(
+        model="claude-sonnet-4-6",
+        max_tokens=1500,
+        system=f"Tu es un responsable de la conformité révisant des documents par rapport à la '{nom_politique}'. Sois précis : cite les règles exactes. Retourne une analyse structurée.",
+        messages=[{
+            "role": "user",
+            "content": f"""Politique ({nom_politique}) :
+{texte_politique[:2000]}
+
+Document à vérifier :
+{document[:2000]}
+
+Fournis :
+1. Éléments CONFORMES (avec référence à la politique)
+2. Éléments NON CONFORMES (avec référence et sévérité)
+3. Informations MANQUANTES requises par la politique
+4. Verdict global : CONFORME / PARTIELLEMENT CONFORME / NON CONFORME"""
+        }]
+    )
+    return response.content[0].text
+
+politique_voyages = open("politiques/politique_frais_voyages.txt").read()
+note_frais = open("notes_frais/mars_2026_jean.txt").read()
+resultat = verifier_conformite(note_frais, politique_voyages, "Politique Frais & Voyages")
+print(resultat)
+```
+:::
+
+::: {.callout-warning collapse="true"}
+## Implémentation — Low/NoCode
+**Stack :** Google Forms + Make + Claude API + Google Sheets + Email
+
+1. **Soumission** : Les employés soumettent leurs notes de frais ou demandes via Google Forms.
+2. **Récupération politique** : Make récupère le document de politique pertinent depuis Google Drive.
+3. **Vérification** : La soumission et la politique sont envoyées à Claude pour analyse de conformité.
+4. **Routage automatique** :
+   - CONFORME → approuvé automatiquement et consigné dans Google Sheets.
+   - NON CONFORME → signalé avec les violations spécifiques, routé vers le manager par email avec l'analyse de Claude.
+:::

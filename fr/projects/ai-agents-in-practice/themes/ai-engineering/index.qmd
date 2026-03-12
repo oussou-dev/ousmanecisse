@@ -1,0 +1,194 @@
+---
+title: "IA & Ingénierie"
+translation-url: "projects/ai-agents-in-practice/themes/ai-engineering/index.html"
+description: "Des agents qui accélèrent le développement logiciel — de la revue de code à la documentation et la génération de tests."
+image: "/img/ai-agents-in-practice/ai-engineering.jpg"
+lang: fr
+format: html
+---
+
+# Agents IA & Ingénierie
+
+Ces agents agissent comme un multiplicateur de force pour les équipes engineering — automatisant les parties répétitives du SDLC et libérant les développeurs pour la résolution créative de problèmes.
+
+## 🛠 Cas d'Usage Actifs
+
+---
+
+### 👨‍💻 Agent de Revue de Code Automatisée
+
+::: {.callout-note collapse="true"}
+## Description
+Un agent intégré dans le pipeline CI/CD qui review les pull requests pour les problèmes de qualité de code, les vulnérabilités de sécurité, les anti-patterns de performance et le respect des conventions d'équipe. Il fournit des retours précis au niveau de la ligne et suggère des réécritures concrètes — réduisant la charge de revue des ingénieurs seniors.
+:::
+
+::: {.callout-tip collapse="true"}
+## Implémentation — Python
+```python
+import subprocess
+from anthropic import Anthropic
+
+client = Anthropic()
+
+def obtenir_diff_pr(branche_base: str = "main") -> str:
+    result = subprocess.run(
+        ["git", "diff", f"{branche_base}...HEAD"],
+        capture_output=True, text=True
+    )
+    return result.stdout[:8000]
+
+def reviser_code(diff: str, conventions: str) -> str:
+    response = client.messages.create(
+        model="claude-opus-4-6",
+        max_tokens=3000,
+        system=f"""Tu es un ingénieur logiciel senior effectuant une revue de code.
+Conventions de l'équipe : {conventions}
+Review pour : vulnérabilités de sécurité, problèmes de performance, code smells, violations de conventions.
+Pour chaque problème : cite la ligne exacte, explique le problème, fournis une version corrigée.""",
+        messages=[{
+            "role": "user",
+            "content": f"Review ce diff de PR :\n\n```diff\n{diff}\n```"
+        }]
+    )
+    return response.content[0].text
+
+conventions = "PEP8, type hints obligatoires, pas de bare except, longueur max de fonction 50 lignes"
+diff = obtenir_diff_pr()
+revue = reviser_code(diff, conventions)
+print(revue)
+```
+:::
+
+::: {.callout-warning collapse="true"}
+## Implémentation — Low/NoCode
+**Stack :** GitHub Actions + Claude API (HTTP) + API Commentaires PR GitHub
+
+1. **Déclencheur** : Une GitHub Action se déclenche sur chaque événement `pull_request` ciblant `main`.
+2. **Diff** : L'action récupère le diff de la PR avec `git diff`.
+3. **Revue** : Le diff est envoyé à Claude API avec les standards de code de l'équipe dans le system prompt.
+4. **Commentaire** : La revue est postée comme commentaire structuré sur la PR via l'API REST GitHub.
+:::
+
+---
+
+### 📖 Générateur de Documentation API
+
+::: {.callout-note collapse="true"}
+## Description
+Un agent qui inspecte une base de code (fonctions Python, routes FastAPI, interfaces TypeScript), comprend l'intention de chaque endpoint depuis son code et ses commentaires, et génère une documentation complète en Markdown ou OpenAPI 3.0. Il maintient la documentation synchronisée avec le code automatiquement.
+:::
+
+::: {.callout-tip collapse="true"}
+## Implémentation — Python
+```python
+import ast
+from anthropic import Anthropic
+
+client = Anthropic()
+
+def extraire_fonctions(source_code: str) -> list:
+    tree = ast.parse(source_code)
+    fonctions = []
+    for node in ast.walk(tree):
+        if isinstance(node, ast.FunctionDef):
+            fonctions.append({
+                "nom": node.name,
+                "args": [arg.arg for arg in node.args.args],
+                "docstring": ast.get_docstring(node) or "",
+                "source": ast.get_source_segment(source_code, node)
+            })
+    return fonctions
+
+def generer_documentation(fonctions: list, nom_module: str) -> str:
+    texte_fonctions = "\n\n".join([
+        f"Fonction : {f['nom']}\nArgs : {f['args']}\nDocstring : {f['docstring']}\nSource :\n{f['source']}"
+        for f in fonctions
+    ])
+    response = client.messages.create(
+        model="claude-sonnet-4-6",
+        max_tokens=4096,
+        system="Tu es un rédacteur technique. Génère une documentation API claire et complète en Markdown. Inclus paramètres, types de retour, exemples et cas limites.",
+        messages=[{
+            "role": "user",
+            "content": f"Génère la documentation pour le module '{nom_module}' :\n\n{texte_fonctions}"
+        }]
+    )
+    return response.content[0].text
+
+with open("api/routes.py") as f:
+    source = f.read()
+
+fonctions = extraire_fonctions(source)
+docs = generer_documentation(fonctions, "routes")
+
+with open("docs/reference-api.md", "w") as f:
+    f.write(docs)
+```
+:::
+
+::: {.callout-warning collapse="true"}
+## Implémentation — Low/NoCode
+**Stack :** GitHub Actions + Claude API + GitHub Pages
+
+1. **Déclencheur** : GitHub Action se déclenche à chaque merge sur `main`.
+2. **Extraction** : L'action liste tous les fichiers `.py` ou `.ts` modifiés et lit leur contenu.
+3. **Génération** : Les contenus de fichiers sont envoyés à Claude API pour générer la documentation Markdown.
+4. **Publication** : Les fichiers Markdown générés sont commités dans `docs/` et déployés sur GitHub Pages automatiquement.
+:::
+
+---
+
+### 🧪 Agent de Génération de Suite de Tests
+
+::: {.callout-note collapse="true"}
+## Description
+Un agent qui lit le code source d'une fonction ou d'un module, infère le comportement attendu, les cas limites et les modes d'échec potentiels, et génère une suite de tests `pytest` complète couvrant les chemins nominaux, les conditions aux bornes et les scénarios d'erreur.
+:::
+
+::: {.callout-tip collapse="true"}
+## Implémentation — Python
+```python
+from anthropic import Anthropic
+
+client = Anthropic()
+
+def generer_tests(source_code: str, chemin_module: str) -> str:
+    response = client.messages.create(
+        model="claude-opus-4-6",
+        max_tokens=3000,
+        system="""Tu es un ingénieur Python senior spécialisé dans les tests.
+Génère des suites de tests pytest complètes.
+Inclus toujours : tests du chemin nominal, cas limites (entrées vides, nulls, bornes), cas d'erreur, et tests paramétrés.
+Utilise les fixtures pytest et unittest.mock si nécessaire.""",
+        messages=[{
+            "role": "user",
+            "content": f"""Génère un fichier de test pytest complet pour ce module ({chemin_module}) :
+
+```python
+{source_code}
+```
+
+Couvre toutes les fonctions avec au moins 3 cas de test chacune."""
+        }]
+    )
+    return response.content[0].text
+
+with open("src/processeur_paiement.py") as f:
+    source = f.read()
+
+tests = generer_tests(source, "src/processeur_paiement.py")
+
+with open("tests/test_processeur_paiement.py", "w") as f:
+    f.write(tests)
+```
+:::
+
+::: {.callout-warning collapse="true"}
+## Implémentation — Low/NoCode
+**Stack :** GitHub Actions + Claude API + pytest (runner CI)
+
+1. **Déclencheur** : Le workflow se déclenche quand une PR ajoute de nouveaux fichiers Python sans fichier de test correspondant.
+2. **Génération** : Le nouveau fichier source est envoyé à Claude API pour générer un fichier `test_*.py`.
+3. **Commit** : Le fichier de test généré est auto-commité sur la branche de la PR.
+4. **Validation** : La CI exécute `pytest` sur les tests générés. Les échecs sont reportés comme commentaire sur la PR.
+:::

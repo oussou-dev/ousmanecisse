@@ -1,0 +1,36 @@
+---
+title: "LegacyLoom — 72 heures au AI Vibe Coding Hackathon"
+date: "2026-03-08"
+categories: [IA, Hackathon, Vibe Coding, Python]
+description: "Préserver les souvenirs de famille via le récit piloté par l'IA. Un aperçu de la création de LegacyLoom en seulement trois jours."
+image: "/img/legacyloom-banner.jpg"
+translation-url: "posts/legacyloom-hackathon/index.html"
+lang: fr
+---
+
+# L'aventure LegacyLoom
+
+J'ai récemment participé au **AI Vibe Coding Hackathon** (6-8 mars 2026), et ce fut une expérience incroyable. Avec mon équipe d'agents IA et de collaborateurs humains, nous avons construit **LegacyLoom** — une plateforme conçue pour transformer les souvenirs de famille qui s'effacent en récits numériques intemporels.
+
+## Le problème : \"Leurs histoires n'attendent pas\"
+
+Chaque jour, l'histoire précieuse de nos familles se perd lorsque nos aînés nous quittent. Les traditions orales sont belles mais fragiles. Nous voulions construire quelque chose qui puisse combler le fossé entre une conversation informelle et un héritage préservé.
+
+## La solution : LegacyLoom
+
+LegacyLoom utilise l'IA pour :
+1.  **Capturer** : Prendre des enregistrements vocaux bruts ou des notes textuelles sur un souvenir de famille.
+2.  **Transcrire & Affiner** : Utiliser des LLM pour structurer ces notes en un récit émouvant et cohérent.
+3.  **Animer** : Générer des images et des voix off pour créer un "souvenir cinématographique".
+
+## Construction en 72 Heures
+
+Nous avons suivi la philosophie du "Vibe Coding" — nous concentrer sur l'émotion et l'ambiance de l'application avant de nous perdre dans l'architecture. Grâce à des workflows agentiques avancés, nous avons pu :
+- Construire une application full-stack avec un frontend React et un backend Python.
+- Intégrer ElevenLabs pour la synthèse vocale et Fal.ai pour la génération vidéo.
+- Déployer le tout sur Vercel et Cloudflare.
+
+### 🔗 [Voir la démo en direct](https://legacyloom-nine.vercel.app/)
+### 📝 [Lire la soumission complète du Hackathon sur Skool](https://www.skool.com/hackathon/legacyloom-their-stories-wont-wait)
+
+!["Bannière LegacyLoom"](/img/legacyloom-banner.jpg)

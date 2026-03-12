@@ -1,0 +1,190 @@
+---
+title: "Data & Automatisation"
+translation-url: "projects/ai-agents-in-practice/themes/data-automation/index.html"
+description: "Des agents intelligents qui construisent et maintiennent des pipelines de données, surveillent la qualité et automatisent le reporting."
+image: "/img/ai-agents-in-practice/data-automation.jpg"
+lang: fr
+format: html
+---
+
+# Agents Data & Automatisation
+
+Ces agents gèrent le travail ingrat mais critique de l'ingénierie de données — construire des pipelines fiables, détecter les anomalies et délivrer des insights sans intervention humaine.
+
+## 🛠 Cas d'Usage Actifs
+
+---
+
+### 🔄 Agent Orchestrateur de Pipeline ETL
+
+::: {.callout-note collapse="true"}
+## Description
+Un agent qui surveille les schémas de plusieurs sources de données, détecte les changements cassants (colonnes renommées, changements de type, nouvelles valeurs nulles), adapte automatiquement la logique de transformation et alerte l'équipe data. Il agit comme une couche de pipeline ETL auto-réparatrice.
+:::
+
+::: {.callout-tip collapse="true"}
+## Implémentation — Python
+```python
+from anthropic import Anthropic
+
+client = Anthropic()
+
+def detecter_changements_schema(ancien: dict, nouveau: dict) -> str:
+    changements = []
+    for col in ancien:
+        if col not in nouveau:
+            changements.append(f"SUPPRIMÉE : {col}")
+        elif ancien[col] != nouveau[col]:
+            changements.append(f"TYPE MODIFIÉ : {col} ({ancien[col]} -> {nouveau[col]})")
+    for col in nouveau:
+        if col not in ancien:
+            changements.append(f"NOUVELLE : {col} ({nouveau[col]})")
+    return "\n".join(changements) if changements else "Aucun changement détecté."
+
+def corriger_pipeline(code_transformation: str, changements: str) -> str:
+    response = client.messages.create(
+        model="claude-sonnet-4-6",
+        max_tokens=2048,
+        system="Tu es un ingénieur data senior. Corrige le code de transformation Python/pandas pour gérer les changements de schéma. Retourne uniquement du code Python valide.",
+        messages=[{
+            "role": "user",
+            "content": f"""Changements de schéma détectés :
+{changements}
+
+Code de transformation actuel :
+```python
+{code_transformation}
+```
+
+Réécris le code pour gérer ces changements avec rétrocompatibilité."""
+        }]
+    )
+    return response.content[0].text
+```
+:::
+
+::: {.callout-warning collapse="true"}
+## Implémentation — Low/NoCode
+**Stack :** Airbyte + n8n + Claude API + PagerDuty
+
+1. **Surveillance** : n8n interroge les logs de synchronisation Airbyte toutes les heures.
+2. **Diagnostic** : En cas d'échec, le log d'erreur est envoyé à Claude qui identifie la cause racine et suggère un correctif.
+3. **Alerte** : Une alerte structurée (cause + correctif suggéré + tables impactées) est envoyée à PagerDuty et Slack.
+4. **Auto-correction** : Pour les cas simples, Claude génère un patch dbt soumis pour revue.
+:::
+
+---
+
+### 🧹 Agent de Surveillance de la Qualité des Données
+
+::: {.callout-note collapse="true"}
+## Description
+Un agent qui exécute des contrôles automatisés de qualité des données (complétude, unicité, intégrité référentielle, anomalies statistiques), explique les problèmes en langage clair, les trace jusqu'aux causes en amont, et priorise les corrections selon l'impact métier.
+:::
+
+::: {.callout-tip collapse="true"}
+## Implémentation — Python
+```python
+import pandas as pd
+import numpy as np
+from anthropic import Anthropic
+
+client = Anthropic()
+
+def executer_controles_qualite(df: pd.DataFrame) -> dict:
+    controles = {
+        "nombre_lignes": len(df),
+        "pourcentages_nulls": (df.isnull().sum() / len(df) * 100).to_dict(),
+        "lignes_dupliquees": int(df.duplicated().sum()),
+    }
+    for col in df.select_dtypes(include=[np.number]).columns:
+        mean, std = df[col].mean(), df[col].std()
+        outliers = df[abs(df[col] - mean) > 3 * std][col].count()
+        controles[f"{col}_outliers_3sigma"] = int(outliers)
+    return controles
+
+def expliquer_problemes(controles: dict, table: str, contexte: str) -> str:
+    response = client.messages.create(
+        model="claude-sonnet-4-6",
+        max_tokens=1500,
+        system="Tu es un expert en qualité de données. Explique les problèmes en langage clair, priorisés par impact métier.",
+        messages=[{
+            "role": "user",
+            "content": f"Table : {table}\nContexte : {contexte}\n\nContrôles qualité :\n{controles}\n\nExplique les principaux problèmes et leurs causes probables."
+        }]
+    )
+    return response.content[0].text
+```
+:::
+
+::: {.callout-warning collapse="true"}
+## Implémentation — Low/NoCode
+**Stack :** Great Expectations (GX Cloud) + n8n + Claude API + Notion
+
+1. **Exécution quotidienne** : n8n déclenche une suite de validation Great Expectations sur les tables clés chaque matin.
+2. **Contrôles échoués** : n8n récupère le rapport de validation GX pour les attentes non satisfaites.
+3. **Explication** : Les contrôles échoués sont envoyés à Claude, qui produit un résumé en langage clair avec sévérité et causes.
+4. **Suivi** : Les problèmes sont consignés dans un tableau de bord Qualité Données Notion (Nouveau/En cours/Résolu).
+:::
+
+---
+
+### 📊 Agent de Reporting KPI Automatisé
+
+::: {.callout-note collapse="true"}
+## Description
+Un agent qui récupère les données KPI depuis plusieurs sources (bases de données, plateformes analytics, CRM), compare la performance actuelle aux objectifs et benchmarks historiques, identifie les écarts significatifs et rédige un résumé narratif exécutif — remplaçant le cycle de reporting manuel hebdomadaire ou mensuel.
+:::
+
+::: {.callout-tip collapse="true"}
+## Implémentation — Python
+```python
+from anthropic import Anthropic
+
+client = Anthropic()
+
+def generer_rapport_kpi(kpis: dict, periode: str, objectifs: dict) -> str:
+    ecarts = {}
+    for metrique, valeur in kpis.items():
+        if metrique in objectifs:
+            ecart_pct = ((valeur - objectifs[metrique]) / objectifs[metrique]) * 100
+            ecarts[metrique] = {
+                "valeur": valeur,
+                "objectif": objectifs[metrique],
+                "ecart_pct": round(ecart_pct, 1)
+            }
+
+    response = client.messages.create(
+        model="claude-sonnet-4-6",
+        max_tokens=2000,
+        system="Tu es un analyste business rédigeant des rapports exécutifs concis. Mets en valeur les succès, les problèmes et les recommandations.",
+        messages=[{
+            "role": "user",
+            "content": f"""Période : {periode}
+Performance KPI vs Objectifs : {ecarts}
+
+Rédige un rapport exécutif avec :
+1. Résumé exécutif (3 phrases max)
+2. Métriques vertes (à/au-dessus de l'objectif)
+3. Métriques rouges avec causes probables
+4. Top 3 des actions recommandées"""
+        }]
+    )
+    return response.content[0].text
+
+kpis = {"MRR": 48200, "Taux_Churn": 3.2, "NPS": 42, "CAC": 380}
+objectifs = {"MRR": 50000, "Taux_Churn": 2.5, "NPS": 45, "CAC": 350}
+rapport = generer_rapport_kpi(kpis, "Février 2026", objectifs)
+```
+:::
+
+::: {.callout-warning collapse="true"}
+## Implémentation — Low/NoCode
+**Stack :** Google Looker Studio + Make + Claude API + Google Slides + Slack
+
+1. **Planification** : Make s'exécute chaque lundi à 7h.
+2. **Récupération** : Les données sont extraites de BigQuery, Stripe et HubSpot via des connecteurs API.
+3. **Analyse** : Les KPI vs objectifs sont calculés dans Make, puis envoyés à Claude pour la génération narrative.
+4. **Construction** : Une présentation Google Slides est auto-générée avec le narratif inséré.
+5. **Livraison** : Le lien du rapport PDF est posté sur le canal Slack `#direction`.
+:::

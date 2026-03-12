@@ -1,0 +1,169 @@
+---
+title: "Rédaction & Contenu"
+translation-url: "projects/ai-agents-in-practice/themes/writing-content/index.html"
+description: "Des agents IA qui génèrent, éditent et distribuent du contenu à grande échelle — des articles aux newsletters."
+image: "/img/ai-agents-in-practice/writing-content.jpg"
+lang: fr
+format: html
+---
+
+# Agents Rédaction & Contenu
+
+De la rédaction à la publication, ces agents gèrent l'intégralité du cycle de vie du contenu. Ils ne se contentent pas d'écrire — ils recherchent, structurent, optimisent et distribuent.
+
+## 🛠 Cas d'Usage Actifs
+
+---
+
+### 📝 Agent de Génération d'Articles Long Format
+
+::: {.callout-note collapse="true"}
+## Description
+Un agent qui prend un sujet ou un mot-clé en entrée, effectue des recherches web, construit un plan structuré, et produit un article long format prêt à publier (1 500 à 3 000 mots). Il intègre les contraintes SEO (densité de mots-clés, méta-description, structure H2/H3) et adapte le ton à la voix de marque définie dans le system prompt.
+:::
+
+::: {.callout-tip collapse="true"}
+## Implémentation — Python
+```python
+from anthropic import Anthropic
+from duckduckgo_search import DDGS
+
+client = Anthropic()
+
+def rechercher_sujet(sujet: str) -> str:
+    with DDGS() as ddgs:
+        resultats = list(ddgs.text(sujet, max_results=5))
+    return "\n".join([r["body"] for r in resultats])
+
+def generer_article(sujet: str, voix_marque: str) -> str:
+    recherche = rechercher_sujet(sujet)
+    response = client.messages.create(
+        model="claude-opus-4-6",
+        max_tokens=4096,
+        system=f"Tu es un expert en rédaction de contenu. Voix de marque : {voix_marque}. "
+               "Structure toujours les articles avec : Accroche, Problème, Solution, Exemples, CTA.",
+        messages=[{
+            "role": "user",
+            "content": f"Rédige un article SEO de 2 000 mots sur : {sujet}\n\nContexte de recherche :\n{recherche}"
+        }]
+    )
+    return response.content[0].text
+
+article = generer_article("agents IA pour la productivité", "professionnel mais accessible")
+```
+:::
+
+::: {.callout-warning collapse="true"}
+## Implémentation — Low/NoCode
+**Stack :** Make (Integromat) + Perplexity AI + Claude API + Notion
+
+1. **Déclencheur** : Nouvelle ligne ajoutée dans un Google Sheet avec un sujet et un mot-clé cible.
+2. **Recherche** : Make appelle l'API Perplexity AI pour obtenir un contexte de recherche à jour.
+3. **Rédaction** : Le contexte est envoyé à Claude via le module HTTP avec la voix de marque dans le system prompt.
+4. **Stockage** : L'article final est sauvegardé comme nouvelle page Notion avec le statut "Brouillon".
+5. **Optionnel** : Une notification Slack est envoyée à l'éditeur pour relecture.
+:::
+
+---
+
+### 📱 Usine à Contenu Réseaux Sociaux
+
+::: {.callout-note collapse="true"}
+## Description
+Un agent qui transforme un article ou document source en une suite complète de publications adaptées à chaque plateforme : thread Twitter/X, plan de carrousel LinkedIn, légende Instagram, et script vidéo courte durée. Il maintient la cohérence du message tout en adaptant format et ton aux normes de chaque réseau.
+:::
+
+::: {.callout-tip collapse="true"}
+## Implémentation — Python
+```python
+from anthropic import Anthropic
+
+client = Anthropic()
+
+PLATEFORMES = {
+    "thread_twitter": "Un thread de 5 tweets. Chaque tweet max 280 caractères. Commence par une accroche. Termine par un CTA.",
+    "linkedin": "Un post LinkedIn (300 mots max). Ton professionnel. Sauts de ligne pour la lisibilité. 3 hashtags.",
+    "instagram": "Une légende Instagram avec emojis, une accroche forte, et 5 hashtags pertinents.",
+    "script_video": "Un script vidéo de 60 secondes (accroche 5s, contenu 45s, CTA 10s). Ton conversationnel."
+}
+
+def creer_suite_contenu(texte_source: str) -> dict:
+    resultats = {}
+    for plateforme, instructions in PLATEFORMES.items():
+        response = client.messages.create(
+            model="claude-sonnet-4-6",
+            max_tokens=1024,
+            messages=[{
+                "role": "user",
+                "content": f"Sur la base de ce contenu :\n{texte_source}\n\nCrée : {instructions}"
+            }]
+        )
+        resultats[plateforme] = response.content[0].text
+    return resultats
+```
+:::
+
+::: {.callout-warning collapse="true"}
+## Implémentation — Low/NoCode
+**Stack :** Zapier + Claude API + Buffer
+
+1. **Déclencheur** : Un nouvel article est publié sur WordPress (ou une page Notion passe à "Prêt").
+2. **Extraction** : Zapier récupère le corps de l'article via l'API WordPress.
+3. **Génération** : Quatre appels parallèles à Claude API génèrent du contenu adapté à chaque plateforme.
+4. **Planification** : Chaque publication est envoyée à Buffer comme post planifié à l'horaire optimal.
+:::
+
+---
+
+### ✉️ Agent d'Automatisation de Newsletter
+
+::: {.callout-note collapse="true"}
+## Description
+Un agent qui surveille chaque semaine un ensemble de flux RSS, sélectionne les 5 à 7 éléments les plus pertinents selon un focus éditorial prédéfini, rédige un résumé pour chacun, et assemble un brouillon de newsletter prêt à envoyer. Il réduit le temps de curation de plusieurs heures à quelques minutes.
+:::
+
+::: {.callout-tip collapse="true"}
+## Implémentation — Python
+```python
+import feedparser
+from anthropic import Anthropic
+
+client = Anthropic()
+
+FLUX_RSS = [
+    "https://feeds.feedburner.com/oreilly/radar",
+    "https://www.deeplearning.ai/the-batch/feed/",
+]
+
+def recuperer_articles(flux: list, max_par_flux: int = 3) -> list:
+    articles = []
+    for url in flux:
+        feed = feedparser.parse(url)
+        for entry in feed.entries[:max_par_flux]:
+            articles.append({"titre": entry.title, "resume": entry.summary[:500]})
+    return articles
+
+def construire_newsletter(articles: list, focus: str) -> str:
+    texte_articles = "\n\n".join([f"- {a['titre']} : {a['resume']}" for a in articles])
+    response = client.messages.create(
+        model="claude-sonnet-4-6",
+        max_tokens=2048,
+        system=f"Tu es un éditeur de newsletter. Focus éditorial : {focus}. Écris avec un ton chaleureux et expert.",
+        messages=[{
+            "role": "user",
+            "content": f"Sélectionne les 5 meilleurs éléments et rédige un digest de newsletter :\n\n{texte_articles}"
+        }]
+    )
+    return response.content[0].text
+```
+:::
+
+::: {.callout-warning collapse="true"}
+## Implémentation — Low/NoCode
+**Stack :** n8n + Nœuds RSS Feed + Claude API + Mailchimp
+
+1. **Planification** : Le cron n8n se déclenche chaque lundi à 8h.
+2. **Récupération** : Les nœuds RSS Feed récupèrent les derniers articles de chaque source.
+3. **Curation** : Les articles sont envoyés à Claude pour sélectionner les meilleurs et rédiger les résumés.
+4. **Brouillon** : La newsletter est créée comme campagne brouillon dans Mailchimp, prête pour relecture avant envoi.
+:::

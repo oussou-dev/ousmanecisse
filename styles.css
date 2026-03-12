@@ -463,21 +463,19 @@
   }
 }
 
-/* Ensure project listing images are fully visible */
+/* Ensure project listing images are fully visible and seamless */
 .quarto-grid-item .card-img-top img,
 .quarto-grid-item .thumbnail-image img {
-  object-fit: contain !important;
-  background-color: #ffffff;
-  /* Neutral background to avoid ugly gaps */
-  padding: 5px;
-  /* Subtle padding */
+  object-fit: cover !important;
+  background-color: transparent;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
 @media (prefers-color-scheme: dark) {
-
   .quarto-grid-item .card-img-top img,
   .quarto-grid-item .thumbnail-image img {
-    background-color: #1e293b;
+    background-color: transparent;
   }
 }
 

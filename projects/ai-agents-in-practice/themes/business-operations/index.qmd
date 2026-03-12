@@ -1,0 +1,42 @@
+---
+title: "Business Operations"
+translation-url: "fr/projects/ai-agents-in-practice/themes/business-operations/index.html"
+description: "Streamlining organizational workflows and automating back-office processes with intelligent agents."
+image: "/img/ai-agents-in-practice/business-ops.jpg"
+lang: en
+---
+
+# Business Operations Agents
+
+From supply chain monitoring to automated financial reporting, these agents handle the "heavy lifting" of corporate workflows.
+
+## 🛠 Active Use Cases
+
+### 📊 Automated Market Intelligence
+
+::: {.callout-note collapse="true"}
+## Description
+An agent that scrapes competitor websites, news outlets, and financial reports to provide a daily summarized report of market trends, price changes, and strategic moves.
+:::
+
+::: {.callout-tip collapse="true"}
+## Implementation Example
+A combination of **LangChain** and **Playwright** (or a scraping MCP server).
+1.  **Input**: List of competitor URLs.
+2.  **Process**: The agent visits the URLs, extracts text, and uses a Map-Reduce approach to summarize the most relevant findings.
+3.  **Output**: A structured Slack notification or an entry in a Notion database.
+:::
+
+---
+
+### 🧾 Intelligent Invoice Processing
+
+::: {.callout-note collapse="true"}
+## Description
+Automated extraction of data from heterogeneous invoice formats (PDFs, images) and reconciliation with purchase orders in an ERP system.
+:::
+
+::: {.callout-tip collapse="true"}
+## Implementation Example
+Using **GPT-4o with Vision** to parse the invoice structure and an agentic loop to verify totals and tax calculations before pushing to an accounting API.
+:::

@@ -1,0 +1,227 @@
+---
+title: "Advanced & Creative"
+translation-url: "fr/projects/ai-agents-in-practice/themes/advanced-creative/index.html"
+description: "Multi-agent architectures and creative AI applications pushing the frontier of what agents can do."
+image: "/img/ai-agents-in-practice/advanced-creative.jpg"
+lang: en
+format: html
+---
+
+# Advanced & Creative Agents
+
+These agents go beyond single-task automation. They represent the frontier of agentic AI: multi-agent collaboration, creative co-creation, and emergent problem-solving.
+
+## 🛠 Active Use Cases
+
+---
+
+### 🤖 Multi-Agent Collaborative Storytelling
+
+::: {.callout-note collapse="true"}
+## Description
+A system of specialized agents that collaborate to produce rich, coherent long-form narratives. A **Planner Agent** sets the story arc and characters. A **Writer Agent** drafts scene by scene. A **Critic Agent** reviews for consistency and engagement. A **Continuity Agent** maintains a world-state memory to prevent contradictions. This architecture produces quality that exceeds a single LLM call.
+:::
+
+::: {.callout-tip collapse="true"}
+## Implementation — Python
+```python
+from anthropic import Anthropic
+
+client = Anthropic()
+
+def planner_agent(premise: str) -> str:
+    response = client.messages.create(
+        model="claude-opus-4-6",
+        max_tokens=1024,
+        system="You are a story architect. Create tight story structures.",
+        messages=[{"role": "user", "content": f"Create a 3-act structure and 3 main characters for: {premise}"}]
+    )
+    return response.content[0].text
+
+def writer_agent(story_plan: str, scene_number: int, world_state: str) -> str:
+    response = client.messages.create(
+        model="claude-opus-4-6",
+        max_tokens=1500,
+        system="You are a literary author. Write vivid, emotionally resonant scenes.",
+        messages=[{"role": "user", "content": f"Plan:\n{story_plan}\n\nWorld state:\n{world_state}\n\nWrite scene {scene_number}."}]
+    )
+    return response.content[0].text
+
+def critic_agent(scene: str) -> str:
+    response = client.messages.create(
+        model="claude-sonnet-4-6",
+        max_tokens=512,
+        system="You are a literary editor. Be specific and actionable.",
+        messages=[{"role": "user", "content": f"Review this scene for pacing, emotion, and show-don't-tell:\n\n{scene}\n\nProvide 3 specific improvements."}]
+    )
+    return response.content[0].text
+
+def update_world_state(world_state: str, new_scene: str) -> str:
+    response = client.messages.create(
+        model="claude-haiku-4-5-20251001",
+        max_tokens=256,
+        system="Extract and update story facts concisely.",
+        messages=[{"role": "user", "content": f"Current state:\n{world_state}\n\nNew scene:\n{new_scene}\n\nUpdate the world state."}]
+    )
+    return response.content[0].text
+
+# Orchestration
+premise = "A retired astronaut discovers her late husband's AI still runs on an abandoned space station."
+plan = planner_agent(premise)
+world_state = "Characters established. Station: ISS-Omega. Year: 2041."
+
+for scene_num in range(1, 4):
+    draft = writer_agent(plan, scene_num, world_state)
+    feedback = critic_agent(draft)
+    world_state = update_world_state(world_state, draft)
+    print(f"--- Scene {scene_num} ---\n{draft}\n\nEditor notes:\n{feedback}\n")
+```
+:::
+
+::: {.callout-warning collapse="true"}
+## Implementation — Low/NoCode
+**Stack:** n8n + Claude API (multiple calls) + Notion + Airtable (world state)
+
+1. **Setup**: An Airtable base stores the world state (character facts, locations, plot events).
+2. **Planner**: First Claude API call generates the story plan and character sheets, saved to Notion.
+3. **Writer Loop**: For each scene, n8n: fetches world state from Airtable → calls Claude to write → calls Claude again to review.
+4. **State Update**: After each approved scene, Airtable records are updated with new story facts.
+5. **Assembly**: Once all scenes are written, n8n concatenates them into a final Notion document.
+:::
+
+---
+
+### 🎨 AI Art Direction & Prompt Engineering Agent
+
+::: {.callout-note collapse="true"}
+## Description
+An agent that transforms a high-level creative brief (brand, mood, target audience, campaign objective) into a suite of optimized image generation prompts for Midjourney, DALL-E, or Stable Diffusion. It handles style consistency across a campaign, generates variants for A/B testing, and iterates based on feedback — acting as an AI art director.
+:::
+
+::: {.callout-tip collapse="true"}
+## Implementation — Python
+```python
+from anthropic import Anthropic
+
+client = Anthropic()
+
+def generate_prompts(brief: dict) -> str:
+    response = client.messages.create(
+        model="claude-sonnet-4-6",
+        max_tokens=2000,
+        system="""You are a world-class art director and prompt engineer.
+Generate precise, detailed image prompts for AI image generators.
+Each prompt should specify: subject, style, lighting, color palette, mood, technical parameters (aspect ratio, quality modifiers).""",
+        messages=[{
+            "role": "user",
+            "content": f"""Creative brief:
+Brand: {brief['brand']}
+Campaign: {brief['campaign']}
+Mood: {brief['mood']}
+Target audience: {brief['audience']}
+Platforms: {brief['platforms']}
+
+Generate 5 diverse prompts (hero image, 2 variants, mobile crop, social square).
+Format each for Midjourney (include --ar, --style, --v 6.1 parameters)."""
+        }]
+    )
+    return response.content[0].text
+
+def iterate_on_feedback(original_prompt: str, feedback: str) -> str:
+    response = client.messages.create(
+        model="claude-sonnet-4-6",
+        max_tokens=512,
+        messages=[{
+            "role": "user",
+            "content": f"Original prompt: {original_prompt}\n\nFeedback: {feedback}\n\nRewrite the prompt incorporating this feedback."
+        }]
+    )
+    return response.content[0].text
+
+brief = {
+    "brand": "EcoFlow — premium sustainable outdoor gear",
+    "campaign": "Spring 2026 collection launch",
+    "mood": "adventurous, clean, hopeful, connected to nature",
+    "audience": "25-40 outdoor enthusiasts, eco-conscious",
+    "platforms": "Instagram, Pinterest, Web hero banner"
+}
+prompts = generate_prompts(brief)
+print(prompts)
+```
+:::
+
+::: {.callout-warning collapse="true"}
+## Implementation — Low/NoCode
+**Stack:** Airtable + Make + Claude API + DALL-E API + Canva API
+
+1. **Brief Input**: Creative team fills an Airtable form with campaign brief fields.
+2. **Prompt Generation**: Make triggers, sends the brief to Claude API, which returns 5 structured prompts.
+3. **Image Generation**: Each prompt is sent to the DALL-E 3 API.
+4. **Review Board**: Generated images + prompts are organized in an Airtable gallery view for art director review.
+5. **Iteration**: Rejected images trigger a Make sub-scenario that sends feedback to Claude for prompt revision.
+:::
+
+---
+
+### 🚀 Product Ideation & Validation Agent
+
+::: {.callout-note collapse="true"}
+## Description
+A multi-perspective agent that evaluates product ideas from four angles simultaneously: Market Opportunity, Technical Feasibility, Business Model Viability, and User Desirability. It synthesizes these into a structured investment memo, accelerating early-stage product decisions.
+:::
+
+::: {.callout-tip collapse="true"}
+## Implementation — Python
+```python
+from anthropic import Anthropic
+import concurrent.futures
+
+client = Anthropic()
+
+ANALYSTS = {
+    "market": "You are a venture capitalist specializing in market analysis. Assess TAM, competition, and market timing with specific data points.",
+    "technical": "You are a CTO with 20 years experience. Assess technical feasibility, build timeline, and key technical risks.",
+    "business": "You are a CFO and business model expert. Assess monetization options, unit economics, and path to profitability.",
+    "user": "You are a UX researcher specializing in Jobs-to-be-Done. Assess pain point intensity, user segments, and willingness to pay.",
+}
+
+def analyze_from_perspective(idea: str, role: str, system_prompt: str) -> tuple:
+    response = client.messages.create(
+        model="claude-opus-4-6",
+        max_tokens=800,
+        system=system_prompt,
+        messages=[{"role": "user", "content": f"Evaluate this product idea critically: {idea}"}]
+    )
+    return role, response.content[0].text
+
+def synthesize_analyses(idea: str, analyses: dict) -> str:
+    analyses_text = "\n\n".join([f"## {role.upper()}\n{content}" for role, content in analyses.items()])
+    response = client.messages.create(
+        model="claude-opus-4-6",
+        max_tokens=1500,
+        system="You are a product strategy director. Synthesize multi-perspective analyses into a concise investment memo.",
+        messages=[{"role": "user", "content": f"Idea: {idea}\n\n{analyses_text}\n\nWrite a 1-page memo: Verdict (Go/No-Go/Pivot), Key Strengths, Critical Risks, Next Steps."}]
+    )
+    return response.content[0].text
+
+idea = "A subscription app that coaches users through difficult conversations (salary negotiations, conflicts) via real-time voice analysis."
+
+with concurrent.futures.ThreadPoolExecutor() as executor:
+    futures = [executor.submit(analyze_from_perspective, idea, role, prompt) for role, prompt in ANALYSTS.items()]
+    analyses = dict(f.result() for f in concurrent.futures.as_completed(futures))
+
+memo = synthesize_analyses(idea, analyses)
+print(memo)
+```
+:::
+
+::: {.callout-warning collapse="true"}
+## Implementation — Low/NoCode
+**Stack:** Typeform + Make + Claude API (4 parallel calls) + Notion
+
+1. **Input**: A product idea is submitted via a structured Typeform.
+2. **Parallel Analysis**: Make runs 4 parallel HTTP modules, each calling Claude with a different analyst persona.
+3. **Synthesis**: Once all 4 analyses return, a 5th Claude call synthesizes them into the final investment memo.
+4. **Database**: The memo, all 4 analyses, and the original brief are saved to a Notion "Product Ideas" database.
+5. **Scoring**: Notion formula fields compute a composite score from keyword signals in each analysis.
+:::

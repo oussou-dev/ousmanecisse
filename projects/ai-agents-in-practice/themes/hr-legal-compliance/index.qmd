@@ -1,0 +1,203 @@
+---
+title: "HR, Legal & Compliance"
+translation-url: "fr/projects/ai-agents-in-practice/themes/hr-legal-compliance/index.html"
+description: "Agents that streamline hiring, contract review, and regulatory compliance workflows."
+image: "/img/ai-agents-in-practice/hr-legal-compliance.jpg"
+lang: en
+format: html
+---
+
+# HR, Legal & Compliance Agents
+
+High-stakes, document-heavy workflows that traditionally require expensive human expertise. These agents accelerate processing while maintaining the rigor required in legal and HR contexts.
+
+## 🛠 Active Use Cases
+
+---
+
+### 📋 CV Screening & Ranking Agent
+
+::: {.callout-note collapse="true"}
+## Description
+An agent that processes a batch of CVs against a job description, scores each candidate on relevant criteria (skills match, experience level, career trajectory), and produces a ranked shortlist with structured justifications. It reduces screening time from days to minutes while enforcing consistent, bias-aware evaluation.
+:::
+
+::: {.callout-tip collapse="true"}
+## Implementation — Python
+```python
+import PyPDF2
+import json
+from anthropic import Anthropic
+
+client = Anthropic()
+
+def extract_text_from_pdf(pdf_path: str) -> str:
+    with open(pdf_path, "rb") as f:
+        reader = PyPDF2.PdfReader(f)
+        return " ".join([page.extract_text() for page in reader.pages])
+
+def score_candidate(cv_text: str, job_description: str) -> dict:
+    response = client.messages.create(
+        model="claude-sonnet-4-6",
+        max_tokens=1024,
+        system="""You are an objective HR screening assistant. Evaluate candidates fairly based on skills and experience only.
+Never consider: age, gender, nationality, or graduation year.
+Return a valid JSON object.""",
+        messages=[{
+            "role": "user",
+            "content": f"""Job Description:
+{job_description}
+
+Candidate CV:
+{cv_text[:3000]}
+
+Return JSON:
+{{
+  "overall_score": 0-100,
+  "skills_match": 0-100,
+  "experience_relevance": 0-100,
+  "strengths": ["...", "..."],
+  "gaps": ["...", "..."],
+  "recommendation": "Strong Yes / Yes / Maybe / No",
+  "summary": "2-3 sentence justification"
+}}"""
+        }]
+    )
+    return json.loads(response.content[0].text)
+
+jd = "Senior Python Engineer, 5+ years, distributed systems and cloud-native."
+cv_text = extract_text_from_pdf("candidates/john_doe.pdf")
+result = score_candidate(cv_text, jd)
+print(result)
+```
+:::
+
+::: {.callout-warning collapse="true"}
+## Implementation — Low/NoCode
+**Stack:** Typeform + Make + Claude API + Airtable
+
+1. **Collection**: Candidates apply via a Typeform that accepts CV file uploads.
+2. **Processing**: Make triggers on new submissions, extracts PDF text via a parser module.
+3. **Scoring**: CV text + job description sent to Claude API. Structured JSON response is parsed.
+4. **Database**: Each candidate's score, strengths, gaps, and recommendation stored in Airtable.
+5. **Shortlist**: An Airtable view automatically filters candidates with `overall_score >= 70` for recruiter review.
+:::
+
+---
+
+### 📜 Contract Review & Risk Analysis Agent
+
+::: {.callout-note collapse="true"}
+## Description
+An agent that reads contracts (NDAs, service agreements, vendor contracts) and identifies risky clauses: unfavorable liability caps, auto-renewal traps, IP ownership ambiguities, and missing standard protections. It produces a risk-ranked clause summary — a powerful first pass before legal review.
+:::
+
+::: {.callout-tip collapse="true"}
+## Implementation — Python
+```python
+import PyPDF2
+from anthropic import Anthropic
+
+client = Anthropic()
+
+RISK_FRAMEWORK = """
+Evaluate these risk categories:
+1. LIABILITY: Uncapped liability, indemnification breadth
+2. IP: IP assignment scope, work-for-hire clauses
+3. TERMINATION: Notice periods, termination for convenience, penalties
+4. AUTO-RENEWAL: Renewal terms, opt-out windows
+5. JURISDICTION: Governing law, dispute resolution location
+6. DATA: Data ownership, privacy obligations, breach notification
+"""
+
+def review_contract(contract_text: str, company_name: str) -> str:
+    response = client.messages.create(
+        model="claude-opus-4-6",
+        max_tokens=4000,
+        system=f"""You are a contract review specialist reviewing on behalf of {company_name}.
+{RISK_FRAMEWORK}
+Flag issues as: 🔴 HIGH RISK | 🟡 MEDIUM RISK | 🟢 LOW RISK / Standard.
+Always quote the exact contract language before explaining the risk.""",
+        messages=[{
+            "role": "user",
+            "content": f"Review this contract:\n\n{contract_text[:6000]}"
+        }]
+    )
+    return response.content[0].text
+
+with open("contracts/vendor_agreement.pdf", "rb") as f:
+    reader = PyPDF2.PdfReader(f)
+    contract_text = " ".join([p.extract_text() for p in reader.pages])
+
+report = review_contract(contract_text, "Acme Corp")
+print(report)
+```
+:::
+
+::: {.callout-warning collapse="true"}
+## Implementation — Low/NoCode
+**Stack:** Make + PDF upload + Claude API + Notion + Slack
+
+1. **Trigger**: A new contract PDF is uploaded to a designated Google Drive folder.
+2. **Extract**: Make uses a PDF parser to extract the contract text.
+3. **Review**: The text is sent to Claude with the risk evaluation framework in the system prompt.
+4. **Report**: The risk report is saved as a Notion page tagged with contract type and risk level.
+5. **Alert**: If HIGH RISK clauses are found, a Slack alert is sent to the legal team immediately.
+:::
+
+---
+
+### ✅ Policy Compliance Checker
+
+::: {.callout-note collapse="true"}
+## Description
+An agent that cross-references internal company policies against actual practices, documents, or requests to flag non-compliance. Use cases: checking expense reports against travel policy, validating vendor onboarding against procurement rules, or auditing communications for HR policy adherence.
+:::
+
+::: {.callout-tip collapse="true"}
+## Implementation — Python
+```python
+from anthropic import Anthropic
+
+client = Anthropic()
+
+def check_compliance(document: str, policy_text: str, policy_name: str) -> str:
+    response = client.messages.create(
+        model="claude-sonnet-4-6",
+        max_tokens=1500,
+        system=f"You are a compliance officer reviewing documents against the '{policy_name}'. Be specific: cite exact policy rules. Return a structured analysis.",
+        messages=[{
+            "role": "user",
+            "content": f"""Policy ({policy_name}):
+{policy_text[:2000]}
+
+Document to check:
+{document[:2000]}
+
+Provide:
+1. COMPLIANT items (with policy reference)
+2. NON-COMPLIANT items (with policy reference and severity)
+3. MISSING information required by policy
+4. Overall verdict: COMPLIANT / PARTIALLY COMPLIANT / NON-COMPLIANT"""
+        }]
+    )
+    return response.content[0].text
+
+travel_policy = open("policies/travel_expense_policy.txt").read()
+expense_report = open("expense_reports/march_2026_john.txt").read()
+result = check_compliance(expense_report, travel_policy, "Travel & Expense Policy")
+print(result)
+```
+:::
+
+::: {.callout-warning collapse="true"}
+## Implementation — Low/NoCode
+**Stack:** Google Forms + Make + Claude API + Google Sheets + Email
+
+1. **Submission**: Employees submit expense reports or requests via Google Forms.
+2. **Policy Fetch**: Make retrieves the relevant policy document from Google Drive.
+3. **Check**: The submission and policy are sent to Claude for compliance analysis.
+4. **Auto-route**:
+   - COMPLIANT → auto-approved and logged in Google Sheets.
+   - NON-COMPLIANT → flagged with specific violations, routed to manager via email with Claude's analysis.
+:::

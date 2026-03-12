@@ -1,0 +1,177 @@
+---
+title: "Marketing & Growth"
+translation-url: "fr/projects/ai-agents-in-practice/themes/marketing-growth/index.html"
+description: "Agents that personalize outreach, optimize campaigns, and accelerate growth loops at scale."
+image: "/img/ai-agents-in-practice/marketing-growth.jpg"
+lang: en
+format: html
+---
+
+# Marketing & Growth Agents
+
+These agents operate as a high-throughput growth engine — personalizing at scale, optimizing campaigns, and surfacing opportunities no human team could process manually.
+
+## 🛠 Active Use Cases
+
+---
+
+### 🎯 Personalized Outreach Agent
+
+::: {.callout-note collapse="true"}
+## Description
+An agent that takes a list of leads (name, company, role) and generates a hyper-personalized cold email for each one. It researches each prospect's recent activity, company news, and pain points before crafting a message that feels genuinely human — not templated.
+:::
+
+::: {.callout-tip collapse="true"}
+## Implementation — Python
+```python
+from anthropic import Anthropic
+
+client = Anthropic()
+
+def write_cold_email(lead: dict, product_pitch: str, research_context: str) -> str:
+    response = client.messages.create(
+        model="claude-sonnet-4-6",
+        max_tokens=512,
+        system="You are an expert sales copywriter. Write concise, personalized cold emails. Max 120 words. No fluff.",
+        messages=[{
+            "role": "user",
+            "content": f"""Lead: {lead['name']}, {lead['role']} at {lead['company']}
+Recent context: {research_context}
+Our offer: {product_pitch}
+
+Write a personalized cold email with their name and a relevant hook from the context."""
+        }]
+    )
+    return response.content[0].text
+
+leads = [
+    {"name": "Sarah Chen", "role": "Head of Engineering", "company": "Acme Corp"},
+]
+for lead in leads:
+    email = write_cold_email(
+        lead,
+        "AI-powered code review platform",
+        f"{lead['company']} recently expanded its engineering team by 40%."
+    )
+    print(f"--- Email for {lead['name']} ---\n{email}\n")
+```
+:::
+
+::: {.callout-warning collapse="true"}
+## Implementation — Low/NoCode
+**Stack:** Clay + Claude API + Instantly.ai
+
+1. **Source**: A Clay table is populated with leads from LinkedIn, Apollo, or a CSV import.
+2. **Enrich**: Clay's built-in enrichments pull company news, LinkedIn activity, and firmographics.
+3. **Generate**: A Clay AI column calls Claude API to generate a personalized email body for each row.
+4. **Send**: Approved rows are pushed to Instantly.ai for automated, sequenced email campaigns.
+:::
+
+---
+
+### 🔍 SEO Content Optimization Agent
+
+::: {.callout-note collapse="true"}
+## Description
+An agent that audits existing pages against a target keyword, analyzes the top 10 SERP competitors, identifies content gaps, and produces an optimized version with improved structure, keyword placement, meta tags, and internal linking suggestions. It acts as an on-demand SEO editor.
+:::
+
+::: {.callout-tip collapse="true"}
+## Implementation — Python
+```python
+import requests
+from anthropic import Anthropic
+
+client = Anthropic()
+
+def optimize_content(content: str, keyword: str, competitors_data: str) -> str:
+    response = client.messages.create(
+        model="claude-opus-4-6",
+        max_tokens=4096,
+        system="You are an SEO expert. Provide actionable optimizations with specific rewrites.",
+        messages=[{
+            "role": "user",
+            "content": f"""Target keyword: "{keyword}"
+
+Top competitor snippets:
+{competitors_data}
+
+Current content to optimize:
+{content}
+
+Provide:
+1. Content gaps vs competitors
+2. Optimized title & meta description
+3. Rewritten introduction
+4. Recommended H2/H3 structure
+5. Internal link opportunities"""
+        }]
+    )
+    return response.content[0].text
+```
+:::
+
+::: {.callout-warning collapse="true"}
+## Implementation — Low/NoCode
+**Stack:** Ahrefs/SEMrush + Make + Claude API + WordPress API
+
+1. **Audit Trigger**: A weekly Make scenario fetches pages with declining traffic from Ahrefs API.
+2. **SERP Analysis**: For each page, competitor data is pulled via SEMrush API.
+3. **Optimization**: Page content + competitor data is sent to Claude for a full SEO rewrite.
+4. **Update**: Optimized content is pushed to WordPress as a new revision for editor approval.
+:::
+
+---
+
+### 📈 Customer Churn Prediction & Retention Agent
+
+::: {.callout-note collapse="true"}
+## Description
+An agent that analyzes customer behavioral signals (login frequency, feature usage, support tickets, payment history) to predict churn risk. For high-risk accounts, it automatically drafts a personalized retention message and flags the account for a customer success intervention.
+:::
+
+::: {.callout-tip collapse="true"}
+## Implementation — Python
+```python
+import pandas as pd
+from anthropic import Anthropic
+
+client = Anthropic()
+
+def assess_churn_risk(customer: dict) -> str:
+    response = client.messages.create(
+        model="claude-sonnet-4-6",
+        max_tokens=512,
+        system="You are a customer success AI. Assess churn risk and draft retention messages. Return JSON.",
+        messages=[{
+            "role": "user",
+            "content": f"""Customer data:
+- Name: {customer['name']}
+- Plan: {customer['plan']}
+- Last login: {customer['last_login_days_ago']} days ago
+- Feature usage (last 30d): {customer['feature_usage_pct']}%
+- Open support tickets: {customer['open_tickets']}
+- NPS score: {customer['nps']}
+
+Return JSON with: risk_level, risk_score (0-100), retention_email_draft."""
+        }]
+    )
+    return response.content[0].text
+
+customers = pd.read_csv("customers.csv")
+for _, row in customers[customers["feature_usage_pct"] < 20].iterrows():
+    result = assess_churn_risk(row.to_dict())
+    print(result)
+```
+:::
+
+::: {.callout-warning collapse="true"}
+## Implementation — Low/NoCode
+**Stack:** Mixpanel/Amplitude + Zapier + Claude API + Intercom
+
+1. **Trigger**: Zapier monitors for users who haven't logged in for 14+ days OR whose feature usage dropped 50%+.
+2. **Enrichment**: Zapier pulls the customer's plan, NPS score, and last support ticket from the CRM.
+3. **Risk Assessment**: Claude analyzes the full customer profile and generates a personalized retention message.
+4. **Action**: High-risk accounts get a proactive Intercom message; a task is created in HubSpot for the CSM.
+:::

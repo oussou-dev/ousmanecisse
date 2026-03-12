@@ -1,0 +1,30 @@
+---
+title: "LegacyLoom"
+translation-url: "projects/legacyloom/index.html"
+description: "Transformez vos souvenirs de famille en histoires éternelles. Réalisé lors du AI Vibe Coding Hackathon."
+image: "/img/legacyloom-banner.jpg"
+lang: fr
+format: html
+---
+
+# Présentation du Projet
+
+**LegacyLoom** est un projet créé lors du **AI Vibe Coding Hackathon** (6-8 mars 2026). Son but est de capturer et de préserver les souvenirs de famille en les transformant en histoires et vidéos engageantes, à transmettre de génération en génération.
+
+### 🔗 [Démo en direct](https://legacyloom-nine.vercel.app/){target="_blank"}
+
+!["Page d'accueil LegacyLoom"](/img/legacyloom-landing.png)
+
+### 📝 [Article du Blog : L'aventure au Hackathon](/fr/posts/legacyloom-hackathon/index.html)
+### 📝 [Description détaillée de la soumission](https://www.skool.com/hackathon/legacyloom-their-stories-wont-wait){target="_blank"}
+
+## La Mission
+
+"Leurs histoires n'attendent pas" — LegacyLoom a été conçu avec la mission urgente de préserver les voix, les souvenirs et la sagesse de nos ancêtres avant qu'ils ne disparaissent. En utilisant le storytelling assisté par IA, nous comblons le fossé entre la tradition orale et la préservation numérique.
+
+## Réalisation au Hackathon
+
+Ce projet a été construit en seulement 72 heures lors du AI Vibe Coding Hackathon. Il se concentre sur :
+- **Ingénierie émotionnelle** : Créer une interface qui respecte la sensibilité des vieux souvenirs.
+- **Récits générés par IA** : Utiliser les LLM pour transformer des détails bruts en histoires cohérentes et émouvantes.
+- **Expérience cinématique** : Générer des visuels et des voix pour redonner vie au passé.

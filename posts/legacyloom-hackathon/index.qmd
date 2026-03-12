@@ -1,0 +1,36 @@
+---
+title: "LegacyLoom — 72 Hours at the AI Vibe Coding Hackathon"
+date: "2026-03-08"
+categories: [AI, Hackathon, Vibe Coding, Python]
+description: "Preserving family memories through AI-driven storytelling. A look into how we built LegacyLoom in just three days."
+image: "/img/legacyloom-banner.jpg"
+translation-url: "fr/posts/legacyloom-hackathon/index.html"
+lang: en
+---
+
+# The Journey of LegacyLoom
+
+I recently participated in the **AI Vibe Coding Hackathon** (March 6-8, 2026), and it was an incredible experience. Along with my team of AI agents and human collaborators, we built **LegacyLoom**—a platform designed to turn fading family memories into timeless digital stories.
+
+## The Problem: "Their Stories Won't Wait"
+
+Every day, precious family history is lost as our elders pass away. Oral traditions are beautiful but fragile. We wanted to build something that could bridge the gap between a casual conversation and a preserved legacy.
+
+## The Solution: LegacyLoom
+
+LegacyLoom uses AI to:  
+1.  **Capture**: Take raw voice recordings or text notes about a family memory.  
+2.  **Transcribe & Refine**: Use LLMs to structure these notes into a moving, coherent narrative.  
+3.  **Animate**: Generate images and voiceovers to create a "Cinematic Memory."  
+
+## Building it in 72 Hours
+
+We followed the "Vibe Coding" philosophy—focusing on the emotion and the "vibe" of the application before getting lost in architecture. Using advanced agentic workflows, we were able to:  
+- Build a full-stack application with a React frontend and Python backend.  
+- Integrate ElevenLabs for voice synthesis and Fal.ai for video generation.  
+- Deploy everything to Vercel and Cloudflare.  
+
+### 🔗 [Check out the Live Demo](https://legacyloom-nine.vercel.app/)
+### 📝 [Read the full Hackathon submission on Skool](https://www.skool.com/hackathon/legacyloom-their-stories-wont-wait)
+
+!["LegacyLoom Banner"](/img/legacyloom-banner.jpg)

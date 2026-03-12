@@ -1,0 +1,227 @@
+---
+title: "Avancé & Créatif"
+translation-url: "projects/ai-agents-in-practice/themes/advanced-creative/index.html"
+description: "Architectures multi-agents et applications IA créatives repoussant les frontières de ce que les agents peuvent accomplir."
+image: "/img/ai-agents-in-practice/advanced-creative.jpg"
+lang: fr
+format: html
+---
+
+# Agents Avancés & Créatifs
+
+Ces agents dépassent l'automatisation de tâches simples. Ils représentent la frontière de l'IA agentique : collaboration multi-agents, co-création créative et capacités de résolution de problèmes émergentes.
+
+## 🛠 Cas d'Usage Actifs
+
+---
+
+### 🤖 Narration Collaborative Multi-Agents
+
+::: {.callout-note collapse="true"}
+## Description
+Un système d'agents spécialisés qui collaborent pour produire des récits longs et cohérents. Un **Agent Planificateur** définit l'arc narratif et les personnages. Un **Agent Rédacteur** rédige scène par scène. Un **Agent Critique** review pour la cohérence et l'engagement. Un **Agent de Continuité** maintient une mémoire de l'état du monde pour éviter les contradictions. Cette architecture produit une qualité qui dépasse celle d'un seul appel LLM.
+:::
+
+::: {.callout-tip collapse="true"}
+## Implémentation — Python
+```python
+from anthropic import Anthropic
+
+client = Anthropic()
+
+def agent_planificateur(premise: str) -> str:
+    response = client.messages.create(
+        model="claude-opus-4-6",
+        max_tokens=1024,
+        system="Tu es un architecte narratif. Crée des structures d'histoire solides.",
+        messages=[{"role": "user", "content": f"Crée une structure en 3 actes et 3 personnages principaux pour : {premise}"}]
+    )
+    return response.content[0].text
+
+def agent_redacteur(plan: str, numero_scene: int, etat_monde: str) -> str:
+    response = client.messages.create(
+        model="claude-opus-4-6",
+        max_tokens=1500,
+        system="Tu es un auteur littéraire. Écris des scènes vivantes et émotionnellement résonnantes.",
+        messages=[{"role": "user", "content": f"Plan :\n{plan}\n\nÉtat du monde :\n{etat_monde}\n\nRédige la scène {numero_scene}."}]
+    )
+    return response.content[0].text
+
+def agent_critique(scene: str) -> str:
+    response = client.messages.create(
+        model="claude-sonnet-4-6",
+        max_tokens=512,
+        system="Tu es un éditeur littéraire. Sois précis et actionnable.",
+        messages=[{"role": "user", "content": f"Review cette scène pour le rythme, l'émotion et le 'montrer sans dire' :\n\n{scene}\n\nFournis 3 améliorations spécifiques."}]
+    )
+    return response.content[0].text
+
+def mettre_a_jour_etat(etat_monde: str, nouvelle_scene: str) -> str:
+    response = client.messages.create(
+        model="claude-haiku-4-5-20251001",
+        max_tokens=256,
+        system="Extrais et mets à jour les faits de l'histoire de manière concise.",
+        messages=[{"role": "user", "content": f"État actuel :\n{etat_monde}\n\nNouvelle scène :\n{nouvelle_scene}\n\nMets à jour l'état du monde."}]
+    )
+    return response.content[0].text
+
+# Orchestration
+premise = "Une astronaute à la retraite découvre que l'IA de son défunt mari fonctionne toujours sur une station spatiale abandonnée."
+plan = agent_planificateur(premise)
+etat_monde = "Personnages établis. Station : ISS-Omega. Année : 2041."
+
+for num_scene in range(1, 4):
+    brouillon = agent_redacteur(plan, num_scene, etat_monde)
+    retours = agent_critique(brouillon)
+    etat_monde = mettre_a_jour_etat(etat_monde, brouillon)
+    print(f"--- Scène {num_scene} ---\n{brouillon}\n\nNotes de l'éditeur :\n{retours}\n")
+```
+:::
+
+::: {.callout-warning collapse="true"}
+## Implémentation — Low/NoCode
+**Stack :** n8n + Claude API (appels multiples) + Notion + Airtable (état du monde)
+
+1. **Configuration** : Une base Airtable stocke l'état du monde (faits sur les personnages, lieux, événements de l'intrigue).
+2. **Planificateur** : Premier appel Claude API génère le plan et les fiches personnages, sauvegardés dans Notion.
+3. **Boucle rédaction** : Pour chaque scène, n8n : récupère l'état du monde dans Airtable → appelle Claude pour rédiger → appelle Claude à nouveau pour critiquer.
+4. **Mise à jour de l'état** : Après chaque scène approuvée, les fiches Airtable sont mises à jour avec les nouveaux faits.
+5. **Assemblage** : Une fois toutes les scènes écrites, n8n les concatène dans un document Notion final.
+:::
+
+---
+
+### 🎨 Agent Direction Artistique IA & Prompt Engineering
+
+::: {.callout-note collapse="true"}
+## Description
+Un agent qui transforme un brief créatif de haut niveau (marque, ambiance, audience cible, objectif de campagne) en une suite de prompts optimisés pour des générateurs d'images comme Midjourney, DALL-E ou Stable Diffusion. Il gère la cohérence de style sur toute une campagne, génère des variantes pour l'A/B testing, et itère sur les retours — agissant comme un directeur artistique IA.
+:::
+
+::: {.callout-tip collapse="true"}
+## Implémentation — Python
+```python
+from anthropic import Anthropic
+
+client = Anthropic()
+
+def generer_prompts(brief: dict) -> str:
+    response = client.messages.create(
+        model="claude-sonnet-4-6",
+        max_tokens=2000,
+        system="""Tu es un directeur artistique de classe mondiale et expert en prompt engineering.
+Génère des prompts d'image précis et détaillés pour les générateurs IA.
+Chaque prompt doit spécifier : sujet, style, éclairage, palette de couleurs, ambiance, paramètres techniques.""",
+        messages=[{
+            "role": "user",
+            "content": f"""Brief créatif :
+Marque : {brief['marque']}
+Campagne : {brief['campagne']}
+Ambiance : {brief['ambiance']}
+Audience cible : {brief['audience']}
+Plateformes : {brief['plateformes']}
+
+Génère 5 prompts diversifiés (image principale, 2 variantes, format mobile, carré social).
+Formate chaque prompt pour Midjourney (inclus --ar, --style, --v 6.1)."""
+        }]
+    )
+    return response.content[0].text
+
+def iterer_sur_retours(prompt_original: str, retours: str) -> str:
+    response = client.messages.create(
+        model="claude-sonnet-4-6",
+        max_tokens=512,
+        messages=[{
+            "role": "user",
+            "content": f"Prompt original : {prompt_original}\n\nRetours : {retours}\n\nRéécris le prompt en intégrant ces retours."
+        }]
+    )
+    return response.content[0].text
+
+brief = {
+    "marque": "EcoFlow — équipement outdoor premium et durable",
+    "campagne": "Lancement collection Printemps 2026",
+    "ambiance": "aventureux, épuré, plein d'espoir, connecté à la nature",
+    "audience": "25-40 ans amateurs outdoor, eco-conscients",
+    "plateformes": "Instagram, Pinterest, bannière hero Web"
+}
+prompts = generer_prompts(brief)
+print(prompts)
+```
+:::
+
+::: {.callout-warning collapse="true"}
+## Implémentation — Low/NoCode
+**Stack :** Airtable + Make + Claude API + API DALL-E + API Canva
+
+1. **Saisie du brief** : L'équipe créative remplit un formulaire Airtable avec les champs du brief de campagne.
+2. **Génération de prompts** : Make se déclenche, envoie le brief à Claude API qui retourne 5 prompts structurés.
+3. **Génération d'images** : Chaque prompt est envoyé à l'API DALL-E 3.
+4. **Tableau de review** : Images générées + prompts sont organisés dans une vue galerie Airtable pour review du DA.
+5. **Itération** : Les images rejetées déclenchent un sous-scénario Make qui envoie les retours à Claude pour révision du prompt.
+:::
+
+---
+
+### 🚀 Agent d'Idéation Produit & Validation
+
+::: {.callout-note collapse="true"}
+## Description
+Un agent multi-perspectives qui évalue des idées produit sous quatre angles simultanément : Opportunité de Marché, Faisabilité Technique, Viabilité du Modèle Business, et Désirabilité Utilisateur. Il synthétise ces analyses en un memo d'investissement structuré, accélérant les décisions produit en phase précoce.
+:::
+
+::: {.callout-tip collapse="true"}
+## Implémentation — Python
+```python
+from anthropic import Anthropic
+import concurrent.futures
+
+client = Anthropic()
+
+ANALYSTES = {
+    "marche": "Tu es un venture capitalist spécialisé en analyse de marché. Évalue le TAM, la concurrence et le timing marché avec des données précises.",
+    "technique": "Tu es un CTO avec 20 ans d'expérience. Évalue la faisabilité technique, le délai de build et les risques techniques clés.",
+    "business": "Tu es un DAF et expert en modèles business. Évalue les options de monétisation, l'économie unitaire et la trajectoire vers la rentabilité.",
+    "utilisateur": "Tu es un chercheur UX spécialisé en Jobs-to-be-Done. Évalue l'intensité du point de douleur, les segments utilisateurs et la disposition à payer.",
+}
+
+def analyser_depuis_perspective(idee: str, role: str, system_prompt: str) -> tuple:
+    response = client.messages.create(
+        model="claude-opus-4-6",
+        max_tokens=800,
+        system=system_prompt,
+        messages=[{"role": "user", "content": f"Évalue cette idée produit de manière critique : {idee}"}]
+    )
+    return role, response.content[0].text
+
+def synthetiser_analyses(idee: str, analyses: dict) -> str:
+    texte_analyses = "\n\n".join([f"## {role.upper()}\n{contenu}" for role, contenu in analyses.items()])
+    response = client.messages.create(
+        model="claude-opus-4-6",
+        max_tokens=1500,
+        system="Tu es un directeur de stratégie produit. Synthétise des analyses multi-perspectives en un memo d'investissement concis.",
+        messages=[{"role": "user", "content": f"Idée : {idee}\n\n{texte_analyses}\n\nRédige un memo d'1 page : Verdict (Lancer/Ne pas lancer/Pivoter), Points Forts, Risques Critiques, Prochaines Étapes."}]
+    )
+    return response.content[0].text
+
+idee = "Une appli d'abonnement qui coache les utilisateurs dans des conversations difficiles (négociations salariales, conflits) via l'analyse vocale en temps réel."
+
+with concurrent.futures.ThreadPoolExecutor() as executor:
+    futures = [executor.submit(analyser_depuis_perspective, idee, role, prompt) for role, prompt in ANALYSTES.items()]
+    analyses = dict(f.result() for f in concurrent.futures.as_completed(futures))
+
+memo = synthetiser_analyses(idee, analyses)
+print(memo)
+```
+:::
+
+::: {.callout-warning collapse="true"}
+## Implémentation — Low/NoCode
+**Stack :** Typeform + Make + Claude API (4 appels parallèles) + Notion
+
+1. **Saisie** : Une idée produit est soumise via un Typeform structuré.
+2. **Analyse parallèle** : Make exécute 4 modules HTTP en parallèle, chacun appelant Claude avec un persona d'analyste différent.
+3. **Synthèse** : Une fois les 4 analyses retournées, un 5e appel Claude les synthétise en memo d'investissement final.
+4. **Base de données** : Le memo, les 4 analyses et le brief original sont sauvegardés dans une base Notion "Idées Produit".
+5. **Scoring** : Des formules Notion calculent un score composite à partir des signaux clés de chaque analyse.
+:::

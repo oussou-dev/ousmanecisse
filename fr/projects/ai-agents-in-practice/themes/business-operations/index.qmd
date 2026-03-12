@@ -1,0 +1,42 @@
+---
+title: "Opérations Business"
+translation-url: "projects/ai-agents-in-practice/themes/business-operations/index.html"
+description: "Optimisation des flux organisationnels et automatisation des processus back-office grâce aux agents intelligents."
+image: "/img/ai-agents-in-practice/business-ops.jpg"
+lang: fr
+---
+
+# Agents pour les Opérations Business
+
+De la surveillance de la chaîne d'approvisionnement au reporting financier automatisé, ces agents se chargent des tâches lourdes des flux de travail en entreprise.
+
+## 🛠 Cas d'Usage Actifs
+
+### 📊 Intelligence Marché Automatisée
+
+::: {.callout-note collapse="true"}
+## Description
+Un agent qui parcourt les sites web des concurrents, les flux d'actualités et les rapports financiers pour fournir un rapport quotidien résumé des tendances du marché, des changements de prix et des mouvements stratégiques.
+:::
+
+::: {.callout-tip collapse="true"}
+## Exemple d'Implémentation
+Une combinaison de **LangChain** et **Playwright** (ou un serveur MCP de scraping).
+1.  **Entrée**: Liste d'URLs de concurrents.
+2.  **Processus**: L'agent visite les URLs, extrait le texte et utilise une approche Map-Reduce pour résumer les conclusions les plus pertinentes.
+3.  **Sortie**: Une notification Slack structurée ou une entrée dans une base de données Notion.
+:::
+
+---
+
+### 🧾 Traitement Intelligent des Factures
+
+::: {.callout-note collapse="true"}
+## Description
+Extraction automatisée de données à partir de formats de factures hétérogènes (PDF, images) et rapprochement avec les bons de commande dans un système ERP.
+:::
+
+::: {.callout-tip collapse="true"}
+## Exemple d'Implémentation
+Utilisation de **GPT-4o avec Vision** pour analyser la structure de la facture et d'une boucle agentique pour vérifier les totaux et les calculs de taxes avant l'envoi vers une API comptable.
+:::

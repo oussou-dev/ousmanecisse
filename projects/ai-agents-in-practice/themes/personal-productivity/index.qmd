@@ -1,0 +1,42 @@
+---
+title: "Personal Productivity"
+translation-url: "fr/projects/ai-agents-in-practice/themes/personal-productivity/index.html"
+description: "AI agents that act as a personal brain and digital assistant to optimize your daily workflow."
+image: "/img/ai-agents-in-practice/personal-productivity.jpg"
+lang: en
+---
+
+# Personal Productivity Agents
+
+How are you optimizing your day? These agents are built to handle the non-stop flow of tasks, information, and micro-tasks that consume our cognitive bandwidth.
+
+## 🛠 Active Use Cases
+
+### 📧 Intelligent Email Triage
+
+::: {.callout-note collapse="true"}
+## Description
+An agent that monitors your inbox, classifies incoming emails based on intent (High Priority, Sales, Info, Action Needed), and drafts replies or summarizes the most important points. It reduces the "inbox anxiety" by ensuring you only focus on what truly matters.
+:::
+
+::: {.callout-tip collapse="true"}
+## Implementation Example
+Using **n8n** or **Make** connected to **OpenAI's GPT-4o** via an API call.
+1.  **Trigger**: New Gmail email received.
+2.  **Logic**: Send email body to LLM with a system prompt detailing the triage categories.
+3.  **Action**: If "Action Needed", draft a reply in the "Drafts" folder and tag the email.
+:::
+
+---
+
+### 📅 Smart Scheduling Assistant
+
+::: {.callout-note collapse="true"}
+## Description
+An agent that manages your calendar and resolves scheduling conflicts by communicating with external parties or checking internal availability across multiple tools.
+:::
+
+::: {.callout-tip collapse="true"}
+## Implementation Example
+Using an **MCP Server** (Model Context Protocol) that gives the agent read/write access to your Google Calendar and personal preferences.
+:::

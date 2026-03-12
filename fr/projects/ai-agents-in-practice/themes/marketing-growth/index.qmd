@@ -1,0 +1,171 @@
+---
+title: "Marketing & Croissance"
+translation-url: "projects/ai-agents-in-practice/themes/marketing-growth/index.html"
+description: "Des agents qui personnalisent la prospection, optimisent les campagnes et accélèrent les boucles de croissance."
+image: "/img/ai-agents-in-practice/marketing-growth.jpg"
+lang: fr
+format: html
+---
+
+# Agents Marketing & Croissance
+
+Ces agents opèrent comme un moteur de croissance haute performance — personnalisant à grande échelle, optimisant les campagnes, et identifiant des opportunités qu'aucune équipe humaine ne pourrait traiter manuellement.
+
+## 🛠 Cas d'Usage Actifs
+
+---
+
+### 🎯 Agent de Prospection Personnalisée
+
+::: {.callout-note collapse="true"}
+## Description
+Un agent qui prend une liste de prospects (nom, entreprise, poste) et génère un email de prospection hyper-personnalisé pour chacun. Il recherche l'activité récente, les actualités de l'entreprise et les points de douleur avant de rédiger un message qui semble authentiquement humain — pas un template.
+:::
+
+::: {.callout-tip collapse="true"}
+## Implémentation — Python
+```python
+from anthropic import Anthropic
+
+client = Anthropic()
+
+def rediger_email_prospection(prospect: dict, pitch: str, contexte: str) -> str:
+    response = client.messages.create(
+        model="claude-sonnet-4-6",
+        max_tokens=512,
+        system="Tu es un expert en copywriting commercial. Rédige des emails de prospection concis et personnalisés. Max 120 mots. Pas de remplissage.",
+        messages=[{
+            "role": "user",
+            "content": f"""Prospect : {prospect['nom']}, {prospect['poste']} chez {prospect['entreprise']}
+Contexte récent : {contexte}
+Notre offre : {pitch}
+
+Rédige un email de prospection personnalisé avec le nom du prospect et un accroche basée sur le contexte."""
+        }]
+    )
+    return response.content[0].text
+
+prospects = [
+    {"nom": "Marie Dupont", "poste": "Directrice Engineering", "entreprise": "TechCorp"},
+]
+for prospect in prospects:
+    email = rediger_email_prospection(
+        prospect,
+        "Plateforme de revue de code alimentée par l'IA",
+        f"{prospect['entreprise']} a récemment recruté 15 nouveaux ingénieurs."
+    )
+    print(f"--- Email pour {prospect['nom']} ---\n{email}\n")
+```
+:::
+
+::: {.callout-warning collapse="true"}
+## Implémentation — Low/NoCode
+**Stack :** Clay + Claude API + Instantly.ai
+
+1. **Source** : Un tableau Clay est alimenté avec des prospects depuis LinkedIn, Apollo, ou un import CSV.
+2. **Enrichissement** : Les enrichissements Clay récupèrent actualités, activité LinkedIn et données firmographiques.
+3. **Génération** : Une colonne AI Clay appelle Claude API pour générer un email personnalisé par ligne.
+4. **Envoi** : Les lignes approuvées sont poussées vers Instantly.ai pour des campagnes d'emailing séquencées.
+:::
+
+---
+
+### 🔍 Agent d'Optimisation SEO de Contenu
+
+::: {.callout-note collapse="true"}
+## Description
+Un agent qui audite des pages existantes par rapport à un mot-clé cible, analyse les 10 concurrents en tête des SERP, identifie les lacunes de contenu, et produit une version optimisée avec une meilleure structure, placement des mots-clés, méta-tags et suggestions de maillage interne. Il agit comme un éditeur SEO à la demande.
+:::
+
+::: {.callout-tip collapse="true"}
+## Implémentation — Python
+```python
+from anthropic import Anthropic
+
+client = Anthropic()
+
+def optimiser_contenu(contenu: str, mot_cle: str, donnees_concurrents: str) -> str:
+    response = client.messages.create(
+        model="claude-opus-4-6",
+        max_tokens=4096,
+        system="Tu es un expert SEO. Fournis des optimisations actionnables avec des réécritures spécifiques.",
+        messages=[{
+            "role": "user",
+            "content": f"""Mot-clé cible : "{mot_cle}"
+
+Extraits des concurrents en tête :
+{donnees_concurrents}
+
+Contenu actuel à optimiser :
+{contenu}
+
+Fournis :
+1. Lacunes de contenu vs les concurrents
+2. Titre et méta-description optimisés
+3. Introduction réécrite
+4. Structure H2/H3 recommandée
+5. Opportunités de maillage interne"""
+        }]
+    )
+    return response.content[0].text
+```
+:::
+
+::: {.callout-warning collapse="true"}
+## Implémentation — Low/NoCode
+**Stack :** Ahrefs/SEMrush + Make + Claude API + API WordPress
+
+1. **Audit** : Un scénario Make hebdomadaire récupère les pages en perte de trafic depuis l'API Ahrefs.
+2. **Analyse SERP** : Pour chaque page, les données concurrentes sont récupérées via l'API SEMrush.
+3. **Optimisation** : Le contenu + données concurrentes sont envoyés à Claude pour une réécriture SEO complète.
+4. **Mise à jour** : Le contenu optimisé est poussé vers WordPress comme nouvelle révision pour validation éditoriale.
+:::
+
+---
+
+### 📈 Agent de Prédiction de Churn & Rétention
+
+::: {.callout-note collapse="true"}
+## Description
+Un agent qui analyse les signaux comportementaux des clients (fréquence de connexion, utilisation des fonctionnalités, tickets support, historique de paiement) pour prédire le risque de churn. Pour les comptes à haut risque, il rédige automatiquement un message de rétention personnalisé et signale le compte pour une intervention du Customer Success.
+:::
+
+::: {.callout-tip collapse="true"}
+## Implémentation — Python
+```python
+import pandas as pd
+from anthropic import Anthropic
+
+client = Anthropic()
+
+def evaluer_risque_churn(client_data: dict) -> str:
+    response = client.messages.create(
+        model="claude-sonnet-4-6",
+        max_tokens=512,
+        system="Tu es un AI de customer success. Évalue le risque de churn et rédige des messages de rétention. Retourne du JSON.",
+        messages=[{
+            "role": "user",
+            "content": f"""Données client :
+- Nom : {client_data['nom']}
+- Plan : {client_data['plan']}
+- Dernière connexion : il y a {client_data['jours_depuis_connexion']} jours
+- Utilisation fonctionnalités (30j) : {client_data['utilisation_pct']}%
+- Tickets ouverts : {client_data['tickets_ouverts']}
+- Score NPS : {client_data['nps']}
+
+Retourne JSON avec : niveau_risque, score_risque (0-100), email_retention."""
+        }]
+    )
+    return response.content[0].text
+```
+:::
+
+::: {.callout-warning collapse="true"}
+## Implémentation — Low/NoCode
+**Stack :** Mixpanel/Amplitude + Zapier + Claude API + Intercom
+
+1. **Déclencheur** : Zapier surveille les utilisateurs sans connexion depuis 14+ jours OU dont l'utilisation a chuté de 50%+.
+2. **Enrichissement** : Zapier récupère le plan, le score NPS et le dernier ticket support depuis le CRM.
+3. **Évaluation** : Claude analyse le profil complet et génère un message de rétention personnalisé.
+4. **Action** : Les comptes à haut risque reçoivent un message proactif via Intercom ; une tâche est créée dans HubSpot pour le CSM.
+:::

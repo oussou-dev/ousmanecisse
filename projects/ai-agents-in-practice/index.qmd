@@ -1,0 +1,40 @@
+---
+title: "AI Agents in Practice"
+translation-url: "fr/projects/ai-agents-in-practice/index.html"
+description: "A comprehensive playbook of real-world AI agent use cases across various domains."
+image: "/img/ai-agents-in-practice/ai-agents-landing.jpg"
+lang: en
+format: html
+listing:
+  id: themes-listing
+  contents: 
+    - "themes/personal-productivity/index.qmd"
+    - "themes/writing-content/index.qmd"
+    - "themes/research-analysis/index.qmd"
+    - "themes/business-operations/index.qmd"
+    - "themes/marketing-growth/index.qmd"
+    - "themes/data-automation/index.qmd"
+    - "themes/ai-engineering/index.qmd"
+    - "themes/hr-legal-compliance/index.qmd"
+    - "themes/finance-decision-making/index.qmd"
+    - "themes/advanced-creative/index.qmd"
+  type: grid
+  sort: false
+  categories: false
+  fields: [image, title, description]
+---
+
+# AI Agents in Practice: The Playbook
+
+Welcome to **AI Agents in Practice**, a curated collection of practical, battle-tested AI agent implementations. This project serves as a technical bridge between raw LLM capabilities and real-world operational value.
+
+## 🎯 The Objective
+
+The goal is to move beyond "chatbots" and explore how autonomous or semi-autonomous agents can handle complex, multi-step workflows. Each theme below contains specific use cases with detailed descriptions and implementation examples.
+
+::: {#themes-listing}
+:::
+
+---
+
+*New themes and use cases are added regularly as the agentic landscape evolves.*

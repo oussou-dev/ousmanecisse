@@ -1,0 +1,179 @@
+---
+title: "Research & Analysis"
+translation-url: "fr/projects/ai-agents-in-practice/themes/research-analysis/index.html"
+description: "Agents that autonomously gather, synthesize, and surface insights from complex data sources."
+image: "/img/ai-agents-in-practice/research-analysis.jpg"
+lang: en
+format: html
+---
+
+# Research & Analysis Agents
+
+These agents act as tireless research assistants — browsing, reading, cross-referencing, and distilling information into actionable intelligence.
+
+## 🛠 Active Use Cases
+
+---
+
+### 📚 Academic Literature Review Agent
+
+::: {.callout-note collapse="true"}
+## Description
+An agent that takes a research question as input, queries academic databases (Semantic Scholar, arXiv), retrieves relevant papers, extracts key findings, and produces a structured literature review with citations. It dramatically reduces the time needed to survey a new field.
+:::
+
+::: {.callout-tip collapse="true"}
+## Implementation — Python
+```python
+import requests
+from anthropic import Anthropic
+
+client = Anthropic()
+
+def search_papers(query: str, limit: int = 10) -> list:
+    url = "https://api.semanticscholar.org/graph/v1/paper/search"
+    params = {"query": query, "limit": limit, "fields": "title,abstract,authors,year"}
+    response = requests.get(url, params=params)
+    return response.json().get("data", [])
+
+def generate_literature_review(question: str) -> str:
+    papers = search_papers(question)
+    papers_text = "\n\n".join([
+        f"[{p['year']}] {p['title']}\nAuthors: {', '.join([a['name'] for a in p.get('authors', [])])}\nAbstract: {p.get('abstract', 'N/A')[:400]}"
+        for p in papers
+    ])
+    response = client.messages.create(
+        model="claude-opus-4-6",
+        max_tokens=4096,
+        system="You are an academic researcher. Write precise, structured literature reviews with proper citations.",
+        messages=[{
+            "role": "user",
+            "content": f"Research question: {question}\n\nPapers found:\n{papers_text}\n\nWrite a structured literature review."
+        }]
+    )
+    return response.content[0].text
+```
+:::
+
+::: {.callout-warning collapse="true"}
+## Implementation — Low/NoCode
+**Stack:** n8n + Semantic Scholar API + Claude API + Notion
+
+1. **Input**: A research topic is submitted via a web form (n8n Webhook trigger).
+2. **Search**: n8n calls the Semantic Scholar API and retrieves the top 10 papers.
+3. **Synthesis**: Paper abstracts are sent to Claude to generate a structured review.
+4. **Output**: The review is saved as a Notion page with bibliography and research domain tags.
+:::
+
+---
+
+### 🔍 Competitive Intelligence Monitor
+
+::: {.callout-note collapse="true"}
+## Description
+An agent that continuously monitors competitor websites, press releases, job postings, and social media to detect strategic signals: new product launches, pricing changes, key hires, and market positioning shifts. It delivers a weekly intelligence brief to the strategy team.
+:::
+
+::: {.callout-tip collapse="true"}
+## Implementation — Python
+```python
+from anthropic import Anthropic
+from playwright.sync_api import sync_playwright
+
+client = Anthropic()
+
+def scrape_page(url: str) -> str:
+    with sync_playwright() as p:
+        browser = p.chromium.launch()
+        page = browser.new_page()
+        page.goto(url, timeout=15000)
+        content = page.inner_text("body")[:3000]
+        browser.close()
+    return content
+
+def analyze_competitor(company: str, urls: list) -> str:
+    all_content = ""
+    for url in urls:
+        try:
+            all_content += f"\n\n[Source: {url}]\n{scrape_page(url)}"
+        except Exception as e:
+            all_content += f"\n\n[Source: {url}] Error: {e}"
+
+    response = client.messages.create(
+        model="claude-sonnet-4-6",
+        max_tokens=2048,
+        system="You are a strategic analyst. Identify key signals: product changes, pricing, hiring trends, market positioning.",
+        messages=[{
+            "role": "user",
+            "content": f"Analyze this competitor data for {company}:\n{all_content}"
+        }]
+    )
+    return response.content[0].text
+```
+:::
+
+::: {.callout-warning collapse="true"}
+## Implementation — Low/NoCode
+**Stack:** Make + Phantombuster + Claude API + Slack
+
+1. **Schedule**: Make scenario runs every Monday morning.
+2. **Scrape**: Phantombuster agents scrape competitor LinkedIn pages, pricing pages, and blog RSS feeds.
+3. **Analyze**: Aggregated data is sent to Claude to identify strategic signals.
+4. **Deliver**: A formatted intelligence brief is posted to a private `#competitive-intel` Slack channel.
+:::
+
+---
+
+### 📊 Data Synthesis & Report Generator
+
+::: {.callout-note collapse="true"}
+## Description
+An agent that ingests multiple structured and unstructured data sources (CSVs, PDFs, API responses), identifies patterns and anomalies, and generates a coherent executive report with insights and recommendations. It replaces hours of manual analysis.
+:::
+
+::: {.callout-tip collapse="true"}
+## Implementation — Python
+```python
+import pandas as pd
+from anthropic import Anthropic
+
+client = Anthropic()
+
+def analyze_dataset(df: pd.DataFrame, report_goal: str) -> str:
+    summary = df.describe().to_string()
+    sample = df.head(5).to_string()
+    null_counts = df.isnull().sum().to_string()
+
+    response = client.messages.create(
+        model="claude-opus-4-6",
+        max_tokens=3000,
+        system="You are a senior data analyst. Produce executive reports with clear insights and actionable recommendations.",
+        messages=[{
+            "role": "user",
+            "content": f"""Report goal: {report_goal}
+
+Dataset summary:
+{summary}
+
+Sample rows:
+{sample}
+
+Missing values:
+{null_counts}
+
+Generate a report with: Key Findings, Anomalies, Trends, and Recommendations."""
+        }]
+    )
+    return response.content[0].text
+```
+:::
+
+::: {.callout-warning collapse="true"}
+## Implementation — Low/NoCode
+**Stack:** n8n + Google Sheets + Claude API + Google Slides API
+
+1. **Data Pull**: n8n fetches data from Google Sheets or a database on a schedule.
+2. **Aggregation**: Basic computations (totals, averages, top performers) via n8n Code node.
+3. **Analysis**: Aggregated data sent to Claude for narrative insights and slide-by-slide recommendations.
+4. **Presentation**: A Google Slides template is populated with the generated content via Slides API.
+:::

@@ -1,0 +1,42 @@
+---
+title: "Productivité Personnelle"
+translation-url: "projects/ai-agents-in-practice/themes/personal-productivity/index.html"
+description: "Des agents IA qui agissent comme un cerveau auxiliaire et un assistant numérique pour optimiser votre flux de travail quotidien."
+image: "/img/ai-agents-in-practice/personal-productivity.jpg"
+lang: fr
+---
+
+# Agents de Productivité Personnelle
+
+Comment optimisez-vous votre journée ? Ces agents sont conçus pour gérer le flux incessant de tâches, d'informations et de micro-tâches qui saturent notre bande passante cognitive.
+
+## 🛠 Cas d'Usage Actifs
+
+### 📧 Tri Intelligent des Emails
+
+::: {.callout-note collapse="true"}
+## Description
+Un agent qui surveille votre boîte de réception, classifie les emails entrants selon l'intention (Priorité Haute, Ventes, Info, Action Requise), et prépare des brouillons de réponse ou résume les points les plus importants. Il réduit l'"anxiété de la boîte de réception" en vous permettant de vous concentrer uniquement sur ce qui compte vraiment.
+:::
+
+::: {.callout-tip collapse="true"}
+## Exemple d'Implémentation
+Utilisation de **n8n** ou **Make** connecté à **GPT-4o d'OpenAI** via un appel API.
+1.  **Déclencheur**: Nouvel email reçu dans Gmail.
+2.  **Logique**: Envoi du corps de l'email au LLM avec un prompt système détaillant les catégories de tri.
+3.  **Action**: Si "Action Requise", création d'un brouillon dans le dossier "Brouillons" et marquage de l'email avec un tag spécifique.
+:::
+
+---
+
+### 📅 Assistant de Planification Intelligent
+
+::: {.callout-note collapse="true"}
+## Description
+Un agent qui gère votre calendrier et résout les conflits de planification en communiquant avec des parties externes ou en vérifiant les disponibilités internes sur plusieurs outils.
+:::
+
+::: {.callout-tip collapse="true"}
+## Exemple d'Implémentation
+Utilisation d'un **Serveur MCP** (Model Context Protocol) qui donne à l'agent un accès en lecture/écriture à votre Google Calendar et à vos préférences personnelles.
+:::

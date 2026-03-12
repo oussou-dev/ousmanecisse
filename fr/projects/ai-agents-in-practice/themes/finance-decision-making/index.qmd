@@ -1,0 +1,212 @@
+---
+title: "Finance & Aide à la Décision"
+translation-url: "projects/ai-agents-in-practice/themes/finance-decision-making/index.html"
+description: "Des agents qui analysent les données financières, prévoient la performance et font remonter les risques pour affûter la prise de décision."
+image: "/img/ai-agents-in-practice/finance-decision-making.jpg"
+lang: fr
+format: html
+---
+
+# Agents Finance & Aide à la Décision
+
+Ces agents traitent les signaux financiers plus vite qu'aucune équipe humaine — détectant les risques, modélisant des scénarios et transformant des chiffres bruts en orientations stratégiques claires.
+
+## 🛠 Cas d'Usage Actifs
+
+---
+
+### 📊 Analyseur de Rapports Financiers
+
+::: {.callout-note collapse="true"}
+## Description
+Un agent qui ingère des rapports financiers trimestriels/annuels (10-K, 10-Q, communiqués de résultats) ou des états P&L internes et produit une analyse structurée : tendances de revenus, évolution des marges, santé du bilan et ratios clés. Il signale également les éléments inhabituels ou les changements comptables qui méritent une investigation approfondie.
+:::
+
+::: {.callout-tip collapse="true"}
+## Implémentation — Python
+```python
+import PyPDF2
+from anthropic import Anthropic
+
+client = Anthropic()
+
+def extraire_texte_pdf(chemin: str) -> str:
+    with open(chemin, "rb") as f:
+        reader = PyPDF2.PdfReader(f)
+        return "\n".join([p.extract_text() for p in reader.pages])[:8000]
+
+def analyser_rapport_financier(texte: str, entreprise: str, periode: str) -> str:
+    response = client.messages.create(
+        model="claude-opus-4-6",
+        max_tokens=4000,
+        system="Tu es un analyste financier de niveau CFA. Produis des analyses rigoureuses et structurées. Cite toujours des chiffres précis du rapport. Signale explicitement les anomalies comptables.",
+        messages=[{
+            "role": "user",
+            "content": f"""Analyse ce rapport financier pour {entreprise} ({periode}) :
+
+{texte}
+
+Structure :
+1. Résumé exécutif (3 bullets)
+2. Analyse des revenus (tendance, moteurs de croissance, segments)
+3. Rentabilité (marge brute, EBITDA, marge nette vs période précédente)
+4. Santé du bilan (liquidité, levier, ratios clés)
+5. Signaux d'alerte & anomalies
+6. Perspectives & risques clés"""
+        }]
+    )
+    return response.content[0].text
+
+rapport = extraire_texte_pdf("rapports/ra_2025_annuel.pdf")
+analyse = analyser_rapport_financier(rapport, "Acme Corp", "FY2025")
+print(analyse)
+```
+:::
+
+::: {.callout-warning collapse="true"}
+## Implémentation — Low/NoCode
+**Stack :** Make + Upload PDF + Claude API + Notion
+
+1. **Déclencheur** : Un nouveau PDF est déposé dans un dossier "Rapports Financiers" sur Google Drive.
+2. **Extraction** : Make parse le PDF et extrait le contenu textuel.
+3. **Analyse** : Le texte est envoyé à Claude avec le cadre d'analyse financière.
+4. **Stockage** : L'analyse structurée est sauvegardée dans une base Notion taggée par entreprise, période et métriques clés.
+5. **Alerte** : Si des signaux d'alerte sont détectés, une notification Slack est envoyée à l'équipe financière.
+:::
+
+---
+
+### 💰 Agent de Prévision Budgétaire par Scénarios
+
+::: {.callout-note collapse="true"}
+## Description
+Un agent qui prend des données historiques de budget et de réalisés, construit des projections de base, et modélise plusieurs scénarios (optimiste, base, pessimiste) sous différentes hypothèses. Il explique les hypothèses clés et identifie les lignes les plus sensibles — accélérant les cycles de planification budgétaire.
+:::
+
+::: {.callout-tip collapse="true"}
+## Implémentation — Python
+```python
+import json
+from anthropic import Anthropic
+
+client = Anthropic()
+
+def construire_prevision(donnees_historiques: dict, hypotheses: dict) -> str:
+    response = client.messages.create(
+        model="claude-opus-4-6",
+        max_tokens=3000,
+        system="""Tu es un expert en planification financière de niveau DAF.
+Construis des prévisions à 3 scénarios avec des hypothèses claires.
+Montre : Scénario de base, Scénario haussier (+15-25% d'upside), Scénario baissier (-15-25% de downside).
+Identifie les 3 principaux moteurs de sensibilité.""",
+        messages=[{
+            "role": "user",
+            "content": f"""Données historiques (4 derniers trimestres) :
+{json.dumps(donnees_historiques, indent=2)}
+
+Hypothèses de la direction :
+{json.dumps(hypotheses, indent=2)}
+
+Construis une prévision sur 4 trimestres avec 3 scénarios. Identifie les lignes à la plus haute incertitude."""
+        }]
+    )
+    return response.content[0].text
+
+historique = {
+    "T1_2025": {"revenus": 1200000, "cogs": 480000, "opex": 350000},
+    "T2_2025": {"revenus": 1380000, "cogs": 530000, "opex": 360000},
+    "T3_2025": {"revenus": 1450000, "cogs": 560000, "opex": 375000},
+    "T4_2025": {"revenus": 1620000, "cogs": 610000, "opex": 390000},
+}
+hypotheses = {
+    "croissance_revenus": "15-25% en glissement annuel",
+    "lancement_nouveau_produit": "T2 2026",
+    "augmentation_effectifs": "10 ingénieurs en T1",
+}
+prevision = construire_prevision(historique, hypotheses)
+print(prevision)
+```
+:::
+
+::: {.callout-warning collapse="true"}
+## Implémentation — Low/NoCode
+**Stack :** Google Sheets + n8n + Claude API + Google Slides
+
+1. **Saisie** : L'équipe finance maintient un Google Sheet avec les réalisés historiques et les hypothèses par scénario.
+2. **Déclencheur** : n8n lit la feuille quand une case "Générer la prévision" est cochée.
+3. **Modélisation** : Les données sont envoyées à Claude, qui retourne un narratif structuré et des tableaux de scénarios.
+4. **Export** : n8n alimente un template Google Slides avec les tableaux et le narratif.
+5. **Revue** : Le DAF reçoit un lien Slack vers la présentation de prévision auto-générée.
+:::
+
+---
+
+### ⚠️ Agent d'Évaluation des Risques & Alerte Précoce
+
+::: {.callout-note collapse="true"}
+## Description
+Un agent qui surveille en continu des signaux financiers et opérationnels (trésorerie disponible, taux de burn, concentration client, retards de paiement) et déclenche des alertes quand des seuils de risque sont franchis. Il synthétise des signaux issus de systèmes que les humains consultent typiquement de manière isolée — faisant remonter les risques systémiques avant qu'ils ne deviennent des crises.
+:::
+
+::: {.callout-tip collapse="true"}
+## Implémentation — Python
+```python
+from anthropic import Anthropic
+from datetime import datetime
+
+client = Anthropic()
+
+SEUILS_RISQUE = {
+    "mois_tresorerie_disponible": {"critique": 3, "alerte": 6},
+    "augmentation_burn_mensuel_pct": {"critique": 30, "alerte": 15},
+    "concentration_top_client_pct": {"critique": 40, "alerte": 25},
+    "jours_creances_clients": {"critique": 90, "alerte": 60},
+}
+
+def evaluer_risques(metriques: dict) -> str:
+    declenchees = {}
+    for metrique, valeur in metriques.items():
+        if metrique in SEUILS_RISQUE:
+            seuils = SEUILS_RISQUE[metrique]
+            if valeur <= seuils.get("critique", float("inf")):
+                declenchees[metrique] = {"valeur": valeur, "severite": "CRITIQUE"}
+            elif valeur <= seuils.get("alerte", float("inf")):
+                declenchees[metrique] = {"valeur": valeur, "severite": "ALERTE"}
+
+    response = client.messages.create(
+        model="claude-sonnet-4-6",
+        max_tokens=1500,
+        system="Tu es un DAF et expert en gestion des risques. Synthétise les signaux de risque financier en un briefing exécutif clair.",
+        messages=[{
+            "role": "user",
+            "content": f"""Date : {datetime.now().strftime('%Y-%m-%d')}
+Toutes les métriques : {metriques}
+Alertes déclenchées : {declenchees}
+
+Rédige un briefing de risque exécutif avec : évaluation de la sévérité, analyse des risques interconnectés, et top 3 des actions immédiates recommandées."""
+        }]
+    )
+    return response.content[0].text
+
+metriques = {
+    "mois_tresorerie_disponible": 4.5,
+    "augmentation_burn_mensuel_pct": 22,
+    "concentration_top_client_pct": 35,
+    "jours_creances_clients": 75,
+}
+briefing = evaluer_risques(metriques)
+print(briefing)
+```
+:::
+
+::: {.callout-warning collapse="true"}
+## Implémentation — Low/NoCode
+**Stack :** Stripe + QuickBooks API + n8n + Claude API + PagerDuty + Slack
+
+1. **Récupération quotidienne** : n8n collecte les métriques financières depuis Stripe (MRR, churn), QuickBooks (burn, créances) et le CRM (concentration client).
+2. **Vérification des seuils** : n8n compare chaque métrique aux seuils prédéfinis via un nœud Code.
+3. **Synthèse** : Les alertes déclenchées + toutes les métriques sont envoyées à Claude pour une évaluation narrative des risques.
+4. **Escalade** :
+   - CRITIQUE → Incident PagerDuty + DM Slack direct au DAF et CEO.
+   - ALERTE → Résumé hebdomadaire posté sur `#alertes-finance`.
+:::
