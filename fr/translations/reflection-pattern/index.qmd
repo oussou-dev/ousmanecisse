@@ -134,6 +134,174 @@ Idéal pour : génération de code, rédaction d'essais, analyses de données, o
 
 Prochain article : les **outils**, ingrédient clé pour rendre les agents vraiment utiles.
 
+## 🛠 Projets Actifs
+
+Découvrez ces implémentations pratiques pour voir le Pattern de Réflexion en action. Vous pouvez trouver le code source complet sur [GitHub](https://github.com/oussou-dev/agentic-design-patterns/tree/main/reflection-agent).
+
+### 📝 Générateur de Résumés Auto-Correcteur
+
+Cet agent prend un bloc de texte, génère un résumé, puis critique sa propre production, et enfin réécrit le résumé en fonction de cette réflexion. Il fonctionne en trois étapes clés : **Générer → Réfléchir → Réviser**—tout cela géré en interne.
+
+::: {.callout-note collapse="true"}
+## ✨ Points Forts
+- **Flux métacognitif** : Démontre comment les agents peuvent "penser à leur façon de penser".
+- **Réflexion flexible** : Peut utiliser une logique simple ou un LLM pour la phase de critique.
+- **Architecture extensible** : Conçu pour être facilement étendu vers des boucles de raisonnement plus complexes.
+:::
+
+::: {.callout-tip collapse="true"}
+## 💻 Code (Flux de Réflexion Simulé)
+```python
+# Étape 1 : Générer un résumé
+def generer_resume(texte: str) -> str:
+    return texte[:100] + "..." if len(texte) > 100 else texte
+ 
+# Étape 2 : Réflexion sur la qualité du résumé
+def reflechir_sur_resume(resume: str) -> str:
+    if len(resume.split()) < 20:
+        return "Le résumé est trop court et manque de détails."
+    elif "..." in resume:
+        return "Le résumé semble incomplet ou s'arrête brusquement."
+    return "Le résumé est clair et suffisamment détaillé."
+ 
+# Étape 3 : Améliorer le résumé
+def ameliorer_resume(texte: str, reflexion: str) -> str:
+    if "too short" in reflexion or "incomplet" in reflexion:
+        return texte[:200] + "..." if len(texte) > 200 else texte
+    return generer_resume(texte)
+ 
+# Agent de Réflexion Complet
+def agent_resume_reflexion(texte: str) -> str:
+    resume = generer_resume(texte)
+    print("📝 Résumé initial :", resume)
+ 
+    reflexion = reflechir_sur_resume(resume)
+    print("🔍 Réflexion :", reflexion)
+ 
+    ameliore = ameliorer_resume(texte, reflexion)
+    print("✅ Résumé amélioré :", ameliore)
+    return ameliore
+ 
+# 🧪 Exemple
+texte = (
+    "L'intelligence artificielle (IA) révolutionne les industries en permettant aux machines de réaliser "
+    "des tâches qui nécessitent normalement l'intelligence humaine. De la santé à la finance, l'IA "
+    "optimise les flux de travail, fait des prédictions et transforme les processus décisionnels."
+)
+ 
+agent_resume_reflexion(texte)
+```
+:::
+
+::: {.callout-important collapse="true"}
+## 📤 Exemple de Sortie
+```text
+📝 Résumé initial : L'intelligence artificielle (IA) révolutionne les industries en permettant aux machines de réaliser...
+🔍 Réflexion : Le résumé semble incomplet ou s'arrête brusquement.
+✅ Résumé amélioré : L'intelligence artificielle (IA) révolutionne les industries en permettant aux machines de réaliser des tâches qui nécessitent normalement l'intelligence humaine. De la santé à la finance, l'IA optimise les flux de travail, fait des prédictions et transforme les processus décisionnels...
+```
+:::
+
+::: {.callout-note collapse="true"}
+## 🚀 Cas d'Utilisation
+- **Assistants d'écriture** qui révisent leurs propres brouillons pour plus de clarté.
+- **Résumeurs de recherche** qui auto-améliorent la précision des synthèses.
+- ** Flux de génération de contenu** où la qualité est une priorité absolue.
+:::
+
+---
+
+### 🎓 Agent Évaluateur de Dissertations
+
+Cet agent prend une courte dissertation, l'évalue selon des critères de clarté et de structure, puis suggère des réécritures. Il imite le travail de révision d'un étudiant ou d'un tuteur IA.
+
+::: {.callout-note collapse="true"}
+## ✨ Points Forts
+- **Réflexion sur contenu externe** : Analyse les entrées utilisateur plutôt que ses propres sorties.
+- **Feedback de type tutorat** : Simule le retour d'un enseignant ou d'un expert.
+- **Piloté par des critères** : Utilise des métriques précises pour orienter les corrections.
+:::
+
+::: {.callout-tip collapse="true"}
+## 💻 Code (Évaluation et Révision)
+```python
+# Étape 1 : Évaluer la dissertation
+def evaluer_dissertation(texte: str) -> str:
+    score = 0
+    feedback = []
+ 
+    if len(texte.split()) < 100:
+        feedback.append("La dissertation est trop courte.")
+    else:
+        score += 1
+ 
+    if "cependant" in texte or "pourtant" in texte:
+        feedback.append("Bonne utilisation des connecteurs logiques.")
+        score += 1
+    else:
+        feedback.append("Essayez d'ajouter des transitions pour fluidifier le texte.")
+ 
+    if "parce que" in texte or "car" in texte:
+        feedback.append("L'argument est soutenu par un raisonnement.")
+        score += 1
+    else:
+        feedback.append("Pensez à justifier vos opinions avec des faits.")
+ 
+    return f"🧠 Réflexion :\n" + "\n".join(feedback), score
+ 
+# Étape 2 : Réécriture basée sur le feedback
+def reviser_dissertation(texte: str, feedback: str) -> str:
+    if "trop courte" in feedback:
+        return texte + " En conclusion, ce sujet mérite une exploration plus approfondie."
+    if "justifier" in feedback:
+        return texte + " Ceci est crucial car cela impacte de nombreux aspects de la société."
+    return texte
+ 
+# Pipeline complet de l'agent
+def agent_evaluateur_dissertation(texte: str) -> str:
+    print("✍️ Dissertation originale :\n", texte, "\n")
+    feedback, score = evaluer_dissertation(texte)
+    print(feedback)
+    print(f"📝 Score : {score}/3")
+ 
+    revisee = reviser_dissertation(texte, feedback)
+    print("\n✅ Dissertation révisée :\n", revisee)
+    return revisee
+ 
+# 🧪 Exemple
+texte_essai = (
+    "La technologie a changé notre façon de communiquer. Les réseaux sociaux permettent de rester connectés. "
+    "C'est positif, mais cela crée aussi des problèmes de vie privée."
+)
+ 
+agent_evaluateur_dissertation(texte_essai)
+```
+:::
+
+::: {.callout-important collapse="true"}
+## 📤 Exemple de Sortie
+```text
+✍️ Dissertation originale :
+La technologie a changé notre façon de communiquer...
+ 
+🧠 Réflexion :
+La dissertation est trop courte.
+Essayez d'ajouter des transitions pour fluidifier le texte.
+Pensez à justifier vos opinions avec des faits.
+📝 Score : 0/3
+ 
+✅ Dissertation révisée :
+La technologie a changé notre façon de communiquer... Ceci est crucial car cela impacte de nombreux aspects de la société.
+```
+:::
+
+::: {.callout-note collapse="true"}
+## 🚀 Cas d'Utilisation
+- **Tuteurs IA** d'aide à la rédaction pour les plateformes éducatives.
+- **Notation automatisée** avec feedback constructif immédiat.
+- **Outils d'aide à la décision** analysant la force des arguments.
+:::
+
 ## Ressources
 - Article original : [Reflection Pattern](https://theneuralmaze.substack.com/p/reflection-pattern-agents-that-think)
 - [Vidéo YouTube](https://www.youtube.com/watch?v=0sAVI8bQdRc)

@@ -21,10 +21,10 @@ An agent that monitors your inbox, classifies incoming emails based on intent (H
 
 ::: {.callout-tip collapse="true"}
 ## Implementation Example
-Using **n8n** or **Make** connected to **OpenAI's GPT-4o** via an API call.
-1.  **Trigger**: New Gmail email received.
-2.  **Logic**: Send email body to LLM with a system prompt detailing the triage categories.
-3.  **Action**: If "Action Needed", draft a reply in the "Drafts" folder and tag the email.
+Using **n8n** or **Make** connected to **OpenAI's GPT-4o** via an API call.  
+1.  **Trigger**: New Gmail email received.  
+2.  **Logic**: Send email body to LLM with a system prompt detailing the triage categories.  
+3.  **Action**: If "Action Needed", draft a reply in the "Drafts" folder and tag the email.  
 :::
 
 ---

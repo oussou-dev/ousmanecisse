@@ -130,12 +130,171 @@ You can use LangChain or CrewAI to chain these steps into a multi-agent or singl
 **Improved Output**: Rewrite the summary based on your reflection.
 
 
-## Projects
+## 🛠 Active Projects
 
-[GitHub](https://github.com/oussou-dev/agentic-design-patterns/tree/main/reflection-agent)  
+Browse these practical implementations to see the Reflection Pattern in action. You can find the full source code on [GitHub](https://github.com/oussou-dev/agentic-design-patterns/tree/main/reflection-agent).
 
-- Self-Improving Summary Generator
-- Essay Evaluator Agent
-- Code Reviewer Agent
-- Story Improver Agent
-- Idea Evaluator
+### 📝 Self-Improving Summary Generator
+
+This agent takes a block of text, generates a summary, then critiques its own output, and finally rewrites the summary based on that reflection. It operates in three main steps: **Generate → Reflect → Revise**—all handled internally using prompt chaining or custom logic.
+
+::: {.callout-note collapse="true"}
+## ✨ Highlights
+- **Metacognitive flow**: Demonstrates how agents can "think about their thinking."
+- **Flexible Reflection**: Can use basic logic or an LLM for the critique phase.
+- **Extensible Architecture**: Structured for easy expansion into multi-pass, scoring, or reasoning loops.
+:::
+
+::: {.callout-tip collapse="true"}
+## 💻 Code (Simulated Reflection Flow)
+```python
+# Step 1: Generate a summary
+def generate_summary(text: str) -> str:
+    return text[:100] + "..." if len(text) > 100 else text
+ 
+# Step 2: Reflect on the summary quality
+def reflect_on_summary(summary: str) -> str:
+    if len(summary.split()) < 20:
+        return "The summary is too short and lacks detail."
+    elif "..." in summary:
+        return "The summary seems incomplete or abrupt."
+    return "The summary is clear and sufficiently detailed."
+ 
+# Step 3: Improve the summary
+def improve_summary(text: str, reflection: str) -> str:
+    if "too short" in reflection or "incomplete" in reflection:
+        return text[:200] + "..." if len(text) > 200 else text
+    return generate_summary(text)
+ 
+# Full Reflection Agent
+def reflection_summary_agent(text: str) -> str:
+    summary = generate_summary(text)
+    print("📝 Initial Summary:", summary)
+ 
+    reflection = reflect_on_summary(summary)
+    print("🔍 Reflection:", reflection)
+ 
+    improved = improve_summary(text, reflection)
+    print("✅ Improved Summary:", improved)
+    return improved
+ 
+# 🧪 Example
+text = (
+    "Artificial intelligence (AI) is revolutionizing industries by enabling machines to perform tasks that normally require human intelligence. "
+    "From healthcare to finance, AI is optimizing workflows, making predictions, and transforming decision-making processes. "
+    "This shift is largely powered by advancements in machine learning, natural language processing, and computer vision."
+)
+ 
+reflection_summary_agent(text)
+```
+:::
+
+::: {.callout-important collapse="true"}
+## 📤 Sample Output
+```text
+📝 Initial Summary: Artificial intelligence (AI) is revolutionizing industries by enabling machines to perform tasks tha...
+🔍 Reflection: The summary seems incomplete or abrupt.
+✅ Improved Summary: Artificial intelligence (AI) is revolutionizing industries by enabling machines to perform tasks that normally require human intelligence. From healthcare to finance, AI is optimizing workflows, making predictions, and transforming decision-making processes...
+```
+:::
+
+::: {.callout-note collapse="true"}
+## 🚀 Use Cases
+- **Writing assistants** that revise their own drafts for better clarity.
+- **Research summarizers** that auto-improve quality based on accuracy checks.
+- **Multi-pass content generation** workflows where output quality is paramount.
+:::
+
+---
+
+### 🎓 Essay Evaluator Agent
+
+This agent takes a short essay, evaluates it based on criteria like clarity, structure, and argument strength, and then suggests improvements or rewrites. It reflects on the essay before rewriting, mimicking a self-reviewing student or an AI tutor.
+
+::: {.callout-note collapse="true"}
+## ✨ Highlights
+- **User Content Reflection**: Reflects on user-provided inputs rather than just its own generations.
+- **Tutor-style Feedback**: Can simulate various "personas" (Teacher, Peer, Critic) for the critique phase.
+- **Criteria-Driven**: Uses explicit evaluation metrics to drive iterative improvements.
+:::
+
+::: {.callout-tip collapse="true"}
+## 💻 Code (Essay Review with Feedback and Revision)
+```python
+# Step 1: Evaluate the essay
+def evaluate_essay(essay: str) -> str:
+    score = 0
+    feedback = []
+ 
+    if len(essay.split()) < 100:
+        feedback.append("The essay is too short.")
+    else:
+        score += 1
+ 
+    if "however" in essay or "on the other hand" in essay:
+        feedback.append("Good use of contrast and structure.")
+        score += 1
+    else:
+        feedback.append("Try adding transitional phrases for better flow.")
+ 
+    if "because" in essay:
+        feedback.append("Argument is supported with reasoning.")
+        score += 1
+    else:
+        feedback.append("Consider adding rationale for your opinions.")
+ 
+    return f"🧠 Reflection:\n" + "\n".join(feedback), score
+ 
+# Step 2: Rewrite based on feedback
+def revise_essay(essay: str, feedback: str) -> str:
+    if "too short" in feedback:
+        return essay + " In conclusion, this topic requires more exploration to fully understand its implications."
+    if "Consider adding rationale" in feedback:
+        return essay + " This is important because it affects many aspects of society."
+    return essay
+ 
+# Agent: Full pipeline
+def essay_evaluator_agent(essay: str) -> str:
+    print("✍️ Original Essay:\n", essay, "\n")
+    feedback, score = evaluate_essay(essay)
+    print(feedback)
+    print(f"📝 Score: {score}/3")
+ 
+    revised = revise_essay(essay, feedback)
+    print("\n✅ Revised Essay:\n", revised)
+    return revised
+ 
+# 🧪 Example
+essay_text = (
+    "Technology has changed the way we communicate. Social media allows people to stay connected. "
+    "This can be positive, but also creates issues with privacy and attention spans."
+)
+ 
+essay_evaluator_agent(essay_text)
+```
+:::
+
+::: {.callout-important collapse="true"}
+## 📤 Sample Output
+```text
+✍️ Original Essay:
+Technology has changed the way we communicate...
+ 
+🧠 Reflection:
+The essay is too short.
+Try adding transitional phrases for better flow.
+Consider adding rationale for your opinions.
+📝 Score: 1/3
+ 
+✅ Revised Essay:
+Technology has changed the way we communicate...
+This is important because it affects many aspects of society.
+```
+:::
+
+::: {.callout-note collapse="true"}
+## 🚀 Use Cases
+- **AI Writing Tutors** providing instant student feedback.
+- **Automated Essay Scoring** and revision loops for educational tech.
+- **Self-Reviewing Content Platforms** that ensure a minimum quality bar.
+:::

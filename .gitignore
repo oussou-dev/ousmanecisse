@@ -39,6 +39,9 @@ coverage.xml
 Thumbs.db
 .ipynb_checkpoints/
 
+# Personal notes (not tracked)
+TodoList.md
+
 # Project specifics
 /.luarc.json
 *-listing.json
