@@ -362,6 +362,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#lagent-de-réflexion-en-action" id="toc-lagent-de-réflexion-en-action" class="nav-link" data-scroll-target="#lagent-de-réflexion-en-action">L’agent de réflexion en action</a></li>
   <li><a href="#pourquoi-ça-marche-si-bien" id="toc-pourquoi-ça-marche-si-bien" class="nav-link" data-scroll-target="#pourquoi-ça-marche-si-bien">Pourquoi ça marche si bien ?</a></li>
   <li><a href="#prochaines-étapes" id="toc-prochaines-étapes" class="nav-link" data-scroll-target="#prochaines-étapes">Prochaines étapes</a></li>
+  <li><a href="#projets-actifs" id="toc-projets-actifs" class="nav-link" data-scroll-target="#projets-actifs">🛠 Projets Actifs</a>
+  <ul class="collapse">
+  <li><a href="#générateur-de-résumés-auto-correcteur" id="toc-générateur-de-résumés-auto-correcteur" class="nav-link" data-scroll-target="#générateur-de-résumés-auto-correcteur">📝 Générateur de Résumés Auto-Correcteur</a></li>
+  <li><a href="#agent-évaluateur-de-dissertations" id="toc-agent-évaluateur-de-dissertations" class="nav-link" data-scroll-target="#agent-évaluateur-de-dissertations">🎓 Agent Évaluateur de Dissertations</a></li>
+  </ul></li>
   <li><a href="#ressources" id="toc-ressources" class="nav-link" data-scroll-target="#ressources">Ressources</a></li>
   </ul>
 </nav>
@@ -509,6 +514,261 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="prochaines-étapes" class="level2">
 <h2 class="anchored" data-anchor-id="prochaines-étapes">Prochaines étapes</h2>
 <p>Prochain article : les <strong>outils</strong>, ingrédient clé pour rendre les agents vraiment utiles.</p>
+</section>
+<section id="projets-actifs" class="level2">
+<h2 class="anchored" data-anchor-id="projets-actifs">🛠 Projets Actifs</h2>
+<p>Découvrez ces implémentations pratiques pour voir le Pattern de Réflexion en action. Vous pouvez trouver le code source complet sur <a href="https://github.com/oussou-dev/agentic-design-patterns/tree/main/reflection-agent">GitHub</a>.</p>
+<section id="générateur-de-résumés-auto-correcteur" class="level3">
+<h3 class="anchored" data-anchor-id="générateur-de-résumés-auto-correcteur">📝 Générateur de Résumés Auto-Correcteur</h3>
+<p>Cet agent prend un bloc de texte, génère un résumé, puis critique sa propre production, et enfin réécrit le résumé en fonction de cette réflexion. Il fonctionne en trois étapes clés : <strong>Générer → Réfléchir → Réviser</strong>—tout cela géré en interne.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>✨ Points Forts
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>Flux métacognitif</strong> : Démontre comment les agents peuvent “penser à leur façon de penser”.</li>
+<li><strong>Réflexion flexible</strong> : Peut utiliser une logique simple ou un LLM pour la phase de critique.</li>
+<li><strong>Architecture extensible</strong> : Conçu pour être facilement étendu vers des boucles de raisonnement plus complexes.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>💻 Code (Flux de Réflexion Simulé)
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Étape 1 : Générer un résumé</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> generer_resume(texte: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">str</span>:</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> texte[:<span class="dv">100</span>] <span class="op">+</span> <span class="st">"..."</span> <span class="cf">if</span> <span class="bu">len</span>(texte) <span class="op">&gt;</span> <span class="dv">100</span> <span class="cf">else</span> texte</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Étape 2 : Réflexion sur la qualité du résumé</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> reflechir_sur_resume(resume: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">str</span>:</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">len</span>(resume.split()) <span class="op">&lt;</span> <span class="dv">20</span>:</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"Le résumé est trop court et manque de détails."</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> <span class="st">"..."</span> <span class="kw">in</span> resume:</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"Le résumé semble incomplet ou s'arrête brusquement."</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="st">"Le résumé est clair et suffisamment détaillé."</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Étape 3 : Améliorer le résumé</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> ameliorer_resume(texte: <span class="bu">str</span>, reflexion: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">str</span>:</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">"too short"</span> <span class="kw">in</span> reflexion <span class="kw">or</span> <span class="st">"incomplet"</span> <span class="kw">in</span> reflexion:</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> texte[:<span class="dv">200</span>] <span class="op">+</span> <span class="st">"..."</span> <span class="cf">if</span> <span class="bu">len</span>(texte) <span class="op">&gt;</span> <span class="dv">200</span> <span class="cf">else</span> texte</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> generer_resume(texte)</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Agent de Réflexion Complet</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> agent_resume_reflexion(texte: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">str</span>:</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    resume <span class="op">=</span> generer_resume(texte)</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"📝 Résumé initial :"</span>, resume)</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    reflexion <span class="op">=</span> reflechir_sur_resume(resume)</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"🔍 Réflexion :"</span>, reflexion)</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>    ameliore <span class="op">=</span> ameliorer_resume(texte, reflexion)</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"✅ Résumé amélioré :"</span>, ameliore)</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> ameliore</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a><span class="co"># 🧪 Exemple</span></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>texte <span class="op">=</span> (</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>    <span class="st">"L'intelligence artificielle (IA) révolutionne les industries en permettant aux machines de réaliser "</span></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>    <span class="st">"des tâches qui nécessitent normalement l'intelligence humaine. De la santé à la finance, l'IA "</span></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>    <span class="st">"optimise les flux de travail, fait des prédictions et transforme les processus décisionnels."</span></span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>agent_resume_reflexion(texte)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>📤 Exemple de Sortie
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre class="text"><code>📝 Résumé initial : L'intelligence artificielle (IA) révolutionne les industries en permettant aux machines de réaliser...
+🔍 Réflexion : Le résumé semble incomplet ou s'arrête brusquement.
+✅ Résumé amélioré : L'intelligence artificielle (IA) révolutionne les industries en permettant aux machines de réaliser des tâches qui nécessitent normalement l'intelligence humaine. De la santé à la finance, l'IA optimise les flux de travail, fait des prédictions et transforme les processus décisionnels...</code></pre>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>🚀 Cas d’Utilisation
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>Assistants d’écriture</strong> qui révisent leurs propres brouillons pour plus de clarté.</li>
+<li><strong>Résumeurs de recherche</strong> qui auto-améliorent la précision des synthèses.</li>
+<li>** Flux de génération de contenu** où la qualité est une priorité absolue.</li>
+</ul>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="agent-évaluateur-de-dissertations" class="level3">
+<h3 class="anchored" data-anchor-id="agent-évaluateur-de-dissertations">🎓 Agent Évaluateur de Dissertations</h3>
+<p>Cet agent prend une courte dissertation, l’évalue selon des critères de clarté et de structure, puis suggère des réécritures. Il imite le travail de révision d’un étudiant ou d’un tuteur IA.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>✨ Points Forts
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>Réflexion sur contenu externe</strong> : Analyse les entrées utilisateur plutôt que ses propres sorties.</li>
+<li><strong>Feedback de type tutorat</strong> : Simule le retour d’un enseignant ou d’un expert.</li>
+<li><strong>Piloté par des critères</strong> : Utilise des métriques précises pour orienter les corrections.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>💻 Code (Évaluation et Révision)
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Étape 1 : Évaluer la dissertation</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> evaluer_dissertation(texte: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">str</span>:</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    score <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    feedback <span class="op">=</span> []</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">len</span>(texte.split()) <span class="op">&lt;</span> <span class="dv">100</span>:</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>        feedback.append(<span class="st">"La dissertation est trop courte."</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>        score <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">"cependant"</span> <span class="kw">in</span> texte <span class="kw">or</span> <span class="st">"pourtant"</span> <span class="kw">in</span> texte:</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>        feedback.append(<span class="st">"Bonne utilisation des connecteurs logiques."</span>)</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>        score <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>        feedback.append(<span class="st">"Essayez d'ajouter des transitions pour fluidifier le texte."</span>)</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">"parce que"</span> <span class="kw">in</span> texte <span class="kw">or</span> <span class="st">"car"</span> <span class="kw">in</span> texte:</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>        feedback.append(<span class="st">"L'argument est soutenu par un raisonnement."</span>)</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>        score <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>        feedback.append(<span class="st">"Pensez à justifier vos opinions avec des faits."</span>)</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="ss">f"🧠 Réflexion :</span><span class="ch">\n</span><span class="ss">"</span> <span class="op">+</span> <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>.join(feedback), score</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Étape 2 : Réécriture basée sur le feedback</span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> reviser_dissertation(texte: <span class="bu">str</span>, feedback: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">str</span>:</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">"trop courte"</span> <span class="kw">in</span> feedback:</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> texte <span class="op">+</span> <span class="st">" En conclusion, ce sujet mérite une exploration plus approfondie."</span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">"justifier"</span> <span class="kw">in</span> feedback:</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> texte <span class="op">+</span> <span class="st">" Ceci est crucial car cela impacte de nombreux aspects de la société."</span></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> texte</span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Pipeline complet de l'agent</span></span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> agent_evaluateur_dissertation(texte: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">str</span>:</span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"✍️ Dissertation originale :</span><span class="ch">\n</span><span class="st">"</span>, texte, <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>    feedback, score <span class="op">=</span> evaluer_dissertation(texte)</span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(feedback)</span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"📝 Score : </span><span class="sc">{</span>score<span class="sc">}</span><span class="ss">/3"</span>)</span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>    revisee <span class="op">=</span> reviser_dissertation(texte, feedback)</span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">✅ Dissertation révisée :</span><span class="ch">\n</span><span class="st">"</span>, revisee)</span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> revisee</span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a><span class="co"># 🧪 Exemple</span></span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a>texte_essai <span class="op">=</span> (</span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>    <span class="st">"La technologie a changé notre façon de communiquer. Les réseaux sociaux permettent de rester connectés. "</span></span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a>    <span class="st">"C'est positif, mais cela crée aussi des problèmes de vie privée."</span></span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a>agent_evaluateur_dissertation(texte_essai)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>📤 Exemple de Sortie
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre class="text"><code>✍️ Dissertation originale :
+La technologie a changé notre façon de communiquer...
+ 
+🧠 Réflexion :
+La dissertation est trop courte.
+Essayez d'ajouter des transitions pour fluidifier le texte.
+Pensez à justifier vos opinions avec des faits.
+📝 Score : 0/3
+ 
+✅ Dissertation révisée :
+La technologie a changé notre façon de communiquer... Ceci est crucial car cela impacte de nombreux aspects de la société.</code></pre>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>🚀 Cas d’Utilisation
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>Tuteurs IA</strong> d’aide à la rédaction pour les plateformes éducatives.</li>
+<li><strong>Notation automatisée</strong> avec feedback constructif immédiat.</li>
+<li><strong>Outils d’aide à la décision</strong> analysant la force des arguments.</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
 </section>
 <section id="ressources" class="level2">
 <h2 class="anchored" data-anchor-id="ressources">Ressources</h2>
