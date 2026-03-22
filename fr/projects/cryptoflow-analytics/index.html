@@ -1,16 +1,14 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.9.36">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Ousmane Cissé">
-<meta name="dcterms.date" content="2026-01-20">
-<meta name="description" content="A full-stack, AI-powered news platform that scrapes, summarizes, and serves AI trends using FastAPI, Streamlit, and Multi-Agent Orchestration.">
+<meta name="description" content="Pipeline d’intelligence de marché crypto en temps réel construit avec Bruin, BigQuery et l’API CoinGecko. Inclut un détecteur de régime de marché et des analyses par IA.">
 
-<title>AI DEV TOOLS Project: AI News Aggregator – OUSMANE CISSE</title>
+<title>CryptoFlow Analytics – OUSMANE CISSE</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -29,30 +27,30 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-f418161beb48e0141c760e455f12af2c.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-5a86600269f24ddd1f702bcbe44963de.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-bed61908e2a65850756f22dd3b240cf8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-5a86600269f24ddd1f702bcbe44963de.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
-<script src="../../site_libs/quarto-contrib/jquery-3.6.3/jquery-3.6.3.min.js"></script>
-<script src="../../site_libs/quarto-contrib/code-fullscreen-1.0.0/code-fullscreen.js" defer="true"></script>
-<link href="../../site_libs/quarto-contrib/code-fullscreen-1.0.0/code-fullscreen.css" rel="stylesheet">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-f418161beb48e0141c760e455f12af2c.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-5a86600269f24ddd1f702bcbe44963de.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-bed61908e2a65850756f22dd3b240cf8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../site_libs/bootstrap/bootstrap-5a86600269f24ddd1f702bcbe44963de.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../../../site_libs/quarto-contrib/jquery-3.6.3/jquery-3.6.3.min.js"></script>
+<script src="../../../site_libs/quarto-contrib/code-fullscreen-1.0.0/code-fullscreen.js" defer="true"></script>
+<link href="../../../site_libs/quarto-contrib/code-fullscreen-1.0.0/code-fullscreen.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -67,23 +65,23 @@ ul.task-list li input[type="checkbox"] {
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
+    "search-no-results-text": "Pas de résultats",
+    "search-matching-documents-text": "documents trouvés",
+    "search-copy-link-title": "Copier le lien vers la recherche",
+    "search-hide-matches-text": "Cacher les correspondances additionnelles",
+    "search-more-match-text": "correspondance de plus dans ce document",
+    "search-more-matches-text": "correspondances de plus dans ce document",
+    "search-clear-button-title": "Effacer",
     "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-detached-cancel-button-title": "Annuler",
+    "search-submit-button-title": "Envoyer",
+    "search-label": "Recherche"
   }
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
 
-<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../../../styles.css">
 </head>
 
 <body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -255,41 +253,41 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">OUSMANE CISSE</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+            <div id="quarto-search" class="" title="Recherche"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Basculer la navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../projects.html"> 
-<span class="menu-text">Projects</span></a>
+    <a class="nav-link" href="../../../fr/projets.html"> 
+<span class="menu-text">Projets</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../blog.html"> 
+    <a class="nav-link" href="../../../fr/blog.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../en-to-fr.html"> 
-<span class="menu-text">Translations</span></a>
+    <a class="nav-link" href="../../../fr/en-to-fr.html"> 
+<span class="menu-text">Traductions</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../books.html"> 
-<span class="menu-text">Book Reviews</span></a>
+    <a class="nav-link" href="../../../fr/livres.html"> 
+<span class="menu-text">Revue de Livres</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../robotics.html"> 
-<span class="menu-text">Robotics &amp; AI</span></a>
+    <a class="nav-link" href="../../../fr/robotique.html"> 
+<span class="menu-text">Robotique &amp; IA</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../fr/index.html"> 
-<span class="menu-text">🇫🇷 FR</span></a>
+    <a class="nav-link" href="../../../index.html"> 
+<span class="menu-text">🇬🇧 EN</span></a>
   </li>  
   <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/oussou-dev"> <i class="bi bi-github" role="img">
@@ -304,7 +302,7 @@ ul.task-list li input[type="checkbox"] {
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Basculer le mode sombre"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -315,21 +313,11 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
+    <h2 id="toc-title">Sur cette page</h2>
    
   <ul>
-  <li><a href="#architecture-tech-stack" id="toc-architecture-tech-stack" class="nav-link active" data-scroll-target="#architecture-tech-stack">🏗️ Architecture &amp; Tech Stack</a>
-  <ul class="collapse">
-  <li><a href="#the-stack" id="toc-the-stack" class="nav-link" data-scroll-target="#the-stack">The Stack</a></li>
-  <li><a href="#the-pipeline" id="toc-the-pipeline" class="nav-link" data-scroll-target="#the-pipeline">The Pipeline</a></li>
-  </ul></li>
-  <li><a href="#key-features" id="toc-key-features" class="nav-link" data-scroll-target="#key-features">✨ Key Features</a>
-  <ul class="collapse">
-  <li><a href="#multi-source-intelligence" id="toc-multi-source-intelligence" class="nav-link" data-scroll-target="#multi-source-intelligence">📰 Multi-Source Intelligence</a></li>
-  <li><a href="#agentic-workflows" id="toc-agentic-workflows" class="nav-link" data-scroll-target="#agentic-workflows">🧠 Agentic Workflows</a></li>
-  <li><a href="#the-dashboard" id="toc-the-dashboard" class="nav-link" data-scroll-target="#the-dashboard">🎨 The Dashboard</a></li>
-  </ul></li>
-  <li><a href="#why-i-built-this" id="toc-why-i-built-this" class="nav-link" data-scroll-target="#why-i-built-this">🚀 Why I Built This</a></li>
+  <li><a href="#pipeline-dintelligence-de-marché-crypto-en-temps-réel" id="toc-pipeline-dintelligence-de-marché-crypto-en-temps-réel" class="nav-link active" data-scroll-target="#pipeline-dintelligence-de-marché-crypto-en-temps-réel">🚀 Pipeline d’intelligence de marché crypto en temps réel</a></li>
+  <li><a href="#répertoire-github" id="toc-répertoire-github" class="nav-link" data-scroll-target="#répertoire-github">🔗 Répertoire GitHub</a></li>
   </ul>
 </nav>
     </div>
@@ -339,38 +327,19 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">AI DEV TOOLS Project: AI News Aggregator</h1>
-  <div class="quarto-categories">
-    <div class="quarto-category">Project</div>
-    <div class="quarto-category">AI Agents</div>
-    <div class="quarto-category">AI Dev Tools</div>
-    <div class="quarto-category">VIBE CODING</div>
-    <div class="quarto-category">FastAPI</div>
-  </div>
-  </div>
+<h1 class="title">CryptoFlow Analytics</h1>
+</div>
 
 <div>
   <div class="description">
-    A full-stack, AI-powered news platform that scrapes, summarizes, and serves AI trends using FastAPI, Streamlit, and Multi-Agent Orchestration.
+    Pipeline d’intelligence de marché crypto en temps réel construit avec Bruin, BigQuery et l’API CoinGecko. Inclut un détecteur de régime de marché et des analyses par IA.
   </div>
 </div>
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Ousmane Cissé </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">January 20, 2026</p>
-    </div>
-  </div>
   
     
   </div>
@@ -380,67 +349,28 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<meta name="translation-url" content="fr/posts/ai-news-aggregator/index.html">
-<p>For my Week 4 project in the AI Dev Tools Zoomcamp, I built the <strong>AI News Aggregator</strong> — a comprehensive platform designed to cut through the noise of the rapid-fire AI news cycle. It automates the collection, processing, and presentation of high-value AI content from multiple sources.</p>
-<p><a href="https://github.com/oussou-dev/ai-dev-tools-zoomcamp/tree/main/04_ai_news_aggr"><strong>View Project on GitHub</strong></a></p>
-<section id="architecture-tech-stack" class="level2">
-<h2 class="anchored" data-anchor-id="architecture-tech-stack">🏗️ Architecture &amp; Tech Stack</h2>
-<p>This isn’t just a simple script; it’s a containerized, microservices-based application built for production-grade reliability.</p>
-<section id="the-stack" class="level3">
-<h3 class="anchored" data-anchor-id="the-stack">The Stack</h3>
+<meta name="translation-url" content="projects/cryptoflow-analytics/index.html">
+<section id="pipeline-dintelligence-de-marché-crypto-en-temps-réel" class="level3">
+<h3 class="anchored" data-anchor-id="pipeline-dintelligence-de-marché-crypto-en-temps-réel">🚀 Pipeline d’intelligence de marché crypto en temps réel</h3>
+<p>CryptoFlow Analytics est un pipeline de données de bout en bout qui ingère des données crypto multi-sources, les transforme via une architecture en médaillon et produit une intelligence de marché actionnable — incluant un Détecteur de Régime de Marché, des Signaux de Momentum Composés et une Analyse de Sentiment — le tout orchestré par <a href="https://getbruin.com">Bruin</a>.</p>
+<p>Ce projet a été réalisé dans le cadre de la compétition <strong><a href="https://getbruin.com/zoomcamp-project/">Bruin x DE Zoomcamp 2026 Project Competition</a></strong>.</p>
+<section id="fonctionnalités-clés" class="level4">
+<h4 class="anchored" data-anchor-id="fonctionnalités-clés">🎯 Fonctionnalités clés</h4>
 <ul>
-<li><strong>Backend</strong>: <code>FastAPI</code> (Async REST API)<br>
-</li>
-<li><strong>Frontend</strong>: <code>Streamlit</code> (Interactive Dashboard)<br>
-</li>
-<li><strong>Database</strong>: <code>PostgreSQL 17</code> (Persistent Data Store)<br>
-</li>
-<li><strong>Infrastructure</strong>: <code>Docker Compose</code> (Orchestration)</li>
+<li><strong>Détecteur de Régime de Marché</strong> : Classifie automatiquement les conditions de marché (Bull, Bear, Sideways) basées sur l’action des prix et la volatilité.</li>
+<li><strong>Analyses par IA</strong> : Utilise les capacités IA de Bruin pour fournir des commentaires de marché automatisés et mettre en évidence les signaux importants.</li>
+<li><strong>Architecture Médaillon</strong> : Ingénierie de données robuste avec des couches Bronze (Brut), Silver (Staging) et Gold (Analytics) dans <strong>BigQuery</strong>.</li>
+<li><strong>Qualité des Données</strong> : Validation intégrée des données utilisant les tests de qualité natifs et personnalisés de Bruin.</li>
 </ul>
 </section>
-<section id="the-pipeline" class="level3">
-<h3 class="anchored" data-anchor-id="the-pipeline">The Pipeline</h3>
-<p>The system operates on an intelligent pipeline:<br>
-1. <strong>Scraping</strong>: Background workers fetch content from <strong>YouTube</strong> (transcripts), <strong>OpenAI feeds</strong>, and <strong>Anthropic</strong> research papers.<br>
-2. <strong>Processing</strong>: Raw content is stored in PostgreSQL.<br>
-3. <strong>Intelligence</strong>: AI Agents kick in to:<br>
-* <strong>Summarize</strong>: Compress hour-long videos into 3-sentence insights.<br>
-* <strong>Curate</strong>: Rank stories based on a personalized user “Interest Profile”.<br>
-* <strong>Deliver</strong>: Generate warm, ready-to-send email drafts.</p>
 </section>
-</section>
-<section id="key-features" class="level2">
-<h2 class="anchored" data-anchor-id="key-features">✨ Key Features</h2>
-<section id="multi-source-intelligence" class="level3">
-<h3 class="anchored" data-anchor-id="multi-source-intelligence">📰 Multi-Source Intelligence</h3>
-<p>The aggregator doesn’t just read RSS feeds. It uses:<br>
-* <strong>YouTube Transcript API</strong>: To “watch” videos and extract key points.<br>
-* <strong>Docling</strong>: To convert complex research papers into clean markdown for analysis.</p>
-</section>
-<section id="agentic-workflows" class="level3">
-<h3 class="anchored" data-anchor-id="agentic-workflows">🧠 Agentic Workflows</h3>
-<p>I implemented three distinct specialized agents:<br>
-1. <strong>Digest Agent</strong>: The “Summarizer” that distills content.<br>
-2. <strong>Curator Agent</strong>: The “Personal Assistant” that decides what’s relevant to <em>me</em> (e.g., filtering for “Coding Agents” vs.&nbsp;“GenAI Policy”).<br>
-3. <strong>Email Agent</strong>: The “Communicator” that formats the daily briefing.</p>
-</section>
-<section id="the-dashboard" class="level3">
-<h3 class="anchored" data-anchor-id="the-dashboard">🎨 The Dashboard</h3>
-<p>The Streamlit frontend provides a sleek, dark-mode interface where I can:<br>
-* Trigger the scraping pipeline manually.<br>
-* View the real-time health status of backend services.<br>
-* Read beautiful, card-based digests of the latest news.</p>
-</section>
-</section>
-<section id="why-i-built-this" class="level2">
-<h2 class="anchored" data-anchor-id="why-i-built-this">🚀 Why I Built This</h2>
-<p>Keeping up with AI is a full-time job. I wanted to build a tool that uses the very technology I’m learning (Agents, MCP, LLMs) to solve a problem I face every day. This project represents the convergence of modern web development (FastAPI/Docker) with cutting-edge AI engineering.</p>
-<p>Check out the full <a href="https://github.com/oussou-dev/ai-dev-tools-zoomcamp/tree/main/04_ai_news_aggr">Developer Guide</a> to see how “Vibe Coding” helped build this!</p>
+<section id="répertoire-github" class="level3">
+<h3 class="anchored" data-anchor-id="répertoire-github">🔗 <a href="https://github.com/oussou-dev/cryptoflow-analytics" target="_blank">Répertoire GitHub</a></h3>
 
 
 </section>
 
-<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Retour au sommet</a></main> <!-- /main -->
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         const path = window.location.pathname;
@@ -600,12 +530,12 @@ ul.task-list li input[type="checkbox"] {
       // flash "checked"
       button.classList.add('code-copy-button-checked');
       var currentTitle = button.getAttribute("title");
-      button.setAttribute("title", "Copied!");
+      button.setAttribute("title", "Copié");
       let tooltip;
       if (window.bootstrap) {
         button.setAttribute("data-bs-toggle", "tooltip");
         button.setAttribute("data-bs-placement", "left");
-        button.setAttribute("data-bs-title", "Copied!");
+        button.setAttribute("data-bs-title", "Copié");
         tooltip = new bootstrap.Tooltip(button, 
           { trigger: "manual", 
             customClass: "code-copy-button-tooltip",
@@ -980,5 +910,5 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+<script src="../../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>
