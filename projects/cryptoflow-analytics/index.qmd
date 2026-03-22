@@ -1,0 +1,22 @@
+---
+title: "CryptoFlow Analytics"
+translation-url: "fr/projects/cryptoflow-analytics/index.html"
+description: "Real-time Cryptocurrency Market Intelligence Pipeline built with Bruin, BigQuery, and CoinGecko API. Features a Market Regime Detector and AI Analyst insights."
+image: "/img/cryptoflow-analytics/cover.png"
+lang: en
+---
+
+### 🚀 Real-time Cryptocurrency Market Intelligence Pipeline
+
+CryptoFlow Analytics is an end-to-end data pipeline that ingests multi-source crypto data, transforms it through a medallion architecture, and produces actionable market intelligence — including a Market Regime Detector, Composite Momentum Signals, and Sentiment Analysis — all orchestrated by [Bruin](https://getbruin.com).
+
+This project was built for the **[Bruin x DE Zoomcamp 2026 Project Competition](https://getbruin.com/zoomcamp-project/)**.
+
+#### 🎯 Key Features
+
+- **Market Regime Detector**: Automatically classifies market conditions (Bull, Bear, Sideways) based on price action and volatility.
+- **AI Analyst Insights**: Leverages Bruin's AI capabilities to provide automated market commentary and highlighted signals.
+- **Medallion Architecture**: Robust data engineering with Bronze (Raw), Silver (Staging), and Gold (Analytics) layers in **BigQuery**.
+- **Data Quality**: Integrated data validation using Bruin's built-in and custom quality checks.
+
+### 🔗 [GitHub Repository](https://github.com/oussou-dev/cryptoflow-analytics){target="_blank"}

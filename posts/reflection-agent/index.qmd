@@ -135,7 +135,9 @@ Browse these practical implementations to see the Reflection Pattern in action. 
 
 ### 📝 Self-Improving Summary Generator
 
-This agent takes a block of text, generates a summary, then critiques its own output, and finally rewrites the summary based on that reflection. It operates in three main steps: **Generate → Reflect → Revise**—all handled internally using prompt chaining or custom logic.
+This agent takes a block of text, generates a summary, then critiques its own output, and finally rewrites the summary based on that reflection. It operates in three main steps:  
+**Generate → Reflect → Revise**
+all handled internally using prompt chaining or custom logic.
 
 ::: {.callout-note collapse="true"}
 ## ✨ Highlights

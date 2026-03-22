@@ -5,6 +5,7 @@ lang: en
 listing:
   contents: 
     - "projects/ai-agents-in-practice/index.qmd"
+    - "projects/cryptoflow-analytics/index.qmd"
     - "projects/legacyloom/index.qmd"
     - "projects/finetuning-ninja/index.qmd"
     - "projects/ai-dev-tools/index.qmd"
