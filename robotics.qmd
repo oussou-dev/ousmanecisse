@@ -3,6 +3,22 @@ title: "Robotics & AI"
 translation-url: "fr/robotique.html"
 page-layout: full
 title-block-banner: false
+draft: true
 ---
 
-Coming soon...
+
+## Planned Posts
+The following topics will be covered in this section:
+
+- **Intro to Robotics**
+- **How to build a Robot?**
+- **Maths Foundations**
+- **Core Robotics Concepts**
+- **Fundamentals of AI**
+- **Intro to AI in Robotics**
+- **AI technologies in Robotics**
+- **Applying AI in Robotics**
+- **Robotics Software Ecosystem**
+- **Future of Robotics & AI**
+- **Career & Projects**
+

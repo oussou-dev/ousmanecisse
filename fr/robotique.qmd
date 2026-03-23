@@ -3,6 +3,22 @@ title: "Robotique et IA"
 translation-url: "robotics.html"
 page-layout: full
 title-block-banner: false
+draft: true
 ---
 
-Bientôt disponible...
+
+## Articles Prévus
+Dans cette section, nous aborderons les sujets suivants :
+
+- **Introduction à la Robotique**
+- **Comment construire un robot ?**
+- **Fondements Mathématiques**
+- **Concepts Fondamentaux de la Robotique**
+- **Bases de l'IA**
+- **Introduction à l'IA en Robotique**
+- **Technologies IA pour la Robotique**
+- **Appliquer l'IA en Robotique**
+- **Écosystème Logiciel de la Robotique**
+- **L'Avenir de la Robotique et de l'IA**
+- **Carrière et Projets**
+

@@ -17,8 +17,8 @@ website:
         text: Traductions
       - href: fr/livres.qmd
         text: Revue de Livres
-      - href: fr/robotique.qmd
-        text: "Robotique & IA"
+#      - href: fr/robotique.qmd
+#        text: "Robotique & IA"
     right:
       - text: "🇬🇧 EN"
         href: index.html

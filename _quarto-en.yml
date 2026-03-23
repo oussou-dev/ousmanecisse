@@ -18,8 +18,8 @@ website:
         text: Translations
       - href: books.qmd
         text: Book Reviews
-      - href: robotics.qmd
-        text: "Robotics & AI"
+#      - href: robotics.qmd
+#        text: "Robotics & AI"
 
     right:
       - text: "🇫🇷 FR"
